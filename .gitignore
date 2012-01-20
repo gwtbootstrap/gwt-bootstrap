@@ -1,0 +1,14 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+
+war/gwt_bree/*
+
+gwt-unitCache/*
+
+.apt_generated/*
+
+war/WEB-INF/deploy/*
+war/WEB-INF/classes/*
