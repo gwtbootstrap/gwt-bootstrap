@@ -6,7 +6,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui.resources;
  * @since 20/01/2012
  */
 public interface BootstrapCssResources {
-	
+
 	public static final String span1 = "span1";
 
 	public static final String span2 = "span2";
@@ -110,4 +110,9 @@ public interface BootstrapCssResources {
 	public static final String alert_message = "alert-message";
 
 	public static final String block_message = "block-message";
+
+	public static final String large = "large";
+
+	public static final String small = "small";
+
 }

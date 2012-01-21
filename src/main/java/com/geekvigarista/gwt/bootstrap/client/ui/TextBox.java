@@ -3,7 +3,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 
 /**
- * BootStrap TextBox.
+ * The BootStrap TextBox.
  * 
  * @author Carlos Alexandro Becker
  * @since 21/01/2012

@@ -28,6 +28,8 @@ public class GenerateSpansOffsetsStrings {
 		genTag("active");
 		genTag("alert-message");
 		genTag("block-message");
+		genTag("large");
+		genTag("small");
 
 		System.out.println(sb.toString());
 	}
