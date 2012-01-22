@@ -9,9 +9,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -22,6 +20,7 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class BootStrap implements EntryPoint {
 	public void onModuleLoad() {
+
 		BootstrapConfigurator.configure();
 
 		RootPanel.get().add(new TextBox());
@@ -29,7 +28,7 @@ public class BootStrap implements EntryPoint {
 
 		PrimaryButton pb = new PrimaryButton("OIZAO");
 		pb.setSize(Size.LARGE);
-		
+
 		RootPanel.get().add(pb);
 
 		RootPanel.get().add(new Button("ola que tal"));
