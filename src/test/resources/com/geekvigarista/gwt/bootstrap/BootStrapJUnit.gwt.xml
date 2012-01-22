@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-  <!-- Inherit our applications main module.                      -->
   <inherits name='com.geekvigarista.gwt.bootstrap.BootStrap' />
-
-  <!-- Specify the path to any remote services.                   -->
-  <servlet path="/BootStrap/greet" class="com.geekvigarista.gwt.bootstrap.server.GreetingServiceImpl" />
-
 </module>

@@ -1,5 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
 import com.geekvigarista.gwt.bootstrap.client.ui.Button;
 import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
@@ -8,7 +9,10 @@ import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -25,11 +29,14 @@ public class BootStrap implements EntryPoint {
 
 		PrimaryButton pb = new PrimaryButton("OIZAO");
 		pb.setSize(Size.LARGE);
+		
 		RootPanel.get().add(pb);
 
 		RootPanel.get().add(new Button("ola que tal"));
 		RootPanel.get().add(new InfoButton("ola que tal"));
 		RootPanel.get().add(new DangerButton("medo"));
 		RootPanel.get().add(new SuccessButton("eeeba"));
+		RootPanel.get().add(new Grid());
+		RootPanel.get().add(new Alert("teste"));
 	}
 }

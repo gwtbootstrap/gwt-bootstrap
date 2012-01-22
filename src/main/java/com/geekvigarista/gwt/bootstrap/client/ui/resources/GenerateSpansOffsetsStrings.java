@@ -30,7 +30,14 @@ public class GenerateSpansOffsetsStrings {
 		genTag("block-message");
 		genTag("large");
 		genTag("small");
-
+		genTag("container");
+		genTag("container-fluid");
+		genTag("sidebar");
+		genTag("content");
+		genTag("row");
+		genTag("fade");
+		genTag("in");
+		genTag("out");
 		System.out.println(sb.toString());
 	}
 
