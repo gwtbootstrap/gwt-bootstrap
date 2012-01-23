@@ -7,6 +7,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
@@ -16,6 +17,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -58,5 +60,8 @@ public class BootStrap implements EntryPoint {
 
 		RootPanel.get().add(new InfoAlert("info: aaasldlas"));
 		RootPanel.get().add(new SuccessAlert("sucessfull"));
+		
+		RootPanel.get().add(new Label("sdas"));
+		RootPanel.get().add(new StrongLabel("sou forte, lol"));
 	}
 }
