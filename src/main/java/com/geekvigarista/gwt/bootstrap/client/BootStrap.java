@@ -2,15 +2,20 @@ package com.geekvigarista.gwt.bootstrap.client;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
 import com.geekvigarista.gwt.bootstrap.client.ui.Button;
+import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -26,16 +31,32 @@ public class BootStrap implements EntryPoint {
 		RootPanel.get().add(new TextBox());
 		RootPanel.get().add(new PrimaryButton("oi"));
 
+		final Alert a = new Alert("Clica no OIZAO pra fechar essa jossa!",
+				Type.DANGER);
+
+		a.setHTMLText("<strong>oi cara,</strong>", "clica ae no ",
+				"<strong>OIZAO</strong>", "e seja feliz.", "flw lesks");
+
 		PrimaryButton pb = new PrimaryButton("OIZAO");
 		pb.setSize(Size.LARGE);
+		pb.addMouseUpHandler(new MouseUpHandler() {
+			public void onMouseUp(MouseUpEvent event) {
+				a.close();
+			}
+		});
 
+		RootPanel.get().add(a);
 		RootPanel.get().add(pb);
 
 		RootPanel.get().add(new Button("ola que tal"));
 		RootPanel.get().add(new InfoButton("ola que tal"));
 		RootPanel.get().add(new DangerButton("medo"));
 		RootPanel.get().add(new SuccessButton("eeeba"));
-		RootPanel.get().add(new Grid());
 		RootPanel.get().add(new Alert("teste"));
+
+		RootPanel.get().add(new ErrorAlert("oi, ERROR alert."));
+
+		RootPanel.get().add(new InfoAlert("info: aaasldlas"));
+		RootPanel.get().add(new SuccessAlert("sucessfull"));
 	}
 }

@@ -4,6 +4,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Label;
 
 /**
@@ -14,11 +15,20 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class Alert extends Label {
 
-	{
+	static {
 		BootstrapConfigurator.injectJs(Resources.RESOURCES.alerts());
+	}
+
+	{
 		setStyleName(BootstrapCssResources.alert_message);
 		addStyleName(BootstrapCssResources.fade);
 		addStyleName(BootstrapCssResources.in);
+	}
+
+	private final String closebutton = "<a class=\"close\" href=\"#\">×</a>";
+
+	protected Alert() {
+
 	}
 
 	public Alert(String text) {
@@ -35,6 +45,7 @@ public class Alert extends Label {
 	}
 
 	public void setType(Type type) {
+		assert type != null : "must specify a type.";
 		// remove all types first
 		for (Type t : Type.values()) {
 			if (t.getType() != "") {
@@ -47,17 +58,35 @@ public class Alert extends Label {
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		jsPluginConfigurator();
+		jsPluginConfigurator(getElement());
+	}
+
+	public void setHTMLText(String... text) {
+		getElement().setInnerHTML(closebutton);
+		for (String html : text) {
+			getElement().setInnerHTML(getElement().getInnerHTML() + html);
+		}
 	}
 
 	@Override
 	public void setText(String text) {
-		getElement().setInnerHTML(
-				"<a class=\"close\" href=\"#\">×</a><p>" + text + "</p>");
+		getElement().setInnerHTML(closebutton + "<p>" + text + "</p>");
 	}
 
-	private static native void jsPluginConfigurator() /*-{
-		$wnd.jQuery(".alert-message").alert();
+	public void close() {
+		close(getElement());
+	}
+
+	/*
+	 * native functions.
+	 */
+
+	private native void jsPluginConfigurator(Element e) /*-{
+		$wnd.jQuery(e).alert();
+	}-*/;
+
+	private native void close(Element e) /*-{
+		$wnd.jQuery(e).alert('close');
 	}-*/;
 
 }

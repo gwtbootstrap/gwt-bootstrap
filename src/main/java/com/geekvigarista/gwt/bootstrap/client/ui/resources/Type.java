@@ -37,6 +37,18 @@ public enum Type {
 		public String getType() {
 			return BootstrapCssResources.danger;
 		}
+	},
+	ERROR {
+		@Override
+		public String getType() {
+			return BootstrapCssResources.error;
+		}
+	},
+	WARNING {
+		@Override
+		public String getType() {
+			return BootstrapCssResources.warning;
+		}
 	};
 	public abstract String getType();
 }
