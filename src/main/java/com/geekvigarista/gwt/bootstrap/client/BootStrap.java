@@ -3,18 +3,21 @@ package com.geekvigarista.gwt.bootstrap.client;
 import com.geekvigarista.gwt.bootstrap.client.ui.ActionPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
 import com.geekvigarista.gwt.bootstrap.client.ui.Button;
-import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
+import com.geekvigarista.gwt.bootstrap.client.ui.ContentPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
+import com.geekvigarista.gwt.bootstrap.client.ui.FluidLayout;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
 import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.SidebarPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
 import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
-import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
@@ -25,6 +28,7 @@ import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * 
@@ -79,20 +83,38 @@ public class BootStrap implements EntryPoint {
 		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));
 
 		RootPanel.get().add(modal);
-		
-		RootPanel.get().add(new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel("warn", InlineLabelType.WARNING));
-		
+
+		RootPanel.get().add(
+				new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel(
+						"warn", InlineLabelType.WARNING));
+
 		ActionPanel ap = new ActionPanel();
 		HorizontalPanel hp = new HorizontalPanel();
-		
+
 		hp.add(new DangerButton("Cuidado"));
 		hp.add(new SuccessButton("Cuidado"));
-		hp.add(new Twipsy("oi, sou um twipsy tittle", "http://geekvigarista.com", "Sou um twipsy!!"));
-		
-		
+		hp.add(new Twipsy("oi, sou um twipsy tittle",
+				"http://geekvigarista.com", "Sou um twipsy!!"));
+
 		ap.setWidget(hp);
+
+		// RootPanel.get().add(ap);
+
+		FluidLayout fc = new FluidLayout();
+		ContentPanel cp = new ContentPanel();
+		SidebarPanel sp = new SidebarPanel();
+		fc.add(cp);
+		fc.add(sp);
+		cp.add(ap);
+		cp.add(new Alert("teste"));
 		
+		VerticalPanel vp = new VerticalPanel();
+		vp.add(new Button("ola que tal"));
+		vp.add(new InfoButton("ola que tal"));
+		vp.add(new DangerButton("medo"));
+		vp.add(new SuccessButton("eeeba"));
+		sp.add(vp);
 		
-		RootPanel.get().add(ap);
+		RootPanel.get().add(fc);
 	}
 }
