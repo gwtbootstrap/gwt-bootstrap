@@ -6,6 +6,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
 import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
@@ -35,6 +36,7 @@ public class BootStrap implements EntryPoint {
 
 		final Alert a = new Alert("Clica no OIZAO pra fechar essa jossa!",
 				Type.DANGER);
+		final Modal modal = new Modal();
 
 		a.setHTMLText("<strong>oi cara,</strong>", "clica ae no ",
 				"<strong>OIZAO</strong>", "e seja feliz.", "flw lesks");
@@ -44,6 +46,7 @@ public class BootStrap implements EntryPoint {
 		pb.addMouseUpHandler(new MouseUpHandler() {
 			public void onMouseUp(MouseUpEvent event) {
 				a.close();
+				modal.toggle();
 			}
 		});
 
@@ -60,8 +63,14 @@ public class BootStrap implements EntryPoint {
 
 		RootPanel.get().add(new InfoAlert("info: aaasldlas"));
 		RootPanel.get().add(new SuccessAlert("sucessfull"));
-		
+
 		RootPanel.get().add(new Label("sdas"));
 		RootPanel.get().add(new StrongLabel("sou forte, lol"));
+
+		modal.setBody(new StrongLabel("Corpo dessa bosta, lol"));
+		modal.setFooter(new Label("footer"));
+		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));
+
+		RootPanel.get().add(modal);
 	}
 }

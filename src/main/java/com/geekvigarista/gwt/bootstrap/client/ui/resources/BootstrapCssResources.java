@@ -135,4 +135,12 @@ public interface BootstrapCssResources {
 
 	public static final String out = "out";
 
+	public static final String modal = "modal";
+
+	public static final String modal_header = "modal-header";
+
+	public static final String modal_footer = "modal-footer";
+
+	public static final String modal_body = "modal-body";
+
 }
