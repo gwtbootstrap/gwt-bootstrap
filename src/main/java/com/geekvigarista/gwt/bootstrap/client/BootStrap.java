@@ -1,5 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.ActionPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
 import com.geekvigarista.gwt.bootstrap.client.ui.Button;
 import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
@@ -19,6 +20,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -76,5 +78,15 @@ public class BootStrap implements EntryPoint {
 		RootPanel.get().add(modal);
 		
 		RootPanel.get().add(new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel("CUIDADO", InlineLabelType.WARNING));
+		
+		ActionPanel ap = new ActionPanel();
+		HorizontalPanel hp = new HorizontalPanel();
+		
+		hp.add(new DangerButton("Cuidado"));
+		hp.add(new SuccessButton("Cuidado"));
+		
+		ap.setWidget(hp);
+		
+		RootPanel.get().add(ap);
 	}
 }

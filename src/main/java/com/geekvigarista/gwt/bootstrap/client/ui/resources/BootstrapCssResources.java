@@ -149,4 +149,6 @@ public interface BootstrapCssResources {
 
 	public static final String important = "important";
 
+	public static final String actions = "actions";
+
 }
