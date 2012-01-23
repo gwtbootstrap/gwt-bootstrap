@@ -1,6 +1,8 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.SizeHelper;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 
 /**
  * A Inline Label Component. You could have multiple types :)
@@ -12,6 +14,8 @@ public class InlineLabel extends com.google.gwt.user.client.ui.Label {
 
 	{
 		setStyleName(BootstrapCssResources.label);
+		setSize(Span._1);
+		setHorizontalAlignment(ALIGN_CENTER);
 	}
 
 	public InlineLabel() {
@@ -24,6 +28,10 @@ public class InlineLabel extends com.google.gwt.user.client.ui.Label {
 	public InlineLabel(String text, InlineLabelType type) {
 		setText(text);
 		setType(type);
+	}
+	
+	public void setSize(Span spanSize) {
+		SizeHelper.setSize(spanSize, this);
 	}
 
 	public void setType(InlineLabelType type) {

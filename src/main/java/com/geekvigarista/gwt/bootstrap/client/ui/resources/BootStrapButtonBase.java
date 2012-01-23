@@ -8,11 +8,10 @@ import com.google.gwt.safehtml.shared.SafeHtml;
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
-public class BootStrapButtonBase extends com.google.gwt.user.client.ui.Button
-		implements BootstrapCssResources {
+public class BootStrapButtonBase extends com.google.gwt.user.client.ui.Button {
 
 	{
-		setStyleName(btn);
+		setStyleName(BootstrapCssResources.btn);
 	}
 
 	public BootStrapButtonBase() {

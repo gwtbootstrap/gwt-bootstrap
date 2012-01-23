@@ -20,7 +20,7 @@ public class GenerateCssResources {
 		gen("content").gen("row").gen("fade").gen("in");
 		gen("out").gen("modal").gen("modal-header").gen("modal-footer");
 		gen("modal-body").gen("notice").gen("label").gen("important");
-		gen("actions");
+		gen("actions").gen("twipsy");
 		System.out.println(sb.toString());
 	}
 

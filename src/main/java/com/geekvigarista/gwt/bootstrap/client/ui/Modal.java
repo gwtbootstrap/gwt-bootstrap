@@ -50,9 +50,9 @@ public class Modal extends SimplePanel {
 
 	public Modal() {
 	}
-
+	
 	public void setHeader(Widget w) {
-//		could do ulgy things when setting multiple the header multiple times.
+//		could do ulgy things when setting the header multiple times. FIXME
 		header.appendChild(el_helper.createCloseLinkElement());
 		Element h3 = Document.get().createElement("h3");
 		h3.appendChild(w.getElement());

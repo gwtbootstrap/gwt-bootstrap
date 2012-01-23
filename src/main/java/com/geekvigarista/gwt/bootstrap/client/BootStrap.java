@@ -13,9 +13,11 @@ import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
+import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
 import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.MouseUpEvent;
@@ -39,6 +41,7 @@ public class BootStrap implements EntryPoint {
 
 		final Alert a = new Alert("Clica no OIZAO pra fechar essa jossa!",
 				Type.DANGER);
+		a.setSize(Span._7);
 		final Modal modal = new Modal();
 
 		a.setHTMLText("<strong>oi cara,</strong>", "clica ae no ",
@@ -77,15 +80,18 @@ public class BootStrap implements EntryPoint {
 
 		RootPanel.get().add(modal);
 		
-		RootPanel.get().add(new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel("CUIDADO", InlineLabelType.WARNING));
+		RootPanel.get().add(new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel("warn", InlineLabelType.WARNING));
 		
 		ActionPanel ap = new ActionPanel();
 		HorizontalPanel hp = new HorizontalPanel();
 		
 		hp.add(new DangerButton("Cuidado"));
 		hp.add(new SuccessButton("Cuidado"));
+		hp.add(new Twipsy("oi, sou um twipsy tittle", "http://geekvigarista.com", "Sou um twipsy!!"));
+		
 		
 		ap.setWidget(hp);
+		
 		
 		RootPanel.get().add(ap);
 	}

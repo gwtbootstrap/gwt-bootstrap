@@ -151,4 +151,5 @@ public interface BootstrapCssResources {
 
 	public static final String actions = "actions";
 
+	public static final String twipsy = "twipsy";
 }

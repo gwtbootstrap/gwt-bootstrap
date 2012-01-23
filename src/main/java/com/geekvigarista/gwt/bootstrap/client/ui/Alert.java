@@ -3,6 +3,8 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.SizeHelper;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Label;
@@ -23,6 +25,7 @@ public class Alert extends Label {
 		setStyleName(BootstrapCssResources.alert_message);
 		addStyleName(BootstrapCssResources.fade);
 		addStyleName(BootstrapCssResources.in);
+		setSize(Span._10);
 	}
 
 	private final String closebutton = "<a class=\"close\" href=\"#\">×</a>";
@@ -42,6 +45,10 @@ public class Alert extends Label {
 
 	public Alert(Type type) {
 		setType(type);
+	}
+
+	public void setSize(Span spanSize) {
+		SizeHelper.setSize(spanSize, this);
 	}
 
 	public void setType(Type type) {
