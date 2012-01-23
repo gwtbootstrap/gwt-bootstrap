@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.JavaScriptInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.user.client.ui.Label;
@@ -15,7 +15,7 @@ import com.google.gwt.user.client.ui.Label;
 public class Alert extends Label {
 
 	{
-		JavaScriptInjector.inject(Resources.RESOURCES.alerts().getText());
+		BootstrapConfigurator.injectJs(Resources.RESOURCES.alerts());
 		setStyleName(BootstrapCssResources.alert_message);
 		addStyleName(BootstrapCssResources.fade);
 		addStyleName(BootstrapCssResources.in);
@@ -43,13 +43,13 @@ public class Alert extends Label {
 		}
 		addStyleName(type.getType());
 	}
-	
+
 	@Override
 	protected void onLoad() {
 		super.onLoad();
 		jsPluginConfigurator();
 	}
-	
+
 	@Override
 	public void setText(String text) {
 		getElement().setInnerHTML(
