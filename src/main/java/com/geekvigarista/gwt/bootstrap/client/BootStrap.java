@@ -12,6 +12,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
+import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
@@ -68,9 +69,12 @@ public class BootStrap implements EntryPoint {
 		RootPanel.get().add(new StrongLabel("sou forte, lol"));
 
 		modal.setBody(new StrongLabel("Corpo dessa bosta, lol"));
-		modal.setFooter(new Label("footer"));
+		modal.setFooter(new PrimaryButton("Oi, posso fazer algo?"));
+		modal.setFooter(new Label("Escolha:"));
 		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));
 
 		RootPanel.get().add(modal);
+		
+		RootPanel.get().add(new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel("CUIDADO", InlineLabelType.WARNING));
 	}
 }

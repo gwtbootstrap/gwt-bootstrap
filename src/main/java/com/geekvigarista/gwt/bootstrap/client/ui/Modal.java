@@ -9,6 +9,12 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * A ModalDialog element based on Modal Plugin from Twitter's bootstrap.
+ * 
+ * @author Carlos Alexandro Becker
+ * @since 23/01/2012
+ */
 public class Modal extends SimplePanel {
 	private final BootstrapElementHelper el_helper;
 	private Element header;
@@ -16,10 +22,12 @@ public class Modal extends SimplePanel {
 	private Element body;
 
 	static {
+		// injecting the Modal plugin javascript file.
 		BootstrapConfigurator.injectJs(Resources.RESOURCES.modal());
 	}
 
 	{
+		// create the basics of element godness.
 		el_helper = new BootstrapElementHelper();
 
 		setStyleName(BootstrapCssResources.modal);
@@ -32,18 +40,19 @@ public class Modal extends SimplePanel {
 		body = Document.get().createDivElement();
 		body.setClassName(BootstrapCssResources.modal_body);
 
+		// assert that modal doesnt show up by default.
 		setVisible(false);
 
 		getElement().appendChild(header);
 		getElement().appendChild(body);
 		getElement().appendChild(footer);
-
 	}
 
 	public Modal() {
 	}
 
 	public void setHeader(Widget w) {
+//		could do ulgy things when setting multiple the header multiple times.
 		header.appendChild(el_helper.createCloseLinkElement());
 		Element h3 = Document.get().createElement("h3");
 		h3.appendChild(w.getElement());

@@ -143,4 +143,10 @@ public interface BootstrapCssResources {
 
 	public static final String modal_body = "modal-body";
 
+	public static final String notice = "notice";
+
+	public static final String label = "label";
+
+	public static final String important = "important";
+
 }
