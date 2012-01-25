@@ -6,6 +6,8 @@
 
 war/gwt_bree/*
 
+src/main/gwt-unitCache
+
 gwt-unitCache/*
 
 .apt_generated/*
