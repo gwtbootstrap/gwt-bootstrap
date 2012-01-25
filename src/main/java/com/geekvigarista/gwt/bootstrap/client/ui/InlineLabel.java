@@ -3,6 +3,8 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.SizeHelper;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * A Inline Label Component. You could have multiple types :)
@@ -10,12 +12,11 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class InlineLabel extends com.google.gwt.user.client.ui.Label {
+public class InlineLabel extends Widget {
 
 	{
+		setElement(DOM.createSpan());
 		setStyleName(BootstrapCssResources.label);
-//		setSize(Span._1); let it be dynamic!
-		setHorizontalAlignment(ALIGN_CENTER);
 	}
 
 	public InlineLabel() {
@@ -29,7 +30,11 @@ public class InlineLabel extends com.google.gwt.user.client.ui.Label {
 		setText(text);
 		setType(type);
 	}
-	
+
+	public void setText(String text) {
+		getElement().setInnerText(text);
+	}
+
 	public void setSize(Span spanSize) {
 		SizeHelper.setSize(spanSize, this);
 	}
