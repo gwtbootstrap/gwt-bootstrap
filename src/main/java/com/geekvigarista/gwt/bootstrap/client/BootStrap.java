@@ -18,6 +18,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
 import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
+import com.geekvigarista.gwt.bootstrap.client.ui.Title;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
@@ -106,15 +107,22 @@ public class BootStrap implements EntryPoint {
 		fc.add(cp);
 		fc.add(sp);
 		cp.add(ap);
+		cp.add(new Twipsy("oi, sou um twipsy tittle",
+				"http://geekvigarista.com", "Sou um twipsy!!"));
 		cp.add(new Alert("teste"));
-		
+
 		VerticalPanel vp = new VerticalPanel();
 		vp.add(new Button("ola que tal"));
 		vp.add(new InfoButton("ola que tal"));
 		vp.add(new DangerButton("medo"));
 		vp.add(new SuccessButton("eeeba"));
 		sp.add(vp);
-		
+
 		RootPanel.get().add(fc);
+		RootPanel.get().add(
+				new Twipsy("oi, sou um twipsy tittle",
+						"http://geekvigarista.com", "Sou um twipsy!!"));
+		cp.add(new Alert("teste"));
+		cp.add(new Title.H1("oi"));
 	}
 }

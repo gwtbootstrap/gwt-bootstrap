@@ -1,12 +1,13 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.WidgetCollection;
 
 /**
  * Container base for Fixed and fluid layouts.
@@ -19,23 +20,33 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class ContainerBase extends Widget implements HasWidgets {
+public class ContainerBase extends ComplexPanel implements HasWidgets {
+	private WidgetCollection childs;
+	private Element div;
 
-	private List<Widget> childs;
-
-	{
-		setElement(Document.get().createDivElement());
-		childs = new ArrayList<Widget>();
+	public ContainerBase() {
+		div = DOM.createDiv();
+		setElement(div);
+		childs = new WidgetCollection(this);
 	}
 
+	protected void onLoad() {
+		super.onLoad();
+	}
+
+	@Override
 	public void add(Widget w) {
+		// logical add
 		childs.add(w);
+		
+		// physical add
 		getElement().appendChild(w.getElement());
 	}
 
 	public void clear() {
-		for (int i = 0; i < getElement().getChildNodes().getLength(); i++) {
-			getElement().removeChild(getElement().getChild(i));
+		Iterator<Widget> it = iterator();
+		while(it.hasNext()) {
+			remove(it.next());
 		}
 	}
 
@@ -44,16 +55,13 @@ public class ContainerBase extends Widget implements HasWidgets {
 	}
 
 	public boolean remove(Widget w) {
-		assert w != null : "widget should not be null";
-		Iterator<Widget> it = iterator();
-		while (it.hasNext()) {
-			Widget ww = it.next();
-			if (ww.equals(w)) {
-				getElement().removeChild(ww.getElement());
-				return true;
-			}
+		try {
+			childs.remove(w);
+			getElement().removeChild(w.getElement());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
 		return false;
 	}
 

@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 23/01/2012
  */
 public class Twipsy extends Widget {
+	
 	static {
 		BootstrapConfigurator.injectJs(Resources.RESOURCES.twipsy());
 	}
@@ -52,6 +53,8 @@ public class Twipsy extends Widget {
 	}
 
 	private native void twipsy(Element e) /*-{
+//		$wnd.jQuery('[rel=twipsy]').twipsy();
+		alert($wnd.jQuery(e));
 		$wnd.jQuery(e).twipsy();
 	}-*/;
 
