@@ -11,14 +11,16 @@ import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
+import com.geekvigarista.gwt.bootstrap.client.ui.NavListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.SidebarPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
-import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
 import com.geekvigarista.gwt.bootstrap.client.ui.Title;
+import com.geekvigarista.gwt.bootstrap.client.ui.Topbar;
+import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
@@ -41,6 +43,12 @@ public class BootStrap implements EntryPoint {
 
 		BootstrapConfigurator.configure();
 
+		Topbar topbar = new Topbar("GWT-Bootstrap");
+		topbar.addPrimaryNavItem(new NavListItem("Blog", "http://geekvigarista.com"));
+		topbar.addPrimaryNavItem(new NavListItem("GitHub", "http://github.com/caarlos0/gwt-bootstrap"));
+		topbar.addPrimaryNavItem(new NavListItem("twitter", "http://twitter.com/caarlos0"));
+		RootPanel.get().add(topbar);
+		
 		RootPanel.get().add(new TextBox());
 		RootPanel.get().add(new PrimaryButton("oi"));
 
@@ -117,12 +125,12 @@ public class BootStrap implements EntryPoint {
 		vp.add(new DangerButton("medo"));
 		vp.add(new SuccessButton("eeeba"));
 		sp.add(vp);
+		cp.add(new Alert("teste"));
+		cp.add(new Title.H1("oi"));
 
 		RootPanel.get().add(fc);
 		RootPanel.get().add(
 				new Twipsy("oi, sou um twipsy tittle",
 						"http://geekvigarista.com", "Sou um twipsy!!"));
-		cp.add(new Alert("teste"));
-		cp.add(new Title.H1("oi"));
 	}
 }

@@ -152,4 +152,18 @@ public interface BootstrapCssResources {
 	public static final String actions = "actions";
 
 	public static final String twipsy = "twipsy";
+	
+	public static final String topbar = "topbar";
+
+	public static final String fill = "fill";
+
+	public static final String brand = "brand";
+
+	public static final String nav = "nav";
+
+	public static final String secondary_nav = "secondary-nav";
+
+	public static final String menu = "menu";
+
+	public static final String menu_dropdown = "menu-dropdown";
 }
