@@ -4,6 +4,9 @@ import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.TextResource;
 
 /**
+ * Utility class to inject our resources into modules page. Use it to inject
+ * JavaScript and CSS files.
+ * 
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
@@ -18,7 +21,6 @@ public class BootstrapConfigurator {
 		injectCss(res.bootstrap());
 		injectJs(res.jquery());
 	}
-
 
 	public static void injectCss(TextResource r) {
 		StyleInjector.inject(r.getText());

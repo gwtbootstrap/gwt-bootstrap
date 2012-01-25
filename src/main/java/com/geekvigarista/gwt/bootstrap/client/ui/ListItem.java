@@ -9,6 +9,12 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
 
+/**
+ * Base component for ListItems (li).
+ * 
+ * @author Carlos Alexandro Becker
+ * @since 25/01/2012
+ */
 public class ListItem extends ComplexPanel implements HasWidgets {
 	private WidgetCollection childs;
 	private Element li;

@@ -1,6 +1,9 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootStrapButtonBase;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.safehtml.shared.SafeHtml;
 
 /**
@@ -10,6 +13,10 @@ import com.google.gwt.safehtml.shared.SafeHtml;
  * @since 21/01/2012
  */
 public class Button extends BootStrapButtonBase {
+
+	static {
+		BootstrapConfigurator.injectJs(Resources.RESOURCES.buttons());
+	}
 
 	public Button() {
 
@@ -24,4 +31,13 @@ public class Button extends BootStrapButtonBase {
 		setHTML(html);
 	}
 	
+	// TODO: use Button plugin, set loading state etc..
+	private native void configure(Element e, String action) /*-{
+		if (typeof action == "undefined" || action == null || action == "") {
+			$wnd.jQuery(e).button();
+		} else {
+			$wnd.jQuery(e).button(action);
+		}
+	}-*/;
+
 }

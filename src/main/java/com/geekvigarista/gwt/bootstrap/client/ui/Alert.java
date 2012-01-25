@@ -10,7 +10,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Label;
 
 /**
- * A simple AlertMessage Component based on Twitter's Bootstrap Alert.
+ * A simple AlertMessage Component based on Twitter's Bootstrap Alert. Will
+ * automatically insert a "close" element and inject the alert.js plugin.
  * 
  * @author Carlos Alexandro Becker
  * @since 22/01/2012
@@ -65,7 +66,7 @@ public class Alert extends Label {
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		jsPluginConfigurator(getElement());
+		configure(getElement());
 	}
 
 	public void setHTMLText(String... text) {
@@ -88,7 +89,7 @@ public class Alert extends Label {
 	 * native functions.
 	 */
 
-	private native void jsPluginConfigurator(Element e) /*-{
+	private native void configure(Element e) /*-{
 		$wnd.jQuery(e).alert();
 	}-*/;
 

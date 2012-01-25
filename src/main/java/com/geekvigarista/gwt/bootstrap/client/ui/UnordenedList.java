@@ -9,8 +9,14 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
 
+/**
+ * A UnorderedList component (ul).
+ * 
+ * @author Carlos Alexandro Becker
+ * @since 25/01/2012
+ */
 public class UnordenedList extends ComplexPanel implements HasWidgets {
-	
+
 	private WidgetCollection childs;
 	private Element ul;
 

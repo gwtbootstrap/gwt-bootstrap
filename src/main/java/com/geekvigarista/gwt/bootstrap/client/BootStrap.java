@@ -5,6 +5,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
 import com.geekvigarista.gwt.bootstrap.client.ui.Button;
 import com.geekvigarista.gwt.bootstrap.client.ui.ContentPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.DropdownListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.FluidLayout;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
@@ -47,6 +48,18 @@ public class BootStrap implements EntryPoint {
 		topbar.addPrimaryNavItem(new NavListItem("Blog", "http://geekvigarista.com"));
 		topbar.addPrimaryNavItem(new NavListItem("GitHub", "http://github.com/caarlos0/gwt-bootstrap"));
 		topbar.addPrimaryNavItem(new NavListItem("twitter", "http://twitter.com/caarlos0"));
+		
+		DropdownListItem dli = new DropdownListItem("Dropdown");
+		dli.addItem(new NavListItem("Hi,", "#"));
+		dli.addItem(new NavListItem("You", "#"));
+		dli.addItem(new NavListItem("Can", "#"));
+		dli.addItem(new NavListItem("Have", "#"));
+		dli.addItem(new NavListItem("More", "#"));
+		dli.addItem(new NavListItem("Options", "#"));
+		dli.addItem(new NavListItem("Here", "#"));
+		
+		topbar.addSecondaryNavItem(dli);
+		
 		RootPanel.get().add(topbar);
 		
 		RootPanel.get().add(new TextBox());

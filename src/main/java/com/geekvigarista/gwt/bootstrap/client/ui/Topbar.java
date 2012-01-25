@@ -4,7 +4,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 import com.google.gwt.user.client.ui.Anchor;
 
 /**
- * 
+ * A twitter's like topbar component.
  * 
  * @author Carlos Alexandro Becker
  * @since 25/01/2012
@@ -42,6 +42,10 @@ public class Topbar extends ContainerBase {
 	
 	public void addPrimaryNavItem(ListItem li) {
 		primaryNav.add(li);
+	}
+	
+	public void addSecondaryNavItem(ListItem li) {
+		secondaryNav.add(li);
 	}
 	
 	class Brand extends Anchor {

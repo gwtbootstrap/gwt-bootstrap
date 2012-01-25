@@ -3,6 +3,12 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * Base of Typography widgets. Yeah man, semantics rock!
+ * 
+ * @author Carlos Alexandro Becker
+ * @since 25/01/2012
+ */
 public class TypographyBase extends Widget {
 	public enum TypographyType {
 		H1 {
@@ -94,6 +100,10 @@ public class TypographyBase extends Widget {
 
 	public void setText(String text) {
 		getElement().setInnerText(text);
+	}
+
+	public String getText() {
+		return getElement().getInnerText();
 	}
 
 }

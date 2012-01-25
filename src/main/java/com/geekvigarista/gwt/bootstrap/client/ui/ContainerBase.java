@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
 
 /**
- * Container base for Fixed and fluid layouts.
+ * Container base for Fixed and fluid layouts and maybe for other components too.
  * 
  * @see FixedLayout
  * @see FluidLayout

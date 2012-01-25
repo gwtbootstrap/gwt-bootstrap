@@ -14,7 +14,7 @@ public class InlineLabel extends com.google.gwt.user.client.ui.Label {
 
 	{
 		setStyleName(BootstrapCssResources.label);
-		setSize(Span._1);
+//		setSize(Span._1); let it be dynamic!
 		setHorizontalAlignment(ALIGN_CENTER);
 	}
 
