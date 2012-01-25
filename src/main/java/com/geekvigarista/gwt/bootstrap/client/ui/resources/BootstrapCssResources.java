@@ -167,4 +167,6 @@ public interface BootstrapCssResources {
 	public static final String menu = "menu";
 
 	public static final String menu_dropdown = "menu-dropdown";
+
+	public static final String pull_left = "pull-left";
 }

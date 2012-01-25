@@ -2,6 +2,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * A twitter's like topbar component.
@@ -48,6 +49,10 @@ public class Topbar extends ContainerBase {
 		secondaryNav.add(li);
 	}
 	
+	public void addItem(Widget w) {
+		container.add(w);
+	}
+	
 	class Brand extends Anchor {
 		public Brand(String projectName) {
 			getElement().setClassName(BootstrapCssResources.brand);
@@ -68,5 +73,5 @@ public class Topbar extends ContainerBase {
 			setStyleName(BootstrapCssResources.container);
 		}
 	}
-
+	
 }

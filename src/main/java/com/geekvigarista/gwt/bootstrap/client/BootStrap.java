@@ -5,11 +5,13 @@ import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
 import com.geekvigarista.gwt.bootstrap.client.ui.Button;
 import com.geekvigarista.gwt.bootstrap.client.ui.ContentPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.DividerListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.DropdownListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.FluidLayout;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.SearchItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
 import com.geekvigarista.gwt.bootstrap.client.ui.NavListItem;
@@ -51,6 +53,7 @@ public class BootStrap implements EntryPoint {
 		
 		DropdownListItem dli = new DropdownListItem("Dropdown");
 		dli.addItem(new NavListItem("Hi,", "#"));
+		dli.addItem(new DividerListItem());
 		dli.addItem(new NavListItem("You", "#"));
 		dli.addItem(new NavListItem("Can", "#"));
 		dli.addItem(new NavListItem("Have", "#"));
@@ -59,6 +62,8 @@ public class BootStrap implements EntryPoint {
 		dli.addItem(new NavListItem("Here", "#"));
 		
 		topbar.addSecondaryNavItem(dli);
+		
+		topbar.addItem(new SearchItem("Searh for ANYTHING!!"));
 		
 		RootPanel.get().add(topbar);
 		
