@@ -2,7 +2,10 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import java.util.Iterator;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
@@ -14,6 +17,7 @@ import com.google.gwt.user.client.ui.WidgetCollection;
  * @since 25/01/2012
  */
 public class TypographyBase extends Widget implements HasWidgets {
+
 	public enum TypographyType {
 		H1 {
 			@Override
@@ -127,10 +131,27 @@ public class TypographyBase extends Widget implements HasWidgets {
 		abstract String tag();
 	}
 
+	private static class CodeElementCreator {
+		static {
+			BootstrapConfigurator.injectCss(Resources.RESOURCES.prettify_css());
+			BootstrapConfigurator.injectJs(Resources.RESOURCES.prettify_js());
+		}
+
+		static Element getElement() {
+			Element e = Document.get().createElement(TypographyType.CODE.tag());
+			e.setAttribute("class", "prettyprint");
+			return e;
+		}
+	}
+
 	WidgetCollection childs;
 
 	public TypographyBase(TypographyType type) {
-		setElement(Document.get().createElement(type.tag()));
+		if (type == TypographyType.CODE) {
+			setElement(CodeElementCreator.getElement());
+		} else {
+			setElement(Document.get().createElement(type.tag()));
+		}
 		childs = new WidgetCollection(this);
 	}
 
@@ -145,6 +166,12 @@ public class TypographyBase extends Widget implements HasWidgets {
 
 	public String getText() {
 		return getElement().getInnerText();
+	}
+
+	@Override
+	protected void onLoad() {
+		super.onLoad();
+		configurePrettify();
 	}
 
 	public void add(Widget w) {
@@ -176,5 +203,11 @@ public class TypographyBase extends Widget implements HasWidgets {
 		}
 		return false;
 	}
+
+	private native void configurePrettify() /*-{
+		if (typeof $wnd.prettyPrint != "undefined") {
+			$wnd.prettyPrint();
+		}
+	}-*/;
 
 }

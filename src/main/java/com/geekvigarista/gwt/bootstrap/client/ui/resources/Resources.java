@@ -17,33 +17,39 @@ public interface Resources extends ClientBundle {
 	/*
 	 * importing as a textresource, for now, at least.
 	 */
-	@Source("bootstrap.min.css")
+	@Source("css/bootstrap.min.css")
 	TextResource bootstrap();
 
-	@Source("jquery-1.7.1.min.js")
+	@Source("css/prettify.css")
+	TextResource prettify_css();
+
+	@Source("js/jquery-1.7.1.min.js")
 	TextResource jquery();
 
-	@Source("bootstrap-alerts.js")
+	@Source("js/prettify.js")
+	TextResource prettify_js();
+
+	@Source("js/bootstrap-alerts.js")
 	TextResource alerts();
 
-	@Source("bootstrap-buttons.js")
+	@Source("js/bootstrap-buttons.js")
 	TextResource buttons();
 
-	@Source("bootstrap-dropdown.js")
+	@Source("js/bootstrap-dropdown.js")
 	TextResource dropdown();
 
-	@Source("bootstrap-modal.js")
+	@Source("js/bootstrap-modal.js")
 	TextResource modal();
 
-	@Source("bootstrap-popover.js")
+	@Source("js/bootstrap-popover.js")
 	TextResource popover();
 
-	@Source("bootstrap-scrollspy.js")
+	@Source("js/bootstrap-scrollspy.js")
 	TextResource scrollspy();
 
-	@Source("bootstrap-tabs.js")
+	@Source("js/bootstrap-tabs.js")
 	TextResource tabs();
 
-	@Source("bootstrap-twipsy.js")
+	@Source("js/bootstrap-twipsy.js")
 	TextResource twipsy();
 }
