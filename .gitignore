@@ -7,6 +7,7 @@
 war/gwt_bree/*
 
 src/main/gwt-unitCache
+target/
 
 gwt-unitCache/*
 
