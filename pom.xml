@@ -8,8 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.geekvigarista.gwt.bootstrap</groupId>
   <artifactId>gwt-bootstrap</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1.5</version>
   <name>GWT Maven Archetype</name>
 
   <properties>

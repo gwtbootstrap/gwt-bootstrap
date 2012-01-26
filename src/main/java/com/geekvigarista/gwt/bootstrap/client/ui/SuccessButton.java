@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootStrapButtonBase;
+import com.geekvigarista.gwt.bootstrap.client.ui.base.BootStrapButtonBase;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.safehtml.shared.SafeHtml;
 

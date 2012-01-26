@@ -1,14 +1,9 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import java.util.Iterator;
-
+import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.WidgetCollection;
 
 /**
  * Base of Typography widgets. Yeah man, semantics rock!
@@ -16,7 +11,7 @@ import com.google.gwt.user.client.ui.WidgetCollection;
  * @author Carlos Alexandro Becker
  * @since 25/01/2012
  */
-public class TypographyBase extends Widget implements HasWidgets {
+public class TypographyBase extends ComplexWidget implements HasWidgets {
 
 	public enum TypographyType {
 		H1 {
@@ -131,30 +126,49 @@ public class TypographyBase extends Widget implements HasWidgets {
 		abstract String tag();
 	}
 
-	private static class CodeElementCreator {
-		static {
-			BootstrapConfigurator.injectCss(Resources.RESOURCES.prettify_css());
-			BootstrapConfigurator.injectJs(Resources.RESOURCES.prettify_js());
+	private static class CodeElementAssitent {
+		public static void injectResources() {
+			if (isPrettifyInjected()) {
+				BootstrapConfigurator.injectCss(Resources.RESOURCES
+						.prettify_css());
+				BootstrapConfigurator.injectJs(Resources.RESOURCES
+						.prettify_js());
+			}
 		}
 
-		static Element getElement() {
-			Element e = Document.get().createElement(TypographyType.CODE.tag());
-			e.setAttribute("class", "prettyprint");
-			return e;
-		}
+		public static native boolean isPrettifyInjected() /*-{
+			return typeof $wnd.prettyPrint != "undefined";
+		}-*/;
+
+		public static native void configurePrettify() /*-{
+			if (typeof $wnd.prettyPrint != "undefined") {
+				$wnd.prettyPrint();
+			}
+		}-*/;
 	}
 
-	WidgetCollection childs;
+	private TypographyType type;
 
+	/**
+	 * Create an empty Typography element based on type of it.
+	 * 
+	 * @param type
+	 */
 	public TypographyBase(TypographyType type) {
+		super(type.tag());
+		this.type = type;
 		if (type == TypographyType.CODE) {
-			setElement(CodeElementCreator.getElement());
-		} else {
-			setElement(Document.get().createElement(type.tag()));
+			addStyleName("prettyprint");
+			CodeElementAssitent.injectResources();
 		}
-		childs = new WidgetCollection(this);
 	}
 
+	/**
+	 * Create Typography element based on type of it and with the text.
+	 * 
+	 * @param text
+	 * @param type
+	 */
 	public TypographyBase(String text, TypographyType type) {
 		this(type);
 		setText(text);
@@ -171,43 +185,9 @@ public class TypographyBase extends Widget implements HasWidgets {
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		configurePrettify();
-	}
-
-	public void add(Widget w) {
-		// logical add
-		childs.add(w);
-
-		// physical add
-		getElement().appendChild(w.getElement());
-	}
-
-	public void clear() {
-		Iterator<Widget> it = iterator();
-		while (it.hasNext()) {
-			remove(it.next());
+		if (type == TypographyType.CODE) {
+			CodeElementAssitent.configurePrettify();
 		}
 	}
-
-	public Iterator<Widget> iterator() {
-		return childs.iterator();
-	}
-
-	public boolean remove(Widget w) {
-		try {
-			childs.remove(w);
-			getElement().removeChild(w.getElement());
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	private native void configurePrettify() /*-{
-		if (typeof $wnd.prettyPrint != "undefined") {
-			$wnd.prettyPrint();
-		}
-	}-*/;
 
 }

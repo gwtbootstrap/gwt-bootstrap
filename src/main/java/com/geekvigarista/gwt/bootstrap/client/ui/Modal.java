@@ -1,12 +1,12 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapElementHelper;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -15,11 +15,12 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class Modal extends SimplePanel {
+public class Modal extends ComplexWidget {
+
 	private final BootstrapElementHelper el_helper;
-	private Element header;
-	private Element footer;
-	private Element body;
+	private ContainerBase header;
+	private ContainerBase footer;
+	private ContainerBase body;
 
 	static {
 		// injecting the Modal plugin javascript file.
@@ -33,38 +34,39 @@ public class Modal extends SimplePanel {
 		setStyleName(BootstrapCssResources.modal);
 		addStyleName(BootstrapCssResources.fade);
 
-		header = Document.get().createDivElement();
-		header.setClassName(BootstrapCssResources.modal_header);
-		footer = Document.get().createDivElement();
-		footer.setClassName(BootstrapCssResources.modal_footer);
-		body = Document.get().createDivElement();
-		body.setClassName(BootstrapCssResources.modal_body);
+		header = new ContainerBase();
+		header.setStyleName(BootstrapCssResources.modal_header);
+		footer = new ContainerBase();
+		footer.setStyleName(BootstrapCssResources.modal_footer);
+		body = new ContainerBase();
+		body.setStyleName(BootstrapCssResources.modal_body);
 
 		// assert that modal doesnt show up by default.
 		setVisible(false);
 
-		getElement().appendChild(header);
-		getElement().appendChild(body);
-		getElement().appendChild(footer);
+		add(header);
+		add(body);
+		add(footer);
 	}
 
 	public Modal() {
+		super("div");
 	}
-	
+
 	public void setHeader(Widget w) {
-//		could do ulgy things when setting the header multiple times. FIXME
-		header.appendChild(el_helper.createCloseLinkElement());
+		// could do ulgy things when setting the header multiple times. FIXME
+		header.getElement().appendChild(el_helper.createCloseLinkElement());
 		Element h3 = Document.get().createElement("h3");
 		h3.appendChild(w.getElement());
-		header.appendChild(h3);
+		header.getElement().appendChild(h3);
 	}
 
 	public void setFooter(Widget w) {
-		footer.appendChild(w.getElement());
+		footer.add(w);
 	}
 
 	public void setBody(Widget w) {
-		body.appendChild(w.getElement());
+		body.add(w);
 	}
 
 	@Override

@@ -80,10 +80,10 @@ public class BootStrap implements EntryPoint {
 		});
 		topbar.addItem(si);
 
-		RootPanel.get().add(topbar);
+		RootPanel.get("menu").add(topbar);
 
-		RootPanel.get().add(new TextBox());
-		RootPanel.get().add(new PrimaryButton("oi"));
+		RootPanel.get("conteudo").add(new TextBox());
+		RootPanel.get("conteudo").add(new PrimaryButton("oi"));
 
 		final Alert a = new Alert("Clica no OIZAO pra fechar essa jossa!",
 				Type.DANGER);
@@ -102,22 +102,22 @@ public class BootStrap implements EntryPoint {
 			}
 		});
 
-		RootPanel.get().add(a);
-		RootPanel.get().add(pb);
+		RootPanel.get("conteudo").add(a);
+		RootPanel.get("conteudo").add(pb);
 
-		RootPanel.get().add(new Button("ola que tal"));
-		RootPanel.get().add(new InfoButton("ola que tal"));
-		RootPanel.get().add(new DangerButton("medo"));
-		RootPanel.get().add(new SuccessButton("eeeba"));
-		RootPanel.get().add(new Alert("teste"));
+		RootPanel.get("conteudo").add(new Button("ola que tal"));
+		RootPanel.get("conteudo").add(new InfoButton("ola que tal"));
+		RootPanel.get("conteudo").add(new DangerButton("medo"));
+//		RootPanel.get("conteudo").add(new SuccessButton("eeeba"));
+		RootPanel.get("conteudo").add(new Alert("teste"));
 
-		RootPanel.get().add(new ErrorAlert("oi, ERROR alert."));
+		RootPanel.get("conteudo").add(new ErrorAlert("oi, ERROR alert."));
 
-		RootPanel.get().add(new InfoAlert("info: aaasldlas"));
-		RootPanel.get().add(new SuccessAlert("sucessfull"));
+		RootPanel.get("conteudo").add(new InfoAlert("info: aaasldlas"));
+		RootPanel.get("conteudo").add(new SuccessAlert("sucessfull"));
 
-		RootPanel.get().add(new Label("sdas"));
-		RootPanel.get().add(new StrongLabel("sou forte, lol"));
+		RootPanel.get("conteudo").add(new Label("sdas"));
+		RootPanel.get("conteudo").add(new StrongLabel("sou forte, lol"));
 
 		modal.setBody(new SemanticTextBuilder(TypographyType.SPAN)
 				.append("Oi, ", TypographyType.STRONG).append("tudo bem?")
@@ -127,9 +127,9 @@ public class BootStrap implements EntryPoint {
 		modal.setFooter(new Label("Escolha:"));
 		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));
 
-		RootPanel.get().add(modal);
+		RootPanel.get("conteudo").add(modal);
 
-		RootPanel.get().add(
+		RootPanel.get("conteudo").add(
 				new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel(
 						"warn", InlineLabelType.WARNING));
 
@@ -143,7 +143,7 @@ public class BootStrap implements EntryPoint {
 
 		ap.setWidget(hp);
 
-		// RootPanel.get().add(ap);
+		// RootPanel.get("conteudo").add(ap);
 
 		FluidLayout fc = new FluidLayout();
 		ContentPanel cp = new ContentPanel();
@@ -165,11 +165,11 @@ public class BootStrap implements EntryPoint {
 		cp.add(new SemanticTextBuilder(TypographyType.H1).append("oi")
 				.asWidget());
 
-		RootPanel.get().add(fc);
-		RootPanel.get().add(
+		RootPanel.get("conteudo").add(fc);
+		RootPanel.get("conteudo").add(
 				new Twipsy("oi, sou um twipsy tittle",
 						"http://geekvigarista.com", "Sou um twipsy!!"));
-		RootPanel.get().add(
+		RootPanel.get("conteudo").add(
 				new SemanticTextBuilder(TypographyType.CODE).append(
 						"var oi = function(){alert('oi'); }; ").asWidget());
 	}

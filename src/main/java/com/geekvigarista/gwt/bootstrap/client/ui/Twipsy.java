@@ -1,11 +1,10 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Twipsy - The tooltip plugin from Twitter Bootstrap.
@@ -13,21 +12,19 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class Twipsy extends Widget {
+public class Twipsy extends ComplexWidget {
 
 	static {
 		BootstrapConfigurator.injectJs(Resources.RESOURCES.twipsy());
 	}
 
-	{
-		setElement(Document.get().createElement("a"));
+	public Twipsy() {
+		super("a");
 		getElement().setAttribute("rel", BootstrapCssResources.twipsy);
 	}
 
-	public Twipsy() {
-	}
-
 	public Twipsy(String title, String href, String text) {
+		this();
 		setTitle(title);
 		setHref(href);
 		setText(text);
