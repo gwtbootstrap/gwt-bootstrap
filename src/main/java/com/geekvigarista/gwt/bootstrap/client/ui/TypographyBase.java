@@ -1,7 +1,11 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
+import java.util.Iterator;
+
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.WidgetCollection;
 
 /**
  * Base of Typography widgets. Yeah man, semantics rock!
@@ -9,7 +13,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @since 25/01/2012
  */
-public class TypographyBase extends Widget {
+public class TypographyBase extends Widget implements HasWidgets {
 	public enum TypographyType {
 		H1 {
 			@Override
@@ -88,13 +92,50 @@ public class TypographyBase extends Widget {
 			String tag() {
 				return "i";
 			}
+		},
+		P {
+			@Override
+			String tag() {
+				return "p";
+			}
+		},
+		BLOCKQUOTE {
+			@Override
+			String tag() {
+				return "blockquote";
+			}
+		},
+		SPAN {
+			@Override
+			String tag() {
+				return "span";
+			}
+		},
+		CODE {
+			@Override
+			String tag() {
+				return "code";
+			}
+		},
+		PRE {
+			@Override
+			String tag() {
+				return "pre";
+			}
 		};
 
 		abstract String tag();
 	}
 
-	public TypographyBase(String text, TypographyType type) {
+	WidgetCollection childs;
+
+	public TypographyBase(TypographyType type) {
 		setElement(Document.get().createElement(type.tag()));
+		childs = new WidgetCollection(this);
+	}
+
+	public TypographyBase(String text, TypographyType type) {
+		this(type);
 		setText(text);
 	}
 
@@ -104,6 +145,36 @@ public class TypographyBase extends Widget {
 
 	public String getText() {
 		return getElement().getInnerText();
+	}
+
+	public void add(Widget w) {
+		// logical add
+		childs.add(w);
+
+		// physical add
+		getElement().appendChild(w.getElement());
+	}
+
+	public void clear() {
+		Iterator<Widget> it = iterator();
+		while (it.hasNext()) {
+			remove(it.next());
+		}
+	}
+
+	public Iterator<Widget> iterator() {
+		return childs.iterator();
+	}
+
+	public boolean remove(Widget w) {
+		try {
+			childs.remove(w);
+			getElement().removeChild(w.getElement());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

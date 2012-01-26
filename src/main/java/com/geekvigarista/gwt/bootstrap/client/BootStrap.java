@@ -11,19 +11,20 @@ import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.FluidLayout;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.SearchItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
 import com.geekvigarista.gwt.bootstrap.client.ui.NavListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.SearchItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.SemanticTextBuilder;
 import com.geekvigarista.gwt.bootstrap.client.ui.SidebarPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
-import com.geekvigarista.gwt.bootstrap.client.ui.Title;
 import com.geekvigarista.gwt.bootstrap.client.ui.Topbar;
 import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
+import com.geekvigarista.gwt.bootstrap.client.ui.TypographyBase.TypographyType;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
@@ -51,10 +52,13 @@ public class BootStrap implements EntryPoint {
 		BootstrapConfigurator.configure();
 
 		Topbar topbar = new Topbar("GWT-Bootstrap");
-		topbar.addPrimaryNavItem(new NavListItem("Blog", "http://geekvigarista.com"));
-		topbar.addPrimaryNavItem(new NavListItem("GitHub", "http://github.com/caarlos0/gwt-bootstrap"));
-		topbar.addPrimaryNavItem(new NavListItem("twitter", "http://twitter.com/caarlos0"));
-		
+		topbar.addPrimaryNavItem(new NavListItem("Blog",
+				"http://geekvigarista.com"));
+		topbar.addPrimaryNavItem(new NavListItem("GitHub",
+				"http://github.com/caarlos0/gwt-bootstrap"));
+		topbar.addPrimaryNavItem(new NavListItem("twitter",
+				"http://twitter.com/caarlos0"));
+
 		DropdownListItem dli = new DropdownListItem("Dropdown");
 		dli.addItem(new NavListItem("Hi,", "#"));
 		dli.addItem(new DividerListItem());
@@ -64,21 +68,20 @@ public class BootStrap implements EntryPoint {
 		dli.addItem(new NavListItem("More", "#"));
 		dli.addItem(new NavListItem("Options", "#"));
 		dli.addItem(new NavListItem("Here", "#"));
-		
+
 		topbar.addSecondaryNavItem(dli);
 		SearchItem si = new SearchItem("Searh for ANYTHING!!");
 		si.addKeyUpHandler(new KeyUpHandler() {
 			public void onKeyUp(KeyUpEvent event) {
-				if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER)
-				{
+				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					Window.alert("oi");
 				}
 			}
 		});
 		topbar.addItem(si);
-		
+
 		RootPanel.get().add(topbar);
-		
+
 		RootPanel.get().add(new TextBox());
 		RootPanel.get().add(new PrimaryButton("oi"));
 
@@ -116,7 +119,10 @@ public class BootStrap implements EntryPoint {
 		RootPanel.get().add(new Label("sdas"));
 		RootPanel.get().add(new StrongLabel("sou forte, lol"));
 
-		modal.setBody(new StrongLabel("Corpo dessa bosta, lol"));
+		modal.setBody(new SemanticTextBuilder(TypographyType.SPAN)
+				.append("Oi, ", TypographyType.STRONG).append("tudo bem?")
+				.append("PUTA QUE PARIU", TypographyType.H1)
+				.appendInLast("sou um small", TypographyType.SMALL).asWidget());
 		modal.setFooter(new PrimaryButton("Oi, posso fazer algo?"));
 		modal.setFooter(new Label("Escolha:"));
 		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));
@@ -156,11 +162,15 @@ public class BootStrap implements EntryPoint {
 		vp.add(new SuccessButton("eeeba"));
 		sp.add(vp);
 		cp.add(new Alert("teste"));
-		cp.add(new Title.H1("oi"));
+		cp.add(new SemanticTextBuilder(TypographyType.H1).append("oi")
+				.asWidget());
 
 		RootPanel.get().add(fc);
 		RootPanel.get().add(
 				new Twipsy("oi, sou um twipsy tittle",
 						"http://geekvigarista.com", "Sou um twipsy!!"));
+		RootPanel.get().add(
+				new SemanticTextBuilder(TypographyType.CODE).append(
+						"var oi = function(){alert('oi'); }; ").asWidget());
 	}
 }
