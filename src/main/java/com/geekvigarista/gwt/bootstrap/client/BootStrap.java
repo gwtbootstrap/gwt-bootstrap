@@ -29,8 +29,12 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -62,8 +66,16 @@ public class BootStrap implements EntryPoint {
 		dli.addItem(new NavListItem("Here", "#"));
 		
 		topbar.addSecondaryNavItem(dli);
-		
-		topbar.addItem(new SearchItem("Searh for ANYTHING!!"));
+		SearchItem si = new SearchItem("Searh for ANYTHING!!");
+		si.addKeyUpHandler(new KeyUpHandler() {
+			public void onKeyUp(KeyUpEvent event) {
+				if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER)
+				{
+					Window.alert("oi");
+				}
+			}
+		});
+		topbar.addItem(si);
 		
 		RootPanel.get().add(topbar);
 		
