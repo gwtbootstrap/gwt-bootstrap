@@ -1,7 +1,7 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.alerts;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.SizeHelper;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
@@ -19,7 +19,7 @@ import com.google.gwt.user.client.ui.Label;
 public class Alert extends Label {
 
 	static {
-		BootstrapConfigurator.injectJs(Resources.RESOURCES.alerts());
+		ResourceInjector.injectJs(Resources.RESOURCES.alerts());
 	}
 
 	{

@@ -1,4 +1,4 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.topbar;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.google.gwt.dom.client.Element;

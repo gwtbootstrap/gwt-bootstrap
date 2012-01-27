@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Element;
@@ -15,7 +15,7 @@ import com.google.gwt.dom.client.Element;
 public class Twipsy extends ComplexWidget {
 
 	static {
-		BootstrapConfigurator.injectJs(Resources.RESOURCES.twipsy());
+		ResourceInjector.injectJs(Resources.RESOURCES.twipsy());
 	}
 
 	public Twipsy() {

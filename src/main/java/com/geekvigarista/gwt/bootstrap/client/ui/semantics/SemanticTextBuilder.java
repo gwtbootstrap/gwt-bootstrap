@@ -1,6 +1,6 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.semantics;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.TypographyBase.TypographyType;
+import com.geekvigarista.gwt.bootstrap.client.ui.semantics.TypographyBase.TypographyType;
 import com.google.gwt.user.client.ui.Widget;
 
 /**

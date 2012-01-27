@@ -1,6 +1,8 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.topbar;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.ListItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.UnordenedList;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Element;
@@ -16,7 +18,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 public class DropdownListItem extends ListItem {
 
 	static {
-		BootstrapConfigurator.injectJs(Resources.RESOURCES.dropdown());
+		ResourceInjector.injectJs(Resources.RESOURCES.dropdown());
 	}
 
 	{

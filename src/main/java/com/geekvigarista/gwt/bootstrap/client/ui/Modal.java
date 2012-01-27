@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapElementHelper;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
@@ -18,13 +18,13 @@ import com.google.gwt.user.client.ui.Widget;
 public class Modal extends ComplexWidget {
 
 	private final BootstrapElementHelper el_helper;
-	private ContainerBase header;
-	private ContainerBase footer;
-	private ContainerBase body;
+	private DivPanel header;
+	private DivPanel footer;
+	private DivPanel body;
 
 	static {
 		// injecting the Modal plugin javascript file.
-		BootstrapConfigurator.injectJs(Resources.RESOURCES.modal());
+		ResourceInjector.injectJs(Resources.RESOURCES.modal());
 	}
 
 	{
@@ -34,11 +34,11 @@ public class Modal extends ComplexWidget {
 		setStyleName(BootstrapCssResources.modal);
 		addStyleName(BootstrapCssResources.fade);
 
-		header = new ContainerBase();
+		header = new DivPanel();
 		header.setStyleName(BootstrapCssResources.modal_header);
-		footer = new ContainerBase();
+		footer = new DivPanel();
 		footer.setStyleName(BootstrapCssResources.modal_footer);
-		body = new ContainerBase();
+		body = new DivPanel();
 		body.setStyleName(BootstrapCssResources.modal_body);
 
 		// assert that modal doesnt show up by default.

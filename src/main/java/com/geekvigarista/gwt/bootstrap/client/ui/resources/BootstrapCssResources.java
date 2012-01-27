@@ -169,4 +169,10 @@ public interface BootstrapCssResources {
 	public static final String menu_dropdown = "menu-dropdown";
 
 	public static final String pull_left = "pull-left";
+
+	public static final String clearfix = "clearfix";
+
+	public static final String input = "input";
+
+	public static final String uneditable_input = "uneditable-input";
 }

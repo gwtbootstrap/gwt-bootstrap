@@ -1,7 +1,7 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.buttons;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.BootStrapButtonBase;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.safehtml.shared.SafeHtml;
@@ -15,7 +15,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 public class Button extends BootStrapButtonBase {
 
 	static {
-		BootstrapConfigurator.injectJs(Resources.RESOURCES.buttons());
+		ResourceInjector.injectJs(Resources.RESOURCES.buttons());
 	}
 
 	public Button() {

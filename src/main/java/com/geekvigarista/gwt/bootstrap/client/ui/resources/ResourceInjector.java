@@ -10,7 +10,7 @@ import com.google.gwt.resources.client.TextResource;
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
-public class BootstrapConfigurator {
+public class ResourceInjector {
 
 	private static final Resources res = Resources.RESOURCES;
 

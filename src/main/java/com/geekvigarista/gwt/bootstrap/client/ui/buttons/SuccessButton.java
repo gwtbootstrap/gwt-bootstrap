@@ -1,4 +1,4 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.buttons;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.BootStrapButtonBase;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;

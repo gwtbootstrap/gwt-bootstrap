@@ -12,7 +12,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class FixedLayout extends ContainerBase {
+public class FixedLayout extends DivPanel {
 	{
 		setStyleName(BootstrapCssResources.container);
 	}

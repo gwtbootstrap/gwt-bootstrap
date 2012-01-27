@@ -1,4 +1,5 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.semantics;
+
 
 /**
  * A Label with a <code>strong</code> around the text.

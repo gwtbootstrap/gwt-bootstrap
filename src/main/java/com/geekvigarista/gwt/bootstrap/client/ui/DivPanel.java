@@ -14,9 +14,9 @@ import com.google.gwt.user.client.ui.HasWidgets;
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class ContainerBase extends ComplexWidget implements HasWidgets {
+public class DivPanel extends ComplexWidget implements HasWidgets {
 
-	public ContainerBase() {
+	public DivPanel() {
 		super("div");
 	}
 

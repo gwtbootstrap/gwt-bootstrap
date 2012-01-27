@@ -1,34 +1,37 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.ActionPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.Alert;
-import com.geekvigarista.gwt.bootstrap.client.ui.Button;
 import com.geekvigarista.gwt.bootstrap.client.ui.ContentPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.DangerButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.DividerListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.DropdownListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.ErrorAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.FluidLayout;
-import com.geekvigarista.gwt.bootstrap.client.ui.InfoAlert;
-import com.geekvigarista.gwt.bootstrap.client.ui.InfoButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
 import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
-import com.geekvigarista.gwt.bootstrap.client.ui.NavListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.PrimaryButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.SearchItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.SemanticTextBuilder;
 import com.geekvigarista.gwt.bootstrap.client.ui.SidebarPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.StrongLabel;
-import com.geekvigarista.gwt.bootstrap.client.ui.SuccessAlert;
-import com.geekvigarista.gwt.bootstrap.client.ui.SuccessButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.TextBox;
-import com.geekvigarista.gwt.bootstrap.client.ui.Topbar;
 import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
-import com.geekvigarista.gwt.bootstrap.client.ui.TypographyBase.TypographyType;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.alerts.Alert;
+import com.geekvigarista.gwt.bootstrap.client.ui.alerts.ErrorAlert;
+import com.geekvigarista.gwt.bootstrap.client.ui.alerts.InfoAlert;
+import com.geekvigarista.gwt.bootstrap.client.ui.alerts.SuccessAlert;
+import com.geekvigarista.gwt.bootstrap.client.ui.buttons.Button;
+import com.geekvigarista.gwt.bootstrap.client.ui.buttons.DangerButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.buttons.InfoButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.buttons.PrimaryButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.buttons.SuccessButton;
+import com.geekvigarista.gwt.bootstrap.client.ui.form.FormBuilder;
+import com.geekvigarista.gwt.bootstrap.client.ui.form.FormField;
+import com.geekvigarista.gwt.bootstrap.client.ui.form.FormFieldSet;
+import com.geekvigarista.gwt.bootstrap.client.ui.inputs.TextBox;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
+import com.geekvigarista.gwt.bootstrap.client.ui.semantics.SemanticTextBuilder;
+import com.geekvigarista.gwt.bootstrap.client.ui.semantics.StrongLabel;
+import com.geekvigarista.gwt.bootstrap.client.ui.semantics.TypographyBase.TypographyType;
+import com.geekvigarista.gwt.bootstrap.client.ui.topbar.DividerListItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.topbar.DropdownListItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.topbar.NavListItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.topbar.SearchItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.topbar.Topbar;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
@@ -49,7 +52,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class BootStrap implements EntryPoint {
 	public void onModuleLoad() {
 
-		BootstrapConfigurator.configure();
+		ResourceInjector.configure();
 
 		Topbar topbar = new Topbar("GWT-Bootstrap");
 		topbar.addPrimaryNavItem(new NavListItem("Blog",
@@ -108,7 +111,7 @@ public class BootStrap implements EntryPoint {
 		RootPanel.get("conteudo").add(new Button("ola que tal"));
 		RootPanel.get("conteudo").add(new InfoButton("ola que tal"));
 		RootPanel.get("conteudo").add(new DangerButton("medo"));
-//		RootPanel.get("conteudo").add(new SuccessButton("eeeba"));
+		// RootPanel.get("conteudo").add(new SuccessButton("eeeba"));
 		RootPanel.get("conteudo").add(new Alert("teste"));
 
 		RootPanel.get("conteudo").add(new ErrorAlert("oi, ERROR alert."));
@@ -119,10 +122,19 @@ public class BootStrap implements EntryPoint {
 		RootPanel.get("conteudo").add(new Label("sdas"));
 		RootPanel.get("conteudo").add(new StrongLabel("sou forte, lol"));
 
-		modal.setBody(new SemanticTextBuilder(TypographyType.SPAN)
-				.append("Oi, ", TypographyType.STRONG).append("tudo bem?")
-				.append("PUTA QUE PARIU", TypographyType.H1)
-				.appendInLast("sou um small", TypographyType.SMALL).asWidget());
+		FormBuilder fb = new FormBuilder();
+		TextBox tbNome = new TextBox();
+		TextBox tbLogin = new TextBox();
+		fb.appendFieldSet(new FormFieldSet("Usuario").appendField(
+				new FormField<String, TextBox>("Nome", tbNome)).appendField(
+				new FormField<String, TextBox>("Login", tbLogin)));
+
+		modal.setBody(fb);
+
+		// modal.setBody(new SemanticTextBuilder(TypographyType.SPAN)
+		// .append("Oi, ", TypographyType.STRONG).append("tudo bem?")
+		// .append("PUTA QUE PARIU", TypographyType.H1)
+		// .appendInLast("sou um small", TypographyType.SMALL).asWidget());
 		modal.setFooter(new PrimaryButton("Oi, posso fazer algo?"));
 		modal.setFooter(new Label("Escolha:"));
 		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));

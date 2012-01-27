@@ -1,7 +1,10 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.topbar;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.Container;
+import com.geekvigarista.gwt.bootstrap.client.ui.DivPanel;
+import com.geekvigarista.gwt.bootstrap.client.ui.ListItem;
+import com.geekvigarista.gwt.bootstrap.client.ui.UnordenedList;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -10,11 +13,11 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @since 25/01/2012
  */
-public class Topbar extends ContainerBase {
+public class Topbar extends DivPanel {
 
 	private final Brand brand;
 	private final FillDiv fill;
-	private final ContainerDiv container;
+	private final Container container;
 	private final UnordenedList primaryNav;
 	private final UnordenedList secondaryNav;
 
@@ -23,7 +26,7 @@ public class Topbar extends ContainerBase {
 		setStyleName(BootstrapCssResources.topbar);
 
 		fill = new FillDiv();
-		container = new ContainerDiv();
+		container = new Container();
 
 		brand = new Brand(projectName);
 
@@ -52,26 +55,4 @@ public class Topbar extends ContainerBase {
 	public void addItem(Widget w) {
 		container.add(w);
 	}
-	
-	class Brand extends Anchor {
-		public Brand(String projectName) {
-			getElement().setClassName(BootstrapCssResources.brand);
-			getElement().addClassName(BootstrapCssResources.active);
-			getElement().setAttribute("href", "#");
-			getElement().setInnerText(projectName);
-		}
-	}
-
-	class FillDiv extends ContainerBase {
-		{
-			setStyleName(BootstrapCssResources.fill);
-		}
-	}
-
-	class ContainerDiv extends ContainerBase {
-		{
-			setStyleName(BootstrapCssResources.container);
-		}
-	}
-	
 }

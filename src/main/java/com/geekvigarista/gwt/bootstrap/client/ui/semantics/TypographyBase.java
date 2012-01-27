@@ -1,7 +1,7 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.semantics;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapConfigurator;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.user.client.ui.HasWidgets;
 
@@ -129,9 +129,9 @@ public class TypographyBase extends ComplexWidget implements HasWidgets {
 	private static class CodeElementAssitent {
 		public static void injectResources() {
 			if (isPrettifyInjected()) {
-				BootstrapConfigurator.injectCss(Resources.RESOURCES
+				ResourceInjector.injectCss(Resources.RESOURCES
 						.prettify_css());
-				BootstrapConfigurator.injectJs(Resources.RESOURCES
+				ResourceInjector.injectJs(Resources.RESOURCES
 						.prettify_js());
 			}
 		}

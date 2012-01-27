@@ -12,7 +12,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
  * @author Carlos Alexandro Becker
  * @since 23/01/2012
  */
-public class ContentPanel extends ContainerBase {
+public class ContentPanel extends DivPanel {
 	{
 		setStyleName(BootstrapCssResources.content);
 	}

@@ -23,7 +23,7 @@ public class GenerateCssResources {
 		gen("actions").gen("twipsy");
 		gen("topbar").gen("fill").gen("brand").gen("nav").gen("secondary-nav")
 				.gen("menu").gen("menu-dropdown");
-		gen("pull-left");
+		gen("pull-left").gen("clearfix").gen("input").gen("uneditable-input");
 		System.out.println(sb.toString());
 	}
 

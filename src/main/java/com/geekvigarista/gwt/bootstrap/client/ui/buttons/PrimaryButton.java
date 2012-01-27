@@ -1,29 +1,29 @@
-package com.geekvigarista.gwt.bootstrap.client.ui;
+package com.geekvigarista.gwt.bootstrap.client.ui.buttons;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.BootStrapButtonBase;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.safehtml.shared.SafeHtml;
 
 /**
- * The BootStrap InfoButton (it's a kind green or blue, now sure!)
+ * The BootStrap PrimaryButton (It's blue!)
  * 
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
-public class InfoButton extends BootStrapButtonBase {
+public class PrimaryButton extends BootStrapButtonBase {
 	{
-		setType(Type.INFO);
+		setType(Type.PRIMARY);
 	}
 
-	public InfoButton() {
+	public PrimaryButton() {
 	}
 
-	public InfoButton(String html) {
+	public PrimaryButton(String html) {
 		this();
 		setHTML(html);
 	}
 
-	public InfoButton(SafeHtml html) {
+	public PrimaryButton(SafeHtml html) {
 		this();
 		setHTML(html);
 	}
