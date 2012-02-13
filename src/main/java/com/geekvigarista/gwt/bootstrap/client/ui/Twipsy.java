@@ -1,9 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Element;
 
 /**
@@ -14,9 +12,9 @@ import com.google.gwt.dom.client.Element;
  */
 public class Twipsy extends ComplexWidget {
 
-	static {
-		ResourceInjector.injectJs(Resources.RESOURCES.twipsy());
-	}
+//	static {
+//		ResourceInjector.injectJs(Resources.RESOURCES.twipsy());
+//	}
 
 	public Twipsy() {
 		super("a");
@@ -50,7 +48,7 @@ public class Twipsy extends ComplexWidget {
 	}
 
 	private native void twipsy(Element e) /*-{
-		$wnd.jQuery(e).twipsy();
+//		$wnd.jQuery(e).twipsy();
 	}-*/;
 
 }

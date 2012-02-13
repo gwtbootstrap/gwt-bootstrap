@@ -1,6 +1,5 @@
-package com.geekvigarista.gwt.bootstrap.client.ui.base;
+package com.geekvigarista.gwt.bootstrap.client.ui.buttons;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.State;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
@@ -15,7 +14,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 public class BootStrapButtonBase extends com.google.gwt.user.client.ui.Button {
 
 	{
-		setStyleName(BootstrapCssResources.btn);
+		setStyleName(ButtonType.DEFAULT.getType());
 	}
 
 	public BootStrapButtonBase() {
@@ -32,7 +31,7 @@ public class BootStrapButtonBase extends com.google.gwt.user.client.ui.Button {
 		setHTML(html);
 	}
 
-	public void setType(Type type) {
+	public void setType(ButtonType type) {
 		addStyleName(type.getType());
 	}
 

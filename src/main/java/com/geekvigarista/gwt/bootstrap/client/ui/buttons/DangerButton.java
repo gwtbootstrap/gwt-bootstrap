@@ -1,7 +1,5 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.buttons;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.base.BootStrapButtonBase;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.safehtml.shared.SafeHtml;
 
 /**
@@ -12,7 +10,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
  */
 public class DangerButton extends BootStrapButtonBase {
 	{
-		setType(Type.DANGER);
+		setType(ButtonType.DANGER);
 	}
 
 	public DangerButton() {

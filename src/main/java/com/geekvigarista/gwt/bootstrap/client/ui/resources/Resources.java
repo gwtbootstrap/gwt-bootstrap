@@ -18,38 +18,41 @@ public interface Resources extends ClientBundle {
 	 * importing as a textresource, for now, at least.
 	 */
 	@Source("css/bootstrap.min.css")
-	TextResource bootstrap();
+	TextResource bootstrap_css();
 
 	@Source("css/prettify.css")
 	TextResource prettify_css();
 
 	@Source("js/jquery-1.7.1.min.js")
 	TextResource jquery();
+	
+	@Source("js/bootstrap.min.js")
+	TextResource bootstrap_js();
 
 	@Source("js/prettify.js")
 	TextResource prettify_js();
 
-	@Source("js/bootstrap-alerts.js")
-	TextResource alerts();
-
-	@Source("js/bootstrap-buttons.js")
-	TextResource buttons();
-
-	@Source("js/bootstrap-dropdown.js")
-	TextResource dropdown();
-
-	@Source("js/bootstrap-modal.js")
-	TextResource modal();
-
-	@Source("js/bootstrap-popover.js")
-	TextResource popover();
-
-	@Source("js/bootstrap-scrollspy.js")
-	TextResource scrollspy();
-
-	@Source("js/bootstrap-tabs.js")
-	TextResource tabs();
-
-	@Source("js/bootstrap-twipsy.js")
-	TextResource twipsy();
+//	@Source("js/bootstrap-alerts.js")
+//	TextResource alerts();
+//
+//	@Source("js/bootstrap-buttons.js")
+//	TextResource buttons();
+//
+//	@Source("js/bootstrap-dropdown.js")
+//	TextResource dropdown();
+//
+//	@Source("js/bootstrap-modal.js")
+//	TextResource modal();
+//
+//	@Source("js/bootstrap-popover.js")
+//	TextResource popover();
+//
+//	@Source("js/bootstrap-scrollspy.js")
+//	TextResource scrollspy();
+//
+//	@Source("js/bootstrap-tabs.js")
+//	TextResource tabs();
+//
+//	@Source("js/bootstrap-twipsy.js")
+//	TextResource twipsy();
 }

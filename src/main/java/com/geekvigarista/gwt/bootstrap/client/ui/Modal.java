@@ -22,10 +22,10 @@ public class Modal extends ComplexWidget {
 	private DivPanel footer;
 	private DivPanel body;
 
-	static {
-		// injecting the Modal plugin javascript file.
-		ResourceInjector.injectJs(Resources.RESOURCES.modal());
-	}
+//	static {
+//		// injecting the Modal plugin javascript file.
+//		ResourceInjector.injectJs(Resources.RESOURCES.modal());
+//	}
 
 	{
 		// create the basics of element godness.

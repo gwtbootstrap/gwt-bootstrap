@@ -18,8 +18,9 @@ public class ResourceInjector {
 	 * Import the required styles and JSs to the head of modules HTML.
 	 */
 	public static void configure() {
-		injectCss(res.bootstrap());
+		injectCss(res.bootstrap_css());
 		injectJs(res.jquery());
+		injectJs(res.bootstrap_js());
 	}
 
 	public static void injectCss(TextResource r) {

@@ -17,9 +17,9 @@ import com.google.gwt.user.client.ui.IsWidget;
  */
 public class DropdownListItem extends ListItem {
 
-	static {
-		ResourceInjector.injectJs(Resources.RESOURCES.dropdown());
-	}
+//	static {
+//		ResourceInjector.injectJs(Resources.RESOURCES.dropdown());
+//	}
 
 	{
 		setStyleName(BootstrapCssResources.menu);

@@ -1,9 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.alerts;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.SizeHelper;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.dom.client.Element;
@@ -18,9 +16,9 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class Alert extends Label {
 
-	static {
-		ResourceInjector.injectJs(Resources.RESOURCES.alerts());
-	}
+//	static {
+//		ResourceInjector.injectJs(Resources.RESOURCES.alerts());
+//	}
 
 	{
 		setStyleName(BootstrapCssResources.alert_message);
