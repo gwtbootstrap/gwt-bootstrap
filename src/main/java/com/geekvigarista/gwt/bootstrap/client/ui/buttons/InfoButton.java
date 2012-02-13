@@ -16,6 +16,10 @@ public class InfoButton extends BootStrapButtonBase {
 	public InfoButton() {
 	}
 
+	public InfoButton(ButtonSize size) {
+		setSize(size);
+	}
+	
 	public InfoButton(String html) {
 		this();
 		setHTML(html);

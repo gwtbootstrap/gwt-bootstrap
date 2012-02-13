@@ -4,7 +4,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 
 /**
  * The BootStrap SuccessButton (it's green!)
- *
+ * 
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
@@ -14,6 +14,10 @@ public class SuccessButton extends BootStrapButtonBase {
 	}
 
 	public SuccessButton() {
+	}
+
+	public SuccessButton(ButtonSize size) {
+		setSize(size);
 	}
 
 	public SuccessButton(String html) {

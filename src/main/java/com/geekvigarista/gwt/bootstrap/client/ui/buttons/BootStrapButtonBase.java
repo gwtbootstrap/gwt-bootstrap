@@ -1,8 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.buttons;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.State;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
 import com.google.gwt.safehtml.shared.SafeHtml;
 
 /**
@@ -11,14 +9,20 @@ import com.google.gwt.safehtml.shared.SafeHtml;
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
-public class BootStrapButtonBase extends com.google.gwt.user.client.ui.Button {
+public abstract class BootStrapButtonBase extends
+		com.google.gwt.user.client.ui.Button {
 
 	{
-		setStyleName(ButtonType.DEFAULT.getType());
+		removeStyleName("gwt-Button");
+		setType(ButtonType.DEFAULT);
 	}
 
 	public BootStrapButtonBase() {
 
+	}
+
+	public BootStrapButtonBase(ButtonSize size) {
+		setSize(size);
 	}
 
 	public BootStrapButtonBase(String html) {
@@ -32,23 +36,32 @@ public class BootStrapButtonBase extends com.google.gwt.user.client.ui.Button {
 	}
 
 	public void setType(ButtonType type) {
+		for (ButtonType t : ButtonType.values()) {
+			if (!t.equals(ButtonType.DEFAULT)) {
+				removeStyleName(t.getType());
+			}
+		}
 		addStyleName(type.getType());
 	}
 
-	public void setSize(Size size) {
+	public void setSize(ButtonSize size) {
+		for (ButtonSize s : ButtonSize.values()) {
+			removeStyleName(s.getSize());
+		}
+
 		addStyleName(size.getSize());
 	}
 
 	@Override
 	public void setEnabled(boolean enabled) {
 		if (enabled) {
-			removeStyleName(State.ENABLED.getState());
+			removeStyleName(State.DISABLED.getState());
 		} else {
 			addStyleName(State.DISABLED.getState());
 		}
 	}
 
 	public void setState(State state) {
-		setEnabled(state == State.ENABLED);
+		setEnabled(state != State.DISABLED);
 	}
 }

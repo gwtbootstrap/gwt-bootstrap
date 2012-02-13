@@ -8,16 +8,10 @@ package com.geekvigarista.gwt.bootstrap.client.ui.resources;
  */
 public enum State {
 
-	ENABLED {
-		@Override
-		public String getState() {
-			return BootstrapCssResources.disabled;
-		}
-	},
 	DISABLED {
 		@Override
 		public String getState() {
-			return "";
+			return "disabled";
 		}
 	};
 

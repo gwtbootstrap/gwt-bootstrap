@@ -1,48 +1,14 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.ActionPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.ContentPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.FluidLayout;
-import com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel.InlineLabelType;
-import com.geekvigarista.gwt.bootstrap.client.ui.Modal;
-import com.geekvigarista.gwt.bootstrap.client.ui.SidebarPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.Twipsy;
-import com.geekvigarista.gwt.bootstrap.client.ui.alerts.Alert;
-import com.geekvigarista.gwt.bootstrap.client.ui.alerts.ErrorAlert;
-import com.geekvigarista.gwt.bootstrap.client.ui.alerts.InfoAlert;
-import com.geekvigarista.gwt.bootstrap.client.ui.alerts.SuccessAlert;
 import com.geekvigarista.gwt.bootstrap.client.ui.buttons.Button;
+import com.geekvigarista.gwt.bootstrap.client.ui.buttons.ButtonSize;
 import com.geekvigarista.gwt.bootstrap.client.ui.buttons.DangerButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.buttons.InfoButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.buttons.PrimaryButton;
 import com.geekvigarista.gwt.bootstrap.client.ui.buttons.SuccessButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.form.FormBuilder;
-import com.geekvigarista.gwt.bootstrap.client.ui.form.FormField;
-import com.geekvigarista.gwt.bootstrap.client.ui.form.FormFieldSet;
-import com.geekvigarista.gwt.bootstrap.client.ui.inputs.TextBox;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Size;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Type;
-import com.geekvigarista.gwt.bootstrap.client.ui.semantics.SemanticTextBuilder;
-import com.geekvigarista.gwt.bootstrap.client.ui.semantics.StrongLabel;
-import com.geekvigarista.gwt.bootstrap.client.ui.semantics.TypographyBase.TypographyType;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.DividerListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.DropdownListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.NavListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.SearchItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.Topbar;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.event.dom.client.MouseUpEvent;
-import com.google.gwt.event.dom.client.MouseUpHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * 
@@ -53,136 +19,14 @@ public class BootStrap implements EntryPoint {
 	public void onModuleLoad() {
 
 		ResourceInjector.configure();
-
-		Topbar topbar = new Topbar("GWT-Bootstrap");
-		topbar.addPrimaryNavItem(new NavListItem("Blog",
-				"http://geekvigarista.com"));
-		topbar.addPrimaryNavItem(new NavListItem("GitHub",
-				"http://github.com/caarlos0/gwt-bootstrap"));
-		topbar.addPrimaryNavItem(new NavListItem("twitter",
-				"http://twitter.com/caarlos0"));
-
-		DropdownListItem dli = new DropdownListItem("Dropdown");
-		dli.addItem(new NavListItem("Hi,", "#"));
-		dli.addItem(new DividerListItem());
-		dli.addItem(new NavListItem("You", "#"));
-		dli.addItem(new NavListItem("Can", "#"));
-		dli.addItem(new NavListItem("Have", "#"));
-		dli.addItem(new NavListItem("More", "#"));
-		dli.addItem(new NavListItem("Options", "#"));
-		dli.addItem(new NavListItem("Here", "#"));
-
-		topbar.addSecondaryNavItem(dli);
-		SearchItem si = new SearchItem("Searh for ANYTHING!!");
-		si.addKeyUpHandler(new KeyUpHandler() {
-			public void onKeyUp(KeyUpEvent event) {
-				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-					Window.alert("oi");
-				}
-			}
-		});
-		topbar.addItem(si);
-
-		RootPanel.get("menu").add(topbar);
-
-		RootPanel.get("conteudo").add(new TextBox());
-		RootPanel.get("conteudo").add(new PrimaryButton("oi"));
-
-		final Alert a = new Alert("Clica no OIZAO pra fechar essa jossa!",
-				Type.DANGER);
-		a.setSize(Span._7);
-		final Modal modal = new Modal();
-
-		a.setHTMLText("<strong>oi cara,</strong>", "clica ae no ",
-				"<strong>OIZAO</strong>", "e seja feliz.", "flw lesks");
-
-		PrimaryButton pb = new PrimaryButton("OIZAO");
-		pb.setSize(Size.LARGE);
-		pb.addMouseUpHandler(new MouseUpHandler() {
-			public void onMouseUp(MouseUpEvent event) {
-				a.close();
-				modal.toggle();
-			}
-		});
-
-		RootPanel.get("conteudo").add(a);
-		RootPanel.get("conteudo").add(pb);
-
-		RootPanel.get("conteudo").add(new Button("ola que tal"));
-		RootPanel.get("conteudo").add(new InfoButton("ola que tal"));
-		RootPanel.get("conteudo").add(new DangerButton("medo"));
-		// RootPanel.get("conteudo").add(new SuccessButton("eeeba"));
-		RootPanel.get("conteudo").add(new Alert("teste"));
-
-		RootPanel.get("conteudo").add(new ErrorAlert("oi, ERROR alert."));
-
-		RootPanel.get("conteudo").add(new InfoAlert("info: aaasldlas"));
-		RootPanel.get("conteudo").add(new SuccessAlert("sucessfull"));
-
-		RootPanel.get("conteudo").add(new Label("sdas"));
-		RootPanel.get("conteudo").add(new StrongLabel("sou forte, lol"));
-
-		FormBuilder fb = new FormBuilder();
-		TextBox tbNome = new TextBox();
-		TextBox tbLogin = new TextBox();
-		fb.appendFieldSet(new FormFieldSet("Usuario").appendField(
-				new FormField<String, TextBox>("Nome", tbNome)).appendField(
-				new FormField<String, TextBox>("Login", tbLogin)));
-
-		modal.setBody(fb);
-
-		// modal.setBody(new SemanticTextBuilder(TypographyType.SPAN)
-		// .append("Oi, ", TypographyType.STRONG).append("tudo bem?")
-		// .append("PUTA QUE PARIU", TypographyType.H1)
-		// .appendInLast("sou um small", TypographyType.SMALL).asWidget());
-		modal.setFooter(new PrimaryButton("Oi, posso fazer algo?"));
-		modal.setFooter(new Label("Escolha:"));
-		modal.setHeader(new Label("Oi, sou um modal muito legal :)"));
-
-		RootPanel.get("conteudo").add(modal);
-
-		RootPanel.get("conteudo").add(
-				new com.geekvigarista.gwt.bootstrap.client.ui.InlineLabel(
-						"warn", InlineLabelType.WARNING));
-
-		ActionPanel ap = new ActionPanel();
-		HorizontalPanel hp = new HorizontalPanel();
-
-		hp.add(new DangerButton("Cuidado"));
-		hp.add(new SuccessButton("Cuidado"));
-		hp.add(new Twipsy("oi, sou um twipsy tittle",
-				"http://geekvigarista.com", "Sou um twipsy!!"));
-
-		ap.setWidget(hp);
-
-		// RootPanel.get("conteudo").add(ap);
-
-		FluidLayout fc = new FluidLayout();
-		ContentPanel cp = new ContentPanel();
-		SidebarPanel sp = new SidebarPanel();
-		fc.add(cp);
-		fc.add(sp);
-		cp.add(ap);
-		cp.add(new Twipsy("oi, sou um twipsy tittle",
-				"http://geekvigarista.com", "Sou um twipsy!!"));
-		cp.add(new Alert("teste"));
-
-		VerticalPanel vp = new VerticalPanel();
-		vp.add(new Button("ola que tal"));
-		vp.add(new InfoButton("ola que tal"));
-		vp.add(new DangerButton("medo"));
-		vp.add(new SuccessButton("eeeba"));
-		sp.add(vp);
-		cp.add(new Alert("teste"));
-		cp.add(new SemanticTextBuilder(TypographyType.H1).append("oi")
-				.asWidget());
-
-		RootPanel.get("conteudo").add(fc);
-		RootPanel.get("conteudo").add(
-				new Twipsy("oi, sou um twipsy tittle",
-						"http://geekvigarista.com", "Sou um twipsy!!"));
-		RootPanel.get("conteudo").add(
-				new SemanticTextBuilder(TypographyType.CODE).append(
-						"var oi = function(){alert('oi'); }; ").asWidget());
+		
+		HorizontalPanel vpbtns = new HorizontalPanel();
+		PrimaryButton pb = new PrimaryButton(ButtonSize.LARGE);
+		pb.setText("Primary big button");
+		vpbtns.add(pb);
+		vpbtns.add(new SuccessButton("Save this shit!"));
+		vpbtns.add(new DangerButton("Ola, vou lhe causar perigos!"));
+		vpbtns.add(new Button("Oi :|"));
+		RootPanel.get().add(vpbtns);
 	}
 }

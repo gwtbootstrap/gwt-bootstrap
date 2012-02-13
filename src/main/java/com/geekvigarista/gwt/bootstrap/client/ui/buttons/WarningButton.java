@@ -10,6 +10,10 @@ public class WarningButton extends BootStrapButtonBase {
 	public WarningButton() {
 	}
 
+	public WarningButton(ButtonSize size) {
+		setSize(size);
+	}
+
 	public WarningButton(String html) {
 		this();
 		setHTML(html);

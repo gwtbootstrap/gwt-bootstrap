@@ -11,12 +11,16 @@ import com.google.gwt.safehtml.shared.SafeHtml;
  */
 public class Button extends BootStrapButtonBase {
 
-//	static {
-//		ResourceInjector.injectJs(Resources.RESOURCES.buttons());
-//	}
+	// static {
+	// ResourceInjector.injectJs(Resources.RESOURCES.buttons());
+	// }
 
 	public Button() {
 
+	}
+
+	public Button(ButtonSize size) {
+		setSize(size);
 	}
 
 	public Button(SafeHtml html) {
@@ -27,7 +31,7 @@ public class Button extends BootStrapButtonBase {
 		this();
 		setHTML(html);
 	}
-	
+
 	// TODO: use Button plugin, set loading state etc..
 	private native void configure(Element e, String action) /*-{
 		if (typeof action == "undefined" || action == null || action == "") {

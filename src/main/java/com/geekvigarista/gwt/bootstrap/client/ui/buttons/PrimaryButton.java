@@ -15,6 +15,10 @@ public class PrimaryButton extends BootStrapButtonBase {
 
 	public PrimaryButton() {
 	}
+	
+	public PrimaryButton(ButtonSize size) {
+		setSize(size);
+	}
 
 	public PrimaryButton(String html) {
 		this();

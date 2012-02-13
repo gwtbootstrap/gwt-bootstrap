@@ -16,6 +16,10 @@ public class DangerButton extends BootStrapButtonBase {
 	public DangerButton() {
 	}
 
+	public DangerButton(ButtonSize size) {
+		setSize(size);
+	}
+
 	public DangerButton(String html) {
 		this();
 		setHTML(html);
