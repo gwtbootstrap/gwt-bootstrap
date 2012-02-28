@@ -10,10 +10,15 @@ import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
  *
  * @author carlos
  */
-public class Grid extends ComplexWidget {
+public class Row extends ComplexWidget {
 
-    public Grid() {
+    public Row() {
         super("div");
         setStyleName("row");
     }
-}
+
+    public Row(boolean fluid) {
+        super("div");
+        setStyleName("row-fluid");
+    }
+}   

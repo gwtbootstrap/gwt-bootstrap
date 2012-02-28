@@ -10,11 +10,17 @@ import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
  *
  * @author carlos
  */
-public class GridItem extends ComplexWidget {
+public class RowItem extends ComplexWidget {
 
-    public GridItem(int size) {
+    public RowItem(int size) {
         super("div");
         size = size < 1 ? 1 : size > 12 ? 12 : size;
         setStyleName("span" + size);
+    }
+
+    public RowItem(int size, int offset) {
+        this(size);
+        offset = offset > 0 ? offset : 1;
+        addStyleName("offset" + offset);
     }
 }
