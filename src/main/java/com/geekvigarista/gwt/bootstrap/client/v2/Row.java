@@ -7,8 +7,10 @@ package com.geekvigarista.gwt.bootstrap.client.v2;
 import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
 
 /**
- *
- * @author carlos
+ * This is the twBootstrap Grid System, enjoy.
+ * 
+ * @see RowItem
+ * @author Carlos A Becker
  */
 public class Row extends ComplexWidget {
 
