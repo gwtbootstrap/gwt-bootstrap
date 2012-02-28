@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.semantics;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
+import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.user.client.ui.HasWidgets;

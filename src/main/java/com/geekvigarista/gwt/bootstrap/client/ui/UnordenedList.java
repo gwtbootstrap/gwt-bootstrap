@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
+import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
 
 /**
  * A UnorderedList component (ul).

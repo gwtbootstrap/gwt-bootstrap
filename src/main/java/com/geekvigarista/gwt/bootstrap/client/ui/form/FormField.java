@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.form;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.DivPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
+import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
