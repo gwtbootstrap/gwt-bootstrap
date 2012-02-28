@@ -9,7 +9,7 @@
   <groupId>com.geekvigarista.gwt.bootstrap</groupId>
   <artifactId>gwt-bootstrap</artifactId>
   <version>0.1.5</version>
-  <name>GWT Maven Archetype</name>
+  <name>GWT-Bootstrap</name>
 
   <properties>
     <!-- Convenience property to set the GWT version -->

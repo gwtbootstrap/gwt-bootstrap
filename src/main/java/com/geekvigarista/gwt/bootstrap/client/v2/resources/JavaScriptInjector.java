@@ -1,4 +1,4 @@
-package com.geekvigarista.gwt.bootstrap.client.ui.resources;
+package com.geekvigarista.gwt.bootstrap.client.v2.resources;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;

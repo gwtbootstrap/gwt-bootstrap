@@ -1,32 +1,27 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.buttons.Button;
-import com.geekvigarista.gwt.bootstrap.client.ui.buttons.ButtonSize;
-import com.geekvigarista.gwt.bootstrap.client.ui.buttons.DangerButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.buttons.PrimaryButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.buttons.SuccessButton;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
+import com.geekvigarista.gwt.bootstrap.client.v2.Button;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.ResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
- * 
+ *
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
 public class BootStrap implements EntryPoint {
-	public void onModuleLoad() {
 
-		ResourceInjector.configure();
-		
-		HorizontalPanel vpbtns = new HorizontalPanel();
-		PrimaryButton pb = new PrimaryButton(ButtonSize.LARGE);
-		pb.setText("Primary big button");
-		vpbtns.add(pb);
-		vpbtns.add(new SuccessButton("Save this shit!"));
-		vpbtns.add(new DangerButton("Ola, vou lhe causar perigos!"));
-		vpbtns.add(new Button("Oi :|"));
-		RootPanel.get().add(vpbtns);
-	}
+    public void onModuleLoad() {
+        ResourceInjector.configure();
+        HorizontalPanel vpbtns = new HorizontalPanel();
+        vpbtns.add(new Button("Default"));
+        vpbtns.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
+        vpbtns.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
+        vpbtns.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
+        vpbtns.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}));
+
+        RootPanel.get().add(vpbtns);
+    }
 }

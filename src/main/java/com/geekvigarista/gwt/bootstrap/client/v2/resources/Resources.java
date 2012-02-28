@@ -1,4 +1,4 @@
-package com.geekvigarista.gwt.bootstrap.client.ui.resources;
+package com.geekvigarista.gwt.bootstrap.client.v2.resources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -20,8 +20,8 @@ public interface Resources extends ClientBundle {
 	@Source("css/bootstrap.min.css")
 	TextResource bootstrap_css();
 
-	@Source("css/prettify.css")
-	TextResource prettify_css();
+//	@Source("css/prettify.css")
+//	TextResource prettify_css();
 
 	@Source("js/jquery-1.7.1.min.js")
 	TextResource jquery();
@@ -29,8 +29,8 @@ public interface Resources extends ClientBundle {
 	@Source("js/bootstrap.min.js")
 	TextResource bootstrap_js();
 
-	@Source("js/prettify.js")
-	TextResource prettify_js();
+//	@Source("js/prettify.js")
+//	TextResource prettify_js();
 
 //	@Source("js/bootstrap-alerts.js")
 //	TextResource alerts();
