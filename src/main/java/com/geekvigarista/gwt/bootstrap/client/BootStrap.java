@@ -35,7 +35,9 @@ public class BootStrap implements EntryPoint {
         grid.add(gi1);
         Row grid1 = new Row();
         RowItem gi21 = new RowItem(12, 3);
-        gi21.add(new Button("Button inside a grid inside a grid"));
+        Button disabledBtn = new Button("Button inside a grid inside a grid and disabled");
+        disabledBtn.setEnabled(false);
+        gi21.add(disabledBtn);
         grid1.add(gi21);
         gi1.add(grid1);
         content.add(grid);

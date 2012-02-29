@@ -61,6 +61,27 @@ public class Button extends com.google.gwt.user.client.ui.Button {
             public String getStyle() {
                 return "btn-success";
             }
+        },
+        WARNING {
+
+            @Override
+            public String getStyle() {
+                return "btn-warning";
+            }
+        },
+        INVERSE {
+
+            @Override
+            public String getStyle() {
+                return "btn-inverse";
+            }
+        },
+        MINI {
+
+            @Override
+            public String getStyle() {
+                return "btn-mini";
+            }
         };
 
         public abstract String getStyle();
