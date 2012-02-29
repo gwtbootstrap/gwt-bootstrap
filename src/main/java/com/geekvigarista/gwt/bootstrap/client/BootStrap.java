@@ -1,11 +1,8 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
-import com.geekvigarista.gwt.bootstrap.client.v2.Button;
-import com.geekvigarista.gwt.bootstrap.client.v2.Row;
-import com.geekvigarista.gwt.bootstrap.client.v2.RowItem;
+import com.geekvigarista.gwt.bootstrap.client.v2.*;
 import com.geekvigarista.gwt.bootstrap.client.v2.resources.ResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -18,14 +15,19 @@ public class BootStrap implements EntryPoint {
 
     public void onModuleLoad() {
         ResourceInjector.configure();
-        HorizontalPanel vpbtns = new HorizontalPanel();
-        vpbtns.add(new Button("Default"));
-        vpbtns.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
-        vpbtns.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
-        vpbtns.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
-        vpbtns.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}));
 
-        RootPanel.get().add(vpbtns);
+        FluidContainer container = new FluidContainer();
+
+        RowItem sidebar = new RowItem(2);
+        sidebar.add(new Button("Default"));
+        sidebar.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
+        sidebar.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
+        sidebar.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
+        sidebar.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}));
+
+        container.add(sidebar);
+
+        RowItem content = new RowItem(10);
 
         Row grid = new Row(true);
         RowItem gi1 = new RowItem(10);
@@ -36,6 +38,10 @@ public class BootStrap implements EntryPoint {
         gi21.add(new Button("Button inside a grid inside a grid"));
         grid1.add(gi21);
         gi1.add(grid1);
-        RootPanel.get().add(grid);
+        content.add(grid);
+
+        container.add(content);
+
+        RootPanel.get().add(container);
     }
 }

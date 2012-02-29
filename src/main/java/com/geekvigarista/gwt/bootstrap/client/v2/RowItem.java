@@ -4,18 +4,18 @@
  */
 package com.geekvigarista.gwt.bootstrap.client.v2;
 
-import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
+import com.geekvigarista.gwt.bootstrap.client.v2.base.DivWidget;
 
 /**
  * This is part of TwBootstrap Grid System. enjoy it.
- * 
+ *
  * @see Row
- * @author 
+ * @author
  */
-public class RowItem extends ComplexWidget {
+public class RowItem extends DivWidget {
 
     public RowItem(int size) {
-        super("div");
+        super();
         size = size < 1 ? 1 : size > 12 ? 12 : size;
         setStyleName("span" + size);
     }
