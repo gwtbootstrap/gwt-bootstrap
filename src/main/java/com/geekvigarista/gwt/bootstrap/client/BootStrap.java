@@ -23,7 +23,7 @@ public class BootStrap implements EntryPoint {
         sidebar.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
         sidebar.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
         sidebar.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
-        sidebar.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}));
+        sidebar.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}, new Icon(Icon.Type.OK_SIGN, Icon.COLOR.WHITE)));
 
         container.add(sidebar);
 
@@ -35,7 +35,7 @@ public class BootStrap implements EntryPoint {
         grid.add(gi1);
         Row grid1 = new Row();
         RowItem gi21 = new RowItem(12, 3);
-        Button disabledBtn = new Button("Button inside a grid inside a grid and disabled");
+        Button disabledBtn = new Button("Button inside a grid inside a grid and disabled", new Icon(Icon.Type.CHECK));
         disabledBtn.setEnabled(false);
         gi21.add(disabledBtn);
         grid1.add(gi21);
