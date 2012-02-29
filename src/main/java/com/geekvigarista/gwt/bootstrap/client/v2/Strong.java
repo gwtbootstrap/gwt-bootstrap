@@ -11,11 +11,10 @@ import com.google.gwt.user.client.DOM;
  *
  * @author carlos
  */
-public class Heading extends AbstractTypography {
+public class Strong extends AbstractTypography {
 
-    public Heading(String text, int size) {
-        size = size < 1 ? 1 : size > 6 ? 6 : size;
-        setElement(DOM.createElement("h" + size));
+    public Strong(String text) {
+        setElement(DOM.createElement("strong"));
         setText(text);
     }
 }
