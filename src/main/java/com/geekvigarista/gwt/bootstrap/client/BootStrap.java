@@ -43,10 +43,11 @@ public class BootStrap implements EntryPoint {
         grid1.add(gi21);
         gi1.add(grid1);
         content.add(grid);
-        gi1.add(new Strong("I'm a Strong semantic text!"));
-        gi1.add(new Emphasis("I'm a em semantic text!"));
-        gi1.add(new Abbreviation("abrb", "I'm a abbreviation!!"));
-
+        grid1.add(new RowItem(2, new Strong("I'm a Strong semantic text!")));
+        grid1.add(new RowItem(2, new Emphasis("I'm a em semantic text!")));
+        grid1.add(new RowItem(2, new Abbreviation("abbr", "abbre means abbreviation, noob!!")));
+        grid1.add(new RowItem(4, new BlockQuote("The best Bootstrap port for GWT in the whole world!", "Carlos (me)", true)));
+        
         container.add(content);
 
         RootPanel.get().add(container);
