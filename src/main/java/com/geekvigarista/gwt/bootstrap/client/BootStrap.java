@@ -31,6 +31,8 @@ public class BootStrap implements EntryPoint {
 
         Row grid = new Row(true);
         RowItem gi1 = new RowItem(10);
+        gi1.add(new Heading("Welcome to GWT-Bootstrap", 1));
+        gi1.add(new Heading("2.0.0-SNAPSHOT", 6));
         gi1.add(new Label("Grid 10"));
         grid.add(gi1);
         Row grid1 = new Row();
