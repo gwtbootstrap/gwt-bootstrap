@@ -1,5 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
+import com.geekvigarista.gwt.bootstrap.client.v2.Button.OPTION;
 import com.geekvigarista.gwt.bootstrap.client.v2.*;
 import com.geekvigarista.gwt.bootstrap.client.v2.resources.ResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
@@ -12,23 +13,23 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @since 21/01/2012
  */
 public class BootStrap implements EntryPoint {
-
+    
     public void onModuleLoad() {
         ResourceInjector.configure();
-
+        
         FluidContainer container = new FluidContainer();
-
+        
         RowItem sidebar = new RowItem(2);
         sidebar.add(new Button("Default"));
         sidebar.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
         sidebar.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
         sidebar.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
         sidebar.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}, new Icon(Icon.Type.OK_SIGN, Icon.COLOR.WHITE)));
-
+        
         container.add(sidebar);
-
+        
         RowItem content = new RowItem(10);
-
+        
         Row grid = new Row(true);
         RowItem gi1 = new RowItem(10);
         gi1.add(new Heading("Welcome to GWT-Bootstrap", 1));
@@ -48,8 +49,15 @@ public class BootStrap implements EntryPoint {
         grid1.add(new RowItem(2, new Abbreviation("abbr", "abbre means abbreviation, noob!!")));
         grid1.add(new RowItem(4, new BlockQuote("The best Bootstrap port for GWT in the whole world!", "Carlos (me)", true)));
         
+        Row grid2 = new Row(true);
+        content.add(grid2);
+        
+        grid2.add(new RowItem(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));
+        
+        grid2.add(new ButtonGroup(new Button("1"), new Button("2"), new Button("3"), new Button("4")));
+        
         container.add(content);
-
+        
         RootPanel.get().add(container);
     }
 }
