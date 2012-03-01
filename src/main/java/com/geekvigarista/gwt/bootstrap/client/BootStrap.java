@@ -54,7 +54,12 @@ public class BootStrap implements EntryPoint {
         
         grid2.add(new RowItem(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));
         
-        grid2.add(new ButtonGroup(new Button("1"), new Button("2"), new Button("3"), new Button("4")));
+        ButtonToolbar toolbar = new ButtonToolbar();
+        toolbar.add(new ButtonGroup(new Button("1"), new Button("2"), new Button("3"), new Button("4")));
+        toolbar.add(new ButtonGroup(new Button("5", new Icon(Icon.Type.STAR))));
+        toolbar.add(new ButtonGroup(new Button("6"), new Button("7"), new Button("8")));
+        
+        grid2.add(toolbar);
         
         container.add(content);
         

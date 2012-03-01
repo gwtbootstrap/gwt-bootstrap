@@ -7,19 +7,19 @@ import com.google.gwt.user.client.ui.IsWidget;
  *
  * @author carlos
  */
-public class FluidContainer extends DivWidget {
+public class ButtonToolbar extends DivWidget {
+    {
+        setStyleName("btn-toolbar");
+    }
 
-    private Row row;
-
-    public FluidContainer() {
-        setStylePrimaryName("container-fluid");
-        this.row = new Row(true);
-        add(row);
+    public ButtonToolbar() {
     }
 
     @Override
     public void add(IsWidget child) {
-        assert child instanceof RowItem : "Child must be a RowItem";
+        assert child instanceof ButtonGroup : "ButtonToolbar only accepts ButtonGroups.";
         super.add(child);
     }
+    
+    
 }
