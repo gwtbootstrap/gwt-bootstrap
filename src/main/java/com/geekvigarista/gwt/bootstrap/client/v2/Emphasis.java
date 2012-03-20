@@ -9,8 +9,12 @@ import com.google.gwt.user.client.DOM;
  */
 public class Emphasis extends AbstractTypography {
 
+	public Emphasis() {
+		setElement(DOM.createElement("em"));
+	}
+	
     public Emphasis(String text) {
-        setElement(DOM.createElement("em"));
+    	this();
         setText(text);
     }
     

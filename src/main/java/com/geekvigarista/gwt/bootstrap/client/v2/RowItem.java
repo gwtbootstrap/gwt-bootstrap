@@ -1,6 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.v2;
 
 import com.geekvigarista.gwt.bootstrap.client.v2.base.DivWidget;
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -11,7 +12,7 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class RowItem extends DivWidget {
 
-    public RowItem(int size) {
+    public @UiConstructor RowItem(int size) {
         super();
         size = size < 1 ? 1 : size > 12 ? 12 : size;
         setStyleName("span" + size);
@@ -19,8 +20,7 @@ public class RowItem extends DivWidget {
 
     public RowItem(int size, int offset) {
         this(size);
-        offset = offset > 0 ? offset : 1;
-        addStyleName("offset" + offset);
+        setOffset(offset);
     }
 
     public RowItem(int size, int offset, Widget... childs) {
@@ -33,6 +33,11 @@ public class RowItem extends DivWidget {
         add(childs);
     }
 
+    public void setOffset(int offset) {
+    	offset = offset > 0 ? offset : 1;
+    	addStyleName("offset" + offset);
+    }
+    
     public void add(Widget... childs) {
         for (Widget child : childs) {
             add(child);

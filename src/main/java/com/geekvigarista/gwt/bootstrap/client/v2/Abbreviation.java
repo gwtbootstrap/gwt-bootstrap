@@ -1,6 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.v2;
 
 import com.geekvigarista.gwt.bootstrap.client.v2.base.AbstractTypography;
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 
 /**
@@ -10,8 +11,13 @@ import com.google.gwt.user.client.DOM;
 public class Abbreviation extends AbstractTypography {
 
     public Abbreviation(String text, String title) {
-        setElement(DOM.createElement("abbr"));
+    	this(title);
         setText(text);
-        setTitle(title);
     }
+    
+    public @UiConstructor Abbreviation(String title) {
+    	setElement(DOM.createElement("abbr"));
+    	setTitle(title);
+    }
+
 }

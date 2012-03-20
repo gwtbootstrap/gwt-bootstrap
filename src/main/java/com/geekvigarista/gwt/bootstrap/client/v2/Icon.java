@@ -1,5 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.v2;
 
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -883,11 +884,19 @@ public class Icon extends Widget {
     public Icon(Type type, COLOR color) {
         this(type);
         if (color == COLOR.WHITE) {
-            addStyleName("icon-white");
+            setColor("white");
         }
     }
     
     public Icon(Type type) {
-        setStylePrimaryName(type.getStyle());
+        this(type.getStyle());
+    }
+    
+    public @UiConstructor Icon(String type) {
+        setStylePrimaryName("icon-" + type);
+    }
+    
+    public void setColor(String color) {
+    	addStyleName("icon-" + color);
     }
 }

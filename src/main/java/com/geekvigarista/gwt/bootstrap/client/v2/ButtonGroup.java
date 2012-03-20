@@ -13,6 +13,10 @@ public class ButtonGroup extends DivWidget {
         setStyleName("btn-group");
     }
     
+    public ButtonGroup() {
+    	// Needed for UiBinder
+    }
+    
     public ButtonGroup(Button... buttons) {
         super();
         for (Button btn : buttons) {

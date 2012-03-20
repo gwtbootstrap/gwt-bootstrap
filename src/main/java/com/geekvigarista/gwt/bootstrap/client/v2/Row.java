@@ -17,8 +17,12 @@ public class Row extends DivWidget {
 
     public Row(boolean fluid) {
         super();
-        if (fluid) {
-            setStyleName("row-fluid");
-        }
+        setFluid(fluid);
+    }
+    
+    public void setFluid(boolean fluid) {
+    	if (fluid) {
+    		setStyleName("row-fluid");
+    	}
     }
 }

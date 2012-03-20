@@ -9,8 +9,12 @@ import com.google.gwt.user.client.ui.IsWidget;
  */
 public class ListItem extends ComplexWidget {
 
+	public ListItem() {
+		super("li");
+	}
+	
     public ListItem(IsWidget... childs) {
-        super("li");
+    	this();
         for (IsWidget w : childs) {
             add(w);
         }

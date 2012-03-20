@@ -9,8 +9,12 @@ import com.google.gwt.user.client.DOM;
  */
 public class Strong extends AbstractTypography {
 
+	public Strong() {
+		setElement(DOM.createElement("strong"));
+	}
+	
     public Strong(String text) {
-        setElement(DOM.createElement("strong"));
+    	this();
         setText(text);
     }
 }

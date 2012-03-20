@@ -13,32 +13,42 @@ public class BlockQuote extends AbstractTypography {
         setElement(DOM.createElement("blockquote"));
     }
 
+    public BlockQuote() {
+    	// Needed for UiBinder
+    }
+    
     public BlockQuote(String text) {
         setText(text);
     }
 
     public BlockQuote(String text, String cite) {
         this(text);
-        getElement().appendChild(new SmallCite(cite).getElement());
+        setCite(cite);
     }
 
     public BlockQuote(String text, boolean pullright) {
         setText(text);
-        if (pullright) {
-            pullRight();
-        }
+        setPullright(pullright);
     }
 
     public BlockQuote(String text, String cite, boolean pullright) {
         this(text);
-        getElement().appendChild(new SmallCite(cite).getElement());
-        if (pullright) {
-            pullRight();
-        }
+        setCite(cite);
+        setPullright(pullright);
     }
 
     private void pullRight() {
         setStyleName("pull-right");
+    }
+    
+    public void setCite(String cite) {
+    	getElement().appendChild(new SmallCite(cite).getElement());
+    }
+    
+    public void setPullright(boolean pullright) {
+    	if (pullright) {
+            pullRight();
+        }
     }
 
     private class Cite extends AbstractTypography {
