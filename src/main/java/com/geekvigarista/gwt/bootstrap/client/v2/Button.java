@@ -5,17 +5,18 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasEnabled;
+import com.google.gwt.user.client.ui.HasText;
 
 /**
  * Bootstrap Button Component.
  *
  * @author Carlos A Becker
  */
-public class Button extends ComplexWidget implements HasClickHandlers, HasDoubleClickHandlers, HasEnabled,
-        HasAllDragAndDropHandlers, HasAllFocusHandlers, HasAllGestureHandlers,
-        HasAllKeyHandlers, HasAllMouseHandlers, HasAllTouchHandlers {
+public class Button extends ComplexWidget implements HasText, HasClickHandlers, 
+		HasDoubleClickHandlers, HasEnabled, HasAllDragAndDropHandlers, 
+		HasAllFocusHandlers, HasAllGestureHandlers, HasAllKeyHandlers,
+		HasAllMouseHandlers, HasAllTouchHandlers {
 
     public enum OPTION {
 
@@ -97,10 +98,17 @@ public class Button extends ComplexWidget implements HasClickHandlers, HasDouble
         removeStyleName("gwt-Button");
         addStyleName(OPTION.DEFAULT.getStyle());
     }
+    
+    private String text;
+    
+    private Button() {
+    	
+    	super("a");
+        getElement().appendChild(Document.get().createElement("i"));
+    }
 
     public Button(String text) {
-        super("a");
-        getElement().appendChild(Document.get().createElement("i"));
+        this();
         setText(text);
     }
 
@@ -124,13 +132,33 @@ public class Button extends ComplexWidget implements HasClickHandlers, HasDouble
         if (icon == null) {
             return;
         }
-        getElement().getElementsByTagName("i").getItem(0).setClassName(icon.getStyleName());
+        setIcon(icon.getStyleName());
+    }
+    
+    public void setIcon(String iconname) {
+    	getElement().getElementsByTagName("i").getItem(0).setClassName(
+    			"icon-" + iconname);
     }
 
     public void setText(String text) {
+    	this.text = text;
         Element i = getElement().getElementsByTagName("i").getItem(0);
-        getElement().setInnerHTML((i != null ? i.toString() : "<i></i>") + " " + text);
+        getElement().setInnerHTML((i != null ? i.toString() : "<i></i>") + 
+        		" " + text);
     }
+
+	public String getText() {
+		return text;
+	}
+	
+	public void setOptions(String optionstring) {
+		String[] options = optionstring.split(" ");
+		String output = "";
+		for (String s : options) {
+			output += (" btn-" + s);
+		}
+		addStyleDependentName(output);
+	}
 
     public void addOption(OPTION option) {
         addStyleDependentName(option.getStyle());
@@ -257,4 +285,5 @@ public class Button extends ComplexWidget implements HasClickHandlers, HasDouble
     public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
         return addDomHandler(handler, TouchCancelEvent.getType());
     }
+
 }

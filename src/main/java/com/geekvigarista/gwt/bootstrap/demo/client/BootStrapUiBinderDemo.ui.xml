@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.geekvigarista.gwt.bootstrap.client.v2">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		Hello,
+		<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>
+	</g:HTMLPanel>
+</ui:UiBinder> 
