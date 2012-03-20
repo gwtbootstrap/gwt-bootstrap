@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
  */
-public class BootStrap implements EntryPoint {
+public class BootStrapDemo implements EntryPoint {
     
     public void onModuleLoad() {
         ResourceInjector.configure();

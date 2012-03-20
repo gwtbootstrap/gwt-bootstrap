@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.alerts;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
 
 /**
  * A simple DangerAlertMessage Component based on Twitter's Bootstrap Alert.

@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.base;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.Span;
 import com.google.gwt.user.client.ui.Widget;
 
 /**

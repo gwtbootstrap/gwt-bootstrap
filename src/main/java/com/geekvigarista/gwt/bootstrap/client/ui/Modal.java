@@ -1,10 +1,10 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapElementHelper;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.ResourceInjector;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapElementHelper;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.Resources;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;

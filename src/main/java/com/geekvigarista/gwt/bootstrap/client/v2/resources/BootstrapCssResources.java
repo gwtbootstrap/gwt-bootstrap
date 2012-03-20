@@ -1,4 +1,4 @@
-package com.geekvigarista.gwt.bootstrap.client.ui.resources;
+package com.geekvigarista.gwt.bootstrap.client.v2.resources;
 
 /**
  * Constants interface with all CSS class names from twitter bootstrap.

@@ -1,8 +1,8 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.SizeHelper;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.Span;
 import com.google.gwt.user.client.ui.SimplePanel;
 
 /**

@@ -881,7 +881,7 @@ public class Icon extends Widget {
     }
 
     public Icon(Type type, COLOR color) {
-        setStylePrimaryName(type.getStyle());
+        this(type);
         if (color == COLOR.WHITE) {
             addStyleName("icon-white");
         }

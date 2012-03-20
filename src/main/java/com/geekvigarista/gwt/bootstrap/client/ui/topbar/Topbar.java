@@ -4,7 +4,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.Container;
 import com.geekvigarista.gwt.bootstrap.client.ui.DivPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.ListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.UnordenedList;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
 import com.google.gwt.user.client.ui.Widget;
 
 /**

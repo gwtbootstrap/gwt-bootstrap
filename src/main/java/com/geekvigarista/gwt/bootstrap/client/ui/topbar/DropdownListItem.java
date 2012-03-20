@@ -2,9 +2,9 @@ package com.geekvigarista.gwt.bootstrap.client.ui.topbar;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.ListItem;
 import com.geekvigarista.gwt.bootstrap.client.ui.UnordenedList;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.ResourceInjector;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.Resources;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.IsWidget;

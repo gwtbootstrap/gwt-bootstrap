@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.topbar;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;

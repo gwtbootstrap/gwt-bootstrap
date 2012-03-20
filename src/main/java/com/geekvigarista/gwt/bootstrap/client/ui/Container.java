@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
 import com.geekvigarista.gwt.bootstrap.client.ui.topbar.Topbar;
 
 /**
