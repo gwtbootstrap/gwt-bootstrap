@@ -1,8 +1,8 @@
 package com.geekvigarista.gwt.bootstrap.client;
 
-import com.geekvigarista.gwt.bootstrap.client.v2.Button.OPTION;
-import com.geekvigarista.gwt.bootstrap.client.v2.*;
-import com.geekvigarista.gwt.bootstrap.client.v2.resources.ResourceInjector;
+import com.geekvigarista.gwt.bootstrap.client.ui.*;
+import com.geekvigarista.gwt.bootstrap.client.ui.Button.OPTION;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;

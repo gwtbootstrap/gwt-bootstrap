@@ -1,15 +1,19 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.v2.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.Topbar;
+import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
 
 /**
- * A container component. Used in {@link Topbar}
- * @author Carlos Alexandro Becker
- * @since 25/01/2012
+ * Layouts from TwBootstrap. You can add Rows and Fluid Rows inside it to build a "sidebar" or something you like to.
+ * By default, it is a fixed layout.
+ * 
+ * @see Row
+ * @see RowItem
+ * @see DivWidget
+ * @author Carlos A Becker
  */
-public class Container extends DivPanel {
-	{
-		setStyleName(BootstrapCssResources.container);
-	}
+public class Container extends DivWidget {
+
+    public Container() {
+        setStylePrimaryName("container");
+    }
 }
