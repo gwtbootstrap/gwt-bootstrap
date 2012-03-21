@@ -26,6 +26,20 @@
 			<b:NavSearch size="2" placeholder="Search" alignment="right"/>
 		</b:Navbar>
 	
+		<b:NavList>
+			<b:NavHeader>Header</b:NavHeader>
+			<b:NavLink active="true" icon="plane">Test</b:NavLink>
+			<b:Divider />
+			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+		</b:NavList>
+
+		<b:WellNavList>
+			<b:NavHeader>Header</b:NavHeader>
+			<b:NavLink active="true" icon="plane">Test</b:NavLink>
+			<b:Divider />
+			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+		</b:WellNavList>
+
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
 		<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>
 		<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>
@@ -44,6 +58,10 @@
 		Icon: <b:Icon type="star"/> :-). Invisible: <b:Icon type="heart" color="white"/> ;-).
 		Strong: <b:Strong>Hey!</b:Strong>
 		
+		Close Icon: <b:Close />
+		
+		Badge: <b:Badge type="error" >2</b:Badge>. <b:Badge>2</b:Badge>
+		
 		<b:Container>
 			<b:UnorderedList>
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>
@@ -51,14 +69,19 @@
 			</b:UnorderedList>
 		</b:Container>
 		
+		<b:Heading size="4" subtext="subtext">Heading</b:Heading>
+		
 		<b:FluidContainer>
 			<b:Row>
-				<b:RowItem size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:RowItem>
-				<b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
+				<b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
+				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
 			</b:Row>
 			<b:Row fluid="true">
-				<b:RowItem size="2"><g:Label>I'm in a Fluid row...</g:Label></b:RowItem>
-				<b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
+				<b:Column size="2"><g:Label>I'm in a Fluid row...</g:Label></b:Column>
+				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
+				<b:Column size="2">
+					<b:PageHeader subtext="And this is the subtext.">This is the header</b:PageHeader>
+				</b:Column>
 			</b:Row>
 		</b:FluidContainer>
 	</g:HTMLPanel>

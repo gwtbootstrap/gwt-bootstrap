@@ -1,19 +1,17 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
+import com.geekvigarista.gwt.bootstrap.client.ui.base.IconAnchor;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasEnabled;
-import com.google.gwt.user.client.ui.HasText;
 
 /**
  * Bootstrap Button Component.
  *
  * @author Carlos A Becker
  */
-public class Button extends ComplexWidget implements HasText, HasClickHandlers, 
+public class Button extends IconAnchor implements HasClickHandlers, 
 		HasDoubleClickHandlers, HasEnabled, HasAllDragAndDropHandlers, 
 		HasAllFocusHandlers, HasAllGestureHandlers, HasAllKeyHandlers,
 		HasAllMouseHandlers, HasAllTouchHandlers {
@@ -99,11 +97,8 @@ public class Button extends ComplexWidget implements HasText, HasClickHandlers,
         addStyleName(OPTION.DEFAULT.getStyle());
     }
     
-    private String text;
-    
     private Button() {
-    	
-    	super("a");
+    	super();
         getElement().appendChild(Document.get().createElement("i"));
     }
 
@@ -127,29 +122,6 @@ public class Button extends ComplexWidget implements HasText, HasClickHandlers,
             addStyleName(option.getStyle());
         }
     }
-
-    public void setIcon(Icon icon) {
-        if (icon == null) {
-            return;
-        }
-        setIcon(icon.getStyleName());
-    }
-    
-    public void setIcon(String iconname) {
-    	getElement().getElementsByTagName("i").getItem(0).setClassName(
-    			"icon-" + iconname);
-    }
-
-    public void setText(String text) {
-    	this.text = text;
-        Element i = getElement().getElementsByTagName("i").getItem(0);
-        getElement().setInnerHTML((i != null ? i.toString() : "<i></i>") + 
-        		" " + text);
-    }
-
-	public String getText() {
-		return text;
-	}
 	
 	public void setOptions(String optionstring) {
 		String[] options = optionstring.split(" ");

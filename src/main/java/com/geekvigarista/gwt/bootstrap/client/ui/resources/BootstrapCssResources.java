@@ -174,6 +174,10 @@ public interface BootstrapCssResources {
 
 	public static final String nav = "nav";
 	
+	public static final String nav_list = "nav-list";
+	
+	public static final String nav_header = "nav-header";
+	
 	public static final String navbar_inner = "navbar-inner";
 
 	public static final String secondary_nav = "secondary-nav";
@@ -193,4 +197,25 @@ public interface BootstrapCssResources {
 	public static final String uneditable_input = "uneditable-input";
 
 	public static final String search_query = "search-query";
+
+	public static final String well = "well";
+
+	public static final String close = "close";
+
+	public static final String inverse = "inverse";
+
+	public static final String badge = "badge";
+
+	public static final String badge_success = "badge-success";
+
+	public static final String badge_warning = "badge-warning";
+
+	public static final String badge_error = "badge-error";
+
+	public static final String badge_info = "badge-info";
+
+	public static final String badge_inverse = "badge-inverse";
+
+	public static final String page_header = "page-header";
+
 }

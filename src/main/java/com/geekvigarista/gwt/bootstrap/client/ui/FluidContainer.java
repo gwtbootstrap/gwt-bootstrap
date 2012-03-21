@@ -19,7 +19,7 @@ public class FluidContainer extends DivWidget {
 
     @Override
     public void add(IsWidget child) {
-        assert child instanceof RowItem : "Child must be a RowItem";
+        assert child instanceof Column : "Child must be a RowItem";
         super.add(child);
     }
 }
