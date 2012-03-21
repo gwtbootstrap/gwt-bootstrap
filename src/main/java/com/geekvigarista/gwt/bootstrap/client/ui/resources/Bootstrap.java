@@ -139,7 +139,34 @@ public interface Bootstrap {
 	public static final String nav_pills = "nav-pills";
 
 	public static final String nav_stacked = "nav-stacked";
+
+	public static final String tabbable = "tabbable";
+
+	public static final String tab_pane = "tab-pane";
+
+	public static final String tab_content = "tab-content";
 	
+	
+	public enum Tabs implements Style {
+
+		ABOVE(""),
+		BELOW("tabs-below"),
+		LEFT("tabs-left"),
+		RIGHT("tabs-right"),
+		INFO("badge-info");
+		
+		private static final String tabbable = "tabbable ";
+	
+		private String className;
+		
+		private Tabs(String className) {
+			this.className = tabbable + className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	}
 	
 	public enum Badge implements Style {
 

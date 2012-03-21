@@ -83,7 +83,7 @@
 					<b:NavTabs>
 						<b:NavLink>1</b:NavLink>
 						<b:NavLink active="true">2</b:NavLink>
-						<b:NavLink disabled="true" alignment="right">3</b:NavLink>
+						<b:NavLink disabled="true">3</b:NavLink>
 					</b:NavTabs>
 				</b:Column>
 				<b:Column size="2">
@@ -92,6 +92,18 @@
 						<b:NavLink active="true">2</b:NavLink>
 						<b:NavLink disabled="true">3</b:NavLink>
 					</b:NavPills>
+				</b:Column>
+				<b:Column size="2">
+					<b:TabPanel>
+						<b:TabPane heading="prost" active="true"><g:Label>Lalala</g:Label></b:TabPane>
+						<b:TabPane heading="test"><g:Label>Huhu</g:Label></b:TabPane>
+					</b:TabPanel>
+				</b:Column>
+				<b:Column size="2">
+					<b:TabPanel tabPosition="right">
+						<b:TabPane heading="prost"><g:Label>Lalala</g:Label></b:TabPane>
+						<b:TabPane heading="test" href="2"><g:Label>Huhu</g:Label></b:TabPane>
+					</b:TabPanel>
 				</b:Column>
 			</b:Row>
 		</b:Container>

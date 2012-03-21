@@ -56,6 +56,15 @@ The names of icon and options are the same as in Bootstrap without the preceding
 
 * `<b:NavPills stacked="true">...</b:NavPills>`
 
+## TabPanel
+    <b:TabPanel tabPosition="right">
+    	<b:TabPane heading="prost" href="1"><g:Label>Lalala</g:Label></b:TabPane>
+    	<b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
+    </b:TabPanel>
+
+`tabPosition` is optional and defaults to `above`. Options: `below`, `left`, `right`. 
+`href` is optional. If none is provided, gwt-bootstrap will generate a random string.
+
 ## Navbar
 
     <b:Navbar fixed="top">

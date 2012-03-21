@@ -58,6 +58,10 @@ public class NavLink extends ListItem implements HasText {
     		removeStyleName(Bootstrap.disabled);
     }
     
+    protected IconAnchor getAnchor() {
+    	return anchor;
+    }
+    
 //    //TODO
 //    public void setAlignment(String alignment) {
 //    	if (alignment.equalsIgnoreCase("right")) {
