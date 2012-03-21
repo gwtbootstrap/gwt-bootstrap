@@ -29,12 +29,12 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 
     <b:FluidContainer>
       <b:Row>
-        <b:RowItem size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:RowItem>
-        <b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
+        <b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
+        <b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
       </b:Row>
       <b:Row fluid="true">
-        <b:RowItem size="2"><g:Label>I'm in a Fluid row...</g:Label></b:RowItem>
-        <b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
+        <b:Column size="2"><g:Label>I'm in a Fluid row...</g:Label></b:Column>
+        <b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
       </b:Row>
     </b:FluidContainer>`
 
