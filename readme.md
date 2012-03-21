@@ -34,3 +34,20 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
         <b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
       </b:Row>
     </b:FluidContainer>`
+
+## Navbar
+
+    <b:Navbar fixed="top">
+    	<b:Brand>Bootstrap</b:Brand>
+    	<b:Nav>
+    		<b:NavLink>Test</b:NavLink>
+    		<b:DividerVertical />
+    		<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+    	</b:Nav>
+    	<b:NavForm size="1"/>
+    	<b:Nav alignment="right">
+    		<b:NavLink>Test</b:NavLink>
+    	</b:Nav>
+    	<b:NavText alignment="right">Right</b:NavText>
+    	<b:NavSearch size="2" placeholder="Search" alignment="right"/>
+    </b:Navbar>

@@ -43,15 +43,15 @@ public class Topbar extends DivPanel {
 		fill.add(container);
 		add(fill);
 	}
-	
+
 	public void addPrimaryNavItem(ListItem li) {
 		primaryNav.add(li);
 	}
-	
+
 	public void addSecondaryNavItem(ListItem li) {
 		secondaryNav.add(li);
 	}
-	
+
 	public void addItem(Widget w) {
 		container.add(w);
 	}
