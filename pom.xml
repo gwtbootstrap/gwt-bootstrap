@@ -77,7 +77,7 @@
         <!-- Plugin configuration. There are many available options, see 
           gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
-          <runTarget>BootStrap.html</runTarget>
+          <runTarget>Bootstrap.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <i18nMessagesBundle>com.geekvigarista.gwt.bootstrap.client.Messages</i18nMessagesBundle>
         </configuration>

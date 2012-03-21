@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
 import com.geekvigarista.gwt.bootstrap.client.old.base.SizeHelper;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
@@ -16,7 +16,7 @@ public class InlineLabel extends Widget {
 
 	{
 		setElement(DOM.createSpan());
-		setStyleName(BootstrapCssResources.label);
+		setStyleName(Bootstrap.label);
 	}
 
 	public InlineLabel() {
@@ -66,25 +66,25 @@ public class InlineLabel extends Widget {
 		SUCCESS {
 			@Override
 			String get() {
-				return BootstrapCssResources.success;
+				return Bootstrap.success;
 			}
 		},
 		WARNING {
 			@Override
 			String get() {
-				return BootstrapCssResources.warning;
+				return Bootstrap.warning;
 			}
 		},
 		IMPORTANT {
 			@Override
 			String get() {
-				return BootstrapCssResources.important;
+				return Bootstrap.important;
 			}
 		},
 		NOTICE {
 			@Override
 			String get() {
-				return BootstrapCssResources.notice;
+				return Bootstrap.notice;
 			}
 		};
 		abstract String get();

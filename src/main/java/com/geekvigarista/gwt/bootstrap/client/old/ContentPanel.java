@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A content panel for {@link FluidLayout}.
@@ -14,6 +14,6 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
  */
 public class ContentPanel extends DivPanel {
 	{
-		setStyleName(BootstrapCssResources.content);
+		setStyleName(Bootstrap.content);
 	}
 }

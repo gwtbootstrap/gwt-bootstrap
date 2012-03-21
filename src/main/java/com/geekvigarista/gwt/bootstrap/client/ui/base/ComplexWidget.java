@@ -1,5 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.base;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap.Style;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.ComplexPanel;
@@ -61,5 +62,13 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets {
             e.printStackTrace();
         }
         return false;
+    }
+    
+    public void setStyle(Style style) {
+    	setStyleName(style.get());
+    }
+    
+    public void addStyle(Style style) {
+    	addStyleName(style.get());
     }
 }

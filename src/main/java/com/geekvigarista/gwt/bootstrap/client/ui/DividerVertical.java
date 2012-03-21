@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A vertical divider for the Navbar.
@@ -10,6 +10,6 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 public class DividerVertical extends ListItem {
 
 	public DividerVertical() {
-		setStyleName(BootstrapCssResources.divider_vertical);
+		setStyleName(Bootstrap.divider_vertical);
 	}
 }

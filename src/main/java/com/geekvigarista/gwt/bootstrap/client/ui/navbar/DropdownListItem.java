@@ -3,7 +3,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui.navbar;
 import com.geekvigarista.gwt.bootstrap.client.old.ListItem;
 import com.geekvigarista.gwt.bootstrap.client.old.UnordenedList;
 import com.geekvigarista.gwt.bootstrap.client.ui.Navbar;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Element;
@@ -23,7 +23,7 @@ public class DropdownListItem extends ListItem {
 //	}
 
 	{
-		setStyleName(BootstrapCssResources.menu);
+		setStyleName(Bootstrap.menu);
 	}
 
 	private final UnordenedList ul;
@@ -32,12 +32,12 @@ public class DropdownListItem extends ListItem {
 	public DropdownListItem(String text) {
 		a = new Anchor(text);
 		a.setHref("#");
-		a.setStyleName(BootstrapCssResources.menu);
+		a.setStyleName(Bootstrap.menu);
 
 		add(a);
 
 		ul = new UnordenedList();
-		ul.setStyleName(BootstrapCssResources.menu_dropdown);
+		ul.setStyleName(Bootstrap.menu_dropdown);
 
 		add(ul);
 	}

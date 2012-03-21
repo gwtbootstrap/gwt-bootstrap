@@ -1,9 +1,9 @@
 package com.geekvigarista.gwt.bootstrap.client.old.inputs;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 public class UneditableTextBox extends TextBox {
 	{
-		addStyleName(BootstrapCssResources.uneditable_input);
+		addStyleName(Bootstrap.uneditable_input);
 	}
 }

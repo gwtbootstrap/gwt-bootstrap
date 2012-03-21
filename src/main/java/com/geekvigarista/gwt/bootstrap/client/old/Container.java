@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.geekvigarista.gwt.bootstrap.client.old.topbar.Topbar;
 
 /**
@@ -10,6 +10,6 @@ import com.geekvigarista.gwt.bootstrap.client.old.topbar.Topbar;
  */
 public class Container extends DivPanel {
 	{
-		setStyleName(BootstrapCssResources.container);
+		setStyleName(Bootstrap.container);
 	}
 }

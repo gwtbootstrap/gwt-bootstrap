@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * The Breadcrumbs container
@@ -10,7 +10,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 public class Breadcrumbs extends UnorderedList {
 
 	public Breadcrumbs() {
-		setStyleName(BootstrapCssResources.breadcrumb);
+		setStyleName(Bootstrap.breadcrumb);
 	}
 	
 	//TODO

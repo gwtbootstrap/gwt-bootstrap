@@ -4,7 +4,7 @@ import com.geekvigarista.gwt.bootstrap.client.old.Container;
 import com.geekvigarista.gwt.bootstrap.client.old.DivPanel;
 import com.geekvigarista.gwt.bootstrap.client.old.ListItem;
 import com.geekvigarista.gwt.bootstrap.client.old.UnordenedList;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -23,7 +23,7 @@ public class Topbar extends DivPanel {
 
 	public Topbar(String projectName) {
 
-		setStyleName(BootstrapCssResources.topbar);
+		setStyleName(Bootstrap.topbar);
 
 		fill = new FillDiv();
 		container = new Container();
@@ -31,11 +31,11 @@ public class Topbar extends DivPanel {
 		brand = new Brand(projectName);
 
 		primaryNav = new UnordenedList();
-		primaryNav.setStyleName(BootstrapCssResources.nav);
+		primaryNav.setStyleName(Bootstrap.nav);
 
 		secondaryNav = new UnordenedList();
-		secondaryNav.setStyleName(BootstrapCssResources.nav);
-		secondaryNav.addStyleName(BootstrapCssResources.secondary_nav);
+		secondaryNav.setStyleName(Bootstrap.nav);
+		secondaryNav.addStyleName(Bootstrap.secondary_nav);
 
 		container.add(brand);
 		container.add(primaryNav);

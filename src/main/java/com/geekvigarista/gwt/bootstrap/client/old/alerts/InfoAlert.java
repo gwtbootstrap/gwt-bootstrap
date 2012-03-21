@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old.alerts;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A simple InfoAlertMessage Component based on Twitter's Bootstrap Alert.
@@ -11,7 +11,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 public class InfoAlert extends Alert {
 
 	{
-		addStyleName(BootstrapCssResources.info);
+		addStyleName(Bootstrap.info);
 	}
 
 	public InfoAlert(String text) {

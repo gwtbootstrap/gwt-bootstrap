@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A fluid layout for your page.
@@ -14,6 +14,6 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
  */
 public class FluidLayout extends DivPanel {
 	{
-		setStyleName(BootstrapCssResources.container_fluid);
+		setStyleName(Bootstrap.container_fluid);
 	}
 }

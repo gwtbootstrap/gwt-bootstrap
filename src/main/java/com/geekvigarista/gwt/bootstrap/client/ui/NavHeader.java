@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.HasText;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.HasText;
 public class NavHeader extends ListItem implements HasText {
 
 	public NavHeader() {
-		setStyleName(BootstrapCssResources.nav_header);
+		setStyleName(Bootstrap.nav_header);
 	}
 
 	public String getText() {

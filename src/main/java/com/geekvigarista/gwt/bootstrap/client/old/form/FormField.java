@@ -2,7 +2,7 @@ package com.geekvigarista.gwt.bootstrap.client.old.form;
 
 import com.geekvigarista.gwt.bootstrap.client.old.DivPanel;
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
@@ -18,12 +18,12 @@ public class FormField<T, W extends Widget & HasValue<T>> extends ComplexWidget
 		super("div");
 		this.w = w;
 		this.id = w.hashCode() + "";
-		setStyleName(BootstrapCssResources.clearfix);
+		setStyleName(Bootstrap.clearfix);
 		w.getElement().setId(id);
 		add(new FormFieldLabel(id, label));
 		DivPanel c = new DivPanel();
 		c.add(w);
-		c.setStyleName(BootstrapCssResources.input);
+		c.setStyleName(Bootstrap.input);
 		add(c);
 	}
 

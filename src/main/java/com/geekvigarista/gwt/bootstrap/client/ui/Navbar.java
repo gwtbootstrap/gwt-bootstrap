@@ -2,7 +2,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.old.Container;
 import com.geekvigarista.gwt.bootstrap.client.old.DivPanel;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;
@@ -17,7 +17,7 @@ public class Navbar extends DivPanel {
 	private class NavbarInner extends DivPanel {
 
 		public NavbarInner() {
-			setStyleName(BootstrapCssResources.navbar_inner);
+			setStyleName(Bootstrap.navbar_inner);
 		}
 	}
 	
@@ -25,7 +25,7 @@ public class Navbar extends DivPanel {
 	private final NavbarInner navbarInner = new NavbarInner();
 
 	public Navbar() {
-		setStyleName(BootstrapCssResources.navbar);
+		setStyleName(Bootstrap.navbar);
 		navbarInner.add(container);
 		super.add(navbarInner);
 	}
@@ -33,12 +33,12 @@ public class Navbar extends DivPanel {
 	// TODO
 	public void setFixed(String position) {
 		if (position.equalsIgnoreCase("top")) {
-			removeStyleName(BootstrapCssResources.navbar_fixed_bottom);
-			addStyleName(BootstrapCssResources.navbar_fixed_top);
+			removeStyleName(Bootstrap.navbar_fixed_bottom);
+			addStyleName(Bootstrap.navbar_fixed_top);
 			Document.get().getBody().getStyle().setPaddingTop(40, Unit.PX);
 		} if (position.equalsIgnoreCase("bottom")) {
-			removeStyleName(BootstrapCssResources.navbar_fixed_top);
-			addStyleName(BootstrapCssResources.navbar_fixed_bottom);
+			removeStyleName(Bootstrap.navbar_fixed_top);
+			addStyleName(Bootstrap.navbar_fixed_bottom);
 		}
 	}
 	

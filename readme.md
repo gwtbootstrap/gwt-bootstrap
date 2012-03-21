@@ -1,13 +1,11 @@
 # GWT-Bootstrap
 
-## Based on Twitter's Bootstrap. ( http://twitter.github.com/bootstrap/index.html ) 
-
-Examples, tutorials and wiki will be avaliable soon.
+Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html) 
 
 ## Installation
 
 * Download the zip, extract and add the folder as external source to the build path.
-* Add `<inherits name="com.geekvigarista.gwt.bootstrap.BootStrap"/>` to your *.gwt.xml file.
+* Add `<inherits name="com.geekvigarista.gwt.bootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
 # UiBinder
 
@@ -32,10 +30,10 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
         <b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
         <b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
       </b:Row>
-      <b:Row fluid="true">
+      <b:FluidRow>
         <b:Column size="2"><g:Label>I'm in a Fluid row...</g:Label></b:Column>
         <b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
-      </b:Row>
+      </b:FluidRow>
     </b:FluidContainer>`
 
 ## Navbar
@@ -70,3 +68,37 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
     	<b:Divider />
     	<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
     </b:WellNavList>
+
+## Hero Unit
+    <b:Hero>
+    	<b:Heading size="2">Hero Unit</b:Heading>
+    	<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
+    	<b:Paragraph>More text.</b:Paragraph>
+    </b:Hero>
+
+## Progress Bar
+* `<b:ProgressBar percent="20"/>`
+* `<b:ProgressBar style="striped" percent="40"/>`
+* `<b:ProgressBar style="animated" percent="60"/>`
+
+## Alerts
+* `<b:Alert style="success" close="false">TestAlert without close</b:Alert>`
+* `<b:AlertBlock style="info" heading="Heading">AlertBlock</b:AlertBlock>`
+
+## Labels
+* `<b:Label>Default label</b:Label>`
+* `<b:Label type="info">Info label</b:Label>`
+
+## Pager
+* `<b:Pager left="Left" right="Right"/>`
+* `<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>`
+
+## Pagination
+    <b:Pagination>
+    	<b:NavLink href="http://www.google.com">1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    	<b:NavLink disabled="true">3</b:NavLink>
+    </b:Pagination>
+
+* `<b:Pagination alignment="right">...</b:Pagination>`
+* `<b:Pagination alignment="centered">...</b:Pagination>`

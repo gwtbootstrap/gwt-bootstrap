@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old.topbar;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -28,7 +28,7 @@ public class SearchItem extends FocusWidget implements HasValue<String> {
 
 	{
 		setElement(DOM.createForm());
-		setStyleName(BootstrapCssResources.pull_left);
+		setStyleName(Bootstrap.pull_left);
 		input = DOM.createInputText();
 		// disable form submit on enter press.
 		input.setAttribute("onKeyPress", "return disableEnterKey(event);");

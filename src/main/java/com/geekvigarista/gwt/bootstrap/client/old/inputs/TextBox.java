@@ -3,7 +3,7 @@ package com.geekvigarista.gwt.bootstrap.client.old.inputs;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 
 /**
- * The BootStrap TextBox.
+ * The Bootstrap TextBox.
  * 
  * @author Carlos Alexandro Becker
  * @since 21/01/2012
