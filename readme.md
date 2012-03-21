@@ -70,3 +70,10 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
     	<b:Divider />
     	<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
     </b:WellNavList>
+
+## Hero Unit
+    <b:Hero>
+    	<b:Heading size="2">Hero Unit</b:Heading>
+    	<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
+    	<b:Paragraph>More text.</b:Paragraph>
+    </b:Hero>
