@@ -4,15 +4,14 @@ import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 
 /**
- * This is the twBootstrap Grid System, enjoy.
- *
- * @see Column
- * @author Carlos A Becker
+ * A Fluid row for the Grid System.
+ * 
+ * @author Dominik Mayer
  */
-public class Row extends DivWidget {
+public class FluidRow extends DivWidget {
 
-    public Row() {
+    public FluidRow() {
         super();
-        setStyleName(BootstrapCssResources.row);
+        setStyleName(BootstrapCssResources.row_fluid);
     }
 }

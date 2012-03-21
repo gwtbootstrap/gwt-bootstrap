@@ -30,7 +30,7 @@ public class BootstrapDemo implements EntryPoint {
         
         Column content = new Column(10);
         
-        Row grid = new Row(true);
+        FluidRow grid = new FluidRow();
         Column gi1 = new Column(10);
         gi1.add(new Heading("Welcome to GWT-Bootstrap", 1));
         gi1.add(new Heading("2.0.0-SNAPSHOT", 6));
@@ -49,7 +49,7 @@ public class BootstrapDemo implements EntryPoint {
         grid1.add(new Column(2, new Abbreviation("abbr", "abbre means abbreviation, noob!!")));
         grid1.add(new Column(4, new BlockQuote("The best Bootstrap port for GWT in the whole world!", "Carlos (me)", true)));
         
-        Row grid2 = new Row(true);
+        FluidRow grid2 = new FluidRow();
         content.add(grid2);
         
         grid2.add(new Column(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));

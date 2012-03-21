@@ -57,9 +57,9 @@ public class ProgressBar extends DivWidget {
 
 	public void setStyle(String stylename) {
 		setStyleName(BootstrapCssResources.progress);
-		if (stylename.equals("striped"))
+		if (stylename.equalsIgnoreCase("striped"))
 			addStyleName(BootstrapCssResources.progress_striped);
-		else if (stylename.equals("animated"))
+		else if (stylename.equalsIgnoreCase("animated"))
 			addStyleName(BootstrapCssResources.progress_animated);
 	}
 	

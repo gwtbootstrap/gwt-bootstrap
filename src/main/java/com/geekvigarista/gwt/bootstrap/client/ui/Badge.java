@@ -3,6 +3,11 @@ package com.geekvigarista.gwt.bootstrap.client.ui;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 import com.google.gwt.user.client.ui.InlineLabel;
 
+/**
+ * A Badge to show some kind of count.
+ * 
+ * @author Dominik Mayer
+ */
 public class Badge extends InlineLabel {
 
 	public enum Type {

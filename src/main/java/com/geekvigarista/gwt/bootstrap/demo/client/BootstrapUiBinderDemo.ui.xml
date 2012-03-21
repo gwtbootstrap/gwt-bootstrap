@@ -77,18 +77,29 @@
 				<b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
 				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
 			</b:Row>
-			<b:Row fluid="true">
+			<b:FluidRow>
 				<b:Column size="2"><g:Label>I'm in a Fluid row...</g:Label></b:Column>
 				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
 				<b:Column size="2">
 					<b:PageHeader subtext="And this is the subtext.">This is the header</b:PageHeader>
 				</b:Column>
-			</b:Row>
-			<b:Row fluid="true">
+			</b:FluidRow>
+			<b:FluidRow>
 				<b:Column size="2"><b:ProgressBar percent="20"/></b:Column>
 				<b:Column size="2"><b:ProgressBar style="striped" percent="40"/></b:Column>
 				<b:Column size="2"><b:ProgressBar style="animated" percent="60"/></b:Column>
-			</b:Row>
+			</b:FluidRow>
+					<b:FluidRow>
+				<b:Column size="3">
+					<b:Alert style="error">TestAlert with <b>html</b></b:Alert>
+				</b:Column>
+				<b:Column size="3">
+					<b:Alert style="success" heading="Hm..." close="false">TestAlert without close</b:Alert>
+				</b:Column>
+				<b:Column size="3">
+					<b:AlertBlock style="info" heading="Heading">AlertBlock</b:AlertBlock>
+				</b:Column>
+			</b:FluidRow>
 			<b:Row>
 				<b:Column size="6">
 					<b:Hero>

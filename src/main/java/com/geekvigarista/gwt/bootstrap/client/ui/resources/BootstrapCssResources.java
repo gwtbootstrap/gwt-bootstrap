@@ -228,4 +228,20 @@ public interface BootstrapCssResources {
 
 	public static final String bar = "bar";
 
+	public static final String alert = "alert";
+
+	public static final String alert_error = "alert-error";
+
+	public static final String alert_success = "alert-success";
+
+	public static final String alert_info = "alert-info";
+
+	public static final String alert_block = "alert-block";
+
+	public static final String alert_heading = "alert-heading";
+
+	public static final String data_dismiss = "data-dismiss";
+
+	public static final String row_fluid = "row-fluid";
+
 }
