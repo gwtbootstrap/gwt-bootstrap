@@ -10,25 +10,25 @@ import com.google.gwt.user.client.ui.Widget;
  * @see Row
  * @author
  */
-public class RowItem extends DivWidget {
+public class Column extends DivWidget {
 
-    public @UiConstructor RowItem(int size) {
+    public @UiConstructor Column(int size) {
         super();
         size = size < 1 ? 1 : size > 12 ? 12 : size;
         setStyleName("span" + size);
     }
 
-    public RowItem(int size, int offset) {
+    public Column(int size, int offset) {
         this(size);
         setOffset(offset);
     }
 
-    public RowItem(int size, int offset, Widget... childs) {
+    public Column(int size, int offset, Widget... childs) {
         this(size, offset);
         add(childs);
     }
 
-    public RowItem(int size, Widget... childs) {
+    public Column(int size, Widget... childs) {
         this(size);
         add(childs);
     }

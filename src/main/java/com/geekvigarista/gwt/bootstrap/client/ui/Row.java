@@ -5,7 +5,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
 /**
  * This is the twBootstrap Grid System, enjoy.
  *
- * @see RowItem
+ * @see Column
  * @author Carlos A Becker
  */
 public class Row extends DivWidget {

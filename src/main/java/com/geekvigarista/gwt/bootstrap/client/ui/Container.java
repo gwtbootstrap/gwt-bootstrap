@@ -7,7 +7,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
  * By default, it is a fixed layout.
  * 
  * @see Row
- * @see RowItem
+ * @see Column
  * @see DivWidget
  * @author Carlos A Becker
  */

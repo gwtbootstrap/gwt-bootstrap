@@ -19,7 +19,7 @@ public class BootStrapDemo implements EntryPoint {
         
         FluidContainer container = new FluidContainer();
         
-        RowItem sidebar = new RowItem(2);
+        Column sidebar = new Column(2);
         sidebar.add(new Button("Default"));
         sidebar.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
         sidebar.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
@@ -28,31 +28,31 @@ public class BootStrapDemo implements EntryPoint {
         
         container.add(sidebar);
         
-        RowItem content = new RowItem(10);
+        Column content = new Column(10);
         
         Row grid = new Row(true);
-        RowItem gi1 = new RowItem(10);
+        Column gi1 = new Column(10);
         gi1.add(new Heading("Welcome to GWT-Bootstrap", 1));
         gi1.add(new Heading("2.0.0-SNAPSHOT", 6));
         gi1.add(new Label("Grid 10"));
         grid.add(gi1);
         Row grid1 = new Row();
-        RowItem gi21 = new RowItem(12, 3);
+        Column gi21 = new Column(12, 3);
         Button disabledBtn = new Button("Button inside a grid inside a grid and disabled", new Icon(Icon.Type.CHECK));
         disabledBtn.setEnabled(false);
         gi21.add(disabledBtn);
         grid1.add(gi21);
         gi1.add(grid1);
         content.add(grid);
-        grid1.add(new RowItem(2, new Strong("I'm a Strong semantic text!")));
-        grid1.add(new RowItem(2, new Emphasis("I'm a em semantic text!")));
-        grid1.add(new RowItem(2, new Abbreviation("abbr", "abbre means abbreviation, noob!!")));
-        grid1.add(new RowItem(4, new BlockQuote("The best Bootstrap port for GWT in the whole world!", "Carlos (me)", true)));
+        grid1.add(new Column(2, new Strong("I'm a Strong semantic text!")));
+        grid1.add(new Column(2, new Emphasis("I'm a em semantic text!")));
+        grid1.add(new Column(2, new Abbreviation("abbr", "abbre means abbreviation, noob!!")));
+        grid1.add(new Column(4, new BlockQuote("The best Bootstrap port for GWT in the whole world!", "Carlos (me)", true)));
         
         Row grid2 = new Row(true);
         content.add(grid2);
         
-        grid2.add(new RowItem(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));
+        grid2.add(new Column(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));
         
         ButtonToolbar toolbar = new ButtonToolbar();
         toolbar.add(new ButtonGroup(new Button("1"), new Button("2"), new Button("3"), new Button("4")));
