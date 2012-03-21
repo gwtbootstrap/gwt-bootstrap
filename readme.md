@@ -86,3 +86,7 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 ## Alerts
 * `<b:Alert style="success" close="false">TestAlert without close</b:Alert>`
 * `<b:AlertBlock style="info" heading="Heading">AlertBlock</b:AlertBlock>`
+
+## Labels
+* `<b:Label>Default label</b:Label>`
+* `<b:Label type="info">Info label</b:Label>`

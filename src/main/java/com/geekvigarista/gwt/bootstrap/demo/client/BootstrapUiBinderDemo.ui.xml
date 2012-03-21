@@ -62,7 +62,7 @@
 		
 		Badge: <b:Badge type="error" >2</b:Badge>. <b:Badge>2</b:Badge>
 		
-		
+		Label: <b:Label>Normal label</b:Label>, <b:Label type="info">Info label</b:Label>
 		<b:Container>
 			<b:UnorderedList>
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>

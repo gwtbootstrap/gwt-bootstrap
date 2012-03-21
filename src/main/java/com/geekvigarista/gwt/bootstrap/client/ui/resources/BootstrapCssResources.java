@@ -244,4 +244,16 @@ public interface BootstrapCssResources {
 
 	public static final String row_fluid = "row-fluid";
 
+	public static final String label_default = label;
+	
+	public static final String label_success = label + " label-success";
+	
+	public static final String label_warning = label + " label-warning";
+
+	public static final String label_important = label + " label-important";
+
+	public static final String label_info = label + " label-info";
+
+	public static final String label_inverse = label + " label-inverse";
+
 }
