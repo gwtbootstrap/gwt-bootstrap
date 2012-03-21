@@ -101,6 +101,8 @@ public interface BootstrapCssResources {
 	public static final String breadcrumb = "breadcrumb";
 
 	public static final String divider = "divider";
+	
+	public static final String divider_vertical = "divider-vertical";
 
 	public static final String pagination = "pagination";
 
@@ -154,13 +156,25 @@ public interface BootstrapCssResources {
 
 	public static final String twipsy = "twipsy";
 	
-	public static final String topbar = "topbar";
-
+	public static final String navbar = "navbar";
+	
+	public static final String navbar_fixed_top = "navbar-fixed-top";
+	
+	public static final String navbar_fixed_bottom = "navbar-fixed-bottom";
+	
+	public static final String navbar_form = "navbar-form";
+	
+	public static final String navbar_search = "navbar-search";
+	
+	public static final String navbar_text = "navbar-text";
+	
 	public static final String fill = "fill";
 
 	public static final String brand = "brand";
 
 	public static final String nav = "nav";
+	
+	public static final String navbar_inner = "navbar-inner";
 
 	public static final String secondary_nav = "secondary-nav";
 
@@ -169,10 +183,14 @@ public interface BootstrapCssResources {
 	public static final String menu_dropdown = "menu-dropdown";
 
 	public static final String pull_left = "pull-left";
+	
+	public static final String pull_right = "pull-right";
 
 	public static final String clearfix = "clearfix";
 
 	public static final String input = "input";
 
 	public static final String uneditable_input = "uneditable-input";
+
+	public static final String search_query = "search-query";
 }
