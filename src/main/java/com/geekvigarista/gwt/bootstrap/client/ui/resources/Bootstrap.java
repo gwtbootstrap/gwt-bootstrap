@@ -127,7 +127,46 @@ public interface Bootstrap {
 	public static final String pager = "pager";
 
 	public static final String previous = "previous";
+
+	public static final String pre_scrollable = "pre-scrollable";
+
+	public static final String linenums = "linenums";
+
+	public static final String prettyprint = "prettyprint";
+
+	public static final String nav_tabs = "nav-tabs";
 	
+	public static final String nav_pills = "nav-pills";
+
+	public static final String nav_stacked = "nav-stacked";
+
+	public static final String tabbable = "tabbable";
+
+	public static final String tab_pane = "tab-pane";
+
+	public static final String tab_content = "tab-content";
+	
+	
+	public enum Tabs implements Style {
+
+		ABOVE(""),
+		BELOW("tabs-below"),
+		LEFT("tabs-left"),
+		RIGHT("tabs-right"),
+		INFO("badge-info");
+		
+		private static final String tabbable = "tabbable ";
+	
+		private String className;
+		
+		private Tabs(String className) {
+			this.className = tabbable + className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	}
 	
 	public enum Badge implements Style {
 
