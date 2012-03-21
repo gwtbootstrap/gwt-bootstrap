@@ -15,7 +15,7 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 
 * `<b:Heading size="2">UiBinder Examples</b:Heading>`
 * `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
-* `Hello <b:Abbreviation title="You">u</b:Abbreviation>`, that's <b:Emphasis>me!</b:Emphasis>
+* `Hello <b:Abbreviation title="You">u</b:Abbreviation>`, `that's <b:Emphasis>me!</b:Emphasis>
 * `<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>`
 * `<b:ButtonGroup><b:Button>1</b:Button><b:Button>2</b:Button></b:ButtonGroup>`
 * `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`

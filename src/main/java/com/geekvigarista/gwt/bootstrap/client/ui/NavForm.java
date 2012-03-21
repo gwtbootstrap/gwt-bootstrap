@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
+import com.geekvigarista.gwt.bootstrap.client.ui.navbar.NavFormBase;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.NavFormBase;
 
 /**
  * Form in the Navbar.
