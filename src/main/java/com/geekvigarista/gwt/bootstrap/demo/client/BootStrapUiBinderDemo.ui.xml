@@ -8,7 +8,24 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
+		
 		<b:Heading size="2">UiBinder Examples</b:Heading>
+
+		<b:Navbar fixed="top">
+			<b:Brand>Bootstrap</b:Brand>
+			<b:Nav>
+				<b:NavLink>Test</b:NavLink>
+				<b:DividerVertical />
+				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+			</b:Nav>
+			<b:NavForm size="1"/>
+			<b:Nav alignment="right">
+				<b:NavLink>Test</b:NavLink>
+			</b:Nav>
+			<b:NavText alignment="right">Right</b:NavText>
+			<b:NavSearch size="2" placeholder="Search" alignment="right"/>
+		</b:Navbar>
+	
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
 		<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>
 		<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>
