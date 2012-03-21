@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Anchor;
 
 /**
@@ -11,8 +11,8 @@ import com.google.gwt.user.client.ui.Anchor;
 public class Brand extends Anchor {
 	
 	public Brand() {
-		getElement().setClassName(BootstrapCssResources.brand);
-		getElement().addClassName(BootstrapCssResources.active);
+		getElement().setClassName(Bootstrap.brand);
+		getElement().addClassName(Bootstrap.active);
 		getElement().setAttribute("href", "#");
 	}
 	

@@ -1,6 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * This is the twBootstrap Grid System, enjoy.
@@ -12,17 +13,6 @@ public class Row extends DivWidget {
 
     public Row() {
         super();
-        setStyleName("row");
-    }
-
-    public Row(boolean fluid) {
-        super();
-        setFluid(fluid);
-    }
-    
-    public void setFluid(boolean fluid) {
-    	if (fluid) {
-    		setStyleName("row-fluid");
-    	}
+        setStyleName(Bootstrap.row);
     }
 }

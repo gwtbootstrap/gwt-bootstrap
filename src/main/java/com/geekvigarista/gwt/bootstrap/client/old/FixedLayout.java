@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A fixed layout for your page.
@@ -14,6 +14,6 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
  */
 public class FixedLayout extends DivPanel {
 	{
-		setStyleName(BootstrapCssResources.container);
+		setStyleName(Bootstrap.container);
 	}
 }

@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.old.alerts;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A simple DangerAlertMessage Component based on Twitter's Bootstrap Alert.
@@ -11,7 +11,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 public class ErrorAlert extends Alert {
 
 	{
-		addStyleName(BootstrapCssResources.error);
+		addStyleName(Bootstrap.error);
 	}
 
 	public ErrorAlert(String text) {

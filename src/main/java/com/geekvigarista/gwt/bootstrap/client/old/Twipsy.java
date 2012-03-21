@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Element;
 
 /**
@@ -18,7 +18,7 @@ public class Twipsy extends ComplexWidget {
 
 	public Twipsy() {
 		super("a");
-		getElement().setAttribute("rel", BootstrapCssResources.twipsy);
+		getElement().setAttribute("rel", Bootstrap.twipsy);
 	}
 
 	public Twipsy(String title, String href, String text) {

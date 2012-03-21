@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.navbar;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.Form;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class NavFormBase extends Form {
@@ -9,7 +9,7 @@ public class NavFormBase extends Form {
 	private TextBox input = new TextBox();
 	
 	public NavFormBase() {
-		addStyleName(BootstrapCssResources.pull_left);
+		addStyleName(Bootstrap.pull_left);
 		add(input);
 	}
 	
@@ -20,11 +20,11 @@ public class NavFormBase extends Form {
 	
 	public void setAlignment(String alignment) {
 		if (alignment.equalsIgnoreCase("left")) {
-			removeStyleName(BootstrapCssResources.pull_right);
-			addStyleName(BootstrapCssResources.pull_left);
+			removeStyleName(Bootstrap.pull_right);
+			addStyleName(Bootstrap.pull_left);
 		} else if (alignment.equalsIgnoreCase("right")) {
-			removeStyleName(BootstrapCssResources.pull_left);
-			addStyleName(BootstrapCssResources.pull_right);
+			removeStyleName(Bootstrap.pull_left);
+			addStyleName(Bootstrap.pull_right);
 		}
 	}
 	

@@ -5,7 +5,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 /**
- * BootStrap Resources.
+ * Bootstrap Resources.
  * 
  * @author Carlos Alexandro Becker
  * @since 22/01/2012

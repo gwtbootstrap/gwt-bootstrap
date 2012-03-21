@@ -6,7 +6,7 @@
 <web-app>
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>BootStrap.html</welcome-file>
+    <welcome-file>Bootstrap.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
