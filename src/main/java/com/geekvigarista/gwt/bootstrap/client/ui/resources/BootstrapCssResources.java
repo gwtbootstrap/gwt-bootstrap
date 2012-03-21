@@ -218,4 +218,6 @@ public interface BootstrapCssResources {
 
 	public static final String page_header = "page-header";
 
+	public static final String hero_unit = "hero-unit";
+
 }

@@ -1,6 +1,5 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.base.Paragraph;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
 
 /**

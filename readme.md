@@ -7,7 +7,7 @@ Examples, tutorials and wiki will be avaliable soon.
 ## Installation
 
 * Download the zip, extract and add the folder as external source to the build path.
-* Add `<inherits name="com.geekvigarista.gwt.bootstrap.BootStrap"/>` to your *.gwt.xml file.
+* Add `<inherits name="com.geekvigarista.gwt.bootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
 # UiBinder
 
