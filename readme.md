@@ -7,7 +7,7 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 * Download the zip, extract and add the folder as external source to the build path.
 * Add `<inherits name="com.geekvigarista.gwt.bootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
-# UiBinder
+## UiBinder
 
 You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` file:
 
@@ -16,16 +16,19 @@ You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` fi
 The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
 
 * `<b:Heading size="4" subtext="subtext">Heading</b:Heading>`
-* `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
-* `Hello <b:Abbreviation title="You">u</b:Abbreviation>`, `that's <b:Emphasis>me!</b:Emphasis>`
+* `Hello <b:Abbreviation title="You">u</b:Abbreviation>`
+* `that's <b:Emphasis>me!</b:Emphasis>`
 * `<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>`
-* `<b:ButtonGroup><b:Button>1</b:Button><b:Button>2</b:Button></b:ButtonGroup>`
-* `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`
 * `<b:Icon type="star"/>`, `<b:Icon type="heart" color="white"/>`
 * `<b:UnorderedList><b:ListItem><g:Label>Test</g:Label></b:UnorderedList>`
 * `<b:Badge type="error" >2</b:Badge>`
 * `<b:Well>...</b:Well>`
 * Close Icon: `<b:Close />`
+
+## Buttons
+* `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
+* `<b:ButtonGroup><b:Button>1</b:Button><b:Button>2</b:Button></b:ButtonGroup>`
+* `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`
 
 ## Grid System
 
@@ -62,8 +65,8 @@ The names of icon and options are the same as in Bootstrap without the preceding
     	<b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
     </b:TabPanel>
 
-`tabPosition` is optional and defaults to `above`. Options: `below`, `left`, `right`. 
-`href` is optional. If none is provided, gwt-bootstrap will generate a random string.
+* `tabPosition` is optional and defaults to `above`. Options: `below`, `left`, `right`. 
+* `href` is optional. If none is provided, gwt-bootstrap will generate a random string.
 
 ## Navbar
 
@@ -133,7 +136,7 @@ The names of icon and options are the same as in Bootstrap without the preceding
 * `<b:Pagination alignment="centered">...</b:Pagination>`
 
 ## Code
-* `<b:Code>Code</b:Code>
+* `<b:Code>Code</b:Code>`
 
     <b:CodeBlock>
     	<b>More</b> Text<br/>
