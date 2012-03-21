@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Anchor;
 
 /**
@@ -15,14 +15,14 @@ public class Close extends Anchor {
 		ALERT {
 			@Override
 			String get() {
-				return BootstrapCssResources.alert;
+				return Bootstrap.alert;
 			}
 		};
 		abstract String get();
 	}
 	
 	public Close() {
-		setStyleName(BootstrapCssResources.close);
+		setStyleName(Bootstrap.close);
 		setHTML("&times;");
 	}
 	
@@ -33,7 +33,7 @@ public class Close extends Anchor {
 
 	public void setDataDismiss(DataDismiss dismiss) {
 		getElement().setAttribute(
-				BootstrapCssResources.data_dismiss, dismiss.get());
+				Bootstrap.data_dismiss, dismiss.get());
 	}
 	
 	

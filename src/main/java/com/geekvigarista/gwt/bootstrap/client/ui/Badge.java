@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.InlineLabel;
 
 /**
@@ -21,31 +21,31 @@ public class Badge extends InlineLabel {
 		SUCCESS {
 			@Override
 			String get() {
-				return BootstrapCssResources.badge_success;
+				return Bootstrap.badge_success;
 			}
 		},
 		WARNING {
 			@Override
 			String get() {
-				return BootstrapCssResources.badge_warning;
+				return Bootstrap.badge_warning;
 			}
 		},
 		ERROR {
 			@Override
 			String get() {
-				return BootstrapCssResources.badge_error;
+				return Bootstrap.badge_error;
 			}
 		},
 		INFO {
 			@Override
 			String get() {
-				return BootstrapCssResources.badge_info;
+				return Bootstrap.badge_info;
 			}
 		},
 		INVERSE {
 			@Override
 			String get() {
-				return BootstrapCssResources.badge_inverse;
+				return Bootstrap.badge_inverse;
 			}
 		};
 		abstract String get();
@@ -53,7 +53,7 @@ public class Badge extends InlineLabel {
 	
 	public Badge() {
 		super();
-		setStyleName(BootstrapCssResources.badge);
+		setStyleName(Bootstrap.badge);
 	}
 	
 	public Badge(Type type) {

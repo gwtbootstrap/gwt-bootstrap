@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.IsWidget;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 public class FluidContainer extends DivWidget {
 
     public FluidContainer() {
-        setStylePrimaryName(BootstrapCssResources.container_fluid);
+        setStylePrimaryName(Bootstrap.container_fluid);
     }
 
     @Override

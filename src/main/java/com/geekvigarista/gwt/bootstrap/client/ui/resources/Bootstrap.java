@@ -6,7 +6,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui.resources;
  * @author Carlos Alexandro Becker
  * @since 20/01/2012
  */
-public interface BootstrapCssResources {
+public interface Bootstrap {
 
 	public static final String span1 = "span1";
 
@@ -103,8 +103,6 @@ public interface BootstrapCssResources {
 	public static final String divider = "divider";
 	
 	public static final String divider_vertical = "divider-vertical";
-
-	public static final String pagination = "pagination";
 
 	public static final String prev = "prev";
 
@@ -260,4 +258,29 @@ public interface BootstrapCssResources {
 
 	public static final String previous = "previous";
 
+	public enum Pagination implements Style {
+
+		LEFT(""),
+		CENTERED("pagination-centered"),
+		RIGHT("pagination-right");
+		
+		private static final String pagination = "pagination ";
+	
+		private String className;
+		
+		private Pagination(String className) {
+			this.className = pagination + className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	
+	}
+	
+	public interface Style {
+		
+		public String get();
+	}
+	
 }

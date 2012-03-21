@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.UnorderedList;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.uibinder.client.UiConstructor;
 
 /**
@@ -18,7 +18,7 @@ public class Pager extends UnorderedList {
 //	private boolean arrows;
 	
 	public @UiConstructor Pager(String left, String right) {
-		setStyleName(BootstrapCssResources.pager);
+		setStyleName(Bootstrap.pager);
 		leftLink.setText(left);
 		rightLink.setText(right);
 		add(leftLink);
@@ -26,8 +26,8 @@ public class Pager extends UnorderedList {
 	}
 	
 	public void setAligned(boolean aligned) {
-		leftLink.setStyleName(BootstrapCssResources.previous);
-		rightLink.setStyleName(BootstrapCssResources.next);
+		leftLink.setStyleName(Bootstrap.previous);
+		rightLink.setStyleName(Bootstrap.next);
 	}
 	
 	public NavLink getLeft() {

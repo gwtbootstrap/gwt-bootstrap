@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A Fluid row for the Grid System.
@@ -12,6 +12,6 @@ public class FluidRow extends DivWidget {
 
     public FluidRow() {
         super();
-        setStyleName(BootstrapCssResources.row_fluid);
+        setStyleName(Bootstrap.row_fluid);
     }
 }

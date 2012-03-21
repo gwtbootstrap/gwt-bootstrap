@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.AlertBase;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * Alert block widget.
@@ -17,8 +17,8 @@ public class AlertBlock extends AlertBase {
 	}
 	
 	private void setUp() {
-		addStyleName(BootstrapCssResources.alert_block);
-		heading.setStyleName(BootstrapCssResources.alert_heading);
+		addStyleName(Bootstrap.alert_block);
+		heading.setStyleName(Bootstrap.alert_heading);
 		add(heading);
 	}
 	
@@ -35,7 +35,7 @@ public class AlertBlock extends AlertBase {
 	@Override
 	public void setStyle(String stylename) {
 		super.setStyle(stylename);
-		addStyleName(BootstrapCssResources.alert_block);
+		addStyleName(Bootstrap.alert_block);
 	}
 	
 	@Override

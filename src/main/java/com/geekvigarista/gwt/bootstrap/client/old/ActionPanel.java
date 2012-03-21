@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
 import com.geekvigarista.gwt.bootstrap.client.old.base.SizeHelper;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Span;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 public class ActionPanel extends SimplePanel {
 
 	{
-		setStyleName(BootstrapCssResources.actions);
+		setStyleName(Bootstrap.actions);
 		setSize(Span._5);
 	}
 

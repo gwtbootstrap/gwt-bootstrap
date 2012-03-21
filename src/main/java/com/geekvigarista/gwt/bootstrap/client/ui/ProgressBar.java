@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Style.Unit;
 
 /**
@@ -24,14 +24,14 @@ public class ProgressBar extends DivWidget {
 
             @Override
             public String get() {
-                return BootstrapCssResources.progress_striped;
+                return Bootstrap.progress_striped;
             }
         },
         ANIMATED {
 
             @Override
             public String get() {
-                return BootstrapCssResources.progress_animated;
+                return Bootstrap.progress_animated;
             }
         };
         public abstract String get();
@@ -40,8 +40,8 @@ public class ProgressBar extends DivWidget {
 	private DivWidget bar = new DivWidget();
 	
 	public ProgressBar() {
-		addStyleName(BootstrapCssResources.progress);
-		bar.addStyleName(BootstrapCssResources.bar);
+		addStyleName(Bootstrap.progress);
+		bar.addStyleName(Bootstrap.bar);
 		add(bar);
 	}
 	
@@ -51,16 +51,16 @@ public class ProgressBar extends DivWidget {
 	}
 	
 	public void setStyle(Style style) {
-		setStyleName(BootstrapCssResources.progress);
+		setStyleName(Bootstrap.progress);
 		addStyleName(style.get());
 	}
 
 	public void setStyle(String stylename) {
-		setStyleName(BootstrapCssResources.progress);
+		setStyleName(Bootstrap.progress);
 		if (stylename.equalsIgnoreCase("striped"))
-			addStyleName(BootstrapCssResources.progress_striped);
+			addStyleName(Bootstrap.progress_striped);
 		else if (stylename.equalsIgnoreCase("animated"))
-			addStyleName(BootstrapCssResources.progress_animated);
+			addStyleName(Bootstrap.progress_animated);
 	}
 	
 	public void setPercent(int percent) {

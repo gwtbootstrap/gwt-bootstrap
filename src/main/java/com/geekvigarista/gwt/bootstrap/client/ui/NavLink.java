@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.IconAnchor;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.HasText;
 
 /**
@@ -46,15 +46,15 @@ public class NavLink extends ListItem implements HasText {
     
     public void setActive(boolean active) {
     	if (active)
-    		addStyleName(BootstrapCssResources.active);
+    		addStyleName(Bootstrap.active);
     	else
-    		removeStyleName(BootstrapCssResources.active);
+    		removeStyleName(Bootstrap.active);
     }
     
     public void setDisabled(boolean disabled) {
     	if (disabled)
-    		addStyleName(BootstrapCssResources.disabled);
+    		addStyleName(Bootstrap.disabled);
     	else
-    		removeStyleName(BootstrapCssResources.disabled);
+    		removeStyleName(Bootstrap.disabled);
     }
 }

@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.old.topbar;
 
 import com.geekvigarista.gwt.bootstrap.client.old.ListItem;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A divider component for dropdown menu.
@@ -11,6 +11,6 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
  */
 public class DividerListItem extends ListItem {
 	{
-		setStyleName(BootstrapCssResources.divider);
+		setStyleName(Bootstrap.divider);
 	}
 }

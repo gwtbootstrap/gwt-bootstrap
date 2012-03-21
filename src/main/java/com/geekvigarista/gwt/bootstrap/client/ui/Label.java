@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.InlineLabel;
 
 /**
@@ -23,38 +23,38 @@ public class Label extends InlineLabel {
 		SUCCESS {
 			@Override
 			String get() {
-				return BootstrapCssResources.label_success;
+				return Bootstrap.label_success;
 			}
 		},
 		WARNING {
 			@Override
 			String get() {
-				return BootstrapCssResources.label_warning;
+				return Bootstrap.label_warning;
 			}
 		},
 		IMPORTANT {
 			@Override
 			String get() {
-				return BootstrapCssResources.label_important;
+				return Bootstrap.label_important;
 			}
 		},
 		INFO {
 			@Override
 			String get() {
-				return BootstrapCssResources.label_info;
+				return Bootstrap.label_info;
 			}
 		},
 		INVERSE {
 			@Override
 			String get() {
-				return BootstrapCssResources.label_inverse;
+				return Bootstrap.label_inverse;
 			}
 		};
 		abstract String get();
 	}
 
 	public Label() {
-		setStyleName(BootstrapCssResources.label_default);
+		setStyleName(Bootstrap.label_default);
 	}
 
 	public Label(String text) {
@@ -75,17 +75,17 @@ public class Label extends InlineLabel {
 	
 	public void setType(String typename) {
 		if (typename.equalsIgnoreCase("success"))
-			setStyleName(BootstrapCssResources.label_success);
+			setStyleName(Bootstrap.label_success);
 		else if (typename.equalsIgnoreCase("warning"))
-			setStyleName(BootstrapCssResources.label_warning);
+			setStyleName(Bootstrap.label_warning);
 		else if (typename.equalsIgnoreCase("important"))
-			setStyleName(BootstrapCssResources.label_important);
+			setStyleName(Bootstrap.label_important);
 		else if (typename.equalsIgnoreCase("info"))
-			setStyleName(BootstrapCssResources.label_info);
+			setStyleName(Bootstrap.label_info);
 		else if (typename.equalsIgnoreCase("inverse"))
-			setStyleName(BootstrapCssResources.label_inverse);
+			setStyleName(Bootstrap.label_inverse);
 		else
-			setStyleName(BootstrapCssResources.label_default);
+			setStyleName(Bootstrap.label_default);
 	}
 
 }

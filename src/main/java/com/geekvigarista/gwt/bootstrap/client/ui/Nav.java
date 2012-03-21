@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * A Nav menu of the Navbar.
@@ -10,16 +10,16 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 public class Nav extends UnorderedList {
 
 	public Nav() {
-		addStyleName(BootstrapCssResources.nav);
+		addStyleName(Bootstrap.nav);
 	}
 	
 	public void setAlignment(String alignment) {
 		if (alignment.equalsIgnoreCase("left")) {
-			removeStyleName(BootstrapCssResources.pull_right);
-			addStyleName(BootstrapCssResources.pull_left);
+			removeStyleName(Bootstrap.pull_right);
+			addStyleName(Bootstrap.pull_left);
 		} else if (alignment.equalsIgnoreCase("right")) {
-			removeStyleName(BootstrapCssResources.pull_left);
-			addStyleName(BootstrapCssResources.pull_right);
+			removeStyleName(Bootstrap.pull_left);
+			addStyleName(Bootstrap.pull_right);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * The Nav List
@@ -10,7 +10,7 @@ import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources
 public class NavList extends UnorderedList {
 
 	public NavList() {
-		addStyleName(BootstrapCssResources.nav);
-		addStyleName(BootstrapCssResources.nav_list);
+		addStyleName(Bootstrap.nav);
+		addStyleName(Bootstrap.nav_list);
 	}
 }

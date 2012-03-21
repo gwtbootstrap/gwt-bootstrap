@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.old;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapElementHelper;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.ResourceInjector;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Resources;
@@ -31,15 +31,15 @@ public class Modal extends ComplexWidget {
 		// create the basics of element godness.
 		el_helper = new BootstrapElementHelper();
 
-		setStyleName(BootstrapCssResources.modal);
-		addStyleName(BootstrapCssResources.fade);
+		setStyleName(Bootstrap.modal);
+		addStyleName(Bootstrap.fade);
 
 		header = new DivPanel();
-		header.setStyleName(BootstrapCssResources.modal_header);
+		header.setStyleName(Bootstrap.modal_header);
 		footer = new DivPanel();
-		footer.setStyleName(BootstrapCssResources.modal_footer);
+		footer.setStyleName(Bootstrap.modal_footer);
 		body = new DivPanel();
-		body.setStyleName(BootstrapCssResources.modal_body);
+		body.setStyleName(Bootstrap.modal_body);
 
 		// assert that modal doesnt show up by default.
 		setVisible(false);

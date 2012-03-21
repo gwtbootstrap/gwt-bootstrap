@@ -94,3 +94,13 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 ## Pager
 * `<b:Pager left="Left" right="Right"/>`
 * `<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>`
+
+## Pagination
+    <b:Pagination>
+    	<b:NavLink href="http://www.google.com">1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    	<b:NavLink disabled="true">3</b:NavLink>
+    </b:Pagination>
+
+* `<b:Pagination alignment="right">...</b:Pagination>`
+* `<b:Pagination alignment="centered">...</b:Pagination>`

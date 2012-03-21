@@ -2,7 +2,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui.base;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.Close;
 import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.HasHTML;
 
 /**
@@ -23,19 +23,19 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 		ERROR {
 			@Override
 			String get() {
-				return BootstrapCssResources.alert_error;
+				return Bootstrap.alert_error;
 			}
 		},
 		SUCCESS {
 			@Override
 			String get() {
-				return BootstrapCssResources.alert_success;
+				return Bootstrap.alert_success;
 			}
 		},
 		INFO {
 			@Override
 			String get() {
-				return BootstrapCssResources.alert_info;
+				return Bootstrap.alert_info;
 			}
 		};
 		abstract String get();
@@ -52,7 +52,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 	}
 	
 	public AlertBase(boolean hasClose) {
-		setStyleName(BootstrapCssResources.alert);
+		setStyleName(Bootstrap.alert);
 		setClose(hasClose);
 	}
 	
@@ -62,18 +62,18 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 	}
 	
 	public void setStyle(Style style) {
-		setStyleName(BootstrapCssResources.alert);
+		setStyleName(Bootstrap.alert);
 		addStyleName(style.get());
 	}
 	
 	public void setStyle(String stylename) {
-		setStyleName(BootstrapCssResources.alert);
+		setStyleName(Bootstrap.alert);
 		if (stylename.equalsIgnoreCase("error"))
-			addStyleName(BootstrapCssResources.alert_error);
+			addStyleName(Bootstrap.alert_error);
 		else if (stylename.equalsIgnoreCase("success"))
-			addStyleName(BootstrapCssResources.alert_success);
+			addStyleName(Bootstrap.alert_success);
 		else if (stylename.equalsIgnoreCase("info"))
-			addStyleName(BootstrapCssResources.alert_info);
+			addStyleName(Bootstrap.alert_info);
 	}
 	
 	public void setClose(boolean hasClose) {
