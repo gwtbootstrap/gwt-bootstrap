@@ -220,4 +220,12 @@ public interface BootstrapCssResources {
 
 	public static final String hero_unit = "hero-unit";
 
+	public static final String progress = "progress";
+
+	public static final String progress_striped = "progress-striped";
+	
+	public static final String progress_animated = "progress-striped " + active;
+
+	public static final String bar = "bar";
+
 }

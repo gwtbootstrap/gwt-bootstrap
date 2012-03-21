@@ -77,3 +77,8 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
     	<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
     	<b:Paragraph>More text.</b:Paragraph>
     </b:Hero>
+
+## Progress Bar
+* `<b:ProgressBar percent="20"/>`
+* `<b:ProgressBar style="striped" percent="40"/>`
+* `<b:ProgressBar style="animated" percent="60"/>`
