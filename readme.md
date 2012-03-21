@@ -9,7 +9,11 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 
 # UiBinder
 
-You can use the widgets in UiBinder. The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
+You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` file:
+
+`xmlns:b="urn:import:com.geekvigarista.gwt.bootstrap.client.ui"`
+
+The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
 
 * `<b:Heading size="4" subtext="subtext">Heading</b:Heading>`
 * `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
@@ -102,3 +106,12 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 
 * `<b:Pagination alignment="right">...</b:Pagination>`
 * `<b:Pagination alignment="centered">...</b:Pagination>`
+
+## Code
+* `<b:Code>Code</b:Code>
+
+    <b:CodeBlock>
+    	<b>More</b> Text<br/>
+    	    in here...<br/>
+    	&lt;p&gt;Sample text here...&lt;/p&gt;
+    </b:CodeBlock>

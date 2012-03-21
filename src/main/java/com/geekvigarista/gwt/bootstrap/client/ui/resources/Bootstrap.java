@@ -127,6 +127,12 @@ public interface Bootstrap {
 	public static final String pager = "pager";
 
 	public static final String previous = "previous";
+
+	public static final String pre_scrollable = "pre-scrollable";
+
+	public static final String linenums = "linenums";
+
+	public static final String prettyprint = "prettyprint";
 	
 	
 	public enum Badge implements Style {

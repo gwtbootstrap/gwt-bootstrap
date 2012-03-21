@@ -78,7 +78,13 @@
 		</b:Container>
 		
 		<b:Heading size="4" subtext="subtext">Heading</b:Heading>
+		<b:Code>Code\n new line</b:Code>
 		
+		<b:CodeBlock prettify="true">
+			<b>More</b> Text<br/>
+			    in here...<br/>
+			&lt;p&gt;Sample text here...&lt;/p&gt;
+		</b:CodeBlock>
 		<b:FluidContainer>
 			<b:Row>
 				<b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
