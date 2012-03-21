@@ -1,6 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap.Style;
 import com.google.gwt.user.client.ui.InlineLabel;
 
 /**
@@ -12,49 +13,8 @@ import com.google.gwt.user.client.ui.InlineLabel;
  */
 public class Label extends InlineLabel {
 
-	public enum Type {
-
-		DEFAULT {
-			@Override
-			String get() {
-				return "";
-			}
-		},
-		SUCCESS {
-			@Override
-			String get() {
-				return Bootstrap.label_success;
-			}
-		},
-		WARNING {
-			@Override
-			String get() {
-				return Bootstrap.label_warning;
-			}
-		},
-		IMPORTANT {
-			@Override
-			String get() {
-				return Bootstrap.label_important;
-			}
-		},
-		INFO {
-			@Override
-			String get() {
-				return Bootstrap.label_info;
-			}
-		},
-		INVERSE {
-			@Override
-			String get() {
-				return Bootstrap.label_inverse;
-			}
-		};
-		abstract String get();
-	}
-
 	public Label() {
-		setStyleName(Bootstrap.label_default);
+		setStyle(Bootstrap.Label.DEFAULT);
 	}
 
 	public Label(String text) {
@@ -62,30 +22,34 @@ public class Label extends InlineLabel {
 		setText(text);
 	}
 
-	public Label(String text, Type type) {
+	public Label(String text, Bootstrap.Label type) {
 		setText(text);
 		setType(type);
 	}
 
-	public void setType(Type type) {
+	public void setType(Bootstrap.Label type) {
 		assert type != null : "type should not be null";
 		
-		setStyleName(type.get());
+		setStyle(type);
 	}
 	
+	private void setStyle(Style style) {
+		setStyleName(style.get());
+	}
+
 	public void setType(String typename) {
 		if (typename.equalsIgnoreCase("success"))
-			setStyleName(Bootstrap.label_success);
+			setStyle(Bootstrap.Label.SUCCESS);
 		else if (typename.equalsIgnoreCase("warning"))
-			setStyleName(Bootstrap.label_warning);
+			setStyle(Bootstrap.Label.WARNING);
 		else if (typename.equalsIgnoreCase("important"))
-			setStyleName(Bootstrap.label_important);
+			setStyle(Bootstrap.Label.IMPORTANT);
 		else if (typename.equalsIgnoreCase("info"))
-			setStyleName(Bootstrap.label_info);
+			setStyle(Bootstrap.Label.INFO);
 		else if (typename.equalsIgnoreCase("inverse"))
-			setStyleName(Bootstrap.label_inverse);
+			setStyle(Bootstrap.Label.INVERSE);
 		else
-			setStyleName(Bootstrap.label_default);
+			setStyle(Bootstrap.Label.DEFAULT);
 	}
 
 }

@@ -15,7 +15,7 @@ public class Close extends Anchor {
 		ALERT {
 			@Override
 			String get() {
-				return Bootstrap.alert;
+				return Bootstrap.Alert.ALERT.get();
 			}
 		};
 		abstract String get();

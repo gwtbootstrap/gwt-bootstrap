@@ -3,6 +3,7 @@ package com.geekvigarista.gwt.bootstrap.client.ui.base;
 import com.geekvigarista.gwt.bootstrap.client.ui.Close;
 import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap.Alert;
 import com.google.gwt.user.client.ui.HasHTML;
 
 /**
@@ -11,35 +12,6 @@ import com.google.gwt.user.client.ui.HasHTML;
  * @author Dominik Mayer
  */
 public abstract class AlertBase extends DivWidget implements HasHTML {
-	
-	public enum Style {
-
-		DEFAULT {
-			@Override
-			String get() {
-				return "";
-			}
-		},
-		ERROR {
-			@Override
-			String get() {
-				return Bootstrap.alert_error;
-			}
-		},
-		SUCCESS {
-			@Override
-			String get() {
-				return Bootstrap.alert_success;
-			}
-		},
-		INFO {
-			@Override
-			String get() {
-				return Bootstrap.alert_info;
-			}
-		};
-		abstract String get();
-	}
 	
 	private Close close;
 	
@@ -52,28 +24,27 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 	}
 	
 	public AlertBase(boolean hasClose) {
-		setStyleName(Bootstrap.alert);
+		super.setStyle(Bootstrap.Alert.ALERT);
 		setClose(hasClose);
 	}
 	
-	public AlertBase(Style style) {
+	public AlertBase(Alert style) {
 		this();
 		setStyle(style);
 	}
 	
-	public void setStyle(Style style) {
-		setStyleName(Bootstrap.alert);
-		addStyleName(style.get());
+	public void setStyle(Alert style) {
+		super.setStyle(Bootstrap.Alert.ALERT);
+		super.addStyle(style);
 	}
 	
 	public void setStyle(String stylename) {
-		setStyleName(Bootstrap.alert);
 		if (stylename.equalsIgnoreCase("error"))
-			addStyleName(Bootstrap.alert_error);
+			setStyle(Bootstrap.Alert.ERROR);
 		else if (stylename.equalsIgnoreCase("success"))
-			addStyleName(Bootstrap.alert_success);
+			setStyle(Bootstrap.Alert.SUCCESS);
 		else if (stylename.equalsIgnoreCase("info"))
-			addStyleName(Bootstrap.alert_info);
+			setStyle(Bootstrap.Alert.INFO);
 	}
 	
 	public void setClose(boolean hasClose) {

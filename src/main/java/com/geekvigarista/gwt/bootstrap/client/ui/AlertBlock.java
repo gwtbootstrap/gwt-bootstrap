@@ -17,8 +17,8 @@ public class AlertBlock extends AlertBase {
 	}
 	
 	private void setUp() {
-		addStyleName(Bootstrap.alert_block);
-		heading.setStyleName(Bootstrap.alert_heading);
+		super.addStyle(Bootstrap.Alert.BLOCK);
+		heading.setStyle(Bootstrap.Alert.HEADING);
 		add(heading);
 	}
 	
@@ -27,7 +27,7 @@ public class AlertBlock extends AlertBase {
 		setUp();
 	}
 	
-	public AlertBlock(Style style) {
+	public AlertBlock(Bootstrap.Alert style) {
 		super(style);
 		setUp();
 	}
@@ -35,7 +35,7 @@ public class AlertBlock extends AlertBase {
 	@Override
 	public void setStyle(String stylename) {
 		super.setStyle(stylename);
-		addStyleName(Bootstrap.alert_block);
+		addStyle(Bootstrap.Alert.BLOCK);
 	}
 	
 	@Override

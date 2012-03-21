@@ -7,92 +7,12 @@ package com.geekvigarista.gwt.bootstrap.client.ui.resources;
  * @since 20/01/2012
  */
 public interface Bootstrap {
-
-	public static final String span1 = "span1";
-
-	public static final String span2 = "span2";
-
-	public static final String span3 = "span3";
-
-	public static final String span4 = "span4";
-
-	public static final String span5 = "span5";
-
-	public static final String span6 = "span6";
-
-	public static final String span7 = "span7";
-
-	public static final String span8 = "span8";
-
-	public static final String span9 = "span9";
-
-	public static final String span10 = "span10";
-
-	public static final String span11 = "span11";
-
-	public static final String span12 = "span12";
-
-	public static final String span13 = "span13";
-
-	public static final String span14 = "span14";
-
-	public static final String span15 = "span15";
-
-	public static final String span16 = "span16";
-
-	public static final String span17 = "span17";
-
-	public static final String span18 = "span18";
-
-	public static final String span19 = "span19";
-
-	public static final String span20 = "span20";
-
-	public static final String span21 = "span21";
-
-	public static final String span22 = "span22";
-
-	public static final String span23 = "span23";
-
-	public static final String span24 = "span24";
-
-	public static final String offset1 = "offset1";
-
-	public static final String offset2 = "offset2";
-
-	public static final String offset3 = "offset3";
-
-	public static final String offset4 = "offset4";
-
-	public static final String offset5 = "offset5";
-
-	public static final String offset6 = "offset6";
-
-	public static final String offset7 = "offset7";
-
-	public static final String offset8 = "offset8";
-
-	public static final String offset9 = "offset9";
-
-	public static final String offset10 = "offset10";
-
-	public static final String offset11 = "offset11";
-
-	public static final String offset12 = "offset12";
+	
+	public interface Style {
+		public String get();
+	}
 
 	public static final String btn = "btn";
-
-	public static final String primary = "primary";
-
-	public static final String success = "success";
-
-	public static final String info = "info";
-
-	public static final String danger = "danger";
-
-	public static final String error = "error";
-
-	public static final String warning = "warning";
 
 	public static final String tabs = "tabs";
 
@@ -111,8 +31,6 @@ public interface Bootstrap {
 	public static final String disabled = "disabled";
 
 	public static final String active = "active";
-
-	public static final String alert_message = "alert-message";
 
 	public static final String block_message = "block-message";
 
@@ -136,17 +54,7 @@ public interface Bootstrap {
 
 	public static final String out = "out";
 
-	public static final String modal = "modal";
-
-	public static final String modal_header = "modal-header";
-
-	public static final String modal_footer = "modal-footer";
-
-	public static final String modal_body = "modal-body";
-
 	public static final String notice = "notice";
-
-	public static final String label = "label";
 
 	public static final String important = "important";
 
@@ -178,8 +86,6 @@ public interface Bootstrap {
 	
 	public static final String navbar_inner = "navbar-inner";
 
-	public static final String secondary_nav = "secondary-nav";
-
 	public static final String menu = "menu";
 
 	public static final String menu_dropdown = "menu-dropdown";
@@ -202,18 +108,6 @@ public interface Bootstrap {
 
 	public static final String inverse = "inverse";
 
-	public static final String badge = "badge";
-
-	public static final String badge_success = "badge-success";
-
-	public static final String badge_warning = "badge-warning";
-
-	public static final String badge_error = "badge-error";
-
-	public static final String badge_info = "badge-info";
-
-	public static final String badge_inverse = "badge-inverse";
-
 	public static final String page_header = "page-header";
 
 	public static final String hero_unit = "hero-unit";
@@ -226,38 +120,81 @@ public interface Bootstrap {
 
 	public static final String bar = "bar";
 
-	public static final String alert = "alert";
-
-	public static final String alert_error = "alert-error";
-
-	public static final String alert_success = "alert-success";
-
-	public static final String alert_info = "alert-info";
-
-	public static final String alert_block = "alert-block";
-
-	public static final String alert_heading = "alert-heading";
-
 	public static final String data_dismiss = "data-dismiss";
 
 	public static final String row_fluid = "row-fluid";
 
-	public static final String label_default = label;
-	
-	public static final String label_success = label + " label-success";
-	
-	public static final String label_warning = label + " label-warning";
-
-	public static final String label_important = label + " label-important";
-
-	public static final String label_info = label + " label-info";
-
-	public static final String label_inverse = label + " label-inverse";
-
 	public static final String pager = "pager";
 
 	public static final String previous = "previous";
+	
+	
+	public enum Badge implements Style {
 
+		DEFAULT(""),
+		SUCCESS("badge-success"),
+		WARNING("badge-warning"),
+		ERROR("badge-error"),
+		INFO("badge-info"),
+		INVERSE("badge-inverse");
+		
+		private static final String badge = "badge ";
+	
+		private String className;
+		
+		private Badge(String className) {
+			this.className = badge + className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	}
+	
+	// TODO
+	public enum Alert implements Style {
+
+		DEFAULT(""),
+		ERROR("alert-error"),
+		SUCCESS("alert-success"),
+		INFO("alert-info"),
+		ALERT("alert"),
+		BLOCK("alert-block"),
+		HEADING("alert-heading");
+		
+		private String className;
+		
+		private Alert(String className) {
+			this.className = className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	}
+	
+	public enum Label implements Style {
+
+		DEFAULT(""),
+		SUCCESS("label-success"),
+		WARNING("label-warning"),
+		IMPORTANT("label-important"),
+		INFO("label-info"),
+		INVERSE("label-inverse");
+		
+		private static final String label = "label ";
+	
+		private String className;
+		
+		private Label(String className) {
+			this.className = label + className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	}
+	
 	public enum Pagination implements Style {
 
 		LEFT(""),
@@ -275,12 +212,6 @@ public interface Bootstrap {
 		public String get() {
 			return className;
 		}
-	
-	}
-	
-	public interface Style {
-		
-		public String get();
 	}
 	
 }

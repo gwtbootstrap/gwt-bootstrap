@@ -1,6 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap.Style;
 import com.google.gwt.user.client.ui.InlineLabel;
 
 /**
@@ -9,58 +10,19 @@ import com.google.gwt.user.client.ui.InlineLabel;
  * @author Dominik Mayer
  */
 public class Badge extends InlineLabel {
-
-	public enum Type {
-
-		DEFAULT {
-			@Override
-			String get() {
-				return "";
-			}
-		},
-		SUCCESS {
-			@Override
-			String get() {
-				return Bootstrap.badge_success;
-			}
-		},
-		WARNING {
-			@Override
-			String get() {
-				return Bootstrap.badge_warning;
-			}
-		},
-		ERROR {
-			@Override
-			String get() {
-				return Bootstrap.badge_error;
-			}
-		},
-		INFO {
-			@Override
-			String get() {
-				return Bootstrap.badge_info;
-			}
-		},
-		INVERSE {
-			@Override
-			String get() {
-				return Bootstrap.badge_inverse;
-			}
-		};
-		abstract String get();
-	}
 	
 	public Badge() {
-		super();
-		setStyleName(Bootstrap.badge);
+		this(Bootstrap.Badge.DEFAULT);
 	}
 	
-	public Badge(Type type) {
-		this();
-		addStyleName(type.get());
+	public Badge(Bootstrap.Badge type) {
+		setStyle(type);
 	}
 	
+	private void setStyle(Style style) {
+		setStyleName(style.get());
+	}
+
 	public void setType(String typename) {
 		addStyleName("badge-" + typename);
 	}
