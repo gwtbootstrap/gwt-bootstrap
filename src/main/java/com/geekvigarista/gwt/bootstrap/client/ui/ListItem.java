@@ -1,18 +1,22 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.v2.base.ComplexWidget;
-import com.google.gwt.user.client.ui.HasWidgets;
+import com.geekvigarista.gwt.bootstrap.client.ui.base.ComplexWidget;
+import com.google.gwt.user.client.ui.IsWidget;
 
 /**
- * Base component for ListItems (li).
- * 
- * @author Carlos Alexandro Becker
- * @since 25/01/2012
+ *
+ * @author carlos
  */
-public class ListItem extends ComplexWidget implements HasWidgets {
+public class ListItem extends ComplexWidget {
 
 	public ListItem() {
 		super("li");
 	}
-
+	
+    public ListItem(IsWidget... childs) {
+    	this();
+        for (IsWidget w : childs) {
+            add(w);
+        }
+    }
 }
