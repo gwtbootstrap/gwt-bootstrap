@@ -13,7 +13,7 @@ Examples, tutorials and wiki will be avaliable soon.
 
 You can use the widgets in UiBinder. The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
 
-* `<b:Heading size="2">UiBinder Examples</b:Heading>`
+* `<b:Heading size="4" subtext="subtext">Heading</b:Heading>`
 * `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
 * `Hello <b:Abbreviation title="You">u</b:Abbreviation>`, `that's <b:Emphasis>me!</b:Emphasis>`
 * `<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>`
@@ -21,6 +21,9 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 * `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`
 * `<b:Icon type="star"/>`, `<b:Icon type="heart" color="white"/>`
 * `<b:UnorderedList><b:ListItem><g:Label>Test</g:Label></b:UnorderedList>`
+* `<b:Badge type="error" >2</b:Badge>`
+* `<b:Well>...</b:Well>`
+* Close Icon: `<b:Close />`
 
 ## Grid System
 
@@ -51,3 +54,19 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
     	<b:NavText alignment="right">Right</b:NavText>
     	<b:NavSearch size="2" placeholder="Search" alignment="right"/>
     </b:Navbar>
+
+## Nav Lists
+
+    <b:NavList>
+    	<b:NavHeader>Header</b:NavHeader>
+    	<b:NavLink active="true" icon="plane">Test</b:NavLink>
+    	<b:Divider />
+    	<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+    </b:NavList>
+
+    <b:WellNavList>
+    	<b:NavHeader>Header</b:NavHeader>
+	    <b:NavLink active="true" icon="plane">Test</b:NavLink>
+    	<b:Divider />
+    	<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+    </b:WellNavList>
