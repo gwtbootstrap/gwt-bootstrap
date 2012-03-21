@@ -68,6 +68,8 @@
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>
 				<b:ListItem><g:Label>Another Test</g:Label></b:ListItem>
 			</b:UnorderedList>
+			<b:Pager left="Left" right="Right"/>
+			<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>
 		</b:Container>
 		
 		<b:Heading size="4" subtext="subtext">Heading</b:Heading>

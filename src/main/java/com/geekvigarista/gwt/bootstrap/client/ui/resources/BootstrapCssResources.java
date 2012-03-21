@@ -256,4 +256,8 @@ public interface BootstrapCssResources {
 
 	public static final String label_inverse = label + " label-inverse";
 
+	public static final String pager = "pager";
+
+	public static final String previous = "previous";
+
 }

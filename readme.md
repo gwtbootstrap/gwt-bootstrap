@@ -90,3 +90,7 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
 ## Labels
 * `<b:Label>Default label</b:Label>`
 * `<b:Label type="info">Info label</b:Label>`
+
+## Pager
+* `<b:Pager left="Left" right="Right"/>`
+* `<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>`

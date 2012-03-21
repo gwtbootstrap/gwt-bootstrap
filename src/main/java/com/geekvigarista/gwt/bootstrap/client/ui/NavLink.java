@@ -50,4 +50,11 @@ public class NavLink extends ListItem implements HasText {
     	else
     		removeStyleName(BootstrapCssResources.active);
     }
+    
+    public void setDisabled(boolean disabled) {
+    	if (disabled)
+    		addStyleName(BootstrapCssResources.disabled);
+    	else
+    		removeStyleName(BootstrapCssResources.disabled);
+    }
 }
