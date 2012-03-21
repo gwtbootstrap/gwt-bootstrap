@@ -40,6 +40,22 @@ The names of icon and options are the same as in Bootstrap without the preceding
       </b:FluidRow>
     </b:FluidContainer>`
 
+## NavTabs
+    <b:NavTabs>
+    	<b:NavLink>1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    </b:NavTabs>
+
+* `<b:NavTabs stacked="true">...</b:NavTabs>`
+
+## NavPills
+    <b:NavPills>
+    	<b:NavLink>1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    </b:NavPills>
+
+* `<b:NavPills stacked="true">...</b:NavPills>`
+
 ## Navbar
 
     <b:Navbar fixed="top">

@@ -70,11 +70,30 @@
 			</b:UnorderedList>
 			<b:Pager left="Left" right="Right"/>
 			<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>
-			<b:Pagination alignment="left">
-				<b:NavLink href="http://www.google.com">1</b:NavLink>
-				<b:NavLink active="true">2</b:NavLink>
-				<b:NavLink disabled="true">3</b:NavLink>
-			</b:Pagination>
+			
+			<b:Row>
+				<b:Column size="2">
+					<b:Pagination alignment="left">
+						<b:NavLink href="http://www.google.com">1</b:NavLink>
+						<b:NavLink active="true">2</b:NavLink>
+						<b:NavLink disabled="true">3</b:NavLink>
+					</b:Pagination>
+				</b:Column>
+				<b:Column size="2">
+					<b:NavTabs>
+						<b:NavLink>1</b:NavLink>
+						<b:NavLink active="true">2</b:NavLink>
+						<b:NavLink disabled="true" alignment="right">3</b:NavLink>
+					</b:NavTabs>
+				</b:Column>
+				<b:Column size="2">
+					<b:NavPills stacked="true">
+						<b:NavLink>1</b:NavLink>
+						<b:NavLink active="true">2</b:NavLink>
+						<b:NavLink disabled="true">3</b:NavLink>
+					</b:NavPills>
+				</b:Column>
+			</b:Row>
 		</b:Container>
 		
 		<b:Heading size="4" subtext="subtext">Heading</b:Heading>

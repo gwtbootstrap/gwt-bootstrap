@@ -133,6 +133,12 @@ public interface Bootstrap {
 	public static final String linenums = "linenums";
 
 	public static final String prettyprint = "prettyprint";
+
+	public static final String nav_tabs = "nav-tabs";
+	
+	public static final String nav_pills = "nav-pills";
+
+	public static final String nav_stacked = "nav-stacked";
 	
 	
 	public enum Badge implements Style {

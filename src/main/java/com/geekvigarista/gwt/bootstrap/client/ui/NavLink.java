@@ -57,4 +57,16 @@ public class NavLink extends ListItem implements HasText {
     	else
     		removeStyleName(Bootstrap.disabled);
     }
+    
+//    //TODO
+//    public void setAlignment(String alignment) {
+//    	if (alignment.equalsIgnoreCase("right")) {
+//    		addStyleName(Bootstrap.pull_right);
+//    		removeStyleName(Bootstrap.pull_left);
+//    		
+//    	} else if (alignment.equalsIgnoreCase("left")) {
+//    		addStyleName(Bootstrap.pull_left);
+//    		removeStyleName(Bootstrap.pull_right);
+//    	}
+//    }
 }
