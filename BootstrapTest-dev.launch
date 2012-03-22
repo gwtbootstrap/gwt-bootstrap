@@ -7,16 +7,16 @@
 <stringAttribute key="com.google.gwt.eclipse.core.STYLE" value="OBFUSCATED"/>
 <stringAttribute key="com.google.gwt.eclipse.core.WEB_MODE" value="false"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/gwt-bootstrap/src/test/java/com/geekvigarista/gwt/bootstrap/client/GwtTestBootstrap.java"/>
+<listEntry value="/gwt-bootstrap"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-<listEntry value="1"/>
+<listEntry value="4"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value=""/>
 <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gdt.eclipse.maven.mavenClasspathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.geekvigarista.gwt.bootstrap.client.GwtTestBootstrap"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.github.gwtbootstrap.client.GwtTestBootstrap"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="gwt-bootstrap"/>
 </launchConfiguration>
