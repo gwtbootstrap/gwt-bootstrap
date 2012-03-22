@@ -114,7 +114,7 @@ The names of icon and options are the same as in Bootstrap without the preceding
 * `<b:ProgressBar style="animated" percent="60"/>`
 
 ## Alerts
-* `<b:Alert style="success" close="false">TestAlert without close</b:Alert>`
+* `<b:Alert style="success" close="false" animated="true">TestAlert without close</b:Alert>`
 * `<b:AlertBlock style="info" heading="Heading">AlertBlock</b:AlertBlock>`
 
 ## Labels
@@ -150,10 +150,25 @@ For a better look, you can use it inside a NavPills component.
 
     <b:NavPills>
 	<b:Dropdown text="Dropdown example">
-	    <b:ListItem><g:Anchor>Test 1</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 2</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 3</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 4</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 5</g:Anchor></b:ListItem>
+	    <b:NavLink>Test 1</b:NavLink>
+	    <b:NavLink>Test 2</b:NavLink>
+	    <b:NavLink>Test 3</b:NavLink>
+	    <b:NavLink>Test 4</b:NavLink>
+	    <b:NavLink>Test 5</b:NavLink>
       </b:Dropdown>
     </b:NavPills>
+    
+## Modal
+
+Modal is very easy to use. 
+
+     <b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">
+		<g:Label>Modal Content!</g:Label>
+		<b:ModalFooter>
+			<b:Button icon="file white" options="primary">Save</b:Button>
+		</b:ModalFooter>
+	</b:Modal>
+	
+As you can see, we have several options. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss.
+Also, Modal implements the `HasVisibleHandlers` interface, so, it has the `show`, `hide` and `toggle` methods.
+The footer is optional.
