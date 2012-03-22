@@ -154,6 +154,17 @@
 				</b:Column>
 				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
 			</b:Row>
+			<b:Row>
+				<b:NavPills>
+					<b:Dropdown text="Dropdown example">
+						<b:ListItem><g:Anchor>Test 1</g:Anchor></b:ListItem>
+						<b:ListItem><g:Anchor>Test 2</g:Anchor></b:ListItem>
+						<b:ListItem><g:Anchor>Test 3</g:Anchor></b:ListItem>
+						<b:ListItem><g:Anchor>Test 4</g:Anchor></b:ListItem>
+						<b:ListItem><g:Anchor>Test 5</g:Anchor></b:ListItem>
+					</b:Dropdown>
+				</b:NavPills>
+			</b:Row>
 		</b:FluidContainer>
 	</g:HTMLPanel>
 </ui:UiBinder> 

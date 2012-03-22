@@ -12,25 +12,22 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Dropdown extends ComplexWidget {
 
-	static {
-
-	}
-
 	private UnorderedList ul;
+	private Element anchor;
 
 	public @UiConstructor
 	Dropdown() {
 		super("li");
 		addStyleName("dropdown");
 	}
-	
+
 	public Dropdown(String text) {
 		this();
 		setText(text);
 	}
 
 	public void setText(String text) {
-		Element anchor = Document.get().createAnchorElement();
+		anchor = Document.get().createAnchorElement();
 		anchor.addClassName("dropdown-toggle");
 		anchor.setAttribute("data-toggle", "dropdown");
 		anchor.setInnerText(text);
@@ -39,24 +36,29 @@ public class Dropdown extends ComplexWidget {
 		caret.addClassName("caret");
 		anchor.appendChild(caret);
 
-		Widget wanchor = new Widget();
-		wanchor.getElement().appendChild(anchor);
-		add(wanchor);
+		getElement().appendChild(anchor);
+	}
 
-		ul = new UnorderedList();
-		ul.setStyleName("dropdown-menu");
-
-		configure(getElement());
-
+	@Override
+	protected void onLoad() {
+		super.onLoad();
+		if (anchor != null) {
+			configure(anchor);
+		}
 	}
 
 	@Override
 	public void add(Widget w) {
 		assert w instanceof ListItem : "you have to add only list itens";
+		if (ul == null) {
+			ul = new UnorderedList();
+			ul.setStyleName("dropdown-menu");
+			super.add(ul);
+		}
 		ul.add(w);
 	}
 
-	private native void configure(Element e) /*- {
-												$wnd.jQuery(e).dropdown();
-												}-*/;
+	private native void configure(Element e) /*-{
+		$wnd.jQuery(e).dropdown();
+	}-*/;
 }
