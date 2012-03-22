@@ -1,39 +1,72 @@
 # GWT-Bootstrap
 
-## Based on Twitter's Bootstrap. ( http://twitter.github.com/bootstrap/index.html ) 
-
-Examples, tutorials and wiki will be avaliable soon.
+Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html) 
 
 ## Installation
 
 * Download the zip, extract and add the folder as external source to the build path.
-* Add `<inherits name="com.geekvigarista.gwt.bootstrap.BootStrap"/>` to your *.gwt.xml file.
+* Add `<inherits name="com.geekvigarista.gwt.bootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
-# UiBinder
+## UiBinder
 
-You can use the widgets in UiBinder. The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
+You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` file:
 
-* `<b:Heading size="2">UiBinder Examples</b:Heading>`
-* `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
-* `Hello <b:Abbreviation title="You">u</b:Abbreviation>`, that's <b:Emphasis>me!</b:Emphasis>
+`xmlns:b="urn:import:com.geekvigarista.gwt.bootstrap.client.ui"`
+
+The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
+
+* `<b:Heading size="4" subtext="subtext">Heading</b:Heading>`
+* `Hello <b:Abbreviation title="You">u</b:Abbreviation>`
+* `that's <b:Emphasis>me!</b:Emphasis>`
 * `<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>`
-* `<b:ButtonGroup><b:Button>1</b:Button><b:Button>2</b:Button></b:ButtonGroup>`
-* `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`
 * `<b:Icon type="star"/>`, `<b:Icon type="heart" color="white"/>`
 * `<b:UnorderedList><b:ListItem><g:Label>Test</g:Label></b:UnorderedList>`
+* `<b:Badge type="error" >2</b:Badge>`
+* `<b:Well>...</b:Well>`
+* Close Icon: `<b:Close />`
+
+## Buttons
+* `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
+* `<b:ButtonGroup><b:Button>1</b:Button><b:Button>2</b:Button></b:ButtonGroup>`
+* `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`
 
 ## Grid System
 
     <b:FluidContainer>
       <b:Row>
-        <b:RowItem size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:RowItem>
-        <b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
+        <b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
+        <b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
       </b:Row>
-      <b:Row fluid="true">
-        <b:RowItem size="2"><g:Label>I'm in a Fluid row...</g:Label></b:RowItem>
-        <b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
-      </b:Row>
+      <b:FluidRow>
+        <b:Column size="2"><g:Label>I'm in a Fluid row...</g:Label></b:Column>
+        <b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
+      </b:FluidRow>
     </b:FluidContainer>`
+
+## NavTabs
+    <b:NavTabs>
+    	<b:NavLink>1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    </b:NavTabs>
+
+* `<b:NavTabs stacked="true">...</b:NavTabs>`
+
+## NavPills
+    <b:NavPills>
+    	<b:NavLink>1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    </b:NavPills>
+
+* `<b:NavPills stacked="true">...</b:NavPills>`
+
+## TabPanel
+    <b:TabPanel tabPosition="right">
+    	<b:TabPane heading="prost" href="1"><g:Label>Lalala</g:Label></b:TabPane>
+    	<b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
+    </b:TabPanel>
+
+* `tabPosition` is optional and defaults to `above`. Options: `below`, `left`, `right`. 
+* `href` is optional. If none is provided, gwt-bootstrap will generate a random string.
 
 ## Navbar
 
@@ -51,3 +84,62 @@ You can use the widgets in UiBinder. The names of icon and options are the same 
     	<b:NavText alignment="right">Right</b:NavText>
     	<b:NavSearch size="2" placeholder="Search" alignment="right"/>
     </b:Navbar>
+
+## Nav Lists
+
+    <b:NavList>
+    	<b:NavHeader>Header</b:NavHeader>
+    	<b:NavLink active="true" icon="plane">Test</b:NavLink>
+    	<b:Divider />
+    	<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+    </b:NavList>
+
+    <b:WellNavList>
+    	<b:NavHeader>Header</b:NavHeader>
+	    <b:NavLink active="true" icon="plane">Test</b:NavLink>
+    	<b:Divider />
+    	<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+    </b:WellNavList>
+
+## Hero Unit
+    <b:Hero>
+    	<b:Heading size="2">Hero Unit</b:Heading>
+    	<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
+    	<b:Paragraph>More text.</b:Paragraph>
+    </b:Hero>
+
+## Progress Bar
+* `<b:ProgressBar percent="20"/>`
+* `<b:ProgressBar style="striped" percent="40"/>`
+* `<b:ProgressBar style="animated" percent="60"/>`
+
+## Alerts
+* `<b:Alert style="success" close="false">TestAlert without close</b:Alert>`
+* `<b:AlertBlock style="info" heading="Heading">AlertBlock</b:AlertBlock>`
+
+## Labels
+* `<b:Label>Default label</b:Label>`
+* `<b:Label type="info">Info label</b:Label>`
+
+## Pager
+* `<b:Pager left="Left" right="Right"/>`
+* `<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>`
+
+## Pagination
+    <b:Pagination>
+    	<b:NavLink href="http://www.google.com">1</b:NavLink>
+    	<b:NavLink active="true">2</b:NavLink>
+    	<b:NavLink disabled="true">3</b:NavLink>
+    </b:Pagination>
+
+* `<b:Pagination alignment="right">...</b:Pagination>`
+* `<b:Pagination alignment="centered">...</b:Pagination>`
+
+## Code
+* `<b:Code>Code</b:Code>`
+
+    <b:CodeBlock>
+    	<b>More</b> Text<br/>
+    	    in here...<br/>
+    	&lt;p&gt;Sample text here...&lt;/p&gt;
+    </b:CodeBlock>

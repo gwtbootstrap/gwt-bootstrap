@@ -1,7 +1,7 @@
 package com.geekvigarista.gwt.bootstrap.client.ui;
 
-import com.geekvigarista.gwt.bootstrap.client.ui.resources.BootstrapCssResources;
-import com.geekvigarista.gwt.bootstrap.client.ui.topbar.NavFormBase;
+import com.geekvigarista.gwt.bootstrap.client.ui.navbar.NavFormBase;
+import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 
 /**
  * Search form in the Navbar.
@@ -12,12 +12,12 @@ public class NavSearch extends NavFormBase {
 
 	public NavSearch() {
 		super();
-		addStyleName(BootstrapCssResources.navbar_search);
-		getTextBox().addStyleName(BootstrapCssResources.search_query);
+		addStyleName(Bootstrap.navbar_search);
+		getTextBox().addStyleName(Bootstrap.search_query);
 	}
 	
 	public NavSearch(int size) {
 		super(size);
-		addStyleName(BootstrapCssResources.navbar_search);
+		addStyleName(Bootstrap.navbar_search);
 	}
 }

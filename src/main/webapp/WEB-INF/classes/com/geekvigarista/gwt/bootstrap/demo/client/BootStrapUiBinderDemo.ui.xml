@@ -61,10 +61,5 @@
 				<b:RowItem size="2" offset="2"><g:Label>Me too!</g:Label></b:RowItem>
 			</b:Row>
 		</b:FluidContainer>
-		<b:Container>
-			<b:Dropdown>
-<!-- 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem> -->
-			</b:Dropdown>
-		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 

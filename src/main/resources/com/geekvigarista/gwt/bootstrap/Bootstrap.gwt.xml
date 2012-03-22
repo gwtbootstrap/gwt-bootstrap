@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='bootstrap'>
+  <inherits name='com.google.gwt.user.User' />
+  <inherits name='com.google.gwt.junit.JUnit' />
+
+  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />
+
+<<<<<<< HEAD:src/main/webapp/WEB-INF/classes/com/geekvigarista/gwt/bootstrap/BootStrap.gwt.xml
+  <entry-point class='com.geekvigarista.gwt.bootstrap.client.BootStrap' />-->
+=======
+  <entry-point class='com.geekvigarista.gwt.bootstrap.client.BootstrapDemo' />
+>>>>>>> a5a607c2e44d6bd393f955f7e1502b5561a9c30b:src/main/resources/com/geekvigarista/gwt/bootstrap/Bootstrap.gwt.xml
+
+  <source path='client' />
+
+</module>
