@@ -5,13 +5,13 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 ## Installation
 
 * Download the zip, extract and add the folder as external source to the build path.
-* Add `<inherits name="com.geekvigarista.gwt.bootstrap.Bootstrap"/>` to your *.gwt.xml file.
+* Add `<inherits name="com.github.gwtbootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
 ## UiBinder
 
 You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` file:
 
-`xmlns:b="urn:import:com.geekvigarista.gwt.bootstrap.client.ui"`
+`xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"`
 
 The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
 

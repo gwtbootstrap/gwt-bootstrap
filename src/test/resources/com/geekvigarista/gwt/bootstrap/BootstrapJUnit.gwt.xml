@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-  <inherits name='com.geekvigarista.gwt.bootstrap.Bootstrap' />
+  <inherits name='com.github.gwtbootstrap.Bootstrap' />
 </module>

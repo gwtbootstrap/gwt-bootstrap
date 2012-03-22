@@ -1,0 +1,98 @@
+package com.github.gwtbootstrap.client.old.alerts;
+
+import com.github.gwtbootstrap.client.old.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.resources.Span;
+import com.github.gwtbootstrap.client.ui.resources.Type;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.Label;
+
+/**
+ * A simple AlertMessage Component based on Twitter's Bootstrap Alert. Will
+ * automatically insert a "close" element and inject the alert.js plugin.
+ * 
+ * @author Carlos Alexandro Becker
+ * @since 22/01/2012
+ */
+public class Alert extends Label {
+
+//	static {
+//		ResourceInjector.injectJs(Resources.RESOURCES.alerts());
+//	}
+
+	{
+		setStyleName(Bootstrap.alert_message);
+		addStyleName(Bootstrap.fade);
+		addStyleName(Bootstrap.in);
+		setSize(Span._10);
+	}
+
+	private final String closebutton = "<a class=\"close\" href=\"#\">×</a>";
+
+	protected Alert() {
+
+	}
+
+	public Alert(String text) {
+		setText(text);
+	}
+
+	public Alert(String text, Type type) {
+		setText(text);
+		setType(type);
+	}
+
+	public Alert(Type type) {
+		setType(type);
+	}
+
+	public void setSize(Span spanSize) {
+		SizeHelper.setSize(spanSize, this);
+	}
+
+	public void setType(Type type) {
+		assert type != null : "must specify a type.";
+		// remove all types first
+		for (Type t : Type.values()) {
+			if (t.getType() != "") {
+				removeStyleName(t.getType());
+			}
+		}
+		addStyleName(type.getType());
+	}
+
+	@Override
+	protected void onLoad() {
+		super.onLoad();
+		configure(getElement());
+	}
+
+	public void setHTMLText(String... text) {
+		getElement().setInnerHTML(closebutton);
+		for (String html : text) {
+			getElement().setInnerHTML(getElement().getInnerHTML() + html);
+		}
+	}
+
+	@Override
+	public void setText(String text) {
+		getElement().setInnerHTML(closebutton + "<p>" + text + "</p>");
+	}
+
+	public void close() {
+		close(getElement());
+	}
+
+	/*
+	 * native functions.
+	 */
+
+	private native void configure(Element e) /*-{
+		$wnd.jQuery(e).alert();
+	}-*/;
+
+	private native void close(Element e) /*-{
+		$wnd.jQuery(e).alert('close');
+	}-*/;
+
+}
