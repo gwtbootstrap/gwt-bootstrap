@@ -139,24 +139,39 @@ The names of icon and options are the same as in Bootstrap without the preceding
 * `<b:Code>Code</b:Code>`
 
     <b:CodeBlock>
-    	<b>More</b> Text<br/>
-    	    in here...<br/>
+    	<b>More</b> Text<br/>\n
+    	    in here...<br/>\n
     	&lt;p&gt;Sample text here...&lt;/p&gt;
     </b:CodeBlock>
-    
+
+End lines with `\n`. All html tags are automatically escaped. (So the last line of this example looks pretty bad ;-).)
+ 
 ## Dropdown
 
-For a better look, you can use it inside a NavPills component.
+You can use Dropdowns in Navs, NavTabs and NavPills.
 
     <b:NavPills>
-	<b:Dropdown text="Dropdown example">
-	    <b:NavLink>Test 1</b:NavLink>
-	    <b:NavLink>Test 2</b:NavLink>
-	    <b:NavLink>Test 3</b:NavLink>
-	    <b:NavLink>Test 4</b:NavLink>
-	    <b:NavLink>Test 5</b:NavLink>
+		<b:Dropdown text="Dropdown example">
+	    	<b:NavLink>Test 1</b:NavLink>
+		    <b:NavLink>Test 2</b:NavLink>
       </b:Dropdown>
     </b:NavPills>
+
+All dropdowns can be converted into dropups by adding `dropup="true"`.
+
+### DropdownButton
+
+	<b:DropdownButton dropup="true" text="Dropup example">
+		<b:NavLink>Test 1</b:NavLink>
+	    <b:NavLink>Test 2</b:NavLink>
+	</b:DropdownButton>
+	
+### SplitDropdownButton
+
+	<b:SplitDropdownButton text="Dropdown example">
+		<b:NavLink>Test 1</b:NavLink>
+	    <b:NavLink>Test 2</b:NavLink>
+	</b:SplitDropdownButton>
     
 ## Modal
 
@@ -169,7 +184,7 @@ Modal is very easy to use.
 		</b:ModalFooter>
 	</b:Modal>
 	
-As you can see, we have several options. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss.
+As you can see, we have several optional settings. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss.
 Also, Modal implements the `HasVisibleHandlers` interface, so, it has the `show`, `hide` and `toggle` methods.
 The footer is optional.
 

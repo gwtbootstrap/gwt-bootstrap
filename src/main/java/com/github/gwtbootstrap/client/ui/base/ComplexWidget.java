@@ -59,7 +59,8 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets {
             getElement().removeChild(w.getElement());
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+        	System.out.println("Widget was not in element.");
+//            e.printStackTrace();
         }
         return false;
     }

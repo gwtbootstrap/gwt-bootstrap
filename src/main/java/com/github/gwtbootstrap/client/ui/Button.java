@@ -97,7 +97,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
         addStyleName(OPTION.DEFAULT.getStyle());
     }
     
-    private Button() {
+    public Button() {
     	super();
         getElement().appendChild(Document.get().createElement("i"));
     }
