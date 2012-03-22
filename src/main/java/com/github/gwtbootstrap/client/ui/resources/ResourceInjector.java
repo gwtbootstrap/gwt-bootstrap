@@ -21,6 +21,11 @@ public class ResourceInjector {
 		injectCss(res.bootstrap_css());
 		injectJs(res.jquery());
 		injectJs(res.bootstrap_js());
+		
+//		injectJs(res.prettify_js());
+//		injectCss(res.prettify_css());
+//		Element body = Document.get().getElementsByTagName("body").getItem(0);
+//		body.setAttribute("onload", "prettyPrint()");
 	}
 
 	public static void injectCss(TextResource r) {
