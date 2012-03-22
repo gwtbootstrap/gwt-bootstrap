@@ -158,10 +158,17 @@
 				<b:NavPills>
 					<b:Dropdown text="Dropdown example">
 						<b:NavLink>Test 1</b:NavLink>
+<<<<<<< HEAD
 					    <b:NavLink>Test 2</b:NavLink>
 					    <b:NavLink>Test 3</b:NavLink>
 					    <b:NavLink>Test 4</b:NavLink>
 					    <b:NavLink>Test 5</b:NavLink>
+=======
+						<b:NavLink>Test 2</b:NavLink>
+						<b:NavLink>Test 3</b:NavLink>
+						<b:NavLink>Test 4</b:NavLink>
+						<b:NavLink>Test 5</b:NavLink>
+>>>>>>> origin/master
 					</b:Dropdown>
 				</b:NavPills>
 			</b:Row>

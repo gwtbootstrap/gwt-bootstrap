@@ -148,6 +148,7 @@ The names of icon and options are the same as in Bootstrap without the preceding
 
 For a better look, you can use it inside a NavPills component.
 
+<<<<<<< HEAD
     <b:NavPills>
 	<b:Dropdown text="Dropdown example">
 	    <b:NavLink>Test 1</b:NavLink>
@@ -172,3 +173,14 @@ Modal is very easy to use.
 As you can see, we have several options. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss.
 Also, Modal implements the `HasVisibleHandlers` interface, so, it has the `show`, `hide` and `toggle` methods.
 The footer is optional.
+=======
+	<b:NavPills>
+		<b:Dropdown text="Dropdown example">
+			<b:NavLink>Test 1</b:NavLink>
+			<b:NavLink>Test 2</b:NavLink>
+			<b:NavLink>Test 3</b:NavLink>
+			<b:NavLink>Test 4</b:NavLink>
+			<b:NavLink>Test 5</b:NavLink>
+		</b:Dropdown>
+	</b:NavPills>
+>>>>>>> origin/master
