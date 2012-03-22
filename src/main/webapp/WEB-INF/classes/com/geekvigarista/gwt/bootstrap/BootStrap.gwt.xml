@@ -3,9 +3,9 @@
   <inherits name='com.google.gwt.user.User' />
   <inherits name='com.google.gwt.junit.JUnit' />
 
-  <inherits name='com.google.gwt.user.theme.standard.Standard' />
+  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />
 
-  <entry-point class='com.geekvigarista.gwt.bootstrap.client.BootStrapDemo' />
+  <entry-point class='com.geekvigarista.gwt.bootstrap.client.BootStrap' />-->
 
   <source path='client' />
 
