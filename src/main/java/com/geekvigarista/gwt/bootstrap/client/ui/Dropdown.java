@@ -14,6 +14,8 @@ public class Dropdown extends ComplexWidget {
 
 	private UnorderedList ul;
 	private Element anchor;
+	
+	private NavLink link;
 
 	public @UiConstructor
 	Dropdown() {
@@ -49,7 +51,7 @@ public class Dropdown extends ComplexWidget {
 
 	@Override
 	public void add(Widget w) {
-		assert w instanceof ListItem : "you have to add only list itens";
+		assert w instanceof NavLink : "You can only add NavLink items";
 		if (ul == null) {
 			ul = new UnorderedList();
 			ul.setStyleName("dropdown-menu");
