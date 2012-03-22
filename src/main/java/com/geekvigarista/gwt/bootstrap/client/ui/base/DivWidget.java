@@ -10,4 +10,9 @@ public class DivWidget extends ComplexWidget {
     public DivWidget() {
         super("div");
     }
+    
+    public DivWidget(String styleName) {
+    	this();
+    	setStyleName(styleName);
+    }
 }

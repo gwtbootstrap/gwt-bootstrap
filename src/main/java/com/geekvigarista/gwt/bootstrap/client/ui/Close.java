@@ -17,7 +17,13 @@ public class Close extends Anchor {
 			String get() {
 				return Bootstrap.Alert.ALERT.get();
 			}
-		};
+		},
+		MODAL {
+			@Override
+			String get() {
+				return "modal"; // FIXME
+			}
+		} ;
 		abstract String get();
 	}
 	
