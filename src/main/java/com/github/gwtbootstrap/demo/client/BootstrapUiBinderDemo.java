@@ -2,6 +2,7 @@ package com.github.gwtbootstrap.demo.client;
 
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.Modal;
+import com.github.gwtbootstrap.client.ui.SplitDropdownButton;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -41,6 +42,8 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 	
 	@UiField
 	Button modalBtn;
+	
+	@UiField SplitDropdownButton splitDropdownButton;
 
 	public BootstrapUiBinderDemo(String firstName) {
 
@@ -53,6 +56,11 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 	void onClick(ClickEvent e) {
 
 		Window.alert("Hello!");
+	}
+	
+	@UiHandler("splitDropdownButton")
+	void onSplitClick(ClickEvent e) {
+		Window.alert("Split");
 	}
 	
 	

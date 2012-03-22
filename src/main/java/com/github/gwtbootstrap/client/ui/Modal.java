@@ -5,7 +5,6 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasAnimateProperty;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -16,9 +15,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class Modal extends DivWidget implements HasVisibleHandlers,
 		HasAnimateProperty {
 
-	private final DivWidget header;
-	private final DivWidget body;
-	private DivWidget footer;
+	private final DivWidget header = new DivWidget();
+	private final DivWidget body = new DivWidget("modal-body");
 
 	private boolean keyboard = true;
 	private boolean backdrop = true;
@@ -26,24 +24,30 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 
 	private boolean configured = false;
 
-	{
+	public Modal() {
 		setStyleName("modal");
-		header = new DivWidget("modal-header");
-		body = new DivWidget("modal-body");
 		super.add(header);
 		super.add(body);
 		setVisible(false);
 	}
 
-	public @UiConstructor
-	Modal() {
-		
-	}
-
+	@Override
 	public void setTitle(String title) {
 		header.clear();
-		header.add(new Close(DataDismiss.MODAL));
-		header.add(new Heading(title, 3));
+		if (title != null && !title.isEmpty()) {
+			header.add(new Close(DataDismiss.MODAL));
+			header.add(new Heading(title, 3));
+			showHeader(true);
+		} else {
+			showHeader(false);
+		}
+	}
+	
+	private void showHeader(boolean show) {
+		if (show)
+			header.setStyleName("modal-header");
+		else
+			header.removeStyleName("modal-header");
 	}
 
 	public void setAnimated(boolean animated) {
