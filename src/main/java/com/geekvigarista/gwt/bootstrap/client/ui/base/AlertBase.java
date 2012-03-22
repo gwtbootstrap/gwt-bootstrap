@@ -1,9 +1,9 @@
 package com.geekvigarista.gwt.bootstrap.client.ui.base;
 
 import com.geekvigarista.gwt.bootstrap.client.ui.Close;
-import com.geekvigarista.gwt.bootstrap.client.ui.base.DivWidget;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap;
 import com.geekvigarista.gwt.bootstrap.client.ui.resources.Bootstrap.Alert;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasHTML;
 
 /**
@@ -11,33 +11,36 @@ import com.google.gwt.user.client.ui.HasHTML;
  * 
  * @author Dominik Mayer
  */
-public abstract class AlertBase extends DivWidget implements HasHTML {
-	
+public abstract class AlertBase extends DivWidget implements HasHTML,
+		HasAnimateProperty {
+
 	private Close close;
-	
+
 	private String html = "";
-	
+
 	private String heading = "";
-	
+
+	private boolean fade;
+
 	public AlertBase() {
 		this(true);
 	}
-	
+
 	public AlertBase(boolean hasClose) {
 		super.setStyle(Bootstrap.Alert.ALERT);
 		setClose(hasClose);
 	}
-	
+
 	public AlertBase(Alert style) {
 		this();
 		setStyle(style);
 	}
-	
+
 	public void setStyle(Alert style) {
 		super.setStyle(Bootstrap.Alert.ALERT);
 		super.addStyle(style);
 	}
-	
+
 	public void setStyle(String stylename) {
 		if (stylename.equalsIgnoreCase("error"))
 			setStyle(Bootstrap.Alert.ERROR);
@@ -45,8 +48,10 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 			setStyle(Bootstrap.Alert.SUCCESS);
 		else if (stylename.equalsIgnoreCase("info"))
 			setStyle(Bootstrap.Alert.INFO);
+
+		configureFade();
 	}
-	
+
 	public void setClose(boolean hasClose) {
 		if (hasClose) {
 			close = new Close(Close.DataDismiss.ALERT);
@@ -57,19 +62,35 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 		}
 		redraw();
 	}
-	
+
 	public void setHeading(String text) {
 		heading = text;
 		redraw();
 	}
-	
+
+	public void setAnimated(boolean animated) {
+		this.fade = animated;
+		configureFade();
+	}
+
 	@Override
 	public void clear() {
 		getElement().setInnerHTML("");
 	}
-	
+
 	protected void redraw() {
 		setHTML(html);
+		configure(getElement());
+	}
+
+	protected void configureFade() {
+		if (fade) {
+			addStyleName("fade");
+			addStyleName("in");
+		} else {
+			removeStyleName("fade");
+			removeStyleName("in");
+		}
 	}
 
 	public String getText() {
@@ -91,12 +112,22 @@ public abstract class AlertBase extends DivWidget implements HasHTML {
 		output = output + heading + html;
 		setHTMLOutput(html, output);
 	}
-	
+
 	protected void setHTMLOutput(String html, String output) {
 		this.html = html;
 		getElement().setInnerHTML(output);
 	}
-	
+
 	protected void setHTML(String html, String heading) {
 	}
+
+	@Override
+	protected void onLoad() {
+		super.onLoad();
+		configure(getElement());
+	}
+
+	private native void configure(Element e) /*-{
+		$wnd.jQuery(e).alert(e);
+	}-*/;
 }
