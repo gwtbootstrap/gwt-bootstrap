@@ -29,7 +29,7 @@ public class NavLink extends ListItem implements HasText {
 	}
 	
 	public void setHref(String href) {
-		anchor.getElement().setAttribute("href", href);
+		anchor.setHref(href);
 	}
 	
 	public void setText(String text) {

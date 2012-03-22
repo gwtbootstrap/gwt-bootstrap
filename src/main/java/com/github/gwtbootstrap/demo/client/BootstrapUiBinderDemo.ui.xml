@@ -17,6 +17,10 @@
 				<b:NavLink>Test</b:NavLink>
 				<b:DividerVertical />
 				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+				<b:Dropdown text="Dropdown">
+					<b:NavLink>Test 1</b:NavLink>
+				    <b:NavLink>Test 2</b:NavLink>
+				</b:Dropdown>
 			</b:Nav>
 			<b:NavForm size="1"/>
 			<b:Nav alignment="right">
@@ -112,8 +116,8 @@
 		<b:Code>Code\n new line</b:Code>
 		
 		<b:CodeBlock prettify="true">
-			<b>More</b> Text<br/>
-			    in here...<br/>
+			<b>More</b> Text<br/>\n
+			    in here...<br/>\n
 			&lt;p&gt;Sample text here...&lt;/p&gt;
 		</b:CodeBlock>
 		<b:FluidContainer>
@@ -155,15 +159,27 @@
 				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
 			</b:Row>
 			<b:Row>
-				<b:NavPills>
-					<b:Dropdown text="Dropdown example">
+				<b:Column size="3">
+					<b:NavPills>
+						<b:Dropdown text="Dropdown example">
+							<b:NavLink>Test 1</b:NavLink>
+						    <b:NavLink>Test 2</b:NavLink>
+						    <b:NavLink>Test 3</b:NavLink>
+						    <b:NavLink>Test 4</b:NavLink>
+						    <b:NavLink>Test 5</b:NavLink>
+						</b:Dropdown>
+					</b:NavPills>
+				</b:Column>
+				<b:Column size="3">
+					<b:DropdownButton dropup="true" text="Dropup example">
 						<b:NavLink>Test 1</b:NavLink>
 					    <b:NavLink>Test 2</b:NavLink>
-					    <b:NavLink>Test 3</b:NavLink>
-					    <b:NavLink>Test 4</b:NavLink>
-					    <b:NavLink>Test 5</b:NavLink>
-					</b:Dropdown>
-				</b:NavPills>
+					</b:DropdownButton>
+					<b:SplitDropdownButton text="Dropdown example">
+						<b:NavLink>Test 1</b:NavLink>
+					    <b:NavLink>Test 2</b:NavLink>
+					</b:SplitDropdownButton>
+				</b:Column>
 			</b:Row>
 		</b:FluidContainer>
 		<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">

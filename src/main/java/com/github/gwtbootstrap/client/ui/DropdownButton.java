@@ -4,26 +4,30 @@ import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 
 /**
+ * A Button with a dropdown menu.
  * 
- * @author Carlos A Becker
  * @author Dominik Mayer
+ *
  */
-public class Dropdown extends DropdownBase {
+public class DropdownButton extends DropdownBase {
+	
+	private Button trigger;
 
-	public Dropdown() {
-		super("li");
-		addStyleName("dropdown");
+	public DropdownButton() {
+		super("div");
+		addStyleName("btn-group");
 	}
 
-	public Dropdown(String text) {
+	public DropdownButton(String text) {
 		this();
 		setText(text);
 	}
-	
+
 	@Override
 	protected IconAnchor createTrigger() {
-		IconAnchor trigger = new IconAnchor();
+		trigger = new Button();
 		trigger.setCaret(true);
 		return trigger;
 	}
+	
 }

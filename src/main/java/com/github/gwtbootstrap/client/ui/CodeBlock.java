@@ -1,6 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 /**
@@ -47,7 +48,15 @@ public class CodeBlock extends HTMLPanel {
 	}
 
 	public void setHTML(String html) {
-		getElement().setInnerHTML(html);
+		String[] lines = html.split("\\\\n");
+		SafeHtmlBuilder shb = new SafeHtmlBuilder();
+		
+		for(String s : lines) {
+			shb.appendEscaped(s);
+			shb.appendHtmlConstant("<br/>");
+		}
+		
+		getElement().setInnerHTML(shb.toSafeHtml().asString());
 	}
 
 	public String getText() {
