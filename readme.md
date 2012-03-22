@@ -143,3 +143,17 @@ The names of icon and options are the same as in Bootstrap without the preceding
     	    in here...<br/>
     	&lt;p&gt;Sample text here...&lt;/p&gt;
     </b:CodeBlock>
+    
+## Dropdown
+
+For a better look, you can use it inside a NavPills component.
+
+* `<b:NavPills>`
+    <b:Dropdown text="Dropdown example">
+	<b:ListItem><g:Anchor>Test 1</g:Anchor></b:ListItem>
+	  <b:ListItem><g:Anchor>Test 2</g:Anchor></b:ListItem>
+	  <b:ListItem><g:Anchor>Test 3</g:Anchor></b:ListItem>
+	  <b:ListItem><g:Anchor>Test 4</g:Anchor></b:ListItem>
+	  <b:ListItem><g:Anchor>Test 5</g:Anchor></b:ListItem>
+    </b:Dropdown>
+  </b:NavPills>
