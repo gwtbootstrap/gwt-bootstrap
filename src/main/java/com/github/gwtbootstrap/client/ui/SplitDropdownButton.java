@@ -24,7 +24,7 @@ public class SplitDropdownButton extends DropdownBase {
 		this();
 		setText(text);
 	}
-
+	
 	@Override
 	public void setText(String text) {
 		button.setText(text);
@@ -37,5 +37,13 @@ public class SplitDropdownButton extends DropdownBase {
 		trigger = new Button();
 		trigger.setCaret(true);
 		return trigger;
+	}
+	
+	public void setOptions(String options) {
+		button.setOptions(options);
+	}
+	
+	public void setIcon(String icon) {
+		button.setIcon(icon);
 	}
 }

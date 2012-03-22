@@ -30,4 +30,12 @@ public class DropdownButton extends DropdownBase {
 		return trigger;
 	}
 	
+	public void setOptions(String options) {
+		trigger.setOptions(options);
+	}
+	
+	public void setIcon(String icon) {
+		trigger.setIcon(icon);
+	}
+	
 }
