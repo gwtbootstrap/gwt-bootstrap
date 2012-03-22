@@ -148,12 +148,12 @@ The names of icon and options are the same as in Bootstrap without the preceding
 
 For a better look, you can use it inside a NavPills component.
 
-    <b:NavPills>
-	<b:Dropdown text="Dropdown example">
-	    <b:ListItem><g:Anchor>Test 1</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 2</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 3</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 4</g:Anchor></b:ListItem>
-	    <b:ListItem><g:Anchor>Test 5</g:Anchor></b:ListItem>
-      </b:Dropdown>
-    </b:NavPills>
+	<b:NavPills>
+		<b:Dropdown text="Dropdown example">
+			<b:NavLink>Test 1</b:NavLink>
+			<b:NavLink>Test 2</b:NavLink>
+			<b:NavLink>Test 3</b:NavLink>
+			<b:NavLink>Test 4</b:NavLink>
+			<b:NavLink>Test 5</b:NavLink>
+		</b:Dropdown>
+	</b:NavPills>
