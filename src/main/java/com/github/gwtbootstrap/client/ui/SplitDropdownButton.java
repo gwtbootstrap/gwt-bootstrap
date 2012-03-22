@@ -2,6 +2,10 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * Dropdown button.
@@ -9,7 +13,8 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
  * @author Dominik Mayer
  *
  */
-public class SplitDropdownButton extends DropdownBase {
+public class SplitDropdownButton extends DropdownBase 
+		implements HasClickHandlers {
 
 	private Button button;
 	
@@ -45,5 +50,9 @@ public class SplitDropdownButton extends DropdownBase {
 	
 	public void setIcon(String icon) {
 		button.setIcon(icon);
+	}
+
+	public HandlerRegistration addClickHandler(ClickHandler handler) {
+		return button.addClickHandler(handler);
 	}
 }

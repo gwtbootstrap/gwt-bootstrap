@@ -172,11 +172,11 @@
 				</b:Column>
 				<b:Column size="3">
 					<b:DropdownButton dropup="true" options="mini" text="Dropup example">
-						<b:NavLink>Test 1</b:NavLink>
+						<b:NavLink href="#test">Test 1</b:NavLink>
 					    <b:NavLink>Test 2</b:NavLink>
 					</b:DropdownButton>
-					<b:SplitDropdownButton icon="plane" text="Dropdown example">
-						<b:NavLink>Test 1</b:NavLink>
+					<b:SplitDropdownButton ui:field="splitDropdownButton" icon="plane" text="Dropdown example">
+						<b:NavLink href="#test">Test 1</b:NavLink>
 					    <b:NavLink>Test 2</b:NavLink>
 					</b:SplitDropdownButton>
 				</b:Column>

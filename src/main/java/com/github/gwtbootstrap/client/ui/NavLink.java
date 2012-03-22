@@ -2,6 +2,10 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
 
 /**
@@ -9,7 +13,7 @@ import com.google.gwt.user.client.ui.HasText;
  * 
  * @author Dominik Mayer
  */
-public class NavLink extends ListItem implements HasText {
+public class NavLink extends ListItem implements HasText, HasClickHandlers {
 
 	private final IconAnchor anchor = new IconAnchor();
 
@@ -61,6 +65,10 @@ public class NavLink extends ListItem implements HasText {
     protected IconAnchor getAnchor() {
     	return anchor;
     }
+
+	public HandlerRegistration addClickHandler(ClickHandler handler) {
+		return addDomHandler(handler, ClickEvent.getType());
+	}
     
 //    //TODO
 //    public void setAlignment(String alignment) {
