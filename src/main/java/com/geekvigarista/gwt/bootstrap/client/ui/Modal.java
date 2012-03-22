@@ -18,7 +18,7 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 
 	private final DivWidget header;
 	private final DivWidget body;
-	private final DivWidget footer;
+	private DivWidget footer;
 
 	private boolean keyboard = true;
 	private boolean backdrop = true;
@@ -30,10 +30,8 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		setStyleName("modal");
 		header = new DivWidget("modal-header");
 		body = new DivWidget("modal-body");
-		footer = new DivWidget("modal-footer");
 		super.add(header);
 		super.add(body);
-		super.add(footer);
 		setVisible(false);
 	}
 
@@ -78,7 +76,9 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 
 	@Override
 	public void add(Widget w) {
-		body.add(w);
+		if(w instanceof ModalFooter) {
+			super.add(w);
+		} else body.add(w);
 	}
 
 	@Override
