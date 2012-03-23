@@ -33,7 +33,7 @@ public class CodeBlock extends HTMLPanel {
 	//       Only inject when really needed
 	public void setPrettify(boolean prettify) {
 		if (prettify) {
-			addStyleName(Bootstrap.prettyprint + " lang-html");
+			addStyleName(Bootstrap.prettyprint);// + " linenums lang-html");
 //			injectPrettify();
 		} else {
 			removeStyleName(Bootstrap.prettyprint);
