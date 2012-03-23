@@ -1,6 +1,5 @@
 package com.github.gwtbootstrap.client.ui.resources.prettify;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

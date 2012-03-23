@@ -117,10 +117,11 @@
 			class ScalaExample
 		</b:Code>
 		
-		<b:CodeBlock prettify="true">
-			<b>More</b> Text<br/>\n
-			    in here...<br/>\n
-			&lt;p&gt;Sample text here...&lt;/p&gt;
+		<b:CodeBlock linenums="true">
+			public class Person { \n
+				private final String name; \n
+				private final int age; \n
+			}
 		</b:CodeBlock>
 		<b:FluidContainer>
 			<b:Row>
