@@ -113,12 +113,18 @@
 		</b:Container>
 		
 		<b:Heading size="4" subtext="subtext">Heading</b:Heading>
-		<b:Code>Code\n new line</b:Code>
+		<b:Code lang="scala">
+			class ScalaExample
+		</b:Code>
 		
-		<b:CodeBlock prettify="true">
-			<b>More</b> Text<br/>\n
-			    in here...<br/>\n
-			&lt;p&gt;Sample text here...&lt;/p&gt;
+		<b:CodeBlock linenums="true">
+			public class Person { \n
+			\n
+				private final String name;
+				\n
+				private final int age;
+				\n
+			}
 		</b:CodeBlock>
 		<b:FluidContainer>
 			<b:Row>
