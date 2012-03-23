@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.old.DivPanel;
+import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 /**
@@ -8,9 +8,9 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
  * 
  * @author Dominik Mayer
  */
-public class Well extends DivPanel {
+public class Well extends DivWidget {
 
 	public Well() {
-		setStyleName(Bootstrap.well);
+		super(Bootstrap.well);
 	}
 }

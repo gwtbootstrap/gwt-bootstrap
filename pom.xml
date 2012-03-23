@@ -6,7 +6,7 @@
 
   <!-- POM file generated with GWT webAppCreator -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.geekvigarista.gwt.bootstrap</groupId>
+  <groupId>com.github.gwtbootstrap</groupId>
   <artifactId>gwt-bootstrap</artifactId>
   <version>0.1.5</version>
   <name>GWT-Bootstrap</name>
@@ -79,7 +79,7 @@
         <configuration>
           <runTarget>Bootstrap.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
-          <i18nMessagesBundle>com.geekvigarista.gwt.bootstrap.client.Messages</i18nMessagesBundle>
+          <i18nMessagesBundle>com.github.gwtbootstrap.client.Messages</i18nMessagesBundle>
         </configuration>
       </plugin>
 

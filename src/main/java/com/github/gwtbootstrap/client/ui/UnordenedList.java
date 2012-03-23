@@ -1,4 +1,4 @@
-package com.github.gwtbootstrap.client.old;
+package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 

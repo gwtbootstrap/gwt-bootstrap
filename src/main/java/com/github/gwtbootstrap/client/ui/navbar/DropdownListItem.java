@@ -1,11 +1,9 @@
 package com.github.gwtbootstrap.client.ui.navbar;
 
-import com.github.gwtbootstrap.client.old.ListItem;
-import com.github.gwtbootstrap.client.old.UnordenedList;
+import com.github.gwtbootstrap.client.ui.ListItem;
 import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.UnordenedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
-import com.github.gwtbootstrap.client.ui.resources.Resources;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.IsWidget;
