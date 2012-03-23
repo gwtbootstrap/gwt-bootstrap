@@ -1,6 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 /**
  * Just the modal footer, if you want a different style for it :)
@@ -10,6 +11,6 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
  */
 public class ModalFooter extends DivWidget {
 	{
-		setStyleName("modal-footer");
+		setStyleName(Bootstrap.modal_footer);
 	}
 }

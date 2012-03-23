@@ -29,6 +29,12 @@ public interface Resources extends ClientBundle {
 	@Source("js/bootstrap.min.js")
 	TextResource bootstrap_js();
 
+	@Source("css/prettify.css")
+	TextResource prettify_css();
+	
+	@Source("js/prettify/prettify.js")
+	TextResource prettify_js();
+
 //	@Source("js/prettify.js")
 //	TextResource prettify_js();
 
