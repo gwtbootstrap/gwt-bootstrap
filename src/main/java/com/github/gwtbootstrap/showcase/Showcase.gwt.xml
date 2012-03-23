@@ -3,9 +3,10 @@
   <inherits name='com.google.gwt.user.User' />
   <inherits name='com.google.gwt.junit.JUnit' />
 
-  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />-->
+  <inherits name='com.google.gwt.user.theme.standard.Standard' />
+  <inherits name='com.github.gwtbootstrap.Bootstrap' />
 
-  <entry-point class='com.github.gwtbootstrap.client.Bootstrap' />
+  <entry-point class='com.github.gwtbootstrap.showcase.client.Showcase' />
 
   <source path='client' />
 

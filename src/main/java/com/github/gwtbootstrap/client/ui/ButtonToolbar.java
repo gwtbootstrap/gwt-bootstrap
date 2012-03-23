@@ -1,7 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  *
@@ -16,9 +16,17 @@ public class ButtonToolbar extends DivWidget {
     }
 
     @Override
-    public void add(IsWidget child) {
-        assert child instanceof ButtonGroup : "ButtonToolbar only accepts ButtonGroups.";
-        super.add(child);
+    public void add(Widget child) {
+    	
+    	Widget widget = child;
+    	
+    	if (!(child instanceof ButtonGroup) && !(child instanceof Button))
+    		throw new IllegalArgumentException("A ButtonToolbar can only contain ButtonGroups and Buttons.");
+
+    	if (child instanceof Button)
+    		widget = new ButtonGroup((Button) child);
+    	
+        super.add(widget);
     }
     
     

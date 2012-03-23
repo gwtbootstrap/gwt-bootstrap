@@ -6,7 +6,6 @@ import com.github.gwtbootstrap.client.ui.UnordenedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.IsWidget;
 
 /**
  * Dropdown ListItem for {@link Navbar} and TabBar (FIXME: link).
@@ -42,11 +41,6 @@ public class DropdownListItem extends ListItem {
 
 	public void addItem(ListItem li) {
 		ul.add(li);
-	}
-
-	@Override
-	public void add(IsWidget child) {
-		super.add(child);
 	}
 
 	@Override

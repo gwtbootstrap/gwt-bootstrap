@@ -154,6 +154,135 @@ public interface Bootstrap {
 
 	public static final String footer = "footer";
 	
+    public enum OPTION {
+
+        DEFAULT {
+
+            @Override
+            public String getStyle() {
+                return "btn";
+            }
+        },
+        LARGE {
+
+            @Override
+            public String getStyle() {
+                return "btn-large";
+            }
+        },
+        SMALL {
+
+            @Override
+            public String getStyle() {
+                return "btn-small";
+            }
+        },
+        PRIMARY {
+
+            @Override
+            public String getStyle() {
+                return "btn-primary";
+            }
+        },
+        INFO {
+
+            @Override
+            public String getStyle() {
+                return "btn-info";
+            }
+        },
+        DANGER {
+
+            @Override
+            public String getStyle() {
+                return "btn-danger";
+            }
+        },
+        SUCCESS {
+
+            @Override
+            public String getStyle() {
+                return "btn-success";
+            }
+        },
+        WARNING {
+
+            @Override
+            public String getStyle() {
+                return "btn-warning";
+            }
+        },
+        INVERSE {
+
+            @Override
+            public String getStyle() {
+                return "btn-inverse";
+            }
+        },
+        MINI {
+
+            @Override
+            public String getStyle() {
+                return "btn-mini";
+            }
+        };
+
+        public abstract String getStyle();
+    }
+    
+	public enum Button implements Style {
+
+		BTN("btn");
+		
+		public enum Size implements Style {
+
+			DEFAULT(""),
+			LARGE("btn-large"),
+			SMALL("btn-small"),
+			MINI("btn-mini");
+			
+			private String className;
+			
+			private Size(String className) {
+				this.className = className;
+			}
+			
+			public String get() {
+				return className;
+			}
+		}
+		
+		public enum Type implements Style {
+
+			DEFAULT(""),
+			PRIMARY("btn-primary"),
+			INFO("btn-info"),
+			SUCCESS("btn-success"),
+			WARNING("btn-warning"),
+			DANGER("btn-danger"),
+			INVERSE("btn-inverse");
+			
+			private String className;
+			
+			private Type(String className) {
+				this.className = className;
+			}
+			
+			public String get() {
+				return className;
+			}
+		}
+		
+		private String className;
+		
+		private Button(String className) {
+			this.className = className;
+		}
+		
+		public String get() {
+			return className;
+		}
+	}
 	
 	public enum Tabs implements Style {
 

@@ -1,8 +1,6 @@
 package com.github.gwtbootstrap.demo.client;
 
 import com.github.gwtbootstrap.client.ui.*;
-import com.github.gwtbootstrap.client.ui.Button.OPTION;
-import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -15,16 +13,15 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class BootstrapDemo implements EntryPoint {
     
     public void onModuleLoad() {
-        ResourceInjector.configure();
         
         FluidContainer container = new FluidContainer();
         
         Column sidebar = new Column(2);
         sidebar.add(new Button("Default"));
-        sidebar.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
-        sidebar.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
-        sidebar.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
-        sidebar.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}, new Icon(Icon.Type.OK_SIGN, Icon.COLOR.WHITE)));
+//        sidebar.add(new Button("Danger", new Button.OPTION[]{Button.OPTION.DANGER}));
+//        sidebar.add(new Button("Large Info", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.INFO}));
+//        sidebar.add(new Button("Small success", new Button.OPTION[]{Button.OPTION.SMALL, Button.OPTION.SUCCESS}));
+//        sidebar.add(new Button("Large Primary", new Button.OPTION[]{Button.OPTION.LARGE, Button.OPTION.PRIMARY}, new Icon(Icon.Type.OK_SIGN, Icon.COLOR.WHITE)));
         
         container.add(sidebar);
         
@@ -52,7 +49,7 @@ public class BootstrapDemo implements EntryPoint {
         FluidRow grid2 = new FluidRow();
         content.add(grid2);
         
-        grid2.add(new Column(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));
+//        grid2.add(new Column(3, new UnorderedList(new ListItem(new Label("OI")), new ListItem(new Button("Bottao numa fodendo lista", new OPTION[]{Button.OPTION.INVERSE, Button.OPTION.MINI}, new Icon(Icon.Type.SHOPPING_CART, Icon.COLOR.WHITE))))));
         
         ButtonToolbar toolbar = new ButtonToolbar();
         toolbar.add(new ButtonGroup(new Button("1"), new Button("2"), new Button("3"), new Button("4")));
