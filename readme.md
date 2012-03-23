@@ -49,7 +49,7 @@ You can put parts of your page in Sections and jump to them via NavLinks or anch
  
 	<b:Section target="modal">...</b:Section>
 
-	<b:NavLink href="#modal">Test 1</b:NavLink>
+	<b:NavLink href="#modal">Modal</b:NavLink>
 
 ## NavTabs
     <b:NavTabs>
