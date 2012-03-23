@@ -70,6 +70,17 @@ public class Button extends IconAnchor implements HasClickHandlers,
     			removeStyle(s);
     	}
     }
+    
+    public boolean isEnabled() {
+    	return getStyleName().contains("disabled");
+    }
+    
+    public void setEnabled(boolean enabled) {
+    	if(enabled)
+    		addStyleName(Bootstrap.disabled);
+    	else
+    		removeStyleName(Bootstrap.disabled);
+    }
 
     public HandlerRegistration addClickHandler(ClickHandler handler) {
         return addDomHandler(handler, ClickEvent.getType());
@@ -77,14 +88,6 @@ public class Button extends IconAnchor implements HasClickHandlers,
 
     public HandlerRegistration addDoubleClickHandler(DoubleClickHandler handler) {
         return addDomHandler(handler, DoubleClickEvent.getType());
-    }
-
-    public boolean isEnabled() {
-        return getStyleName().contains("disabled");
-    }
-
-    public void setEnabled(boolean enabled) {
-        addStyleName("disabled");
     }
 
     public HandlerRegistration addDragEndHandler(DragEndHandler handler) {

@@ -20,7 +20,10 @@
 				<b:Hero>
 		    		<b:Heading size="1">GWT-Bootstrap</b:Heading>
 			    	<b:Paragraph>Using Twitter's interface library on GWT.</b:Paragraph>
-			    	<b:Row><b:Button href="https://github.com/gwtbootstrap/gwt-bootstrap">github</b:Button></b:Row>
+			    	<b:ButtonToolbar>
+			    		<b:Button size="large" type="inverse" href="https://github.com/gwtbootstrap/gwt-bootstrap">Twitter Bootstrap</b:Button>
+			    		<b:Button size="large" href="https://github.com/gwtbootstrap/gwt-bootstrap">Our Code on github</b:Button>
+			    	</b:ButtonToolbar>
 				</b:Hero>
 			</b:Column>
 		</b:Row>
