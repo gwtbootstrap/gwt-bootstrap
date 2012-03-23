@@ -1,7 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  *
@@ -25,8 +25,10 @@ public class ButtonGroup extends DivWidget {
     }
 
     @Override
-    public void add(IsWidget w) {
-        assert w instanceof Button : "ButtonGroup only accept Buttons";
+    public void add(Widget w) {
+    	if (!(w instanceof Button))
+    		throw new IllegalArgumentException("A ButtonGroup can only contain Buttons.");
+    	
         super.add(w);
     }
 }

@@ -43,8 +43,12 @@ public class SplitDropdownButton extends DropdownBase
 		return trigger;
 	}
 	
-	public void setOptions(String options) {
-		button.setOptions(options);
+	public void setSize(String size) {
+		trigger.setSize(size);
+	}
+	
+	public void setType(String type) {
+		trigger.setType(type);
 	}
 	
 	public void setIcon(String icon) {

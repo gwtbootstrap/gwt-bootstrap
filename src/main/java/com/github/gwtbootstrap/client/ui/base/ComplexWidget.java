@@ -72,4 +72,10 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets {
     public void addStyle(Style style) {
     	addStyleName(style.get());
     }
+    
+    public void removeStyle(Style style) {
+    	String styleString = style.get(); 
+    	if (!styleString.isEmpty())
+    		removeStyleName(styleString);
+    }
 }
