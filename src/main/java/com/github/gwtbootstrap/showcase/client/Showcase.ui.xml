@@ -11,7 +11,7 @@
 		<b:Navbar fixed="top">
 			<b:Brand>GWT-Bootstrap</b:Brand>
 			<b:Nav>
-				<b:NavLink href="#install">Install</b:NavLink>
+				<b:NavLink href="#setup">Get Started</b:NavLink>
 				<b:NavLink href="#grid">Grid</b:NavLink>
 			</b:Nav>
 		</b:Navbar>
@@ -27,6 +27,9 @@
 				</b:Hero>
 			</b:Column>
 		</b:Row>
+		<b:Section target="setup">
+			<b:PageHeader subtext="How to include GWT-Bootstrap in your project">Get started</b:PageHeader>
+		</b:Section>
 		<b:Section target="grid">
 			<b:Row>
 				<b:Column size="4">
