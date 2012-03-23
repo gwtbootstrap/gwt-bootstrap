@@ -43,6 +43,14 @@ The names of icon and options are the same as in Bootstrap without the preceding
       </b:FluidRow>
     </b:FluidContainer>`
 
+## Sections
+
+You can put parts of your page in Sections and jump to them via NavLinks or anchor tags:
+ 
+	<b:Section target="modal">...</b:Section>
+
+	<b:NavLink href="#modal">Test 1</b:NavLink>
+
 ## NavTabs
     <b:NavTabs>
     	<b:NavLink>1</b:NavLink>

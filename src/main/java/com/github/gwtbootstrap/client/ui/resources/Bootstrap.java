@@ -149,6 +149,10 @@ public interface Bootstrap {
 	public static final String caret = "<span class=\"caret\"></span>";
 
 	public static final String dropup = "dropup";
+
+	public static final String modal_footer = "modal-footer";
+
+	public static final String footer = "footer";
 	
 	
 	public enum Tabs implements Style {
