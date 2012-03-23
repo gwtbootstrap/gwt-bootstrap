@@ -8,6 +8,13 @@ import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * A helper class to inject and configure Google Code Prettify in our code
+ * componentes.
+ * 
+ * @author Carlos A Becker
+ * 
+ */
 public class PrettifyHelper implements HasLang {
 
 	static {
@@ -19,8 +26,7 @@ public class PrettifyHelper implements HasLang {
 
 	static List<Integer> importedLangs = new ArrayList<Integer>();
 	private final Widget w;
-	
-	
+
 	public PrettifyHelper(Widget w) {
 		super();
 		this.w = w;
@@ -30,9 +36,11 @@ public class PrettifyHelper implements HasLang {
 	 * will import the language if needed.
 	 */
 	public void setLang(String lang) {
-		
+
 		int i = PrettifyResources.speciallangs.indexOf(lang);
-		
+
+		// XXX thats very very very very ugly, sorry.
+
 		if (i > -1 && !importedLangs.contains(i)) {
 			TextResource tr = null;
 			switch (i) {
@@ -101,15 +109,19 @@ public class PrettifyHelper implements HasLang {
 		}
 	}
 
-	public void configure()
-	{
-		w.addStyleName("prettyprint");
-		setup();
-	}
-	
 	/**
 	 * Configure prettyprint.
 	 */
+	public void configure() {
+		configure(false);
+	}
+
+	public void configure(boolean showLineNumber) {
+		w.setStyleName("prettyprint");
+		if(showLineNumber) w.addStyleName("linenums");
+		setup();
+	}
+
 	private native void setup() /*-{
 		$wnd.prettyPrint();
 	}-*/;

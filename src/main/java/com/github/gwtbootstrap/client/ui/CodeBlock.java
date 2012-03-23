@@ -14,7 +14,8 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 public class CodeBlock extends HTMLPanel implements HasLang {
 
 	private final PrettifyHelper helper;
-
+	private boolean linenums = false;
+	
 	public CodeBlock() {
 		super("pre", "");
 		helper = new PrettifyHelper(this);
@@ -34,11 +35,7 @@ public class CodeBlock extends HTMLPanel implements HasLang {
 	}
 
 	public void setLinenums(boolean linenums) {
-		if (linenums) {
-			addStyleName(Bootstrap.linenums);
-		} else {
-			removeStyleName(Bootstrap.linenums);
-		}
+		this.linenums = linenums;
 	}
 
 	public String getHTML() {
@@ -72,6 +69,6 @@ public class CodeBlock extends HTMLPanel implements HasLang {
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		helper.configure();
+		helper.configure(linenums);
 	}
 }
