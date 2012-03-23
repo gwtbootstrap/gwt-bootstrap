@@ -1,6 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -16,85 +17,9 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		HasAllFocusHandlers, HasAllGestureHandlers, HasAllKeyHandlers,
 		HasAllMouseHandlers, HasAllTouchHandlers {
 
-    public enum OPTION {
-
-        DEFAULT {
-
-            @Override
-            public String getStyle() {
-                return "btn";
-            }
-        },
-        LARGE {
-
-            @Override
-            public String getStyle() {
-                return "btn-large";
-            }
-        },
-        SMALL {
-
-            @Override
-            public String getStyle() {
-                return "btn-small";
-            }
-        },
-        PRIMARY {
-
-            @Override
-            public String getStyle() {
-                return "btn-primary";
-            }
-        },
-        INFO {
-
-            @Override
-            public String getStyle() {
-                return "btn-info";
-            }
-        },
-        DANGER {
-
-            @Override
-            public String getStyle() {
-                return "btn-danger";
-            }
-        },
-        SUCCESS {
-
-            @Override
-            public String getStyle() {
-                return "btn-success";
-            }
-        },
-        WARNING {
-
-            @Override
-            public String getStyle() {
-                return "btn-warning";
-            }
-        },
-        INVERSE {
-
-            @Override
-            public String getStyle() {
-                return "btn-inverse";
-            }
-        },
-        MINI {
-
-            @Override
-            public String getStyle() {
-                return "btn-mini";
-            }
-        };
-
-        public abstract String getStyle();
-    }
-
     {
         removeStyleName("gwt-Button");
-        addStyleName(OPTION.DEFAULT.getStyle());
+        addStyle(Bootstrap.Button.BTN);
     }
     
     public Button() {
@@ -111,35 +36,39 @@ public class Button extends IconAnchor implements HasClickHandlers,
         this(text);
         setIcon(icon);
     }
-
-    public Button(String text, OPTION[] options) {
-        this(text, options, null);
+    
+    public void setStyle(Bootstrap.Button.Type type) {
+    	for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values())
+    		removeStyle(t);
+    	addStyle(type);
     }
-
-    public Button(String text, OPTION[] options, Icon icon) {
-        this(text, icon);
-        for (OPTION option : options) {
-            addStyleName(option.getStyle());
-        }
+    
+    public void setType(String typeString) {
+    	String type = "btn-" + typeString;
+    	
+    	for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values()) {
+    		if (type.equals(t.get()))
+    			addStyle(t);
+    		else
+    			removeStyle(t);
+    	}
     }
 	
-	public void setOptions(String optionstring) {
-		String[] options = optionstring.split(" ");
-		String output = "";
-		for (String s : options) {
-			output += (" btn-" + s);
-		}
-		addStyleDependentName(output);
-	}
-
-    public void addOption(OPTION option) {
-        addStyleDependentName(option.getStyle());
+    public void setSize(Bootstrap.Button.Size size) {
+    	for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values())
+    		removeStyle(s);
+    	addStyle(size);
     }
-
-    public void removeOption(OPTION option) {
-        if (getStyleName().contains(option.getStyle())) {
-            removeStyleName(option.getStyle());
-        }
+    
+    public void setSize(String sizeString) {
+    	String size = "btn-" + sizeString;
+    	
+    	for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values()) {
+    		if (size.equals(s.get()))
+    			addStyle(s);
+    		else
+    			removeStyle(s);
+    	}
     }
 
     public HandlerRegistration addClickHandler(ClickHandler handler) {

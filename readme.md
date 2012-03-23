@@ -26,7 +26,7 @@ The names of icon and options are the same as in Bootstrap without the preceding
 * Close Icon: `<b:Close />`
 
 ## Buttons
-* `<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>`
+* `<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>`
 * `<b:ButtonGroup><b:Button>1</b:Button><b:Button>2</b:Button></b:ButtonGroup>`
 * `<b:ButtonToolbar><b:ButtonGroup>...</b:ButtonGroup><b:ButtonGroup>...</b:ButtonGroup></b:ButtonToolbar>`
 

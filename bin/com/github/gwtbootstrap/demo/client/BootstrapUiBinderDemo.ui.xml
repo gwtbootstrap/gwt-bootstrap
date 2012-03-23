@@ -45,7 +45,7 @@
 		</b:WellNavList>
 
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
-		<b:Button ui:field="button" icon="heart" options="info mini">Testbutton</b:Button>
+		<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
 		<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>
 		
 		<b:ButtonToolbar>
@@ -162,7 +162,7 @@
 				<b:Column size="3">
 					<b:NavPills>
 						<b:Dropdown text="Dropdown example">
-							<b:NavLink>Test 1</b:NavLink>
+							<b:NavLink href="#modal">Test 1</b:NavLink>
 						    <b:NavLink>Test 2</b:NavLink>
 						    <b:NavLink>Test 3</b:NavLink>
 						    <b:NavLink>Test 4</b:NavLink>
@@ -171,7 +171,7 @@
 					</b:NavPills>
 				</b:Column>
 				<b:Column size="3">
-					<b:DropdownButton dropup="true" options="mini" text="Dropup example">
+					<b:DropdownButton dropup="true" size="mini" text="Dropup example">
 						<b:NavLink href="#test">Test 1</b:NavLink>
 					    <b:NavLink>Test 2</b:NavLink>
 					</b:DropdownButton>
@@ -182,12 +182,15 @@
 				</b:Column>
 			</b:Row>
 		</b:FluidContainer>
-		<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">
-			<g:Label>Modal Content!</g:Label>
-			<b:ModalFooter>
-				<b:Button icon="file white" options="primary">Save</b:Button>
-			</b:ModalFooter>
-		</b:Modal>
-		<b:Button icon="heart" options="info" ui:field="modalBtn">Show modal</b:Button>
+		<b:Section target="modal">
+			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">
+				<g:Label>Modal Content!</g:Label>
+				<b:ModalFooter>
+					<b:Button icon="file white" type="primary">Save</b:Button>
+				</b:ModalFooter>
+			</b:Modal>
+			<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
+		</b:Section>
+		<b:Footer><g:Label>Some Text and a </g:Label><b:Button>Button</b:Button></b:Footer>
 	</g:HTMLPanel>
 </ui:UiBinder> 
