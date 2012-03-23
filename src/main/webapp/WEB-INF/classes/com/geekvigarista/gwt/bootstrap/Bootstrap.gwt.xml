@@ -5,7 +5,7 @@
 
   <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />
 
-  <entry-point class='com.geekvigarista.gwt.bootstrap.client.Bootstrap' />-->
+  <entry-point class='com.github.gwtbootstrap.client.Bootstrap' />-->
 
   <source path='client' />
 

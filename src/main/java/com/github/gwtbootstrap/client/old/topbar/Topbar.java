@@ -3,7 +3,7 @@ package com.github.gwtbootstrap.client.old.topbar;
 import com.github.gwtbootstrap.client.old.Container;
 import com.github.gwtbootstrap.client.old.DivPanel;
 import com.github.gwtbootstrap.client.old.ListItem;
-import com.github.gwtbootstrap.client.old.UnordenedList;
+import com.github.gwtbootstrap.client.ui.UnordenedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
 

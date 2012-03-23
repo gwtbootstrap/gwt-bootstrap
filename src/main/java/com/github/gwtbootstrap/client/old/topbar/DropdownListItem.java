@@ -1,7 +1,7 @@
 package com.github.gwtbootstrap.client.old.topbar;
 
 import com.github.gwtbootstrap.client.old.ListItem;
-import com.github.gwtbootstrap.client.old.UnordenedList;
+import com.github.gwtbootstrap.client.ui.UnordenedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
 import com.github.gwtbootstrap.client.ui.resources.Resources;
