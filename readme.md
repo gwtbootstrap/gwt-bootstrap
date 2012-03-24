@@ -51,7 +51,25 @@ You can put parts of your page in Sections and jump to them via NavLinks or anch
 
 	<b:NavLink href="#modal">Modal</b:NavLink>
 
-## NavTabs
+## Navigation Entries
+
+### NavWidget
+Can contain several widgets. The most obvious example:
+
+	<b:NavWidget icon="star" iconColor="white" text="Inbox">
+		<b:Badge>1</b:Badge>
+	</b:NavWidget>
+
+### NavLink
+
+Can only contain Text:
+
+	<b:NavLink active="true">2</b:NavLink>`
+
+(Same as `<b:NavWidget text="2" active="true"/>`)
+
+## Navigation Panels
+### NavTabs
     <b:NavTabs>
     	<b:NavLink>1</b:NavLink>
     	<b:NavLink active="true">2</b:NavLink>
@@ -59,7 +77,7 @@ You can put parts of your page in Sections and jump to them via NavLinks or anch
 
 * `<b:NavTabs stacked="true">...</b:NavTabs>`
 
-## NavPills
+### NavPills
     <b:NavPills>
     	<b:NavLink>1</b:NavLink>
     	<b:NavLink active="true">2</b:NavLink>
@@ -67,7 +85,7 @@ You can put parts of your page in Sections and jump to them via NavLinks or anch
 
 * `<b:NavPills stacked="true">...</b:NavPills>`
 
-## TabPanel
+### TabPanel
     <b:TabPanel tabPosition="right">
     	<b:TabPane heading="prost" href="1"><g:Label>Lalala</g:Label></b:TabPane>
     	<b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
@@ -76,7 +94,7 @@ You can put parts of your page in Sections and jump to them via NavLinks or anch
 * `tabPosition` is optional and defaults to `above`. Options: `below`, `left`, `right`. 
 * `href` is optional. If none is provided, gwt-bootstrap will generate a random string.
 
-## Navbar
+### Navbar
 
     <b:Navbar fixed="top">
     	<b:Brand>Bootstrap</b:Brand>
@@ -93,7 +111,7 @@ You can put parts of your page in Sections and jump to them via NavLinks or anch
     	<b:NavSearch size="2" placeholder="Search" alignment="right"/>
     </b:Navbar>
 
-## Nav Lists
+### Nav Lists
 
     <b:NavList>
     	<b:NavHeader>Header</b:NavHeader>

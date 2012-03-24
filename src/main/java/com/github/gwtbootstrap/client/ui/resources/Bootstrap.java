@@ -146,7 +146,7 @@ public interface Bootstrap {
 
 	public static final String tab_content = "tab-content";
 
-	public static final String caret = "<span class=\"caret\"></span>";
+	public static final String caret = "caret";//"<span class=\"caret\"></span>";
 
 	public static final String dropup = "dropup";
 

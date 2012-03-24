@@ -23,6 +23,11 @@ public class WellNavList extends Well {
 		navList.add(child);
 	}
 	
+	@Override
+	public void insert(Widget w, int beforeIndex) {
+		navList.insert(w, beforeIndex);
+	}
+	
 	public void setStyle() {
 		Style style = getElement().getStyle(); 
 		style.setPaddingTop(8, Unit.PX);

@@ -1,22 +1,31 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasText;
 
+/**
+ * An Anchor with optional image and caret.
+ * 
+ * @author Dominik Mayer
+ *
+ */
 public class IconAnchor extends ComplexWidget implements HasText {
 
+	private Icon icon = new Icon();
+	
+	private InlineLabel label = new InlineLabel();
+	
 	private String text = "";
 	
-	private boolean caret = false;
+	private Caret caret = new Caret(false);
 
 	public IconAnchor() {
 
 		super("a");
+		super.add(icon);
+		super.add(label);
+		super.add(caret);
 		setHref("javascript:;");
-		getElement().appendChild(Document.get().createElement("i"));
 	}
 
 	public void setIcon(Icon icon) {
@@ -27,20 +36,12 @@ public class IconAnchor extends ComplexWidget implements HasText {
 	}
 
 	public void setIcon(String iconname) {
-		String[] iconnames = iconname.split(" ");
-		String output = "";
-		for (String s : iconnames) {
-			output += (" icon-" + s);
-		}
-		getElement().getElementsByTagName("i").getItem(0).setClassName(output);
+		icon.setType(iconname);
 	}
 
 	public void setText(String text) {
 		this.text = text;
-		Element i = getElement().getElementsByTagName("i").getItem(0);
-		getElement().setInnerHTML(
-				(i != null ? i.toString() : "<i></i>") + " " + text + " " + 
-				getCaret());
+		label.setText(" " + text + " ");
 	}
 
 	public String getText() {
@@ -56,15 +57,15 @@ public class IconAnchor extends ComplexWidget implements HasText {
 	}
 	
 	public void setCaret(boolean caret) {
-		this.caret = caret;
-		setText(text);
+		this.caret.setVisible(caret);
 	}
-	
-	private String getCaret() {
-		if (caret)
-			return Bootstrap.caret;
-		else
-			return "";
+
+	public void setTargetHistoryToken(String targetHistoryToken) {
+		setHref("#" + targetHistoryToken);
+	}
+
+	public void setIconColor(String color) {
+		icon.setColor(color);
 	}
 
 }

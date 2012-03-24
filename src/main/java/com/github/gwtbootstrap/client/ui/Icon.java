@@ -877,8 +877,9 @@ public class Icon extends Widget {
         WHITE, BLACK;
     }
 
-    {
+    public Icon() {
         setElement(DOM.createElement("i"));
+//        getElement().setInnerHTML("&nbsp;");
     }
 
     public Icon(Type type, COLOR color) {
@@ -893,7 +894,12 @@ public class Icon extends Widget {
     }
     
     public @UiConstructor Icon(String type) {
-        setStylePrimaryName("icon-" + type);
+    	this();
+        setType(type);
+    }
+    
+    public void setType(String type) {
+    	setStylePrimaryName("icon-" + type);
     }
     
     public void setColor(String color) {
