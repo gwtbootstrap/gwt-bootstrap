@@ -1,6 +1,8 @@
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.Divider;
 import com.github.gwtbootstrap.client.ui.NavLink;
+import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.UnorderedList;
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
@@ -54,8 +56,12 @@ public abstract class DropdownBase extends ComplexWidget {
 
 	@Override
 	public void add(Widget w) {
-		assert w instanceof NavLink : "You can only add NavLink items";
-		menu.add(w);
+		if ((w instanceof NavLink) || (w instanceof NavText) || 
+				(w instanceof Divider))
+			menu.add(w);
+		else
+			throw new IllegalArgumentException("Only NavLink, NavText and " +
+					"Divider can be added to the Dropdown");
 	}
 	
 	protected void addWidget(Widget w) {

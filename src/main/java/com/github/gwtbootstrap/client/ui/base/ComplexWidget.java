@@ -16,27 +16,29 @@ import java.util.Iterator;
  */
 public class ComplexWidget extends ComplexPanel implements HasWidgets {
 
-    private WidgetCollection childs;
+    private WidgetCollection children;
     private Element element;
 
     public ComplexWidget(String tag) {
         element = DOM.createElement(tag);
         setElement(element);
-        childs = new WidgetCollection(this);
-    }
-
-    @Override
-    protected void onLoad() {
-        super.onLoad();
+        children = new WidgetCollection(this);
     }
 
     @Override
     public void add(Widget w) {
         // logical add
-        childs.add(w);
+        children.add(w);
 
         // physical add
         getElement().appendChild(w.getElement());
+    }
+    
+    public void insert(Widget w, int beforeIndex) {
+    	checkIndexBoundsForInsertion(beforeIndex);
+    	
+    	children.add(w);
+    	insert(w, getElement(), beforeIndex, true);
     }
 
     @Override
@@ -49,13 +51,13 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets {
 
     @Override
     public Iterator<Widget> iterator() {
-        return childs.iterator();
+        return children.iterator();
     }
 
     @Override
     public boolean remove(Widget w) {
         try {
-            childs.remove(w);
+            children.remove(w);
             getElement().removeChild(w.getElement());
             return true;
         } catch (Exception e) {
