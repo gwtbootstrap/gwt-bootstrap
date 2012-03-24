@@ -30,6 +30,11 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		super.add(body);
 		setVisible(false);
 	}
+	
+	public Modal(boolean animated) {
+		this();
+		setAnimated(animated);
+	}
 
 	@Override
 	public void setTitle(String title) {
@@ -83,6 +88,11 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		if(w instanceof ModalFooter) {
 			super.add(w);
 		} else body.add(w);
+	}
+	
+	@Override
+	public void insert(Widget w, int beforeIndex) {
+		super.insert(w, ++beforeIndex);
 	}
 
 	@Override
