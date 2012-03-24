@@ -2,6 +2,9 @@
 <module rename-to='bootstrap'>
   <inherits name='com.google.gwt.user.User' />
   <inherits name='com.google.gwt.junit.JUnit' />
+  <replace-with class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapterImpl">
+    <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter"/>
+  </replace-with>
 
   <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />-->
 
