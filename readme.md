@@ -134,6 +134,9 @@ Can only contain Text:
     	<b:Paragraph>More text.</b:Paragraph>
     </b:Hero>
 
+## Page Header
+	<b:PageHeader subtext="What this is all about">Title</b:PageHeader>
+
 ## Progress Bar
 * `<b:ProgressBar percent="20"/>`
 * `<b:ProgressBar style="striped" percent="40"/>`
