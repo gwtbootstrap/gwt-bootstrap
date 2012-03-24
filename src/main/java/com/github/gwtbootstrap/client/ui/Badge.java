@@ -15,6 +15,16 @@ public class Badge extends InlineLabel {
 		this(Bootstrap.Badge.DEFAULT);
 	}
 	
+	public Badge(String text) {
+		this();
+		setText(text);
+	}
+	
+	public Badge(int number) {
+		this();
+		setText(String.valueOf(number));
+	}
+	
 	public Badge(Bootstrap.Badge type) {
 		setStyle(type);
 	}

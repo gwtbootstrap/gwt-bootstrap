@@ -1,17 +1,21 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 /**
- * A Fluid row for the Grid System.
+ * A Fluid row for the Grid System. It extends Row so it can be used in any
+ * place that Row can be used.
  * 
  * @author Dominik Mayer
  */
-public class FluidRow extends DivWidget {
+public class FluidRow extends Row {
 
     public FluidRow() {
-        super();
-        setStyleName(Bootstrap.row_fluid);
+    	this("");
     }
+
+	public FluidRow(String html) {
+//		super(html);
+		setStyleName(Bootstrap.row_fluid);
+	}
 }
