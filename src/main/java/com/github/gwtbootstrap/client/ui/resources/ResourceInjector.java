@@ -1,5 +1,6 @@
 package com.github.gwtbootstrap.client.ui.resources;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.TextResource;
 
@@ -12,12 +13,15 @@ import com.google.gwt.resources.client.TextResource;
  */
 public class ResourceInjector {
 
-	private static final Resources res = Resources.RESOURCES;
+	private static final ResourceAdapter ADAPTER = GWT.create(ResourceAdapter.class);
 
 	/**
 	 * Import the required styles and JSs to the head of modules HTML.
 	 */
 	public static void configure() {
+		
+		Resources res = ADAPTER.getResources();
+		
 		injectCss(res.bootstrap_css());
 		injectJs(res.jquery());
 		injectJs(res.bootstrap_js());
