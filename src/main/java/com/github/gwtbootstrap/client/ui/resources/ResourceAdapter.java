@@ -1,37 +1,37 @@
 package com.github.gwtbootstrap.client.ui.resources;
 
 /**
- * Adapt resources(CSS , JS) for user needs.
+ * <b>Using custom css/js resources.</b><br><br>
  * 
+ * If you need to adapt resources, implement this interface,
+ * and add a <code>replace-with</code> tag to your module xml. Example:<br><br>
+ * 
+ * 1. Create a Resources Interface (extending {@link Resources}).
  * <pre>
- * If you need adapt resources,you implement this interface,
- * and add replace-with tag to your module xml.
- * 
- * [Adapt Example]
- * 1. Make Your Resources Interface (that's extends {@link Resources}).
- * <code>
+ * {@code
  * 	public MyResources extends Resources {
  * 		@Source("mycss/custom-bootstrap.min.css")
  * 		TextResource bootstrap_css();
  * 	}
- * </code>
+ * </pre>
  * 
- * 2. Make Your ResourceAdapter.
- * <code>
+ * 2. Create a ResourceAdapter.
+ * <pre>{@code
  * 	public MyResourceAdapter implments ResourceAdapter {
  * 		public Resources getResources() {
  * 			return GWT.create(MyResources.class);
  * 		}
  * 	}
- * </code>
- * 3. Add replace-with tag to your module xml.
+ * </pre>
+ * 3. Add a <code>replace-with</code> tag to your module xml (<code>*.gwt.xml</code>).
  * 
- * <code>
- * &lt;inherits name='com.github.gwtbootstrap.Bootstrap' /&gt;
- * &lt;replace-with class='userpackage.MyResourceAdapter&gt;
- * 	&lt;when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter"&gt;
- * &lt;/replace-with&gt;
- * </code>
+ * <pre>
+ * {@code
+ * <replace-with class='userpackage.MyResourceAdapter>
+ * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter">
+ * </replace-with>
+ * }
+ * </pre>
  * 
  * 
  * </p>
