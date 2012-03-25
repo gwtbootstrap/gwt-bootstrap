@@ -9,7 +9,7 @@ package com.github.gwtbootstrap.client.ui.resources;
  * 1. Create a Resources Interface (extending {@link Resources}).
  * <pre>
  * {@code
- * 	public MyResources extends Resources {
+ * 	public interface MyResources extends Resources {
  * 		@Source("mycss/custom-bootstrap.min.css")
  * 		TextResource bootstrap_css();
  * 	}
@@ -27,8 +27,8 @@ package com.github.gwtbootstrap.client.ui.resources;
  * 
  * <pre>
  * {@code
- * <replace-with class='userpackage.MyResourceAdapter>
- * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter">
+ * <replace-with class="userpackage.MyResourceAdapter">
+ * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter" />
  * </replace-with>
  * }
  * </pre>
