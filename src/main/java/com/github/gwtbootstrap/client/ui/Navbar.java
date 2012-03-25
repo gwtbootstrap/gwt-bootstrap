@@ -65,7 +65,7 @@ public class Navbar extends DivWidget {
 			setPaddingTop(0);
 	}
 	
-	protected void setPaddingTop(int pixels) {
+	private void setPaddingTop(int pixels) {
 		Document.get().getBody().getStyle().setPaddingTop(
 				pixels, Unit.PX);
 	}

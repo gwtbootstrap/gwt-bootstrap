@@ -61,7 +61,7 @@ public class BootstrapDemo implements EntryPoint {
         container.add(content);
 
         try{
-        container.add(new BootstrapUiBinderDemo());
+        	container.add(new BootstrapUiBinderDemo());
         }catch (Exception e) {
         	e.printStackTrace();
 		}

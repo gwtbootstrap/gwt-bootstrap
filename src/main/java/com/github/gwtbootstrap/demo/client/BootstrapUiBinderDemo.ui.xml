@@ -202,8 +202,9 @@
 		<b:Section target="modal">
 			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">
 				<g:Label>Modal Content!</g:Label>
+				<b:Button ui:field="contentButton" icon="file" iconColor="white" type="primary">Save</b:Button>
 				<b:ModalFooter>
-					<b:Button icon="file white" type="primary">Save</b:Button>
+					<b:Button ui:field="saveButton" icon="file" iconColor="white" type="primary">Save</b:Button>
 				</b:ModalFooter>
 			</b:Modal>
 			<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
