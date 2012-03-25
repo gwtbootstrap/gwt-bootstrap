@@ -10,7 +10,8 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
  *
  */
 public class ModalFooter extends DivWidget {
-	{
-		setStyleName(Bootstrap.modal_footer);
+	
+	public ModalFooter() {
+		super(Bootstrap.modal_footer);
 	}
 }

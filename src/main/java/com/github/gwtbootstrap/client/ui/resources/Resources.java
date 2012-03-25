@@ -29,6 +29,9 @@ public interface Resources extends ClientBundle {
 	@Source("js/bootstrap.min.js")
 	TextResource bootstrap_js();
 
+//	@Source("js/bootstrap-collapse.js")
+//	TextResource bootstrapCollapseJs();
+
 //	@Source("css/prettify.css")
 //	TextResource prettify_css();
 	

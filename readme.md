@@ -7,6 +7,22 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 * Download the zip, extract and add the folder as external source to the build path.
 * Add `<inherits name="com.github.gwtbootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
+### Using a custom RootPanel
+Because GWT sets many style options in its RootPanel, we recommended using a 
+custom one in your host page:
+
+	<body>
+		[...]
+		<div id="mainContent" />
+	</body>
+
+You can then add add a widget with:
+
+	RootPanel.get("mainContent").add(widget);
+
+You don't have to do this, but some things -- especially the ResponsiveNavbar --
+don't work properly without it. 
+
 ### Using custom css/js resources
 
 If you need to adapt resources, implement this interface, and add a replace-with tag to your module xml. Example:

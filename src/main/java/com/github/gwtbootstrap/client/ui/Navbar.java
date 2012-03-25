@@ -13,6 +13,10 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Navbar extends DivWidget {
 
+	protected static final int TOP_SPACE_IN_PIXEL = 50;
+	
+	private boolean fixedTop = false;
+	
 	private class NavbarInner extends DivWidget {
 
 		public NavbarInner() {
@@ -31,15 +35,18 @@ public class Navbar extends DivWidget {
 
 	// TODO
 	public void setFixed(String position) {
+		fixedTop = false;
+
 		if (position.equalsIgnoreCase("top")) {
+			fixedTop = true;
 			removeStyleName(Bootstrap.navbar_fixed_bottom);
 			addStyleName(Bootstrap.navbar_fixed_top);
-			Document.get().getBody().getStyle().setPaddingTop(40, Unit.PX);
-		}
-		if (position.equalsIgnoreCase("bottom")) {
+			setPaddingTop(TOP_SPACE_IN_PIXEL);
+		} else if (position.equalsIgnoreCase("bottom")) {
 			removeStyleName(Bootstrap.navbar_fixed_top);
 			addStyleName(Bootstrap.navbar_fixed_bottom);
 		}
+		
 	}
 
 	@Override
@@ -49,5 +56,17 @@ public class Navbar extends DivWidget {
 	
 	protected void addWidget(Widget child) {
 		super.add(child);
+	}
+	
+	protected void setPaddingTop(boolean padding) {
+		if (padding && fixedTop)
+			setPaddingTop(TOP_SPACE_IN_PIXEL);
+		else
+			setPaddingTop(0);
+	}
+	
+	protected void setPaddingTop(int pixels) {
+		Document.get().getBody().getStyle().setPaddingTop(
+				pixels, Unit.PX);
 	}
 }

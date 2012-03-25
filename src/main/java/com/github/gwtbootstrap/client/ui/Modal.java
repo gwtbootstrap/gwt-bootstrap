@@ -47,12 +47,12 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	@Override
 	public void setTitle(String title) {
 		header.clear();
-		if (title != null && !title.isEmpty()) {
+		if (title == null || title.isEmpty()) {
+			showHeader(false);
+		} else {
 			header.add(new Close(DataDismiss.MODAL));
 			header.add(new Heading(title, 3));
 			showHeader(true);
-		} else {
-			showHeader(false);
 		}
 	}
 	

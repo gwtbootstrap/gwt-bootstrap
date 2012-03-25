@@ -25,12 +25,7 @@ public class ResourceInjector {
 		injectCss(res.bootstrap_css());
 		injectJs(res.jquery());
 		injectJs(res.bootstrap_js());
-		
-//		injectJs(res.prettify_js());
-//		injectCss(res.prettify_css());
-//		prettyPrint();
-//		Element body = Document.get().getElementsByTagName("body").getItem(0);
-//		body.setAttribute("onload", "prettyPrint()");
+//		injectJs(res.bootstrapCollapseJs());
 	}
 
 	public static void injectCss(TextResource r) {
@@ -40,8 +35,4 @@ public class ResourceInjector {
 	public static void injectJs(TextResource r) {
 		JavaScriptInjector.inject(r.getText());
 	}
-	
-	private static native void prettyPrint() /*-{
-		$wnd.prettyPrint();
-	}-*/;
 }

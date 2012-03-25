@@ -6,6 +6,7 @@
 
 war/gwt_bree/*
 
+
 src/main/gwt-unitCache
 target/
 
@@ -20,3 +21,4 @@ src/main/webapp/WEB-INF/classes/*
 bin/*
 /.settings
 /.pmd
+*~
