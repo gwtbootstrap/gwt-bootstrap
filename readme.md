@@ -11,14 +11,14 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 
 If you need to adapt resources, implement this interface, and add a replace-with tag to your module xml. Example:
 
-1. Create a Resources Interface (extending Resources).
+Create a Resources Interface (extending Resources).
  
  	public MyResources extends Resources {
  		@Source("mycss/custom-bootstrap.min.css")
  		TextResource bootstrap_css();
  	}
  
-2. Create a ResourceAdapter.
+Create a ResourceAdapter.
 
  	public MyResourceAdapter implments ResourceAdapter {
  		public Resources getResources() {
@@ -26,8 +26,8 @@ If you need to adapt resources, implement this interface, and add a replace-with
  		}
  	}
  
-3. Add a replace-with tag to your module xml (*.gwt.xml).
-	
+Add a replace-with tag to your module xml (*.gwt.xml).
+
 	<replace-with class='userpackage.MyResourceAdapter>
 		<when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter">
 	</replace-with>
