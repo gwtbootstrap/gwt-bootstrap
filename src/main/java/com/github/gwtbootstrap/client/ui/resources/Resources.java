@@ -14,11 +14,9 @@ public interface Resources extends ClientBundle {
 
 	public static Resources RESOURCES = GWT.create(Resources.class);
 
-	/*
-	 * importing as a textresource, for now, at least.
-	 */
+	// Imported as a TextResource until GWT supports CSS3.
 	@Source("css/bootstrap.min.css")
-	TextResource bootstrap_css();
+	TextResource bootstrapCss();
 
 //	@Source("css/prettify.css")
 //	TextResource prettify_css();
@@ -27,7 +25,10 @@ public interface Resources extends ClientBundle {
 	TextResource jquery();
 	
 	@Source("js/bootstrap.min.js")
-	TextResource bootstrap_js();
+	TextResource bootstrapJs();
+
+	@Source("css/bootstrap-responsive.min.css")
+	TextResource bootstrapResponsiveCss();
 
 //	@Source("js/bootstrap-collapse.js")
 //	TextResource bootstrapCollapseJs();

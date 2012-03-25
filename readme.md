@@ -11,26 +11,42 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 
 If you need to adapt resources, implement this interface, and add a replace-with tag to your module xml. Example:
 
-Create a Resources Interface (extending Resources).
+Create a Resources Interface (extending `Resources`).
  
  	public MyResources extends Resources {
  		@Source("mycss/custom-bootstrap.min.css")
- 		TextResource bootstrap_css();
+ 		TextResource bootstrapCss();
  	}
  
-Create a ResourceAdapter.
+Create a `ResourceAdapter`.
 
- 	public interface MyResourceAdapter implments ResourceAdapter {
+ 	public interface MyResourceAdapter implements ResourceAdapter {
+ 	
+ 		@Override
  		public Resources getResources() {
  			return GWT.create(MyResources.class);
  		}
+ 		
+ 		[...]
  	}
  
-Add a replace-with tag to your module xml (*.gwt.xml).
+Add a replace-with tag to your module xml (`*.gwt.xml`).
 
 	<replace-with class="userpackage.MyResourceAdapter">
 		<when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter" />
 	</replace-with>
+
+### Enabling Responsive Design
+
+Create a `ResourceAdapter` and let `hadResponsiveDesign()` return `true`.
+
+ 	public interface MyResourceAdapter implements ResourceAdapter {
+ 	
+		@Override
+		public boolean hasResponsiveDesign() {
+			return true;
+		}
+ 	}
 
 ## UiBinder
 
@@ -135,6 +151,12 @@ Can only contain Text:
     	<b:NavText alignment="right">Right</b:NavText>
     	<b:NavSearch size="2" placeholder="Search" alignment="right"/>
     </b:Navbar>
+    
+You can also use a responsive version:
+
+	<b:ResponsiveNavbar />
+
+Make sure you enable the responsive design. It won't work otherwise.
 
 ### Nav Lists
 

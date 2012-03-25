@@ -11,13 +11,13 @@ package com.github.gwtbootstrap.client.ui.resources;
  * {@code
  * 	public interface MyResources extends Resources {
  * 		@Source("mycss/custom-bootstrap.min.css")
- * 		TextResource bootstrap_css();
+ * 		TextResource bootstrapCss();
  * 	}
  * </pre>
  * 
- * 2. Create a ResourceAdapter.
+ * 2. Create a <code>ResourceAdapter</code>.
  * <pre>{@code
- * 	public MyResourceAdapter implments ResourceAdapter {
+ * 	public MyResourceAdapter implements ResourceAdapter {
  * 		public Resources getResources() {
  * 			return GWT.create(MyResources.class);
  * 		}
@@ -36,6 +36,7 @@ package com.github.gwtbootstrap.client.ui.resources;
  * 
  * </p>
  * @author soundTricker
+ * @author Dominik Mayer
  * @since 24/03/2012
  * @see Resources
  * @see ResourceAdapterImpl
@@ -48,5 +49,6 @@ public interface ResourceAdapter {
 	 * @return Resources
 	 */
 	Resources getResources();
-
+	
+	boolean hasResponsiveDesign();
 }

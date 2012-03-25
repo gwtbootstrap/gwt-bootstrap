@@ -1,6 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
@@ -9,7 +10,10 @@ import com.google.gwt.user.client.Window;
 /**
  * A {@link Navbar} that hides the contents of a {@link NavCollapse} whenever
  * the width of the window is too small.
- * (Works only in combination with bootstrap-responsive.css.)
+ * <p>
+ * Only works when the Responsive Layout ist turned on. Create your own 
+ * {@link ResourceAdapter} and let {@link ResourceAdapter#hasResponsiveDesign()}
+ * return true.
  * 
  * @author Dominik Mayer
  * @since 2012-03-25

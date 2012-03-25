@@ -9,6 +9,6 @@ public interface CustomResources extends Resources {
 	public static final CustomResources RESOURCES = GWT.create(CustomResources.class);
 	
 	@Source("css/bootstrap-custom.css")
-	TextResource bootstrap_css();
+	TextResource bootstrapCss();
 
 }

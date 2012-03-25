@@ -30,14 +30,14 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		super.add(header);
 		super.add(body);
 //		sinkEvents(Event.MOUSEEVENTS);
-		body.sinkEvents(Event.MOUSEEVENTS);//Event.getTypeInt(MouseOverEvent.getType().getName()));
+//		body.sinkEvents(Event.MOUSEEVENTS);//Event.getTypeInt(MouseOverEvent.getType().getName()));
 		setVisible(false);
 	}
 	
-	@Override
-	public void onBrowserEvent(Event event) {
-		body.onBrowserEvent(event);
-	}
+//	@Override
+//	public void onBrowserEvent(Event event) {
+//		body.onBrowserEvent(event);
+//	}
 	
 	public Modal(boolean animated) {
 		this();

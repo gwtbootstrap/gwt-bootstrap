@@ -33,7 +33,15 @@ public class Navbar extends DivWidget {
 		super.add(navbarInner);
 	}
 
-	// TODO
+	/**
+	 * Fix the Navbar at the top or bottom of the screen.
+	 * <p>
+	 * For this to work properly, the Navbar must not be a child of a 
+	 * {@link Container}.
+	 * 
+	 * @param position "top" or "bottom"
+	 */
+	// TODO: Allow unsetting
 	public void setFixed(String position) {
 		fixedTop = false;
 

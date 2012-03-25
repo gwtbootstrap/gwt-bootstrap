@@ -22,17 +22,28 @@ public class ResourceInjector {
 		
 		Resources res = ADAPTER.getResources();
 		
-		injectCss(res.bootstrap_css());
+		injectCss(res.bootstrapCss());
+		if (ADAPTER.hasResponsiveDesign())
+			activateResponsiveDesign(res);
 		injectJs(res.jquery());
-		injectJs(res.bootstrap_js());
+		injectJs(res.bootstrapJs());
 //		injectJs(res.bootstrapCollapseJs());
 	}
 
 	public static void injectCss(TextResource r) {
+//		r.ensureInjected();
 		StyleInjector.inject(r.getText());
 	}
 
 	public static void injectJs(TextResource r) {
 		JavaScriptInjector.inject(r.getText());
 	}
+	
+	private static void activateResponsiveDesign(Resources res) {
+		injectCss(res.bootstrapResponsiveCss());
+		MetaInjector.inject("viewport", "width=device-width, initial-scale=1.0");
+	}
+	
+
+	
 }
