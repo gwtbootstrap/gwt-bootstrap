@@ -26,7 +26,7 @@ public abstract class DropdownBase extends ComplexWidget {
 
 		trigger = createTrigger();
 		trigger.addStyleName("dropdown-toggle");
-		trigger.getElement().setAttribute("data-toggle", "dropdown");
+		trigger.getElement().setAttribute(Bootstrap.data_toggle, "dropdown");
 		super.add(trigger);
 		
 		menu.setStyleName("dropdown-menu");

@@ -46,4 +46,8 @@ public class Navbar extends DivWidget {
 	public void add(Widget child) {
 		container.add(child);
 	}
+	
+	protected void addWidget(Widget child) {
+		super.add(child);
+	}
 }

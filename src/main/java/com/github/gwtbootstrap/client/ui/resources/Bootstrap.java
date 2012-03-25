@@ -153,6 +153,16 @@ public interface Bootstrap {
 	public static final String modal_footer = "modal-footer";
 
 	public static final String footer = "footer";
+
+	public static final String nav_collapse = "nav-collapse";
+	
+	public static final String nav_collapse_target = "." + nav_collapse;
+
+	public static final String data_toggle = "data-toggle";
+
+	public static final String collapse = "collapse";
+
+	public static final String data_target = "data-target";
 	
     public enum OPTION {
 
@@ -232,7 +242,8 @@ public interface Bootstrap {
     
 	public enum Button implements Style {
 
-		BTN("btn");
+		BTN("btn"),
+		NAVBAR("btn-navbar");
 		
 		public enum Size implements Style {
 

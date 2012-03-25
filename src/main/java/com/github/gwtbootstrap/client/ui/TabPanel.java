@@ -25,7 +25,7 @@ public class TabPanel extends DivWidget {
 			super(pane.getHeading(), "#" + pane.getId());
 			
 			IconAnchor anchor = getAnchor(); 
-			anchor.getElement().setAttribute("data-toggle", "tab");
+			anchor.getElement().setAttribute(Bootstrap.data_toggle, "tab");
 			
 			if (pane.isActive())
 				addStyleName(Bootstrap.active);
