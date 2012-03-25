@@ -20,7 +20,7 @@ Create a Resources Interface (extending Resources).
  
 Create a ResourceAdapter.
 
- 	public MyResourceAdapter implments ResourceAdapter {
+ 	public interface MyResourceAdapter implments ResourceAdapter {
  		public Resources getResources() {
  			return GWT.create(MyResources.class);
  		}
@@ -28,8 +28,8 @@ Create a ResourceAdapter.
  
 Add a replace-with tag to your module xml (*.gwt.xml).
 
-	<replace-with class='userpackage.MyResourceAdapter>
-		<when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter">
+	<replace-with class="userpackage.MyResourceAdapter">
+		<when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter" />
 	</replace-with>
 
 ## UiBinder
