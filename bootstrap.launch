@@ -11,7 +11,7 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gdt.eclipse.maven.mavenClasspathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl Bootstrap.html -logLevel INFO -codeServerPort 9997 -port 8888 -war /home/carlos/workspace/gwt-bootstrap/src/main/webapp com.github.gwtbootstrap.demo.BootstrapDemo com.github.gwtbootstrap.showcase.Showcase com.github.gwtbootstrap.Bootstrap"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl Bootstrap.html -logLevel INFO -codeServerPort 9997 -port 8888 -war /home/carlos/workspace/gwt-bootstrap/src/main/webapp com.github.gwtbootstrap.demo.BootstrapDemo com.github.gwtbootstrap.showcase.Showcase com.github.gwtbootstrap.Bootstrap com.github.gwtbootstrap.showcase.CustomCssShowcase"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="gwt-bootstrap"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -Dgwt.nowarn.legacy.tools"/>
 </launchConfiguration>
