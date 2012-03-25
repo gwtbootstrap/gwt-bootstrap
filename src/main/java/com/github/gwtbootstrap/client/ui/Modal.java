@@ -5,6 +5,7 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasAnimateProperty;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -25,10 +26,17 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	private boolean configured = false;
 
 	public Modal() {
-		setStyleName("modal");
+		super("modal");
 		super.add(header);
 		super.add(body);
+//		sinkEvents(Event.MOUSEEVENTS);
+		body.sinkEvents(Event.MOUSEEVENTS);//Event.getTypeInt(MouseOverEvent.getType().getName()));
 		setVisible(false);
+	}
+	
+	@Override
+	public void onBrowserEvent(Event event) {
+		body.onBrowserEvent(event);
 	}
 	
 	public Modal(boolean animated) {
@@ -92,7 +100,9 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	
 	@Override
 	public void insert(Widget w, int beforeIndex) {
-		super.insert(w, ++beforeIndex);
+		body.insert(w, beforeIndex);
+//		throw new UnsupportedOperationException("You can only add Widgets via " +
+//				"\"add(Widget w)\"");
 	}
 
 	@Override
@@ -101,7 +111,12 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		configure(getElement(), keyboard, backdrop, show);
 		configured = true;
 	}
-
+	
+	@Override
+	public void sinkEvents(int eventBitsToAdd) {
+		body.sinkEvents(eventBitsToAdd);
+	}
+	
 	public void show() {
 		changeVisibility("show");
 	}
