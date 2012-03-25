@@ -7,6 +7,31 @@ Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 * Download the zip, extract and add the folder as external source to the build path.
 * Add `<inherits name="com.github.gwtbootstrap.Bootstrap"/>` to your *.gwt.xml file.
 
+### Using custom css/js resources
+
+If you need to adapt resources, implement this interface, and add a replace-with tag to your module xml. Example:
+
+1. Create a Resources Interface (extending Resources).
+ 
+ 	public MyResources extends Resources {
+ 		@Source("mycss/custom-bootstrap.min.css")
+ 		TextResource bootstrap_css();
+ 	}
+ 
+2. Create a ResourceAdapter.
+
+ 	public MyResourceAdapter implments ResourceAdapter {
+ 		public Resources getResources() {
+ 			return GWT.create(MyResources.class);
+ 		}
+ 	}
+ 
+3. Add a replace-with tag to your module xml (*.gwt.xml).
+	
+	<replace-with class='userpackage.MyResourceAdapter>
+		<when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter">
+	</replace-with>
+
 ## UiBinder
 
 You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` file:
@@ -133,6 +158,9 @@ Can only contain Text:
     	<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
     	<b:Paragraph>More text.</b:Paragraph>
     </b:Hero>
+
+## Page Header
+	<b:PageHeader subtext="What this is all about">Title</b:PageHeader>
 
 ## Progress Bar
 * `<b:ProgressBar percent="20"/>`

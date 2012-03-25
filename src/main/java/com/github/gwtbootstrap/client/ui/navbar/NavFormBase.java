@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.client.ui.navbar;
 
-import com.github.gwtbootstrap.client.ui.base.Form;
+import com.github.gwtbootstrap.client.ui.Form;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.TextBox;
 
