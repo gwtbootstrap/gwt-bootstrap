@@ -1,23 +1,65 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 
 /**
- *
- * @author carlos
+ * A text element that shows more information in a tooltip.
+ * 
+ * <p>
+ * It is usually used to show the meaning of abbreviations. The text is 
+ * lightly underlined and on hover, the default cursor is replaced with a help 
+ * cursor.
+ * </p>
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * <code>{@code <b:Abbreviation title="This is the tooltip.">Some text</b:Abbreviation>}</code>
+ * </p>
+ * 
+ * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
+ * 
+ * @since 2.0.2.1
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
  */
 public class Abbreviation extends AbstractTypography {
 
+	/**
+	 * Creates a new Abbreviation with both text and title set.
+	 * 
+	 * @param text the underlined text
+	 * @param title the content of the popup
+	 */
     public Abbreviation(String text, String title) {
     	this(title);
         setText(text);
     }
     
+    /**
+     * Creates an empty Abbreviation with only the content for the tooltip set.
+     * 
+     * @param title The content of the popup
+     */
     public @UiConstructor Abbreviation(String title) {
     	setElement(DOM.createElement("abbr"));
     	setTitle(title);
+    }
+    
+    /**
+     * Specifies whether a slightly smaller text size should be used for the
+     * abbreviation. This does not affect the tooltip.
+     * 
+     * @param initialism <code>true</code> for the slightly smaller size. 
+     * Default: <code>false</code> 
+     */
+    public void setInitalism(boolean initialism) {
+    	if (initialism)
+    		addStyleName(Bootstrap.initialism);
+    	else
+    		removeStyleName(Bootstrap.initialism);
     }
 
 }

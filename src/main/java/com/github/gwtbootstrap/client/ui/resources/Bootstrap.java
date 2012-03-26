@@ -8,10 +8,6 @@ package com.github.gwtbootstrap.client.ui.resources;
  */
 public interface Bootstrap {
 	
-	public interface Style {
-		public String get();
-	}
-
 	public static final String btn = "btn";
 
 	public static final String tabs = "tabs";
@@ -163,6 +159,8 @@ public interface Bootstrap {
 	public static final String collapse = "collapse";
 
 	public static final String data_target = "data-target";
+
+	public static final String initialism = "initialism";
 	
     public enum OPTION {
 
@@ -339,7 +337,7 @@ public interface Bootstrap {
 	}
 	
 	// TODO
-	public enum Alert implements Style {
+	public enum AlertStyle implements Style {
 
 		DEFAULT(""),
 		ERROR("alert-error"),
@@ -351,7 +349,7 @@ public interface Bootstrap {
 		
 		private String className;
 		
-		private Alert(String className) {
+		private AlertStyle(String className) {
 			this.className = className;
 		}
 		

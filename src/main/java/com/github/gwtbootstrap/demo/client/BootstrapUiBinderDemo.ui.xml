@@ -162,7 +162,7 @@
 					<b:Alert style="success" heading="Hm..." close="false">TestAlert without close</b:Alert>
 				</b:Column>
 				<b:Column size="3">
-					<b:AlertBlock style="info" heading="Heading">AlertBlock</b:AlertBlock>
+					<b:AlertBlock type="info" heading="Heading">AlertBlock</b:AlertBlock>
 				</b:Column>
 			</b:FluidRow>
 			<b:Row>

@@ -2,7 +2,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.Close.DataDismiss;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.base.HasAnimateProperty;
+import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
@@ -20,10 +20,11 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * 
  * @author Carlos A Becker
+ * @author Dominik Mayer
  * 
  */
 public class Modal extends DivWidget implements HasVisibleHandlers,
-		HasAnimateProperty {
+		IsAnimated {
 
 	private final DivWidget header = new DivWidget();
 	private final DivWidget body = new DivWidget("modal-body");
@@ -105,8 +106,6 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	@Override
 	public void insert(Widget w, int beforeIndex) {
 		body.insert(w, beforeIndex);
-//		throw new UnsupportedOperationException("You can only add Widgets via " +
-//				"\"add(Widget w)\"");
 	}
 
 	@Override
@@ -115,11 +114,6 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		configure(getElement(), keyboard, backdrop, show);
 		configured = true;
 	}
-	
-//	@Override
-//	public void sinkEvents(int eventBitsToAdd) {
-//		body.sinkEvents(eventBitsToAdd);
-//	}
 	
 	public void show() {
 		changeVisibility("show");
@@ -188,6 +182,10 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		$wnd.jQuery(e).modal(visibility);
 	}-*/;
 	
+	/**
+	 * Adds the Java functions that fire the Events to document. It is a 
+	 * convenience method to have a cleaner code later on.
+	 */
 	private native void setHandlerFunctions() /*-{
 		var that = this;
 		$wnd.fireHideEvent = $entry(function() {

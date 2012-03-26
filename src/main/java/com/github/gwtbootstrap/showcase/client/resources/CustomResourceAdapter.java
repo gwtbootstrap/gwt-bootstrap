@@ -10,4 +10,8 @@ public class CustomResourceAdapter implements ResourceAdapter {
 		return CustomResources.RESOURCES;
 	}
 
+	public boolean hasResponsiveDesign() {
+		return false;
+	}
+
 }

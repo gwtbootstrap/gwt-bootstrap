@@ -1,7 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Style;
+import com.github.gwtbootstrap.client.ui.resources.Style;
 import com.google.gwt.user.client.ui.InlineLabel;
 
 /**

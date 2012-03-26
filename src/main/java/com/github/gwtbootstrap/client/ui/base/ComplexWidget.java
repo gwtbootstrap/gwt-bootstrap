@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Style;
+import com.github.gwtbootstrap.client.ui.resources.Style;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.ComplexPanel;
