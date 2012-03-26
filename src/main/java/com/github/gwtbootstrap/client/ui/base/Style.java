@@ -13,26 +13,20 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client;
-
-import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
-import com.google.gwt.core.client.EntryPoint;
+package com.github.gwtbootstrap.client.ui.base;
 
 /**
- * The entry point class that is executed when GWT Bootstrap is loaded.
+ * Wrapper interface for CSS classes. 
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
  *
  */
-public class Bootstrap implements EntryPoint {
-
+public interface Style {
+	
 	/**
-	 * {@inheritDoc}
+	 * @return the name of the class
 	 */
-	public void onModuleLoad() {
-		ResourceInjector.configure();
-	}
-
+	public String get();
 }

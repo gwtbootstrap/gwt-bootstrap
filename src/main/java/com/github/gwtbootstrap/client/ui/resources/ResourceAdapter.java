@@ -15,13 +15,19 @@
  */
 package com.github.gwtbootstrap.client.ui.resources;
 
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
+
 /**
- * <b>Using custom css/js resources.</b><br><br>
+ * <h3>Using custom css/js resources.</h3>
  * 
- * If you need to adapt resources, implement this interface,
- * and add a <code>replace-with</code> tag to your module xml. Example:<br><br>
+ * <p>
+ * If you need to adapt resources, implement this interface, and add a 
+ * <code>replace-with</code> tag to your module xml. Example:
+ * </p>
  * 
- * 1. Create a Resources Interface (extending {@link Resources}).
+ * <p>
+ * 1. Create a Resources Interface (extending {@link Resources}) override the
+ * getters of the files you want to replace.
  * <pre>
  * {@code
  * 	public interface MyResources extends Resources {
@@ -29,7 +35,9 @@ package com.github.gwtbootstrap.client.ui.resources;
  * 		TextResource bootstrapCss();
  * 	}
  * </pre>
+ * </p>
  * 
+ * <p>
  * 2. Create a <code>ResourceAdapter</code>.
  * <pre>{@code
  * 	public MyResourceAdapter implements ResourceAdapter {
@@ -38,6 +46,9 @@ package com.github.gwtbootstrap.client.ui.resources;
  * 		}
  * 	}
  * </pre>
+ * </p>
+ * 
+ * </p>
  * 3. Add a <code>replace-with</code> tag to your module xml (<code>*.gwt.xml</code>).
  * 
  * <pre>
@@ -47,23 +58,38 @@ package com.github.gwtbootstrap.client.ui.resources;
  * </replace-with>
  * }
  * </pre>
- * 
- * 
  * </p>
+ * 
+ * @since 2.0.2.0
+ * 
  * @author soundTricker
  * @author Dominik Mayer
- * @since 24/03/2012
+ * 
  * @see Resources
  * @see ResourceAdapterImpl
  */
 public interface ResourceAdapter {
 
 	/**
-	 * Get Resources
+	 * Get the Bootstrap Resources that should be used for this project.
 	 * 
-	 * @return Resources
+	 * @return the Bootstrap Resources
 	 */
 	Resources getResources();
 	
+	/**
+	 * Determines whether the project uses a responsive design.
+	 * 
+	 * <p>
+	 * If the responsive
+	 * design is enabled, the interface can adapt to the screen size and show
+	 * different content on smartphones, tablets and desktop computers.
+	 * 
+	 * @return <code>true</code> if the responsive features should be enabled.
+	 * Default: <code>false</code>
+	 * 
+	 * @see {@link IsResponsive}
+	 * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap documentation</a>
+	 */
 	boolean hasResponsiveDesign();
 }

@@ -25,6 +25,7 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HasHTML;
 
 /**
@@ -208,7 +209,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * {@inheritDoc}
 	 */
 	public void setText(String text) {
-		setHTML(text); // TODO
+		setHTML(SafeHtmlUtils.htmlEscape(text));
 	}
 
 	/**

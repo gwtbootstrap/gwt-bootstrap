@@ -15,7 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.resources.Style;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 /**
@@ -36,7 +35,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
  * @author Carlos A Becker
  * @author Dominik Mayer
  */
-public class DivWidget extends FlowPanel {
+public class DivWidget extends FlowPanel implements HasStyle {
 
 	/**
 	 * Creates an empty widget.
@@ -58,27 +57,21 @@ public class DivWidget extends FlowPanel {
     }
     
     /**
-     * Replaces the widet's style with the provided one.
-     * 
-     * @param style the style to be applied to the Widget.
+     * {@inheritDoc}
      */
     public void setStyle(Style style) {
     	setStyleName(style.get());
     }
     
     /**
-     * Adds the provided style to the widet.
-     * 
-     * @param style the style to be added to the Widget.
+     * {@inheritDoc}
      */
     public void addStyle(Style style) {
     	addStyleName(style.get());
     }
     
     /**
-     * Removes the provided style from the widget.
-     * 
-     * @param style the style to be removed from the Widget.
+     * {@inheritDoc} 
      */
     public void removeStyle(Style style) {
     	String styleString = style.get(); 

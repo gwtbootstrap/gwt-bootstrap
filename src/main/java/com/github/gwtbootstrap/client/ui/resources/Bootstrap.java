@@ -15,6 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui.resources;
 
+import com.github.gwtbootstrap.client.ui.base.Style;
+
 /**
  * Constants interface with all CSS class names from twitter bootstrap.
  * 

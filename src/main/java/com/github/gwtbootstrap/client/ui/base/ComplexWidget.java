@@ -15,27 +15,35 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.resources.Style;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * A widget with a collection of widgets, base of a lot of other components :)
+ * A widget that can have several child widgets.
+ * <p>
+ * Base of a lot of other components :)
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos A Becker
  */
-public class ComplexWidget extends ComplexPanel implements HasWidgets {
+public class ComplexWidget extends ComplexPanel implements HasWidgets,
+		HasStyle {
 
-    private Element element;
-
+    /**
+     * Creates a new widget that is based on the provided html tag.
+     * 
+     * @param tag the html tag used for this widget
+     */
     public ComplexWidget(String tag) {
-        element = DOM.createElement(tag);
-        setElement(element);
+        setElement(DOM.createElement(tag));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void add(Widget w) {
         // logical add
@@ -45,10 +53,20 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets {
         getElement().appendChild(w.getElement());
     }
     
+    /**
+     * Inserts another widget into this one.
+     * 
+     * @param w the widget to be inserted
+     * @param beforeIndex the index of the position before which it should be
+     * set
+     */
     public void insert(Widget w, int beforeIndex) {
     	insert(w, getElement(), beforeIndex, true);
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean remove(Widget w) {
         try {
@@ -61,14 +79,23 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets {
         return false;
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void setStyle(Style style) {
     	setStyleName(style.get());
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void addStyle(Style style) {
     	addStyleName(style.get());
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void removeStyle(Style style) {
     	String styleString = style.get(); 
     	if (!styleString.isEmpty())
