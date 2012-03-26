@@ -35,7 +35,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
  * @author Carlos A Becker
  * @author Dominik Mayer
  */
-public class DivWidget extends FlowPanel implements HasStyle {
+public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
 
 	/**
 	 * Creates an empty widget.
@@ -78,5 +78,114 @@ public class DivWidget extends FlowPanel implements HasStyle {
     	if (!styleString.isEmpty())
     		removeStyleName(styleString);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+	public void setShowOnPhone(boolean show) {
+		if (show)
+			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isShownOnPhone() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.VISIBLE_PHONE.get());
+	}
+    
+    /**
+     * {@inheritDoc}
+     */
+	public void setHideOnPhone(boolean hide) {
+		if (hide)
+			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isHiddenOnPhone() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.HIDDEN_PHONE.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setShowOnTablet(boolean show) {
+		if (show)
+			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isShownOnTablet() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.VISIBLE_TABLET.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setHideOnTablet(boolean hide) {
+		if (hide)
+			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
+	}
+
+    /**
+     * {@inheritDoc}
+     * 
+     */
+	public boolean isHiddenOnTablet() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.HIDDEN_TABLET.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setShowOnDesktop(boolean show) {
+		if (show)
+			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isShownOnDesktop() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setHideOnDesktop(boolean hide) {
+		if (hide)
+			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isHiddenOnDesktop() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP.get());
+	}
 
 }

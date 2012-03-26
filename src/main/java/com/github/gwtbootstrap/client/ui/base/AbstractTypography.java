@@ -26,7 +26,8 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * 
  */
-public abstract class AbstractTypography extends Widget implements HasText {
+public abstract class AbstractTypography extends Widget implements HasText,
+	HasStyle, IsResponsive {
 	
 	/**
 	 * {@inheritDoc}
@@ -40,5 +41,137 @@ public abstract class AbstractTypography extends Widget implements HasText {
      */
 	public String getText() {
 		return getElement().getInnerText();
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+    public void setStyle(Style style) {
+    	setStyleName(style.get());
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public void addStyle(Style style) {
+    	addStyleName(style.get());
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public void removeStyle(Style style) {
+    	String styleString = style.get(); 
+    	if (!styleString.isEmpty())
+    		removeStyleName(styleString);
+    }
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setShowOnPhone(boolean show) {
+		if (show)
+			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isShownOnPhone() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.VISIBLE_PHONE.get());
+	}
+    
+    /**
+     * {@inheritDoc}
+     */
+	public void setHideOnPhone(boolean hide) {
+		if (hide)
+			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isHiddenOnPhone() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.HIDDEN_PHONE.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setShowOnTablet(boolean show) {
+		if (show)
+			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isShownOnTablet() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.VISIBLE_TABLET.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setHideOnTablet(boolean hide) {
+		if (hide)
+			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
+	}
+
+    /**
+     * {@inheritDoc}
+     * 
+     */
+	public boolean isHiddenOnTablet() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.HIDDEN_TABLET.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setShowOnDesktop(boolean show) {
+		if (show)
+			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isShownOnDesktop() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP.get());
+	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public void setHideOnDesktop(boolean hide) {
+		if (hide)
+			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
+		else
+			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	public boolean isHiddenOnDesktop() {
+		return getStyleName().contains(
+				IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP.get());
 	}
 }

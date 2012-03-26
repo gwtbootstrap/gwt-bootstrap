@@ -28,7 +28,7 @@ public class ResourceAdapterImpl implements ResourceAdapter {
 	}
 
 	public boolean hasResponsiveDesign() {
-		return false;
+		return true;
 	}
 
 }

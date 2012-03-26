@@ -2,11 +2,6 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
-	<ui:style>
-		.important {
-			font-weight: bold;
-		}
-	</ui:style>
 	<g:HTMLPanel>
 		
 		<b:Heading size="2">UiBinder Examples</b:Heading>
@@ -23,7 +18,6 @@
 				</b:Dropdown>
 				<b:NavWidget icon="star" iconColor="white" text="Inbox" ui:field="inbox">
 					<b:Badge>1</b:Badge>
-<!-- 					<b:Badge>3</b:Badge> -->
 				</b:NavWidget>
 			</b:Nav>
 			<b:NavForm size="1"/>
@@ -44,19 +38,15 @@
 			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 		</b:NavList>
 
-		<b:WellNavList>
+		<b:WellNavList showOnPhone="true" showOnDesktop="true">
 			<b:NavHeader>Header</b:NavHeader>
 			<b:NavLink active="true" icon="plane">Test</b:NavLink>
 			<b:Divider />
 			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 		</b:WellNavList>
-<!-- 		<b:Row> -->
-<!-- 			<b:Column size="6"> -->
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
 		<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
 		<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>
-<!-- 		</b:Column> -->
-<!-- 		</b:Row> -->
 		<b:ButtonToolbar>
 			<b:ButtonGroup>
 				<b:Button>1</b:Button>
@@ -67,7 +57,6 @@
 				<b:Button>4</b:Button>
 			</b:ButtonGroup>
 		</b:ButtonToolbar>
-<!-- 		<b:Row> -->
 		
 		Icon: <b:Icon type="star"/> :-). Invisible: <b:Icon type="heart" color="white"/> ;-).
 		Strong: <b:Strong>Hey!</b:Strong>
@@ -77,7 +66,6 @@
 		Badge: <b:Badge type="error" >2</b:Badge>. <b:Badge>2</b:Badge>
 		
 		Label: <b:Label>Normal label</b:Label>, <b:Label type="info">Info label</b:Label>
-<!-- 		</b:Row> -->
 		<b:Container>
 			<b:UnorderedList>
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>
@@ -151,15 +139,15 @@
 			</b:FluidRow>
 			<b:FluidRow>
 				<b:Column size="2"><b:ProgressBar percent="20"/></b:Column>
-				<b:Column size="2"><b:ProgressBar style="striped" percent="40"/></b:Column>
-				<b:Column size="2"><b:ProgressBar style="animated" percent="60"/></b:Column>
+				<b:Column size="2"><b:ProgressBar type="striped" percent="40"/></b:Column>
+				<b:Column size="2"><b:ProgressBar type="animated" percent="60"/></b:Column>
 			</b:FluidRow>
 					<b:FluidRow>
 				<b:Column size="3">
-					<b:Alert style="error" animated="true">TestAlert with <b>html</b></b:Alert>
+					<b:Alert type="error" animated="true">TestAlert with <b>html</b></b:Alert>
 				</b:Column>
 				<b:Column size="3">
-					<b:Alert style="success" heading="Hm..." close="false">TestAlert without close</b:Alert>
+					<b:Alert type="success" heading="Hm..." close="false">TestAlert without close</b:Alert>
 				</b:Column>
 				<b:Column size="3">
 					<b:AlertBlock type="info" heading="Heading">AlertBlock</b:AlertBlock>
