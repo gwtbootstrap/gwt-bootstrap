@@ -4,7 +4,16 @@ import com.github.gwtbootstrap.client.ui.Close.DataDismiss;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasAnimateProperty;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
+import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
+import com.github.gwtbootstrap.client.ui.event.HideEvent;
+import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowEvent;
+import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownEvent;
+import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -31,8 +40,9 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		super.add(body);
 		setVisible(false);
 		RootPanel.get().add(this);
+		setHandlerFunctions();
 	}
-	
+
 	public Modal(boolean animated) {
 		this();
 		setAnimated(animated);
@@ -106,10 +116,10 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		configured = true;
 	}
 	
-	@Override
-	public void sinkEvents(int eventBitsToAdd) {
-		body.sinkEvents(eventBitsToAdd);
-	}
+//	@Override
+//	public void sinkEvents(int eventBitsToAdd) {
+//		body.sinkEvents(eventBitsToAdd);
+//	}
 	
 	public void show() {
 		changeVisibility("show");
@@ -127,10 +137,45 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		changeVisibility(getElement(), visibility);
 	}
 	
+	public HandlerRegistration addHideHandler(HideHandler handler) {
+		addHideHandler(getElement());
+		return addHandler(handler, HideEvent.getType());
+	}
+	
+	public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
+		addHiddenHandler(getElement());
+		return addHandler(handler, HiddenEvent.getType());
+	}
+	
+	public HandlerRegistration addShowHandler(ShowHandler handler) {
+		addShowHandler(getElement());
+		return addHandler(handler, ShowEvent.getType());
+	}
+	
+	public HandlerRegistration addShownHandler(ShownHandler handler) {
+		addShownHandler(getElement());
+		return addHandler(handler, ShownEvent.getType());
+	}
+	
+	private void fireHideEvent() {
+		fireEvent(new HideEvent());
+	}
+	
+	private void fireHiddenEvent() {
+		fireEvent(new HiddenEvent());
+	}
+
+	private void fireShowEvent() {
+		fireEvent(new ShowEvent());
+	}
+
+	private void fireShownEvent() {
+		fireEvent(new ShownEvent());
+	}
+	
 	/*
 	 * native functions
 	 */
-
 	private native void configure(Element e, boolean k, boolean b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
 			keyboard : k,
@@ -141,5 +186,41 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 
 	private native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).modal(visibility);
+	}-*/;
+	
+	private native void setHandlerFunctions() /*-{
+		var that = this;
+		$wnd.fireHideEvent = $entry(function() {
+          that.@com.github.gwtbootstrap.client.ui.Modal::fireHideEvent()();});
+		$wnd.fireHiddenEvent = $entry(function() {
+          that.@com.github.gwtbootstrap.client.ui.Modal::fireHiddenEvent()();});
+		$wnd.fireShowEvent = $entry(function() {
+          that.@com.github.gwtbootstrap.client.ui.Modal::fireShowEvent()();});
+		$wnd.fireShownEvent = $entry(function() {
+          that.@com.github.gwtbootstrap.client.ui.Modal::fireShownEvent()();});
+	}-*/;
+
+	private native void addHideHandler(Element e) /*-{
+		$wnd.jQuery(e).on('hide', function() {
+			$wnd.fireHideEvent();
+		} );
+	}-*/;
+
+	private native void addHiddenHandler(Element e) /*-{
+		$wnd.jQuery(e).on('hidden', function() {
+			$wnd.fireHiddenEvent();
+		} );
+	}-*/;
+	
+	private native void addShowHandler(Element e) /*-{
+		$wnd.jQuery(e).on('show', function() {
+			$wnd.fireShowEvent();
+		} );
+	}-*/;
+	
+	private native void addShownHandler(Element e) /*-{
+		$wnd.jQuery(e).on('shown', function() {
+			$wnd.fireShownEvent();
+		} );
 	}-*/;
 }
