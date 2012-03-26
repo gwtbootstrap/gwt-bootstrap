@@ -5,7 +5,7 @@ import com.google.gwt.event.shared.EventHandler;
 /**
  * Handler interface for {@link HideEvent} events.
  * 
- * @since 2.0.2.1
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  *
