@@ -331,6 +331,26 @@ public interface Bootstrap {
 		}
 	}
 	
+	public enum Device {
+		/**
+		 * In the default configuration these are screens with a width of 480 px 
+		 * and below.
+		 */
+		PHONE,
+		
+		/**
+		 * In the default configuration these are screens with a width of 767 px 
+		 * and below.
+		 */
+		TABLET,
+		
+		/**
+		 * In the default configuration these are screens with a width of 768 px 
+		 * and above.
+		 */
+		DESKTOP;
+	}
+	
 	public enum Badge implements Style {
 
 		DEFAULT(""),

@@ -23,6 +23,7 @@ import com.github.gwtbootstrap.client.ui.event.ClosedHandler;
 import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Device;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -132,7 +133,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * @deprecated This Method should never be called directly. It will break
 	 * your implementation if any style names change. The only valid use is 
 	 * inside UiBinder files where it processes the <code>style="..."</code>
-	 * argument.
+	 * argument. Use {@link #setType(AlertStyle)} instead!
 	 */
 	@Deprecated
 	public void setType(String typeName) {

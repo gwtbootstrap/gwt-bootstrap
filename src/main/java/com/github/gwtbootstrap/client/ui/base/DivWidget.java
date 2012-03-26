@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Device;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 /**
@@ -78,114 +79,88 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
     	if (!styleString.isEmpty())
     		removeStyleName(styleString);
     }
-
-    /**
-     * {@inheritDoc}
-     */
-	public void setShowOnPhone(boolean show) {
-		if (show)
-			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
-		else
-			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
-	}
-
-    /**
-     * {@inheritDoc}
-     */
-	public boolean isShownOnPhone() {
-		return getStyleName().contains(
-				IsResponsive.ResponsiveStyle.VISIBLE_PHONE.get());
-	}
     
     /**
      * {@inheritDoc}
      */
-	public void setHideOnPhone(boolean hide) {
-		if (hide)
-			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
-		else
-			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
-	}
-
-    /**
-     * {@inheritDoc}
-     */
-	public boolean isHiddenOnPhone() {
-		return getStyleName().contains(
-				IsResponsive.ResponsiveStyle.HIDDEN_PHONE.get());
-	}
-	
-    /**
-     * {@inheritDoc}
-     */
-	public void setShowOnTablet(boolean show) {
-		if (show)
-			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
-		else
-			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
-	}
-
-    /**
-     * {@inheritDoc}
-     */
-	public boolean isShownOnTablet() {
-		return getStyleName().contains(
-				IsResponsive.ResponsiveStyle.VISIBLE_TABLET.get());
-	}
-	
-    /**
-     * {@inheritDoc}
-     */
-	public void setHideOnTablet(boolean hide) {
-		if (hide)
-			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
-		else
-			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
-	}
-
+    public void setShowOn(Device device) {
+    	removeResponsiveStyles();
+    	switch (device) {
+    		case PHONE:
+    			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
+    			break;
+    		case TABLET:
+    			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
+    			break;
+    		case DESKTOP:
+    			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
+    			break;
+    	}
+    }
+    
+    private void removeResponsiveStyles() {
+    	removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
+    	removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
+    	removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
+    	removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
+    	removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
+    	removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
+    }
+    
     /**
      * {@inheritDoc}
      * 
+     * @deprecated This Method should never be called directly. It will break
+     * your implementation if any style names change. The only valid use is 
+     * inside UiBinder files where it processes the <code>showOn="..."</code>
+     * argument. Use {@link #setShowOn(Device)} instead!
      */
-	public boolean isHiddenOnTablet() {
-		return getStyleName().contains(
-				IsResponsive.ResponsiveStyle.HIDDEN_TABLET.get());
-	}
-	
+    @Deprecated
+    public void setShowOn(String device) {
+    	if (device.equalsIgnoreCase("phone")) {
+    		setShowOn(Device.PHONE);
+    	} else if (device.equalsIgnoreCase("tablet")) {
+    		setShowOn(Device.TABLET);
+    	} else if (device.equalsIgnoreCase("desktop")) {
+    		setShowOn(Device.DESKTOP);
+    	} 
+    }
+    
     /**
      * {@inheritDoc}
      */
-	public void setShowOnDesktop(boolean show) {
-		if (show)
-			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
-		else
-			removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
-	}
-
-    /**
-     * {@inheritDoc}
-     */
-	public boolean isShownOnDesktop() {
-		return getStyleName().contains(
-				IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP.get());
-	}
-	
-    /**
-     * {@inheritDoc}
-     */
-	public void setHideOnDesktop(boolean hide) {
-		if (hide)
-			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
-		else
-			removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
-	}
-
-    /**
-     * {@inheritDoc}
-     */
-	public boolean isHiddenOnDesktop() {
-		return getStyleName().contains(
-				IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP.get());
-	}
-
+   public void setHideOn(Device device) {
+    	removeResponsiveStyles();
+    	switch (device) {
+    		case PHONE:
+    			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
+    			break;
+    		case TABLET:
+    			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
+    			break;
+    		case DESKTOP:
+    			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
+    			break;
+    	}
+    }
+    
+   /**
+    * {@inheritDoc}
+    * 
+    * @deprecated This Method should never be called directly. It will break
+    * your implementation if any style names change. The only valid use is 
+    * inside UiBinder files where it processes the <code>showOn="..."</code>
+    * argument. Use {@link #setHideOn(Device)} instead!
+    * 
+    */
+   @Deprecated
+   public void setHideOn(String device) {
+	   if (device.equalsIgnoreCase("phone")) {
+		   setHideOn(Device.PHONE);
+	   } else if (device.equalsIgnoreCase("tablet")) {
+		   setHideOn(Device.TABLET);
+	   } else if (device.equalsIgnoreCase("desktop")) {
+		   setHideOn(Device.DESKTOP);
+	   } 
+   }
 }

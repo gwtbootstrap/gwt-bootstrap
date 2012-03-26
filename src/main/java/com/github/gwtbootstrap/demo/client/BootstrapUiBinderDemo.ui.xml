@@ -28,7 +28,7 @@
 			<b:NavSearch size="2" placeholder="Search" alignment="right"/>
 		</b:Navbar>
 	
-		<b:NavList>
+		<b:NavList hideOn="tablet">
 			<b:NavHeader>Header</b:NavHeader>
 			<b:NavLink active="true" icon="plane">Test</b:NavLink>
 			<b:NavWidget text="Inbox">
@@ -38,7 +38,7 @@
 			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 		</b:NavList>
 
-		<b:WellNavList showOnPhone="true" showOnDesktop="true">
+		<b:WellNavList showOn="tablet">
 			<b:NavHeader>Header</b:NavHeader>
 			<b:NavLink active="true" icon="plane">Test</b:NavLink>
 			<b:Divider />
