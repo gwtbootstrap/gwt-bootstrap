@@ -5,7 +5,7 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasAnimateProperty;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -29,15 +29,9 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		super("modal");
 		super.add(header);
 		super.add(body);
-//		sinkEvents(Event.MOUSEEVENTS);
-//		body.sinkEvents(Event.MOUSEEVENTS);//Event.getTypeInt(MouseOverEvent.getType().getName()));
 		setVisible(false);
+		RootPanel.get().add(this);
 	}
-	
-//	@Override
-//	public void onBrowserEvent(Event event) {
-//		body.onBrowserEvent(event);
-//	}
 	
 	public Modal(boolean animated) {
 		this();
