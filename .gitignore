@@ -28,4 +28,4 @@ src/main/webapp/customcss.showcase
 src/main/webapp/.gitignore
 .project
 .classpath
-.settings
+.settings/*
