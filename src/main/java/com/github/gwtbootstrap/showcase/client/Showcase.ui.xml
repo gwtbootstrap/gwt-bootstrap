@@ -7,7 +7,7 @@
         }
     </ui:style>
     <b:Container>
-        <b:Navbar fixed="top">
+        <b:Navbar fixed="top" scrollspy="true">
             <b:Brand>GWT-Bootstrap</b:Brand>
             <b:Nav>
                 <b:NavLink href="#setup">Get Started</b:NavLink>
