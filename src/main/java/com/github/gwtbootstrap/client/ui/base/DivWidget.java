@@ -33,7 +33,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
  * 
  * @since 2.0.2.0
  *
- * @author Carlos A Becker
+ * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  */
 public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {

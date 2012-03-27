@@ -73,7 +73,11 @@ public class ResponsiveNavbar extends Navbar {
 	}
 	
 	private void setPaddingTop() {
-		setPaddingTop(Window.getClientWidth() > RESPONSIVE_WIDTH_IN_PIXEL);
+		setPaddingTop(!isResponsive());
+	}
+	
+	private boolean isResponsive() {
+		return Window.getClientWidth() < RESPONSIVE_WIDTH_IN_PIXEL;
 	}
 	
 	

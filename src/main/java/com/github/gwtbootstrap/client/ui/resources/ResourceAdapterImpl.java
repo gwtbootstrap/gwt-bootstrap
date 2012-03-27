@@ -18,8 +18,9 @@ package com.github.gwtbootstrap.client.ui.resources;
 /**
  * This class is {@link ResourceAdapter}'s default implemention.
  * 
+ * @since 2.0.2.0
+ * 
  * @author soundTricker
- * @since 24/03/2012
  */
 public class ResourceAdapterImpl implements ResourceAdapter {
 
@@ -28,7 +29,7 @@ public class ResourceAdapterImpl implements ResourceAdapter {
 	}
 
 	public boolean hasResponsiveDesign() {
-		return true;
+		return false;
 	}
 
 }
