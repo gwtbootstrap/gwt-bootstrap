@@ -41,13 +41,27 @@ public class Navbar extends DivWidget {
 
 	private final Container container = new Container();
 	private final NavbarInner navbarInner = new NavbarInner();
+	private Scrollspy spy;
 
 	public Navbar() {
 		setStyleName(Bootstrap.navbar);
 		navbarInner.add(container);
 		super.add(navbarInner);
 	}
-
+	
+	/**
+	 * @param scrollspy: if true, will configure the scrollspy in the navbar.
+	 */
+	public void setScrollspy(boolean scrollspy) {
+		spy = spy == null ? new Scrollspy(this) : spy;
+		if(scrollspy)
+		{
+			spy.configure();
+		}
+		// TODO make a unconfigure feature.
+	}
+	
+	
 	/**
 	 * Fix the Navbar at the top or bottom of the screen.
 	 * <p>

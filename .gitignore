@@ -23,3 +23,6 @@ bin/*
 /.pmd
 *~
 /.gwt
+src/main/webapp/showcase/
+src/main/webapp/customcss.showcase
+src/main/webapp/.gitignore
