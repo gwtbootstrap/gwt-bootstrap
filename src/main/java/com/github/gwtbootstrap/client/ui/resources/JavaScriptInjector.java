@@ -20,12 +20,22 @@ import com.google.gwt.dom.client.HeadElement;
 import com.google.gwt.dom.client.ScriptElement;
 
 /**
+ * Methods to inject JavaScript code into the document header.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
- * @since 22/01/2012
  */
 public class JavaScriptInjector extends AbstractInjector {
 
+	/**
+	 * Injects the JavaScript code into a
+	 * {@code <script type="text/javascript">...</script>} element in the
+	 * document header.
+	 * 
+	 * @param javascript
+	 *            the JavaScript code
+	 */
 	public static void inject(String javascript) {
 		HeadElement head = getHead();
 		ScriptElement element = createScriptElement();

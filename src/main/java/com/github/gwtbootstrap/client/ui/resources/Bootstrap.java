@@ -16,12 +16,17 @@
 package com.github.gwtbootstrap.client.ui.resources;
 
 import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 /**
- * Constants interface with all CSS class names from twitter bootstrap.
+ * Constants interface with all CSS class names from Twitter Bootstrap. Will be
+ * removed once the migration to {@link Constants} is finished.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
- * @since 20/01/2012
+ * 
+ * @author Dominik Mayer
  */
 public interface Bootstrap {
 

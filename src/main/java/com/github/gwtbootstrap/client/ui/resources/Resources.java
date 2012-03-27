@@ -20,28 +20,72 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 /**
- * Bootstrap Resources.
+ * Interface that provides the Bootstrap resources.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
- * @since 22/01/2012
+ * 
+ * @author Dominik Mayer
  */
 public interface Resources extends ClientBundle {
 
 	public static Resources RESOURCES = GWT.create(Resources.class);
 
+	/**
+	 * Returns the Bootstrap CSS file.
+	 * <p>
+	 * Override this method to use your own CSS file.
+	 * 
+	 * @return the Bootstrap CSS file
+	 */
 	// Imported as a TextResource until GWT supports CSS3.
 	@Source("css/bootstrap.min.css")
 	TextResource bootstrapCss();
 
-//	@Source("css/prettify.css")
-//	TextResource prettify_css();
-
+	/**
+	 * Returns the required jQuery version.
+	 * <p>
+	 * By default, GWT Bootstrap uses jQuery 1.7.1. Override this method to
+	 * provide a different version of jQuery.
+	 * 
+	 * @return the jQuery JavaScript Library
+	 */
 	@Source("js/jquery-1.7.1.min.js")
 	TextResource jquery();
-	
+
+	/**
+	 * Returns a version of Bootstrap with all plugins included.
+	 * <p>
+	 * The first three digits in the GWT Bootstrap version number specify the
+	 * provided Bootstrap version. (GWT Bootstrap 2.0.2.0 uses Bootstrap 2.0.2.
+	 * GWT Bootstrap 2.1.2.3 will use Bootstrap 2.1.2.)
+	 * </p>
+	 * <p>
+	 * 
+	 * Override this method to provide a different version of Bootstrap. You
+	 * might want to chose a more lightweight implementation without some of the
+	 * plugins. <b>This may break some widgets!</b>
+	 * 
+	 * @return the Bootstrap JavaScript
+	 */
 	@Source("js/bootstrap.min.js")
 	TextResource bootstrapJs();
 
+	/**
+	 * Returns the responsive extension to Bootstrap.
+	 * <p>
+	 * The responsive design is neither injected nor activated by default. You
+	 * have to implement your own {@link ResourceAdapter} and let
+	 * {@link ResourceAdapter#hasResponsiveDesign()} return {@code true}.
+	 * </p>
+	 * <p>
+	 * 
+	 * Override this method to provide a different version of the responsive
+	 * extension. <b>This may break some widgets!</b>
+	 * 
+	 * @return the Bootstrap responsive extension JavaScript
+	 */
 	@Source("css/bootstrap-responsive.min.css")
 	TextResource bootstrapResponsiveCss();
 
@@ -50,7 +94,7 @@ public interface Resources extends ClientBundle {
 
 //	@Source("css/prettify.css")
 //	TextResource prettify_css();
-	
+
 //	@Source("js/prettify/prettify.js")
 //	TextResource prettify_js();
 

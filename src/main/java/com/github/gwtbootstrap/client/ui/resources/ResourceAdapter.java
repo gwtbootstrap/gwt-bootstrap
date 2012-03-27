@@ -21,13 +21,14 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * <h3>Using custom css/js resources.</h3>
  * 
  * <p>
- * If you need to adapt resources, implement this interface, and add a 
+ * If you need to adapt resources, implement this interface, and add a
  * <code>replace-with</code> tag to your module xml. Example:
  * </p>
  * 
  * <p>
  * 1. Create a Resources Interface (extending {@link Resources}) override the
  * getters of the files you want to replace.
+ * 
  * <pre>
  * {@code
  * 	public interface MyResources extends Resources {
@@ -35,10 +36,12 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * 		TextResource bootstrapCss();
  * 	}}
  * </pre>
+ * 
  * </p>
  * 
  * <p>
  * 2. Create a <code>ResourceAdapter</code>.
+ * 
  * <pre>
  * {@code
  * 	public MyResourceAdapter implements ResourceAdapter {
@@ -47,10 +50,12 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * 		}
  * 	}}
  * </pre>
+ * 
  * </p>
  * 
  * <p>
- * 3. Add a <code>replace-with</code> tag to your module xml (<code>*.gwt.xml</code>).
+ * 3. Add a <code>replace-with</code> tag to your module xml (
+ * <code>*.gwt.xml</code>).
  * 
  * <pre>
  * {@code
@@ -59,6 +64,7 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * </replace-with>
  * }
  * </pre>
+ * 
  * </p>
  * 
  * @since 2.0.2.0
@@ -77,7 +83,8 @@ public interface ResourceAdapter {
 	 * @return the Bootstrap Resources
 	 */
 	Resources getResources();
-	
+
+	//@formatter:off
 	/**
 	 * Determines whether the project uses a responsive design.
 	 * 

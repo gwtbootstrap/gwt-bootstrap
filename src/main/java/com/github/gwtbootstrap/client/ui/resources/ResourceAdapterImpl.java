@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui.resources;
 
 /**
- * This class is {@link ResourceAdapter}'s default implemention.
+ * This class is the default {@link ResourceAdapter} implemention.
  * 
  * @since 2.0.2.0
  * 
@@ -24,10 +24,16 @@ package com.github.gwtbootstrap.client.ui.resources;
  */
 public class ResourceAdapterImpl implements ResourceAdapter {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Resources getResources() {
 		return Resources.RESOURCES;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public boolean hasResponsiveDesign() {
 		return false;
 	}

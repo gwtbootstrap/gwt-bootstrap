@@ -86,7 +86,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	 *             your implementation if any style names change. The only valid
 	 *             use is inside UiBinder files where it processes the
 	 *             <code>icon="..."</code> argument. Use
-	 *             {@link #setIcon(Icon.Type)} instead!
+	 *             {@link #setIcon(IconType)} instead!
 	 */
 	@Deprecated
 	public void setIcon(String iconName) {

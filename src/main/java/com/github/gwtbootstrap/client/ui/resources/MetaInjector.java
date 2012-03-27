@@ -19,9 +19,24 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.HeadElement;
 import com.google.gwt.dom.client.MetaElement;
 
-
+/**
+ * Methods to put a meta tag into the document header.
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Dominik Mayer
+ * 
+ */
 public class MetaInjector extends AbstractInjector {
 
+	/**
+	 * Puts a meta tag with the given name and content into the document header.
+	 * 
+	 * @param name
+	 *            the value of the {@code name} attribute.
+	 * @param content
+	 *            the value of the {@code content} attribute.
+	 */
 	public static void inject(String name, String content) {
 		HeadElement head = getHead();
 		MetaElement element = createMetaElement();

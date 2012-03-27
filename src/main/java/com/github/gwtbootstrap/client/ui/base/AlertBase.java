@@ -141,7 +141,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 *             your implementation if any style names change. The only valid
 	 *             use is inside UiBinder files where it processes the
 	 *             <code>style="..."</code> argument. Use
-	 *             {@link #setType(Bootstrap.AlertStyle)} instead!
+	 *             {@link #setType(Style)} instead!
 	 */
 	@Deprecated
 	public void setType(String typeName) {

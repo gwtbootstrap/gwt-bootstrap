@@ -20,7 +20,8 @@ import com.github.gwtbootstrap.client.ui.constants.Alignment;
 
 //@formatter:off
 /**
- * Base class for forms inside a {@link Navbar.}
+ * Base class for forms inside a {@link com.github.gwtbootstrap.client.ui.Navbar
+ * Navbar.}
  * 
  * @since 2.0.2.0
  * 

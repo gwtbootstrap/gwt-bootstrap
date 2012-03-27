@@ -25,8 +25,10 @@ import com.google.gwt.resources.client.TextResource;
 /**
  * Resources for prettify plugin.
  * 
+ * @since 2.0.2.0
+ * 
  * @author Carlos A Becker
- *
+ * 
  */
 public interface PrettifyResources extends ClientBundle {
 

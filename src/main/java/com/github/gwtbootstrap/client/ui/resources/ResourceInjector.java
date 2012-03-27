@@ -23,42 +23,42 @@ import com.google.gwt.resources.client.TextResource;
  * Utility class to inject our resources into modules page. Use it to inject
  * JavaScript and CSS files.
  * 
+ * @since 2.0.2.0
+ * 
  * @author Carlos Alexandro Becker
- * @since 21/01/2012
  */
 public class ResourceInjector {
 
-	private static final ResourceAdapter ADAPTER = GWT.create(ResourceAdapter.class);
+	private static final ResourceAdapter ADAPTER = GWT
+			.create(ResourceAdapter.class);
 
 	/**
-	 * Import the required styles and JSs to the head of modules HTML.
+	 * Injects the required CSS styles and JavaScript files into the document
+	 * header.
 	 */
 	public static void configure() {
-		
+
 		Resources res = ADAPTER.getResources();
-		
+
 		injectCss(res.bootstrapCss());
 		if (ADAPTER.hasResponsiveDesign())
 			activateResponsiveDesign(res);
 		injectJs(res.jquery());
 		injectJs(res.bootstrapJs());
-//		injectJs(res.bootstrapCollapseJs());
 	}
 
-	public static void injectCss(TextResource r) {
-//		r.ensureInjected();
+	private static void injectCss(TextResource r) {
 		StyleInjector.inject(r.getText());
 	}
 
-	public static void injectJs(TextResource r) {
+	private static void injectJs(TextResource r) {
 		JavaScriptInjector.inject(r.getText());
 	}
-	
+
 	private static void activateResponsiveDesign(Resources res) {
 		injectCss(res.bootstrapResponsiveCss());
-		MetaInjector.inject("viewport", "width=device-width, initial-scale=1.0");
+		MetaInjector
+				.inject("viewport", "width=device-width, initial-scale=1.0");
 	}
-	
 
-	
 }

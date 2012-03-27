@@ -16,11 +16,20 @@
 package com.github.gwtbootstrap.client.ui.resources.prettify;
 
 /**
- * Define components that have the lang property.
+ * Interface for components that have a programming language property.
  * 
- * @author Carlos A Becker
- *
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
  */
-public interface HasLang {
+public interface HasProgrammingLanguage {
+
+	/**
+	 * Sets the programming language.
+	 * 
+	 * @param lang
+	 *            the programming language
+	 */
 	void setLang(String lang);
 }

@@ -20,18 +20,25 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.HeadElement;
 
 /**
+ * Base class for classes that inject someting into the document header.
  * 
  * @author Carlos Alexandro Becker
+ * 
  * @author Dominik Mayer
  */
 public abstract class AbstractInjector {
 
 	private static HeadElement head;
 
+	/**
+	 * Gets the document header.
+	 * 
+	 * @return the document header
+	 */
 	protected static HeadElement getHead() {
 		if (head == null) {
-			Element element = Document.get().getElementsByTagName("head")
-					.getItem(0);
+			Element element =
+					Document.get().getElementsByTagName("head").getItem(0);
 			assert element != null : "HTML Head element required";
 			HeadElement head = HeadElement.as(element);
 			AbstractInjector.head = head;

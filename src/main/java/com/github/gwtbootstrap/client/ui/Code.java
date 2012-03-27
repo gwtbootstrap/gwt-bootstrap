@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
-import com.github.gwtbootstrap.client.ui.resources.prettify.HasLang;
+import com.github.gwtbootstrap.client.ui.resources.prettify.HasProgrammingLanguage;
 import com.github.gwtbootstrap.client.ui.resources.prettify.PrettifyHelper;
 import com.google.gwt.user.client.DOM;
 
@@ -27,7 +27,7 @@ import com.google.gwt.user.client.DOM;
  * @author Carlos A Becker
  * 
  */
-public class Code extends AbstractTypography implements HasLang {
+public class Code extends AbstractTypography implements HasProgrammingLanguage {
 
 	private final PrettifyHelper helper;
 	

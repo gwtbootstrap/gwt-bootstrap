@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.client.ui.resources.prettify.HasLang;
+import com.github.gwtbootstrap.client.ui.resources.prettify.HasProgrammingLanguage;
 import com.github.gwtbootstrap.client.ui.resources.prettify.PrettifyHelper;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  * 
  * @author Dominik Mayer
  */
-public class CodeBlock extends HTMLPanel implements HasLang {
+public class CodeBlock extends HTMLPanel implements HasProgrammingLanguage {
 
 	private final PrettifyHelper helper;
 	private boolean linenums = false;
