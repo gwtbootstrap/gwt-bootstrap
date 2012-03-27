@@ -8,8 +8,63 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.gwtbootstrap</groupId>
   <artifactId>gwt-bootstrap</artifactId>
-  <version>0.1.5</version>
+  <version>2.0.2.0-SNAPSHOT</version>
   <name>GWT-Bootstrap</name>
+
+  <!-- project infomation -->
+  <url>http://gwtbootstrap.github.com/</url>
+  <description>A GWT Library that provides the widgets of Twitter Bootstrap.</description>
+  <scm>
+    <url>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</url>
+    <connection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</connection>
+    <developerConnection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</developerConnection>
+  </scm>
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/gwtbootstrap/gwt-bootstrap/issues</url>
+  </issueManagement>
+
+  <organization>
+    <name>gwtbootstrap</name>
+    <url>https://github.com/gwtbootstrap</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>caarlos0</id>
+      <name>Carlos Alexandro Becker</name>
+      <url>https://github.com/caarlos0</url>
+    </developer>
+    <developer>
+      <id>dominikmayer</id>
+      <name>Dominik Mayer</name>
+      <url>https://github.com/dominikmayer</url>
+    </developer>
+    <developer>
+      <id>YusukeKokubo</id>
+      <name>Yusuke Kokubo</name>
+      <url>https://github.com/YusukeKokubo</url>
+    </developer>
+    <developer>
+      <id>xosler</id>
+      <name>Alexandre Schossler</name>
+      <url>https://github.com/xosler</url>
+    </developer>
+    <developer>
+      <id>soundTricker</id>
+      <name>Keisuke Oohashi</name>
+      <url>https://github.com/soundTricker</url>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+     <name>Apache License, Version 2.0</name>
+     <comments>Same Twitter Bootstrap</comments>
+    </license>
+  </licenses>
+
+
 
   <properties>
     <!-- Convenience property to set the GWT version -->
@@ -20,12 +75,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-servlet</artifactId>
-      <version>${gwtVersion}</version>
-      <scope>runtime</scope>
-    </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
@@ -53,12 +102,54 @@
     </dependency>
   </dependencies>
 
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <locale>en</locale>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <profiles>
+    <!-- for showcase build  -->
+    <profile>
+      <id>showcase</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>src/main/sample</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
   <build>
     <!-- Generate compiled stuff in the folder used for developing mode -->
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-
     <plugins>
-
       <!-- GWT Maven Plugin -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -69,13 +160,13 @@
             <goals>
               <goal>compile</goal>
               <goal>test</goal>
-              <goal>i18n</goal>
-              <goal>generateAsync</goal>
+              <goal>resources</goal>
             </goals>
           </execution>
         </executions>
-        <!-- Plugin configuration. There are many available options, see 
-          gwt-maven-plugin documentation at codehaus.org -->
+        <!-- Plugin configuration. There are many available options, see
+          gwt-maven-plugin documentation at codehaus.org
+-->
         <configuration>
           <runTarget>Bootstrap.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
@@ -102,6 +193,46 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <locale>en</locale>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <locales>en</locales>
+          <inputEncoding>UTF-8</inputEncoding>
+          <outputEncoding>UTF-8</outputEncoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
@@ -111,5 +242,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
