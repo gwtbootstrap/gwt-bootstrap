@@ -15,30 +15,42 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Container;
+import com.github.gwtbootstrap.client.ui.Nav;
+import com.github.gwtbootstrap.client.ui.NavLink;
+import com.github.gwtbootstrap.client.ui.Section;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-
 public class Showcase extends Composite implements EntryPoint {
-	
-	public void onModuleLoad() {
-		
-	}
 
-	private static ShowcaseUiBinder uiBinder = GWT
-			.create(ShowcaseUiBinder.class);
+    public void onModuleLoad() {
+    }
 
-	interface ShowcaseUiBinder extends UiBinder<Widget, Showcase> {
-	}
+    @UiField Container container;
+    @UiField Nav nav;
 
-	public Showcase() {
+    private static ShowcaseUiBinder uiBinder = GWT.create(ShowcaseUiBinder.class);
 
-		initWidget(uiBinder.createAndBindUi(this));
-		RootPanel.get().add(this);
-	}
+    interface ShowcaseUiBinder extends UiBinder<Widget, Showcase> {
+    }
 
+    public Showcase() {
+        initWidget(uiBinder.createAndBindUi(this));
+        addSectionToContainer("Get Started", "setup", new Setup());
+        addSectionToContainer("Buttons", "buttons", new Buttons());
+        RootPanel.get().add(this);
+    }
+
+    private void addSectionToContainer(String sectionName, String target, Widget section) {
+        nav.add(new NavLink(sectionName, "#" + target));
+        Section sec = new Section(target);
+        sec.add(section);
+        container.add(sec);
+    }
 }

@@ -1,2 +1,2 @@
-# Module bootstrap
+# Module Bootstrap
 # RPC service class, partial path of RPC policy file
