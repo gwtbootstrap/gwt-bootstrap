@@ -15,8 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Device;
+import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 
 /**
  * An interface for classes with a dedicated responsive behavior.
@@ -28,32 +28,31 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Device;
  * 
  * @author Dominik Mayer
  * 
- * @see {@link ResourceAdapter#hasResponsiveDesign()}
- * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap documentation</a>
- *
+ * @see ResourceAdapter#hasResponsiveDesign()
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap
+ *      documentation</a>
+ * 
  */
 public interface IsResponsive {
-	
+
 	enum ResponsiveStyle implements Style {
-		
-		VISIBLE_PHONE("visible-phone"),
-		HIDDEN_PHONE("hidden-phone"),
-		VISIBLE_TABLET("visible-tablet"),
-		HIDDEN_TABLET("hidden-tablet"),
-		VISIBLE_DESKTOP("visible-desktop"),
-		HIDDEN_DESKTOP("hidden-phone");
-		
+
+		VISIBLE_PHONE("visible-phone"), HIDDEN_PHONE("hidden-phone"),
+		VISIBLE_TABLET("visible-tablet"), HIDDEN_TABLET("hidden-tablet"),
+		VISIBLE_DESKTOP("visible-desktop"), HIDDEN_DESKTOP("hidden-phone");
+
 		private String className;
-		
+
 		private ResponsiveStyle(String className) {
 			this.className = className;
 		}
-		
+
 		public String get() {
 			return className;
 		}
 	}
-	
+
 	/**
 	 * Sets the kind of device, this widget is shown on.
 	 * 
@@ -67,11 +66,11 @@ public interface IsResponsive {
 	 * 
 	 * @param device
 	 * 
-	 * @see {@link ResourceAdapter#hasResponsiveDesign()}
-	 * @see {@link #setHideOn(Device)}
+	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see #setHideOn(Device)
 	 */
-    void setShowOn(Device device);
-    
+	void setShowOn(Device device);
+
 	/**
 	 * Sets the kind of device, this widget is shown on.
 	 * 
@@ -83,15 +82,17 @@ public interface IsResponsive {
 	 * <b>Only works if responsive design is turned on!</b>
 	 * </p>
 	 * 
-	 * @param device the String name of the device. Possible values:
-	 * <code>"phone"</code>, <code>"tablet"</code>, <code>"desktop"</code>.
+	 * @param device
+	 *            the String name of the device. Possible values:
+	 *            <code>"phone"</code>, <code>"tablet"</code>,
+	 *            <code>"desktop"</code>.
 	 * 
-	 * @see {@link ResourceAdapter#hasResponsiveDesign()}
-	 * @see {@link #setHideOn(Device)}
+	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see #setHideOn(Device)
 	 * 
 	 */
-    void setShowOn(String device);
-    
+	void setShowOn(String device);
+
 	/**
 	 * Sets the kind of device, this widget is hidden on.
 	 * 
@@ -105,11 +106,11 @@ public interface IsResponsive {
 	 * 
 	 * @param device
 	 * 
-	 * @see {@link ResourceAdapter#hasResponsiveDesign()}
-	 * @see {@link #setShowOn(Device)}
+	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see #setShowOn(Device)
 	 */
-    void setHideOn(Device device);
-    
+	void setHideOn(Device device);
+
 	/**
 	 * Sets the kind of device, this widget is hidden on.
 	 * 
@@ -121,13 +122,15 @@ public interface IsResponsive {
 	 * <b>Only works if responsive design is turned on!</b>
 	 * </p>
 	 * 
-	 * @param device the String name of the device. Possible values:
-	 * <code>"phone"</code>, <code>"tablet"</code>, <code>"desktop"</code>.
+	 * @param device
+	 *            the String name of the device. Possible values:
+	 *            <code>"phone"</code>, <code>"tablet"</code>,
+	 *            <code>"desktop"</code>.
 	 * 
-	 * @see {@link ResourceAdapter#hasResponsiveDesign()}
-	 * @see {@link #setShowOn(Device)}
+	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see #setShowOn(Device)
 	 * 
 	 */
-    void setHideOn(String device);
+	void setHideOn(String device);
 
 }

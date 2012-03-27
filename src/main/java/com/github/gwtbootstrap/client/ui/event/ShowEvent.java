@@ -25,7 +25,9 @@ import com.google.gwt.event.shared.GwtEvent;
  * 
  * @author Dominik Mayer
  * 
- * @see {@link ShownEvent}, {@link HideEvent}, {@link HiddenEvent}
+ * @see ShownEvent
+ * @see HideEvent
+ * @see HiddenEvent
  *
  */
 public class ShowEvent extends GwtEvent<ShowHandler> {

@@ -24,7 +24,7 @@ import com.google.gwt.event.shared.GwtEvent;
  * 
  * @author Dominik Mayer
  * 
- * @see {@link ClosedEvent}
+ * @see ClosedEvent
  *
  */
 public class CloseEvent extends GwtEvent<CloseHandler> {

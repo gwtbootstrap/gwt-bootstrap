@@ -30,14 +30,14 @@ public class Dropdown extends DropdownBase {
 		addStyleName("dropdown");
 	}
 
-	public Dropdown(String text) {
+	public Dropdown(final String text) {
 		this();
 		setText(text);
 	}
-	
+
 	@Override
 	protected IconAnchor createTrigger() {
-		IconAnchor trigger = new IconAnchor();
+		final IconAnchor trigger = new IconAnchor();
 		trigger.setCaret(true);
 		return trigger;
 	}

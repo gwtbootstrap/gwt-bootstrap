@@ -20,7 +20,7 @@ import com.google.gwt.dom.client.Element;
 /**
  * {@linkplain Navbar} uses this class for the scrollspy.
  * 
- * @author Carlos A Becker
+ * @author Carlos Alexandro Becker
  * 
  */
 public class Scrollspy {
@@ -29,7 +29,8 @@ public class Scrollspy {
 
 	/**
 	 * 
-	 * @param navbar: The navbar that will be spied.
+	 * @param navbar
+	 *            The navbar that will be spied.
 	 */
 	public Scrollspy(Navbar navbar) {
 		super();
@@ -49,8 +50,9 @@ public class Scrollspy {
 	 */
 	public void configure() {
 		// TODO make it works for other things too... not only for body scroll.
-		Element body = com.google.gwt.dom.client.Document.get()
-				.getElementsByTagName("body").getItem(0);
+		Element body =
+				com.google.gwt.dom.client.Document.get()
+						.getElementsByTagName("body").getItem(0);
 		assert body != null : "houston, we need a body here!";
 		body.setAttribute("data-spy", "scroll");
 		jsConfigure(navbar.getElement());

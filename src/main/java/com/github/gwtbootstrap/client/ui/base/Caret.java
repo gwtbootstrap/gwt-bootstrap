@@ -32,9 +32,9 @@ import com.google.gwt.user.client.DOM;
  * 
  * @author Dominik Mayer
  * 
- * @see {@link DropdownBase}
- * @see {@link Dropdown}
- * @see {@link DropdownButton}
+ * @see DropdownBase
+ * @see Dropdown
+ * @see DropdownButton
  *
  */
 public class Caret extends AbstractTypography {

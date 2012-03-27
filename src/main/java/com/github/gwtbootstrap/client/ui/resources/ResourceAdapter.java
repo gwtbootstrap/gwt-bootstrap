@@ -31,24 +31,25 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * <pre>
  * {@code
  * 	public interface MyResources extends Resources {
- * 		@Source("mycss/custom-bootstrap.min.css")
+ * 		{@literal @}Source("mycss/custom-bootstrap.min.css")
  * 		TextResource bootstrapCss();
- * 	}
+ * 	}}
  * </pre>
  * </p>
  * 
  * <p>
  * 2. Create a <code>ResourceAdapter</code>.
- * <pre>{@code
+ * <pre>
+ * {@code
  * 	public MyResourceAdapter implements ResourceAdapter {
  * 		public Resources getResources() {
  * 			return GWT.create(MyResources.class);
  * 		}
- * 	}
+ * 	}}
  * </pre>
  * </p>
  * 
- * </p>
+ * <p>
  * 3. Add a <code>replace-with</code> tag to your module xml (<code>*.gwt.xml</code>).
  * 
  * <pre>
@@ -84,11 +85,13 @@ public interface ResourceAdapter {
 	 * If the responsive
 	 * design is enabled, the interface can adapt to the screen size and show
 	 * different content on smartphones, tablets and desktop computers.
+	 * </p>
 	 * 
 	 * @return <code>true</code> if the responsive features should be enabled.
 	 * Default: <code>false</code>
 	 * 
-	 * @see {@link IsResponsive}
+	 * @see IsResponsive
+	 * 
 	 * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap documentation</a>
 	 */
 	boolean hasResponsiveDesign();

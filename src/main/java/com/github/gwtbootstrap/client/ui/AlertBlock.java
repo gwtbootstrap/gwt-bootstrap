@@ -34,7 +34,7 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
  * 
  * @author Dominik Mayer
  * 
- * @see {@link Alert}
+ * @see Alert
  * @see <a href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap documentation</a>
  */
 public class AlertBlock extends AlertBase {

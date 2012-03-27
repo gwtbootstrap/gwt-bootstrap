@@ -100,7 +100,7 @@ public abstract class DropdownBase extends ComplexWidget {
 	 * 
 	 * @param widget the widget that will be added to the menu
 	 * 
-	 * @see {@link #addWidget(Widget)}
+	 * @see #addWidget(Widget)
 	 */
 	@Override
 	public void add(Widget widget) {

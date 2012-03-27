@@ -29,9 +29,9 @@ import com.google.gwt.user.client.ui.Widget;
 public class Navbar extends DivWidget {
 
 	protected static final int TOP_SPACE_IN_PIXEL = 50;
-	
+
 	private boolean fixedTop = false;
-	
+
 	private class NavbarInner extends DivWidget {
 
 		public NavbarInner() {
@@ -48,27 +48,27 @@ public class Navbar extends DivWidget {
 		navbarInner.add(container);
 		super.add(navbarInner);
 	}
-	
+
 	/**
-	 * @param scrollspy: if true, will configure the scrollspy in the navbar.
+	 * @param scrollspy
+	 *            if true, will configure the scrollspy in the navbar.
 	 */
 	public void setScrollspy(boolean scrollspy) {
 		spy = spy == null ? new Scrollspy(this) : spy;
-		if(scrollspy)
-		{
+		if (scrollspy) {
 			spy.configure();
 		}
 		// TODO make a unconfigure feature.
 	}
-	
-	
+
 	/**
 	 * Fix the Navbar at the top or bottom of the screen.
 	 * <p>
-	 * For this to work properly, the Navbar must not be a child of a 
+	 * For this to work properly, the Navbar must not be a child of a
 	 * {@link Container}.
 	 * 
-	 * @param position "top" or "bottom"
+	 * @param position
+	 *            "top" or "bottom"
 	 */
 	// TODO: Allow unsetting
 	public void setFixed(String position) {
@@ -83,27 +83,26 @@ public class Navbar extends DivWidget {
 			removeStyleName(Bootstrap.navbar_fixed_top);
 			addStyleName(Bootstrap.navbar_fixed_bottom);
 		}
-		
+
 	}
 
 	@Override
 	public void add(Widget child) {
 		container.add(child);
 	}
-	
+
 	protected void addWidget(Widget child) {
 		super.add(child);
 	}
-	
+
 	protected void setPaddingTop(boolean padding) {
 		if (padding && fixedTop)
 			setPaddingTop(TOP_SPACE_IN_PIXEL);
 		else
 			setPaddingTop(0);
 	}
-	
+
 	private void setPaddingTop(int pixels) {
-		Document.get().getBody().getStyle().setPaddingTop(
-				pixels, Unit.PX);
+		Document.get().getBody().getStyle().setPaddingTop(pixels, Unit.PX);
 	}
 }

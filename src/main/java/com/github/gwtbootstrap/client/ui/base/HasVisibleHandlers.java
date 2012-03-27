@@ -15,10 +15,13 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
 import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 
@@ -29,10 +32,10 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * 
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
- *
+ * 
  */
 public interface HasVisibleHandlers {
-	
+
 	/**
 	 * Shows the widget if it was previously hidden.
 	 */
@@ -47,44 +50,48 @@ public interface HasVisibleHandlers {
 	 * Toggles the view state of the widget.
 	 * 
 	 * <p>
-	 * It will be hidden if it was previously shown and shown if it was 
+	 * It will be hidden if it was previously shown and shown if it was
 	 * previously hidden.
 	 */
 	void toggle();
-	
+
 	/**
 	 * Adds a {@link HideEvent} handler.
 	 * 
-	 * @param handler the hide handler
+	 * @param handler
+	 *            the hide handler
 	 * 
-	 * @returns {@link HandlerRegistration} used to remove this handler
+	 * @return {@link HandlerRegistration} used to remove this handler
 	 */
 	HandlerRegistration addHideHandler(HideHandler handler);
-	
+
 	/**
 	 * Adds a {@link HiddenEvent} handler.
 	 * 
-	 * @param handler the hidden handler
+	 * @param handler
+	 *            the hidden handler
 	 * 
-	 * @returns {@link HandlerRegistration} used to remove this handler
+	 * @return {@link HandlerRegistration} used to remove this handler
 	 */
 	HandlerRegistration addHiddenHandler(HiddenHandler handler);
-	
+
 	/**
 	 * Adds a {@link ShowEvent} handler.
 	 * 
-	 * @param handler the show handler
+	 * @param handler
+	 *            the show handler
 	 * 
-	 * @returns {@link HandlerRegistration} used to remove this handler
+	 * @return {@link HandlerRegistration} used to remove this handler
 	 */
 	HandlerRegistration addShowHandler(ShowHandler handler);
-	
+
 	/**
 	 * Adds a {@link ShownEvent} handler.
 	 * 
-	 * @param handler the shown handler
+	 * @param handler
+	 *            the shown handler
 	 * 
-	 * @returns {@link HandlerRegistration} used to remove this handler
+	 * @return {@link HandlerRegistration} used to remove this handler
 	 */
 	HandlerRegistration addShownHandler(ShownHandler handler);
 }
