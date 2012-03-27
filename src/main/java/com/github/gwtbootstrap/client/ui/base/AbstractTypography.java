@@ -97,7 +97,7 @@ public abstract class AbstractTypography extends Widget implements HasText,
     /**
      * {@inheritDoc}
      * 
-     * @deprecated This Method should never be called directly. It will break
+     * @deprecated This method should never be called directly. It will break
      * your implementation if any style names change. The only valid use is 
      * inside UiBinder files where it processes the <code>showOn="..."</code>
      * argument. Use {@link #setShowOn(Device)} instead!
@@ -134,9 +134,9 @@ public abstract class AbstractTypography extends Widget implements HasText,
    /**
     * {@inheritDoc}
     * 
-    * @deprecated This Method should never be called directly. It will break
+    * @deprecated This method should never be called directly. It will break
     * your implementation if any style names change. The only valid use is 
-    * inside UiBinder files where it processes the <code>showOn="..."</code>
+    * inside UiBinder files where it processes the <code>hideOn="..."</code>
     * argument. Use {@link #setHideOn(Device)} instead!
     * 
     */
