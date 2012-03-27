@@ -129,7 +129,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * 
 	 * @param typeName name of the class to add without the leading "alert-".
 	 * 
-	 * @deprecated This Method should never be called directly. It will break
+	 * @deprecated This method should never be called directly. It will break
 	 * your implementation if any style names change. The only valid use is 
 	 * inside UiBinder files where it processes the <code>style="..."</code>
 	 * argument. Use {@link #setType(AlertStyle)} instead!

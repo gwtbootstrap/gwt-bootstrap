@@ -22,6 +22,8 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
  * A Button with a dropdown menu.
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap documentation</a>
  *
  */
 public class DropdownButton extends DropdownBase {

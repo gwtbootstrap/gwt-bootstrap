@@ -887,21 +887,24 @@ public class Icon extends Widget {
         public abstract String getStyle();
     }
 
-    public enum COLOR {
+    public enum Color {
 
         WHITE, BLACK;
     }
-
+    
+    private static final String PREFIX = "icon-";
+    
+    private String type = "";
+    
+    private String color = "";
+    
     public Icon() {
         setElement(DOM.createElement("i"));
-//        getElement().setInnerHTML("&nbsp;");
     }
 
-    public Icon(Type type, COLOR color) {
+    public Icon(Type type, Color color) {
         this(type);
-        if (color == COLOR.WHITE) {
-            setColor("white");
-        }
+        setColor(color);
     }
     
     public Icon(Type type) {
@@ -913,11 +916,32 @@ public class Icon extends Widget {
         setType(type);
     }
     
+    public void setType(Type type) {
+    	setType(type.getStyle());
+    }
+    
     public void setType(String type) {
-    	setStylePrimaryName("icon-" + type);
+    	this.type = PREFIX + type;
+    	setStyles();
     }
     
     public void setColor(String color) {
-    	addStyleName("icon-" + color);
+    	this.color = PREFIX + color;
+    	setStyles();
     }
+
+	public void setColor(Color color) {
+        if (color == Color.WHITE) {
+            setColor("white");
+        } else
+        	setColor("");
+	}
+	
+	private void setStyles() {
+		setStyleName("");
+		if (!type.isEmpty())
+			addStyleName(type);
+		if (!color.isEmpty())
+			addStyleName(color);
+	}
 }

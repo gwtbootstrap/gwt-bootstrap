@@ -130,14 +130,23 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		configured = true;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void show() {
 		changeVisibility("show");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void hide() {
 		changeVisibility("hide");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void toggle() {
 		changeVisibility("toggle");
 	}
@@ -146,21 +155,33 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		changeVisibility(getElement(), visibility);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addHideHandler(HideHandler handler) {
 		addHideHandler(getElement());
 		return addHandler(handler, HideEvent.getType());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
 		addHiddenHandler(getElement());
 		return addHandler(handler, HiddenEvent.getType());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addShowHandler(ShowHandler handler) {
 		addShowHandler(getElement());
 		return addHandler(handler, ShowEvent.getType());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addShownHandler(ShownHandler handler) {
 		addShownHandler(getElement());
 		return addHandler(handler, ShownEvent.getType());

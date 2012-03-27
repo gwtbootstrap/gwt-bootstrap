@@ -50,7 +50,7 @@ public class BootstrapDemo implements EntryPoint {
         grid.add(gi1);
         Row grid1 = new Row();
         Column gi21 = new Column(12, 3);
-        Button disabledBtn = new Button("Button inside a grid inside a grid and disabled", new Icon(Icon.Type.CHECK));
+        Button disabledBtn = new Button("Button inside a grid inside a grid and disabled", Icon.Type.CHECK);
         disabledBtn.setEnabled(false);
         gi21.add(disabledBtn);
         grid1.add(gi21);
@@ -68,7 +68,7 @@ public class BootstrapDemo implements EntryPoint {
         
         ButtonToolbar toolbar = new ButtonToolbar();
         toolbar.add(new ButtonGroup(new Button("1"), new Button("2"), new Button("3"), new Button("4")));
-        toolbar.add(new ButtonGroup(new Button("5", new Icon(Icon.Type.STAR))));
+        toolbar.add(new ButtonGroup(new Button("5", Icon.Type.STAR)));
         toolbar.add(new ButtonGroup(new Button("6"), new Button("7"), new Button("8")));
         
         grid2.add(toolbar);

@@ -47,7 +47,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
         setText(text);
     }
 
-    public Button(String text, Icon icon) {
+    public Button(String text, Icon.Type icon) {
         this(text);
         setIcon(icon);
     }

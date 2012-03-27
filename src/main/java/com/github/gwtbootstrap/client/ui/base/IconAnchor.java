@@ -21,10 +21,33 @@ import com.google.gwt.user.client.ui.HasText;
 /**
  * An Anchor with optional image and caret.
  * 
+ * <p>
+ * It uses a HTML {@code <a>} tag and can contain text and child widgets. 
+ * But not both at the same time.
+ * </p>
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * {@code <b:IconAnchor icon="plane" href="www.twitter.com">Some Text</b:IconAnchor>}
+ * </p>
+ * 
+ * <p>
+ * Here we add a second Icon:
+ * 
+ * <pre>{@code <b:IconAnchor icon="star" text="There is a widget so the text goes here">
+ *     <b:Icon type="star" />
+ * </b:IconAnchor>}
+ * </pre>
+ * 
+ * All parameter are optional. All setters can be used as parameters.
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
  * @author Dominik Mayer
  *
  */
-public class IconAnchor extends ComplexWidget implements HasText {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 
 	private Icon icon = new Icon();
 	
@@ -34,8 +57,11 @@ public class IconAnchor extends ComplexWidget implements HasText {
 	
 	private Caret caret = new Caret(false);
 
+	/**
+	 * Creates the widget and sets the {@code href} property to 
+	 * {@code javascript:;} in order to avoid problems when clicking on it.
+	 */
 	public IconAnchor() {
-
 		super("a");
 		super.add(icon);
 		super.add(label);
@@ -43,44 +69,98 @@ public class IconAnchor extends ComplexWidget implements HasText {
 		setHref("javascript:;");
 	}
 
-	public void setIcon(Icon icon) {
-		if (icon == null) {
-			return;
-		}
-		setIcon(icon.getStyleName());
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setIcon(Icon.Type type) {
+		if (type != null)
+			this.icon.setType(type);
 	}
 
-	public void setIcon(String iconname) {
-		icon.setType(iconname);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 * your implementation if any style names change. The only valid use is 
+	 * inside UiBinder files where it processes the <code>icon="..."</code>
+	 * argument. Use {@link #setIcon(Icon.Type)} instead!
+	 */
+	@Deprecated
+	public void setIcon(String iconName) {
+		icon.setType(iconName);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setIconColor(Icon.Color color) {
+		icon.setColor(color);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 * your implementation if any style names change. The only valid use is 
+	 * inside UiBinder files where it processes the <code>icon="..."</code>
+	 * argument. Use {@link #setIconColor(Icon.Color)} instead!
+	 */
+	@Deprecated
+	public void setIconColor(String color) {
+		icon.setColor(color);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setText(String text) {
 		this.text = text;
 		label.setText(" " + text + " ");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getText() {
 		return text;
 	}
 
+	/**
+	 * Sets the <code>href</code> property of the anchor tag.
+	 * <p>
+	 * Use it only to set links to another page. Links on the same page or
+	 * GWT tokens should be set with {@code #setTargetHistoryToken(String)}
+	 * 
+	 * @param href the website URL
+	 */
 	public void setHref(String href) {
 		getElement().setAttribute("href", href);
 	}
 	
+	/**
+	 * @return the URL of the website this link is pointing to
+	 */
 	public String getHref() {
 		return getElement().getAttribute("href");
 	}
 	
-	public void setCaret(boolean caret) {
-		this.caret.setVisible(caret);
+	/**
+	 * Shows or hides the caret.
+	 * 
+	 * @param visible <code>true</code> if the caret should be shown.
+	 */
+	public void setCaret(boolean visible) {
+		caret.setVisible(visible);
 	}
 
+	/**
+	 * Sets the <code>href</code> property of the anchor tag to
+	 * <code>"#" + targetHistoryToken</code>.
+	 * 
+	 * @param targetHistoryToken the history token
+	 */
 	public void setTargetHistoryToken(String targetHistoryToken) {
 		setHref("#" + targetHistoryToken);
-	}
-
-	public void setIconColor(String color) {
-		icon.setColor(color);
 	}
 
 }

@@ -15,7 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-
 /**
  * Interface for components that have a {@link Style}
  * 
@@ -34,7 +33,7 @@ public interface HasStyle {
     void setStyle(Style style);
     
     /**
-     * Adds the provided style to the widet.
+     * Adds the provided style to the widget.
      * 
      * @param style the style to be added to the Widget.
      */

@@ -25,6 +25,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * Dropdown button.
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap documentation</a>
  *
  */
 public class SplitDropdownButton extends DropdownBase 
