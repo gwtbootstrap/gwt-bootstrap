@@ -92,9 +92,9 @@ public class Button extends IconAnchor implements HasClickHandlers,
     
     public void setEnabled(boolean enabled) {
     	if(enabled)
-    		addStyleName(Bootstrap.disabled);
-    	else
     		removeStyleName(Bootstrap.disabled);
+    	else
+    		addStyleName(Bootstrap.disabled);
     }
 
     public HandlerRegistration addClickHandler(ClickHandler handler) {

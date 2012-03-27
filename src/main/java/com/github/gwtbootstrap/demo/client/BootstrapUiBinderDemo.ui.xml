@@ -196,7 +196,7 @@
 				</b:ModalFooter>
 			</b:Modal>
 			<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
-			<b:Button icon="heart" type="info" ui:field="anotherModalBtn">Show anothermodal</b:Button>
+			<b:Button icon="heart" type="info" enabled="false" ui:field="anotherModalBtn">Show anothermodal</b:Button>
 		</b:Section>
 		<b:Footer><g:Label>Some Text and a </g:Label><b:Button>Button</b:Button></b:Footer>
 	</g:HTMLPanel>
