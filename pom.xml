@@ -112,7 +112,6 @@
           <encoding>${project.build.sourceEncoding}</encoding>
           <locale>en</locale>
           <linksource>true</linksource>
-          <detectLinks>true</detectLinks>
           <validateLinks>true</validateLinks>
           <links>
             <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
@@ -194,6 +193,7 @@
           <webappDirectory>${webappDirectory}</webappDirectory>
         </configuration>
       </plugin>
+      <!-- for javadoc generate -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -202,7 +202,6 @@
           <encoding>${project.build.sourceEncoding}</encoding>
           <locale>en</locale>
           <linksource>true</linksource>
-          <detectLinks>true</detectLinks>
           <validateLinks>true</validateLinks>
           <links>
             <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
@@ -217,6 +216,8 @@
           </execution>
         </executions>
       </plugin>
+      
+      <!-- for generate sorces.jar -->
       <plugin>
         <artifactId>maven-source-plugin</artifactId>
         <groupId>org.apache.maven.plugins</groupId>
@@ -230,6 +231,8 @@
           </execution>
         </executions>
       </plugin>
+      
+      <!-- for generate maven sites -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -240,6 +243,28 @@
           <outputEncoding>UTF-8</outputEncoding>
         </configuration>
       </plugin>
+      
+      <!--
+       deploy maven site files to github.
+       if you need deploy maven site files,
+       Run `mvn site -Dgithub.global.userName={your username in github} -Dgithub.global.password={your password in github}`
+       -->
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.5</version>
+        <configuration>
+          <message>Building site for ${project.version}</message>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>site</phase>
+          </execution>
+        </executions>
+      </plugin>      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
