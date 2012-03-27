@@ -1,5 +1,7 @@
 /** Add css rules here for your application. */
-
+section {
+    padding-top: 60px;
+}
 
 /** Example rules used by the template application (remove for your app) */
 h1 {
@@ -7,7 +9,6 @@ h1 {
   font-weight: bold;
   color: #777777;
   margin: 40px 0px 70px;
-  text-align: center;
 }
 
 .sendButton {

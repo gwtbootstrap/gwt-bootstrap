@@ -1,41 +1,247 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
-	<ui:style>
-		.important {
-			font-weight: bold;
-		}
-	</ui:style>
-	<b:Container>
-		<b:Navbar fixed="top">
-			<b:Brand>GWT-Bootstrap</b:Brand>
-			<b:Nav>
-				<b:NavLink href="#setup">Get Started</b:NavLink>
-				<b:NavLink href="#grid">Grid</b:NavLink>
-			</b:Nav>
-		</b:Navbar>
-		<b:Row>
-			<b:Column size="12">
-				<b:Hero>
-		    		<b:Heading size="1">GWT-Bootstrap</b:Heading>
-			    	<b:Paragraph>Using Twitter's interface library on GWT.</b:Paragraph>
-			    	<b:ButtonToolbar>
-			    		<b:Button size="large" type="inverse" href="https://github.com/gwtbootstrap/gwt-bootstrap">Twitter Bootstrap</b:Button>
-			    		<b:Button size="large" href="https://github.com/gwtbootstrap/gwt-bootstrap">Our Code on github</b:Button>
-			    	</b:ButtonToolbar>
-				</b:Hero>
-			</b:Column>
-		</b:Row>
-		<b:Section target="setup">
-			<b:PageHeader subtext="How to include GWT-Bootstrap in your project">Get started</b:PageHeader>
-		</b:Section>
-		<b:Section target="grid">
-			<b:Row>
-				<b:Column size="4">
-				</b:Column>
-			</b:Row>
-		</b:Section>
-		
-	</b:Container>
-</ui:UiBinder> 
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        .important {
+        	font-weight: bold;
+        }
+    </ui:style>
+    <b:Container>
+        <b:Navbar fixed="top">
+            <b:Brand>GWT-Bootstrap</b:Brand>
+            <b:Nav>
+                <b:NavLink href="#setup">Get Started</b:NavLink>
+                <b:NavLink href="#buttons">Buttons</b:NavLink>
+            </b:Nav>
+        </b:Navbar>
+
+        <b:Hero>
+            <b:Heading size="1">GWT-Bootstrap</b:Heading>
+            <b:Paragraph>Using Twitter's interface library on GWT.</b:Paragraph>
+        </b:Hero>
+
+        <b:Row>
+            <b:Column size="4">
+                <g:HTMLPanel>
+                    <h6>Bootstrap, from Twitter</h6>
+                    <p>Bootstrap is a toolkit from Twitter designed to kickstart development of
+                        webapps and sites.</p>
+                    <p>
+                        <a target="_blank" href="http://twitter.github.com/bootstrap/" class="btn">Bootstrap
+                            from Twitter »</a>
+                    </p>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="4">
+                <g:HTMLPanel>
+                    <h6>Google Web Toolkit</h6>
+                    <p>GWT is a Toolkit for building and optimizing complex browser-based
+                        applications.</p>
+                    <p>
+                        <a target="_blank" href="http://code.google.com/intl/en/webtoolkit/"
+                            class="btn">Google
+                            Web Toolkit »</a>
+                    </p>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="4">
+                <g:HTMLPanel>
+                    <h6>Fork on Github</h6>
+                    <p>Download, fork, pull, file issues, and more as the official Bootstrap repo on
+                        Github.</p>
+                    <p>
+                        <a target="_blank" href="https://github.com/gwtbootstrap/gwt-bootstrap"
+                            class="btn btn-primary">GWT-Bootstrap on GitHub »</a>
+                    </p>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+
+        <b:Section target="setup">
+            <b:PageHeader subtext="How to include GWT-Bootstrap in your project">Get started</b:PageHeader>
+            <b:Row>
+                <b:Column size="12">
+                    <g:HTMLPanel>
+                        <ul>
+                            <li>Download the zip, extract and add the folder as external source to
+                                the build path.</li>
+                            <li>
+                                Add
+                                <code>&lt;inherits name="com.github.gwtbootstrap.Bootstrap"/&gt;</code>
+                                to your *.gwt.xml file.
+                            </li>
+                        </ul>
+                    </g:HTMLPanel>
+                </b:Column>
+            </b:Row>
+        </b:Section>
+
+        <b:Section target="buttons">
+            <b:PageHeader subtext="styles for Buttons">Buttons</b:PageHeader>
+            <b:Row>
+                <b:Column size="6">
+                    <g:HTMLPanel>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Button</th>
+                                    <th>UiBinder</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="defaultType" text="Default" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button text=&quot;Default&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="primary" type="primary" text="Primary" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button type=&quot;primary&quot;
+                                            text=&quot;Primary&quot;
+                                            /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="info" type="info" text="Info" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button type=&quot;info&quot;
+                                            text=&quot;Info&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="success" type="success" text="Success" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button type=&quot;success&quot;
+                                            text=&quot;Success&quot;
+                                            /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="warning" type="warning" text="Warning" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button type=&quot;warning&quot;
+                                            text=&quot;Warning&quot;
+                                            /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="danger" type="danger" text="Danger" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button type=&quot;danger&quot;
+                                            text=&quot;Danger&quot;
+                                            /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="inverse" type="inverse" text="Inverse" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button type=&quot;inverse&quot;
+                                            text=&quot;Inverse&quot;
+                                            /&gt;</code>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </g:HTMLPanel>
+                </b:Column>
+                <b:Column size="6">
+                    <g:HTMLPanel>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Button</th>
+                                    <th>UiBinder</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="defaultSize" text="Default" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button text=&quot;Default&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="large" size="large" text="Large" />
+                                    </td>
+                                    <td>
+                                        <code> &lt;b:Button size=&quot;large&quot; text=&quot;Large&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="small" size="small" text="Small" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button size=&quot;small&quot; text=&quot;small&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="mini" size="mini" text="Mini" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button size=&quot;mini&quot; text=&quot;Mini&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Button</th>
+                                    <th>UiBinder</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="defaultState" text="Default" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button text=&quot;Default&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="disabled" enabled="false" text="Disabled" />
+                                    </td>
+                                    <td>
+                                        <code> &lt;b:Button enabled=&quot;false&quot; text=&quot;Disabled&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="active" enabled="true" text="Active" />
+                                    </td>
+                                    <td>
+                                        <code>&lt;b:Button enabled=&quot;true&quot; text=&quot;Active&quot; /&gt;</code>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </g:HTMLPanel>
+                </b:Column>
+            </b:Row>
+        </b:Section>
+    </b:Container>
+</ui:UiBinder>
