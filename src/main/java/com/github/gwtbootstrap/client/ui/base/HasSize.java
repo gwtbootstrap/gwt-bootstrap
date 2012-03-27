@@ -15,21 +15,22 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+//@formatter:off
 /**
- * Wrapper interface for CSS classes.
+ * Interface for widgets that have size according to the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system.</a>
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- * 
+ *
  */
-public interface Style {
+public interface HasSize {
 
 	/**
-	 * Gets the CSS class name (or a part thereof) associated with this
-	 * constant.
+	 * Sets the widget's size.
 	 * 
-	 * @return the name of the class
+	 * @param size the size of the widget in the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system</a>
 	 */
-	public String get();
+	void setSize(int size);
+
 }

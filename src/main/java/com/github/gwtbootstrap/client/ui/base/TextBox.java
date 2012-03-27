@@ -16,20 +16,20 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 /**
- * Wrapper interface for CSS classes.
+ * {@link com.google.gwt.user.client.ui.TextBox TextBox} without the GWT CSS
+ * Styles.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- * 
  */
-public interface Style {
+public class TextBox extends com.google.gwt.user.client.ui.TextBox {
 
 	/**
-	 * Gets the CSS class name (or a part thereof) associated with this
-	 * constant.
-	 * 
-	 * @return the name of the class
+	 * Creates an empty TextBox.
 	 */
-	public String get();
+	public TextBox() {
+		super();
+		setStyleName("");
+	}
 }

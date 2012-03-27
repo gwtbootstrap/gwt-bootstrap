@@ -22,31 +22,31 @@ import com.google.gwt.user.client.DOM;
  *
  * @author carlos
  */
-public class BlockQuote extends AbstractTypography {
+public class Blockquote extends AbstractTypography {
 
     {
         setElement(DOM.createElement("blockquote"));
     }
 
-    public BlockQuote() {
+    public Blockquote() {
     	// Needed for UiBinder
     }
     
-    public BlockQuote(String text) {
+    public Blockquote(String text) {
         setText(text);
     }
 
-    public BlockQuote(String text, String cite) {
+    public Blockquote(String text, String cite) {
         this(text);
         setCite(cite);
     }
 
-    public BlockQuote(String text, boolean pullright) {
+    public Blockquote(String text, boolean pullright) {
         setText(text);
         setPullright(pullright);
     }
 
-    public BlockQuote(String text, String cite, boolean pullright) {
+    public Blockquote(String text, String cite, boolean pullright) {
         this(text);
         setCite(cite);
         setPullright(pullright);

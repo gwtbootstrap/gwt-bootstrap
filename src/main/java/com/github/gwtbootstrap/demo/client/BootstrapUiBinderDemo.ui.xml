@@ -10,6 +10,7 @@
 			<b:Brand>Bootstrap</b:Brand>
 			<b:Nav>
 				<b:NavLink>Test</b:NavLink>
+				<b:NavText>NavText</b:NavText>
 				<b:DividerVertical />
 				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 				<b:Dropdown text="Dropdown">
@@ -46,7 +47,7 @@
 		</b:WellNavList>
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
 		<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
-		<b:BlockQuote cite="Me" pullright="true">This is a blockquote.</b:BlockQuote>
+		<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
 		<b:ButtonToolbar>
 			<b:ButtonGroup>
 				<b:Button>1</b:Button>

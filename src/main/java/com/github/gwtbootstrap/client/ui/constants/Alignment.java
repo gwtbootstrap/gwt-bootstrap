@@ -13,23 +13,30 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.base;
+package com.github.gwtbootstrap.client.ui.constants;
+
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Wrapper interface for CSS classes.
+ * Contstants for pulling widgets to the left or right.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
  */
-public interface Style {
+public enum Alignment implements Style {
 
-	/**
-	 * Gets the CSS class name (or a part thereof) associated with this
-	 * constant.
-	 * 
-	 * @return the name of the class
-	 */
-	public String get();
+	LEFT("pull-left"), RIGHT("pull-right");
+
+	private String className;
+
+	private Alignment(String className) {
+		this.className = className;
+	}
+
+	public String get() {
+		return className;
+	}
+
 }

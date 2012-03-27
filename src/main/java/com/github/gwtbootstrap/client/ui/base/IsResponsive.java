@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Device;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 
 /**
@@ -35,23 +35,6 @@ import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
  * 
  */
 public interface IsResponsive {
-
-	enum ResponsiveStyle implements Style {
-
-		VISIBLE_PHONE("visible-phone"), HIDDEN_PHONE("hidden-phone"),
-		VISIBLE_TABLET("visible-tablet"), HIDDEN_TABLET("hidden-tablet"),
-		VISIBLE_DESKTOP("visible-desktop"), HIDDEN_DESKTOP("hidden-phone");
-
-		private String className;
-
-		private ResponsiveStyle(String className) {
-			this.className = className;
-		}
-
-		public String get() {
-			return className;
-		}
-	}
 
 	/**
 	 * Sets the kind of device, this widget is shown on.

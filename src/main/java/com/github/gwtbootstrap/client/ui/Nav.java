@@ -15,26 +15,47 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasAlignment;
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
  * A Nav menu of the Navbar.
  * 
  * @author Dominik Mayer
  */
-public class Nav extends UnorderedList {
+//@formatter:on
+public class Nav extends UnorderedList implements HasAlignment {
 
 	public Nav() {
 		addStyleName(Bootstrap.nav);
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>alignment="..."</code> argument. Use
+	 *             {@link #setAlignment(Alignment)} instead!
+	 */
+	@Deprecated
 	public void setAlignment(String alignment) {
 		if (alignment.equalsIgnoreCase("left")) {
-			removeStyleName(Bootstrap.pull_right);
-			addStyleName(Bootstrap.pull_left);
+			setAlignment(Alignment.LEFT);
 		} else if (alignment.equalsIgnoreCase("right")) {
-			removeStyleName(Bootstrap.pull_left);
-			addStyleName(Bootstrap.pull_right);
+			setAlignment(Alignment.RIGHT);
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setAlignment(Alignment alignment) {
+		removeStyle(Alignment.RIGHT);
+		removeStyle(Alignment.LEFT);
+		addStyle(alignment);
 	}
 }

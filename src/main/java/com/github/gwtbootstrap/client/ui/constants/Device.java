@@ -13,39 +13,49 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui;
+package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
-import com.google.gwt.user.client.ui.HasText;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Simple html paragraph widget.
+ * The kind of device the application is currently running on.
+ * 
+ * <p>
+ * Determined by the screen size.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  */
-public class Paragraph extends ComplexWidget implements HasText {
+public enum Device implements Style {
+	/**
+	 * In the default configuration these are devices with a screen width of 480
+	 * px and below.
+	 */
+	PHONE("phone"),
 
 	/**
-	 * Creates an empty paragraph.
+	 * In the default configuration these are devices with a screen width of 767
+	 * px and below.
 	 */
-	public Paragraph() {
-		super("p");
+	TABLET("tablet"),
+
+	/**
+	 * In the default configuration these are devices with a screen width of 768
+	 * px and above.
+	 */
+	DESKTOP("desktop");
+
+	private String name;
+
+	private Device(String name) {
+		this.name = name;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getText() {
-		return getElement().getInnerText();
+	public String get() {
+		return name;
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setText(String text) {
-		getElement().setInnerText(text);
-	}
-
 }

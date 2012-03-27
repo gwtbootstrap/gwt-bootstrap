@@ -13,28 +13,35 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui;
+package com.github.gwtbootstrap.client.ui.constants;
 
-import com.google.gwt.user.client.ui.HasText;
+import com.github.gwtbootstrap.client.ui.Navbar;
 
 //@formatter:off
 /**
- * A Link in the Navbar.
+ * Constants used for the {@link Navbar} and for Navbar contents.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
 //@formatter:on
-public class NavLink extends NavWidget implements HasText {
+public interface NavbarConstants {
 
-	public NavLink() {
-		super();
-	}
+	public static final String NAVBAR = "navbar";
 
-	public NavLink(String text, String href) {
-		super();
-		setText(text);
-		setHref(href);
-	}
+	public static final String NAVBAR_FIXED_TOP = "navbar-fixed-top";
+
+	public static final String NAVBAR_FIXED_BOTTOM = "navbar-fixed-bottom";
+
+	public static final String NAVBAR_FORM = "navbar-form";
+
+	public static final String NAVBAR_SEARCH = "navbar-search";
+
+	public static final String NAVBAR_TEXT = "navbar-text";
+
+	public static final String NAVBAR_INNER = "navbar-inner";
+
 }

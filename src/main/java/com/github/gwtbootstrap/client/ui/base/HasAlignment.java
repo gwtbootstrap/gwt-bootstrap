@@ -15,21 +15,32 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
+
 /**
- * Wrapper interface for CSS classes.
+ * Interface for widgets that can be aligned on the left or right side.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
  */
-public interface Style {
+public interface HasAlignment {
 
 	/**
-	 * Gets the CSS class name (or a part thereof) associated with this
-	 * constant.
+	 * Pulls the widget to the left or right.
 	 * 
-	 * @return the name of the class
+	 * @param alignment
+	 *            either {@code "left"} or {@code "right"}
 	 */
-	public String get();
+	void setAlignment(String alignment);
+
+	/**
+	 * Pulls the widget to the left or right.
+	 * 
+	 * @param alignment
+	 *            where the widget should end up
+	 */
+	void setAlignment(Alignment alignment);
+
 }

@@ -16,193 +16,259 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.event.dom.client.*;
+import com.google.gwt.event.dom.client.BlurEvent;
+import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.DoubleClickEvent;
+import com.google.gwt.event.dom.client.DoubleClickHandler;
+import com.google.gwt.event.dom.client.DragEndEvent;
+import com.google.gwt.event.dom.client.DragEndHandler;
+import com.google.gwt.event.dom.client.DragEnterEvent;
+import com.google.gwt.event.dom.client.DragEnterHandler;
+import com.google.gwt.event.dom.client.DragEvent;
+import com.google.gwt.event.dom.client.DragHandler;
+import com.google.gwt.event.dom.client.DragLeaveEvent;
+import com.google.gwt.event.dom.client.DragLeaveHandler;
+import com.google.gwt.event.dom.client.DragOverEvent;
+import com.google.gwt.event.dom.client.DragOverHandler;
+import com.google.gwt.event.dom.client.DragStartEvent;
+import com.google.gwt.event.dom.client.DragStartHandler;
+import com.google.gwt.event.dom.client.DropEvent;
+import com.google.gwt.event.dom.client.DropHandler;
+import com.google.gwt.event.dom.client.FocusEvent;
+import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.dom.client.GestureChangeEvent;
+import com.google.gwt.event.dom.client.GestureChangeHandler;
+import com.google.gwt.event.dom.client.GestureEndEvent;
+import com.google.gwt.event.dom.client.GestureEndHandler;
+import com.google.gwt.event.dom.client.GestureStartEvent;
+import com.google.gwt.event.dom.client.GestureStartHandler;
+import com.google.gwt.event.dom.client.HasAllDragAndDropHandlers;
+import com.google.gwt.event.dom.client.HasAllFocusHandlers;
+import com.google.gwt.event.dom.client.HasAllGestureHandlers;
+import com.google.gwt.event.dom.client.HasAllKeyHandlers;
+import com.google.gwt.event.dom.client.HasAllMouseHandlers;
+import com.google.gwt.event.dom.client.HasAllTouchHandlers;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.dom.client.HasDoubleClickHandlers;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
+import com.google.gwt.event.dom.client.MouseWheelEvent;
+import com.google.gwt.event.dom.client.MouseWheelHandler;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasEnabled;
 
 /**
  * Bootstrap Button Component.
- *
+ * 
  * @author Carlos A Becker
  */
-public class Button extends IconAnchor implements HasClickHandlers, 
-		HasDoubleClickHandlers, HasEnabled, HasAllDragAndDropHandlers, 
+public class Button extends IconAnchor implements HasClickHandlers,
+		HasDoubleClickHandlers, HasEnabled, HasAllDragAndDropHandlers,
 		HasAllFocusHandlers, HasAllGestureHandlers, HasAllKeyHandlers,
 		HasAllMouseHandlers, HasAllTouchHandlers {
 
-    {
-        removeStyleName("gwt-Button");
-        addStyle(Bootstrap.Button.BTN);
-    }
-    
-    public Button() {
-    	super();
-        getElement().appendChild(Document.get().createElement("i"));
-    }
+	{
+		removeStyleName("gwt-Button");
+		addStyle(Bootstrap.Button.BTN);
+	}
 
-    public Button(String text) {
-        this();
-        setText(text);
-    }
+	public Button() {
+		super();
+		getElement().appendChild(Document.get().createElement("i"));
+	}
 
-    public Button(String text, Icon.Type icon) {
-        this(text);
-        setIcon(icon);
-    }
-    
-    public void setStyle(Bootstrap.Button.Type type) {
-    	for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values())
-    		removeStyle(t);
-    	addStyle(type);
-    }
-    
-    public void setType(String typeString) {
-    	String type = "btn-" + typeString;
-    	
-    	for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values()) {
-    		if (type.equals(t.get()))
-    			addStyle(t);
-    		else
-    			removeStyle(t);
-    	}
-    }
-	
-    public void setSize(Bootstrap.Button.Size size) {
-    	for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values())
-    		removeStyle(s);
-    	addStyle(size);
-    }
-    
-    public void setSize(String sizeString) {
-    	String size = "btn-" + sizeString;
-    	
-    	for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values()) {
-    		if (size.equals(s.get()))
-    			addStyle(s);
-    		else
-    			removeStyle(s);
-    	}
-    }
-    
-    public boolean isEnabled() {
-    	return getStyleName().contains("disabled");
-    }
-    
-    public void setEnabled(boolean enabled) {
-    	if(enabled)
-    		removeStyleName(Bootstrap.disabled);
-    	else
-    		addStyleName(Bootstrap.disabled);
-    }
+	public Button(String text) {
+		this();
+		setText(text);
+	}
 
-    public HandlerRegistration addClickHandler(ClickHandler handler) {
-        return addDomHandler(handler, ClickEvent.getType());
-    }
+	public Button(String text, IconType icon) {
+		this(text);
+		setIcon(icon);
+	}
 
-    public HandlerRegistration addDoubleClickHandler(DoubleClickHandler handler) {
-        return addDomHandler(handler, DoubleClickEvent.getType());
-    }
+	public void setStyle(Bootstrap.Button.Type type) {
+		for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values())
+			removeStyle(t);
+		addStyle(type);
+	}
 
-    public HandlerRegistration addDragEndHandler(DragEndHandler handler) {
-        return addDomHandler(handler, DragEndEvent.getType());
-    }
+	public void setType(String typeString) {
+		String type = "btn-" + typeString;
 
-    public HandlerRegistration addDragEnterHandler(DragEnterHandler handler) {
-        return addDomHandler(handler, DragEnterEvent.getType());
-    }
+		for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values()) {
+			if (type.equals(t.get()))
+				addStyle(t);
+			else
+				removeStyle(t);
+		}
+	}
 
-    public HandlerRegistration addDragLeaveHandler(DragLeaveHandler handler) {
-        return addDomHandler(handler, DragLeaveEvent.getType());
-    }
+	public void setSize(Bootstrap.Button.Size size) {
+		for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values())
+			removeStyle(s);
+		addStyle(size);
+	}
 
-    public HandlerRegistration addDragHandler(DragHandler handler) {
-        return addDomHandler(handler, DragEvent.getType());
-    }
+	public void setSize(String sizeString) {
+		String size = "btn-" + sizeString;
 
-    public HandlerRegistration addDragOverHandler(DragOverHandler handler) {
-        return addDomHandler(handler, DragOverEvent.getType());
-    }
+		for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values()) {
+			if (size.equals(s.get()))
+				addStyle(s);
+			else
+				removeStyle(s);
+		}
+	}
 
-    public HandlerRegistration addDragStartHandler(DragStartHandler handler) {
-        return addDomHandler(handler, DragStartEvent.getType());
-    }
+	public boolean isEnabled() {
+		return getStyleName().contains("disabled");
+	}
 
-    public HandlerRegistration addDropHandler(DropHandler handler) {
-        return addDomHandler(handler, DropEvent.getType());
-    }
+	public void setEnabled(boolean enabled) {
+		if (enabled)
+			removeStyleName(Bootstrap.disabled);
+		else
+			addStyleName(Bootstrap.disabled);
+	}
 
-    public HandlerRegistration addFocusHandler(FocusHandler handler) {
-        return addDomHandler(handler, FocusEvent.getType());
-    }
+	public HandlerRegistration addClickHandler(ClickHandler handler) {
+		return addDomHandler(handler, ClickEvent.getType());
+	}
 
-    public HandlerRegistration addBlurHandler(BlurHandler handler) {
-        return addDomHandler(handler, BlurEvent.getType());
-    }
+	public HandlerRegistration
+			addDoubleClickHandler(DoubleClickHandler handler) {
+		return addDomHandler(handler, DoubleClickEvent.getType());
+	}
 
-    public HandlerRegistration addGestureStartHandler(GestureStartHandler handler) {
-        return addDomHandler(handler, GestureStartEvent.getType());
-    }
+	public HandlerRegistration addDragEndHandler(DragEndHandler handler) {
+		return addDomHandler(handler, DragEndEvent.getType());
+	}
 
-    public HandlerRegistration addGestureChangeHandler(GestureChangeHandler handler) {
-        return addDomHandler(handler, GestureChangeEvent.getType());
-    }
+	public HandlerRegistration addDragEnterHandler(DragEnterHandler handler) {
+		return addDomHandler(handler, DragEnterEvent.getType());
+	}
 
-    public HandlerRegistration addGestureEndHandler(GestureEndHandler handler) {
-        return addDomHandler(handler, GestureEndEvent.getType());
-    }
+	public HandlerRegistration addDragLeaveHandler(DragLeaveHandler handler) {
+		return addDomHandler(handler, DragLeaveEvent.getType());
+	}
 
-    public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
-        return addDomHandler(handler, KeyUpEvent.getType());
-    }
+	public HandlerRegistration addDragHandler(DragHandler handler) {
+		return addDomHandler(handler, DragEvent.getType());
+	}
 
-    public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
-        return addDomHandler(handler, KeyDownEvent.getType());
-    }
+	public HandlerRegistration addDragOverHandler(DragOverHandler handler) {
+		return addDomHandler(handler, DragOverEvent.getType());
+	}
 
-    public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
-        return addDomHandler(handler, KeyPressEvent.getType());
-    }
+	public HandlerRegistration addDragStartHandler(DragStartHandler handler) {
+		return addDomHandler(handler, DragStartEvent.getType());
+	}
 
-    public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
-        return addDomHandler(handler, MouseDownEvent.getType());
-    }
+	public HandlerRegistration addDropHandler(DropHandler handler) {
+		return addDomHandler(handler, DropEvent.getType());
+	}
 
-    public HandlerRegistration addMouseUpHandler(MouseUpHandler handler) {
-        return addDomHandler(handler, MouseUpEvent.getType());
-    }
+	public HandlerRegistration addFocusHandler(FocusHandler handler) {
+		return addDomHandler(handler, FocusEvent.getType());
+	}
 
-    public HandlerRegistration addMouseOutHandler(MouseOutHandler handler) {
-        return addDomHandler(handler, MouseOutEvent.getType());
-    }
+	public HandlerRegistration addBlurHandler(BlurHandler handler) {
+		return addDomHandler(handler, BlurEvent.getType());
+	}
 
-    public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
-        return addDomHandler(handler, MouseOverEvent.getType());
-    }
+	public HandlerRegistration addGestureStartHandler(
+			GestureStartHandler handler) {
+		return addDomHandler(handler, GestureStartEvent.getType());
+	}
 
-    public HandlerRegistration addMouseMoveHandler(MouseMoveHandler handler) {
-        return addDomHandler(handler, MouseMoveEvent.getType());
-    }
+	public HandlerRegistration addGestureChangeHandler(
+			GestureChangeHandler handler) {
+		return addDomHandler(handler, GestureChangeEvent.getType());
+	}
 
-    public HandlerRegistration addMouseWheelHandler(MouseWheelHandler handler) {
-        return addDomHandler(handler, MouseWheelEvent.getType());
-    }
+	public HandlerRegistration addGestureEndHandler(GestureEndHandler handler) {
+		return addDomHandler(handler, GestureEndEvent.getType());
+	}
 
-    public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
-        return addDomHandler(handler, TouchStartEvent.getType());
-    }
+	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
+		return addDomHandler(handler, KeyUpEvent.getType());
+	}
 
-    public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
-        return addDomHandler(handler, TouchMoveEvent.getType());
-    }
+	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+		return addDomHandler(handler, KeyDownEvent.getType());
+	}
 
-    public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
-        return addDomHandler(handler, TouchEndEvent.getType());
-    }
+	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+		return addDomHandler(handler, KeyPressEvent.getType());
+	}
 
-    public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
-        return addDomHandler(handler, TouchCancelEvent.getType());
-    }
+	public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
+		return addDomHandler(handler, MouseDownEvent.getType());
+	}
+
+	public HandlerRegistration addMouseUpHandler(MouseUpHandler handler) {
+		return addDomHandler(handler, MouseUpEvent.getType());
+	}
+
+	public HandlerRegistration addMouseOutHandler(MouseOutHandler handler) {
+		return addDomHandler(handler, MouseOutEvent.getType());
+	}
+
+	public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
+		return addDomHandler(handler, MouseOverEvent.getType());
+	}
+
+	public HandlerRegistration addMouseMoveHandler(MouseMoveHandler handler) {
+		return addDomHandler(handler, MouseMoveEvent.getType());
+	}
+
+	public HandlerRegistration addMouseWheelHandler(MouseWheelHandler handler) {
+		return addDomHandler(handler, MouseWheelEvent.getType());
+	}
+
+	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
+		return addDomHandler(handler, TouchStartEvent.getType());
+	}
+
+	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
+		return addDomHandler(handler, TouchMoveEvent.getType());
+	}
+
+	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
+		return addDomHandler(handler, TouchEndEvent.getType());
+	}
+
+	public HandlerRegistration
+			addTouchCancelHandler(TouchCancelHandler handler) {
+		return addDomHandler(handler, TouchCancelEvent.getType());
+	}
 
 }

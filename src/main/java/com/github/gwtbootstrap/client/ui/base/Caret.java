@@ -17,11 +17,11 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Dropdown;
 import com.github.gwtbootstrap.client.ui.DropdownButton;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.user.client.DOM;
 
 /**
- * Icon used in Dropdowns to show the presence of a menu. Can point up- or 
+ * Icon used in Dropdowns to show the presence of a menu. Can point up- or
  * downwards, depending on the context.
  * <p>
  * <h3>UiBinder Usage:</h3>
@@ -35,7 +35,7 @@ import com.google.gwt.user.client.DOM;
  * @see DropdownBase
  * @see Dropdown
  * @see DropdownButton
- *
+ * 
  */
 public class Caret extends AbstractTypography {
 
@@ -45,38 +45,40 @@ public class Caret extends AbstractTypography {
 	public Caret() {
 		this(true);
 	}
-	
+
 	/**
 	 * Creates a widget that can initially be hidden.
 	 * 
-	 * @param visible <code>false</code> if the caret should be hidden. Default:
-	 * <code>true</code>
+	 * @param visible
+	 *            <code>false</code> if the caret should be hidden. Default:
+	 *            <code>true</code>
 	 */
 	public Caret(boolean visible) {
 		setElement(DOM.createElement("span"));
 		if (visible)
 			show();
 	}
-	
+
 	/**
 	 * Shows the widget.
 	 */
 	public void show() {
-		setStyleName(Bootstrap.caret);
+		setStyleName(Constants.CARET);
 	}
-	
+
 	/**
 	 * Hides the widget.
 	 */
 	public void hide() {
-		removeStyleName(Bootstrap.caret);
+		removeStyleName(Constants.CARET);
 	}
 
 	/**
 	 * Sets the visibility of the widget.
 	 * 
-	 * @param visible <code>false</code> if the caret should be hidden. Default:
-	 * <code>true</code>
+	 * @param visible
+	 *            <code>false</code> if the caret should be hidden. Default:
+	 *            <code>true</code>
 	 */
 	@Override
 	public void setVisible(boolean visible) {

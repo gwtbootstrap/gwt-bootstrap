@@ -16,16 +16,22 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * The Navbar.
  * 
+ * @since 2.0.2.0
+ * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
+//@formatter:on
 public class Navbar extends DivWidget {
 
 	protected static final int TOP_SPACE_IN_PIXEL = 50;
@@ -35,7 +41,7 @@ public class Navbar extends DivWidget {
 	private class NavbarInner extends DivWidget {
 
 		public NavbarInner() {
-			setStyleName(Bootstrap.navbar_inner);
+			setStyleName(NavbarConstants.NAVBAR_INNER);
 		}
 	}
 
@@ -44,7 +50,7 @@ public class Navbar extends DivWidget {
 	private Scrollspy spy;
 
 	public Navbar() {
-		setStyleName(Bootstrap.navbar);
+		setStyleName(NavbarConstants.NAVBAR);
 		navbarInner.add(container);
 		super.add(navbarInner);
 	}
@@ -76,12 +82,12 @@ public class Navbar extends DivWidget {
 
 		if (position.equalsIgnoreCase("top")) {
 			fixedTop = true;
-			removeStyleName(Bootstrap.navbar_fixed_bottom);
-			addStyleName(Bootstrap.navbar_fixed_top);
+			removeStyleName(NavbarConstants.NAVBAR_FIXED_BOTTOM);
+			addStyleName(NavbarConstants.NAVBAR_FIXED_TOP);
 			setPaddingTop(TOP_SPACE_IN_PIXEL);
 		} else if (position.equalsIgnoreCase("bottom")) {
-			removeStyleName(Bootstrap.navbar_fixed_top);
-			addStyleName(Bootstrap.navbar_fixed_bottom);
+			removeStyleName(NavbarConstants.NAVBAR_FIXED_TOP);
+			addStyleName(NavbarConstants.NAVBAR_FIXED_BOTTOM);
 		}
 
 	}

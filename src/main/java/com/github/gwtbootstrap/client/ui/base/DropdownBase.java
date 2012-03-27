@@ -19,11 +19,11 @@ import com.github.gwtbootstrap.client.ui.Divider;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.UnorderedList;
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * Base class for dropdown widgets.
  * 
@@ -33,18 +33,20 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  * 
  */
+//@formatter:on
 public abstract class DropdownBase extends ComplexWidget {
 
 	private UnorderedList menu = new UnorderedList();
-	
+
 	private IconAnchor trigger;
-	
+
 	private NavLink link;
 
 	/**
 	 * Creates a new widget of the given type.
 	 * 
-	 * @param type the HTML tag to be used for the widget
+	 * @param type
+	 *            the HTML tag to be used for the widget
 	 */
 	public DropdownBase(String type) {
 		super(type);
@@ -52,11 +54,11 @@ public abstract class DropdownBase extends ComplexWidget {
 		menu.setStyleName("dropdown-menu");
 		super.add(menu);
 	}
-	
+
 	private void createAndAddTrigger() {
 		trigger = createTrigger();
 		trigger.addStyleName("dropdown-toggle");
-		trigger.getElement().setAttribute(Bootstrap.data_toggle, "dropdown");
+		trigger.getElement().setAttribute(Constants.DATA_TOGGLE, "dropdown");
 		super.add(trigger);
 	}
 
@@ -68,7 +70,7 @@ public abstract class DropdownBase extends ComplexWidget {
 	public void setText(String text) {
 		trigger.setText(text);
 	}
-	
+
 	/**
 	 * Implement this method to create the trigger appropriate for your widget.
 	 * It has to be an {@link IconAnchor} or a subtype.
@@ -76,12 +78,12 @@ public abstract class DropdownBase extends ComplexWidget {
 	 * @return the created trigger
 	 */
 	protected abstract IconAnchor createTrigger();
-	
+
 	public void setDropup(boolean dropup) {
 		if (dropup)
-			addStyleName(Bootstrap.dropup);
+			addStyleName(Constants.DROPUP);
 		else
-			removeStyleName(Bootstrap.dropup);
+			removeStyleName(Constants.DROPUP);
 	}
 
 	/**
@@ -98,7 +100,8 @@ public abstract class DropdownBase extends ComplexWidget {
 	/**
 	 * Adds a widget to the dropdown menu.
 	 * 
-	 * @param widget the widget that will be added to the menu
+	 * @param widget
+	 *            the widget that will be added to the menu
 	 * 
 	 * @see #addWidget(Widget)
 	 */
@@ -107,34 +110,35 @@ public abstract class DropdownBase extends ComplexWidget {
 		if (canBeAdded(widget))
 			menu.add(widget);
 		else
-			throw new IllegalArgumentException("Only NavLink, NavText and " +
-					"Divider can be added to the Dropdown");
+			throw new IllegalArgumentException("Only NavLink, NavText and "
+					+ "Divider can be added to the Dropdown");
 	}
-	
+
 	/**
 	 * Checks whether a widget can be added to the dropdown.
 	 * <p>
-	 * By default, the dropdown accepts {@link NavLink}, {@link NavText} and 
-	 * {@link Divider} widgets. Override this class to allow more widgets. 
+	 * By default, the dropdown accepts {@link NavLink}, {@link NavText} and
+	 * {@link Divider} widgets. Override this class to allow more widgets.
 	 * 
-	 * @param widget the widget that should be added
+	 * @param widget
+	 *            the widget that should be added
 	 * 
 	 * @return <code>true</code> if the widget can be added to the Dropdown
 	 */
 	protected boolean canBeAdded(Widget widget) {
-		return ((widget instanceof NavLink) || (widget instanceof NavText) || 
-				(widget instanceof Divider));
+		return ((widget instanceof NavLink) || (widget instanceof NavText) || (widget instanceof Divider));
 	}
-	
+
 	/**
-	 * Adds a widget to the the dropdown widget, <b>not</b> to the dropdown 
+	 * Adds a widget to the the dropdown widget, <b>not</b> to the dropdown
 	 * menu.
 	 * 
 	 * <p>
-	 * Use {@link #add(Widget)} if you want to add a widget to the dropdown 
+	 * Use {@link #add(Widget)} if you want to add a widget to the dropdown
 	 * menu.
 	 * 
-	 * @param widget the widget to be added.
+	 * @param widget
+	 *            the widget to be added.
 	 */
 	protected void addWidget(Widget widget) {
 		super.add(widget);

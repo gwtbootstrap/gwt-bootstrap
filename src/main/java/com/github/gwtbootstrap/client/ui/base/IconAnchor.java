@@ -16,14 +16,15 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
 
 /**
  * An Anchor with optional image and caret.
  * 
  * <p>
- * It uses a HTML {@code <a>} tag and can contain text and child widgets. 
- * But not both at the same time.
+ * It uses a HTML {@code <a>} tag and can contain text and child widgets. But
+ * not both at the same time.
  * </p>
  * 
  * <p>
@@ -34,7 +35,8 @@ import com.google.gwt.user.client.ui.HasText;
  * <p>
  * Here we add a second Icon:
  * 
- * <pre>{@code <b:IconAnchor icon="star" text="There is a widget so the text goes here">
+ * <pre>
+ * {@code <b:IconAnchor icon="star" text="There is a widget so the text goes here">
  *     <b:Icon type="star" />
  * </b:IconAnchor>}
  * </pre>
@@ -45,20 +47,20 @@ import com.google.gwt.user.client.ui.HasText;
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- *
+ * 
  */
 public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 
 	private Icon icon = new Icon();
-	
+
 	private InlineLabel label = new InlineLabel();
-	
+
 	private String text = "";
-	
+
 	private Caret caret = new Caret(false);
 
 	/**
-	 * Creates the widget and sets the {@code href} property to 
+	 * Creates the widget and sets the {@code href} property to
 	 * {@code javascript:;} in order to avoid problems when clicking on it.
 	 */
 	public IconAnchor() {
@@ -72,7 +74,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void setIcon(Icon.Type type) {
+	public void setIcon(IconType type) {
 		if (type != null)
 			this.icon.setType(type);
 	}
@@ -81,9 +83,10 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	 * {@inheritDoc}
 	 * 
 	 * @deprecated This method should never be called directly. It will break
-	 * your implementation if any style names change. The only valid use is 
-	 * inside UiBinder files where it processes the <code>icon="..."</code>
-	 * argument. Use {@link #setIcon(Icon.Type)} instead!
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>icon="..."</code> argument. Use
+	 *             {@link #setIcon(Icon.Type)} instead!
 	 */
 	@Deprecated
 	public void setIcon(String iconName) {
@@ -96,14 +99,15 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	public void setIconColor(Icon.Color color) {
 		icon.setColor(color);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @deprecated This method should never be called directly. It will break
-	 * your implementation if any style names change. The only valid use is 
-	 * inside UiBinder files where it processes the <code>icon="..."</code>
-	 * argument. Use {@link #setIconColor(Icon.Color)} instead!
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>icon="..."</code> argument. Use
+	 *             {@link #setIconColor(Icon.Color)} instead!
 	 */
 	@Deprecated
 	public void setIconColor(String color) {
@@ -128,26 +132,28 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	/**
 	 * Sets the <code>href</code> property of the anchor tag.
 	 * <p>
-	 * Use it only to set links to another page. Links on the same page or
-	 * GWT tokens should be set with {@code #setTargetHistoryToken(String)}
+	 * Use it only to set links to another page. Links on the same page or GWT
+	 * tokens should be set with {@code #setTargetHistoryToken(String)}
 	 * 
-	 * @param href the website URL
+	 * @param href
+	 *            the website URL
 	 */
 	public void setHref(String href) {
 		getElement().setAttribute("href", href);
 	}
-	
+
 	/**
 	 * @return the URL of the website this link is pointing to
 	 */
 	public String getHref() {
 		return getElement().getAttribute("href");
 	}
-	
+
 	/**
 	 * Shows or hides the caret.
 	 * 
-	 * @param visible <code>true</code> if the caret should be shown.
+	 * @param visible
+	 *            <code>true</code> if the caret should be shown.
 	 */
 	public void setCaret(boolean visible) {
 		caret.setVisible(visible);
@@ -157,7 +163,8 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	 * Sets the <code>href</code> property of the anchor tag to
 	 * <code>"#" + targetHistoryToken</code>.
 	 * 
-	 * @param targetHistoryToken the history token
+	 * @param targetHistoryToken
+	 *            the history token
 	 */
 	public void setTargetHistoryToken(String targetHistoryToken) {
 		setHref("#" + targetHistoryToken);

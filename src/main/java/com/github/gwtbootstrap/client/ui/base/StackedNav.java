@@ -18,17 +18,32 @@ package com.github.gwtbootstrap.client.ui.base;
 import com.github.gwtbootstrap.client.ui.UnorderedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
- * Base class for stacked navs
+ * Base class for nav widgets that can be stacked.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navs">Bootstrap documentation</a>
  */
+//@formatter:on
 public abstract class StackedNav extends UnorderedList {
 
+	/**
+	 * Creates an empty widget whose contents will not be stacked.
+	 */
 	public StackedNav() {
 		addStyleName(Bootstrap.nav);
 	}
-	
+
+	/**
+	 * Sets whether the contents of the widget should be stacked or not.
+	 * 
+	 * @param stacked
+	 *            <code>true</code> if the contents should appear stacked.
+	 */
 	public void setStacked(boolean stacked) {
 		if (stacked)
 			addStyleName(Bootstrap.nav_stacked);

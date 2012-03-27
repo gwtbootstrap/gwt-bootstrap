@@ -16,22 +16,28 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.NavFormBase;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 
+//@formatter:off
 /**
- * Form in the Navbar.
+ * Form for the Navbar.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
+//@formatter:on
 public class NavForm extends NavFormBase {
 
 	public NavForm() {
 		super();
-		addStyleName(Bootstrap.navbar_form);
+		addStyleName(NavbarConstants.NAVBAR_FORM);
 	}
-	
+
 	public NavForm(int size) {
 		super(size);
-		addStyleName(Bootstrap.navbar_form);
+		addStyleName(NavbarConstants.NAVBAR_FORM);
 	}
 }

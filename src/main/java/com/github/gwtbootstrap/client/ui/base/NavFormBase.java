@@ -16,41 +16,97 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Form;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.user.client.ui.TextBox;
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
 
-public class NavFormBase extends Form {
+//@formatter:off
+/**
+ * Base class for forms inside a {@link Navbar.}
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
+ */
+//@formatter:on
+public class NavFormBase extends Form implements HasAlignment, HasSize {
 
 	private TextBox input = new TextBox();
-	
+
+	/**
+	 * Creates a new, left-aligned form.
+	 */
 	public NavFormBase() {
-		addStyleName(Bootstrap.pull_left);
+		addStyle(Alignment.LEFT);
 		add(input);
 	}
-	
+
+	//@formatter:off
+	/**
+	 * Creates a new, left aligned form of the given size.
+	 * 
+	 * @param size the size of the form in the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system</a>
+	 */
+	//@formatter:on
 	public NavFormBase(int size) {
 		this();
 		setSize(size);
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>alignment="..."</code> argument. Use
+	 *             {@link #setAlignment(Alignment)} instead!
+	 */
+	@Deprecated
 	public void setAlignment(String alignment) {
 		if (alignment.equalsIgnoreCase("left")) {
-			removeStyleName(Bootstrap.pull_right);
-			addStyleName(Bootstrap.pull_left);
+			setAlignment(Alignment.LEFT);
 		} else if (alignment.equalsIgnoreCase("right")) {
-			removeStyleName(Bootstrap.pull_left);
-			addStyleName(Bootstrap.pull_right);
+			setAlignment(Alignment.RIGHT);
 		}
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setAlignment(Alignment alignment) {
+		removeStyle(Alignment.RIGHT);
+		removeStyle(Alignment.LEFT);
+		addStyle(alignment);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setSize(int size) {
 		input.addStyleName("span" + size);
 	}
-	
+
+	/**
+	 * Returns the {@link TextBox} used by the widget.
+	 * <p>
+	 * Use it to append your own handlers or change its behavior.
+	 * 
+	 * @return the TextBox
+	 */
 	public TextBox getTextBox() {
 		return input;
 	}
-	
+
+	/**
+	 * Sets a placeholder in the the TextBox.
+	 * <p>
+	 * A placeholder is a piece of text in the TextBox that disappears when the
+	 * TextBox receives focus.
+	 * 
+	 * @param placeholder
+	 *            the placeholder text
+	 */
 	public void setPlaceholder(String placeholder) {
 		input.setText(placeholder);
 	}

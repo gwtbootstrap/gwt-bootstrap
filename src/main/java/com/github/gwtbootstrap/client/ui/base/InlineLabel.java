@@ -15,13 +15,31 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-
+/**
+ * {@link com.google.gwt.user.client.ui.InlineLabel InlineLabel} without the GWT
+ * CSS Styles.
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Dominik Mayer
+ * 
+ */
 public class InlineLabel extends com.google.gwt.user.client.ui.InlineLabel {
-	
+
+	/**
+	 * Creates an empty widget.
+	 */
 	public InlineLabel() {
+		super();
 		setStyleName("");
 	}
-	
+
+	/**
+	 * Creates a widget with the specified text.
+	 * 
+	 * @param text
+	 *            the new widget's text
+	 */
 	public InlineLabel(String text) {
 		this();
 		setText(text);

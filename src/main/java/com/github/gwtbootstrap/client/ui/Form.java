@@ -16,20 +16,42 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
  * A Form
  * 
  * @author Dominik Mayer
- *
+ * 
  */
 public class Form extends ComplexWidget {
 
-	public Form() {
-		super("Form");
+	public enum Type implements Style {
+		VERTICAL("vertical"), INLINE("inline"), SEARCH("search"), HORIZONTAL(
+				"horizontal");
+
+		private static final String PREFIX = "form-";
+
+		private String className;
+
+		private Type(String className) {
+			this.className = PREFIX + className;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		public String get() {
+			return className;
+		}
+
 	}
-	
+
+	public Form() {
+		super("form");
+	}
+
 	public void setType(String type) {
-		addStyleName("form-" +  type);
+		addStyleName("form-" + type);
 	}
 }

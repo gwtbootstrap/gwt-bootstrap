@@ -15,7 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Device;
+import com.github.gwtbootstrap.client.ui.constants.Device;
+import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -23,131 +24,133 @@ import com.google.gwt.user.client.ui.Widget;
  * Helper class for widgets that have text.
  * 
  * @since 2.0.2.0
- *
+ * 
  * @author Carlos Alexandro Becker
  * 
  */
 public abstract class AbstractTypography extends Widget implements HasText,
-	HasStyle, IsResponsive {
-	
+		HasStyle, IsResponsive {
+
 	/**
 	 * {@inheritDoc}
 	 */
-    public void setText(String text) {
-        getElement().setInnerText(text);
-    }
+	public void setText(String text) {
+		getElement().setInnerText(text);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getText() {
 		return getElement().getInnerText();
 	}
-	
-    /**
-     * {@inheritDoc}
-     */
-    public void setStyle(Style style) {
-    	setStyleName(style.get());
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-    public void addStyle(Style style) {
-    	addStyleName(style.get());
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-    public void removeStyle(Style style) {
-    	String styleString = style.get(); 
-    	if (!styleString.isEmpty())
-    		removeStyleName(styleString);
-    }
-	
-    /**
-     * {@inheritDoc}
-     */
-    public void setShowOn(Device device) {
-    	removeResponsiveStyles();
-    	switch (device) {
-    		case PHONE:
-    			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
-    			break;
-    		case TABLET:
-    			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
-    			break;
-    		case DESKTOP:
-    			addStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
-    			break;
-    	}
-    }
-    
-    private void removeResponsiveStyles() {
-    	removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_PHONE);
-    	removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_TABLET);
-    	removeStyle(IsResponsive.ResponsiveStyle.VISIBLE_DESKTOP);
-    	removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
-    	removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
-    	removeStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
-    }
-    
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated This method should never be called directly. It will break
-     * your implementation if any style names change. The only valid use is 
-     * inside UiBinder files where it processes the <code>showOn="..."</code>
-     * argument. Use {@link #setShowOn(Device)} instead!
-     */
-    @Deprecated
-    public void setShowOn(String device) {
-    	if (device.equalsIgnoreCase("phone")) {
-    		setShowOn(Device.PHONE);
-    	} else if (device.equalsIgnoreCase("tablet")) {
-    		setShowOn(Device.TABLET);
-    	} else if (device.equalsIgnoreCase("desktop")) {
-    		setShowOn(Device.DESKTOP);
-    	} 
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-   public void setHideOn(Device device) {
-    	removeResponsiveStyles();
-    	switch (device) {
-    		case PHONE:
-    			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_PHONE);
-    			break;
-    		case TABLET:
-    			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_TABLET);
-    			break;
-    		case DESKTOP:
-    			addStyle(IsResponsive.ResponsiveStyle.HIDDEN_DESKTOP);
-    			break;
-    	}
-    }
-    
-   /**
-    * {@inheritDoc}
-    * 
-    * @deprecated This method should never be called directly. It will break
-    * your implementation if any style names change. The only valid use is 
-    * inside UiBinder files where it processes the <code>hideOn="..."</code>
-    * argument. Use {@link #setHideOn(Device)} instead!
-    * 
-    */
-   @Deprecated
-   public void setHideOn(String device) {
-	   if (device.equalsIgnoreCase("phone")) {
-		   setHideOn(Device.PHONE);
-	   } else if (device.equalsIgnoreCase("tablet")) {
-		   setHideOn(Device.TABLET);
-	   } else if (device.equalsIgnoreCase("desktop")) {
-		   setHideOn(Device.DESKTOP);
-	   } 
-   }
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setStyle(Style style) {
+		setStyleName(style.get());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void addStyle(Style style) {
+		addStyleName(style.get());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void removeStyle(Style style) {
+		String styleString = style.get();
+		if (!styleString.isEmpty())
+			removeStyleName(styleString);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setShowOn(Device device) {
+		removeResponsiveStyles();
+		switch (device) {
+			case PHONE:
+				addStyle(ResponsiveStyle.VISIBLE_PHONE);
+				break;
+			case TABLET:
+				addStyle(ResponsiveStyle.VISIBLE_TABLET);
+				break;
+			case DESKTOP:
+				addStyle(ResponsiveStyle.VISIBLE_DESKTOP);
+				break;
+		}
+	}
+
+	private void removeResponsiveStyles() {
+		removeStyle(ResponsiveStyle.VISIBLE_PHONE);
+		removeStyle(ResponsiveStyle.VISIBLE_TABLET);
+		removeStyle(ResponsiveStyle.VISIBLE_DESKTOP);
+		removeStyle(ResponsiveStyle.HIDDEN_PHONE);
+		removeStyle(ResponsiveStyle.HIDDEN_TABLET);
+		removeStyle(ResponsiveStyle.HIDDEN_DESKTOP);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>showOn="..."</code> argument. Use
+	 *             {@link #setShowOn(Device)} instead!
+	 */
+	@Deprecated
+	public void setShowOn(String device) {
+		if (device.equalsIgnoreCase("phone")) {
+			setShowOn(Device.PHONE);
+		} else if (device.equalsIgnoreCase("tablet")) {
+			setShowOn(Device.TABLET);
+		} else if (device.equalsIgnoreCase("desktop")) {
+			setShowOn(Device.DESKTOP);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setHideOn(Device device) {
+		removeResponsiveStyles();
+		switch (device) {
+			case PHONE:
+				addStyle(ResponsiveStyle.HIDDEN_PHONE);
+				break;
+			case TABLET:
+				addStyle(ResponsiveStyle.HIDDEN_TABLET);
+				break;
+			case DESKTOP:
+				addStyle(ResponsiveStyle.HIDDEN_DESKTOP);
+				break;
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>hideOn="..."</code> argument. Use
+	 *             {@link #setHideOn(Device)} instead!
+	 * 
+	 */
+	@Deprecated
+	public void setHideOn(String device) {
+		if (device.equalsIgnoreCase("phone")) {
+			setHideOn(Device.PHONE);
+		} else if (device.equalsIgnoreCase("tablet")) {
+			setHideOn(Device.TABLET);
+		} else if (device.equalsIgnoreCase("desktop")) {
+			setHideOn(Device.DESKTOP);
+		}
+	}
 }

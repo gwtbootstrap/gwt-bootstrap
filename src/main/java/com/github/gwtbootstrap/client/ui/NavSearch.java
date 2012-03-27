@@ -16,23 +16,30 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.NavFormBase;
+import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
- * Search form in the Navbar.
+ * Search form for the Navbar.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
+//@formatter:on
 public class NavSearch extends NavFormBase {
 
 	public NavSearch() {
 		super();
-		addStyleName(Bootstrap.navbar_search);
+		addStyleName(NavbarConstants.NAVBAR_SEARCH);
 		getTextBox().addStyleName(Bootstrap.search_query);
 	}
-	
+
 	public NavSearch(int size) {
 		super(size);
-		addStyleName(Bootstrap.navbar_search);
+		addStyleName(NavbarConstants.NAVBAR_SEARCH);
 	}
 }

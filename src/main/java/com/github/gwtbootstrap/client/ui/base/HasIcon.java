@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 
 /**
  * Interface for widgets that have icons.
@@ -23,21 +24,22 @@ import com.github.gwtbootstrap.client.ui.Icon;
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- *
+ * 
  */
 public interface HasIcon {
-	
+
 	/**
 	 * Sets the Type of the Icon.
 	 * 
 	 * @param type
 	 */
-	public void setIcon(Icon.Type type);
+	public void setIcon(IconType type);
 
 	/**
 	 * Sets the type of the Icon based on the Bootstrap class name.
 	 * 
-	 * @param iconName name of the class to add without the leading "icon-".
+	 * @param iconName
+	 *            name of the class to add without the leading "icon-".
 	 */
 	public void setIcon(String iconName);
 
@@ -47,14 +49,16 @@ public interface HasIcon {
 	 * <p>
 	 * Default is black.
 	 * 
-	 * @param color the new color.
+	 * @param color
+	 *            the new color.
 	 */
 	public void setIconColor(Icon.Color color);
-	
+
 	/**
 	 * Sets the color of the icon.
 	 * 
-	 * @param color <code>"black"</code> (default) or <code>"white"</code>
+	 * @param color
+	 *            <code>"black"</code> (default) or <code>"white"</code>
 	 */
 	public void setIconColor(String color);
 }

@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -42,7 +43,7 @@ public class ResponsiveNavbar extends Navbar {
 
 	public ResponsiveNavbar() {
 		super();
-		collapseButton.getElement().setAttribute(Bootstrap.data_toggle,
+		collapseButton.getElement().setAttribute(Constants.DATA_TOGGLE,
 				Bootstrap.collapse);
 		collapseButton.getElement().setAttribute(Bootstrap.data_target,
 				Bootstrap.nav_collapse_target);

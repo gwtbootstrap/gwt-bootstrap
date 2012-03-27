@@ -15,34 +15,74 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.base.HasAlignment;
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
+import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
+import com.google.gwt.user.client.ui.HasText;
 
+//@formatter:off
 /**
  * A Text in the Navbar.
  * 
+ * @since 2.0.2.0
+ * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
-public class NavText extends Paragraph {
+//@formatter:on
+public class NavText extends ListItem implements HasText, HasAlignment {
 
 	private Paragraph paragraph = new Paragraph();
-	
+
 	public NavText() {
-		addStyleName(Bootstrap.navbar_text);
-		addStyleName(Bootstrap.pull_left);
+		paragraph.addStyleName(NavbarConstants.NAVBAR_TEXT);
+		super.add(paragraph);
 	}
-	
+
 	public NavText(String text) {
 		this();
-		paragraph.setText(text);
+		setText(text);
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>alignment="..."</code> argument. Use
+	 *             {@link #setAlignment(Alignment)} instead!
+	 */
+	@Deprecated
 	public void setAlignment(String alignment) {
 		if (alignment.equalsIgnoreCase("left")) {
-			removeStyleName(Bootstrap.pull_right);
-			addStyleName(Bootstrap.pull_left);
+			setAlignment(Alignment.LEFT);
 		} else if (alignment.equalsIgnoreCase("right")) {
-			removeStyleName(Bootstrap.pull_left);
-			addStyleName(Bootstrap.pull_right);
+			setAlignment(Alignment.RIGHT);
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setAlignment(Alignment alignment) {
+		removeStyle(Alignment.RIGHT);
+		removeStyle(Alignment.LEFT);
+		addStyle(alignment);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getText() {
+		return paragraph.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setText(String text) {
+		paragraph.setText(text);
 	}
 }

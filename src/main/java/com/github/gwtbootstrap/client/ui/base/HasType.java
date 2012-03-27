@@ -16,20 +16,27 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 /**
- * Wrapper interface for CSS classes.
+ * Interface for widgets that have a type.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- * 
  */
-public interface Style {
+public interface HasType {
 
 	/**
-	 * Gets the CSS class name (or a part thereof) associated with this
-	 * constant.
+	 * Sets the type of the widget.
 	 * 
-	 * @return the name of the class
+	 * @param style
 	 */
-	public String get();
+	void setType(Style style);
+
+	/**
+	 * Sets the type of the widget based on the Bootstrap class name.
+	 * 
+	 * @param typeName
+	 *            name of the class to add without the prefix. (Example: "error"
+	 *            instead of "alert-error".)
+	 */
+	void setType(String typeName);
 }
