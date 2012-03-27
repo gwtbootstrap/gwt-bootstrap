@@ -111,6 +111,12 @@
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
           <locale>en</locale>
+          <linksource>true</linksource>
+          <detectLinks>true</detectLinks>
+          <validateLinks>true</validateLinks>
+          <links>
+            <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
+          </links>
         </configuration>
       </plugin>
     </plugins>
@@ -120,9 +126,6 @@
     <!-- for showcase build  -->
     <profile>
       <id>showcase</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
       <build>
         <plugins>
           <plugin>
@@ -136,7 +139,7 @@
                 </goals>
                 <configuration>
                   <sources>
-                    <source>src/main/sample</source>
+                    <source>src/showcase/java</source>
                   </sources>
                 </configuration>
               </execution>
@@ -198,6 +201,12 @@
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
           <locale>en</locale>
+          <linksource>true</linksource>
+          <detectLinks>true</detectLinks>
+          <validateLinks>true</validateLinks>
+          <links>
+            <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
+          </links>
         </configuration>
         <executions>
           <execution>
@@ -238,6 +247,63 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+          <excludes>
+            <exclude>com.google.gwt:gwt-user</exclude>
+            <exclude>javax.validation:validation-api</exclude>
+          </excludes>
+          <additionalProjectnatures>
+            <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+            <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+            <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+            <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+            <projectnature>org.eclipse.wst.common.project.facet.core.natur</projectnature>
+            <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+            <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
+          </additionalProjectnatures>
+          <additionalBuildcommands>
+            <buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+            <buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
+            <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+            <buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
+            <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+          </additionalBuildcommands>
+          <classpathContainers>
+            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+            <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+          </classpathContainers>
+          <downloadSources>true</downloadSources>
+          <downloadJadadocs>true</downloadJadadocs>
+          <additionalConfig>
+            <file>
+              <name>.settings/com.google.gwt.eclipse.core.prefs</name>
+              <content>
+                <![CDATA[
+eclipse.preferences.version=1
+filesCopiedToWebInfLib=
+               ]]>
+              </content>
+            </file>
+            <file>
+              <name>.settings/com.google.gdt.eclipse.core.prefs</name>
+              <content>
+                <![CDATA[
+eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=
+warSrcDir=src/main/webapp
+warSrcDirIsOutput=false
+               ]]>
+              </content>
+            </file>
+          </additionalConfig>
         </configuration>
       </plugin>
     </plugins>
