@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.2</version>
+  </skin>
+  <custom>
+    <fluidoSkin>
+      <googleSearch>
+        <sitesearch/>
+      </googleSearch>
+      <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+      <gitHub>
+        <projectId>gwtbootstrap/gwt-bootstrap</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>black</ribbonColor>
+      </gitHub>
+      <googlePlusOne />
+    </fluidoSkin>
+  </custom>
+<body>
+<links>
+<item name="${project.name}" href="${project.url}"/>
+<item name="demo" href="/index.html"/>
+<item name="Twitter Bootstrap" href="http://twitter.github.com/bootstrap/"/>
+</links>
+<menu ref="reports" />
+</body>
+</project>
