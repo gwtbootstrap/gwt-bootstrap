@@ -17,6 +17,18 @@
     <connection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</connection>
     <developerConnection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</developerConnection>
   </scm>
+  
+  <distributionManagement>
+  <repository>
+    <id>repo</id>
+    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/release</url>
+  </repository>
+  <snapshotRepository>
+    <id>snapshot-repo</id>
+    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/snapshots</url>
+  </snapshotRepository>
+</distributionManagement>
+  
   <issueManagement>
     <system>github</system>
     <url>https://github.com/gwtbootstrap/gwt-bootstrap/issues</url>
@@ -270,6 +282,18 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>downloads-maven-plugin</artifactId>
+        <version>0.4</version>
+        <configuration>
+          <description>${project.version} release of ${project.name}</description>
+          <override>true</override>
+          <includeAttached>true</includeAttached>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
