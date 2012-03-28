@@ -1,6 +1,12 @@
 # GWT-Bootstrap
 
-Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html) 
+Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
+
+**GWT-Bootstrap is a quickly evolving project. This file was a first start and 
+is now outdated. We'll keep it until we migrated all the examples into our 
+[Showcase](http://gwtbootstrap.github.com/). Please read the 
+[Javadoc](http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/index.html) 
+for an up to date documentation.**
 
 ## Installation
 
