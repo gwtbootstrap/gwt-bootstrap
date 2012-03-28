@@ -8,59 +8,14 @@ is now outdated. We'll keep it until we migrated all the examples into our
 [Javadoc](http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/index.html) 
 for an up to date documentation.**
 
-## Installation
+## Links
 
-* Download the zip, extract and add the folder as external source to the build path.
-* Add `<inherits name="com.github.gwtbootstrap.Bootstrap"/>` to your *.gwt.xml file.
+* [Showcase](http://gwtbootstrap.github.com)
+* [Javadoc](http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/index.html)
+* [Google Group](https://groups.google.com/d/forum/gwt-bootstrap)
+* [Maven project site](http://gwtbootstrap.github.com/gwt-bootstrap/)
 
-### Using custom css/js resources
-
-If you need to adapt resources, implement this interface, and add a replace-with tag to your module xml. Example:
-
-Create a Resources Interface (extending `Resources`).
- 
- 	public MyResources extends Resources {
- 		@Source("mycss/custom-bootstrap.min.css")
- 		TextResource bootstrapCss();
- 	}
- 
-Create a `ResourceAdapter`.
-
- 	public interface MyResourceAdapter implements ResourceAdapter {
- 	
- 		@Override
- 		public Resources getResources() {
- 			return GWT.create(MyResources.class);
- 		}
- 		
- 		[...]
- 	}
- 
-Add a replace-with tag to your module xml (`*.gwt.xml`).
-
-	<replace-with class="userpackage.MyResourceAdapter">
-		<when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter" />
-	</replace-with>
-
-### Enabling Responsive Design
-
-Create a `ResourceAdapter` and let `hadResponsiveDesign()` return `true`.
-
- 	public interface MyResourceAdapter implements ResourceAdapter {
- 	
-		@Override
-		public boolean hasResponsiveDesign() {
-			return true;
-		}
- 	}
-
-## UiBinder
-
-You can use the widgets in UiBinder. Add the following line to you `*.ui.xml` file:
-
-`xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"`
-
-The names of icon and options are the same as in Bootstrap without the preceding "icon-"/"btn-". Examples:
+## Widgets
 
 * `<b:Heading size="4" subtext="subtext">Heading</b:Heading>`
 * `Hello <b:Abbreviation title="You">u</b:Abbreviation>`

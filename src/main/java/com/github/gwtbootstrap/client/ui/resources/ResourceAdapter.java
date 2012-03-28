@@ -30,11 +30,10 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * getters of the files you want to replace.
  * 
  * <pre>
- * {@code
  * 	public interface MyResources extends Resources {
- * 		{@literal @}Source("mycss/custom-bootstrap.min.css")
+ * 		{@literal @Source("mycss/custom-bootstrap.min.css")}
  * 		TextResource bootstrapCss();
- * 	}}
+ * 	}
  * </pre>
  * 
  * </p>
@@ -43,12 +42,11 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * 2. Create a <code>ResourceAdapter</code>.
  * 
  * <pre>
- * {@code
  * 	public MyResourceAdapter implements ResourceAdapter {
  * 		public Resources getResources() {
  * 			return GWT.create(MyResources.class);
  * 		}
- * 	}}
+ * 	}
  * </pre>
  * 
  * </p>
@@ -58,11 +56,9 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * <code>*.gwt.xml</code>).
  * 
  * <pre>
- * {@code
- * <replace-with class="userpackage.MyResourceAdapter">
+ * {@literal <replace-with class="userpackage.MyResourceAdapter">
  * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter" />
- * </replace-with>
- * }
+ * </replace-with>}
  * </pre>
  * 
  * </p>

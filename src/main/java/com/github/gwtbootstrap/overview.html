@@ -13,29 +13,44 @@
 	<h2>Installation</h2>
 	Add
 	<pre>
-{@code <inherits name="com.github.gwtbootstrap.Bootstrap" />}
+	{@literal <inherits name="com.github.gwtbootstrap.Bootstrap" />}
 </pre>
 	to your {@code *.gwt.xml} file.
 	<h2>Setting up <a href="https://developers.google.com/web-toolkit/doc/latest/DevGuideUiBinder">UiBinder</a></h2>
 	Add
 	<pre>
-{@code xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"}
-</pre>
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+	</pre>
 	to the top of every UiBinder file that uses GWT-Bootstrap widgets. You
 	can then use the widgets in the
 	<code>"b"</code>
 	namespace:
 	<pre>
-{@code <b:Button>Some Button</b:Button>}
-</pre>
+	{@literal <b:Button>Some Button</b:Button>}
+	</pre>
 	<p>As usual, all setter map to UiBinder attributes. So the method
 		{@link com.github.gwtbootstrap.client.ui.Icon#setType(String type)
 		setType(String iconName)} can (and in this case: has to) be used via:
 	
 	<pre>
-{@code <b:Icon type="plane" />}
-</pre>
+	{@literal <b:Icon type="plane" />}
+	</pre>
+	As you can see, the values are the ones of Bootstrap without the prefix
+	(<code>"plane"</code> instead of <code>"icon-plane"</code>).
 	</p>
+	<h2>Enabling <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Responsive Design</a></h2>
+	Create a {@link com.github.gwtbootstrap.client.ui.resources.ResourceAdapter ResourceAdapter} 
+	and let {@link com.github.gwtbootstrap.client.ui.resources.ResourceAdapter#hasResponsiveDesign() hasResponsiveDesign()}
+	return {@code true}.
+	<pre>
+	public interface MyResourceAdapter implements ResourceAdapter {
+ 	
+		{@literal @Override}
+		public boolean hasResponsiveDesign() {
+			return true;
+		}
+ 	}</pre>
+	
 	<h2>Getting started with the library</h2>
 	Some things to get you started with:
 	<p>
@@ -51,9 +66,11 @@
 		<br />
 	</p>
 	<p>
-		Please don't hesitate to open an <a
-			href="https://github.com/gwtbootstrap/gwt-bootstrap/issues">issue</a>
-		if you have problems, found a bug or have a feature suggestion.
+		Please don't hesitate to ask questions in our 
+		<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group</a> 
+		and open an <a href="https://github.com/gwtbootstrap/gwt-bootstrap/issues">issue</a>
+		if you found a bug or have a feature suggestion. 
 	</p>
+	@see <a href="http://gwtbootstrap.github.com/gwt-bootstrap">Maven project site</a>
 </body>
 </html>

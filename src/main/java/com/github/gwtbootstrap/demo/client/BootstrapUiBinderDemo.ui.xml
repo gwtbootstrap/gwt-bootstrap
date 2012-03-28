@@ -50,7 +50,7 @@
 		<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
 		<b:ButtonToolbar>
 			<b:ButtonGroup>
-				<b:Button>1</b:Button>
+				<b:Button href="http://www.google.com">1</b:Button>
 				<b:Button>2</b:Button>
 				<b:Button>3</b:Button>
 			</b:ButtonGroup>
