@@ -48,6 +48,30 @@
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
 		<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
 		<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
+		<g:HorizontalPanel>
+		<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+			<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+		</g:HorizontalPanel>
+		<g:VerticalPanel>
+		<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+			<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+		</g:VerticalPanel>
 		<b:ButtonToolbar>
 			<b:ButtonGroup>
 				<b:Button href="http://www.google.com">1</b:Button>
@@ -67,6 +91,9 @@
 		Badge: <b:Badge type="error" >2</b:Badge>. <b:Badge>2</b:Badge>
 		
 		Label: <b:Label>Normal label</b:Label>, <b:Label type="info">Info label</b:Label>
+		<br/><br/>
+		<b:Tooltip tooltip="The tooltip">Some text</b:Tooltip>
+		
 		<b:Container>
 			<b:UnorderedList>
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>

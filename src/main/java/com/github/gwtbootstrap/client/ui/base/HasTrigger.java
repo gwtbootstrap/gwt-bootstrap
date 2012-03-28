@@ -15,27 +15,41 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.Trigger;
+
 /**
- * Interface for components that can be animated.
+ * Interface for widgets that are triggered by an action.
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
+ * 
+ * @see Trigger
+ * 
  */
-public interface IsAnimated {
+public interface HasTrigger {
 
 	/**
-	 * Sets whether the Widget should be animated.
+	 * Sets the trigger that activates the widget.
 	 * 
-	 * @param animated
-	 *            <code>true</code> if the widget should be animated.
+	 * @param trigger
+	 *            the trigger
 	 */
-	void setAnimated(boolean animated);
+	void setTrigger(Trigger trigger);
 
 	/**
-	 * Gets whether the widget is animated.
+	 * Sets the trigger that activates the widget.
 	 * 
-	 * @return <code>true</code> if the widget is animated
+	 * @param trigger
+	 *            <code>"hover"</code>, <code>"focus"</code> or
+	 *            <code>"manual"</code>
 	 */
-	boolean getAnimated();
+	void setTrigger(String trigger);
+
+	/**
+	 * Gets the widget's Trigger.
+	 * 
+	 * @return the trigger
+	 */
+	Trigger getTrigger();
 }

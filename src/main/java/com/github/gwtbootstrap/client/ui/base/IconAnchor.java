@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.HasHref;
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
@@ -49,7 +50,8 @@ import com.google.gwt.user.client.ui.HasText;
  * @author Dominik Mayer
  * 
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
+		HasHref {
 
 	private Icon icon = new Icon();
 
@@ -130,20 +132,14 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	}
 
 	/**
-	 * Sets the <code>href</code> property of the anchor tag.
-	 * <p>
-	 * Use it only to set links to another page. Links on the same page or GWT
-	 * tokens should be set with {@code #setTargetHistoryToken(String)}
-	 * 
-	 * @param href
-	 *            the website URL
+	 * {@inheritDoc}
 	 */
 	public void setHref(String href) {
 		getElement().setAttribute("href", href);
 	}
 
 	/**
-	 * @return the URL of the website this link is pointing to
+	 * {@inheritDoc}
 	 */
 	public String getHref() {
 		return getElement().getAttribute("href");
@@ -160,14 +156,17 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon {
 	}
 
 	/**
-	 * Sets the <code>href</code> property of the anchor tag to
-	 * <code>"#" + targetHistoryToken</code>.
-	 * 
-	 * @param targetHistoryToken
-	 *            the history token
+	 * {@inheritDoc}
 	 */
 	public void setTargetHistoryToken(String targetHistoryToken) {
 		setHref("#" + targetHistoryToken);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getTargetHistoryToken() {
+		String[] hrefs = getHref().split("#");
+		return hrefs[1];
+	}
 }

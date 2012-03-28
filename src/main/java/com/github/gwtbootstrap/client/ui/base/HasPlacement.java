@@ -15,27 +15,41 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.Placement;
+
 /**
- * Interface for components that can be animated.
+ * Interface for widgets that have a placement.
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
+ * 
+ * @see Placemenet
+ * 
  */
-public interface IsAnimated {
+public interface HasPlacement {
 
 	/**
-	 * Sets whether the Widget should be animated.
+	 * Sets the widget's placement.
 	 * 
-	 * @param animated
-	 *            <code>true</code> if the widget should be animated.
+	 * @param placement
+	 *            the placement
 	 */
-	void setAnimated(boolean animated);
+	void setPlacement(Placement placement);
 
 	/**
-	 * Gets whether the widget is animated.
+	 * Sets the widget's placement.
 	 * 
-	 * @return <code>true</code> if the widget is animated
+	 * @param placement
+	 *            <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>
+	 *            or <code>"right"</code>
 	 */
-	boolean getAnimated();
+	void setPlacement(String placement);
+
+	/**
+	 * Gets the widget's placement.
+	 * 
+	 * @return the widget's placement
+	 */
+	Placement getPlacement();
 }

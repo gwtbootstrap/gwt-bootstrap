@@ -179,6 +179,10 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 		setFade();
 	}
 
+	public boolean getAnimated() {
+		return fade;
+	}
+
 	/**
 	 * Delete the whole content of the Alert. This includes text, heading and
 	 * close icon.

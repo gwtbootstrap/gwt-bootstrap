@@ -13,29 +13,40 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.base;
+package com.github.gwtbootstrap.client.ui.constants;
+
+import com.github.gwtbootstrap.client.ui.base.HasPlacement;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Interface for components that can be animated.
+ * The placement of a widget.
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
+ * 
+ * @see HasPlacement
  */
-public interface IsAnimated {
+public enum Placement implements Style {
+
+	TOP("top"),
+
+	BOTTOM("bottom"),
+
+	LEFT("left"),
+
+	RIGHT("right");
+
+	private String name;
+
+	private Placement(String name) {
+		this.name = name;
+	}
 
 	/**
-	 * Sets whether the Widget should be animated.
-	 * 
-	 * @param animated
-	 *            <code>true</code> if the widget should be animated.
+	 * {@inheritDoc}
 	 */
-	void setAnimated(boolean animated);
-
-	/**
-	 * Gets whether the widget is animated.
-	 * 
-	 * @return <code>true</code> if the widget is animated
-	 */
-	boolean getAnimated();
+	public String get() {
+		return name;
+	}
 }
