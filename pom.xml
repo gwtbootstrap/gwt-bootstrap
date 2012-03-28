@@ -23,6 +23,7 @@
     <id>repo</id>
     <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/release</url>
   </repository>
+  
   <snapshotRepository>
     <id>snapshot-repo</id>
     <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/snapshots</url>
@@ -141,6 +142,26 @@
   </reporting>
 
   <profiles>
+    <!--
+     for deploy to github maven repository.
+     if you need deploy jars to maven repository in github pages,
+     Run `mvn -PforGithubDeploy clean deploy site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`.
+     -->
+    <profile>
+      <id>forGithubDeploy</id>
+      <distributionManagement>
+        <repository>
+          <id>repo</id>
+          <url>file:target/site/maven/release</url>
+          <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+          <id>snapshot-repo</id>
+          <url>file:target/site/maven/snapshots</url>
+          <layout>default</layout>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
     <!-- for showcase build -->
     <profile>
       <id>showcase</id>
