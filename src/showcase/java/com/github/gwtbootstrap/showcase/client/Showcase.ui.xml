@@ -54,5 +54,15 @@
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
+        
+        <g:FlowPanel ui:field="sections" />
+        
+        <g:HTMLPanel>
+        <footer class="footer">
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>Distributed by <a href="https://github.com/gwtbootstrap" target="_blank">GWT-Bootstrap</a>.</p>
+            <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.</p>
+        </footer>
+        </g:HTMLPanel>
     </b:Container>
 </ui:UiBinder>
