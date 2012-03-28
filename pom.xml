@@ -116,6 +116,7 @@
           <links>
             <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
           </links>
+          <overview>${basedir}/src/main/java/com/github/gwtbootstrap/overview.html</overview>
         </configuration>
       </plugin>
     </plugins>
@@ -206,6 +207,7 @@
           <links>
             <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
           </links>
+          <overview>${basedir}/src/main/java/com/github/gwtbootstrap/overview.html</overview>
         </configuration>
         <executions>
           <execution>

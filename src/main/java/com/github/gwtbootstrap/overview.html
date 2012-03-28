@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>GWT-Bootstrap Javadoc</title>
+</head>
+<body>
+	Welcome to the GWT-Bootstrap Javadoc.
+	<p>
+		GWT-Bootstrap provides GWT widgets styled and (partly) operated by Twitter's <a
+			href="twitter.github.com/bootstrap">Bootstrap.</a> Bootstrap is a
+		project of <a href="https://twitter.com/#!/mdo">Mark Otto</a> and <a
+			href="https://twitter.com/#!/fat">Jacob Thornton</a>.
+	</p>
+	<h2>Installation</h2>
+	Add
+	<pre>
+{@code <inherits name="com.github.gwtbootstrap.Bootstrap" />}
+</pre>
+	to your {@code *.gwt.xml} file.
+	<h2>Setting up <a href="https://developers.google.com/web-toolkit/doc/latest/DevGuideUiBinder">UiBinder</a></h2>
+	Add
+	<pre>
+{@code xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"}
+</pre>
+	to the top of every UiBinder file that uses GWT-Bootstrap widgets. You
+	can then use the widgets in the
+	<code>"b"</code>
+	namespace:
+	<pre>
+{@code <b:Button>Some Button</b:Button>}
+</pre>
+	<p>As usual, all setter map to UiBinder attributes. So the method
+		{@link com.github.gwtbootstrap.client.ui.Icon#setType(String type)
+		setType(String iconName)} can (and in this case: has to) be used via:
+	
+	<pre>
+{@code <b:Icon type="plane" />}
+</pre>
+	</p>
+	<h2>Getting started with the library</h2>
+	Some things to get you started with:
+	<p>
+		-- {@link com.github.gwtbootstrap.client.ui The list of all available
+		widgets.}<br /> -- {@link
+		com.github.gwtbootstrap.client.ui.resources.ResourceAdapter A way to
+		provide your own Bootstrap JavaScript/CSS files.}<br />
+		-- <a
+			href="gwtbootstrap.github.com">Our Showcase (external)</a><br />
+		-- <a
+			href="https://github.com/gwtbootstrap/gwt-bootstrap">The code on
+			Github (external)</a><br />
+		<br />
+	</p>
+	<p>
+		Please don't hesitate to open an <a
+			href="https://github.com/gwtbootstrap/gwt-bootstrap/issues">issue</a>
+		if you have problems, found a bug or have a feature suggestion.
+	</p>
+</body>
+</html>
