@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- POM file generated with GWT webAppCreator -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.gwtbootstrap</groupId>
+  <artifactId>gwt-bootstrap</artifactId>
+  <version>2.0.2.0-SNAPSHOT</version>
+  <name>GWT-Bootstrap</name>
+
+  <!-- project infomation -->
+  <url>http://gwtbootstrap.github.com/</url>
+  <description>A GWT Library that provides the widgets of Twitter Bootstrap.</description>
+  <scm>
+    <url>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</url>
+    <connection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</connection>
+    <developerConnection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</developerConnection>
+  </scm>
+  
+  <distributionManagement>
+  <repository>
+    <id>repo</id>
+    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/release</url>
+  </repository>
+  
+  <snapshotRepository>
+    <id>snapshot-repo</id>
+    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/snapshots</url>
+  </snapshotRepository>
+</distributionManagement>
+  
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/gwtbootstrap/gwt-bootstrap/issues</url>
+  </issueManagement>
+
+  <organization>
+    <name>gwtbootstrap</name>
+    <url>https://github.com/gwtbootstrap</url>
+  </organization>
+
+  <mailingLists>
+    <mailingList>
+      <archive>https://groups.google.com/d/forum/gwt-bootstrap</archive>
+      <name>${project.artifactId}</name>
+      <post>https://groups.google.com/d/forum/gwt-bootstrap</post>
+    </mailingList>
+  </mailingLists>
+
+  <developers>
+    <developer>
+      <id>caarlos0</id>
+      <name>Carlos Alexandro Becker</name>
+      <url>https://github.com/caarlos0</url>
+    </developer>
+    <developer>
+      <id>dominikmayer</id>
+      <name>Dominik Mayer</name>
+      <url>https://github.com/dominikmayer</url>
+    </developer>
+    <developer>
+      <id>YusukeKokubo</id>
+      <name>Yusuke Kokubo</name>
+      <url>https://github.com/YusukeKokubo</url>
+    </developer>
+    <developer>
+      <id>xosler</id>
+      <name>Alexandre Schossler</name>
+      <url>https://github.com/xosler</url>
+    </developer>
+    <developer>
+      <id>soundTricker</id>
+      <name>Keisuke Oohashi</name>
+      <url>https://github.com/soundTricker</url>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <comments>Same as Twitter Bootstrap</comments>
+    </license>
+  </licenses>
+
+
+
+  <properties>
+    <!-- Convenience property to set the GWT version -->
+    <gwtVersion>2.4.0</gwtVersion>
+    <!-- GWT needs at least java 1.5 -->
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>1.0.0.GA</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>1.0.0.GA</version>
+      <classifier>sources</classifier>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <locale>en</locale>
+          <linksource>true</linksource>
+          <validateLinks>true</validateLinks>
+          <links>
+            <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
+          </links>
+          <overview>${basedir}/src/main/java/com/github/gwtbootstrap/overview.html</overview>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <profiles>
+    <!--
+     for deploy to github maven repository.
+     if you need deploy jars to maven repository in github pages,
+     Run `mvn -PforGithubDeploy clean deploy site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`.
+     -->
+    <profile>
+      <id>forGithubDeploy</id>
+      <distributionManagement>
+        <repository>
+          <id>repo</id>
+          <url>file:target/site/maven/release</url>
+          <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+          <id>snapshot-repo</id>
+          <url>file:target/site/maven/snapshots</url>
+          <layout>default</layout>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+    <!-- for showcase build -->
+    <profile>
+      <id>showcase</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>src/showcase/java</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  <build>
+    <!-- Generate compiled stuff in the folder used for developing mode -->
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+    <plugins>
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.4.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test</goal>
+              <goal>resources</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <runTarget>Bootstrap.html</runTarget>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <i18nMessagesBundle>com.github.gwtbootstrap.client.Messages</i18nMessagesBundle>
+        </configuration>
+      </plugin>
+
+      <!-- Copy static web files before executing gwt:run -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>exploded</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <webappDirectory>${webappDirectory}</webappDirectory>
+        </configuration>
+      </plugin>
+      <!-- for javadoc generate -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <locale>en</locale>
+          <linksource>true</linksource>
+          <validateLinks>true</validateLinks>
+          <links>
+            <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
+          </links>
+          <overview>${basedir}/src/main/java/com/github/gwtbootstrap/overview.html</overview>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- for generate sorces.jar -->
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- for generate maven sites -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <locales>en</locales>
+          <inputEncoding>UTF-8</inputEncoding>
+          <outputEncoding>UTF-8</outputEncoding>
+        </configuration>
+      </plugin>
+
+      <!-- deploy maven site files to github. if you need deploy maven site 
+        files, Run `mvn site -Dgithub.global.userName={your username in github} -Dgithub.global.password={your 
+        password in github}` -->
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.5</version>
+        <configuration>
+          <message>Building site for ${project.version}</message>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>site</phase>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>downloads-maven-plugin</artifactId>
+        <version>0.4</version>
+        <configuration>
+          <description>${project.version} release of ${project.name}</description>
+          <override>true</override>
+          <includeAttached>true</includeAttached>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+          <excludes>
+            <exclude>com.google.gwt:gwt-user</exclude>
+            <exclude>javax.validation:validation-api</exclude>
+          </excludes>
+          <additionalProjectnatures>
+            <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+            <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+            <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+            <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+            <projectnature>org.eclipse.wst.common.project.facet.core.natur</projectnature>
+            <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+            <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
+          </additionalProjectnatures>
+          <additionalBuildcommands>
+            <buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+            <buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
+            <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+            <buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
+            <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+          </additionalBuildcommands>
+          <classpathContainers>
+            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+            <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+          </classpathContainers>
+          <downloadSources>true</downloadSources>
+          <downloadJadadocs>true</downloadJadadocs>
+          <additionalConfig>
+            <file>
+              <name>.settings/com.google.gwt.eclipse.core.prefs</name>
+              <content>
+                <![CDATA[
+eclipse.preferences.version=1
+filesCopiedToWebInfLib=
+               ]]>
+              </content>
+            </file>
+            <file>
+              <name>.settings/com.google.gdt.eclipse.core.prefs</name>
+              <content>
+                <![CDATA[
+eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=
+warSrcDir=src/main/webapp
+warSrcDirIsOutput=false
+               ]]>
+              </content>
+            </file>
+          </additionalConfig>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
