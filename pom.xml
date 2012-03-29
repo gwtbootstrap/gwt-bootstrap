@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <!-- POM file generated with GWT webAppCreator -->
@@ -19,6 +17,19 @@
     <connection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</connection>
     <developerConnection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</developerConnection>
   </scm>
+  
+  <distributionManagement>
+  <repository>
+    <id>repo</id>
+    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/release</url>
+  </repository>
+  
+  <snapshotRepository>
+    <id>snapshot-repo</id>
+    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/snapshots</url>
+  </snapshotRepository>
+</distributionManagement>
+  
   <issueManagement>
     <system>github</system>
     <url>https://github.com/gwtbootstrap/gwt-bootstrap/issues</url>
@@ -28,6 +39,14 @@
     <name>gwtbootstrap</name>
     <url>https://github.com/gwtbootstrap</url>
   </organization>
+
+  <mailingLists>
+    <mailingList>
+      <archive>https://groups.google.com/d/forum/gwt-bootstrap</archive>
+      <name>${project.artifactId}</name>
+      <post>https://groups.google.com/d/forum/gwt-bootstrap</post>
+    </mailingList>
+  </mailingLists>
 
   <developers>
     <developer>
@@ -59,8 +78,8 @@
 
   <licenses>
     <license>
-     <name>Apache License, Version 2.0</name>
-     <comments>Same as Twitter Bootstrap</comments>
+      <name>Apache License, Version 2.0</name>
+      <comments>Same as Twitter Bootstrap</comments>
     </license>
   </licenses>
 
@@ -123,7 +142,27 @@
   </reporting>
 
   <profiles>
-    <!-- for showcase build  -->
+    <!--
+     for deploy to github maven repository.
+     if you need deploy jars to maven repository in github pages,
+     Run `mvn -PforGithubDeploy clean deploy site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`.
+     -->
+    <profile>
+      <id>forGithubDeploy</id>
+      <distributionManagement>
+        <repository>
+          <id>repo</id>
+          <url>file:target/site/maven/release</url>
+          <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+          <id>snapshot-repo</id>
+          <url>file:target/site/maven/snapshots</url>
+          <layout>default</layout>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+    <!-- for showcase build -->
     <profile>
       <id>showcase</id>
       <build>
@@ -167,9 +206,8 @@
             </goals>
           </execution>
         </executions>
-        <!-- Plugin configuration. There are many available options, see
-          gwt-maven-plugin documentation at codehaus.org
--->
+        <!-- Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
           <runTarget>Bootstrap.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
@@ -218,7 +256,7 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <!-- for generate sorces.jar -->
       <plugin>
         <artifactId>maven-source-plugin</artifactId>
@@ -233,7 +271,7 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <!-- for generate maven sites -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -245,12 +283,10 @@
           <outputEncoding>UTF-8</outputEncoding>
         </configuration>
       </plugin>
-      
-      <!--
-       deploy maven site files to github.
-       if you need deploy maven site files,
-       Run `mvn site -Dgithub.global.userName={your username in github} -Dgithub.global.password={your password in github}`
-       -->
+
+      <!-- deploy maven site files to github. if you need deploy maven site 
+        files, Run `mvn site -Dgithub.global.userName={your username in github} -Dgithub.global.password={your 
+        password in github}` -->
       <plugin>
         <groupId>com.github.github</groupId>
         <artifactId>site-maven-plugin</artifactId>
@@ -266,7 +302,19 @@
             <phase>site</phase>
           </execution>
         </executions>
-      </plugin>      
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>downloads-maven-plugin</artifactId>
+        <version>0.4</version>
+        <configuration>
+          <description>${project.version} release of ${project.name}</description>
+          <override>true</override>
+          <includeAttached>true</includeAttached>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
