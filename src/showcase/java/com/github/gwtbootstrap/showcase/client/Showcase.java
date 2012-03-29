@@ -29,28 +29,33 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Showcase extends Composite implements EntryPoint {
 
-    public void onModuleLoad() {
-    }
+	public void onModuleLoad() {
+	}
 
-    @UiField FlowPanel sections;
-    @UiField Nav nav;
+	@UiField
+	FlowPanel sections;
+	@UiField
+	Nav nav;
 
-    private static ShowcaseUiBinder uiBinder = GWT.create(ShowcaseUiBinder.class);
+	private static ShowcaseUiBinder uiBinder = GWT
+			.create(ShowcaseUiBinder.class);
 
-    interface ShowcaseUiBinder extends UiBinder<Widget, Showcase> {
-    }
+	interface ShowcaseUiBinder extends UiBinder<Widget, Showcase> {
+	}
 
-    public Showcase() {
-        initWidget(uiBinder.createAndBindUi(this));
-        addSectionToContainer("Get Started", "setup", new Setup());
-        addSectionToContainer("Buttons", "buttons", new Buttons());
-        RootPanel.get("content").add(this);
-    }
+	public Showcase() {
+		initWidget(uiBinder.createAndBindUi(this));
+//        addSectionToContainer("Get Started", "setup", new Setup());
+//		addSectionToContainer("Get Support", "support", new Support());
+		addSectionToContainer("Buttons", "buttons", new Buttons());
+		RootPanel.get("content").add(this);
+	}
 
-    private void addSectionToContainer(String sectionName, String target, Widget section) {
-        nav.add(new NavLink(sectionName, "#" + target));
-        Section sec = new Section(target);
-        sec.add(section);
-        sections.add(sec);
-    }
+	private void addSectionToContainer(String sectionName, String target,
+			Widget section) {
+		nav.add(new NavLink(sectionName, "#" + target));
+		Section sec = new Section(target);
+		sec.add(section);
+		sections.add(sec);
+	}
 }

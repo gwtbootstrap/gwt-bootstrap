@@ -157,14 +157,6 @@
                                         <code> &lt;b:Button enabled=&quot;false&quot; text=&quot;Disabled&quot; /&gt;</code>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <b:Button ui:field="active" enabled="true" text="Active" />
-                                    </td>
-                                    <td>
-                                        <code>&lt;b:Button enabled=&quot;true&quot; text=&quot;Active&quot; /&gt;</code>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </g:HTMLPanel>

@@ -2,6 +2,8 @@
 
 Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
 
+Download a [snapshot version](https://github.com/gwtbootstrap/gwt-bootstrap/downloads).
+
 **GWT-Bootstrap is a quickly evolving project. This file was a first start and 
 is now outdated. We'll keep it until we migrated all the examples into our 
 [Showcase](http://gwtbootstrap.github.com/). Please read the 

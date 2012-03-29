@@ -17,17 +17,22 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.dom.client.Style.Unit;
 
 /**
  * This is the twBootstrap Grid System, enjoy.
- *
+ * 
  * @see Column
- * @author Carlos A Becker
+ * @author Carlos Alexandro Becker
  */
 public class Row extends DivWidget {
 
-    public Row() {
-        super();
-        setStyleName(Bootstrap.row);
-    }
+	public Row() {
+		super();
+		setStyleName(Bootstrap.row);
+	}
+
+	public void setMarginTop(int margin) {
+		getElement().getStyle().setMarginTop(margin, Unit.PX);
+	}
 }

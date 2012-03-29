@@ -15,53 +15,72 @@
 
 		<b:Hero>
 			<b:Heading size="1">GWT-Bootstrap</b:Heading>
-			<b:Paragraph>Using Twitter's interface library on GWT.</b:Paragraph>
+			<b:Paragraph>Using Twitter's interface library on Google Web Toolkit.</b:Paragraph>
 		</b:Hero>
-        <b:Row>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    <h6>Bootstrap, from Twitter</h6>
-                    <p>Bootstrap is a toolkit from Twitter designed to kickstart development of
-                        webapps and sites.</p>
-                    <p>
-                        <a target="_blank" href="http://twitter.github.com/bootstrap/" class="btn">Bootstrap
-                            from Twitter »</a>
-                    </p>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    <h6>Google Web Toolkit</h6>
-                    <p>GWT is a Toolkit for building and optimizing complex browser-based
-                        applications.</p>
-                    <p>
-                        <a target="_blank" href="http://code.google.com/intl/en/webtoolkit/"
-                            class="btn">Google
-                            Web Toolkit »</a>
-                    </p>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    <h6>Fork on Github</h6>
-                    <p>Download, fork, pull, file issues, and more as the official Bootstrap repo on
-                        Github.</p>
-                    <p>
-                        <a target="_blank" href="https://github.com/gwtbootstrap/gwt-bootstrap"
-                            class="btn btn-primary">GWT-Bootstrap on GitHub »</a>
-                    </p>
-                </g:HTMLPanel>
-            </b:Column>
-        </b:Row>
-        
-        <g:FlowPanel ui:field="sections" />
-        
-        <g:HTMLPanel>
-        <footer class="footer">
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>Distributed by <a href="https://github.com/gwtbootstrap" target="_blank">GWT-Bootstrap</a>.</p>
-            <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.</p>
-        </footer>
-        </g:HTMLPanel>
-    </b:Container>
+		<b:Row>
+			<b:Column size="3">
+				<b:Heading size="6">Bootstrap, from Twitter</b:Heading>
+				<b:Paragraph>Bootstrap is a toolkit from Twitter designed to
+					kickstart development of
+					webapps and sites.</b:Paragraph>
+				<b:Button href="http://twitter.github.com/bootstrap/">Bootstrap
+					from Twitter »</b:Button>
+			</b:Column>
+			<b:Column size="3">
+				<b:Heading size="6">Google Web Toolkit</b:Heading>
+				<b:Paragraph>GWT is a Toolkit for building and optimizing complex
+					browser-based
+					applications.</b:Paragraph>
+				<b:Button href="http://code.google.com/intl/en/webtoolkit/">Google
+					Web Toolkit »</b:Button>
+			</b:Column>
+			<b:Column size="3">
+				<b:Heading size="6">Download from Github</b:Heading>
+				<b:Paragraph>Download, fork, pull, file issues, and more at the
+					official
+					Bootstrap repo on
+					Github.</b:Paragraph>
+				<b:Button href="https://github.com/gwtbootstrap/gwt-bootstrap">GWT-Bootstrap
+					on GitHub »</b:Button>
+			</b:Column>
+			<b:Column size="3">
+				<b:Heading size="6">Read the docs</b:Heading>
+				<b:Paragraph>Set up GWT-Bootstrap, get an overview of all the
+					widgets and
+					their options.</b:Paragraph>
+				<b:Button type="primary"
+					href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/">GWT-Bootstrap Javadoc »</b:Button>
+			</b:Column>
+		</b:Row>
+		<b:Row marginTop="10">
+			<b:Column size="12">
+			<g:HTMLPanel><strong>More:</strong> Get support in our 
+			<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group.</a> 
+			Check out the <a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site</a>
+			</g:HTMLPanel>
+<!-- 			<b:Heading size="6">Other things to do:</b:Heading> -->
+			</b:Column>
+		</b:Row>
+
+		<g:FlowPanel ui:field="sections" />
+
+		<g:HTMLPanel>
+			<footer class="footer">
+				<p class="pull-right">
+					<a href="#">Back to top</a>
+				</p>
+				<p>
+					Distributed by
+					<a href="https://github.com/gwtbootstrap" target="_blank">GWT-Bootstrap</a>
+					.
+				</p>
+				<p>
+					Code licensed under the
+					<a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+						License v2.0</a>
+					.
+				</p>
+			</footer>
+		</g:HTMLPanel>
+	</b:Container>
 </ui:UiBinder>
