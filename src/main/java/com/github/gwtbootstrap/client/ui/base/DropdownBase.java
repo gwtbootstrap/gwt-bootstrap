@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Divider;
+import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.UnorderedList;
@@ -126,7 +127,7 @@ public abstract class DropdownBase extends ComplexWidget {
 	 * @return <code>true</code> if the widget can be added to the Dropdown
 	 */
 	protected boolean canBeAdded(Widget widget) {
-		return ((widget instanceof NavLink) || (widget instanceof NavText) || (widget instanceof Divider));
+		return ((widget instanceof NavLink) || (widget instanceof NavText) || (widget instanceof NavHeader) || (widget instanceof Divider) );
 	}
 
 	/**
