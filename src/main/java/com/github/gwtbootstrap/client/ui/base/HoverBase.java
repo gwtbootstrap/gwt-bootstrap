@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.Trigger;
+import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.user.client.ui.HasText;
 
 //@formatter:off
@@ -33,18 +34,36 @@ import com.google.gwt.user.client.ui.HasText;
 public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 		HasTrigger, HasPlacement, HasText, HasShowDelay {
 
-	private boolean animated = true;
+	/**
+	 * Whether the widget is animated or not.
+	 */
+	protected boolean animated = true;
 
-	private Placement placement = Placement.TOP;
+	/**
+	 * The placement of the widget relative to its trigger element.
+	 */
+	protected Placement placement = Placement.TOP;
 
-	private Trigger trigger = Trigger.HOVER;
+	/**
+	 * The action that triggers the widget.
+	 */
+	protected Trigger trigger = Trigger.HOVER;
 
-	private int showDelayInMilliseconds = 0;
+	/**
+	 * The delay until the widget is shown.
+	 */
+	protected int showDelayInMilliseconds = 0;
 
-	private int hideDelayInMilliseconds = 0;
+	/**
+	 * The delay until the widget is hidden.
+	 */
+	protected int hideDelayInMilliseconds = 0;
 
-	public HoverBase(String tag) {
-		super(tag);
+	/**
+	 * Creates a new widget based on the provided HTML tag.
+	 */
+	public HoverBase() {
+		super("span");
 	}
 
 	/**
@@ -57,36 +76,66 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Adds an HTML data attribute to the widget's tag.
+	 * 
+	 * @param attribute
+	 *            the name of the attribute without leading <code>"data-"</code>
+	 * @param value
+	 *            the value to be stored
 	 */
-	public void setAnimated(boolean animated) {
-		this.animated = animated;
-		reconfigure();
+	protected void setDataAttribute(String attribute, String value) {
+		getElement().setAttribute("data-" + attribute, value);
 	}
 
 	/**
-	 * Redraws the widget with the currently set options.
+	 * Returns the data stored in one of the widget's HTML data attributes.
+	 * 
+	 * @param attribute
+	 *            the name of the attribute without leading <code>"data-"</code>
+	 * @return the value stored in the tag
+	 */
+	protected String getDataAttribute(String attribute) {
+		return getElement().getAttribute("data-" + attribute);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setAnimation(boolean animated) {
+		this.animated = animated;
+	}
+
+	/**
+	 * Redraws the widget with the currently set options. This must <b>not</b>
+	 * be called when a parameter is updated because it would deactivate all
+	 * other parameters. No idea why...
 	 */
 	protected abstract void reconfigure();
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public boolean getAnimated() {
+	public boolean getAnimation() {
 		return animated;
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} Relative to its trigger element.
 	 */
 	public void setPlacement(Placement placement) {
 		this.placement = placement;
-		reconfigure();
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any attribute names change. The only
+	 *             valid use is inside UiBinder files where it processes the
+	 *             <code>placement="..."</code> argument. Use
+	 *             {@link #setPlacement(Placement)} instead!
 	 */
+	@Deprecated
 	public void setPlacement(String placement) {
 		if (placement == "top")
 			setPlacement(Placement.TOP);
@@ -110,12 +159,18 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	 */
 	public void setTrigger(Trigger trigger) {
 		this.trigger = trigger;
-		reconfigure();
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any attribute names change. The only
+	 *             valid use is inside UiBinder files where it processes the
+	 *             <code>trigger="..."</code> argument. Use
+	 *             {@link #setTrigger(Trigger)} instead!
 	 */
+	@Deprecated
 	public void setTrigger(String trigger) {
 		if (trigger == "hover")
 			setTrigger(Trigger.HOVER);
@@ -137,7 +192,6 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	 */
 	public void setShowDelay(int delayInMilliseconds) {
 		showDelayInMilliseconds = delayInMilliseconds;
-		reconfigure();
 	}
 
 	/**
@@ -152,7 +206,6 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	 */
 	public void setHideDelay(int delayInMilliseconds) {
 		hideDelayInMilliseconds = delayInMilliseconds;
-		reconfigure();
 	}
 
 	/**
@@ -161,5 +214,34 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	public int getHideDelay() {
 		return hideDelayInMilliseconds;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void show() {
+		changeVisibility(VisibilityChange.SHOW);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void hide() {
+		changeVisibility(VisibilityChange.HIDE);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void toggle() {
+		changeVisibility(VisibilityChange.TOGGLE);
+	}
+
+	/**
+	 * Changes the visibility of the widget.
+	 * 
+	 * @param visibilityChange
+	 *            the action to be performed
+	 */
+	protected abstract void changeVisibility(VisibilityChange visibilityChange);
 
 }

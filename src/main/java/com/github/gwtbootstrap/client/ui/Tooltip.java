@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HoverBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -39,14 +40,11 @@ public class Tooltip extends HoverBase implements HasHref {
 
 	private IconAnchor anchor = new IconAnchor();
 
-//	private Anchor anchor;
-
 	/**
 	 * Creates an empty link without text and tooltip text.
 	 */
 	public Tooltip() {
-		super("span");
-		anchor.getElement().setAttribute("rel", "tooltip");
+		super();
 		super.add(anchor);
 	}
 
@@ -83,7 +81,7 @@ public class Tooltip extends HoverBase implements HasHref {
 	 *            the text
 	 */
 	public void setTooltip(String text) {
-		anchor.setTitle(text);
+		setDataAttribute("original-title", (text));
 	}
 
 	/**
@@ -119,7 +117,7 @@ public class Tooltip extends HoverBase implements HasHref {
 	 */
 	@Override
 	public void reconfigure() {
-		configure(anchor.getElement(), getAnimated(), getPlacement().get(),
+		configure(getElement(), getAnimation(), getPlacement().get(),
 				getTrigger().get(), getShowDelay(), getHideDelay());
 	}
 
@@ -142,26 +140,9 @@ public class Tooltip extends HoverBase implements HasHref {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void show() {
-		changeVisibility("show");
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void hide() {
-		changeVisibility("hide");
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void toggle() {
-		changeVisibility("toggle");
-	}
-
-	private void changeVisibility(String visibility) {
-		changeVisibility(getElement(), visibility);
+	@Override
+	protected void changeVisibility(VisibilityChange visibilityChange) {
+		changeVisibility(getElement(), visibilityChange.get());
 	}
 
 	private native void configure(Element element, boolean animated,

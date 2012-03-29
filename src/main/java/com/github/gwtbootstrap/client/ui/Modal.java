@@ -60,7 +60,7 @@ public class Modal extends DivWidget implements HasVisibleHandlers, IsAnimated {
 
 	public Modal(boolean animated) {
 		this();
-		setAnimated(animated);
+		setAnimation(animated);
 	}
 
 	@Override
@@ -82,14 +82,14 @@ public class Modal extends DivWidget implements HasVisibleHandlers, IsAnimated {
 			header.removeStyleName("modal-header");
 	}
 
-	public void setAnimated(boolean animated) {
+	public void setAnimation(boolean animated) {
 		if (animated)
 			addStyleName("fade");
 		else
 			removeStyleName("fade");
 	}
 
-	public boolean getAnimated() {
+	public boolean getAnimation() {
 		return getStyleName().contains("fade");
 	}
 
