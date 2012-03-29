@@ -13,29 +13,38 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.base;
+package com.github.gwtbootstrap.client.ui.constants;
+
+import com.github.gwtbootstrap.client.ui.base.HasTrigger;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Interface for components that can be animated.
+ * Trigger that activates an action.
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
+ * 
+ * @see HasTrigger
  */
-public interface IsAnimated {
+public enum Trigger implements Style {
+
+	HOVER("hover"),
+
+	FOCUS("focus"),
+
+	MANUAL("manual");
+
+	private String name;
+
+	private Trigger(String name) {
+		this.name = name;
+	}
 
 	/**
-	 * Sets whether the Widget should be animated.
-	 * 
-	 * @param animation
-	 *            <code>true</code> if the widget should be animated.
+	 * {@inheritDoc}
 	 */
-	void setAnimation(boolean animation);
-
-	/**
-	 * Gets whether the widget is animated.
-	 * 
-	 * @return <code>true</code> if the widget is animated
-	 */
-	boolean getAnimation();
+	public String get() {
+		return name;
+	}
 }

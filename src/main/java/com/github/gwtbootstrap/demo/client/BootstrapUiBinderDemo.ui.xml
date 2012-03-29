@@ -46,8 +46,39 @@
 			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 		</b:WellNavList>
 		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
-		<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
+		<b:Popover text="testpopover" heading="some title" hideDelay="5000" >
+			<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
+		</b:Popover>
+		<b:Popover text="other popover" heading="other title" placement="top">
+			<b:Button icon="leaf" type="danger" size="mini">Testbutton</b:Button>
+		</b:Popover>
+		<b:Tooltip tooltip="The tooltip" >Some text</b:Tooltip>  
+		<b:Tooltip tooltip="Another tooltip"  animation="false" hideDelay="5000"  placement="right">Some more text</b:Tooltip>
 		<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
+		<g:HorizontalPanel>
+		<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+			<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+		</g:HorizontalPanel>
+		<g:VerticalPanel>
+		<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+			<b:ButtonGroup>
+				<b:Button href="http://www.google.com">1</b:Button>
+				<b:Button>2</b:Button>
+				<b:Button>3</b:Button>
+			</b:ButtonGroup>
+		</g:VerticalPanel>
 		<b:ButtonToolbar>
 			<b:ButtonGroup>
 				<b:Button href="http://www.google.com">1</b:Button>
@@ -67,6 +98,8 @@
 		Badge: <b:Badge type="error" >2</b:Badge>. <b:Badge>2</b:Badge>
 		
 		Label: <b:Label>Normal label</b:Label>, <b:Label type="info">Info label</b:Label>
+		<br/><br/>
+		
 		<b:Container>
 			<b:UnorderedList>
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>
@@ -145,7 +178,7 @@
 			</b:FluidRow>
 					<b:FluidRow>
 				<b:Column size="3">
-					<b:Alert type="error" animated="true">TestAlert with <b>html</b></b:Alert>
+					<b:Alert type="error" animation="true">TestAlert with <b>html</b></b:Alert>
 				</b:Column>
 				<b:Column size="3">
 					<b:Alert type="success" heading="Hm..." close="false">TestAlert without close</b:Alert>
@@ -189,7 +222,7 @@
 			</b:Row>
 		</b:FluidContainer>
 		<b:Section target="modal">
-			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">
+			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animation="true" ui:field="modal">
 				<g:Label>Modal Content!</g:Label>
 				<b:Button ui:field="contentButton" icon="file" iconColor="white" type="primary">Save</b:Button>
 				<b:ModalFooter>

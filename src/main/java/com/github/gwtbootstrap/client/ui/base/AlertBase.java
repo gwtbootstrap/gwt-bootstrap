@@ -174,9 +174,13 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 *            <code>true</code> if the Alert should fade out. Default:
 	 *            <code>false</code>
 	 */
-	public void setAnimated(boolean animated) {
+	public void setAnimation(boolean animated) {
 		this.fade = animated;
 		setFade();
+	}
+
+	public boolean getAnimation() {
+		return fade;
 	}
 
 	/**

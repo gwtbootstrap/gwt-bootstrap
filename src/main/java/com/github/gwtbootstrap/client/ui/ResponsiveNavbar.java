@@ -31,9 +31,9 @@ import com.google.gwt.user.client.Window;
  * {@link ResourceAdapter} and let {@link ResourceAdapter#hasResponsiveDesign()}
  * return true.
  * 
- * @author Dominik Mayer
- * @since 2012-03-25
+ * @since 2.0.2.0
  * 
+ * @author Dominik Mayer
  */
 public class ResponsiveNavbar extends Navbar {
 
@@ -76,6 +76,8 @@ public class ResponsiveNavbar extends Navbar {
 
 	private void setPaddingTop() {
 		setPaddingTop(!isResponsive());
+//		if (!isResponsive())
+
 	}
 
 	private boolean isResponsive() {

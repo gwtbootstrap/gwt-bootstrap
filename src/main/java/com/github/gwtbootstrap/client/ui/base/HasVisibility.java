@@ -16,26 +16,31 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 /**
- * Interface for components that can be animated.
+ * Interface for components that can be shown or hidden.
  * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
+ * 
  */
-public interface IsAnimated {
+public interface HasVisibility {
 
 	/**
-	 * Sets whether the Widget should be animated.
-	 * 
-	 * @param animation
-	 *            <code>true</code> if the widget should be animated.
+	 * Shows the widget if it was previously hidden.
 	 */
-	void setAnimation(boolean animation);
+	void show();
 
 	/**
-	 * Gets whether the widget is animated.
-	 * 
-	 * @return <code>true</code> if the widget is animated
+	 * Hides the widget if it was previously shown.
 	 */
-	boolean getAnimation();
+	void hide();
+
+	/**
+	 * Toggles the view state of the widget.
+	 * 
+	 * <p>
+	 * It will be hidden if it was previously shown and shown if it was
+	 * previously hidden.
+	 */
+	void toggle();
 }

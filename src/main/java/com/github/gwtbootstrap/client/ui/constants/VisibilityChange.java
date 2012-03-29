@@ -13,29 +13,48 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.base;
+package com.github.gwtbootstrap.client.ui.constants;
+
+import com.github.gwtbootstrap.client.ui.base.HoverBase;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
- * Interface for components that can be animated.
+ * Actions to change an object's visibility.
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
+ * @author Dominik Mayer
+ * 
+ * @see HoverBase
  */
-public interface IsAnimated {
+public enum VisibilityChange implements Style {
 
 	/**
-	 * Sets whether the Widget should be animated.
-	 * 
-	 * @param animation
-	 *            <code>true</code> if the widget should be animated.
+	 * Show the widget if it hidden.
 	 */
-	void setAnimation(boolean animation);
+	SHOW("show"),
 
 	/**
-	 * Gets whether the widget is animated.
-	 * 
-	 * @return <code>true</code> if the widget is animated
+	 * Hide the widget if it is shown.
 	 */
-	boolean getAnimation();
+	HIDE("hide"),
+
+	/**
+	 * Show the widget if it is hidden, hide the widget if it is shown.
+	 * 
+	 */
+	TOGGLE("toggle");
+
+	private String name;
+
+	private VisibilityChange(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String get() {
+		return name;
+	}
 }
