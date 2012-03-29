@@ -9,6 +9,7 @@
         <b:Row>
             <b:Column size="12">
                 <g:HTMLPanel>
+                    <h5>Usage</h5>
                     <ul>
                         <li>Download the zip, extract and add the folder as external source to
                             the build path.</li>
@@ -17,6 +18,16 @@
                             <code>&lt;inherits name="com.github.gwtbootstrap.Bootstrap"/&gt;</code>
                             to your *.gwt.xml file.
                         </li>
+                    </ul>
+                    
+                    <h5>Usage for Maven</h5>
+                    <ul>
+                        <li><a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site</a></li>
+                    </ul>
+                    
+                    <h5>Documentation</h5>
+                    <ul>
+                        <li><a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/index.html">Javadoc</a></li>
                     </ul>
                 </g:HTMLPanel>
             </b:Column>
