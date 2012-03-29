@@ -37,6 +37,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * @author Carlos A Becker
  */
 public class ResponsiveNavbar extends Navbar {
 
@@ -57,7 +58,6 @@ public class ResponsiveNavbar extends Navbar {
 		add(collapseButton);
 		addWindowHandlers();
 		setPaddingTop();
-//		navCollapse.getElement().setAttribute("style", "height: auto;");
 		
 	}
 
@@ -65,6 +65,7 @@ public class ResponsiveNavbar extends Navbar {
 	public void add(Widget child) {
 		if(child instanceof Nav)
 		{
+			// without this, the order of elements in navbar will bug.
 			if(!getChildren().contains(navCollapse))
 				super.add(navCollapse);
 			navCollapse.add(child);
@@ -94,8 +95,6 @@ public class ResponsiveNavbar extends Navbar {
 
 	private void setPaddingTop() {
 		setPaddingTop(!isResponsive());
-		// if (!isResponsive())
-
 	}
 
 	private boolean isResponsive() {
