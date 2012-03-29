@@ -4,16 +4,16 @@
 	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 	<g:HTMLPanel>
 		
-		<b:Heading size="2">UiBinder Examples</b:Heading>
-
-		<b:Navbar fixed="top">
+		<b:ResponsiveNavbar fixed="top">
 			<b:Brand>Bootstrap</b:Brand>
+			<b:NavCollapse>
 			<b:Nav>
 				<b:NavLink>Test</b:NavLink>
 				<b:NavText>NavText</b:NavText>
 				<b:DividerVertical />
 				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 				<b:Dropdown text="Dropdown">
+					<b:NavHeader>Test</b:NavHeader>
 					<b:NavLink>Test 1</b:NavLink>
 				    <b:NavLink>Test 2</b:NavLink>
 				</b:Dropdown>
@@ -27,8 +27,12 @@
 			</b:Nav>
 			<b:NavText alignment="right">Right</b:NavText>
 			<b:NavSearch size="2" placeholder="Search" alignment="right"/>
-		</b:Navbar>
+			</b:NavCollapse>
+		</b:ResponsiveNavbar>
 	
+	<b:Container>
+		<b:Heading size="2">UiBinder Examples</b:Heading>
+
 		<b:NavList hideOn="tablet">
 			<b:NavHeader>Header</b:NavHeader>
 			<b:NavLink active="true" icon="plane">Test</b:NavLink>
@@ -45,7 +49,7 @@
 			<b:Divider />
 			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 		</b:WellNavList>
-		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
+		
 		<b:Popover text="testpopover" heading="some title" hideDelay="5000" >
 			<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
 		</b:Popover>
@@ -89,7 +93,8 @@
 				<b:Button>4</b:Button>
 			</b:ButtonGroup>
 		</b:ButtonToolbar>
-		
+		<g:HTMLPanel>
+		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
 		Icon: <b:Icon type="star"/> :-). Invisible: <b:Icon type="heart" color="white"/> ;-).
 		Strong: <b:Strong>Hey!</b:Strong>
 		
@@ -99,7 +104,7 @@
 		
 		Label: <b:Label>Normal label</b:Label>, <b:Label type="info">Info label</b:Label>
 		<br/><br/>
-		
+		</g:HTMLPanel>
 		<b:Container>
 			<b:UnorderedList>
 				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>
@@ -222,16 +227,17 @@
 			</b:Row>
 		</b:FluidContainer>
 		<b:Section target="modal">
-			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animation="true" ui:field="modal">
-				<g:Label>Modal Content!</g:Label>
-				<b:Button ui:field="contentButton" icon="file" iconColor="white" type="primary">Save</b:Button>
-				<b:ModalFooter>
-					<b:Button ui:field="saveButton" icon="file" iconColor="white" type="primary">Save</b:Button>
-				</b:ModalFooter>
-			</b:Modal>
+<!-- 			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animation="true" ui:field="modal"> -->
+<!-- 				<g:Label>Modal Content!</g:Label> -->
+<!-- 				<b:Button ui:field="contentButton" icon="file" iconColor="white" type="primary">Save</b:Button> -->
+<!-- 				<b:ModalFooter> -->
+<!-- 					<b:Button ui:field="saveButton" icon="file" iconColor="white" type="primary">Save</b:Button> -->
+<!-- 				</b:ModalFooter> -->
+<!-- 			</b:Modal> -->
 			<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
 			<b:Button icon="heart" type="info" enabled="false" ui:field="anotherModalBtn">Show anothermodal</b:Button>
 		</b:Section>
 		<b:Footer><g:Label>Some Text and a </g:Label><b:Button>Button</b:Button></b:Footer>
+		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 

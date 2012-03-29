@@ -19,7 +19,6 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
@@ -37,7 +36,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- * @author Carlos A Becker
+ * @author Carlos Alexandro Becker
  */
 public class ResponsiveNavbar extends Navbar {
 
@@ -58,19 +57,17 @@ public class ResponsiveNavbar extends Navbar {
 		add(collapseButton);
 		addWindowHandlers();
 		setPaddingTop();
-		
+
 	}
 
 	@Override
 	public void add(Widget child) {
-		if(child instanceof Nav)
-		{
+		if (child instanceof Nav) {
 			// without this, the order of elements in navbar will bug.
-			if(!getChildren().contains(navCollapse))
+			if (!getChildren().contains(navCollapse))
 				super.add(navCollapse);
 			navCollapse.add(child);
-		}
-		else
+		} else
 			super.add(child);
 	}
 
@@ -83,6 +80,8 @@ public class ResponsiveNavbar extends Navbar {
 				@Override
 				public void run() {
 					setPaddingTop();
+//					navCollapse.getElement().setAttribute("style",
+//							"height: auto;");
 				}
 			};
 
