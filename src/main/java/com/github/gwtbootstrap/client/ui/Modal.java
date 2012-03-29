@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.Close.DataDismiss;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
@@ -38,7 +39,8 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  * 
  */
-public class Modal extends DivWidget implements HasVisibleHandlers, IsAnimated {
+public class Modal extends DivWidget implements HasVisibility,
+		HasVisibleHandlers, IsAnimated {
 
 	private final DivWidget header = new DivWidget();
 	private final DivWidget body = new DivWidget("modal-body");

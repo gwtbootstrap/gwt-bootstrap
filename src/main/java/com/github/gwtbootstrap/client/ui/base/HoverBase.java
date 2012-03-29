@@ -32,7 +32,7 @@ import com.google.gwt.user.client.ui.HasText;
 */
 //@formatter:on
 public abstract class HoverBase extends ComplexWidget implements IsAnimated,
-		HasTrigger, HasPlacement, HasText, HasShowDelay {
+		HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
 
 	/**
 	 * Whether the widget is animated or not.

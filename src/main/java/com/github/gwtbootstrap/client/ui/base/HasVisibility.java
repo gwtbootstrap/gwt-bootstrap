@@ -15,41 +15,32 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.constants.Placement;
-
 /**
- * Interface for widgets that have a placement.
+ * Interface for components that can be shown or hidden.
  * 
  * @since 2.0.2.0
  * 
- * @author Dominik Mayer
- * 
- * @see Placement
+ * @author Carlos Alexandro Becker
  * 
  */
-public interface HasPlacement {
+public interface HasVisibility {
 
 	/**
-	 * Sets the widget's placement.
-	 * 
-	 * @param placement
-	 *            the placement
+	 * Shows the widget if it was previously hidden.
 	 */
-	void setPlacement(Placement placement);
+	void show();
 
 	/**
-	 * Sets the widget's placement.
-	 * 
-	 * @param placement
-	 *            <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>
-	 *            or <code>"right"</code>
+	 * Hides the widget if it was previously shown.
 	 */
-	void setPlacement(String placement);
+	void hide();
 
 	/**
-	 * Gets the widget's placement.
+	 * Toggles the view state of the widget.
 	 * 
-	 * @return the widget's placement
+	 * <p>
+	 * It will be hidden if it was previously shown and shown if it was
+	 * previously hidden.
 	 */
-	Placement getPlacement();
+	void toggle();
 }
