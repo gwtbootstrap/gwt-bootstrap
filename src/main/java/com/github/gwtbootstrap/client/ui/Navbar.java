@@ -45,7 +45,7 @@ public class Navbar extends DivWidget {
 		}
 	}
 
-	private final Container container = new Container();
+	private final Container container = getContainer();
 	private final NavbarInner navbarInner = new NavbarInner();
 	private Scrollspy spy;
 
@@ -53,6 +53,10 @@ public class Navbar extends DivWidget {
 		setStyleName(NavbarConstants.NAVBAR);
 		navbarInner.add(container);
 		super.add(navbarInner);
+	}
+
+	protected Container getContainer() {
+		return new Container();
 	}
 
 	/**

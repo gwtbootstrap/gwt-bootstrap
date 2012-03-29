@@ -15,13 +15,16 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * A {@link Navbar} that hides the contents of a {@link NavCollapse} whenever
@@ -40,6 +43,7 @@ public class ResponsiveNavbar extends Navbar {
 	private static final int RESPONSIVE_WIDTH_IN_PIXEL = 980;
 
 	private final NavbarButton collapseButton = new NavbarButton();
+	private final DivWidget navCollapse = new DivWidget("nav-collapse");
 
 	public ResponsiveNavbar() {
 		super();
@@ -53,6 +57,20 @@ public class ResponsiveNavbar extends Navbar {
 		add(collapseButton);
 		addWindowHandlers();
 		setPaddingTop();
+//		navCollapse.getElement().setAttribute("style", "height: auto;");
+		
+	}
+
+	@Override
+	public void add(Widget child) {
+		if(child instanceof Nav)
+		{
+			if(!getChildren().contains(navCollapse))
+				super.add(navCollapse);
+			navCollapse.add(child);
+		}
+		else
+			super.add(child);
 	}
 
 	private void addWindowHandlers() {
@@ -76,7 +94,7 @@ public class ResponsiveNavbar extends Navbar {
 
 	private void setPaddingTop() {
 		setPaddingTop(!isResponsive());
-//		if (!isResponsive())
+		// if (!isResponsive())
 
 	}
 
@@ -84,13 +102,8 @@ public class ResponsiveNavbar extends Navbar {
 		return Window.getClientWidth() < RESPONSIVE_WIDTH_IN_PIXEL;
 	}
 
-	// @Override
-	// protected void onLoad() {
-	// super.onLoad();
-	// configure(collapseButton.getElement());
-	// }
-	//
-	// private native void configure(Element e) /*-{
-	// $wnd.jQuery(e).collapse();
-	// }-*/;
+	@Override
+	protected Container getContainer() {
+		return new FluidContainer();
+	}
 }
