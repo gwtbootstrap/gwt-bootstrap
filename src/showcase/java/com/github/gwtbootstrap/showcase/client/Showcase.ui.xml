@@ -1,58 +1,62 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
-    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
-    <ui:style>
-        .important {
-        	font-weight: bold;
-        }
-    </ui:style>
-    <b:Container ui:field="container">
-        <b:Navbar fixed="top" scrollspy="true">
-            <b:Brand>GWT-Bootstrap</b:Brand>
-            <b:Nav ui:field="nav">
-            </b:Nav>
-        </b:Navbar>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<b:Container ui:field="container">
+		<b:Navbar fixed="top" scrollspy="true">
+			<b:Brand>GWT-Bootstrap</b:Brand>
+			<b:Nav ui:field="nav">
+			</b:Nav>
+		</b:Navbar>
 
-        <b:Hero>
-            <b:Heading size="1">GWT-Bootstrap</b:Heading>
-            <b:Paragraph>Using Twitter's interface library on GWT.</b:Paragraph>
-        </b:Hero>
+		<b:Hero>
+			<b:Heading size="1">GWT-Bootstrap</b:Heading>
+			<b:Paragraph>Using Twitter's interface library on GWT.</b:Paragraph>
+		</b:Hero>
 
-        <b:Row>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    <h6>Bootstrap, from Twitter</h6>
-                    <p>Bootstrap is a toolkit from Twitter designed to kickstart development of
-                        webapps and sites.</p>
-                    <p>
-                        <a target="_blank" href="http://twitter.github.com/bootstrap/" class="btn">Bootstrap
-                            from Twitter »</a>
-                    </p>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    <h6>Google Web Toolkit</h6>
-                    <p>GWT is a Toolkit for building and optimizing complex browser-based
-                        applications.</p>
-                    <p>
-                        <a target="_blank" href="http://code.google.com/intl/en/webtoolkit/"
-                            class="btn">Google
-                            Web Toolkit »</a>
-                    </p>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    <h6>Fork on Github</h6>
-                    <p>Download, fork, pull, file issues, and more as the official Bootstrap repo on
-                        Github.</p>
-                    <p>
-                        <a target="_blank" href="https://github.com/gwtbootstrap/gwt-bootstrap"
-                            class="btn btn-primary">GWT-Bootstrap on GitHub »</a>
-                    </p>
-                </g:HTMLPanel>
-            </b:Column>
-        </b:Row>
-    </b:Container>
+		<b:Row>
+			<b:Column size="4">
+				<g:HTMLPanel>
+					<h6>Bootstrap, from Twitter</h6>
+					<p>Bootstrap is a toolkit from Twitter designed to kickstart
+						development of
+						webapps and sites.</p>
+					<p>
+						<a target="_blank" href="http://twitter.github.com/bootstrap/"
+							class="btn">Bootstrap
+							from Twitter »</a>
+					</p>
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="4">
+				<g:HTMLPanel>
+					<h6>Google Web Toolkit</h6>
+					<p>GWT is a Toolkit for building and optimizing complex
+						browser-based
+						applications.</p>
+					<p>
+						<a target="_blank" href="http://code.google.com/intl/en/webtoolkit/"
+							class="btn">Google
+							Web Toolkit »</a>
+					</p>
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="4">
+				<g:HTMLPanel>
+					<h6>Fork on Github</h6>
+					<p>Download, fork, pull, file issues, and more as the official
+						Bootstrap repo on
+						Github.</p>
+					<p>
+						<a target="_blank" href="https://github.com/gwtbootstrap/gwt-bootstrap"
+							class="btn btn-primary">GWT-Bootstrap on GitHub »</a>
+					</p>
+				</g:HTMLPanel>
+			</b:Column>
+		</b:Row>
+	</b:Container>
 </ui:UiBinder>
