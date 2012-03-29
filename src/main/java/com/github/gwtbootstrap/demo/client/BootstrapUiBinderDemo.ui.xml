@@ -289,16 +289,16 @@
 				<g:Label>Some Text and a </g:Label>
 				<b:Button>Button</b:Button>
 			</b:Footer>
-		</b:Container>
-		<b:Modal title="My Modal" show="false" backdrop="true"
-			keyboard="true" animation="true" ui:field="modal">
-			<g:Label>Modal Content!</g:Label>
-			<b:Button ui:field="contentButton" icon="file" iconColor="white"
-				type="primary">Save</b:Button>
-			<b:ModalFooter>
-				<b:Button ui:field="saveButton" icon="file" iconColor="white"
+			<b:Modal title="My Modal" show="false" backdrop="true"
+				keyboard="true" animation="true" ui:field="modal">
+				<g:Label>Modal Content!</g:Label>
+				<b:Button ui:field="contentButton" icon="file" iconColor="white"
 					type="primary">Save</b:Button>
-			</b:ModalFooter>
-		</b:Modal>
+				<b:ModalFooter>
+					<b:Button ui:field="saveButton" icon="file" iconColor="white"
+						type="primary">Save</b:Button>
+				</b:ModalFooter>
+			</b:Modal>
+		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 
