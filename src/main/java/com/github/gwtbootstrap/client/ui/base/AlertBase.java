@@ -67,7 +67,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	public AlertBase(boolean hasClose) {
 		super.setStyle(AlertStyle.ALERT);
 		setClose(hasClose);
-		setHandlerFunctions();
+		setHandlerFunctions(getElement());
 	}
 
 	/**
@@ -92,21 +92,28 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * Adds the Java functions that fire the Events to document. It is a
 	 * convenience method to have a cleaner code later on.
 	 */
-	private native void setHandlerFunctions() /*-{
+	private native void setHandlerFunctions(Element e) /*-{
 		var that = this;
-		$wnd.fireCloseEvent = $entry(function() {
-			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::fireCloseEvent()();
+		$wnd.jQuery(e).bind('close', function() {
+			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
 		});
-		$wnd.fireClosedEvent = $entry(function() {
-			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::fireClosedEvent()();
+		$wnd.jQuery(e).bind('closed', function() {
+			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
 		});
 	}-*/;
 
-	private void fireCloseEvent() {
+	/**
+	 * This method is called immediately when the widget's close method is
+	 * executed.
+	 */
+	protected void onClose() {
 		fireEvent(new CloseEvent());
 	}
 
-	private void fireClosedEvent() {
+	/**
+	 * This method is called once the widget is completely closed.
+	 */
+	protected void onClosed() {
 		fireEvent(new ClosedEvent());
 	}
 
@@ -276,27 +283,13 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addCloseHandler(CloseHandler handler) {
-		addCloseHandler(getElement());
 		return addHandler(handler, CloseEvent.getType());
 	}
-
-	private native void addCloseHandler(Element e) /*-{
-		$wnd.jQuery(e).bind('close', function() {
-			$wnd.fireCloseEvent();
-		});
-	}-*/;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addClosedHandler(ClosedHandler handler) {
-		addClosedHandler(getElement());
 		return addHandler(handler, ClosedEvent.getType());
 	}
-
-	private native void addClosedHandler(Element e) /*-{
-		$wnd.jQuery(e).bind('closed', function() {
-			$wnd.fireClosedEvent();
-		});
-	}-*/;
 }
