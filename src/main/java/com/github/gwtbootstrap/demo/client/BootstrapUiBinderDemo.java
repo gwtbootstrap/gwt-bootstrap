@@ -16,9 +16,11 @@
 package com.github.gwtbootstrap.demo.client;
 
 import com.github.gwtbootstrap.client.ui.Button;
+import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.SplitDropdownButton;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -39,19 +41,19 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 	public BootstrapUiBinderDemo() {
 
 		initWidget(uiBinder.createAndBindUi(this));
-//		modalBtn.addClickHandler(new ClickHandler() {
-//
-//			public void onClick(ClickEvent event) {
-//				modal.show();
-//			}
-//		});
+		modalBtn.addClickHandler(new ClickHandler() {
+
+			public void onClick(ClickEvent event) {
+				modal.show();
+			}
+		});
 	}
 
 	@UiField
 	Button button;
 
-//	@UiField
-//	Modal modal;
+	@UiField
+	Modal modal;
 
 	@UiField
 	Button modalBtn;
@@ -87,17 +89,17 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 		return button.getText();
 	}
 
-//	@UiHandler("contentButton")
-//	void onClickContentSave(ClickEvent e) {
-//
-//		modal.hide();
-////		Window.alert("Hello!");
-//	}
-//	
-//	@UiHandler("saveButton")
-//	void onClickSave(ClickEvent e) {
-//		modal.hide();
-////		Window.alert("Hello!");
-//	}
+	@UiHandler("contentButton")
+	void onClickContentSave(ClickEvent e) {
+
+		modal.hide();
+//		Window.alert("Hello!");
+	}
+
+	@UiHandler("saveButton")
+	void onClickSave(ClickEvent e) {
+		modal.hide();
+//		Window.alert("Hello!");
+	}
 
 }

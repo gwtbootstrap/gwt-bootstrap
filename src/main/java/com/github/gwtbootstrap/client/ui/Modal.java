@@ -221,7 +221,7 @@ public class Modal extends DivWidget implements HasVisibility,
 	}-*/;
 
 	private native void changeVisibility(Element e, String visibility) /*-{
-		$wnd.jQuery(e).popover(visibility);
+		$wnd.jQuery(e).modal(visibility);
 	}-*/;
 
 	/**
