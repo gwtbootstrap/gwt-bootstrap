@@ -32,20 +32,20 @@
 <FONT color="green">029</FONT>    import com.google.gwt.user.client.ui.HasText;<a name="line.29"></a>
 <FONT color="green">030</FONT>    import com.google.gwt.user.client.ui.Widget;<a name="line.30"></a>
 <FONT color="green">031</FONT>    <a name="line.31"></a>
-<FONT color="green">032</FONT>    <a name="line.32"></a>
-<FONT color="green">033</FONT>    public class BootstrapUiBinderDemo extends Composite implements HasText {<a name="line.33"></a>
-<FONT color="green">034</FONT>    <a name="line.34"></a>
-<FONT color="green">035</FONT>            private static BootstrapUiBinderDemoUiBinder uiBinder = GWT<a name="line.35"></a>
-<FONT color="green">036</FONT>                            .create(BootstrapUiBinderDemoUiBinder.class);<a name="line.36"></a>
-<FONT color="green">037</FONT>    <a name="line.37"></a>
-<FONT color="green">038</FONT>            interface BootstrapUiBinderDemoUiBinder extends<a name="line.38"></a>
-<FONT color="green">039</FONT>                            UiBinder&lt;Widget, BootstrapUiBinderDemo&gt; {<a name="line.39"></a>
-<FONT color="green">040</FONT>            }<a name="line.40"></a>
-<FONT color="green">041</FONT>    <a name="line.41"></a>
-<FONT color="green">042</FONT>            public BootstrapUiBinderDemo() {<a name="line.42"></a>
-<FONT color="green">043</FONT>    <a name="line.43"></a>
-<FONT color="green">044</FONT>                    initWidget(uiBinder.createAndBindUi(this));<a name="line.44"></a>
-<FONT color="green">045</FONT>                    modalBtn.addClickHandler(new ClickHandler() {<a name="line.45"></a>
+<FONT color="green">032</FONT>    public class BootstrapUiBinderDemo extends Composite implements HasText {<a name="line.32"></a>
+<FONT color="green">033</FONT>    <a name="line.33"></a>
+<FONT color="green">034</FONT>            private static BootstrapUiBinderDemoUiBinder uiBinder = GWT<a name="line.34"></a>
+<FONT color="green">035</FONT>                            .create(BootstrapUiBinderDemoUiBinder.class);<a name="line.35"></a>
+<FONT color="green">036</FONT>    <a name="line.36"></a>
+<FONT color="green">037</FONT>            interface BootstrapUiBinderDemoUiBinder extends<a name="line.37"></a>
+<FONT color="green">038</FONT>                            UiBinder&lt;Widget, BootstrapUiBinderDemo&gt; {<a name="line.38"></a>
+<FONT color="green">039</FONT>            }<a name="line.39"></a>
+<FONT color="green">040</FONT>    <a name="line.40"></a>
+<FONT color="green">041</FONT>            public BootstrapUiBinderDemo() {<a name="line.41"></a>
+<FONT color="green">042</FONT>    <a name="line.42"></a>
+<FONT color="green">043</FONT>                    initWidget(uiBinder.createAndBindUi(this));<a name="line.43"></a>
+<FONT color="green">044</FONT>                    modalBtn.addClickHandler(new ClickHandler() {<a name="line.44"></a>
+<FONT color="green">045</FONT>    <a name="line.45"></a>
 <FONT color="green">046</FONT>                            public void onClick(ClickEvent event) {<a name="line.46"></a>
 <FONT color="green">047</FONT>                                    modal.show();<a name="line.47"></a>
 <FONT color="green">048</FONT>                            }<a name="line.48"></a>
@@ -54,34 +54,34 @@
 <FONT color="green">051</FONT>    <a name="line.51"></a>
 <FONT color="green">052</FONT>            @UiField<a name="line.52"></a>
 <FONT color="green">053</FONT>            Button button;<a name="line.53"></a>
-<FONT color="green">054</FONT>            <a name="line.54"></a>
+<FONT color="green">054</FONT>    <a name="line.54"></a>
 <FONT color="green">055</FONT>            @UiField<a name="line.55"></a>
 <FONT color="green">056</FONT>            Modal modal;<a name="line.56"></a>
-<FONT color="green">057</FONT>            <a name="line.57"></a>
+<FONT color="green">057</FONT>    <a name="line.57"></a>
 <FONT color="green">058</FONT>            @UiField<a name="line.58"></a>
 <FONT color="green">059</FONT>            Button modalBtn;<a name="line.59"></a>
-<FONT color="green">060</FONT>            <a name="line.60"></a>
-<FONT color="green">061</FONT>            @UiField SplitDropdownButton splitDropdownButton;<a name="line.61"></a>
-<FONT color="green">062</FONT>    <a name="line.62"></a>
-<FONT color="green">063</FONT>            public BootstrapUiBinderDemo(String firstName) {<a name="line.63"></a>
-<FONT color="green">064</FONT>    <a name="line.64"></a>
-<FONT color="green">065</FONT>                    initWidget(uiBinder.createAndBindUi(this));<a name="line.65"></a>
-<FONT color="green">066</FONT>                    button.setText(firstName);<a name="line.66"></a>
-<FONT color="green">067</FONT>                    <a name="line.67"></a>
-<FONT color="green">068</FONT>            }<a name="line.68"></a>
-<FONT color="green">069</FONT>    <a name="line.69"></a>
-<FONT color="green">070</FONT>            @UiHandler("button")<a name="line.70"></a>
-<FONT color="green">071</FONT>            void onClick(ClickEvent e) {<a name="line.71"></a>
-<FONT color="green">072</FONT>    <a name="line.72"></a>
-<FONT color="green">073</FONT>                    Window.alert("Hello!");<a name="line.73"></a>
-<FONT color="green">074</FONT>            }<a name="line.74"></a>
-<FONT color="green">075</FONT>            <a name="line.75"></a>
-<FONT color="green">076</FONT>            @UiHandler("splitDropdownButton")<a name="line.76"></a>
-<FONT color="green">077</FONT>            void onSplitClick(ClickEvent e) {<a name="line.77"></a>
-<FONT color="green">078</FONT>                    Window.alert("Split");<a name="line.78"></a>
-<FONT color="green">079</FONT>            }<a name="line.79"></a>
-<FONT color="green">080</FONT>            <a name="line.80"></a>
-<FONT color="green">081</FONT>            <a name="line.81"></a>
+<FONT color="green">060</FONT>    <a name="line.60"></a>
+<FONT color="green">061</FONT>            @UiField<a name="line.61"></a>
+<FONT color="green">062</FONT>            SplitDropdownButton splitDropdownButton;<a name="line.62"></a>
+<FONT color="green">063</FONT>    <a name="line.63"></a>
+<FONT color="green">064</FONT>            public BootstrapUiBinderDemo(String firstName) {<a name="line.64"></a>
+<FONT color="green">065</FONT>    <a name="line.65"></a>
+<FONT color="green">066</FONT>                    initWidget(uiBinder.createAndBindUi(this));<a name="line.66"></a>
+<FONT color="green">067</FONT>                    button.setText(firstName);<a name="line.67"></a>
+<FONT color="green">068</FONT>    <a name="line.68"></a>
+<FONT color="green">069</FONT>            }<a name="line.69"></a>
+<FONT color="green">070</FONT>    <a name="line.70"></a>
+<FONT color="green">071</FONT>            @UiHandler("button")<a name="line.71"></a>
+<FONT color="green">072</FONT>            void onClick(ClickEvent e) {<a name="line.72"></a>
+<FONT color="green">073</FONT>    <a name="line.73"></a>
+<FONT color="green">074</FONT>                    Window.alert("Hello!");<a name="line.74"></a>
+<FONT color="green">075</FONT>            }<a name="line.75"></a>
+<FONT color="green">076</FONT>    <a name="line.76"></a>
+<FONT color="green">077</FONT>            @UiHandler("splitDropdownButton")<a name="line.77"></a>
+<FONT color="green">078</FONT>            void onSplitClick(ClickEvent e) {<a name="line.78"></a>
+<FONT color="green">079</FONT>                    Window.alert("Split");<a name="line.79"></a>
+<FONT color="green">080</FONT>            }<a name="line.80"></a>
+<FONT color="green">081</FONT>    <a name="line.81"></a>
 <FONT color="green">082</FONT>            public void setText(String text) {<a name="line.82"></a>
 <FONT color="green">083</FONT>    <a name="line.83"></a>
 <FONT color="green">084</FONT>                    button.setText(text);<a name="line.84"></a>
@@ -95,17 +95,20 @@
 <FONT color="green">092</FONT>            @UiHandler("contentButton")<a name="line.92"></a>
 <FONT color="green">093</FONT>            void onClickContentSave(ClickEvent e) {<a name="line.93"></a>
 <FONT color="green">094</FONT>    <a name="line.94"></a>
-<FONT color="green">095</FONT>                    modal.hide();<a name="line.95"></a>
-<FONT color="green">096</FONT>    //              Window.alert("Hello!");<a name="line.96"></a>
-<FONT color="green">097</FONT>            }<a name="line.97"></a>
-<FONT color="green">098</FONT>            <a name="line.98"></a>
-<FONT color="green">099</FONT>            @UiHandler("saveButton")<a name="line.99"></a>
-<FONT color="green">100</FONT>            void onClickSave(ClickEvent e) {<a name="line.100"></a>
-<FONT color="green">101</FONT>                    modal.hide();<a name="line.101"></a>
-<FONT color="green">102</FONT>    //              Window.alert("Hello!");<a name="line.102"></a>
-<FONT color="green">103</FONT>            }<a name="line.103"></a>
-<FONT color="green">104</FONT>    <a name="line.104"></a>
-<FONT color="green">105</FONT>    }<a name="line.105"></a>
+<FONT color="green">095</FONT>                    Modal testModal = new Modal();<a name="line.95"></a>
+<FONT color="green">096</FONT>                    testModal.setTitle("Lalala");<a name="line.96"></a>
+<FONT color="green">097</FONT>                    testModal.show();<a name="line.97"></a>
+<FONT color="green">098</FONT>    //              modal.hide();<a name="line.98"></a>
+<FONT color="green">099</FONT>    //              Window.alert("Hello!");<a name="line.99"></a>
+<FONT color="green">100</FONT>            }<a name="line.100"></a>
+<FONT color="green">101</FONT>    <a name="line.101"></a>
+<FONT color="green">102</FONT>            @UiHandler("saveButton")<a name="line.102"></a>
+<FONT color="green">103</FONT>            void onClickSave(ClickEvent e) {<a name="line.103"></a>
+<FONT color="green">104</FONT>                    modal.hide();<a name="line.104"></a>
+<FONT color="green">105</FONT>    //              Window.alert("Hello!");<a name="line.105"></a>
+<FONT color="green">106</FONT>            }<a name="line.106"></a>
+<FONT color="green">107</FONT>    <a name="line.107"></a>
+<FONT color="green">108</FONT>    }<a name="line.108"></a>
 
 
 
