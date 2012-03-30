@@ -21,12 +21,12 @@
   <distributionManagement>
   <repository>
     <id>repo</id>
-    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/release</url>
+    <url>http://gwtbootstrap.github.com/maven/release</url>
   </repository>
   
   <snapshotRepository>
     <id>snapshot-repo</id>
-    <url>http://gwtbootstrap.github.com/gwt-bootstrap/maven/snapshots</url>
+    <url>http://gwtbootstrap.github.com/maven/snapshots</url>
   </snapshotRepository>
 </distributionManagement>
   
@@ -152,12 +152,12 @@
       <distributionManagement>
         <repository>
           <id>repo</id>
-          <url>file:target/site/maven/release</url>
+          <url>file:maven/release</url>
           <layout>default</layout>
         </repository>
         <snapshotRepository>
           <id>snapshot-repo</id>
-          <url>file:target/site/maven/snapshots</url>
+          <url>file:maven/snapshots</url>
           <layout>default</layout>
         </snapshotRepository>
       </distributionManagement>
