@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasHref;
 import com.github.gwtbootstrap.client.ui.base.HoverBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;

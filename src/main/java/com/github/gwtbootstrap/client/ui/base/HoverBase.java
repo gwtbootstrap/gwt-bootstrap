@@ -145,6 +145,10 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 			setPlacement(Placement.LEFT);
 		else if (placement == "right")
 			setPlacement(Placement.RIGHT);
+		else
+			throw new IllegalArgumentException("The placement \"" + placement
+					+ "\" is not supported.");
+
 	}
 
 	/**
@@ -178,6 +182,9 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 			setTrigger(Trigger.FOCUS);
 		else if (trigger == "manual")
 			setTrigger(Trigger.MANUAL);
+		else
+			throw new IllegalArgumentException("The trigger \"" + trigger
+					+ "\" is not supported.");
 	}
 
 	/**

@@ -19,13 +19,20 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.InlineLabel;
 
+//@formatter:off
 /**
- * A Inline Label Component. You could have multiple types :)
+ * Colored label to show warnings, tags, ... You could have multiple types :)
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
+ * 
  * @author Dominik Mayer
- * @since 23/01/2012
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#labels">Bootstrap documentation</a>
+ * @see Badge
  */
+//@formatter:on
 public class Label extends InlineLabel {
 
 	public Label() {
@@ -44,10 +51,10 @@ public class Label extends InlineLabel {
 
 	public void setType(Bootstrap.Label type) {
 		assert type != null : "type should not be null";
-		
+
 		setStyle(type);
 	}
-	
+
 	private void setStyle(Style style) {
 		setStyleName(style.get());
 	}

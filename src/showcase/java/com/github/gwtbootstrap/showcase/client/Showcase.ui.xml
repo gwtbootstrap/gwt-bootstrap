@@ -15,7 +15,7 @@
 
 		<b:Hero>
 			<b:Heading size="1">GWT-Bootstrap</b:Heading>
-			<b:Paragraph>Using Twitter's interface library on Google Web Toolkit.</b:Paragraph>
+			<b:Paragraph>Using Twitter's interface library with Google Web Toolkit.</b:Paragraph>
 		</b:Hero>
 		<b:Row>
 			<b:Column size="3">
@@ -56,7 +56,8 @@
 			<b:Column size="12">
 			<g:HTMLPanel><strong>More:</strong> Get support in our 
 			<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group.</a> 
-			Check out the <a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site</a>
+			Check out the <a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site.</a>
+			Get stats from <a href="https://www.ohloh.net/p/gwt-bootstrap">ohloh.</a>
 			</g:HTMLPanel>
 <!-- 			<b:Heading size="6">Other things to do:</b:Heading> -->
 			</b:Column>

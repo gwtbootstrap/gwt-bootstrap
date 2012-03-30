@@ -41,7 +41,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  *      documentation</a>
  */
 public abstract class AlertBase extends DivWidget implements HasHTML,
-		IsAnimated, HasCloseHandlers, HasType {
+		IsAnimated, HasCloseHandlers, HasType<Bootstrap.AlertStyle> {
 
 	private Close close;
 
@@ -94,12 +94,20 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 */
 	private native void setHandlerFunctions(Element e) /*-{
 		var that = this;
-		$wnd.jQuery(e).bind('close', function() {
-			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
-		});
-		$wnd.jQuery(e).bind('closed', function() {
-			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
-		});
+		$wnd
+				.jQuery(e)
+				.bind(
+						'close',
+						function() {
+							that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
+						});
+		$wnd
+				.jQuery(e)
+				.bind(
+						'closed',
+						function() {
+							that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
+						});
 	}-*/;
 
 	/**
@@ -133,7 +141,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * 
 	 * @param style
 	 */
-	public void setType(Style style) {
+	public void setType(Bootstrap.AlertStyle style) {
 		super.setStyle(Bootstrap.AlertStyle.ALERT);
 		super.addStyle(style);
 	}
@@ -148,7 +156,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 *             your implementation if any style names change. The only valid
 	 *             use is inside UiBinder files where it processes the
 	 *             <code>style="..."</code> argument. Use
-	 *             {@link #setType(Style)} instead!
+	 *             {@link #setType(Bootstrap.AlertStyle)} instead!
 	 */
 	@Deprecated
 	public void setType(String typeName) {
@@ -158,6 +166,9 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 			setType(Bootstrap.AlertStyle.SUCCESS);
 		else if (typeName.equalsIgnoreCase("info"))
 			setType(Bootstrap.AlertStyle.INFO);
+		else
+			throw new IllegalArgumentException("The type \"" + typeName
+					+ "\" is not supported.");
 
 		setFade();
 	}

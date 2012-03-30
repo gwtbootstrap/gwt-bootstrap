@@ -265,8 +265,7 @@ public class Modal extends DivWidget implements HasVisibility,
 	}-*/;
 
 	/**
-	 * Adds the Java functions that fire the Events to document. It is a
-	 * convenience method to have a cleaner code later on.
+	 * Links the Java functions that fire the events.
 	 */
 	private native void setHandlerFunctions(Element e) /*-{
 		var that = this;

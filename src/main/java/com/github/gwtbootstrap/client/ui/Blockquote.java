@@ -18,81 +18,78 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.google.gwt.user.client.DOM;
 
+//@formatter:off
 /**
+ * Left or right aligned blockquote with optional source.
  *
- * @author carlos
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
  */
+//@formatter:on
 public class Blockquote extends AbstractTypography {
 
-    {
-        setElement(DOM.createElement("blockquote"));
-    }
+	public Blockquote() {
+		setElement(DOM.createElement("blockquote"));
+	}
 
-    public Blockquote() {
-    	// Needed for UiBinder
-    }
-    
-    public Blockquote(String text) {
-        setText(text);
-    }
+	public Blockquote(String text) {
+		setText(text);
+	}
 
-    public Blockquote(String text, String cite) {
-        this(text);
-        setCite(cite);
-    }
+	public Blockquote(String text, String cite) {
+		this(text);
+		setCite(cite);
+	}
 
-    public Blockquote(String text, boolean pullright) {
-        setText(text);
-        setPullright(pullright);
-    }
+	public Blockquote(String text, boolean pullright) {
+		setText(text);
+		setPullright(pullright);
+	}
 
-    public Blockquote(String text, String cite, boolean pullright) {
-        this(text);
-        setCite(cite);
-        setPullright(pullright);
-    }
+	public Blockquote(String text, String cite, boolean pullright) {
+		this(text);
+		setCite(cite);
+		setPullright(pullright);
+	}
 
-    private void pullRight() {
-        setStyleName("pull-right");
-    }
-    
-    public void setCite(String cite) {
-    	getElement().appendChild(new SmallCite(cite).getElement());
-    }
-    
-    public void setPullright(boolean pullright) {
-    	if (pullright) {
-            pullRight();
-        }
-    }
+	private void pullRight() {
+		setStyleName("pull-right");
+	}
 
-    private class Cite extends AbstractTypography {
+	public void setCite(String cite) {
+		getElement().appendChild(new SmallCite(cite).getElement());
+	}
 
-        {
-            setElement(DOM.createElement("cite"));
-        }
+	public void setPullright(boolean pullright) {
+		if (pullright) {
+			pullRight();
+		}
+	}
 
-        public Cite(String text) {
-            setText(text);
-        }
-    }
+	private class Cite extends AbstractTypography {
 
-    private class SmallCite extends AbstractTypography {
+		public Cite(String text) {
+			setElement(DOM.createElement("cite"));
+			setText(text);
+		}
+	}
 
-        private final Cite cite;
+	private class SmallCite extends AbstractTypography {
 
-        {
-            setElement(DOM.createElement("small"));
-        }
+		private final Cite cite;
 
-        public SmallCite(String text) {
-            this.cite = new Cite(text);
-            getElement().appendChild(cite.getElement());
-        }
+		public SmallCite(String text) {
+			setElement(DOM.createElement("small"));
+			this.cite = new Cite(text);
+			getElement().appendChild(cite.getElement());
+		}
 
-        @Override
-        public void setText(String text) {
-            cite.setText(text);
-        }
-    }
+		@Override
+		public void setText(String text) {
+			cite.setText(text);
+		}
+	}
 }

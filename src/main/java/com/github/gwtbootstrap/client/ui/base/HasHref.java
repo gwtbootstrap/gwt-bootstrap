@@ -1,4 +1,4 @@
-package com.github.gwtbootstrap.client.ui;
+package com.github.gwtbootstrap.client.ui.base;
 
 public interface HasHref {
 
