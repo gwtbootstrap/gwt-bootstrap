@@ -18,43 +18,114 @@
 <FONT color="green">015</FONT>     */<a name="line.15"></a>
 <FONT color="green">016</FONT>    package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
 <FONT color="green">017</FONT>    <a name="line.17"></a>
-<FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.Style;<a name="line.18"></a>
-<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.resources.Bootstrap;<a name="line.19"></a>
+<FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.HasType;<a name="line.18"></a>
+<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.constants.BadgeType;<a name="line.19"></a>
 <FONT color="green">020</FONT>    import com.google.gwt.user.client.ui.InlineLabel;<a name="line.20"></a>
 <FONT color="green">021</FONT>    <a name="line.21"></a>
-<FONT color="green">022</FONT>    /**<a name="line.22"></a>
-<FONT color="green">023</FONT>     * A Badge to show some kind of count.<a name="line.23"></a>
-<FONT color="green">024</FONT>     * <a name="line.24"></a>
-<FONT color="green">025</FONT>     * @author Dominik Mayer<a name="line.25"></a>
-<FONT color="green">026</FONT>     */<a name="line.26"></a>
-<FONT color="green">027</FONT>    public class Badge extends InlineLabel {<a name="line.27"></a>
-<FONT color="green">028</FONT>            <a name="line.28"></a>
-<FONT color="green">029</FONT>            public Badge() {<a name="line.29"></a>
-<FONT color="green">030</FONT>                    this(Bootstrap.Badge.DEFAULT);<a name="line.30"></a>
-<FONT color="green">031</FONT>            }<a name="line.31"></a>
-<FONT color="green">032</FONT>            <a name="line.32"></a>
-<FONT color="green">033</FONT>            public Badge(String text) {<a name="line.33"></a>
-<FONT color="green">034</FONT>                    this();<a name="line.34"></a>
-<FONT color="green">035</FONT>                    setText(text);<a name="line.35"></a>
-<FONT color="green">036</FONT>            }<a name="line.36"></a>
-<FONT color="green">037</FONT>            <a name="line.37"></a>
-<FONT color="green">038</FONT>            public Badge(int number) {<a name="line.38"></a>
-<FONT color="green">039</FONT>                    this();<a name="line.39"></a>
-<FONT color="green">040</FONT>                    setText(String.valueOf(number));<a name="line.40"></a>
-<FONT color="green">041</FONT>            }<a name="line.41"></a>
-<FONT color="green">042</FONT>            <a name="line.42"></a>
-<FONT color="green">043</FONT>            public Badge(Bootstrap.Badge type) {<a name="line.43"></a>
-<FONT color="green">044</FONT>                    setStyle(type);<a name="line.44"></a>
-<FONT color="green">045</FONT>            }<a name="line.45"></a>
-<FONT color="green">046</FONT>            <a name="line.46"></a>
-<FONT color="green">047</FONT>            private void setStyle(Style style) {<a name="line.47"></a>
-<FONT color="green">048</FONT>                    setStyleName(style.get());<a name="line.48"></a>
-<FONT color="green">049</FONT>            }<a name="line.49"></a>
-<FONT color="green">050</FONT>    <a name="line.50"></a>
-<FONT color="green">051</FONT>            public void setType(String typename) {<a name="line.51"></a>
-<FONT color="green">052</FONT>                    addStyleName("badge-" + typename);<a name="line.52"></a>
-<FONT color="green">053</FONT>            }<a name="line.53"></a>
-<FONT color="green">054</FONT>    }<a name="line.54"></a>
+<FONT color="green">022</FONT>    //@formatter:off<a name="line.22"></a>
+<FONT color="green">023</FONT>    /**<a name="line.23"></a>
+<FONT color="green">024</FONT>     * Badge to show some kind of count.<a name="line.24"></a>
+<FONT color="green">025</FONT>     *  <a name="line.25"></a>
+<FONT color="green">026</FONT>     * &lt;p&gt;<a name="line.26"></a>
+<FONT color="green">027</FONT>     * &lt;h3&gt;UiBinder Usage:&lt;/h3&gt;<a name="line.27"></a>
+<FONT color="green">028</FONT>     * <a name="line.28"></a>
+<FONT color="green">029</FONT>     * &lt;pre&gt;<a name="line.29"></a>
+<FONT color="green">030</FONT>     * {@code &lt;b:Badge type="error"&gt;2&lt;/b:Badge&gt;}<a name="line.30"></a>
+<FONT color="green">031</FONT>     * &lt;/pre&gt;<a name="line.31"></a>
+<FONT color="green">032</FONT>     * <a name="line.32"></a>
+<FONT color="green">033</FONT>     * All arguments are optional.<a name="line.33"></a>
+<FONT color="green">034</FONT>     * <a name="line.34"></a>
+<FONT color="green">035</FONT>     * &lt;/p&gt;<a name="line.35"></a>
+<FONT color="green">036</FONT>     * @since 2.0.2.0<a name="line.36"></a>
+<FONT color="green">037</FONT>     * <a name="line.37"></a>
+<FONT color="green">038</FONT>     * @author Dominik Mayer<a name="line.38"></a>
+<FONT color="green">039</FONT>     * <a name="line.39"></a>
+<FONT color="green">040</FONT>     * @see &lt;a href="http://twitter.github.com/bootstrap/components.html#badges"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.40"></a>
+<FONT color="green">041</FONT>     * @see Label<a name="line.41"></a>
+<FONT color="green">042</FONT>     */<a name="line.42"></a>
+<FONT color="green">043</FONT>    //@formatter:on<a name="line.43"></a>
+<FONT color="green">044</FONT>    public class Badge extends InlineLabel implements HasType&lt;BadgeType&gt; {<a name="line.44"></a>
+<FONT color="green">045</FONT>    <a name="line.45"></a>
+<FONT color="green">046</FONT>            /**<a name="line.46"></a>
+<FONT color="green">047</FONT>             * Creates an empty default type Badge.<a name="line.47"></a>
+<FONT color="green">048</FONT>             */<a name="line.48"></a>
+<FONT color="green">049</FONT>            public Badge() {<a name="line.49"></a>
+<FONT color="green">050</FONT>                    this(BadgeType.DEFAULT);<a name="line.50"></a>
+<FONT color="green">051</FONT>            }<a name="line.51"></a>
+<FONT color="green">052</FONT>    <a name="line.52"></a>
+<FONT color="green">053</FONT>            /**<a name="line.53"></a>
+<FONT color="green">054</FONT>             * Creates a default type Badge with the text set.<a name="line.54"></a>
+<FONT color="green">055</FONT>             * <a name="line.55"></a>
+<FONT color="green">056</FONT>             * @param text<a name="line.56"></a>
+<FONT color="green">057</FONT>             *            the text of the Badge<a name="line.57"></a>
+<FONT color="green">058</FONT>             * <a name="line.58"></a>
+<FONT color="green">059</FONT>             * @see #Badge(int)<a name="line.59"></a>
+<FONT color="green">060</FONT>             */<a name="line.60"></a>
+<FONT color="green">061</FONT>            public Badge(String text) {<a name="line.61"></a>
+<FONT color="green">062</FONT>                    this();<a name="line.62"></a>
+<FONT color="green">063</FONT>                    setText(text);<a name="line.63"></a>
+<FONT color="green">064</FONT>            }<a name="line.64"></a>
+<FONT color="green">065</FONT>    <a name="line.65"></a>
+<FONT color="green">066</FONT>            /**<a name="line.66"></a>
+<FONT color="green">067</FONT>             * Creates a default type Badge with the text set.<a name="line.67"></a>
+<FONT color="green">068</FONT>             * <a name="line.68"></a>
+<FONT color="green">069</FONT>             * @param number<a name="line.69"></a>
+<FONT color="green">070</FONT>             *            text to be set<a name="line.70"></a>
+<FONT color="green">071</FONT>             * <a name="line.71"></a>
+<FONT color="green">072</FONT>             * @see #Badge(String)<a name="line.72"></a>
+<FONT color="green">073</FONT>             */<a name="line.73"></a>
+<FONT color="green">074</FONT>            public Badge(int number) {<a name="line.74"></a>
+<FONT color="green">075</FONT>                    this();<a name="line.75"></a>
+<FONT color="green">076</FONT>                    setText(String.valueOf(number));<a name="line.76"></a>
+<FONT color="green">077</FONT>            }<a name="line.77"></a>
+<FONT color="green">078</FONT>    <a name="line.78"></a>
+<FONT color="green">079</FONT>            /**<a name="line.79"></a>
+<FONT color="green">080</FONT>             * Creates an empty Badge of the provided type.<a name="line.80"></a>
+<FONT color="green">081</FONT>             * <a name="line.81"></a>
+<FONT color="green">082</FONT>             * @param type<a name="line.82"></a>
+<FONT color="green">083</FONT>             *            the badge's type<a name="line.83"></a>
+<FONT color="green">084</FONT>             */<a name="line.84"></a>
+<FONT color="green">085</FONT>            public Badge(BadgeType type) {<a name="line.85"></a>
+<FONT color="green">086</FONT>                    setType(type);<a name="line.86"></a>
+<FONT color="green">087</FONT>            }<a name="line.87"></a>
+<FONT color="green">088</FONT>    <a name="line.88"></a>
+<FONT color="green">089</FONT>            /**<a name="line.89"></a>
+<FONT color="green">090</FONT>             * Sets the type of the Badge.<a name="line.90"></a>
+<FONT color="green">091</FONT>             * <a name="line.91"></a>
+<FONT color="green">092</FONT>             * @param type<a name="line.92"></a>
+<FONT color="green">093</FONT>             *            the new type<a name="line.93"></a>
+<FONT color="green">094</FONT>             */<a name="line.94"></a>
+<FONT color="green">095</FONT>            public void setType(BadgeType type) {<a name="line.95"></a>
+<FONT color="green">096</FONT>                    setStyleName(type.get());<a name="line.96"></a>
+<FONT color="green">097</FONT>            }<a name="line.97"></a>
+<FONT color="green">098</FONT>    <a name="line.98"></a>
+<FONT color="green">099</FONT>            /**<a name="line.99"></a>
+<FONT color="green">100</FONT>             * {@inheritDoc}<a name="line.100"></a>
+<FONT color="green">101</FONT>             * <a name="line.101"></a>
+<FONT color="green">102</FONT>             * @deprecated This method should never be called directly. It will break<a name="line.102"></a>
+<FONT color="green">103</FONT>             *             your implementation if any style names change. The only valid<a name="line.103"></a>
+<FONT color="green">104</FONT>             *             use is inside UiBinder files where it processes the<a name="line.104"></a>
+<FONT color="green">105</FONT>             *             &lt;code&gt;type="..."&lt;/code&gt; argument. Use<a name="line.105"></a>
+<FONT color="green">106</FONT>             *             {@link #setType(BadgeType)} instead!<a name="line.106"></a>
+<FONT color="green">107</FONT>             */<a name="line.107"></a>
+<FONT color="green">108</FONT>            @Deprecated<a name="line.108"></a>
+<FONT color="green">109</FONT>            public void setType(String typeName) {<a name="line.109"></a>
+<FONT color="green">110</FONT>                    if (typeName.equalsIgnoreCase("default"))<a name="line.110"></a>
+<FONT color="green">111</FONT>                            setType(BadgeType.DEFAULT);<a name="line.111"></a>
+<FONT color="green">112</FONT>                    else if (typeName.equalsIgnoreCase("success"))<a name="line.112"></a>
+<FONT color="green">113</FONT>                            setType(BadgeType.SUCCESS);<a name="line.113"></a>
+<FONT color="green">114</FONT>                    else if (typeName.equalsIgnoreCase("warning"))<a name="line.114"></a>
+<FONT color="green">115</FONT>                            setType(BadgeType.WARNING);<a name="line.115"></a>
+<FONT color="green">116</FONT>                    else if (typeName.equalsIgnoreCase("error"))<a name="line.116"></a>
+<FONT color="green">117</FONT>                            setType(BadgeType.ERROR);<a name="line.117"></a>
+<FONT color="green">118</FONT>                    else if (typeName.equalsIgnoreCase("info"))<a name="line.118"></a>
+<FONT color="green">119</FONT>                            setType(BadgeType.INFO);<a name="line.119"></a>
+<FONT color="green">120</FONT>                    else if (typeName.equalsIgnoreCase("inverse"))<a name="line.120"></a>
+<FONT color="green">121</FONT>                            setType(BadgeType.INVERSE);<a name="line.121"></a>
+<FONT color="green">122</FONT>                    throw new IllegalArgumentException("The type \"" + typeName<a name="line.122"></a>
+<FONT color="green">123</FONT>                                    + "\" is not supported.");<a name="line.123"></a>
+<FONT color="green">124</FONT>            }<a name="line.124"></a>
+<FONT color="green">125</FONT>    }<a name="line.125"></a>
 
 
 

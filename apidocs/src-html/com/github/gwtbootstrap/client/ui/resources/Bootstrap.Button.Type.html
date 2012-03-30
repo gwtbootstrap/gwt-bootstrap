@@ -312,17 +312,17 @@
 <FONT color="green">309</FONT>                    }<a name="line.309"></a>
 <FONT color="green">310</FONT>            }<a name="line.310"></a>
 <FONT color="green">311</FONT>    <a name="line.311"></a>
-<FONT color="green">312</FONT>            public enum Badge implements Style {<a name="line.312"></a>
-<FONT color="green">313</FONT>    <a name="line.313"></a>
-<FONT color="green">314</FONT>                    DEFAULT(""), SUCCESS("badge-success"), WARNING("badge-warning"), ERROR(<a name="line.314"></a>
-<FONT color="green">315</FONT>                                    "badge-error"), INFO("badge-info"), INVERSE("badge-inverse");<a name="line.315"></a>
-<FONT color="green">316</FONT>    <a name="line.316"></a>
-<FONT color="green">317</FONT>                    private static final String badge = "badge ";<a name="line.317"></a>
+<FONT color="green">312</FONT>            // TODO<a name="line.312"></a>
+<FONT color="green">313</FONT>            public enum AlertStyle implements Style {<a name="line.313"></a>
+<FONT color="green">314</FONT>    <a name="line.314"></a>
+<FONT color="green">315</FONT>                    DEFAULT(""), ERROR("alert-error"), SUCCESS("alert-success"), INFO(<a name="line.315"></a>
+<FONT color="green">316</FONT>                                    "alert-info"), ALERT("alert"), BLOCK("alert-block"), HEADING(<a name="line.316"></a>
+<FONT color="green">317</FONT>                                    "alert-heading");<a name="line.317"></a>
 <FONT color="green">318</FONT>    <a name="line.318"></a>
 <FONT color="green">319</FONT>                    private String className;<a name="line.319"></a>
 <FONT color="green">320</FONT>    <a name="line.320"></a>
-<FONT color="green">321</FONT>                    private Badge(String className) {<a name="line.321"></a>
-<FONT color="green">322</FONT>                            this.className = badge + className;<a name="line.322"></a>
+<FONT color="green">321</FONT>                    private AlertStyle(String className) {<a name="line.321"></a>
+<FONT color="green">322</FONT>                            this.className = className;<a name="line.322"></a>
 <FONT color="green">323</FONT>                    }<a name="line.323"></a>
 <FONT color="green">324</FONT>    <a name="line.324"></a>
 <FONT color="green">325</FONT>                    public String get() {<a name="line.325"></a>
@@ -330,64 +330,46 @@
 <FONT color="green">327</FONT>                    }<a name="line.327"></a>
 <FONT color="green">328</FONT>            }<a name="line.328"></a>
 <FONT color="green">329</FONT>    <a name="line.329"></a>
-<FONT color="green">330</FONT>            // TODO<a name="line.330"></a>
-<FONT color="green">331</FONT>            public enum AlertStyle implements Style {<a name="line.331"></a>
-<FONT color="green">332</FONT>    <a name="line.332"></a>
-<FONT color="green">333</FONT>                    DEFAULT(""), ERROR("alert-error"), SUCCESS("alert-success"), INFO(<a name="line.333"></a>
-<FONT color="green">334</FONT>                                    "alert-info"), ALERT("alert"), BLOCK("alert-block"), HEADING(<a name="line.334"></a>
-<FONT color="green">335</FONT>                                    "alert-heading");<a name="line.335"></a>
-<FONT color="green">336</FONT>    <a name="line.336"></a>
-<FONT color="green">337</FONT>                    private String className;<a name="line.337"></a>
+<FONT color="green">330</FONT>            public enum Label implements Style {<a name="line.330"></a>
+<FONT color="green">331</FONT>    <a name="line.331"></a>
+<FONT color="green">332</FONT>                    DEFAULT(""),<a name="line.332"></a>
+<FONT color="green">333</FONT>                    SUCCESS("label-success"),<a name="line.333"></a>
+<FONT color="green">334</FONT>                    WARNING("label-warning"),<a name="line.334"></a>
+<FONT color="green">335</FONT>                    IMPORTANT("label-important"),<a name="line.335"></a>
+<FONT color="green">336</FONT>                    INFO("label-info"),<a name="line.336"></a>
+<FONT color="green">337</FONT>                    INVERSE("label-inverse");<a name="line.337"></a>
 <FONT color="green">338</FONT>    <a name="line.338"></a>
-<FONT color="green">339</FONT>                    private AlertStyle(String className) {<a name="line.339"></a>
-<FONT color="green">340</FONT>                            this.className = className;<a name="line.340"></a>
-<FONT color="green">341</FONT>                    }<a name="line.341"></a>
+<FONT color="green">339</FONT>                    private static final String label = "label ";<a name="line.339"></a>
+<FONT color="green">340</FONT>    <a name="line.340"></a>
+<FONT color="green">341</FONT>                    private String className;<a name="line.341"></a>
 <FONT color="green">342</FONT>    <a name="line.342"></a>
-<FONT color="green">343</FONT>                    public String get() {<a name="line.343"></a>
-<FONT color="green">344</FONT>                            return className;<a name="line.344"></a>
+<FONT color="green">343</FONT>                    private Label(String className) {<a name="line.343"></a>
+<FONT color="green">344</FONT>                            this.className = label + className;<a name="line.344"></a>
 <FONT color="green">345</FONT>                    }<a name="line.345"></a>
-<FONT color="green">346</FONT>            }<a name="line.346"></a>
-<FONT color="green">347</FONT>    <a name="line.347"></a>
-<FONT color="green">348</FONT>            public enum Label implements Style {<a name="line.348"></a>
-<FONT color="green">349</FONT>    <a name="line.349"></a>
-<FONT color="green">350</FONT>                    DEFAULT(""),<a name="line.350"></a>
-<FONT color="green">351</FONT>                    SUCCESS("label-success"),<a name="line.351"></a>
-<FONT color="green">352</FONT>                    WARNING("label-warning"),<a name="line.352"></a>
-<FONT color="green">353</FONT>                    IMPORTANT("label-important"),<a name="line.353"></a>
-<FONT color="green">354</FONT>                    INFO("label-info"),<a name="line.354"></a>
-<FONT color="green">355</FONT>                    INVERSE("label-inverse");<a name="line.355"></a>
-<FONT color="green">356</FONT>    <a name="line.356"></a>
-<FONT color="green">357</FONT>                    private static final String label = "label ";<a name="line.357"></a>
-<FONT color="green">358</FONT>    <a name="line.358"></a>
-<FONT color="green">359</FONT>                    private String className;<a name="line.359"></a>
-<FONT color="green">360</FONT>    <a name="line.360"></a>
-<FONT color="green">361</FONT>                    private Label(String className) {<a name="line.361"></a>
-<FONT color="green">362</FONT>                            this.className = label + className;<a name="line.362"></a>
-<FONT color="green">363</FONT>                    }<a name="line.363"></a>
-<FONT color="green">364</FONT>    <a name="line.364"></a>
-<FONT color="green">365</FONT>                    public String get() {<a name="line.365"></a>
-<FONT color="green">366</FONT>                            return className;<a name="line.366"></a>
-<FONT color="green">367</FONT>                    }<a name="line.367"></a>
-<FONT color="green">368</FONT>            }<a name="line.368"></a>
-<FONT color="green">369</FONT>    <a name="line.369"></a>
-<FONT color="green">370</FONT>            public enum Pagination implements Style {<a name="line.370"></a>
-<FONT color="green">371</FONT>    <a name="line.371"></a>
-<FONT color="green">372</FONT>                    LEFT(""), CENTERED("pagination-centered"), RIGHT("pagination-right");<a name="line.372"></a>
-<FONT color="green">373</FONT>    <a name="line.373"></a>
-<FONT color="green">374</FONT>                    private static final String pagination = "pagination ";<a name="line.374"></a>
-<FONT color="green">375</FONT>    <a name="line.375"></a>
-<FONT color="green">376</FONT>                    private String className;<a name="line.376"></a>
-<FONT color="green">377</FONT>    <a name="line.377"></a>
-<FONT color="green">378</FONT>                    private Pagination(String className) {<a name="line.378"></a>
-<FONT color="green">379</FONT>                            this.className = pagination + className;<a name="line.379"></a>
-<FONT color="green">380</FONT>                    }<a name="line.380"></a>
-<FONT color="green">381</FONT>    <a name="line.381"></a>
-<FONT color="green">382</FONT>                    public String get() {<a name="line.382"></a>
-<FONT color="green">383</FONT>                            return className;<a name="line.383"></a>
-<FONT color="green">384</FONT>                    }<a name="line.384"></a>
-<FONT color="green">385</FONT>            }<a name="line.385"></a>
-<FONT color="green">386</FONT>    <a name="line.386"></a>
-<FONT color="green">387</FONT>    }<a name="line.387"></a>
+<FONT color="green">346</FONT>    <a name="line.346"></a>
+<FONT color="green">347</FONT>                    public String get() {<a name="line.347"></a>
+<FONT color="green">348</FONT>                            return className;<a name="line.348"></a>
+<FONT color="green">349</FONT>                    }<a name="line.349"></a>
+<FONT color="green">350</FONT>            }<a name="line.350"></a>
+<FONT color="green">351</FONT>    <a name="line.351"></a>
+<FONT color="green">352</FONT>            public enum Pagination implements Style {<a name="line.352"></a>
+<FONT color="green">353</FONT>    <a name="line.353"></a>
+<FONT color="green">354</FONT>                    LEFT(""), CENTERED("pagination-centered"), RIGHT("pagination-right");<a name="line.354"></a>
+<FONT color="green">355</FONT>    <a name="line.355"></a>
+<FONT color="green">356</FONT>                    private static final String pagination = "pagination ";<a name="line.356"></a>
+<FONT color="green">357</FONT>    <a name="line.357"></a>
+<FONT color="green">358</FONT>                    private String className;<a name="line.358"></a>
+<FONT color="green">359</FONT>    <a name="line.359"></a>
+<FONT color="green">360</FONT>                    private Pagination(String className) {<a name="line.360"></a>
+<FONT color="green">361</FONT>                            this.className = pagination + className;<a name="line.361"></a>
+<FONT color="green">362</FONT>                    }<a name="line.362"></a>
+<FONT color="green">363</FONT>    <a name="line.363"></a>
+<FONT color="green">364</FONT>                    public String get() {<a name="line.364"></a>
+<FONT color="green">365</FONT>                            return className;<a name="line.365"></a>
+<FONT color="green">366</FONT>                    }<a name="line.366"></a>
+<FONT color="green">367</FONT>            }<a name="line.367"></a>
+<FONT color="green">368</FONT>    <a name="line.368"></a>
+<FONT color="green">369</FONT>    }<a name="line.369"></a>
 
 
 

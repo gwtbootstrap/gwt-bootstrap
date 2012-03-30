@@ -109,54 +109,59 @@
 <FONT color="green">106</FONT>             */<a name="line.106"></a>
 <FONT color="green">107</FONT>            @Deprecated<a name="line.107"></a>
 <FONT color="green">108</FONT>            public void setShowOn(String device) {<a name="line.108"></a>
-<FONT color="green">109</FONT>                    if (device.equalsIgnoreCase("phone")) {<a name="line.109"></a>
+<FONT color="green">109</FONT>                    if (device.equalsIgnoreCase("phone"))<a name="line.109"></a>
 <FONT color="green">110</FONT>                            setShowOn(Device.PHONE);<a name="line.110"></a>
-<FONT color="green">111</FONT>                    } else if (device.equalsIgnoreCase("tablet")) {<a name="line.111"></a>
+<FONT color="green">111</FONT>                    else if (device.equalsIgnoreCase("tablet"))<a name="line.111"></a>
 <FONT color="green">112</FONT>                            setShowOn(Device.TABLET);<a name="line.112"></a>
-<FONT color="green">113</FONT>                    } else if (device.equalsIgnoreCase("desktop")) {<a name="line.113"></a>
+<FONT color="green">113</FONT>                    else if (device.equalsIgnoreCase("desktop"))<a name="line.113"></a>
 <FONT color="green">114</FONT>                            setShowOn(Device.DESKTOP);<a name="line.114"></a>
-<FONT color="green">115</FONT>                    }<a name="line.115"></a>
-<FONT color="green">116</FONT>            }<a name="line.116"></a>
-<FONT color="green">117</FONT>    <a name="line.117"></a>
-<FONT color="green">118</FONT>            /**<a name="line.118"></a>
-<FONT color="green">119</FONT>             * {@inheritDoc}<a name="line.119"></a>
-<FONT color="green">120</FONT>             */<a name="line.120"></a>
-<FONT color="green">121</FONT>            public void setHideOn(Device device) {<a name="line.121"></a>
-<FONT color="green">122</FONT>                    removeResponsiveStyles();<a name="line.122"></a>
-<FONT color="green">123</FONT>                    switch (device) {<a name="line.123"></a>
-<FONT color="green">124</FONT>                            case PHONE:<a name="line.124"></a>
-<FONT color="green">125</FONT>                                    addStyle(ResponsiveStyle.HIDDEN_PHONE);<a name="line.125"></a>
-<FONT color="green">126</FONT>                                    break;<a name="line.126"></a>
-<FONT color="green">127</FONT>                            case TABLET:<a name="line.127"></a>
-<FONT color="green">128</FONT>                                    addStyle(ResponsiveStyle.HIDDEN_TABLET);<a name="line.128"></a>
+<FONT color="green">115</FONT>                    else<a name="line.115"></a>
+<FONT color="green">116</FONT>                            throw new IllegalArgumentException("The device \"" + device<a name="line.116"></a>
+<FONT color="green">117</FONT>                                            + "\" is not supported.");<a name="line.117"></a>
+<FONT color="green">118</FONT>    <a name="line.118"></a>
+<FONT color="green">119</FONT>            }<a name="line.119"></a>
+<FONT color="green">120</FONT>    <a name="line.120"></a>
+<FONT color="green">121</FONT>            /**<a name="line.121"></a>
+<FONT color="green">122</FONT>             * {@inheritDoc}<a name="line.122"></a>
+<FONT color="green">123</FONT>             */<a name="line.123"></a>
+<FONT color="green">124</FONT>            public void setHideOn(Device device) {<a name="line.124"></a>
+<FONT color="green">125</FONT>                    removeResponsiveStyles();<a name="line.125"></a>
+<FONT color="green">126</FONT>                    switch (device) {<a name="line.126"></a>
+<FONT color="green">127</FONT>                            case PHONE:<a name="line.127"></a>
+<FONT color="green">128</FONT>                                    addStyle(ResponsiveStyle.HIDDEN_PHONE);<a name="line.128"></a>
 <FONT color="green">129</FONT>                                    break;<a name="line.129"></a>
-<FONT color="green">130</FONT>                            case DESKTOP:<a name="line.130"></a>
-<FONT color="green">131</FONT>                                    addStyle(ResponsiveStyle.HIDDEN_DESKTOP);<a name="line.131"></a>
+<FONT color="green">130</FONT>                            case TABLET:<a name="line.130"></a>
+<FONT color="green">131</FONT>                                    addStyle(ResponsiveStyle.HIDDEN_TABLET);<a name="line.131"></a>
 <FONT color="green">132</FONT>                                    break;<a name="line.132"></a>
-<FONT color="green">133</FONT>                    }<a name="line.133"></a>
-<FONT color="green">134</FONT>            }<a name="line.134"></a>
-<FONT color="green">135</FONT>    <a name="line.135"></a>
-<FONT color="green">136</FONT>            /**<a name="line.136"></a>
-<FONT color="green">137</FONT>             * {@inheritDoc}<a name="line.137"></a>
-<FONT color="green">138</FONT>             * <a name="line.138"></a>
-<FONT color="green">139</FONT>             * @deprecated This method should never be called directly. It will break<a name="line.139"></a>
-<FONT color="green">140</FONT>             *             your implementation if any style names change. The only valid<a name="line.140"></a>
-<FONT color="green">141</FONT>             *             use is inside UiBinder files where it processes the<a name="line.141"></a>
-<FONT color="green">142</FONT>             *             &lt;code&gt;hideOn="..."&lt;/code&gt; argument. Use<a name="line.142"></a>
-<FONT color="green">143</FONT>             *             {@link #setHideOn(Device)} instead!<a name="line.143"></a>
-<FONT color="green">144</FONT>             * <a name="line.144"></a>
-<FONT color="green">145</FONT>             */<a name="line.145"></a>
-<FONT color="green">146</FONT>            @Deprecated<a name="line.146"></a>
-<FONT color="green">147</FONT>            public void setHideOn(String device) {<a name="line.147"></a>
-<FONT color="green">148</FONT>                    if (device.equalsIgnoreCase("phone")) {<a name="line.148"></a>
-<FONT color="green">149</FONT>                            setHideOn(Device.PHONE);<a name="line.149"></a>
-<FONT color="green">150</FONT>                    } else if (device.equalsIgnoreCase("tablet")) {<a name="line.150"></a>
-<FONT color="green">151</FONT>                            setHideOn(Device.TABLET);<a name="line.151"></a>
-<FONT color="green">152</FONT>                    } else if (device.equalsIgnoreCase("desktop")) {<a name="line.152"></a>
-<FONT color="green">153</FONT>                            setHideOn(Device.DESKTOP);<a name="line.153"></a>
-<FONT color="green">154</FONT>                    }<a name="line.154"></a>
-<FONT color="green">155</FONT>            }<a name="line.155"></a>
-<FONT color="green">156</FONT>    }<a name="line.156"></a>
+<FONT color="green">133</FONT>                            case DESKTOP:<a name="line.133"></a>
+<FONT color="green">134</FONT>                                    addStyle(ResponsiveStyle.HIDDEN_DESKTOP);<a name="line.134"></a>
+<FONT color="green">135</FONT>                                    break;<a name="line.135"></a>
+<FONT color="green">136</FONT>                    }<a name="line.136"></a>
+<FONT color="green">137</FONT>            }<a name="line.137"></a>
+<FONT color="green">138</FONT>    <a name="line.138"></a>
+<FONT color="green">139</FONT>            /**<a name="line.139"></a>
+<FONT color="green">140</FONT>             * {@inheritDoc}<a name="line.140"></a>
+<FONT color="green">141</FONT>             * <a name="line.141"></a>
+<FONT color="green">142</FONT>             * @deprecated This method should never be called directly. It will break<a name="line.142"></a>
+<FONT color="green">143</FONT>             *             your implementation if any style names change. The only valid<a name="line.143"></a>
+<FONT color="green">144</FONT>             *             use is inside UiBinder files where it processes the<a name="line.144"></a>
+<FONT color="green">145</FONT>             *             &lt;code&gt;hideOn="..."&lt;/code&gt; argument. Use<a name="line.145"></a>
+<FONT color="green">146</FONT>             *             {@link #setHideOn(Device)} instead!<a name="line.146"></a>
+<FONT color="green">147</FONT>             * <a name="line.147"></a>
+<FONT color="green">148</FONT>             */<a name="line.148"></a>
+<FONT color="green">149</FONT>            @Deprecated<a name="line.149"></a>
+<FONT color="green">150</FONT>            public void setHideOn(String device) {<a name="line.150"></a>
+<FONT color="green">151</FONT>                    if (device.equalsIgnoreCase("phone"))<a name="line.151"></a>
+<FONT color="green">152</FONT>                            setHideOn(Device.PHONE);<a name="line.152"></a>
+<FONT color="green">153</FONT>                    else if (device.equalsIgnoreCase("tablet"))<a name="line.153"></a>
+<FONT color="green">154</FONT>                            setHideOn(Device.TABLET);<a name="line.154"></a>
+<FONT color="green">155</FONT>                    else if (device.equalsIgnoreCase("desktop"))<a name="line.155"></a>
+<FONT color="green">156</FONT>                            setHideOn(Device.DESKTOP);<a name="line.156"></a>
+<FONT color="green">157</FONT>                    else<a name="line.157"></a>
+<FONT color="green">158</FONT>                            throw new IllegalArgumentException("The device \"" + device<a name="line.158"></a>
+<FONT color="green">159</FONT>                                            + "\" is not supported.");<a name="line.159"></a>
+<FONT color="green">160</FONT>            }<a name="line.160"></a>
+<FONT color="green">161</FONT>    }<a name="line.161"></a>
 
 
 
