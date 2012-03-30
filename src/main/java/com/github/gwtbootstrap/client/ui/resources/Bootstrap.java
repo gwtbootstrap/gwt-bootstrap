@@ -309,24 +309,6 @@ public interface Bootstrap {
 		}
 	}
 
-	public enum Badge implements Style {
-
-		DEFAULT(""), SUCCESS("badge-success"), WARNING("badge-warning"), ERROR(
-				"badge-error"), INFO("badge-info"), INVERSE("badge-inverse");
-
-		private static final String badge = "badge ";
-
-		private String className;
-
-		private Badge(String className) {
-			this.className = badge + className;
-		}
-
-		public String get() {
-			return className;
-		}
-	}
-
 	// TODO
 	public enum AlertStyle implements Style {
 

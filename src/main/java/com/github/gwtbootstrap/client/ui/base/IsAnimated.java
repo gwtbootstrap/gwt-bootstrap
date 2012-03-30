@@ -27,8 +27,15 @@ public interface IsAnimated {
 	/**
 	 * Sets whether the Widget should be animated.
 	 * 
-	 * @param animated
+	 * @param animation
 	 *            <code>true</code> if the widget should be animated.
 	 */
-	void setAnimated(boolean animated);
+	void setAnimation(boolean animation);
+
+	/**
+	 * Gets whether the widget is animated.
+	 * 
+	 * @return <code>true</code> if the widget is animated
+	 */
+	boolean getAnimation();
 }

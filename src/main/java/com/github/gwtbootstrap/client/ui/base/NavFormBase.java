@@ -65,11 +65,13 @@ public class NavFormBase extends Form implements HasAlignment, HasSize {
 	 */
 	@Deprecated
 	public void setAlignment(String alignment) {
-		if (alignment.equalsIgnoreCase("left")) {
+		if (alignment.equalsIgnoreCase("left"))
 			setAlignment(Alignment.LEFT);
-		} else if (alignment.equalsIgnoreCase("right")) {
+		else if (alignment.equalsIgnoreCase("right"))
 			setAlignment(Alignment.RIGHT);
-		}
+		else
+			throw new IllegalArgumentException("The alignment \"" + alignment
+					+ "\" is not supported.");
 	}
 
 	/**

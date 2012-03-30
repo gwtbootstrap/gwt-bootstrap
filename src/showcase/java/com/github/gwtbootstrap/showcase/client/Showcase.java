@@ -15,7 +15,6 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
-import com.github.gwtbootstrap.client.ui.Container;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
@@ -24,33 +23,39 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Showcase extends Composite implements EntryPoint {
 
-    public void onModuleLoad() {
-    }
+	public void onModuleLoad() {
+	}
 
-    @UiField Container container;
-    @UiField Nav nav;
+	@UiField
+	FlowPanel sections;
+	@UiField
+	Nav nav;
 
-    private static ShowcaseUiBinder uiBinder = GWT.create(ShowcaseUiBinder.class);
+	private static ShowcaseUiBinder uiBinder = GWT
+			.create(ShowcaseUiBinder.class);
 
-    interface ShowcaseUiBinder extends UiBinder<Widget, Showcase> {
-    }
+	interface ShowcaseUiBinder extends UiBinder<Widget, Showcase> {
+	}
 
-    public Showcase() {
-        initWidget(uiBinder.createAndBindUi(this));
-        addSectionToContainer("Get Started", "setup", new Setup());
-        addSectionToContainer("Buttons", "buttons", new Buttons());
-        RootPanel.get().add(this);
-    }
+	public Showcase() {
+		initWidget(uiBinder.createAndBindUi(this));
+//        addSectionToContainer("Get Started", "setup", new Setup());
+//		addSectionToContainer("Get Support", "support", new Support());
+		addSectionToContainer("Buttons", "buttons", new Buttons());
+		RootPanel.get("content").add(this);
+	}
 
-    private void addSectionToContainer(String sectionName, String target, Widget section) {
-        nav.add(new NavLink(sectionName, "#" + target));
-        Section sec = new Section(target);
-        sec.add(section);
-        container.add(sec);
-    }
+	private void addSectionToContainer(String sectionName, String target,
+			Widget section) {
+		nav.add(new NavLink(sectionName, "#" + target));
+		Section sec = new Section(target);
+		sec.add(section);
+		sections.add(sec);
+	}
 }

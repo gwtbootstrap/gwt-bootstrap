@@ -15,40 +15,111 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.Style;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.base.HasType;
+import com.github.gwtbootstrap.client.ui.constants.BadgeType;
 import com.google.gwt.user.client.ui.InlineLabel;
 
+//@formatter:off
 /**
- * A Badge to show some kind of count.
+ * Badge to show some kind of count.
+ *  
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code <b:Badge type="error">2</b:Badge>}
+ * </pre>
+ * 
+ * All arguments are optional.
+ * 
+ * </p>
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#badges">Bootstrap documentation</a>
+ * @see Label
  */
-public class Badge extends InlineLabel {
-	
+//@formatter:on
+public class Badge extends InlineLabel implements HasType<BadgeType> {
+
+	/**
+	 * Creates an empty default type Badge.
+	 */
 	public Badge() {
-		this(Bootstrap.Badge.DEFAULT);
+		this(BadgeType.DEFAULT);
 	}
-	
+
+	/**
+	 * Creates a default type Badge with the text set.
+	 * 
+	 * @param text
+	 *            the text of the Badge
+	 * 
+	 * @see #Badge(int)
+	 */
 	public Badge(String text) {
 		this();
 		setText(text);
 	}
-	
+
+	/**
+	 * Creates a default type Badge with the text set.
+	 * 
+	 * @param number
+	 *            text to be set
+	 * 
+	 * @see #Badge(String)
+	 */
 	public Badge(int number) {
 		this();
 		setText(String.valueOf(number));
 	}
-	
-	public Badge(Bootstrap.Badge type) {
-		setStyle(type);
-	}
-	
-	private void setStyle(Style style) {
-		setStyleName(style.get());
+
+	/**
+	 * Creates an empty Badge of the provided type.
+	 * 
+	 * @param type
+	 *            the badge's type
+	 */
+	public Badge(BadgeType type) {
+		setType(type);
 	}
 
-	public void setType(String typename) {
-		addStyleName("badge-" + typename);
+	/**
+	 * Sets the type of the Badge.
+	 * 
+	 * @param type
+	 *            the new type
+	 */
+	public void setType(BadgeType type) {
+		setStyleName(type.get());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>type="..."</code> argument. Use
+	 *             {@link #setType(BadgeType)} instead!
+	 */
+	@Deprecated
+	public void setType(String typeName) {
+		if (typeName.equalsIgnoreCase("default"))
+			setType(BadgeType.DEFAULT);
+		else if (typeName.equalsIgnoreCase("success"))
+			setType(BadgeType.SUCCESS);
+		else if (typeName.equalsIgnoreCase("warning"))
+			setType(BadgeType.WARNING);
+		else if (typeName.equalsIgnoreCase("error"))
+			setType(BadgeType.ERROR);
+		else if (typeName.equalsIgnoreCase("info"))
+			setType(BadgeType.INFO);
+		else if (typeName.equalsIgnoreCase("inverse"))
+			setType(BadgeType.INVERSE);
+		throw new IllegalArgumentException("The type \"" + typeName
+				+ "\" is not supported.");
 	}
 }

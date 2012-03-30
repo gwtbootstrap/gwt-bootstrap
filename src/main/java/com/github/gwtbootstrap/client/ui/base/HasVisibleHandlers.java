@@ -26,34 +26,15 @@ import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
- * Interface for components that can be shown or hidden.
+ * Interface for components that can trigger actions when they are shown or
+ * hidden.
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  * 
  */
 public interface HasVisibleHandlers {
-
-	/**
-	 * Shows the widget if it was previously hidden.
-	 */
-	void show();
-
-	/**
-	 * Hides the widget if it was previously shown.
-	 */
-	void hide();
-
-	/**
-	 * Toggles the view state of the widget.
-	 * 
-	 * <p>
-	 * It will be hidden if it was previously shown and shown if it was
-	 * previously hidden.
-	 */
-	void toggle();
 
 	/**
 	 * Adds a {@link HideEvent} handler.

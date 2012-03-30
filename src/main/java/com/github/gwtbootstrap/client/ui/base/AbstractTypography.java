@@ -106,13 +106,16 @@ public abstract class AbstractTypography extends Widget implements HasText,
 	 */
 	@Deprecated
 	public void setShowOn(String device) {
-		if (device.equalsIgnoreCase("phone")) {
+		if (device.equalsIgnoreCase("phone"))
 			setShowOn(Device.PHONE);
-		} else if (device.equalsIgnoreCase("tablet")) {
+		else if (device.equalsIgnoreCase("tablet"))
 			setShowOn(Device.TABLET);
-		} else if (device.equalsIgnoreCase("desktop")) {
+		else if (device.equalsIgnoreCase("desktop"))
 			setShowOn(Device.DESKTOP);
-		}
+		else
+			throw new IllegalArgumentException("The device \"" + device
+					+ "\" is not supported.");
+
 	}
 
 	/**
@@ -145,12 +148,14 @@ public abstract class AbstractTypography extends Widget implements HasText,
 	 */
 	@Deprecated
 	public void setHideOn(String device) {
-		if (device.equalsIgnoreCase("phone")) {
+		if (device.equalsIgnoreCase("phone"))
 			setHideOn(Device.PHONE);
-		} else if (device.equalsIgnoreCase("tablet")) {
+		else if (device.equalsIgnoreCase("tablet"))
 			setHideOn(Device.TABLET);
-		} else if (device.equalsIgnoreCase("desktop")) {
+		else if (device.equalsIgnoreCase("desktop"))
 			setHideOn(Device.DESKTOP);
-		}
+		else
+			throw new IllegalArgumentException("The device \"" + device
+					+ "\" is not supported.");
 	}
 }

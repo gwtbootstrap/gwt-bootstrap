@@ -7,13 +7,13 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Buttons extends Composite {
 
-    private static ButtonsUiBinder uiBinder = GWT.create(ButtonsUiBinder.class);
+	private static ButtonsUiBinder uiBinder = GWT.create(ButtonsUiBinder.class);
 
-    interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
-    }
+	interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
+	}
 
-    public Buttons() {
-        initWidget(uiBinder.createAndBindUi(this));
-    }
+	public Buttons() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
 
 }

@@ -1,204 +1,304 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 	<g:HTMLPanel>
-		
-		<b:Heading size="2">UiBinder Examples</b:Heading>
 
-		<b:Navbar fixed="top">
+		<b:ResponsiveNavbar fixed="top">
 			<b:Brand>Bootstrap</b:Brand>
-			<b:Nav>
-				<b:NavLink>Test</b:NavLink>
-				<b:NavText>NavText</b:NavText>
-				<b:DividerVertical />
-				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
-				<b:Dropdown text="Dropdown">
-					<b:NavLink>Test 1</b:NavLink>
-				    <b:NavLink>Test 2</b:NavLink>
-				</b:Dropdown>
-				<b:NavWidget icon="star" iconColor="white" text="Inbox" ui:field="inbox">
-					<b:Badge>1</b:Badge>
-				</b:NavWidget>
-			</b:Nav>
-			<b:NavForm size="1"/>
-			<b:Nav alignment="right">
-				<b:NavLink>Test</b:NavLink>
-			</b:Nav>
-			<b:NavText alignment="right">Right</b:NavText>
-			<b:NavSearch size="2" placeholder="Search" alignment="right"/>
-		</b:Navbar>
-	
-		<b:NavList hideOn="tablet">
-			<b:NavHeader>Header</b:NavHeader>
-			<b:NavLink active="true" icon="plane">Test</b:NavLink>
-			<b:NavWidget text="Inbox">
-					<b:Badge>1</b:Badge>
-				</b:NavWidget>
-			<b:Divider />
-			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
-		</b:NavList>
+			<b:NavCollapse>
+				<b:Nav>
+					<b:NavLink>Test</b:NavLink>
+					<b:NavText>NavText</b:NavText>
+					<b:DividerVertical />
+					<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+					<b:Dropdown text="Dropdown">
+						<b:NavHeader>Test</b:NavHeader>
+						<b:NavLink>Test 1</b:NavLink>
+						<b:NavLink>Test 2</b:NavLink>
+					</b:Dropdown>
+					<b:NavWidget icon="star" iconColor="white" text="Inbox"
+						ui:field="inbox">
+						<b:Badge>1</b:Badge>
+					</b:NavWidget>
+				</b:Nav>
+				<b:NavForm size="1" />
+				<b:Nav alignment="right">
+					<b:NavLink>Test</b:NavLink>
+				</b:Nav>
+				<b:NavText alignment="right">Right</b:NavText>
+				<b:NavSearch size="2" placeholder="Search" alignment="right" />
+			</b:NavCollapse>
+		</b:ResponsiveNavbar>
 
-		<b:WellNavList showOn="tablet">
-			<b:NavHeader>Header</b:NavHeader>
-			<b:NavLink active="true" icon="plane">Test</b:NavLink>
-			<b:Divider />
-			<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
-		</b:WellNavList>
-		Hello <b:Abbreviation title="You">u</b:Abbreviation>, that's <b:Emphasis>me!</b:Emphasis>
-		<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
-		<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
-		<b:ButtonToolbar>
-			<b:ButtonGroup>
-				<b:Button href="http://www.google.com">1</b:Button>
-				<b:Button>2</b:Button>
-				<b:Button>3</b:Button>
-			</b:ButtonGroup>
-			<b:ButtonGroup>
-				<b:Button>4</b:Button>
-			</b:ButtonGroup>
-		</b:ButtonToolbar>
-		
-		Icon: <b:Icon type="star"/> :-). Invisible: <b:Icon type="heart" color="white"/> ;-).
-		Strong: <b:Strong>Hey!</b:Strong>
-		
-		Close Icon: <b:Close />
-		
-		Badge: <b:Badge type="error" >2</b:Badge>. <b:Badge>2</b:Badge>
-		
-		Label: <b:Label>Normal label</b:Label>, <b:Label type="info">Info label</b:Label>
 		<b:Container>
-			<b:UnorderedList>
-				<b:ListItem><g:Anchor>Test</g:Anchor></b:ListItem>
-				<b:ListItem><g:Label>Another Test</g:Label></b:ListItem>
-			</b:UnorderedList>
-			<b:Pager left="Left" right="Right"/>
-			<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>
-			
-			<b:Row>
-				<b:Column size="2">
-					<b:Pagination alignment="left">
-						<b:NavLink href="http://www.google.com">1</b:NavLink>
-						<b:NavLink active="true">2</b:NavLink>
-						<b:NavLink disabled="true">3</b:NavLink>
-					</b:Pagination>
-				</b:Column>
-				<b:Column size="2">
-					<b:NavTabs>
-						<b:NavLink>1</b:NavLink>
-						<b:NavLink active="true">2</b:NavLink>
-						<b:NavLink disabled="true">3</b:NavLink>
-					</b:NavTabs>
-				</b:Column>
-				<b:Column size="2">
-					<b:NavPills stacked="true">
-						<b:NavLink>1</b:NavLink>
-						<b:NavLink active="true">2</b:NavLink>
-						<b:NavLink disabled="true">3</b:NavLink>
-					</b:NavPills>
-				</b:Column>
-				<b:Column size="2">
-					<b:TabPanel>
-						<b:TabPane heading="prost" active="true"><g:Label>Lalala</g:Label></b:TabPane>
-						<b:TabPane heading="test"><g:Label>Huhu</g:Label></b:TabPane>
-					</b:TabPanel>
-				</b:Column>
-				<b:Column size="2">
-					<b:TabPanel tabPosition="right">
-						<b:TabPane heading="prost"><g:Label>Lalala</g:Label></b:TabPane>
-						<b:TabPane heading="test" href="2"><g:Label>Huhu</g:Label></b:TabPane>
-					</b:TabPanel>
-				</b:Column>
-			</b:Row>
-		</b:Container>
-		
-		<b:Heading size="4" subtext="subtext">Heading</b:Heading>
-		<b:Code lang="scala">
-			class ScalaExample
-		</b:Code>
-		
-		<b:CodeBlock linenums="true">
-			public class Person { \n
-			\n
-				private final String name;
+			<b:Heading size="2">UiBinder Examples</b:Heading>
+
+			<b:NavList hideOn="tablet">
+				<b:NavHeader>Header</b:NavHeader>
+				<b:NavLink active="true" icon="plane">Test</b:NavLink>
+				<b:NavWidget text="Inbox">
+					<b:Badge>1</b:Badge>
+				</b:NavWidget>
+				<b:Divider />
+				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+			</b:NavList>
+
+			<b:WellNavList showOn="tablet">
+				<b:NavHeader>Header</b:NavHeader>
+				<b:NavLink active="true" icon="plane">Test</b:NavLink>
+				<b:Divider />
+				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+			</b:WellNavList>
+
+			<b:Popover text="testpopover" heading="some title"
+				hideDelay="5000">
+				<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
+			</b:Popover>
+			<b:Popover text="other popover" heading="other title"
+				placement="top">
+				<b:Button icon="leaf" type="danger" size="mini">Testbutton</b:Button>
+			</b:Popover>
+			<b:Tooltip tooltip="The tooltip">Some text</b:Tooltip>
+			<b:Tooltip tooltip="Another tooltip" animation="false"
+				hideDelay="5000" placement="right">Some more text</b:Tooltip>
+			<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
+			<g:HorizontalPanel>
+				<b:ButtonGroup>
+					<b:Button href="http://www.google.com">1</b:Button>
+					<b:Button>2</b:Button>
+					<b:Button>3</b:Button>
+				</b:ButtonGroup>
+				<b:ButtonGroup>
+					<b:Button href="http://www.google.com">1</b:Button>
+					<b:Button>2</b:Button>
+					<b:Button>3</b:Button>
+				</b:ButtonGroup>
+			</g:HorizontalPanel>
+			<g:VerticalPanel>
+				<b:ButtonGroup>
+					<b:Button href="http://www.google.com">1</b:Button>
+					<b:Button>2</b:Button>
+					<b:Button>3</b:Button>
+				</b:ButtonGroup>
+				<b:ButtonGroup>
+					<b:Button href="http://www.google.com">1</b:Button>
+					<b:Button>2</b:Button>
+					<b:Button>3</b:Button>
+				</b:ButtonGroup>
+			</g:VerticalPanel>
+			<b:ButtonToolbar>
+				<b:ButtonGroup>
+					<b:Button href="http://www.google.com">1</b:Button>
+					<b:Button>2</b:Button>
+					<b:Button>3</b:Button>
+				</b:ButtonGroup>
+				<b:ButtonGroup>
+					<b:Button>4</b:Button>
+				</b:ButtonGroup>
+			</b:ButtonToolbar>
+			<g:HTMLPanel>
+				Hello
+				<b:Abbreviation title="You">u</b:Abbreviation>
+				, that's
+				<b:Emphasis>me!</b:Emphasis>
+				Icon:
+				<b:Icon type="star" />
+				:-). Invisible:
+				<b:Icon type="heart" color="white" />
+				;-).
+				Strong:
+				<b:Strong>Hey!</b:Strong>
+
+				Close Icon:
+				<b:Close />
+
+				Badge:
+				<b:Badge type="error">2</b:Badge>
+				.
+				<b:Badge>2</b:Badge>
+
+				Label:
+				<b:Label>Normal label</b:Label>
+				,
+				<b:Label type="info">Info label</b:Label>
+				<br />
+				<br />
+			</g:HTMLPanel>
+			<b:Container>
+				<b:UnorderedList>
+					<b:ListItem>
+						<g:Anchor>Test</g:Anchor>
+					</b:ListItem>
+					<b:ListItem>
+						<g:Label>Another Test</g:Label>
+					</b:ListItem>
+				</b:UnorderedList>
+				<b:Pager left="Left" right="Right" />
+				<b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true" />
+
+				<b:Row>
+					<b:Column size="2">
+						<b:Pagination alignment="left">
+							<b:NavLink href="http://www.google.com">1</b:NavLink>
+							<b:NavLink active="true">2</b:NavLink>
+							<b:NavLink disabled="true">3</b:NavLink>
+						</b:Pagination>
+					</b:Column>
+					<b:Column size="2">
+						<b:NavTabs>
+							<b:NavLink>1</b:NavLink>
+							<b:NavLink active="true">2</b:NavLink>
+							<b:NavLink disabled="true">3</b:NavLink>
+						</b:NavTabs>
+					</b:Column>
+					<b:Column size="2">
+						<b:NavPills stacked="true">
+							<b:NavLink>1</b:NavLink>
+							<b:NavLink active="true">2</b:NavLink>
+							<b:NavLink disabled="true">3</b:NavLink>
+						</b:NavPills>
+					</b:Column>
+					<b:Column size="2">
+						<b:TabPanel>
+							<b:TabPane heading="prost" active="true">
+								<g:Label>Lalala</g:Label>
+							</b:TabPane>
+							<b:TabPane heading="test">
+								<g:Label>Huhu</g:Label>
+							</b:TabPane>
+						</b:TabPanel>
+					</b:Column>
+					<b:Column size="2">
+						<b:TabPanel tabPosition="right">
+							<b:TabPane heading="prost">
+								<g:Label>Lalala</g:Label>
+							</b:TabPane>
+							<b:TabPane heading="test" href="2">
+								<g:Label>Huhu</g:Label>
+							</b:TabPane>
+						</b:TabPanel>
+					</b:Column>
+				</b:Row>
+			</b:Container>
+
+			<b:Heading size="4" subtext="subtext">Heading</b:Heading>
+			<b:Code lang="scala">
+				class ScalaExample
+			</b:Code>
+
+			<b:CodeBlock linenums="true">
+				public class Person { \n
+				\n
+				private
+				final String name;
 				\n
 				private final int age;
 				\n
-			}
-		</b:CodeBlock>
-		<b:FluidContainer>
-			<b:Row>
-				<b:Column size="2"><g:Label>I'm a Label inside a fluid container...</g:Label></b:Column>
-				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
-			</b:Row>
-			<b:FluidRow>
-				<b:Column size="2"><g:Label>I'm in a Fluid row...</g:Label></b:Column>
-				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
-				<b:Column size="2">
-					<b:PageHeader subtext="And this is the subtext.">This is the header</b:PageHeader>
-				</b:Column>
-			</b:FluidRow>
-			<b:FluidRow>
-				<b:Column size="2"><b:ProgressBar percent="20"/></b:Column>
-				<b:Column size="2"><b:ProgressBar type="striped" percent="40"/></b:Column>
-				<b:Column size="2"><b:ProgressBar type="animated" percent="60"/></b:Column>
-			</b:FluidRow>
-					<b:FluidRow>
-				<b:Column size="3">
-					<b:Alert type="error" animated="true">TestAlert with <b>html</b></b:Alert>
-				</b:Column>
-				<b:Column size="3">
-					<b:Alert type="success" heading="Hm..." close="false">TestAlert without close</b:Alert>
-				</b:Column>
-				<b:Column size="3">
-					<b:AlertBlock type="info" heading="Heading">AlertBlock</b:AlertBlock>
-				</b:Column>
-			</b:FluidRow>
-			<b:Row>
-				<b:Column size="6">
-					<b:Hero>
-						<b:Heading size="2">Hero Unit</b:Heading>
-						<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
-						<b:Paragraph>More text.</b:Paragraph>
-					</b:Hero>
-				</b:Column>
-				<b:Column size="2" offset="2"><g:Label>Me too!</g:Label></b:Column>
-			</b:Row>
-			<b:Row>
-				<b:Column size="3">
-					<b:NavPills>
-						<b:Dropdown text="Dropdown example">
-							<b:NavLink href="#modal">Test 1</b:NavLink>
-						    <b:NavLink>Test 2</b:NavLink>
-						    <b:NavLink>Test 3</b:NavLink>
-						    <b:NavLink>Test 4</b:NavLink>
-						    <b:NavLink>Test 5</b:NavLink>
-						</b:Dropdown>
-					</b:NavPills>
-				</b:Column>
-				<b:Column size="3">
-					<b:DropdownButton dropup="true" size="mini" text="Dropup example">
-						<b:NavLink href="#test">Test 1</b:NavLink>
-					    <b:NavLink>Test 2</b:NavLink>
-					</b:DropdownButton>
-					<b:SplitDropdownButton ui:field="splitDropdownButton" icon="plane" text="Dropdown example">
-						<b:NavLink href="#test">Test 1</b:NavLink>
-					    <b:NavLink>Test 2</b:NavLink>
-					</b:SplitDropdownButton>
-				</b:Column>
-			</b:Row>
-		</b:FluidContainer>
-		<b:Section target="modal">
-			<b:Modal title="My Modal" show="false" backdrop="true" keyboard="true" animated="true" ui:field="modal">
+				}
+			</b:CodeBlock>
+			<b:FluidContainer>
+				<b:Row>
+					<b:Column size="2">
+						<g:Label>I'm a Label inside a fluid container...</g:Label>
+					</b:Column>
+					<b:Column size="2" offset="2">
+						<g:Label>Me too!</g:Label>
+					</b:Column>
+				</b:Row>
+				<b:FluidRow>
+					<b:Column size="2">
+						<g:Label>I'm in a Fluid row...</g:Label>
+					</b:Column>
+					<b:Column size="2" offset="2">
+						<g:Label>Me too!</g:Label>
+					</b:Column>
+					<b:Column size="2">
+						<b:PageHeader subtext="And this is the subtext.">This is the header</b:PageHeader>
+					</b:Column>
+				</b:FluidRow>
+				<b:FluidRow>
+					<b:Column size="2">
+						<b:ProgressBar percent="20" />
+					</b:Column>
+					<b:Column size="2">
+						<b:ProgressBar type="striped" percent="40" />
+					</b:Column>
+					<b:Column size="2">
+						<b:ProgressBar type="animated" percent="60" />
+					</b:Column>
+				</b:FluidRow>
+				<b:FluidRow>
+					<b:Column size="3">
+						<b:Alert type="error" animation="true">
+							TestAlert with
+							<b>html</b>
+						</b:Alert>
+					</b:Column>
+					<b:Column size="3">
+						<b:Alert type="success" heading="Hm..." close="false">TestAlert
+							without close</b:Alert>
+					</b:Column>
+					<b:Column size="3">
+						<b:AlertBlock type="info" heading="Heading">AlertBlock</b:AlertBlock>
+					</b:Column>
+				</b:FluidRow>
+				<b:Row>
+					<b:Column size="6">
+						<b:Hero>
+							<b:Heading size="2">Hero Unit</b:Heading>
+							<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
+							<b:Paragraph>More text.</b:Paragraph>
+						</b:Hero>
+					</b:Column>
+					<b:Column size="2" offset="2">
+						<g:Label>Me too!</g:Label>
+					</b:Column>
+				</b:Row>
+				<b:Row>
+					<b:Column size="3">
+						<b:NavPills>
+							<b:Dropdown text="Dropdown example">
+								<b:NavLink href="#modal">Test 1</b:NavLink>
+								<b:NavLink>Test 2</b:NavLink>
+								<b:NavLink>Test 3</b:NavLink>
+								<b:NavLink>Test 4</b:NavLink>
+								<b:NavLink>Test 5</b:NavLink>
+							</b:Dropdown>
+						</b:NavPills>
+					</b:Column>
+					<b:Column size="3">
+						<b:DropdownButton dropup="true" size="mini"
+							text="Dropup example">
+							<b:NavLink href="#test">Test 1</b:NavLink>
+							<b:NavLink>Test 2</b:NavLink>
+						</b:DropdownButton>
+						<b:SplitDropdownButton ui:field="splitDropdownButton"
+							icon="plane" text="Dropdown example">
+							<b:NavLink href="#test">Test 1</b:NavLink>
+							<b:NavLink>Test 2</b:NavLink>
+						</b:SplitDropdownButton>
+					</b:Column>
+				</b:Row>
+			</b:FluidContainer>
+			<b:Section target="modal">
+				<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
+				<b:Button icon="heart" type="info" enabled="false"
+					ui:field="anotherModalBtn">Show anothermodal</b:Button>
+			</b:Section>
+			<b:Footer>
+				<g:Label>Some Text and a </g:Label>
+				<b:Button>Button</b:Button>
+			</b:Footer>
+			<b:Modal title="My Modal" show="false" backdrop="true"
+				keyboard="true" animation="true" ui:field="modal">
 				<g:Label>Modal Content!</g:Label>
-				<b:Button ui:field="contentButton" icon="file" iconColor="white" type="primary">Save</b:Button>
+				<b:Button ui:field="contentButton" icon="file" iconColor="white"
+					type="primary">Save</b:Button>
 				<b:ModalFooter>
-					<b:Button ui:field="saveButton" icon="file" iconColor="white" type="primary">Save</b:Button>
+					<b:Button ui:field="saveButton" icon="file" iconColor="white"
+						type="primary">Save</b:Button>
 				</b:ModalFooter>
 			</b:Modal>
-			<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
-			<b:Button icon="heart" type="info" enabled="false" ui:field="anotherModalBtn">Show anothermodal</b:Button>
-		</b:Section>
-		<b:Footer><g:Label>Some Text and a </g:Label><b:Button>Button</b:Button></b:Footer>
+		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 

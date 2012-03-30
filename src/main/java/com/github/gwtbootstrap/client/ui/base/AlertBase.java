@@ -41,7 +41,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  *      documentation</a>
  */
 public abstract class AlertBase extends DivWidget implements HasHTML,
-		IsAnimated, HasCloseHandlers, HasType {
+		IsAnimated, HasCloseHandlers, HasType<Bootstrap.AlertStyle> {
 
 	private Close close;
 
@@ -67,7 +67,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	public AlertBase(boolean hasClose) {
 		super.setStyle(AlertStyle.ALERT);
 		setClose(hasClose);
-		setHandlerFunctions();
+		setHandlerFunctions(getElement());
 	}
 
 	/**
@@ -92,21 +92,36 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * Adds the Java functions that fire the Events to document. It is a
 	 * convenience method to have a cleaner code later on.
 	 */
-	private native void setHandlerFunctions() /*-{
+	private native void setHandlerFunctions(Element e) /*-{
 		var that = this;
-		$wnd.fireCloseEvent = $entry(function() {
-			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::fireCloseEvent()();
-		});
-		$wnd.fireClosedEvent = $entry(function() {
-			that.@com.github.gwtbootstrap.client.ui.base.AlertBase::fireClosedEvent()();
-		});
+		$wnd
+				.jQuery(e)
+				.bind(
+						'close',
+						function() {
+							that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
+						});
+		$wnd
+				.jQuery(e)
+				.bind(
+						'closed',
+						function() {
+							that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
+						});
 	}-*/;
 
-	private void fireCloseEvent() {
+	/**
+	 * This method is called immediately when the widget's close method is
+	 * executed.
+	 */
+	protected void onClose() {
 		fireEvent(new CloseEvent());
 	}
 
-	private void fireClosedEvent() {
+	/**
+	 * This method is called once the widget is completely closed.
+	 */
+	protected void onClosed() {
 		fireEvent(new ClosedEvent());
 	}
 
@@ -126,7 +141,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * 
 	 * @param style
 	 */
-	public void setType(Style style) {
+	public void setType(Bootstrap.AlertStyle style) {
 		super.setStyle(Bootstrap.AlertStyle.ALERT);
 		super.addStyle(style);
 	}
@@ -141,7 +156,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 *             your implementation if any style names change. The only valid
 	 *             use is inside UiBinder files where it processes the
 	 *             <code>style="..."</code> argument. Use
-	 *             {@link #setType(Style)} instead!
+	 *             {@link #setType(Bootstrap.AlertStyle)} instead!
 	 */
 	@Deprecated
 	public void setType(String typeName) {
@@ -151,6 +166,9 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 			setType(Bootstrap.AlertStyle.SUCCESS);
 		else if (typeName.equalsIgnoreCase("info"))
 			setType(Bootstrap.AlertStyle.INFO);
+		else
+			throw new IllegalArgumentException("The type \"" + typeName
+					+ "\" is not supported.");
 
 		setFade();
 	}
@@ -174,9 +192,13 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 *            <code>true</code> if the Alert should fade out. Default:
 	 *            <code>false</code>
 	 */
-	public void setAnimated(boolean animated) {
+	public void setAnimation(boolean animated) {
 		this.fade = animated;
 		setFade();
+	}
+
+	public boolean getAnimation() {
+		return fade;
 	}
 
 	/**
@@ -272,27 +294,13 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addCloseHandler(CloseHandler handler) {
-		addCloseHandler(getElement());
 		return addHandler(handler, CloseEvent.getType());
 	}
-
-	private native void addCloseHandler(Element e) /*-{
-		$wnd.jQuery(e).bind('close', function() {
-			$wnd.fireCloseEvent();
-		});
-	}-*/;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addClosedHandler(ClosedHandler handler) {
-		addClosedHandler(getElement());
 		return addHandler(handler, ClosedEvent.getType());
 	}
-
-	private native void addClosedHandler(Element e) /*-{
-		$wnd.jQuery(e).bind('closed', function() {
-			$wnd.fireClosedEvent();
-		});
-	}-*/;
 }

@@ -15,10 +15,14 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.github.gwtbootstrap.client.ui.Close.DataDismiss;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.base.IsAnimated;
+import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
@@ -34,12 +38,17 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 
- * @author Carlos A Becker
- * @author Dominik Mayer
  * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @author Dominik Mayer
  */
-public class Modal extends DivWidget implements HasVisibleHandlers,
-		IsAnimated {
+public class Modal extends DivWidget implements HasVisibility,
+		HasVisibleHandlers, IsAnimated {
+
+	private static Set<Modal> currentlyShown = new HashSet<Modal>();
 
 	private final DivWidget header = new DivWidget();
 	private final DivWidget body = new DivWidget("modal-body");
@@ -47,6 +56,7 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	private boolean keyboard = true;
 	private boolean backdrop = true;
 	private boolean show = false;
+	private boolean hideOthers = true;
 
 	private boolean configured = false;
 
@@ -56,12 +66,12 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		super.add(body);
 		setVisible(false);
 		RootPanel.get().add(this);
-		setHandlerFunctions();
+		setHandlerFunctions(getElement());
 	}
 
 	public Modal(boolean animated) {
 		this();
-		setAnimated(animated);
+		setAnimation(animated);
 	}
 
 	@Override
@@ -75,7 +85,7 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 			showHeader(true);
 		}
 	}
-	
+
 	private void showHeader(boolean show) {
 		if (show)
 			header.setStyleName("modal-header");
@@ -83,11 +93,27 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 			header.removeStyleName("modal-header");
 	}
 
-	public void setAnimated(boolean animated) {
+	public void setAnimation(boolean animated) {
 		if (animated)
 			addStyleName("fade");
 		else
 			removeStyleName("fade");
+	}
+
+	public boolean getAnimation() {
+		return getStyleName().contains("fade");
+	}
+
+	/**
+	 * Sets whether this Modal appears on top of others or is the only one
+	 * visible on screen.
+	 * 
+	 * @param hideOthers
+	 *            <code>true</code> to make sure that this modal is the only one
+	 *            shown. All others will be hidden. Default: <code>true</code>
+	 */
+	public void setHideOthers(boolean hideOthers) {
+		this.hideOthers = hideOthers;
 	}
 
 	public void setShow(boolean show) {
@@ -113,11 +139,12 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 
 	@Override
 	public void add(Widget w) {
-		if(w instanceof ModalFooter) {
+		if (w instanceof ModalFooter) {
 			super.add(w);
-		} else body.add(w);
+		} else
+			body.add(w);
 	}
-	
+
 	@Override
 	public void insert(Widget w, int beforeIndex) {
 		body.insert(w, beforeIndex);
@@ -129,7 +156,7 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 		configure(getElement(), keyboard, backdrop, show);
 		configured = true;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -150,59 +177,78 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	public void toggle() {
 		changeVisibility("toggle");
 	}
-	
+
 	private void changeVisibility(String visibility) {
 		changeVisibility(getElement(), visibility);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addHideHandler(HideHandler handler) {
-		addHideHandler(getElement());
 		return addHandler(handler, HideEvent.getType());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
-		addHiddenHandler(getElement());
 		return addHandler(handler, HiddenEvent.getType());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addShowHandler(ShowHandler handler) {
-		addShowHandler(getElement());
 		return addHandler(handler, ShowEvent.getType());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addShownHandler(ShownHandler handler) {
-		addShownHandler(getElement());
 		return addHandler(handler, ShownEvent.getType());
 	}
-	
-	private void fireHideEvent() {
+
+	/**
+	 * This method is called immediately when the widget's {@link #hide()}
+	 * method is executed.
+	 */
+	protected void onHide() {
 		fireEvent(new HideEvent());
 	}
-	
-	private void fireHiddenEvent() {
+
+	/**
+	 * This method is called once the widget is completely hidden.
+	 */
+	protected void onHidden() {
 		fireEvent(new HiddenEvent());
+		currentlyShown.remove(this);
 	}
 
-	private void fireShowEvent() {
+	/**
+	 * This method is called immediately when the widget's {@link #show()}
+	 * method is executed.
+	 */
+	protected void onShow() {
+		if (hideOthers)
+			hideShownModals();
 		fireEvent(new ShowEvent());
 	}
 
-	private void fireShownEvent() {
-		fireEvent(new ShownEvent());
+	private void hideShownModals() {
+		for (Modal m : currentlyShown)
+			m.hide();
 	}
-	
+
+	/**
+	 * This method is called once the widget is completely shown.
+	 */
+	protected void onShown() {
+		fireEvent(new ShownEvent());
+		currentlyShown.add(this);
+	}
+
 	/*
 	 * native functions
 	 */
@@ -217,44 +263,23 @@ public class Modal extends DivWidget implements HasVisibleHandlers,
 	private native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).modal(visibility);
 	}-*/;
-	
+
 	/**
-	 * Adds the Java functions that fire the Events to document. It is a 
-	 * convenience method to have a cleaner code later on.
+	 * Links the Java functions that fire the events.
 	 */
-	private native void setHandlerFunctions() /*-{
+	private native void setHandlerFunctions(Element e) /*-{
 		var that = this;
-		$wnd.fireHideEvent = $entry(function() {
-          that.@com.github.gwtbootstrap.client.ui.Modal::fireHideEvent()();});
-		$wnd.fireHiddenEvent = $entry(function() {
-          that.@com.github.gwtbootstrap.client.ui.Modal::fireHiddenEvent()();});
-		$wnd.fireShowEvent = $entry(function() {
-          that.@com.github.gwtbootstrap.client.ui.Modal::fireShowEvent()();});
-		$wnd.fireShownEvent = $entry(function() {
-          that.@com.github.gwtbootstrap.client.ui.Modal::fireShownEvent()();});
-	}-*/;
-
-	private native void addHideHandler(Element e) /*-{
 		$wnd.jQuery(e).on('hide', function() {
-			$wnd.fireHideEvent();
-		} );
-	}-*/;
-
-	private native void addHiddenHandler(Element e) /*-{
+			that.@com.github.gwtbootstrap.client.ui.Modal::onHide()();
+		});
 		$wnd.jQuery(e).on('hidden', function() {
-			$wnd.fireHiddenEvent();
-		} );
-	}-*/;
-	
-	private native void addShowHandler(Element e) /*-{
+			that.@com.github.gwtbootstrap.client.ui.Modal::onHidden()();
+		});
 		$wnd.jQuery(e).on('show', function() {
-			$wnd.fireShowEvent();
-		} );
-	}-*/;
-	
-	private native void addShownHandler(Element e) /*-{
+			that.@com.github.gwtbootstrap.client.ui.Modal::onShow()();
+		});
 		$wnd.jQuery(e).on('shown', function() {
-			$wnd.fireShownEvent();
-		} );
+			that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();
+		});
 	}-*/;
 }

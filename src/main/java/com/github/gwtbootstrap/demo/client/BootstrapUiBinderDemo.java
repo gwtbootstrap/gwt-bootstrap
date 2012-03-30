@@ -29,7 +29,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
-
 public class BootstrapUiBinderDemo extends Composite implements HasText {
 
 	private static BootstrapUiBinderDemoUiBinder uiBinder = GWT
@@ -43,6 +42,7 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 
 		initWidget(uiBinder.createAndBindUi(this));
 		modalBtn.addClickHandler(new ClickHandler() {
+
 			public void onClick(ClickEvent event) {
 				modal.show();
 			}
@@ -51,20 +51,21 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 
 	@UiField
 	Button button;
-	
+
 	@UiField
 	Modal modal;
-	
+
 	@UiField
 	Button modalBtn;
-	
-	@UiField SplitDropdownButton splitDropdownButton;
+
+	@UiField
+	SplitDropdownButton splitDropdownButton;
 
 	public BootstrapUiBinderDemo(String firstName) {
 
 		initWidget(uiBinder.createAndBindUi(this));
 		button.setText(firstName);
-		
+
 	}
 
 	@UiHandler("button")
@@ -72,13 +73,12 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 
 		Window.alert("Hello!");
 	}
-	
+
 	@UiHandler("splitDropdownButton")
 	void onSplitClick(ClickEvent e) {
 		Window.alert("Split");
 	}
-	
-	
+
 	public void setText(String text) {
 
 		button.setText(text);
@@ -92,10 +92,13 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 	@UiHandler("contentButton")
 	void onClickContentSave(ClickEvent e) {
 
-		modal.hide();
+		Modal testModal = new Modal();
+		testModal.setTitle("Lalala");
+		testModal.show();
+//		modal.hide();
 //		Window.alert("Hello!");
 	}
-	
+
 	@UiHandler("saveButton")
 	void onClickSave(ClickEvent e) {
 		modal.hide();

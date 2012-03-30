@@ -19,7 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off
 /**
- * Type of the <a href="http://glyphicons.com/">Glyphicons</a>
+ * Type of the <a href="http://glyphicons.com/">Glyphicon.</a>
  * 
  * @since 2.0.2.0
  * 

@@ -1,2 +1,2 @@
-# Module com.github.gwtbootstrap.BootstrapJUnit
+# Module com.geekvigarista.gwt.bootstrap.BootstrapJUnit
 # RPC service class, partial path of RPC policy file

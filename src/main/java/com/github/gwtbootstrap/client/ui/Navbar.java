@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * @author Carlos Alexandro Becker
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
@@ -45,7 +46,7 @@ public class Navbar extends DivWidget {
 		}
 	}
 
-	private final Container container = new Container();
+	private final Container container = getContainer();
 	private final NavbarInner navbarInner = new NavbarInner();
 	private Scrollspy spy;
 
@@ -53,6 +54,14 @@ public class Navbar extends DivWidget {
 		setStyleName(NavbarConstants.NAVBAR);
 		navbarInner.add(container);
 		super.add(navbarInner);
+	}
+	
+	/**
+	 * Define the default container implementation. You can override this 
+	 * in a extended class if you want another impl, like FluidContainer.
+	 */
+	protected Container getContainer() {
+		return new Container();
 	}
 
 	/**

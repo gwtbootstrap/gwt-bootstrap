@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AlertBase;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
 
 /**
@@ -35,45 +36,58 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
  * @author Dominik Mayer
  * 
  * @see Alert
- * @see <a href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap
+ *      documentation</a>
  */
 public class AlertBlock extends AlertBase {
 
 	private Heading heading = new Heading(4);
-	
+
 	/**
 	 * Creates an empty widget with a close icon.
 	 */
 	public AlertBlock() {
 		setUp();
 	}
-	
+
 	private void setUp() {
 		super.addStyle(AlertStyle.BLOCK);
 		heading.setStyle(AlertStyle.HEADING);
 		add(heading);
 	}
-	
+
 	/**
 	 * Initializes the widget with an optional close icon.
 	 * 
-	 * @param hasClose whether the Alert should have a close icon.
+	 * @param hasClose
+	 *            whether the Alert should have a close icon.
 	 */
 	public AlertBlock(boolean hasClose) {
 		super(hasClose);
 		setUp();
 	}
-	
+
 	/**
-	 * Creates an Alert with a close icon and the given style. 
+	 * Creates an Alert with a close icon and the given style.
 	 * 
-	 * @param style of the Alert
+	 * @param style
+	 *            of the Alert
 	 */
 	public AlertBlock(AlertStyle style) {
 		super(style);
 		setUp();
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setType(Bootstrap.AlertStyle type) {
+		super.setType(type);
+		addStyle(AlertStyle.BLOCK);
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -83,10 +97,10 @@ public class AlertBlock extends AlertBase {
 		super.setType(typeName);
 		addStyle(AlertStyle.BLOCK);
 	}
-	
+
 	/**
-	 * Sets the text of an optional heading. It is wrapped in {@code <h4>}
-	 * tags and placed above the text.
+	 * Sets the text of an optional heading. It is wrapped in {@code <h4>} tags
+	 * and placed above the text.
 	 */
 	@Override
 	public void setHeading(String text) {

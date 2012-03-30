@@ -22,14 +22,14 @@ package com.github.gwtbootstrap.client.ui.base;
  * 
  * @author Dominik Mayer
  */
-public interface HasType {
+public interface HasType<T extends Style> {
 
 	/**
 	 * Sets the type of the widget.
 	 * 
 	 * @param style
 	 */
-	void setType(Style style);
+	void setType(T style);
 
 	/**
 	 * Sets the type of the widget based on the Bootstrap class name.
