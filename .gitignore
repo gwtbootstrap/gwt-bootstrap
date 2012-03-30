@@ -6,6 +6,7 @@
 
 war/gwt_bree/*
 
+*.launch
 
 src/main/gwt-unitCache
 target/
