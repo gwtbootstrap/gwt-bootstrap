@@ -17,7 +17,12 @@
         <ribbonColor>black</ribbonColor>
       </gitHub>
       <googlePlusOne />
-    </fluidoSkin>
+      <facebookLike />
+      <ohloh>
+        <projectId>gwt-bootstrap</projectId>
+        <widget>thin-badge</widget>
+      </ohloh>
+     </fluidoSkin>
   </custom>
 <body>
 <links>
