@@ -27,7 +27,7 @@
 <body>
 <links>
 <item name="${project.name}" href="${project.url}"/>
-<item name="demo" href="/index.html"/>
+<item name="Demo Site" href="http://gwtbootstrap.github.com/index.html"/>
 <item name="Twitter Bootstrap" href="http://twitter.github.com/bootstrap/"/>
 </links>
 <menu ref="reports" />

@@ -75,6 +75,9 @@
       <comments>Same as Twitter Bootstrap</comments>
     </license>
   </licenses>
+  <ciManagement>
+    <system>CloudBees Jenkins</system>
+  </ciManagement>
 
   <!-- project settings -->
   <properties>
