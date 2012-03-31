@@ -15,12 +15,23 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
-
+//@formatter:off
+/**
+ * {@link Form} inside a {@link Well}.
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Dominik Mayer
+ */
+//@formatter:on
 public class WellForm extends Form {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public WellForm() {
-		addStyleName(Bootstrap.well);
+		addStyleName(Constants.WELL);
 	}
 }

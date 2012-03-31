@@ -19,7 +19,6 @@ import com.github.gwtbootstrap.client.ui.Divider;
 import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavText;
-import com.github.gwtbootstrap.client.ui.UnorderedList;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;

@@ -88,8 +88,6 @@ public interface Bootstrap {
 
 	public static final String search_query = "search-query";
 
-	public static final String well = "well";
-
 	public static final String inverse = "inverse";
 
 	public static final String page_header = "page-header";

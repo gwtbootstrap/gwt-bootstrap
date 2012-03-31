@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui.incubator;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
-import com.github.gwtbootstrap.client.ui.UnorderedList;
+import com.github.gwtbootstrap.client.ui.base.UnorderedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 /**

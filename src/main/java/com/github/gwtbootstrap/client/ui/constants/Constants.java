@@ -37,6 +37,8 @@ public interface Constants {
 
 	public static final String DIVIDER_VERTICAL = "divider-vertical";
 
+	public static final String WELL = "well";
+
 	// Dropdown
 
 	public static final String DROPUP = "dropup";

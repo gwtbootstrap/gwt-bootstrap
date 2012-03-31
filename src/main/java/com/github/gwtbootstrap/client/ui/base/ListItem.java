@@ -13,28 +13,36 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui;
+package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
- *
- * @author carlos
+ * Simple wrapper for an HTML {@code <li>} tag.
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
  */
-public class UnorderedList extends ComplexWidget {
+public class ListItem extends ComplexWidget {
 
-    public UnorderedList() {
-        super("ul");
-    }
+	/**
+	 * Creates a new ListItem.
+	 */
+	public ListItem() {
+		super("li");
+	}
 
-    public UnorderedList(ListItem... childs) {
-        this();
-        for (ListItem li : childs) {
-            add(li);
-        }
-    }
-
-    public void add(ListItem child) {
-        super.add(child);
-    }
+	/**
+	 * Creates a new ListItem and adds the given widgets.
+	 * 
+	 * @param widgets
+	 *            widgets to be added.
+	 */
+	public ListItem(Widget... widgets) {
+		this();
+		for (Widget w : widgets) {
+			add(w);
+		}
+	}
 }

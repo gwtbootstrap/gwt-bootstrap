@@ -13,19 +13,34 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui;
-
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
+package com.github.gwtbootstrap.client.ui.base;
 
 /**
- * A UnorderedList component (ul).
+ * Simple wrapper for an HTML {@code <ul>} tag.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
- * @since 25/01/2012
  */
-public class UnordenedList extends ComplexWidget {
+public class UnorderedList extends ComplexWidget {
 
-	public UnordenedList() {
+	/**
+	 * Creates an empty list.
+	 */
+	public UnorderedList() {
 		super("ul");
+	}
+
+	/**
+	 * Creates a list and adds the given widgets.
+	 * 
+	 * @param widgets
+	 *            widgets to be added
+	 */
+	public UnorderedList(ListItem... widgets) {
+		this();
+		for (ListItem li : widgets) {
+			add(li);
+		}
 	}
 }

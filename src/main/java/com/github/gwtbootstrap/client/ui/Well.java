@@ -16,16 +16,25 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
+//@formatter:off
 /**
  * Well with inset effect.
  * 
+ * @since 2.0.2.0
+ * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
  */
+//@formatter:on
 public class Well extends DivWidget {
 
+	/**
+	 * Creates an empty Well.
+	 */
 	public Well() {
-		super(Bootstrap.well);
+		super(Constants.WELL);
 	}
 }

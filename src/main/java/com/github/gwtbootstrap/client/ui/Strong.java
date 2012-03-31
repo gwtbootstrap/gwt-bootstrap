@@ -18,18 +18,34 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.google.gwt.user.client.DOM;
 
+//@formatter:off
 /**
- *
- * @author carlos
+ * Simple wrapper for an HTML {@code <strong>} tag.
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
  */
+//@formatter:on
 public class Strong extends AbstractTypography {
 
+	/**
+	 * Creates a new widget.
+	 */
 	public Strong() {
 		setElement(DOM.createElement("strong"));
 	}
-	
-    public Strong(String text) {
-    	this();
-        setText(text);
-    }
+
+	/**
+	 * Creates a new widget with given text.
+	 * 
+	 * @param text
+	 *            the text of the widget
+	 */
+	public Strong(String text) {
+		this();
+		setText(text);
+	}
 }

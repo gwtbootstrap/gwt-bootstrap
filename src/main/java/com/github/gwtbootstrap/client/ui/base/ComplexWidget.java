@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @since 2.0.2.0
  * 
- * @author Carlos A Becker
+ * @author Carlos Alexandro Becker
  */
 public class ComplexWidget extends ComplexPanel implements HasWidgets,
 		HasStyle, IsResponsive {

@@ -15,7 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.UnorderedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
