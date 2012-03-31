@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.resources;
 
+import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.TextResource;
@@ -29,8 +30,8 @@ import com.google.gwt.resources.client.TextResource;
  */
 public class ResourceInjector {
 
-	private static final ResourceAdapter ADAPTER = GWT
-			.create(ResourceAdapter.class);
+	private static final Configurator ADAPTER = GWT
+			.create(Configurator.class);
 
 	/**
 	 * Injects the required CSS styles and JavaScript files into the document

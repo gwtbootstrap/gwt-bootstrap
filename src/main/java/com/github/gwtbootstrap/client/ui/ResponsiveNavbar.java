@@ -16,9 +16,9 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
  * the width of the window is too small.
  * <p>
  * Only works when the Responsive Layout ist turned on. Create your own
- * {@link ResourceAdapter} and let {@link ResourceAdapter#hasResponsiveDesign()}
+ * {@link Configurator} and let {@link Configurator#hasResponsiveDesign()}
  * return true.
  * 
  * @since 2.0.2.0

@@ -39,11 +39,11 @@
 	(<code>"plane"</code> instead of <code>"icon-plane"</code>).
 	</p>
 	<h2>Enabling <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Responsive Design</a></h2>
-	Create a {@link com.github.gwtbootstrap.client.ui.resources.ResourceAdapter ResourceAdapter} 
-	and let {@link com.github.gwtbootstrap.client.ui.resources.ResourceAdapter#hasResponsiveDesign() hasResponsiveDesign()}
+	Create a {@link com.github.gwtbootstrap.client.ui.config.Configurator Configurator} 
+	and let {@link com.github.gwtbootstrap.client.ui.config.Configurator#hasResponsiveDesign() hasResponsiveDesign()}
 	return {@code true}.
 	<pre>
-	public interface MyResourceAdapter implements ResourceAdapter {
+	public interface MyConfigurator implements Configurator {
  	
 		{@literal @Override}
 		public boolean hasResponsiveDesign() {
@@ -56,7 +56,7 @@
 	<p>
 		-- {@link com.github.gwtbootstrap.client.ui The list of all available
 		widgets.}<br /> -- {@link
-		com.github.gwtbootstrap.client.ui.resources.ResourceAdapter A way to
+		com.github.gwtbootstrap.client.ui.config.Configurator A way to
 		provide your own Bootstrap JavaScript/CSS files.}<br />
 		-- <a
 			href="http://gwtbootstrap.github.com">Our Showcase (external)</a><br />

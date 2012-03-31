@@ -13,9 +13,10 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.resources;
+package com.github.gwtbootstrap.client.ui.config;
 
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
+import com.github.gwtbootstrap.client.ui.resources.Resources;
 
 /**
  * <h3>Using custom css/js resources.</h3>
@@ -39,10 +40,10 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * </p>
  * 
  * <p>
- * 2. Create a <code>ResourceAdapter</code>.
+ * 2. Create a <code>Configurator</code>.
  * 
  * <pre>
- * 	public MyResourceAdapter implements ResourceAdapter {
+ * 	public MyConfigurator implements Configurator {
  * 		public Resources getResources() {
  * 			return GWT.create(MyResources.class);
  * 		}
@@ -56,8 +57,8 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * <code>*.gwt.xml</code>).
  * 
  * <pre>
- * {@literal <replace-with class="userpackage.MyResourceAdapter">
- * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter" />
+ * {@literal <replace-with class="userpackage.MyConfigurator">
+ * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
  * </replace-with>}
  * </pre>
  * 
@@ -69,9 +70,9 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
  * @author Dominik Mayer
  * 
  * @see Resources
- * @see ResourceAdapterImpl
+ * @see DefaultConfigurator
  */
-public interface ResourceAdapter {
+public interface Configurator {
 
 	/**
 	 * Get the Bootstrap Resources that should be used for this project.

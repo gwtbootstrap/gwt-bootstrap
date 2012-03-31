@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.resources;
 
+import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
@@ -76,8 +77,8 @@ public interface Resources extends ClientBundle {
 	 * Returns the responsive extension to Bootstrap.
 	 * <p>
 	 * The responsive design is neither injected nor activated by default. You
-	 * have to implement your own {@link ResourceAdapter} and let
-	 * {@link ResourceAdapter#hasResponsiveDesign()} return {@code true}.
+	 * have to implement your own {@link Configurator} and let
+	 * {@link Configurator#hasResponsiveDesign()} return {@code true}.
 	 * </p>
 	 * <p>
 	 * 

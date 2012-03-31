@@ -15,8 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
 
 /**
  * An interface for classes with a dedicated responsive behavior.
@@ -28,7 +28,7 @@ import com.github.gwtbootstrap.client.ui.resources.ResourceAdapter;
  * 
  * @author Dominik Mayer
  * 
- * @see ResourceAdapter#hasResponsiveDesign()
+ * @see Configurator#hasResponsiveDesign()
  * @see <a
  *      href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap
  *      documentation</a>
@@ -49,7 +49,7 @@ public interface IsResponsive {
 	 * 
 	 * @param device
 	 * 
-	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see Configurator#hasResponsiveDesign()
 	 * @see #setHideOn(Device)
 	 */
 	void setShowOn(Device device);
@@ -70,7 +70,7 @@ public interface IsResponsive {
 	 *            <code>"phone"</code>, <code>"tablet"</code>,
 	 *            <code>"desktop"</code>.
 	 * 
-	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see Configurator#hasResponsiveDesign()
 	 * @see #setHideOn(Device)
 	 * 
 	 */
@@ -89,7 +89,7 @@ public interface IsResponsive {
 	 * 
 	 * @param device
 	 * 
-	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see Configurator#hasResponsiveDesign()
 	 * @see #setShowOn(Device)
 	 */
 	void setHideOn(Device device);
@@ -110,7 +110,7 @@ public interface IsResponsive {
 	 *            <code>"phone"</code>, <code>"tablet"</code>,
 	 *            <code>"desktop"</code>.
 	 * 
-	 * @see ResourceAdapter#hasResponsiveDesign()
+	 * @see Configurator#hasResponsiveDesign()
 	 * @see #setShowOn(Device)
 	 * 
 	 */

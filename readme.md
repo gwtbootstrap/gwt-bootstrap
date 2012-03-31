@@ -1,6 +1,6 @@
 # GWT-Bootstrap
 
-Based on Twitter's Bootstrap. (http://twitter.github.com/bootstrap/index.html)
+Based on [Bootstrap, from Twitter.](http://twitter.github.com/bootstrap/index.html)
 
 Download a [snapshot version](https://github.com/gwtbootstrap/gwt-bootstrap/downloads).
 

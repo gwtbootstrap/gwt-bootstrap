@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='bootstrap'>
   <inherits name='com.google.gwt.user.User' />
-  <replace-with class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapterImpl">
-    <when-type-is class="com.github.gwtbootstrap.client.ui.resources.ResourceAdapter"/>
+  <replace-with class="com.github.gwtbootstrap.client.ui.config.DefaultConfigurator">
+    <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
   </replace-with>
 
   <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />-->

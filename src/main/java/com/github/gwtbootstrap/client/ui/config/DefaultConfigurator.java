@@ -13,16 +13,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.resources;
+package com.github.gwtbootstrap.client.ui.config;
+
+import com.github.gwtbootstrap.client.ui.resources.Resources;
 
 /**
- * This class is the default {@link ResourceAdapter} implemention.
+ * This class is the default {@link Configurator} implementation.
  * 
  * @since 2.0.2.0
  * 
  * @author soundTricker
  */
-public class ResourceAdapterImpl implements ResourceAdapter {
+public class DefaultConfigurator implements Configurator {
 
 	/**
 	 * {@inheritDoc}

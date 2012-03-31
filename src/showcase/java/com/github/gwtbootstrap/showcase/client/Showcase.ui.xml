@@ -23,7 +23,7 @@
 				<b:Paragraph>Bootstrap is a toolkit from Twitter designed to
 					kickstart development of
 					webapps and sites.</b:Paragraph>
-				<b:Button href="http://twitter.github.com/bootstrap/">Bootstrap
+				<b:Button href="http://twitter.github.com/bootstrap/">Bootstrap,
 					from Twitter »</b:Button>
 			</b:Column>
 			<b:Column size="3">
