@@ -19,30 +19,78 @@ import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.github.gwtbootstrap.client.ui.resources.prettify.HasProgrammingLanguage;
 import com.github.gwtbootstrap.client.ui.resources.prettify.PrettifyHelper;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.HasHTML;
 
+//@formatter:off
 /**
- * Simple inline code.
+ * Simple inline code with syntax highlighting.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:Code>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- * @author Carlos A Becker
  * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#code">Bootstrap documentation</a>
+ * @see CodeBlock
  */
-public class Code extends AbstractTypography implements HasProgrammingLanguage {
+//@formatter:on
+public class Code extends AbstractTypography implements HasProgrammingLanguage,
+		HasHTML {
 
 	private final PrettifyHelper helper;
-	
+
+	/**
+	 * Creates an empty widget.
+	 */
 	public Code() {
 		setElement(DOM.createElement("code"));
 		helper = new PrettifyHelper(this);
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onLoad() {
 		super.onLoad();
 		helper.configure();
 	}
 
-	public void setLang(String lang) {
-		helper.setLang(lang);
+	//TODO
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setLang(String programmingLanguage) {
+		helper.setLang(programmingLanguage);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getHTML() {
+		return getText();
+	}
+
+	/**
+	 * Sets the widget's text.
+	 * <p>
+	 * Any HTML content is escaped and displayed as text.
+	 * 
+	 * @param html
+	 *            the text to be set
+	 */
+	public void setHTML(String html) {
+		setText(html);
+
 	}
 }

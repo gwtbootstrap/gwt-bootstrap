@@ -25,6 +25,10 @@ public interface Constants {
 
 	public static final String BTN = "btn";
 
+	public static final String BTN_GROUP = "btn-group";
+
+	public static final String BTN_TOOLBAR = "btn-toolbar";
+
 	// Dropdown
 
 	public static final String DROPUP = "dropup";
@@ -41,7 +45,23 @@ public interface Constants {
 
 	// Close
 
+	public static final String CLOSE = "close";
+
 	public static final String CLOSE_ICON = "&times;";
 
 	public static final String DATA_DISMISS = "data-dismiss";
+
+	// Column
+
+	public static final String SPAN = "span";
+
+	public static final String OFFSET = "offset";
+
+	public static final int MINIMUM_SPAN_SIZE = 1;
+
+	public static final int MAXIMUM_SPAN_SIZE = 12;
+
+	public static final int MINIMUM_OFFSET = MINIMUM_SPAN_SIZE - 1;
+
+	public static final int MAXIMUM_OFFSET = MAXIMUM_SPAN_SIZE - 1;
 }

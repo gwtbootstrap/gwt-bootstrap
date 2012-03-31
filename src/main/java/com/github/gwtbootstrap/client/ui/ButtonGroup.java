@@ -16,34 +16,68 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
- *
- * @author carlos
+ * ButtonGroups take buttons and combine them to one optically integrated widget.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:ButtonGroup>
+ *     <b:Button>First Button</b:Button>
+ *     <b:Button>Second Button</b:Button>
+ *     <b:Button>Third Button</b:Button>
+ * </b:ButtonGroup>}
+ * </pre>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonGroups">Bootstrap documentation</a>
+ * @see Button
+ * @see ButtonToolbar
  */
+//@formatter:on
 public class ButtonGroup extends DivWidget {
-    
-    {
-        setStyleName("btn-group");
-    }
-    
-    public ButtonGroup() {
-    	// Needed for UiBinder
-    }
-    
-    public ButtonGroup(Button... buttons) {
-        super();
-        for (Button btn : buttons) {
-            add(btn);
-        }
-    }
 
-    @Override
-    public void add(Widget w) {
-    	if (!(w instanceof Button))
-    		throw new IllegalArgumentException("A ButtonGroup can only contain Buttons.");
-    	
-        super.add(w);
-    }
+	/**
+	 * Creates an empty ButtonGroup.
+	 */
+	public ButtonGroup() {
+		setStyleName(Constants.BTN_GROUP);
+	}
+
+	/**
+	 * Creates a ButtonGroup containing the provided Buttons.
+	 * 
+	 * @param buttons
+	 *            the widgets to be added to the ButtonGroup
+	 */
+	public ButtonGroup(Button... buttons) {
+		this();
+		for (Button btn : buttons) {
+			add(btn);
+		}
+	}
+
+	/**
+	 * Adds a new {@link Button} to the group.
+	 * 
+	 * @param widget
+	 *            the Button to be added.
+	 */
+	@Override
+	public void add(Widget widget) {
+		if (!(widget instanceof Button))
+			throw new IllegalArgumentException(
+					"A ButtonGroup can only contain Buttons.");
+
+		super.add(widget);
+	}
 }

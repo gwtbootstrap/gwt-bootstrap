@@ -18,11 +18,13 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 
+//@formatter:off
 /**
  * 
  * @author Carlos A Becker
  * @author Dominik Mayer
  */
+//@formatter:on
 public class Dropdown extends DropdownBase {
 
 	public Dropdown() {

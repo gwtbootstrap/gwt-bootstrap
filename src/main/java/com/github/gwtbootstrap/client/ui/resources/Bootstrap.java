@@ -96,8 +96,6 @@ public interface Bootstrap {
 
 	public static final String well = "well";
 
-	public static final String close = "close";
-
 	public static final String inverse = "inverse";
 
 	public static final String page_header = "page-header";

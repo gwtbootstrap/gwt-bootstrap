@@ -18,12 +18,14 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
  * A Footer.
  * 
  * @author Dominik Mayer
  *
  */
+//@formatter:on
 public class Footer extends ComplexWidget {
 
 	// TODO: No nice style in bootstrap. Delete?

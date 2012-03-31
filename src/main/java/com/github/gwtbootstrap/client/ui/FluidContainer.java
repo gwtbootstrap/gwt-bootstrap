@@ -17,13 +17,15 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
  *
  * @author carlos
  */
+//@formatter:on
 public class FluidContainer extends Container {
 
-    public FluidContainer() {
-        setStylePrimaryName(Bootstrap.container_fluid);
-    }
+	public FluidContainer() {
+		setStylePrimaryName(Bootstrap.container_fluid);
+	}
 }

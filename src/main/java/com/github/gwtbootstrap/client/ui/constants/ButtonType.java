@@ -19,7 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off
 /**
-* Type of a {@link Button.}
+* Type of a {@link com.github.gwtbootstrap.client.ui.Button Button.}
 * 
 * @since 2.0.2.0
 * 

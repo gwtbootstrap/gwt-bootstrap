@@ -61,7 +61,8 @@
 			<b:Tooltip tooltip="The tooltip">Some text</b:Tooltip>
 			<b:Tooltip tooltip="Another tooltip" animation="false"
 				hideDelay="5000" placement="right">Some more text</b:Tooltip>
-			<b:Blockquote source="Me" pullRight="true">This is a blockquote.</b:Blockquote>
+			<b:Blockquote source="Me" pullRight="true">This is a
+				blockquote.</b:Blockquote>
 			<g:HorizontalPanel>
 				<b:ButtonGroup>
 					<b:Button href="http://www.google.com">1</b:Button>
@@ -95,6 +96,16 @@
 				<b:ButtonGroup>
 					<b:Button>4</b:Button>
 				</b:ButtonGroup>
+				<b:Button>5</b:Button>
+				<b:DropdownButton text="6">
+					<b:NavLink href="#test">Test 1</b:NavLink>
+					<b:NavLink>Test 2</b:NavLink>
+				</b:DropdownButton>
+				<b:SplitDropdownButton text="7">
+					<b:NavLink href="#test">Test 1</b:NavLink>
+					<b:NavLink>Test 2</b:NavLink>
+				</b:SplitDropdownButton>
+
 			</b:ButtonToolbar>
 			<g:HTMLPanel>
 				Hello
@@ -186,6 +197,9 @@
 				class ScalaExample
 			</b:Code>
 
+			<b:Code>
+				<a href="www.google.com">Testlink</a>
+			</b:Code>
 			<b:CodeBlock linenums="true">
 				public class Person { \n
 				\n

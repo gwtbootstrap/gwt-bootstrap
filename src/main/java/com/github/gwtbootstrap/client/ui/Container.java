@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 
+//@formatter:off
 /**
  * Layouts from TwBootstrap. You can add Rows and Fluid Rows inside it to build a "sidebar" or something you like to.
  * By default, it is a fixed layout.
@@ -26,9 +27,10 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
  * @see DivWidget
  * @author Carlos A Becker
  */
+//@formatter:on
 public class Container extends DivWidget {
 
-    public Container() {
-        setStylePrimaryName("container");
-    }
+	public Container() {
+		setStylePrimaryName("container");
+	}
 }

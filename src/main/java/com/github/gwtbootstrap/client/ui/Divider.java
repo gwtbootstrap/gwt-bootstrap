@@ -17,11 +17,13 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
  * A vertical divider for the Navbar.
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class Divider extends ListItem {
 
 	public Divider() {

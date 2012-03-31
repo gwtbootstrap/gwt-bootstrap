@@ -16,51 +16,145 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.config.Configurator;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
- * This is part of TwBootstrap Grid System. enjoy it.
+ * Column of the Bootstrap grid system.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:Column size="3">
+ *     <b:Well />
+ * </b:Column>}
+ * </pre>
+ * Setting the <code>size</code> is mandatory.
+ * </p>
  * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  * 
+ * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap documentation</a>
+ * @see Container
+ * @see FluidContainer
  * @see Row
+ * @see Configurator#hasResponsiveDesign()
  */
+//@formatter:on
 public class Column extends DivWidget {
 
+	private static final String SIZE_ERROR_MESSAGE =
+			"The size of the Column has to be between "
+					+ Constants.MINIMUM_SPAN_SIZE + " and "
+					+ Constants.MAXIMUM_SPAN_SIZE + "!";
+
+	private static final String OFFSET_ERROR_MESSAGE =
+			"The offset of the Column has to be between "
+					+ Constants.MINIMUM_OFFSET + " and "
+					+ Constants.MAXIMUM_OFFSET + "!";
+
+	/**
+	 * Creates a new Column of given size.
+	 * 
+	 * @param size
+	 *            the size of the Column in the Bootstrap grid system
+	 */
 	@UiConstructor
 	public Column(int size) {
 		super();
-		size = size < 1 ? 1 : size > 12 ? 12 : size;
-		setStyleName("span" + size);
+		setSize(size);
 	}
 
+	/**
+	 * Creates a new Column of given size and with given offset.
+	 * 
+	 * @param size
+	 *            the size of the Column in the Bootstrap grid system
+	 * @param offset
+	 *            the offset from the left side
+	 */
 	public Column(int size, int offset) {
 		this(size);
 		setOffset(offset);
 	}
 
-	public Column(int size, int offset, Widget... childs) {
+	/**
+	 * Creates a new Column of given size, with given offset and widgets
+	 * 
+	 * @param size
+	 *            the size of the Column in the Bootstrap grid system
+	 * @param offset
+	 *            the offset from the left side
+	 * @param widgets
+	 *            the widgets to be added to the Column
+	 */
+	public Column(int size, int offset, Widget... widgets) {
 		this(size, offset);
-		add(childs);
+		add(widgets);
 	}
 
-	public Column(int size, Widget... childs) {
+	/**
+	 * Creates a new Column of given size and with given widgets.
+	 * 
+	 * @param size
+	 *            the size of the Column in the Bootstrap grid system
+	 * @param widgets
+	 *            the widgets to be added to the Column
+	 */
+	public Column(int size, Widget... widgets) {
 		this(size);
-		add(childs);
+		add(widgets);
 	}
 
+	/**
+	 * Sets the size of the Column in the Bootstrap grid system.
+	 * 
+	 * @param size
+	 *            the size of the Column
+	 */
+	public void setSize(int size) {
+		if (size < Constants.MINIMUM_SPAN_SIZE)
+			throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+
+		if (size > Constants.MAXIMUM_SPAN_SIZE)
+			throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+
+		setStyleName(Constants.SPAN + size);
+	}
+
+	/**
+	 * Sets the offset of the Column from the left side.
+	 * 
+	 * @param offset
+	 *            the offset in the Bootstrap grid system
+	 */
 	public void setOffset(int offset) {
-		offset = offset > 0 ? offset : 1;
-		addStyleName("offset" + offset);
+		if (offset < Constants.MINIMUM_OFFSET)
+			throw new IllegalArgumentException(OFFSET_ERROR_MESSAGE);
+
+		if (offset > Constants.MAXIMUM_OFFSET)
+			throw new IllegalArgumentException(OFFSET_ERROR_MESSAGE);
+
+		addStyleName(Constants.OFFSET + offset);
 	}
 
-	public void add(Widget... childs) {
-		for (Widget child : childs) {
-			add(child);
+	/**
+	 * Adds the provided widgets to the Column.
+	 * 
+	 * @param widgets
+	 *            the widgets to be added
+	 */
+	public void add(Widget... widgets) {
+		for (Widget widget : widgets) {
+			add(widget);
 		}
 	}
 }

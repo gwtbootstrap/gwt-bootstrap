@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 
+//@formatter:off
 /**
  * A Button with a dropdown menu.
  * 
@@ -26,8 +27,9 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
  * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap documentation</a>
  *
  */
+//@formatter:on
 public class DropdownButton extends DropdownBase {
-	
+
 	private Button trigger;
 
 	public DropdownButton() {
@@ -46,17 +48,17 @@ public class DropdownButton extends DropdownBase {
 		trigger.setCaret(true);
 		return trigger;
 	}
-	
+
 	public void setSize(String size) {
 		trigger.setSize(size);
 	}
-	
+
 	public void setType(String type) {
 		trigger.setType(type);
 	}
-	
+
 	public void setIcon(String icon) {
 		trigger.setIcon(icon);
 	}
-	
+
 }

@@ -18,12 +18,17 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.DismissType;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Anchor;
 
 //@formatter:off
 /**
  * Icon ("&times;") that indicates that something can be closed.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * {@code <b:Close />}
+ * </p>
  * 
  * @since 2.0.2.0
  * 
@@ -37,20 +42,48 @@ import com.google.gwt.user.client.ui.Anchor;
 //@formatter:on
 public class Close extends Anchor implements HasType<DismissType> {
 
+	/**
+	 * Creates an icon without behavior.
+	 */
 	public Close() {
-		setStyleName(Bootstrap.close);
+		setStyleName(Constants.CLOSE);
 		setHTML(Constants.CLOSE_ICON);
 	}
 
+	/**
+	 * Creates an icon that closes an associated widget.
+	 * 
+	 * @param dismiss
+	 *            the type of widget to be closed
+	 */
 	public Close(DismissType dismiss) {
 		this();
 		setType(dismiss);
 	}
 
-	public void setType(DismissType dismiss) {
-		getElement().setAttribute(Constants.DATA_DISMISS, dismiss.get());
+	/**
+	 * Sets the type of widget to be closed.
+	 * 
+	 * @param type
+	 *            the type of widget to be closed
+	 */
+	public void setType(DismissType type) {
+		getElement().setAttribute(Constants.DATA_DISMISS, type.get());
 	}
 
+	/**
+	 * Sets the type of widget to be closed.
+	 * 
+	 * @param type
+	 *            the type of widget to be closed
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>type="..."</code> argument. Use
+	 *             {@link #setType(DismissType)} instead!
+	 */
+	@Deprecated
 	public void setType(String type) {
 		if (type.equalsIgnoreCase(DismissType.ALERT.get()))
 			setType(DismissType.ALERT);

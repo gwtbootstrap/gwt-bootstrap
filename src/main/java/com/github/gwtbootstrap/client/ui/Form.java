@@ -18,12 +18,14 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
+//@formatter:off
 /**
  * A Form
  * 
  * @author Dominik Mayer
  * 
  */
+//@formatter:on
 public class Form extends ComplexWidget {
 
 	public enum Type implements Style {

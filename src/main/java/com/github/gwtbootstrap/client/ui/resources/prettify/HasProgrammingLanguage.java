@@ -28,8 +28,8 @@ public interface HasProgrammingLanguage {
 	/**
 	 * Sets the programming language.
 	 * 
-	 * @param lang
+	 * @param programmingLanguage
 	 *            the programming language
 	 */
-	void setLang(String lang);
+	void setLang(String programmingLanguage);
 }

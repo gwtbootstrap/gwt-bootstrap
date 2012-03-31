@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
 /**
-* Size of a {@link Button.}
+* Size of a {@link com.github.gwtbootstrap.client.ui.Button Button.}
 * 
 * @since 2.0.2.0
 * 
