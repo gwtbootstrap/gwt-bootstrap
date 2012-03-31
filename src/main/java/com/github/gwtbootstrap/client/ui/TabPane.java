@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.Random;
@@ -26,22 +27,23 @@ import com.google.gwt.user.client.Random;
  * @author Dominik Mayer
  */
 public class TabPane extends DivWidget {
-	
+
 	private String heading;
-	
+
 	private String href;
-	
-	public @UiConstructor TabPane(String heading) {
+
+	public @UiConstructor
+	TabPane(String heading) {
 		setStyleName(Bootstrap.tab_pane);
 		this.heading = heading;
 		createHref();
 	}
-	
+
 	private void createHref() {
 		String randomString = String.valueOf(Random.nextInt(2147483647));
 		setHref("bs-" + randomString);
 	}
-	
+
 	public void setHref(String href) {
 		this.href = href;
 		getElement().setId(href);
@@ -49,15 +51,15 @@ public class TabPane extends DivWidget {
 
 	public void setActive(boolean active) {
 		if (active)
-			setStyleName(Bootstrap.active);
+			setStyleName(Constants.ACTIVE);
 		else
-			removeStyleName(Bootstrap.active);
+			removeStyleName(Constants.ACTIVE);
 	}
-	
+
 	public String getHeading() {
 		return heading;
 	}
-	
+
 	public void setHeading(String heading) {
 		this.heading = heading;
 	}
@@ -67,6 +69,6 @@ public class TabPane extends DivWidget {
 	}
 
 	public boolean isActive() {
-		return getStyleName().contains(Bootstrap.active);
+		return getStyleName().contains(Constants.ACTIVE);
 	}
 }

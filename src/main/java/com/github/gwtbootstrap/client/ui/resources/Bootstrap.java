@@ -30,8 +30,6 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  */
 public interface Bootstrap {
 
-	public static final String btn = "btn";
-
 	public static final String tabs = "tabs";
 
 	public static final String pills = "pills";
@@ -45,10 +43,6 @@ public interface Bootstrap {
 	public static final String prev = "prev";
 
 	public static final String next = "next";
-
-	public static final String disabled = "disabled";
-
-	public static final String active = "active";
 
 	public static final String block_message = "block-message";
 
@@ -82,8 +76,6 @@ public interface Bootstrap {
 
 	public static final String fill = "fill";
 
-	public static final String brand = "brand";
-
 	public static final String nav = "nav";
 
 	public static final String nav_list = "nav-list";
@@ -116,11 +108,10 @@ public interface Bootstrap {
 
 	public static final String progress_striped = "progress-striped";
 
-	public static final String progress_animated = "progress-striped " + active;
+	public static final String progress_animated = "progress-striped "
+			+ Constants.ACTIVE;
 
 	public static final String bar = "bar";
-
-	public static final String data_dismiss = "data-dismiss";
 
 	public static final String row_fluid = "row-fluid";
 
@@ -160,122 +151,9 @@ public interface Bootstrap {
 
 	public static final String initialism = "initialism";
 
-	public enum OPTION {
-
-		DEFAULT {
-
-			@Override
-			public String getStyle() {
-				return "btn";
-			}
-		},
-		LARGE {
-
-			@Override
-			public String getStyle() {
-				return "btn-large";
-			}
-		},
-		SMALL {
-
-			@Override
-			public String getStyle() {
-				return "btn-small";
-			}
-		},
-		PRIMARY {
-
-			@Override
-			public String getStyle() {
-				return "btn-primary";
-			}
-		},
-		INFO {
-
-			@Override
-			public String getStyle() {
-				return "btn-info";
-			}
-		},
-		DANGER {
-
-			@Override
-			public String getStyle() {
-				return "btn-danger";
-			}
-		},
-		SUCCESS {
-
-			@Override
-			public String getStyle() {
-				return "btn-success";
-			}
-		},
-		WARNING {
-
-			@Override
-			public String getStyle() {
-				return "btn-warning";
-			}
-		},
-		INVERSE {
-
-			@Override
-			public String getStyle() {
-				return "btn-inverse";
-			}
-		},
-		MINI {
-
-			@Override
-			public String getStyle() {
-				return "btn-mini";
-			}
-		};
-
-		public abstract String getStyle();
-	}
-
 	public enum Button implements Style {
 
-		BTN("btn"), NAVBAR("btn-navbar");
-
-		public enum Size implements Style {
-
-			DEFAULT(""), LARGE("btn-large"), SMALL("btn-small"), MINI(
-					"btn-mini");
-
-			private String className;
-
-			private Size(String className) {
-				this.className = className;
-			}
-
-			public String get() {
-				return className;
-			}
-		}
-
-		public enum Type implements Style {
-
-			DEFAULT(""),
-			PRIMARY("btn-primary"),
-			INFO("btn-info"),
-			SUCCESS("btn-success"),
-			WARNING("btn-warning"),
-			DANGER("btn-danger"),
-			INVERSE("btn-inverse");
-
-			private String className;
-
-			private Type(String className) {
-				this.className = className;
-			}
-
-			public String get() {
-				return className;
-			}
-		}
+		NAVBAR("btn-navbar");
 
 		private String className;
 
@@ -302,24 +180,6 @@ public interface Bootstrap {
 
 		private Tabs(String className) {
 			this.className = tabbable + className;
-		}
-
-		public String get() {
-			return className;
-		}
-	}
-
-	// TODO
-	public enum AlertStyle implements Style {
-
-		DEFAULT(""), ERROR("alert-error"), SUCCESS("alert-success"), INFO(
-				"alert-info"), ALERT("alert"), BLOCK("alert-block"), HEADING(
-				"alert-heading");
-
-		private String className;
-
-		private AlertStyle(String className) {
-			this.className = className;
 		}
 
 		public String get() {

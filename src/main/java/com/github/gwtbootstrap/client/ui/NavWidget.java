@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -71,16 +71,16 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 
 	public void setActive(boolean active) {
 		if (active)
-			addStyleName(Bootstrap.active);
+			addStyleName(Constants.ACTIVE);
 		else
-			removeStyleName(Bootstrap.active);
+			removeStyleName(Constants.ACTIVE);
 	}
 
 	public void setDisabled(boolean disabled) {
 		if (disabled)
-			addStyleName(Bootstrap.disabled);
+			addStyleName(Constants.DISABLED);
 		else
-			removeStyleName(Bootstrap.disabled);
+			removeStyleName(Constants.DISABLED);
 	}
 
 	protected IconAnchor getAnchor() {

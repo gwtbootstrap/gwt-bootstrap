@@ -58,7 +58,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 
 	private String text = "";
 
-	private Caret caret = new Caret(false);
+	private Caret caret = new Caret();
 
 	/**
 	 * Creates the widget and sets the {@code href} property to
@@ -68,7 +68,6 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 		super("a");
 		super.add(icon);
 		super.add(label);
-		super.add(caret);
 		setHref("javascript:;");
 	}
 
@@ -151,7 +150,10 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	 *            <code>true</code> if the caret should be shown.
 	 */
 	public void setCaret(boolean visible) {
-		caret.setVisible(visible);
+		if (visible)
+			super.add(caret);
+		else
+			super.remove(caret);
 	}
 
 	/**

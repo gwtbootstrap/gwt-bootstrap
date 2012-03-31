@@ -16,13 +16,15 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Close;
+import com.github.gwtbootstrap.client.ui.constants.AlertType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.DismissType;
 import com.github.gwtbootstrap.client.ui.event.CloseEvent;
 import com.github.gwtbootstrap.client.ui.event.CloseHandler;
 import com.github.gwtbootstrap.client.ui.event.ClosedEvent;
 import com.github.gwtbootstrap.client.ui.event.ClosedHandler;
 import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -41,7 +43,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  *      documentation</a>
  */
 public abstract class AlertBase extends DivWidget implements HasHTML,
-		IsAnimated, HasCloseHandlers, HasType<Bootstrap.AlertStyle> {
+		IsAnimated, HasCloseHandlers, HasType<AlertType> {
 
 	private Close close;
 
@@ -65,7 +67,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 *            whether the Alert should have a close icon.
 	 */
 	public AlertBase(boolean hasClose) {
-		super.setStyle(AlertStyle.ALERT);
+		super.setStyleName(Constants.ALERT);
 		setClose(hasClose);
 		setHandlerFunctions(getElement());
 	}
@@ -79,7 +81,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 */
 	public void setClose(boolean hasClose) {
 		if (hasClose) {
-			close = new Close(Close.DataDismiss.ALERT);
+			close = new Close(DismissType.ALERT);
 			add(close);
 		} else {
 			clear();
@@ -126,24 +128,24 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	}
 
 	/**
-	 * Initializes an Alert with a close icon and the given style.
+	 * Initializes an Alert of given Type with a close icon.
 	 * 
-	 * @param style
+	 * @param type
 	 *            of the Alert
 	 */
-	public AlertBase(AlertStyle style) {
+	public AlertBase(AlertType type) {
 		this();
-		setType(style);
+		setType(type);
 	}
 
 	/**
 	 * Sets the type of the Alert.
 	 * 
-	 * @param style
+	 * @param type
 	 */
-	public void setType(Bootstrap.AlertStyle style) {
-		super.setStyle(Bootstrap.AlertStyle.ALERT);
-		super.addStyle(style);
+	public void setType(AlertType type) {
+		super.setStyleName(Constants.ALERT);
+		super.addStyle(type);
 	}
 
 	/**
@@ -160,15 +162,18 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 */
 	@Deprecated
 	public void setType(String typeName) {
-		if (typeName.equalsIgnoreCase("error"))
-			setType(Bootstrap.AlertStyle.ERROR);
-		else if (typeName.equalsIgnoreCase("success"))
-			setType(Bootstrap.AlertStyle.SUCCESS);
-		else if (typeName.equalsIgnoreCase("info"))
-			setType(Bootstrap.AlertStyle.INFO);
+		if (typeName.equalsIgnoreCase(AlertType.DEFAULT.getWithoutPrefix()))
+			setType(AlertType.DEFAULT);
+		else if (typeName.equalsIgnoreCase(AlertType.ERROR.getWithoutPrefix()))
+			setType(AlertType.ERROR);
+		else if (typeName
+				.equalsIgnoreCase(AlertType.SUCCESS.getWithoutPrefix()))
+			setType(AlertType.SUCCESS);
+		else if (typeName.equalsIgnoreCase(AlertType.INFO.getWithoutPrefix()))
+			setType(AlertType.INFO);
 		else
-			throw new IllegalArgumentException("The type \"" + typeName
-					+ "\" is not supported.");
+			throw new IllegalArgumentException("\"" + typeName
+					+ "\" is not a valid alert type.");
 
 		setFade();
 	}

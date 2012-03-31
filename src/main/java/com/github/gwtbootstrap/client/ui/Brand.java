@@ -15,24 +15,51 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.user.client.ui.Anchor;
 
+//@formatter:off
 /**
- * Brand for the Navbar.
+ * Navbar widget that shows text in a large font.
+ * 
+ * <p>
+ * Usually used for the name of the website or brand.
+ * </p>
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code <b:Brand>GWT-Bootstrap</b:Brand>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a> 
+ * @see Navbar
  */
+//@formatter.on
 public class Brand extends Anchor {
 	
+	/**
+	 * Creates an empty widget.
+	 */
 	public Brand() {
-		getElement().setClassName(Bootstrap.brand);
-		getElement().addClassName(Bootstrap.active);
-		getElement().setAttribute("href", "#");
+		setStyleName(Constants.BRAND);
+		addStyleName(Constants.ACTIVE);
+		setHref(Constants.EMPTY_HREF);
 	}
 	
-	public Brand(String projectName) {
+	/**
+	 * Creates a widget with the text set.
+	 * 
+	 * @param text name of the brand or project
+	 */
+	public Brand(String text) {
 		this();
-		getElement().setInnerText(projectName);
+		setText(text);
 	}
 }

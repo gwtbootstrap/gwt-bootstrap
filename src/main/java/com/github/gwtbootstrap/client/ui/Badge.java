@@ -31,8 +31,8 @@ import com.google.gwt.user.client.ui.InlineLabel;
  * </pre>
  * 
  * All arguments are optional.
- * 
  * </p>
+ * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
@@ -119,7 +119,8 @@ public class Badge extends InlineLabel implements HasType<BadgeType> {
 			setType(BadgeType.INFO);
 		else if (typeName.equalsIgnoreCase("inverse"))
 			setType(BadgeType.INVERSE);
-		throw new IllegalArgumentException("The type \"" + typeName
-				+ "\" is not supported.");
+		else
+			throw new IllegalArgumentException("\"" + typeName
+					+ "\" is not a valid type for a Badge.");
 	}
 }

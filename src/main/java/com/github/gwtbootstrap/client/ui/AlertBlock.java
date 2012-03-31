@@ -16,8 +16,8 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AlertBase;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;
+import com.github.gwtbootstrap.client.ui.constants.AlertType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 /**
  * Alert block widget with more padding than {@link Alert}. It has a dedicated
@@ -52,8 +52,8 @@ public class AlertBlock extends AlertBase {
 	}
 
 	private void setUp() {
-		super.addStyle(AlertStyle.BLOCK);
-		heading.setStyle(AlertStyle.HEADING);
+		super.addStyleName(Constants.ALERT_BLOCK);
+		heading.setStyleName(Constants.ALERT_HEADING);
 		add(heading);
 	}
 
@@ -71,11 +71,11 @@ public class AlertBlock extends AlertBase {
 	/**
 	 * Creates an Alert with a close icon and the given style.
 	 * 
-	 * @param style
+	 * @param type
 	 *            of the Alert
 	 */
-	public AlertBlock(AlertStyle style) {
-		super(style);
+	public AlertBlock(AlertType type) {
+		super(type);
 		setUp();
 	}
 
@@ -83,9 +83,9 @@ public class AlertBlock extends AlertBase {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setType(Bootstrap.AlertStyle type) {
+	public void setType(AlertType type) {
 		super.setType(type);
-		addStyle(AlertStyle.BLOCK);
+		addStyleName(Constants.ALERT_BLOCK);
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class AlertBlock extends AlertBase {
 	@Deprecated
 	public void setType(String typeName) {
 		super.setType(typeName);
-		addStyle(AlertStyle.BLOCK);
+		addStyleName(Constants.ALERT_BLOCK);
 	}
 
 	/**

@@ -15,41 +15,34 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
+import com.github.gwtbootstrap.client.ui.Close;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
+//@formatter:off
 /**
- * Contstants for pulling widgets to the left or right.
- * 
- * @since 2.0.2.0
- * 
- * @author Dominik Mayer
- * 
- */
-public enum Alignment implements Style {
+* Default dismiss types of a {@link Close}.
+* <p>
+* Bootstraps provides a default functionality to close the widgets listed here. 
+* 
+* @since 2.0.2.0
+* 
+* @author Dominik Mayer
+* 
+* @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
+* 
+*/
+//@formatter:on
+public enum DismissType implements Style {
 
-	/**
-	 * Removes all alignment information and uses the default settings.
-	 */
-	NONE(""),
-
-	/**
-	 * Pulls the widget to the left side.
-	 */
-	LEFT("pull-left"),
-
-	/**
-	 * Pulls the widget to the right side.
-	 */
-	RIGHT("pull-right");
+	ALERT("alert"), MODAL("modal");
 
 	private String className;
 
-	private Alignment(String className) {
+	private DismissType(String className) {
 		this.className = className;
 	}
 
 	public String get() {
 		return className;
 	}
-
 }

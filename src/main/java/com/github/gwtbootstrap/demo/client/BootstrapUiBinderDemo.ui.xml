@@ -61,7 +61,7 @@
 			<b:Tooltip tooltip="The tooltip">Some text</b:Tooltip>
 			<b:Tooltip tooltip="Another tooltip" animation="false"
 				hideDelay="5000" placement="right">Some more text</b:Tooltip>
-			<b:Blockquote cite="Me" pullright="true">This is a blockquote.</b:Blockquote>
+			<b:Blockquote source="Me" pullRight="true">This is a blockquote.</b:Blockquote>
 			<g:HorizontalPanel>
 				<b:ButtonGroup>
 					<b:Button href="http://www.google.com">1</b:Button>

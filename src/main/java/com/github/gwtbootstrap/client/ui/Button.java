@@ -15,10 +15,12 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.dom.client.Document;
+import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -84,188 +86,374 @@ import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasEnabled;
 
+//@formatter:off
 /**
- * Bootstrap Button Component.
+ * Button with optional icon.
  * 
- * @author Carlos A Becker
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code <b:Button icon="trash" type="error">Delete</b:Button>}
+ * </pre>
+ * 
+ * All arguments are optional.
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap documentation</a>
+ * @see ButtonGroup
+ * @see ButtonToolbar
+ * @see DropdownButton
+ * @see SplitDropdownButton
+ * @see NavbarButton
  */
+//@formatter:on
 public class Button extends IconAnchor implements HasClickHandlers,
-		HasDoubleClickHandlers, HasEnabled, HasAllDragAndDropHandlers,
-		HasAllFocusHandlers, HasAllGestureHandlers, HasAllKeyHandlers,
-		HasAllMouseHandlers, HasAllTouchHandlers {
+		HasDoubleClickHandlers, HasEnabled, HasType<ButtonType>,
+		HasAllDragAndDropHandlers, HasAllFocusHandlers, HasAllGestureHandlers,
+		HasAllKeyHandlers, HasAllMouseHandlers, HasAllTouchHandlers {
 
-	{
-		removeStyleName("gwt-Button");
-		addStyle(Bootstrap.Button.BTN);
-	}
-
+	/**
+	 * Creates an empty Button.
+	 */
 	public Button() {
 		super();
-		getElement().appendChild(Document.get().createElement("i"));
+		addStyleName(Constants.BTN);
 	}
 
-	public Button(String text) {
+	/**
+	 * Creates a Button with the given caption.
+	 * 
+	 * @param caption
+	 *            the caption of the Button
+	 */
+	public Button(String caption) {
 		this();
-		setText(text);
+		setText(caption);
 	}
 
-	public Button(String text, IconType icon) {
-		this(text);
+	/**
+	 * Creates a Button with the given caption and icon.
+	 * 
+	 * @param caption
+	 *            the caption of the Button
+	 * @param icon
+	 *            the Icon on the caption's left
+	 */
+	public Button(String caption, IconType icon) {
+		this(caption);
 		setIcon(icon);
 	}
 
-	public void setStyle(Bootstrap.Button.Type type) {
-		for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values())
+	/**
+	 * Sets the type of the Button.
+	 * <p>
+	 * Different types give the button a different look.
+	 * 
+	 * @param type
+	 *            the type of the Button.
+	 */
+	public void setType(ButtonType type) {
+		for (ButtonType t : ButtonType.values())
 			removeStyle(t);
 		addStyle(type);
 	}
 
-	public void setType(String typeString) {
-		String type = "btn-" + typeString;
-
-		for (Bootstrap.Button.Type t : Bootstrap.Button.Type.values()) {
-			if (type.equals(t.get()))
-				addStyle(t);
-			else
-				removeStyle(t);
-		}
+	/**
+	 * Sets the type of the Button.
+	 * <p>
+	 * Different types give the button a different look.
+	 * 
+	 * @param type
+	 *            the type of the Button.
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>type="..."</code> argument. Use
+	 *             {@link #setType(ButtonType)} instead!
+	 */
+	@Deprecated
+	public void setType(String type) {
+		if (type.equalsIgnoreCase(ButtonType.DEFAULT.getWithoutPrefix()))
+			setType(ButtonType.DEFAULT);
+		else if (type.equalsIgnoreCase(ButtonType.PRIMARY.getWithoutPrefix()))
+			setType(ButtonType.PRIMARY);
+		else if (type.equalsIgnoreCase(ButtonType.INFO.getWithoutPrefix()))
+			setType(ButtonType.INFO);
+		else if (type.equalsIgnoreCase(ButtonType.SUCCESS.getWithoutPrefix()))
+			setType(ButtonType.SUCCESS);
+		else if (type.equalsIgnoreCase(ButtonType.WARNING.getWithoutPrefix()))
+			setType(ButtonType.WARNING);
+		else if (type.equalsIgnoreCase(ButtonType.DANGER.getWithoutPrefix()))
+			setType(ButtonType.DANGER);
+		else if (type.equalsIgnoreCase(ButtonType.INVERSE.getWithoutPrefix()))
+			setType(ButtonType.INVERSE);
+		else
+			throw new IllegalStateException("A Button cannot have the type \""
+					+ type + "\"");
 	}
 
-	public void setSize(Bootstrap.Button.Size size) {
-		for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values())
+	/**
+	 * Sets the size of the Button.
+	 * 
+	 * @param size
+	 *            the size of the Button.
+	 */
+	public void setSize(ButtonSize size) {
+		for (ButtonSize s : ButtonSize.values())
 			removeStyle(s);
 		addStyle(size);
 	}
 
-	public void setSize(String sizeString) {
-		String size = "btn-" + sizeString;
-
-		for (Bootstrap.Button.Size s : Bootstrap.Button.Size.values()) {
-			if (size.equals(s.get()))
-				addStyle(s);
-			else
-				removeStyle(s);
-		}
+	/**
+	 * Sets the size of the Button.
+	 * 
+	 * @param size
+	 *            the size of the Button
+	 * 
+	 * @deprecated This method should never be called directly. It will break
+	 *             your implementation if any style names change. The only valid
+	 *             use is inside UiBinder files where it processes the
+	 *             <code>size="..."</code> argument. Use
+	 *             {@link #setSize(ButtonSize)} instead!
+	 */
+	@Deprecated
+	public void setSize(String size) {
+		if (size.equalsIgnoreCase(ButtonSize.DEFAULT.getWithoutPrefix()))
+			setSize(ButtonSize.DEFAULT);
+		else if (size.equalsIgnoreCase(ButtonSize.LARGE.getWithoutPrefix()))
+			setSize(ButtonSize.LARGE);
+		else if (size.equalsIgnoreCase(ButtonSize.SMALL.getWithoutPrefix()))
+			setSize(ButtonSize.SMALL);
+		else if (size.equalsIgnoreCase(ButtonSize.MINI.getWithoutPrefix()))
+			setSize(ButtonSize.MINI);
+		else
+			throw new IllegalStateException("A Button cannot have the size \""
+					+ size + "\"");
 	}
 
+	/**
+	 * Whether the Button is enabled or disabled.
+	 * <p>
+	 * A disabled widget cannot be used.
+	 * 
+	 * @return <code>false</code> if the Button is disabled.
+	 */
 	public boolean isEnabled() {
-		return getStyleName().contains("disabled");
+		return getStyleName().contains(Constants.DISABLED);
 	}
 
+	/**
+	 * Sets whether the Button is enabled or disabled.
+	 * <p>
+	 * A disabled widget cannot be used.
+	 * 
+	 * @param enabled
+	 *            <code>false</code> if the Button should be disabled. Default:
+	 *            <code>true</code>
+	 */
 	public void setEnabled(boolean enabled) {
 		if (enabled)
-			removeStyleName(Bootstrap.disabled);
+			removeStyleName(Constants.DISABLED);
 		else
-			addStyleName(Bootstrap.disabled);
+			addStyleName(Constants.DISABLED);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return addDomHandler(handler, ClickEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration
 			addDoubleClickHandler(DoubleClickHandler handler) {
 		return addDomHandler(handler, DoubleClickEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDragEndHandler(DragEndHandler handler) {
 		return addDomHandler(handler, DragEndEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDragEnterHandler(DragEnterHandler handler) {
 		return addDomHandler(handler, DragEnterEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDragLeaveHandler(DragLeaveHandler handler) {
 		return addDomHandler(handler, DragLeaveEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDragHandler(DragHandler handler) {
 		return addDomHandler(handler, DragEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDragOverHandler(DragOverHandler handler) {
 		return addDomHandler(handler, DragOverEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDragStartHandler(DragStartHandler handler) {
 		return addDomHandler(handler, DragStartEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addDropHandler(DropHandler handler) {
 		return addDomHandler(handler, DropEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addFocusHandler(FocusHandler handler) {
 		return addDomHandler(handler, FocusEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return addDomHandler(handler, BlurEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addGestureStartHandler(
 			GestureStartHandler handler) {
 		return addDomHandler(handler, GestureStartEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addGestureChangeHandler(
 			GestureChangeHandler handler) {
 		return addDomHandler(handler, GestureChangeEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addGestureEndHandler(GestureEndHandler handler) {
 		return addDomHandler(handler, GestureEndEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return addDomHandler(handler, KeyUpEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return addDomHandler(handler, KeyDownEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return addDomHandler(handler, KeyPressEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
 		return addDomHandler(handler, MouseDownEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addMouseUpHandler(MouseUpHandler handler) {
 		return addDomHandler(handler, MouseUpEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addMouseOutHandler(MouseOutHandler handler) {
 		return addDomHandler(handler, MouseOutEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
 		return addDomHandler(handler, MouseOverEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addMouseMoveHandler(MouseMoveHandler handler) {
 		return addDomHandler(handler, MouseMoveEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addMouseWheelHandler(MouseWheelHandler handler) {
 		return addDomHandler(handler, MouseWheelEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
 		return addDomHandler(handler, TouchStartEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
 		return addDomHandler(handler, TouchMoveEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return addDomHandler(handler, TouchEndEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration
 			addTouchCancelHandler(TouchCancelHandler handler) {
 		return addDomHandler(handler, TouchCancelEvent.getType());

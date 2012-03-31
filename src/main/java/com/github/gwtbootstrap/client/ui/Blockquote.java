@@ -16,12 +16,23 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
 import com.google.gwt.user.client.DOM;
 
 //@formatter:off
 /**
  * Left or right aligned blockquote with optional source.
  *
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code <b:Blockquote source="Leonard McCoy">He's dead, Jim</b:Blockquote>}
+ * </pre>
+ * 
+ * All arguments are optional.
+ * </p>
+ * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
@@ -31,52 +42,122 @@ import com.google.gwt.user.client.DOM;
 //@formatter:on
 public class Blockquote extends AbstractTypography {
 
+	/**
+	 * Creates an empty Blockquote.
+	 */
 	public Blockquote() {
 		setElement(DOM.createElement("blockquote"));
 	}
 
+	/**
+	 * Creates a Blockquote of the given text.
+	 * 
+	 * @param text
+	 *            the text of the quote
+	 */
 	public Blockquote(String text) {
 		setText(text);
 	}
 
-	public Blockquote(String text, String cite) {
+	/**
+	 * Creates a Blockquote of the given text, attributed to the given source.
+	 * 
+	 * @param text
+	 *            the text of the quote
+	 * @param source
+	 *            the source of the quote
+	 */
+	public Blockquote(String text, String source) {
 		this(text);
-		setCite(cite);
+		setSource(source);
 	}
 
-	public Blockquote(String text, boolean pullright) {
+	/**
+	 * Creates a Blockquote of the given text and optionally pulls it to the
+	 * right side.
+	 * 
+	 * @param text
+	 *            text of the quote
+	 * @param pullRight
+	 *            <code>true</code> if the quote should be pulled to the right
+	 *            side. Default: <code>false</code>
+	 */
+	public Blockquote(String text, boolean pullRight) {
 		setText(text);
-		setPullright(pullright);
+		setPullRight(pullRight);
 	}
 
-	public Blockquote(String text, String cite, boolean pullright) {
+	/**
+	 * Creates a Blockquote of the given text, attributed to the given source
+	 * and optionally pulls it to the right side.
+	 * 
+	 * @param text
+	 *            text of the quote
+	 * @param source
+	 *            source of the quote
+	 * @param pullRight
+	 *            <code>true</code> if the quote should be pulled to the right
+	 *            side. Default: <code>false</code>
+	 */
+	public Blockquote(String text, String source, boolean pullRight) {
 		this(text);
-		setCite(cite);
-		setPullright(pullright);
+		setSource(source);
+		setPullRight(pullRight);
 	}
 
-	private void pullRight() {
-		setStyleName("pull-right");
+	/**
+	 * Sets the source of the quote. This may be a person or the title of a
+	 * book, song, ...
+	 * 
+	 * @param source
+	 *            the source of the quote
+	 */
+	public void setSource(String source) {
+		getElement().appendChild(new SmallCite(source).getElement());
 	}
 
-	public void setCite(String cite) {
-		getElement().appendChild(new SmallCite(cite).getElement());
+	/**
+	 * Sets whether the quote should be aligned left or right.
+	 * 
+	 * @param pullright
+	 *            <code>true</code> if the quote should be pulled to the right
+	 *            side. Default: <code>false</code>
+	 */
+	public void setPullRight(boolean pullright) {
+		if (pullright)
+			setStyle(Alignment.RIGHT);
+		else
+			setStyle(Alignment.NONE);
 	}
 
-	public void setPullright(boolean pullright) {
-		if (pullright) {
-			pullRight();
-		}
-	}
-
+	/**
+	 * Element that shows the source of the quote.
+	 * 
+	 * @since 2.0.2.0
+	 * 
+	 * @author Carlos Alexandro Becker
+	 */
 	private class Cite extends AbstractTypography {
 
+		/**
+		 * Creates a Cite element of the given text
+		 * 
+		 * @param text
+		 *            the text to be set
+		 */
 		public Cite(String text) {
 			setElement(DOM.createElement("cite"));
 			setText(text);
 		}
 	}
 
+	/**
+	 * Element that shows the source of the quote in a smaller font.
+	 * 
+	 * @since 2.0.2.0
+	 * 
+	 * @author Carlos Alexandro Becker
+	 */
 	private class SmallCite extends AbstractTypography {
 
 		private final Cite cite;

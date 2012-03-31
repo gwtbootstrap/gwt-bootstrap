@@ -15,47 +15,50 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.DismissType;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Anchor;
 
+//@formatter:off
 /**
- * A close icon.
+ * Icon ("&times;") that indicates that something can be closed.
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
+ * @see Alert
+ * @see AlertBlock
+ * @see Modal
  */
-public class Close extends Anchor {
+//@formatter:on
+public class Close extends Anchor implements HasType<DismissType> {
 
-	public enum DataDismiss {
-
-		ALERT {
-			@Override
-			String get() {
-				return Bootstrap.AlertStyle.ALERT.get();
-			}
-		},
-		MODAL {
-			@Override
-			String get() {
-				return "modal"; // FIXME
-			}
-		} ;
-		abstract String get();
-	}
-	
 	public Close() {
 		setStyleName(Bootstrap.close);
-		setHTML("&times;");
-	}
-	
-	public Close(DataDismiss dismiss) {
-		this();
-		setDataDismiss(dismiss);
+		setHTML(Constants.CLOSE_ICON);
 	}
 
-	public void setDataDismiss(DataDismiss dismiss) {
-		getElement().setAttribute(
-				Bootstrap.data_dismiss, dismiss.get());
+	public Close(DismissType dismiss) {
+		this();
+		setType(dismiss);
 	}
-	
-	
+
+	public void setType(DismissType dismiss) {
+		getElement().setAttribute(Constants.DATA_DISMISS, dismiss.get());
+	}
+
+	public void setType(String type) {
+		if (type.equalsIgnoreCase(DismissType.ALERT.get()))
+			setType(DismissType.ALERT);
+		else if (type.equalsIgnoreCase(DismissType.MODAL.get()))
+			setType(DismissType.MODAL);
+		else
+			throw new IllegalArgumentException("A Close cannot be of type +\""
+					+ type + "\"");
+	}
+
 }

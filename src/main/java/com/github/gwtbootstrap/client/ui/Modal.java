@@ -18,11 +18,11 @@ package com.github.gwtbootstrap.client.ui;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.github.gwtbootstrap.client.ui.Close.DataDismiss;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
+import com.github.gwtbootstrap.client.ui.constants.DismissType;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
@@ -80,7 +80,7 @@ public class Modal extends DivWidget implements HasVisibility,
 		if (title == null || title.isEmpty()) {
 			showHeader(false);
 		} else {
-			header.add(new Close(DataDismiss.MODAL));
+			header.add(new Close(DismissType.MODAL));
 			header.add(new Heading(title, 3));
 			showHeader(true);
 		}

@@ -44,7 +44,7 @@ public class TabPanel extends DivWidget {
 			anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
 
 			if (pane.isActive())
-				addStyleName(Bootstrap.active);
+				addStyleName(Constants.ACTIVE);
 		}
 	}
 

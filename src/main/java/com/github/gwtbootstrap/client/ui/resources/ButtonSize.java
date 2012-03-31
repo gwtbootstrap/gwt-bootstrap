@@ -13,43 +13,41 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.constants;
+package com.github.gwtbootstrap.client.ui.resources;
 
 import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
+//@formatter:off
 /**
- * Contstants for pulling widgets to the left or right.
- * 
- * @since 2.0.2.0
- * 
- * @author Dominik Mayer
- * 
- */
-public enum Alignment implements Style {
+* Size of a {@link Button.}
+* 
+* @since 2.0.2.0
+* 
+* @author Dominik Mayer
+* 
+* @see <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap documentation</a>
+* 
+*/
+//@formatter:on
+public enum ButtonSize implements Style {
 
-	/**
-	 * Removes all alignment information and uses the default settings.
-	 */
-	NONE(""),
-
-	/**
-	 * Pulls the widget to the left side.
-	 */
-	LEFT("pull-left"),
-
-	/**
-	 * Pulls the widget to the right side.
-	 */
-	RIGHT("pull-right");
+	DEFAULT(""), LARGE("large"), SMALL("small"), MINI("mini");
 
 	private String className;
 
-	private Alignment(String className) {
+	private ButtonSize(String className) {
 		this.className = className;
 	}
 
 	public String get() {
-		return className;
+		if (className.isEmpty())
+			return className;
+		else
+			return Constants.BTN + "-" + className;
 	}
 
+	public String getWithoutPrefix() {
+		return className;
+	}
 }
