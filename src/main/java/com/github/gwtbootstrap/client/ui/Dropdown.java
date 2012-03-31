@@ -21,7 +21,9 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 //@formatter:off
 /**
  * 
- * @author Carlos A Becker
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  */
 //@formatter:on

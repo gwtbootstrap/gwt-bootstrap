@@ -29,6 +29,14 @@ public interface Constants {
 
 	public static final String BTN_TOOLBAR = "btn-toolbar";
 
+	public static final String CONTAINER = "container";
+
+	public static final String CONTAINER_FLUID = "container-fluid";
+
+	public static final String DIVIDER = "divider";
+
+	public static final String DIVIDER_VERTICAL = "divider-vertical";
+
 	// Dropdown
 
 	public static final String DROPUP = "dropup";

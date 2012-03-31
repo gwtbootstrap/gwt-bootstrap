@@ -24,6 +24,9 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:off
 /**
  * Column of the Bootstrap grid system.
+ * <p>
+ * It has to be added to a {@link Row} or a {@link FluidRow}.
+ * </p>
  * 
  * <p>
  * <h3>UiBinder Usage:</h3>
@@ -43,9 +46,6 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  * 
  * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap documentation</a>
- * @see Container
- * @see FluidContainer
- * @see Row
  * @see Configurator#hasResponsiveDesign()
  */
 //@formatter:on

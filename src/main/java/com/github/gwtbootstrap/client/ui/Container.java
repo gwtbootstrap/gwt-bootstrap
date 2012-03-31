@@ -16,21 +16,47 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
 /**
- * Layouts from TwBootstrap. You can add Rows and Fluid Rows inside it to build a "sidebar" or something you like to.
- * By default, it is a fixed layout.
+ * Containers (and {@link FluidContainer FluidContainers} are the largest panels 
+ * in the Bootstrap grid system.
  * 
- * @see Row
- * @see Column
- * @see DivWidget
- * @author Carlos A Becker
+ * <p>
+ * They contain almost all the other widgets (mentionable exceptions are {@link
+ * Navbar fixed Navbars}) in {@link Row Rows} and {@link Column Columns}. In 
+ * contrast to FluidContainers, Containers have a fixed width of (by default)
+ * 940 px.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:Container>
+ *     <b:Row>
+ *         <b:Column>...</b:Column>
+ *         <b:Column>...</b:Column>
+ *     </b:Row>
+ * </b:Container>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#layouts">Bootstrap documentation</a>
+ * @see FluidRow
  */
 //@formatter:on
 public class Container extends DivWidget {
 
+	/**
+	 * Creates an empty Container.
+	 */
 	public Container() {
-		setStylePrimaryName("container");
+		setStylePrimaryName(Constants.CONTAINER);
 	}
 }

@@ -15,18 +15,43 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
 /**
- * A vertical divider for the Navbar.
+ * Vertical divider for the Navbar.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Navbar>
+ *     <b:Nav>
+ *         <b:NavLink>Link before the divider</b:NavLink>
+ *         <b:VerticalDivider />
+ *         <b:NavLink>Link after the divider</b:NavLink>
+ *     </b:Nav>
+ * </b:Navbar>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
+ * @see Navbar
+ * @see Divider
  */
 //@formatter:on
-public class DividerVertical extends ListItem {
+public class VerticalDivider extends ListItem {
 
-	public DividerVertical() {
-		setStyleName(Bootstrap.divider_vertical);
+	/**
+	 * Creates a new vertical divider.
+	 */
+	public VerticalDivider() {
+		setStyleName(Constants.DIVIDER_VERTICAL);
 	}
 }

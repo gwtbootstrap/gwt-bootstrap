@@ -36,10 +36,6 @@ public interface Bootstrap {
 
 	public static final String breadcrumb = "breadcrumb";
 
-	public static final String divider = "divider";
-
-	public static final String divider_vertical = "divider-vertical";
-
 	public static final String prev = "prev";
 
 	public static final String next = "next";
@@ -51,8 +47,6 @@ public interface Bootstrap {
 	public static final String small = "small";
 
 	public static final String container = "container";
-
-	public static final String container_fluid = "container-fluid";
 
 	public static final String sidebar = "sidebar";
 

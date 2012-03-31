@@ -9,7 +9,7 @@
 				<b:Nav>
 					<b:NavLink>Test</b:NavLink>
 					<b:NavText>NavText</b:NavText>
-					<b:DividerVertical />
+					<b:VerticalDivider />
 					<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 					<b:Dropdown text="Dropdown">
 						<b:NavHeader>Test</b:NavHeader>

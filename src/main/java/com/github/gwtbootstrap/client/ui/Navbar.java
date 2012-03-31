@@ -25,6 +25,9 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The Navbar.
  * 
+ * not container
+ * 
+ * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
@@ -55,10 +58,10 @@ public class Navbar extends DivWidget {
 		navbarInner.add(container);
 		super.add(navbarInner);
 	}
-	
+
 	/**
-	 * Define the default container implementation. You can override this 
-	 * in a extended class if you want another impl, like FluidContainer.
+	 * Define the default container implementation. You can override this in a
+	 * extended class if you want another impl, like FluidContainer.
 	 */
 	protected Container getContainer() {
 		return new Container();

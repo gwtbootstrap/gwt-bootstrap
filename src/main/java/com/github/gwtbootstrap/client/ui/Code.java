@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  * 
  * <pre>
  * {@code 
- * <b:Code>}
+ * <b:Code><a href="http://gwtbootstrap.github.com">Link</a></b:Code>}
  * </pre>
  * </p>
  * 

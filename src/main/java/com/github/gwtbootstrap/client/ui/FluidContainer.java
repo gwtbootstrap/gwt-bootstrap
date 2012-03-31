@@ -15,17 +15,47 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
 /**
- *
- * @author carlos
+ * FluidContainers (and {@link Container Containers} are the largest panels 
+ * in the Bootstrap grid system.
+ * 
+ * <p>
+ * They contain almost all the other widgets (mentionable exceptions are {@link
+ * Navbar fixed Navbars}) in {@link FluidRow FluidRows} and 
+ * {@link Column Columns}. In contrast to Containers, FluidContainers adapt 
+ * their width to the width of the browser window. 
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:FluidContainer>
+ *     <b:FluidRow>
+ *         <b:Column>...</b:Column>
+ *         <b:Column>...</b:Column>
+ *     </b:FluidRow>
+ * </b:FluidContainer>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#layouts">Bootstrap documentation</a>
+ * @see Row
  */
 //@formatter:on
 public class FluidContainer extends Container {
 
+	/**
+	 * Creates an empty FluidContainer.
+	 */
 	public FluidContainer() {
-		setStylePrimaryName(Bootstrap.container_fluid);
+		setStylePrimaryName(Constants.CONTAINER_FLUID);
 	}
 }
