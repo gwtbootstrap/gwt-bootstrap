@@ -34,8 +34,8 @@
 <FONT color="green">031</FONT>     * &lt;/pre&gt;<a name="line.31"></a>
 <FONT color="green">032</FONT>     * <a name="line.32"></a>
 <FONT color="green">033</FONT>     * All arguments are optional.<a name="line.33"></a>
-<FONT color="green">034</FONT>     * <a name="line.34"></a>
-<FONT color="green">035</FONT>     * &lt;/p&gt;<a name="line.35"></a>
+<FONT color="green">034</FONT>     * &lt;/p&gt;<a name="line.34"></a>
+<FONT color="green">035</FONT>     * <a name="line.35"></a>
 <FONT color="green">036</FONT>     * @since 2.0.2.0<a name="line.36"></a>
 <FONT color="green">037</FONT>     * <a name="line.37"></a>
 <FONT color="green">038</FONT>     * @author Dominik Mayer<a name="line.38"></a>
@@ -122,10 +122,11 @@
 <FONT color="green">119</FONT>                            setType(BadgeType.INFO);<a name="line.119"></a>
 <FONT color="green">120</FONT>                    else if (typeName.equalsIgnoreCase("inverse"))<a name="line.120"></a>
 <FONT color="green">121</FONT>                            setType(BadgeType.INVERSE);<a name="line.121"></a>
-<FONT color="green">122</FONT>                    throw new IllegalArgumentException("The type \"" + typeName<a name="line.122"></a>
-<FONT color="green">123</FONT>                                    + "\" is not supported.");<a name="line.123"></a>
-<FONT color="green">124</FONT>            }<a name="line.124"></a>
-<FONT color="green">125</FONT>    }<a name="line.125"></a>
+<FONT color="green">122</FONT>                    else<a name="line.122"></a>
+<FONT color="green">123</FONT>                            throw new IllegalArgumentException("\"" + typeName<a name="line.123"></a>
+<FONT color="green">124</FONT>                                            + "\" is not a valid type for a Badge.");<a name="line.124"></a>
+<FONT color="green">125</FONT>            }<a name="line.125"></a>
+<FONT color="green">126</FONT>    }<a name="line.126"></a>
 
 
 

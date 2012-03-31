@@ -19,8 +19,8 @@
 <FONT color="green">016</FONT>    package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
 <FONT color="green">017</FONT>    <a name="line.17"></a>
 <FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.AlertBase;<a name="line.18"></a>
-<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.resources.Bootstrap;<a name="line.19"></a>
-<FONT color="green">020</FONT>    import com.github.gwtbootstrap.client.ui.resources.Bootstrap.AlertStyle;<a name="line.20"></a>
+<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.constants.AlertType;<a name="line.19"></a>
+<FONT color="green">020</FONT>    import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.20"></a>
 <FONT color="green">021</FONT>    <a name="line.21"></a>
 <FONT color="green">022</FONT>    /**<a name="line.22"></a>
 <FONT color="green">023</FONT>     * Alert block widget with more padding than {@link Alert}. It has a dedicated<a name="line.23"></a>
@@ -55,8 +55,8 @@
 <FONT color="green">052</FONT>            }<a name="line.52"></a>
 <FONT color="green">053</FONT>    <a name="line.53"></a>
 <FONT color="green">054</FONT>            private void setUp() {<a name="line.54"></a>
-<FONT color="green">055</FONT>                    super.addStyle(AlertStyle.BLOCK);<a name="line.55"></a>
-<FONT color="green">056</FONT>                    heading.setStyle(AlertStyle.HEADING);<a name="line.56"></a>
+<FONT color="green">055</FONT>                    super.addStyleName(Constants.ALERT_BLOCK);<a name="line.55"></a>
+<FONT color="green">056</FONT>                    heading.setStyleName(Constants.ALERT_HEADING);<a name="line.56"></a>
 <FONT color="green">057</FONT>                    add(heading);<a name="line.57"></a>
 <FONT color="green">058</FONT>            }<a name="line.58"></a>
 <FONT color="green">059</FONT>    <a name="line.59"></a>
@@ -74,11 +74,11 @@
 <FONT color="green">071</FONT>            /**<a name="line.71"></a>
 <FONT color="green">072</FONT>             * Creates an Alert with a close icon and the given style.<a name="line.72"></a>
 <FONT color="green">073</FONT>             * <a name="line.73"></a>
-<FONT color="green">074</FONT>             * @param style<a name="line.74"></a>
+<FONT color="green">074</FONT>             * @param type<a name="line.74"></a>
 <FONT color="green">075</FONT>             *            of the Alert<a name="line.75"></a>
 <FONT color="green">076</FONT>             */<a name="line.76"></a>
-<FONT color="green">077</FONT>            public AlertBlock(AlertStyle style) {<a name="line.77"></a>
-<FONT color="green">078</FONT>                    super(style);<a name="line.78"></a>
+<FONT color="green">077</FONT>            public AlertBlock(AlertType type) {<a name="line.77"></a>
+<FONT color="green">078</FONT>                    super(type);<a name="line.78"></a>
 <FONT color="green">079</FONT>                    setUp();<a name="line.79"></a>
 <FONT color="green">080</FONT>            }<a name="line.80"></a>
 <FONT color="green">081</FONT>    <a name="line.81"></a>
@@ -86,9 +86,9 @@
 <FONT color="green">083</FONT>             * {@inheritDoc}<a name="line.83"></a>
 <FONT color="green">084</FONT>             */<a name="line.84"></a>
 <FONT color="green">085</FONT>            @Override<a name="line.85"></a>
-<FONT color="green">086</FONT>            public void setType(Bootstrap.AlertStyle type) {<a name="line.86"></a>
+<FONT color="green">086</FONT>            public void setType(AlertType type) {<a name="line.86"></a>
 <FONT color="green">087</FONT>                    super.setType(type);<a name="line.87"></a>
-<FONT color="green">088</FONT>                    addStyle(AlertStyle.BLOCK);<a name="line.88"></a>
+<FONT color="green">088</FONT>                    addStyleName(Constants.ALERT_BLOCK);<a name="line.88"></a>
 <FONT color="green">089</FONT>            }<a name="line.89"></a>
 <FONT color="green">090</FONT>    <a name="line.90"></a>
 <FONT color="green">091</FONT>            /**<a name="line.91"></a>
@@ -98,7 +98,7 @@
 <FONT color="green">095</FONT>            @Deprecated<a name="line.95"></a>
 <FONT color="green">096</FONT>            public void setType(String typeName) {<a name="line.96"></a>
 <FONT color="green">097</FONT>                    super.setType(typeName);<a name="line.97"></a>
-<FONT color="green">098</FONT>                    addStyle(AlertStyle.BLOCK);<a name="line.98"></a>
+<FONT color="green">098</FONT>                    addStyleName(Constants.ALERT_BLOCK);<a name="line.98"></a>
 <FONT color="green">099</FONT>            }<a name="line.99"></a>
 <FONT color="green">100</FONT>    <a name="line.100"></a>
 <FONT color="green">101</FONT>            /**<a name="line.101"></a>

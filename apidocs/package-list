@@ -4,6 +4,7 @@ com.github.gwtbootstrap.client.ui.base
 com.github.gwtbootstrap.client.ui.config
 com.github.gwtbootstrap.client.ui.constants
 com.github.gwtbootstrap.client.ui.event
+com.github.gwtbootstrap.client.ui.incubator
 com.github.gwtbootstrap.client.ui.resources
 com.github.gwtbootstrap.client.ui.resources.prettify
 com.github.gwtbootstrap.demo.client
