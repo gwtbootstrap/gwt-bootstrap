@@ -101,12 +101,6 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.7</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.octo.gwt.test</groupId>
       <artifactId>gwt-test-utils</artifactId>
       <version>0.35</version>
@@ -121,6 +115,12 @@
           <artifactId>gwt-dev</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.validation</groupId>
@@ -152,6 +152,17 @@
             <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.4</link>
           </links>
           <overview>${basedir}/src/main/java/com/github/gwtbootstrap/overview.html</overview>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
     </plugins>
@@ -206,7 +217,10 @@
   </profiles>
   <build>
     <!-- Generate compiled stuff in the folder used for developing mode -->
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
     <plugins>
       <!-- GWT Maven Plugin -->
       <plugin>
