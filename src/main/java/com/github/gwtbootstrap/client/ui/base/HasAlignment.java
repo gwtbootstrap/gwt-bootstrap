@@ -31,14 +31,6 @@ public interface HasAlignment {
 	 * Pulls the widget to the left or right.
 	 * 
 	 * @param alignment
-	 *            either {@code "left"} or {@code "right"}
-	 */
-	void setAlignment(String alignment);
-
-	/**
-	 * Pulls the widget to the left or right.
-	 * 
-	 * @param alignment
 	 *            where the widget should end up
 	 */
 	void setAlignment(Alignment alignment);

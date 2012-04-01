@@ -18,9 +18,6 @@
 			<b:Paragraph>Using Twitter's interface library with Google Web Toolkit.</b:Paragraph>
 		</b:Hero>
 		<b:Row>
-			<b:Column size="12" ui:field="underHero"/>
-		</b:Row>
-		<b:Row>
 			<b:Column size="3">
 				<b:Heading size="6">Bootstrap, from Twitter</b:Heading>
 				<b:Paragraph>Bootstrap is a toolkit from Twitter designed to
@@ -51,18 +48,27 @@
 				<b:Paragraph>Set up GWT-Bootstrap, get an overview of all the
 					widgets and
 					their options.</b:Paragraph>
-				<b:Button type="primary"
+				<b:Button type="PRIMARY"
 					href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/">GWT-Bootstrap Javadoc »</b:Button>
 			</b:Column>
 		</b:Row>
 		<b:Row marginTop="10">
 			<b:Column size="12">
-			<g:HTMLPanel><strong>More:</strong> Get support in our 
-			<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group.</a> 
-			Check out the <a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site.</a>
-			Get stats from <a href="https://www.ohloh.net/p/gwt-bootstrap">ohloh.</a>
-			</g:HTMLPanel>
-<!-- 			<b:Heading size="6">Other things to do:</b:Heading> -->
+				<g:HTMLPanel><strong>More:</strong> Get support in our 
+					<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group.</a> 
+					Check out the <a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site.</a>
+					Get stats from <a href="https://www.ohloh.net/p/gwt-bootstrap">ohloh.</a>
+				</g:HTMLPanel>
+			</b:Column>
+		</b:Row>
+		<b:Row marginTop="5">
+			<b:Column size="12">
+				<g:HTMLPanel>
+					<strong>Social:</strong>
+					 <span><a href="https://twitter.com/share" class="twitter-share-button" data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" data-hashtags="gwt">Tweet</a></span>
+					 <div class="fb-like" data-href="http://gwtbootstrap.github.com/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false"/>
+					 <div class="g-plusone" data-annotation="inline" data-size="small" data-href="http://gwtbootstrap.github.com/" />
+				</g:HTMLPanel>
 			</b:Column>
 		</b:Row>
 

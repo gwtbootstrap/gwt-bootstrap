@@ -70,28 +70,4 @@ public class Close extends Anchor implements HasType<DismissType> {
 	public void setType(DismissType type) {
 		getElement().setAttribute(Constants.DATA_DISMISS, type.get());
 	}
-
-	/**
-	 * Sets the type of widget to be closed.
-	 * 
-	 * @param type
-	 *            the type of widget to be closed
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>type="..."</code> argument. Use
-	 *             {@link #setType(DismissType)} instead!
-	 */
-	@Deprecated
-	public void setType(String type) {
-		if (type.equalsIgnoreCase(DismissType.ALERT.get()))
-			setType(DismissType.ALERT);
-		else if (type.equalsIgnoreCase(DismissType.MODAL.get()))
-			setType(DismissType.MODAL);
-		else
-			throw new IllegalArgumentException("A Close cannot be of type +\""
-					+ type + "\"");
-	}
-
 }

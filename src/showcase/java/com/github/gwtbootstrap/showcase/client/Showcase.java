@@ -15,7 +15,6 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
-import com.github.gwtbootstrap.client.ui.Column;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
@@ -26,11 +25,8 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -43,8 +39,6 @@ public class Showcase extends Composite implements EntryPoint {
 	FlowPanel sections;
 	@UiField
 	Nav nav;
-	@UiField
-	Column underHero;
 
 	private static ShowcaseUiBinder uiBinder = GWT
 			.create(ShowcaseUiBinder.class);
@@ -57,55 +51,17 @@ public class Showcase extends Composite implements EntryPoint {
 //        addSectionToContainer("Get Started", "setup", new Setup());
 //		addSectionToContainer("Get Support", "support", new Support());
 		addSectionToContainer("Buttons", "buttons", new Buttons());
-		
-		//create plusone
-		underHero.add(new HTMLPanel("span","<g:plusone size=\"medium\" width=\"120\" href=\"http://gwtbootstrap.github.com/\"></g:plusone>"));
-
-		//create twitter anchor
-		HTMLPanel twitterPost = new HTMLPanel("span" ,
-			"<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-text=\"GWT-Bootstrap\" data-url=\"http://gwtbootstrap.github.com/\" data-via=\"soundTricker318\" data-hashtags=\"gwt\">Tweet</a>"
-		);
-		
-		underHero.add(twitterPost);
-
-		//create facebook like
-		underHero.add(createFacebookLikeButton());
 
 		RootPanel.get("content").add(this);
-		
-	    injectPlusoneScript();		
-	    
-	    injectTwitterPostScript();
-	    
-		
-	}
-
-	private HTML createFacebookLikeButton() {
-		HTML facebookShareButton = new HTML();
-		
-		Element buttonElement = facebookShareButton.getElement();
-		
-		buttonElement.addClassName("fb-like");
-		buttonElement.setAttribute("data-href", "http://gwtbootstrap.github.com/");
-		buttonElement.setAttribute("data-send", "true");
-		buttonElement.setAttribute("data-layout", "button_count");
-		buttonElement.setAttribute("data-width", "120");
-		buttonElement.setAttribute("data-show-faces", "false");
-		
-		return facebookShareButton;
-	}
-
-	private void injectTwitterPostScript() {
-		JavaScriptInjector.inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\")");
-	}
-
-	private void injectPlusoneScript() {
 		Document doc = Document.get();
-	    ScriptElement script = doc.createScriptElement();
-	    script.setSrc("https://apis.google.com/js/plusone.js");
-	    script.setType("text/javascript");
-	    script.setLang("javascript");
-	    doc.getBody().appendChild(script);
+		ScriptElement script = doc.createScriptElement();
+		script.setSrc("https://apis.google.com/js/plusone.js");
+		script.setType("text/javascript");
+		script.setLang("javascript");
+		doc.getBody().appendChild(script);
+		
+		JavaScriptInjector.inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
+
 	}
 
 	private void addSectionToContainer(String sectionName, String target,

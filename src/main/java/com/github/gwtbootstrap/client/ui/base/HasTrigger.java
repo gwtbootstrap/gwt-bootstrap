@@ -38,15 +38,6 @@ public interface HasTrigger {
 	void setTrigger(Trigger trigger);
 
 	/**
-	 * Sets the trigger that activates the widget.
-	 * 
-	 * @param trigger
-	 *            <code>"hover"</code>, <code>"focus"</code> or
-	 *            <code>"manual"</code>
-	 */
-	void setTrigger(String trigger);
-
-	/**
 	 * Gets the widget's Trigger.
 	 * 
 	 * @return the trigger

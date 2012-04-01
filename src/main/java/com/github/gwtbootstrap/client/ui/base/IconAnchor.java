@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
+import com.github.gwtbootstrap.client.ui.constants.IconColor;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
 
@@ -36,8 +37,8 @@ import com.google.gwt.user.client.ui.HasText;
  * Here we add a second Icon:
  * 
  * <pre>
- * {@code <b:IconAnchor icon="star" text="There is a widget so the text goes here">
- *     <b:Icon type="star" />
+ * {@code <b:IconAnchor icon="STAR" text="There is a widget so the text goes here">
+ *     <b:Icon type="STAR" />
  * </b:IconAnchor>}
  * </pre>
  * 
@@ -81,36 +82,8 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>icon="..."</code> argument. Use
-	 *             {@link #setIcon(IconType)} instead!
 	 */
-	@Deprecated
-	public void setIcon(String iconName) {
-		icon.setType(iconName);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setIconColor(Icon.Color color) {
-		icon.setColor(color);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>icon="..."</code> argument. Use
-	 *             {@link #setIconColor(Icon.Color)} instead!
-	 */
-	@Deprecated
-	public void setIconColor(String color) {
+	public void setIconColor(IconColor color) {
 		icon.setColor(color);
 	}
 

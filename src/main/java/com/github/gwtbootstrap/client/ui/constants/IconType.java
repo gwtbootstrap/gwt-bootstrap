@@ -152,7 +152,8 @@ public enum IconType implements Style {
 	FOLDER_CLOSE("folder-close"),
 	FOLDER_OPEN("folder-open"),
 	RESIZE_VERTICAL("resize-vertical"),
-	RESIZE_HORIZONTAL("resize-horizontal");
+	RESIZE_HORIZONTAL("resize-horizontal"),
+	BAR("icon-bar");
 
 	private static final String PREFIX = "icon-";
 

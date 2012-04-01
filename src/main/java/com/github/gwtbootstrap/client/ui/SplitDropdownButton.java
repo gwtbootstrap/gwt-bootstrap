@@ -17,6 +17,9 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -26,31 +29,33 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap documentation</a>
- *
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap
+ *      documentation</a>
+ * 
  */
-public class SplitDropdownButton extends DropdownBase 
-		implements HasClickHandlers {
+public class SplitDropdownButton extends DropdownBase implements
+		HasClickHandlers {
 
 	private Button button;
-	
+
 	private Button trigger;
-	
+
 	public SplitDropdownButton() {
 		super("div");
 		addStyleName("btn-group");
 	}
-	
+
 	public SplitDropdownButton(String text) {
 		this();
 		setText(text);
 	}
-	
+
 	@Override
 	public void setText(String text) {
 		button.setText(text);
 	}
-	
+
 	@Override
 	protected IconAnchor createTrigger() {
 		button = new Button();
@@ -59,17 +64,17 @@ public class SplitDropdownButton extends DropdownBase
 		trigger.setCaret(true);
 		return trigger;
 	}
-	
-	public void setSize(String size) {
+
+	public void setSize(ButtonSize size) {
 		trigger.setSize(size);
 	}
-	
-	public void setType(String type) {
+
+	public void setType(ButtonType type) {
 		trigger.setType(type);
 	}
-	
-	public void setIcon(String icon) {
-		button.setIcon(icon);
+
+	public void setIcon(IconType type) {
+		button.setIcon(type);
 	}
 
 	public HandlerRegistration addClickHandler(ClickHandler handler) {

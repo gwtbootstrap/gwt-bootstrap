@@ -21,7 +21,7 @@ import com.github.gwtbootstrap.client.ui.base.AlertBase;
  * Simple Alert widget that uses bold text as a heading.
  * <p>
  * <h3>UiBinder Usage:</h3>
- * <code>{@code <b:Alert heading="Warning." type="error">Something went wrong...</b:Alert>}</code>
+ * <code>{@code <b:Alert heading="Warning." type="ERROR">Something went wrong...</b:Alert>}</code>
  * </p>
  * <p>
  * All parameters are optional and map to the class's setters.
@@ -32,7 +32,9 @@ import com.github.gwtbootstrap.client.ui.base.AlertBase;
  * @author Dominik Mayer
  * 
  * @see AlertBlock
- * @see <a href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap
+ *      documentation</a>
  */
 public class Alert extends AlertBase {
 

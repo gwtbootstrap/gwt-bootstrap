@@ -16,26 +16,26 @@
 						<b:NavLink>Test 1</b:NavLink>
 						<b:NavLink>Test 2</b:NavLink>
 					</b:Dropdown>
-					<b:NavWidget icon="star" iconColor="white" text="Inbox"
+					<b:NavWidget icon="STAR" iconColor="WHITE" text="Inbox"
 						ui:field="inbox">
 						<b:Badge>1</b:Badge>
 					</b:NavWidget>
 				</b:Nav>
 				<b:NavForm size="1" />
-				<b:Nav alignment="right">
+				<b:Nav alignment="RIGHT">
 					<b:NavLink>Test</b:NavLink>
 				</b:Nav>
-				<b:NavText alignment="right">Right</b:NavText>
-				<b:NavSearch size="2" placeholder="Search" alignment="right" />
+				<b:NavText alignment="RIGHT">Right</b:NavText>
+				<b:NavSearch size="2" placeholder="Search" alignment="RIGHT" />
 			</b:NavCollapse>
 		</b:ResponsiveNavbar>
 
 		<b:Container>
 			<b:Heading size="2">UiBinder Examples</b:Heading>
 
-			<b:NavList hideOn="tablet">
+			<b:NavList hideOn="TABLET">
 				<b:NavHeader>Header</b:NavHeader>
-				<b:NavLink active="true" icon="plane">Test</b:NavLink>
+				<b:NavLink active="true" icon="PLANE">Test</b:NavLink>
 				<b:NavWidget text="Inbox">
 					<b:Badge>1</b:Badge>
 				</b:NavWidget>
@@ -43,24 +43,24 @@
 				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 			</b:NavList>
 
-			<b:WellNavList showOn="tablet">
+			<b:WellNavList showOn="TABLET">
 				<b:NavHeader>Header</b:NavHeader>
-				<b:NavLink active="true" icon="plane">Test</b:NavLink>
+				<b:NavLink active="true" icon="PLANE">Test</b:NavLink>
 				<b:Divider />
 				<b:NavLink href="http://www.google.com">Another Test</b:NavLink>
 			</b:WellNavList>
 
 			<b:Popover text="testpopover" heading="some title"
 				hideDelay="5000">
-				<b:Button ui:field="button" icon="heart" type="info" size="mini">Testbutton</b:Button>
+				<b:Button ui:field="button" icon="HEART" type="INFO" size="MINI">Testbutton</b:Button>
 			</b:Popover>
 			<b:Popover text="other popover" heading="other title"
-				placement="top">
-				<b:Button icon="leaf" type="danger" size="mini">Testbutton</b:Button>
+				placement="TOP">
+				<b:Button icon="LEAF" type="DANGER" size="MINI">Testbutton</b:Button>
 			</b:Popover>
 			<b:Tooltip tooltip="The tooltip">Some text</b:Tooltip>
 			<b:Tooltip tooltip="Another tooltip" animation="false"
-				hideDelay="5000" placement="right">Some more text</b:Tooltip>
+				hideDelay="5000" placement="RIGHT">Some more text</b:Tooltip>
 			<b:Blockquote source="Me" pullRight="true">This is a
 				blockquote.</b:Blockquote>
 			<g:HorizontalPanel>
@@ -113,9 +113,9 @@
 				, that's
 				<b:Emphasis>me!</b:Emphasis>
 				Icon:
-				<b:Icon type="star" />
+				<b:Icon type="STAR" />
 				:-). Invisible:
-				<b:Icon type="heart" color="white" />
+				<b:Icon type="HEART" color="WHITE" />
 				;-).
 				Strong:
 				<b:Strong>Hey!</b:Strong>
@@ -124,14 +124,14 @@
 				<b:Close />
 
 				Badge:
-				<b:Badge type="error">2</b:Badge>
+				<b:Badge type="ERROR">2</b:Badge>
 				.
 				<b:Badge>2</b:Badge>
 
 				Label:
 				<b:Label>Normal label</b:Label>
 				,
-				<b:Label type="info">Info label</b:Label>
+				<b:Label type="INFO">Info label</b:Label>
 				<br />
 				<br />
 			</g:HTMLPanel>
@@ -149,7 +149,7 @@
 
 				<b:Row>
 					<b:Column size="2">
-						<b:Pagination alignment="left">
+						<b:Pagination alignment="LEFT">
 							<b:NavLink href="http://www.google.com">1</b:NavLink>
 							<b:NavLink active="true">2</b:NavLink>
 							<b:NavLink disabled="true">3</b:NavLink>
@@ -235,25 +235,25 @@
 						<b:ProgressBar percent="20" />
 					</b:Column>
 					<b:Column size="2">
-						<b:ProgressBar type="striped" percent="40" />
+						<b:ProgressBar type="STRIPED" percent="40" />
 					</b:Column>
 					<b:Column size="2">
-						<b:ProgressBar type="animated" percent="60" />
+						<b:ProgressBar type="ANIMATED" percent="60" />
 					</b:Column>
 				</b:FluidRow>
 				<b:FluidRow>
 					<b:Column size="3">
-						<b:Alert type="error" animation="true">
+						<b:Alert type="ERROR" animation="true">
 							TestAlert with
 							<b>html</b>
 						</b:Alert>
 					</b:Column>
 					<b:Column size="3">
-						<b:Alert type="success" heading="Hm..." close="false">TestAlert
+						<b:Alert type="SUCCESS" heading="Hm..." close="false">TestAlert
 							without close</b:Alert>
 					</b:Column>
 					<b:Column size="3">
-						<b:AlertBlock type="info" heading="Heading">AlertBlock</b:AlertBlock>
+						<b:AlertBlock type="INFO" heading="Heading">AlertBlock</b:AlertBlock>
 					</b:Column>
 				</b:FluidRow>
 				<b:Row>
@@ -281,13 +281,13 @@
 						</b:NavPills>
 					</b:Column>
 					<b:Column size="3">
-						<b:DropdownButton dropup="true" size="mini"
+						<b:DropdownButton dropup="true" size="MINI"
 							text="Dropup example">
 							<b:NavLink href="#test">Test 1</b:NavLink>
 							<b:NavLink>Test 2</b:NavLink>
 						</b:DropdownButton>
 						<b:SplitDropdownButton ui:field="splitDropdownButton"
-							icon="plane" text="Dropdown example">
+							icon="PLANE" text="Dropdown example">
 							<b:NavLink href="#test">Test 1</b:NavLink>
 							<b:NavLink>Test 2</b:NavLink>
 						</b:SplitDropdownButton>
@@ -295,8 +295,8 @@
 				</b:Row>
 			</b:FluidContainer>
 			<b:Section target="modal">
-				<b:Button icon="heart" type="info" ui:field="modalBtn">Show modal</b:Button>
-				<b:Button icon="heart" type="info" enabled="false"
+				<b:Button icon="HEART" type="INFO" ui:field="modalBtn">Show modal</b:Button>
+				<b:Button icon="HEART" type="INFO" enabled="false"
 					ui:field="anotherModalBtn">Show anothermodal</b:Button>
 			</b:Section>
 			<b:Footer>
@@ -306,11 +306,11 @@
 			<b:Modal title="My Modal" show="false" backdrop="true"
 				keyboard="true" animation="true" ui:field="modal">
 				<g:Label>Modal Content!</g:Label>
-				<b:Button ui:field="contentButton" icon="file" iconColor="white"
-					type="primary">Save</b:Button>
+				<b:Button ui:field="contentButton" icon="FILE" iconColor="WHITE"
+					type="PRIMARY">Save</b:Button>
 				<b:ModalFooter>
-					<b:Button ui:field="saveButton" icon="file" iconColor="white"
-						type="primary">Save</b:Button>
+					<b:Button ui:field="saveButton" icon="FILE" iconColor="WHITE"
+						type="PRIMARY">Save</b:Button>
 				</b:ModalFooter>
 			</b:Modal>
 		</b:Container>

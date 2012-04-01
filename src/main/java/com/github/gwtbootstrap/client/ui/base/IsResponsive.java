@@ -55,28 +55,6 @@ public interface IsResponsive {
 	void setShowOn(Device device);
 
 	/**
-	 * Sets the kind of device, this widget is shown on.
-	 * 
-	 * <p>
-	 * The widget is not shown on any other device.
-	 * </p>
-	 * 
-	 * <p>
-	 * <b>Only works if responsive design is turned on!</b>
-	 * </p>
-	 * 
-	 * @param device
-	 *            the String name of the device. Possible values:
-	 *            <code>"phone"</code>, <code>"tablet"</code>,
-	 *            <code>"desktop"</code>.
-	 * 
-	 * @see Configurator#hasResponsiveDesign()
-	 * @see #setHideOn(Device)
-	 * 
-	 */
-	void setShowOn(String device);
-
-	/**
 	 * Sets the kind of device, this widget is hidden on.
 	 * 
 	 * <p>
@@ -93,27 +71,4 @@ public interface IsResponsive {
 	 * @see #setShowOn(Device)
 	 */
 	void setHideOn(Device device);
-
-	/**
-	 * Sets the kind of device, this widget is hidden on.
-	 * 
-	 * <p>
-	 * The widget is not hidden on any other device.
-	 * </p>
-	 * 
-	 * <p>
-	 * <b>Only works if responsive design is turned on!</b>
-	 * </p>
-	 * 
-	 * @param device
-	 *            the String name of the device. Possible values:
-	 *            <code>"phone"</code>, <code>"tablet"</code>,
-	 *            <code>"desktop"</code>.
-	 * 
-	 * @see Configurator#hasResponsiveDesign()
-	 * @see #setShowOn(Device)
-	 * 
-	 */
-	void setHideOn(String device);
-
 }
