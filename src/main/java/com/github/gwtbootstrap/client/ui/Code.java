@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.github.gwtbootstrap.client.ui.resources.prettify.HasProgrammingLanguage;
 import com.github.gwtbootstrap.client.ui.resources.prettify.PrettifyHelper;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasHTML;
 
@@ -90,7 +91,6 @@ public class Code extends AbstractTypography implements HasProgrammingLanguage,
 	 *            the text to be set
 	 */
 	public void setHTML(String html) {
-		setText(html);
-
+		getElement().setInnerHTML(SafeHtmlUtils.htmlEscapeAllowEntities(html));
 	}
 }

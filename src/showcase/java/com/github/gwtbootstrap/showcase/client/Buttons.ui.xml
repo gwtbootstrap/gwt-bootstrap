@@ -5,7 +5,7 @@
         
     </ui:style>
     <g:HTMLPanel>
-            <b:PageHeader subtext="styles for Buttons">Buttons</b:PageHeader>
+            <b:PageHeader subtext="Styles for Buttons">Buttons</b:PageHeader>
             <b:Row>
                 <b:Column size="6">
                     <g:HTMLPanel>
@@ -22,17 +22,15 @@
                                         <b:Button ui:field="defaultType" text="Default" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button text=&quot;Default&quot; /&gt;</code>
+                                    	<b:Code>&lt;b:Button>Default&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="primary" type="primary" text="Primary" />
+                                        <b:Button ui:field="primary" type="PRIMARY" text="Primary" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button type=&quot;primary&quot;
-                                            text=&quot;Primary&quot;
-                                            /&gt;</code>
+                                    	<b:Code>&lt;b:Button type="primary">Primary&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -40,8 +38,7 @@
                                         <b:Button ui:field="info" type="info" text="Info" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button type=&quot;info&quot;
-                                            text=&quot;Info&quot; /&gt;</code>
+                                    	<b:Code>&lt;b:Button type="info">Info&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -49,9 +46,7 @@
                                         <b:Button ui:field="success" type="success" text="Success" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button type=&quot;success&quot;
-                                            text=&quot;Success&quot;
-                                            /&gt;</code>
+                                    	<b:Code>&lt;b:Button type="success">Success&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -59,9 +54,7 @@
                                         <b:Button ui:field="warning" type="warning" text="Warning" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button type=&quot;warning&quot;
-                                            text=&quot;Warning&quot;
-                                            /&gt;</code>
+                                    	<b:Code>&lt;b:Button type="warning">Warning&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,9 +62,7 @@
                                         <b:Button ui:field="danger" type="danger" text="Danger" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button type=&quot;danger&quot;
-                                            text=&quot;Danger&quot;
-                                            /&gt;</code>
+                                    	<b:Code>&lt;b:Button type="danger">Danger&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -79,9 +70,7 @@
                                         <b:Button ui:field="inverse" type="inverse" text="Inverse" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button type=&quot;inverse&quot;
-                                            text=&quot;Inverse&quot;
-                                            /&gt;</code>
+                                    	<b:Code>&lt;b:Button type="inverse">Inverse&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                             </tbody>
@@ -100,18 +89,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="defaultSize" text="Default" />
-                                    </td>
-                                    <td>
-                                        <code>&lt;b:Button text=&quot;Default&quot; /&gt;</code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         <b:Button ui:field="large" size="large" text="Large" />
                                     </td>
                                     <td>
-                                        <code> &lt;b:Button size=&quot;large&quot; text=&quot;Large&quot; /&gt;</code>
+                                    	<b:Code>&lt;b:Button size="large">Large&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -119,7 +100,7 @@
                                         <b:Button ui:field="small" size="small" text="Small" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button size=&quot;small&quot; text=&quot;small&quot; /&gt;</code>
+                                    	<b:Code>&lt;b:Button size="small">Small&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,7 +108,7 @@
                                         <b:Button ui:field="mini" size="mini" text="Mini" />
                                     </td>
                                     <td>
-                                        <code>&lt;b:Button size=&quot;mini&quot; text=&quot;Mini&quot; /&gt;</code>
+                                    	<b:Code>&lt;b:Button size="mini">Mini&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                             </tbody>
@@ -143,18 +124,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="defaultState" text="Default" />
-                                    </td>
-                                    <td>
-                                        <code>&lt;b:Button text=&quot;Default&quot; /&gt;</code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         <b:Button ui:field="disabled" enabled="false" text="Disabled" />
                                     </td>
                                     <td>
-                                        <code> &lt;b:Button enabled=&quot;false&quot; text=&quot;Disabled&quot; /&gt;</code>
+                                    	<b:Code>&lt;b:Button enabled="false">Disabled&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                             </tbody>
