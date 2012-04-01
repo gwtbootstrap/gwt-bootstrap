@@ -30,47 +30,47 @@
                                         <b:Button ui:field="primary" type="PRIMARY" text="Primary" />
                                     </td>
                                     <td>
-                                    	<b:Code>&lt;b:Button type="primary">Primary&lt;/b:Button></b:Code>
+                                    	<b:Code>&lt;b:Button type="PRIMARY">Primary&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="info" type="info" text="Info" />
+                                        <b:Button ui:field="info" type="INFO" text="Info" />
                                     </td>
                                     <td>
-                                    	<b:Code>&lt;b:Button type="info">Info&lt;/b:Button></b:Code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b:Button ui:field="success" type="success" text="Success" />
-                                    </td>
-                                    <td>
-                                    	<b:Code>&lt;b:Button type="success">Success&lt;/b:Button></b:Code>
+                                    	<b:Code>&lt;b:Button type="INFO">Info&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="warning" type="warning" text="Warning" />
+                                        <b:Button ui:field="success" type="SUCCESS" text="Success" />
                                     </td>
                                     <td>
-                                    	<b:Code>&lt;b:Button type="warning">Warning&lt;/b:Button></b:Code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b:Button ui:field="danger" type="danger" text="Danger" />
-                                    </td>
-                                    <td>
-                                    	<b:Code>&lt;b:Button type="danger">Danger&lt;/b:Button></b:Code>
+                                    	<b:Code>&lt;b:Button type="SUCCESS">Success&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="inverse" type="inverse" text="Inverse" />
+                                        <b:Button ui:field="warning" type="WARNING" text="Warning" />
                                     </td>
                                     <td>
-                                    	<b:Code>&lt;b:Button type="inverse">Inverse&lt;/b:Button></b:Code>
+                                    	<b:Code>&lt;b:Button type="WARNING">Warning&lt;/b:Button></b:Code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="danger" type="DANGER" text="Danger" />
+                                    </td>
+                                    <td>
+                                    	<b:Code>&lt;b:Button type="DANGER">Danger&lt;/b:Button></b:Code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="inverse" type="INVERSE" text="Inverse" />
+                                    </td>
+                                    <td>
+                                    	<b:Code>&lt;b:Button type="INVERSE">Inverse&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                             </tbody>
@@ -89,26 +89,26 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="large" size="large" text="Large" />
+                                        <b:Button ui:field="large" size="LARGE" text="Large" />
                                     </td>
                                     <td>
-                                    	<b:Code>&lt;b:Button size="large">Large&lt;/b:Button></b:Code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b:Button ui:field="small" size="small" text="Small" />
-                                    </td>
-                                    <td>
-                                    	<b:Code>&lt;b:Button size="small">Small&lt;/b:Button></b:Code>
+                                    	<b:Code>&lt;b:Button size="LARGE">Large&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b:Button ui:field="mini" size="mini" text="Mini" />
+                                        <b:Button ui:field="small" size="SMALL" text="Small" />
                                     </td>
                                     <td>
-                                    	<b:Code>&lt;b:Button size="mini">Mini&lt;/b:Button></b:Code>
+                                    	<b:Code>&lt;b:Button size="SMALL">Small&lt;/b:Button></b:Code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b:Button ui:field="mini" size="MINI" text="Mini" />
+                                    </td>
+                                    <td>
+                                    	<b:Code>&lt;b:Button size="MINI">Mini&lt;/b:Button></b:Code>
                                     </td>
                                 </tr>
                             </tbody>

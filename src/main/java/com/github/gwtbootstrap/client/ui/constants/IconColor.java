@@ -13,34 +13,38 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.base;
+package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.constants.Placement;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
+//@formatter:off
 /**
- * Interface for widgets that have a placement.
+ * Color of the <a href="http://glyphicons.com/">Glyphicon.</a>
  * 
  * @since 2.0.2.0
  * 
+ * @author Carlos Alexandro Becker
+ * 
  * @author Dominik Mayer
  * 
- * @see Placement
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Bootstrap documentation</a>
  * 
  */
-public interface HasPlacement {
+//@formatter:on
+public enum IconColor implements Style {
+
+	WHITE("icon-white"), BLACK("");
+
+	private String className;
+
+	private IconColor(String className) {
+		this.className = className;
+	}
 
 	/**
-	 * Sets the widget's placement.
-	 * 
-	 * @param placement
-	 *            the placement
+	 * {@inheritDoc}
 	 */
-	void setPlacement(Placement placement);
-
-	/**
-	 * Gets the widget's placement.
-	 * 
-	 * @return the widget's placement
-	 */
-	Placement getPlacement();
+	public String get() {
+		return className;
+	}
 }

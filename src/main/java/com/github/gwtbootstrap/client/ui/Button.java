@@ -94,7 +94,7 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * <h3>UiBinder Usage:</h3>
  * 
  * <pre>
- * {@code <b:Button icon="trash" type="error">Delete</b:Button>}
+ * {@code <b:Button icon="TRASH" type="ERROR">Delete</b:Button>}
  * </pre>
  * 
  * All arguments are optional.
@@ -166,41 +166,6 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	}
 
 	/**
-	 * Sets the type of the Button.
-	 * <p>
-	 * Different types give the button a different look.
-	 * 
-	 * @param type
-	 *            the type of the Button.
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>type="..."</code> argument. Use
-	 *             {@link #setType(ButtonType)} instead!
-	 */
-	@Deprecated
-	public void setType(String type) {
-		if (type.equalsIgnoreCase(ButtonType.DEFAULT.getWithoutPrefix()))
-			setType(ButtonType.DEFAULT);
-		else if (type.equalsIgnoreCase(ButtonType.PRIMARY.getWithoutPrefix()))
-			setType(ButtonType.PRIMARY);
-		else if (type.equalsIgnoreCase(ButtonType.INFO.getWithoutPrefix()))
-			setType(ButtonType.INFO);
-		else if (type.equalsIgnoreCase(ButtonType.SUCCESS.getWithoutPrefix()))
-			setType(ButtonType.SUCCESS);
-		else if (type.equalsIgnoreCase(ButtonType.WARNING.getWithoutPrefix()))
-			setType(ButtonType.WARNING);
-		else if (type.equalsIgnoreCase(ButtonType.DANGER.getWithoutPrefix()))
-			setType(ButtonType.DANGER);
-		else if (type.equalsIgnoreCase(ButtonType.INVERSE.getWithoutPrefix()))
-			setType(ButtonType.INVERSE);
-		else
-			throw new IllegalStateException("A Button cannot have the type \""
-					+ type + "\"");
-	}
-
-	/**
 	 * Sets the size of the Button.
 	 * 
 	 * @param size
@@ -210,33 +175,6 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		for (ButtonSize s : ButtonSize.values())
 			removeStyle(s);
 		addStyle(size);
-	}
-
-	/**
-	 * Sets the size of the Button.
-	 * 
-	 * @param size
-	 *            the size of the Button
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>size="..."</code> argument. Use
-	 *             {@link #setSize(ButtonSize)} instead!
-	 */
-	@Deprecated
-	public void setSize(String size) {
-		if (size.equalsIgnoreCase(ButtonSize.DEFAULT.getWithoutPrefix()))
-			setSize(ButtonSize.DEFAULT);
-		else if (size.equalsIgnoreCase(ButtonSize.LARGE.getWithoutPrefix()))
-			setSize(ButtonSize.LARGE);
-		else if (size.equalsIgnoreCase(ButtonSize.SMALL.getWithoutPrefix()))
-			setSize(ButtonSize.SMALL);
-		else if (size.equalsIgnoreCase(ButtonSize.MINI.getWithoutPrefix()))
-			setSize(ButtonSize.MINI);
-		else
-			throw new IllegalStateException("A Button cannot have the size \""
-					+ size + "\"");
 	}
 
 	/**

@@ -17,6 +17,9 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 
 //@formatter:off
 /**
@@ -49,16 +52,16 @@ public class DropdownButton extends DropdownBase {
 		return trigger;
 	}
 
-	public void setSize(String size) {
+	public void setSize(ButtonSize size) {
 		trigger.setSize(size);
 	}
 
-	public void setType(String type) {
+	public void setType(ButtonType type) {
 		trigger.setType(type);
 	}
 
-	public void setIcon(String icon) {
-		trigger.setIcon(icon);
+	public void setIcon(IconType type) {
+		trigger.setIcon(type);
 	}
 
 }

@@ -30,13 +30,4 @@ public interface HasType<T extends Style> {
 	 * @param style
 	 */
 	void setType(T style);
-
-	/**
-	 * Sets the type of the widget based on the Bootstrap class name.
-	 * 
-	 * @param typeName
-	 *            name of the class to add without the prefix. (Example: "error"
-	 *            instead of "alert-error".)
-	 */
-	void setType(String typeName);
 }

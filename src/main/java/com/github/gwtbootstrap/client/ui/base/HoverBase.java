@@ -128,31 +128,6 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any attribute names change. The only
-	 *             valid use is inside UiBinder files where it processes the
-	 *             <code>placement="..."</code> argument. Use
-	 *             {@link #setPlacement(Placement)} instead!
-	 */
-	@Deprecated
-	public void setPlacement(String placement) {
-		if (placement == "top")
-			setPlacement(Placement.TOP);
-		else if (placement == "bottom")
-			setPlacement(Placement.BOTTOM);
-		else if (placement == "left")
-			setPlacement(Placement.LEFT);
-		else if (placement == "right")
-			setPlacement(Placement.RIGHT);
-		else
-			throw new IllegalArgumentException("The placement \"" + placement
-					+ "\" is not supported.");
-
-	}
-
-	/**
-	 * {@inheritDoc}
 	 */
 	public Placement getPlacement() {
 		return placement;
@@ -163,28 +138,6 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	 */
 	public void setTrigger(Trigger trigger) {
 		this.trigger = trigger;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any attribute names change. The only
-	 *             valid use is inside UiBinder files where it processes the
-	 *             <code>trigger="..."</code> argument. Use
-	 *             {@link #setTrigger(Trigger)} instead!
-	 */
-	@Deprecated
-	public void setTrigger(String trigger) {
-		if (trigger == "hover")
-			setTrigger(Trigger.HOVER);
-		else if (trigger == "focus")
-			setTrigger(Trigger.FOCUS);
-		else if (trigger == "manual")
-			setTrigger(Trigger.MANUAL);
-		else
-			throw new IllegalArgumentException("The trigger \"" + trigger
-					+ "\" is not supported.");
 	}
 
 	/**

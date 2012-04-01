@@ -25,7 +25,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * 
  * <p>
  * <h3>UiBinder Usage:</h3>
- * <code>{@code <b:AlertBlock heading="Warning." type="error">Something went wrong...</AlertBlock>}</code>
+ * <code>{@code <b:AlertBlock heading="Warning." type="ERROR">Something went wrong...</AlertBlock>}</code>
  * </p>
  * <p>
  * All parameters are optional and map to the class's setters.
@@ -85,16 +85,6 @@ public class AlertBlock extends AlertBase {
 	@Override
 	public void setType(AlertType type) {
 		super.setType(type);
-		addStyleName(Constants.ALERT_BLOCK);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	@Deprecated
-	public void setType(String typeName) {
-		super.setType(typeName);
 		addStyleName(Constants.ALERT_BLOCK);
 	}
 

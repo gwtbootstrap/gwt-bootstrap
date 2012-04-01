@@ -18,6 +18,8 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconColor;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -62,11 +64,11 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 		return anchor.getText();
 	}
 
-	public void setIcon(String iconname) {
-		anchor.setIcon(iconname);
+	public void setIcon(IconType type) {
+		anchor.setIcon(type);
 	}
 
-	public void setIconColor(String color) {
+	public void setIconColor(IconColor color) {
 		anchor.setIconColor(color);
 	}
 

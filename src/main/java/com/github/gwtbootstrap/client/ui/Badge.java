@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.InlineLabel;
  * <h3>UiBinder Usage:</h3>
  * 
  * <pre>
- * {@code <b:Badge type="error">2</b:Badge>}
+ * {@code <b:Badge type="ERROR">2</b:Badge>}
  * </pre>
  * 
  * All arguments are optional.
@@ -94,33 +94,5 @@ public class Badge extends InlineLabel implements HasType<BadgeType> {
 	 */
 	public void setType(BadgeType type) {
 		setStyleName(type.get());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>type="..."</code> argument. Use
-	 *             {@link #setType(BadgeType)} instead!
-	 */
-	@Deprecated
-	public void setType(String typeName) {
-		if (typeName.equalsIgnoreCase("default"))
-			setType(BadgeType.DEFAULT);
-		else if (typeName.equalsIgnoreCase("success"))
-			setType(BadgeType.SUCCESS);
-		else if (typeName.equalsIgnoreCase("warning"))
-			setType(BadgeType.WARNING);
-		else if (typeName.equalsIgnoreCase("error"))
-			setType(BadgeType.ERROR);
-		else if (typeName.equalsIgnoreCase("info"))
-			setType(BadgeType.INFO);
-		else if (typeName.equalsIgnoreCase("inverse"))
-			setType(BadgeType.INVERSE);
-		else
-			throw new IllegalArgumentException("\"" + typeName
-					+ "\" is not a valid type for a Badge.");
 	}
 }

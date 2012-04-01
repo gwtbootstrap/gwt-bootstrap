@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
@@ -51,9 +52,9 @@ public class ResponsiveNavbar extends Navbar {
 				Bootstrap.collapse);
 		collapseButton.getElement().setAttribute(Bootstrap.data_target,
 				Bootstrap.nav_collapse_target);
-		collapseButton.add(new Icon("bar"));
-		collapseButton.add(new Icon("bar"));
-		collapseButton.add(new Icon("bar"));
+		collapseButton.add(new Icon(IconType.BAR));
+		collapseButton.add(new Icon(IconType.BAR));
+		collapseButton.add(new Icon(IconType.BAR));
 		add(collapseButton);
 		addWindowHandlers();
 		setPaddingTop();

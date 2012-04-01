@@ -51,7 +51,7 @@
 				<b:Paragraph>Set up GWT-Bootstrap, get an overview of all the
 					widgets and
 					their options.</b:Paragraph>
-				<b:Button type="primary"
+				<b:Button type="PRIMARY"
 					href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/">GWT-Bootstrap Javadoc »</b:Button>
 			</b:Column>
 		</b:Row>

@@ -114,28 +114,6 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @deprecated This Method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>showOn="..."</code> argument. Use
-	 *             {@link #setShowOn(Device)} instead!
-	 */
-	@Deprecated
-	public void setShowOn(String device) {
-		if (device.equalsIgnoreCase("phone"))
-			setShowOn(Device.PHONE);
-		else if (device.equalsIgnoreCase("tablet"))
-			setShowOn(Device.TABLET);
-		else if (device.equalsIgnoreCase("desktop"))
-			setShowOn(Device.DESKTOP);
-		else
-			throw new IllegalArgumentException("The device \"" + device
-					+ "\" is not supported.");
-	}
-
-	/**
-	 * {@inheritDoc}
 	 */
 	public void setHideOn(Device device) {
 		removeResponsiveStyles();
@@ -150,28 +128,5 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
 				addStyle(ResponsiveStyle.HIDDEN_DESKTOP);
 				break;
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated This Method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>showOn="..."</code> argument. Use
-	 *             {@link #setHideOn(Device)} instead!
-	 * 
-	 */
-	@Deprecated
-	public void setHideOn(String device) {
-		if (device.equalsIgnoreCase("phone"))
-			setHideOn(Device.PHONE);
-		else if (device.equalsIgnoreCase("tablet"))
-			setHideOn(Device.TABLET);
-		else if (device.equalsIgnoreCase("desktop"))
-			setHideOn(Device.DESKTOP);
-		else
-			throw new IllegalArgumentException("The device \"" + device
-					+ "\" is not supported.");
 	}
 }

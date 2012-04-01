@@ -26,62 +26,55 @@ import com.google.gwt.dom.client.Style.Unit;
  */
 public class ProgressBar extends DivWidget {
 
-    public enum Style {
+	public enum Style {
 
-        DEFAULT {
+		DEFAULT {
 
-            @Override
-            public String get() {
-                return "";
-            }
-        },
-        STRIPED {
+			@Override
+			public String get() {
+				return "";
+			}
+		},
+		STRIPED {
 
-            @Override
-            public String get() {
-                return Bootstrap.progress_striped;
-            }
-        },
-        ANIMATED {
+			@Override
+			public String get() {
+				return Bootstrap.progress_striped;
+			}
+		},
+		ANIMATED {
 
-            @Override
-            public String get() {
-                return Bootstrap.progress_animated;
-            }
-        };
-        public abstract String get();
-    }
-    
+			@Override
+			public String get() {
+				return Bootstrap.progress_animated;
+			}
+		};
+
+		public abstract String get();
+	}
+
 	private DivWidget bar = new DivWidget();
-	
+
 	public ProgressBar() {
 		addStyleName(Bootstrap.progress);
 		bar.addStyleName(Bootstrap.bar);
 		add(bar);
 	}
-	
+
 	public ProgressBar(Style style) {
 		this();
 		setType(style);
 	}
-	
+
 	public void setType(Style style) {
 		setStyleName(Bootstrap.progress);
 		addStyleName(style.get());
 	}
 
-	public void setType(String stylename) {
-		setStyleName(Bootstrap.progress);
-		if (stylename.equalsIgnoreCase("striped"))
-			addStyleName(Bootstrap.progress_striped);
-		else if (stylename.equalsIgnoreCase("animated"))
-			addStyleName(Bootstrap.progress_animated);
-	}
-	
 	public void setPercent(int percent) {
 		bar.getElement().getStyle().setWidth(percent, Unit.PCT);
 	}
-	
+
 	public int getPercent() {
 		String width = bar.getElement().getStyle().getWidth();
 		if (width == null)
@@ -89,5 +82,5 @@ public class ProgressBar extends DivWidget {
 		else
 			return Integer.valueOf(width);
 	}
-	
+
 }
