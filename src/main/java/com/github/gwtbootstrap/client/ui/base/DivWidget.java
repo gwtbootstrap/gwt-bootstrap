@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
 import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -60,6 +61,19 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
 	public DivWidget(String styleName) {
 		super();
 		setStyleName(styleName);
+	}
+
+	/**
+	 * Pulls the widget to the right side.
+	 * 
+	 * @param pullRight
+	 *            <code>true</code> if the widget should be aligned right.
+	 */
+	public void pullRight(boolean pullRight) {
+		if (pullRight)
+			addStyle(Alignment.RIGHT);
+		else
+			removeStyle(Alignment.RIGHT);
 	}
 
 	/**

@@ -18,8 +18,26 @@
 		</b:Navbar>
 
 		<b:Hero>
+			<g:VerticalPanel styleName="pull-right">
+				<g:HTMLPanel>
+					<div class="fb-like"
+						data-href="http://gwtbootstrap.github.com/" data-send="false"
+						data-layout="button_count" data-width="200" data-show-faces="true" />
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<a href="https://twitter.com/share" class="twitter-share-button"
+						data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-"
+						data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318"
+						data-hashtags="gwt">Tweet</a>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<div class="g-plusone" data-annotation="inline"
+						data-width="200" data-href="http://gwtbootstrap.github.com/" />
+				</g:HTMLPanel>
+			</g:VerticalPanel>
 			<b:Heading size="1">GWT-Bootstrap</b:Heading>
-			<b:Paragraph>Using Twitter's interface library with Google Web Toolkit.</b:Paragraph>
+			<b:Paragraph>Using Twitter's interface library with Google Web
+				Toolkit.</b:Paragraph>
 		</b:Hero>
 		<b:Row>
 			<b:Column size="3">
@@ -58,29 +76,39 @@
 		</b:Row>
 		<b:Row marginTop="10">
 			<b:Column size="12">
-				<g:HTMLPanel><strong>More:</strong> Get support in our 
-					<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group.</a> 
-					Check out the <a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site.</a>
-					Get stats from <a href="https://www.ohloh.net/p/gwt-bootstrap">ohloh.</a>
+				<g:HTMLPanel>
+					<strong>More:</strong>
+					Get support in our
+					<a href="https://groups.google.com/d/forum/gwt-bootstrap">Google Group.</a>
+					Check out the
+					<a href="http://gwtbootstrap.github.com/gwt-bootstrap/">Maven project site.</a>
+					Get stats from
+					<a href="https://www.ohloh.net/p/gwt-bootstrap">ohloh.</a>
 				</g:HTMLPanel>
 			</b:Column>
 		</b:Row>
-		<b:Row marginTop="5">
-			<b:Column size="12">
-				<g:HorizontalPanel>
-					<b:Strong>Social: </b:Strong>
-					<g:HTMLPanel> 
-						<div style="margin-left:4px;" class="fb-like" data-href="http://gwtbootstrap.github.com/" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"/>
-					</g:HTMLPanel>
-					<g:HTMLPanel>
-						<a href="https://twitter.com/share" class="twitter-share-button" data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" data-hashtags="gwt">Tweet</a>
-					</g:HTMLPanel>
-					<g:HTMLPanel>
-						<div class="g-plusone" data-annotation="inline" data-size="medium" data-href="http://gwtbootstrap.github.com/" />
-					</g:HTMLPanel>
-				</g:HorizontalPanel>
-			</b:Column>
-		</b:Row>
+<!-- 		<b:Row marginTop="5"> -->
+<!-- 			<b:Column size="12"> -->
+<!-- 				<g:HorizontalPanel> -->
+<!-- 					<b:Strong>Social: </b:Strong> -->
+<!-- 					<g:HTMLPanel> -->
+<!-- 						<div style="margin-left:4px;" class="fb-like" -->
+<!-- 							data-href="http://gwtbootstrap.github.com/" data-send="false" -->
+<!-- 							data-layout="button_count" data-width="80" data-show-faces="false" /> -->
+<!-- 					</g:HTMLPanel> -->
+<!-- 					<g:HTMLPanel> -->
+<!-- 						<div class="g-plusone" data-annotation="inline" data-size="medium" -->
+<!-- 							data-href="http://gwtbootstrap.github.com/" /> -->
+<!-- 					</g:HTMLPanel> -->
+<!-- 					<g:HTMLPanel> -->
+<!-- 						<a href="https://twitter.com/share" class="twitter-share-button" -->
+<!-- 							data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" -->
+<!-- 							data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" -->
+<!-- 							data-hashtags="gwt">Tweet</a> -->
+<!-- 					</g:HTMLPanel> -->
+<!-- 				</g:HorizontalPanel> -->
+<!-- 			</b:Column> -->
+<!-- 		</b:Row> -->
 
 		<g:FlowPanel ui:field="sections" />
 
