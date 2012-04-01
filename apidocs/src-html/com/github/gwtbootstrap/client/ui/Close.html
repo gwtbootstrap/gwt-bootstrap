@@ -73,31 +73,7 @@
 <FONT color="green">070</FONT>            public void setType(DismissType type) {<a name="line.70"></a>
 <FONT color="green">071</FONT>                    getElement().setAttribute(Constants.DATA_DISMISS, type.get());<a name="line.71"></a>
 <FONT color="green">072</FONT>            }<a name="line.72"></a>
-<FONT color="green">073</FONT>    <a name="line.73"></a>
-<FONT color="green">074</FONT>            /**<a name="line.74"></a>
-<FONT color="green">075</FONT>             * Sets the type of widget to be closed.<a name="line.75"></a>
-<FONT color="green">076</FONT>             * <a name="line.76"></a>
-<FONT color="green">077</FONT>             * @param type<a name="line.77"></a>
-<FONT color="green">078</FONT>             *            the type of widget to be closed<a name="line.78"></a>
-<FONT color="green">079</FONT>             * <a name="line.79"></a>
-<FONT color="green">080</FONT>             * @deprecated This method should never be called directly. It will break<a name="line.80"></a>
-<FONT color="green">081</FONT>             *             your implementation if any style names change. The only valid<a name="line.81"></a>
-<FONT color="green">082</FONT>             *             use is inside UiBinder files where it processes the<a name="line.82"></a>
-<FONT color="green">083</FONT>             *             &lt;code&gt;type="..."&lt;/code&gt; argument. Use<a name="line.83"></a>
-<FONT color="green">084</FONT>             *             {@link #setType(DismissType)} instead!<a name="line.84"></a>
-<FONT color="green">085</FONT>             */<a name="line.85"></a>
-<FONT color="green">086</FONT>            @Deprecated<a name="line.86"></a>
-<FONT color="green">087</FONT>            public void setType(String type) {<a name="line.87"></a>
-<FONT color="green">088</FONT>                    if (type.equalsIgnoreCase(DismissType.ALERT.get()))<a name="line.88"></a>
-<FONT color="green">089</FONT>                            setType(DismissType.ALERT);<a name="line.89"></a>
-<FONT color="green">090</FONT>                    else if (type.equalsIgnoreCase(DismissType.MODAL.get()))<a name="line.90"></a>
-<FONT color="green">091</FONT>                            setType(DismissType.MODAL);<a name="line.91"></a>
-<FONT color="green">092</FONT>                    else<a name="line.92"></a>
-<FONT color="green">093</FONT>                            throw new IllegalArgumentException("A Close cannot be of type +\""<a name="line.93"></a>
-<FONT color="green">094</FONT>                                            + type + "\"");<a name="line.94"></a>
-<FONT color="green">095</FONT>            }<a name="line.95"></a>
-<FONT color="green">096</FONT>    <a name="line.96"></a>
-<FONT color="green">097</FONT>    }<a name="line.97"></a>
+<FONT color="green">073</FONT>    }<a name="line.73"></a>
 
 
 

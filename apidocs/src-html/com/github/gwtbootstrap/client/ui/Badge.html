@@ -30,7 +30,7 @@
 <FONT color="green">027</FONT>     * &lt;h3&gt;UiBinder Usage:&lt;/h3&gt;<a name="line.27"></a>
 <FONT color="green">028</FONT>     * <a name="line.28"></a>
 <FONT color="green">029</FONT>     * &lt;pre&gt;<a name="line.29"></a>
-<FONT color="green">030</FONT>     * {@code &lt;b:Badge type="error"&gt;2&lt;/b:Badge&gt;}<a name="line.30"></a>
+<FONT color="green">030</FONT>     * {@code &lt;b:Badge type="ERROR"&gt;2&lt;/b:Badge&gt;}<a name="line.30"></a>
 <FONT color="green">031</FONT>     * &lt;/pre&gt;<a name="line.31"></a>
 <FONT color="green">032</FONT>     * <a name="line.32"></a>
 <FONT color="green">033</FONT>     * All arguments are optional.<a name="line.33"></a>
@@ -98,35 +98,7 @@
 <FONT color="green">095</FONT>            public void setType(BadgeType type) {<a name="line.95"></a>
 <FONT color="green">096</FONT>                    setStyleName(type.get());<a name="line.96"></a>
 <FONT color="green">097</FONT>            }<a name="line.97"></a>
-<FONT color="green">098</FONT>    <a name="line.98"></a>
-<FONT color="green">099</FONT>            /**<a name="line.99"></a>
-<FONT color="green">100</FONT>             * {@inheritDoc}<a name="line.100"></a>
-<FONT color="green">101</FONT>             * <a name="line.101"></a>
-<FONT color="green">102</FONT>             * @deprecated This method should never be called directly. It will break<a name="line.102"></a>
-<FONT color="green">103</FONT>             *             your implementation if any style names change. The only valid<a name="line.103"></a>
-<FONT color="green">104</FONT>             *             use is inside UiBinder files where it processes the<a name="line.104"></a>
-<FONT color="green">105</FONT>             *             &lt;code&gt;type="..."&lt;/code&gt; argument. Use<a name="line.105"></a>
-<FONT color="green">106</FONT>             *             {@link #setType(BadgeType)} instead!<a name="line.106"></a>
-<FONT color="green">107</FONT>             */<a name="line.107"></a>
-<FONT color="green">108</FONT>            @Deprecated<a name="line.108"></a>
-<FONT color="green">109</FONT>            public void setType(String typeName) {<a name="line.109"></a>
-<FONT color="green">110</FONT>                    if (typeName.equalsIgnoreCase("default"))<a name="line.110"></a>
-<FONT color="green">111</FONT>                            setType(BadgeType.DEFAULT);<a name="line.111"></a>
-<FONT color="green">112</FONT>                    else if (typeName.equalsIgnoreCase("success"))<a name="line.112"></a>
-<FONT color="green">113</FONT>                            setType(BadgeType.SUCCESS);<a name="line.113"></a>
-<FONT color="green">114</FONT>                    else if (typeName.equalsIgnoreCase("warning"))<a name="line.114"></a>
-<FONT color="green">115</FONT>                            setType(BadgeType.WARNING);<a name="line.115"></a>
-<FONT color="green">116</FONT>                    else if (typeName.equalsIgnoreCase("error"))<a name="line.116"></a>
-<FONT color="green">117</FONT>                            setType(BadgeType.ERROR);<a name="line.117"></a>
-<FONT color="green">118</FONT>                    else if (typeName.equalsIgnoreCase("info"))<a name="line.118"></a>
-<FONT color="green">119</FONT>                            setType(BadgeType.INFO);<a name="line.119"></a>
-<FONT color="green">120</FONT>                    else if (typeName.equalsIgnoreCase("inverse"))<a name="line.120"></a>
-<FONT color="green">121</FONT>                            setType(BadgeType.INVERSE);<a name="line.121"></a>
-<FONT color="green">122</FONT>                    else<a name="line.122"></a>
-<FONT color="green">123</FONT>                            throw new IllegalArgumentException("\"" + typeName<a name="line.123"></a>
-<FONT color="green">124</FONT>                                            + "\" is not a valid type for a Badge.");<a name="line.124"></a>
-<FONT color="green">125</FONT>            }<a name="line.125"></a>
-<FONT color="green">126</FONT>    }<a name="line.126"></a>
+<FONT color="green">098</FONT>    }<a name="line.98"></a>
 
 
 
