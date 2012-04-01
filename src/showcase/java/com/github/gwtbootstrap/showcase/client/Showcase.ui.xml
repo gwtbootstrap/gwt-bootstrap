@@ -18,6 +18,9 @@
 			<b:Paragraph>Using Twitter's interface library with Google Web Toolkit.</b:Paragraph>
 		</b:Hero>
 		<b:Row>
+			<b:Column size="12" ui:field="underHero"/>
+		</b:Row>
+		<b:Row>
 			<b:Column size="3">
 				<b:Heading size="6">Bootstrap, from Twitter</b:Heading>
 				<b:Paragraph>Bootstrap is a toolkit from Twitter designed to

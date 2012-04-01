@@ -15,15 +15,19 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Column;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -36,6 +40,8 @@ public class Showcase extends Composite implements EntryPoint {
 	FlowPanel sections;
 	@UiField
 	Nav nav;
+	@UiField
+	Column underHero;
 
 	private static ShowcaseUiBinder uiBinder = GWT
 			.create(ShowcaseUiBinder.class);
@@ -49,6 +55,15 @@ public class Showcase extends Composite implements EntryPoint {
 //		addSectionToContainer("Get Support", "support", new Support());
 		addSectionToContainer("Buttons", "buttons", new Buttons());
 		RootPanel.get("content").add(this);
+		underHero.add(new HTML("<g:plusone href=\"http://gwtbootstrap.github.com/\"></g:plusone>"));
+		
+	    Document doc = Document.get();
+	    ScriptElement script = doc.createScriptElement();
+	    script.setSrc("https://apis.google.com/js/plusone.js");
+	    script.setType("text/javascript");
+	    script.setLang("javascript");
+	    doc.getBody().appendChild(script);		
+		
 	}
 
 	private void addSectionToContainer(String sectionName, String target,
