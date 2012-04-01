@@ -4,7 +4,7 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.github.gwtbootstrap.Bootstrap" />
 	<replace-with
-		class="com.github.gwtbootstrap.showcase.client.config.CustomConfigurator">
+		class="com.github.gwtbootstrap.showcase.client.resources.CustomConfigurator">
 		<when-type-is
 			class="com.github.gwtbootstrap.client.ui.config.Configurator" />
 	</replace-with>
