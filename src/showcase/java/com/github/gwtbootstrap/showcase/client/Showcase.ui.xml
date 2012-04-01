@@ -5,6 +5,10 @@
 		.important {
 			font-weight: bold;
 		}
+		
+		.social li {
+			display: inline !important;
+		}
 	</ui:style>
 	<b:Container ui:field="container">
 		<b:Navbar fixed="top" scrollspy="true">
@@ -63,14 +67,18 @@
 		</b:Row>
 		<b:Row marginTop="5">
 			<b:Column size="12">
-				<g:HTMLPanel>
-					<strong>Social:</strong>
-					 <span>
-						 <a href="https://twitter.com/share" class="twitter-share-button" data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" data-hashtags="gwt">Tweet</a>
-						 <div class="fb-like" data-href="http://gwtbootstrap.github.com/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false"/>
-						 <div class="g-plusone" data-annotation="inline" data-size="small" data-href="http://gwtbootstrap.github.com/" />
-					 </span>
-				</g:HTMLPanel>
+				<g:HorizontalPanel>
+					<b:Strong>Social: </b:Strong>
+					<g:HTMLPanel> 
+						<div style="margin-left:4px;" class="fb-like" data-href="http://gwtbootstrap.github.com/" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"/>
+					</g:HTMLPanel>
+					<g:HTMLPanel>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" data-hashtags="gwt">Tweet</a>
+					</g:HTMLPanel>
+					<g:HTMLPanel>
+						<div class="g-plusone" data-annotation="inline" data-size="medium" data-href="http://gwtbootstrap.github.com/" />
+					</g:HTMLPanel>
+				</g:HorizontalPanel>
 			</b:Column>
 		</b:Row>
 
