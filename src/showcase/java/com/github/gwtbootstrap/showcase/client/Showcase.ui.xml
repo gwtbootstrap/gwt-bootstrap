@@ -65,9 +65,11 @@
 			<b:Column size="12">
 				<g:HTMLPanel>
 					<strong>Social:</strong>
-					 <span><a href="https://twitter.com/share" class="twitter-share-button" data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" data-hashtags="gwt">Tweet</a></span>
-					 <div class="fb-like" data-href="http://gwtbootstrap.github.com/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false"/>
-					 <div class="g-plusone" data-annotation="inline" data-size="small" data-href="http://gwtbootstrap.github.com/" />
+					 <span>
+						 <a href="https://twitter.com/share" class="twitter-share-button" data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-" data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318" data-hashtags="gwt">Tweet</a>
+						 <div class="fb-like" data-href="http://gwtbootstrap.github.com/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false"/>
+						 <div class="g-plusone" data-annotation="inline" data-size="small" data-href="http://gwtbootstrap.github.com/" />
+					 </span>
 				</g:HTMLPanel>
 			</b:Column>
 		</b:Row>

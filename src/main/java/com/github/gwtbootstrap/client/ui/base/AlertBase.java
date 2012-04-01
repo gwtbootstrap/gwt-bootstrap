@@ -145,35 +145,6 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	public void setType(AlertType type) {
 		super.setStyleName(Constants.ALERT);
 		super.addStyle(type);
-	}
-
-	/**
-	 * Sets the type of the Alert based on the Bootstrap class name.
-	 * 
-	 * @param typeName
-	 *            name of the class to add without the leading "alert-".
-	 * 
-	 * @deprecated This method should never be called directly. It will break
-	 *             your implementation if any style names change. The only valid
-	 *             use is inside UiBinder files where it processes the
-	 *             <code>style="..."</code> argument. Use
-	 *             {@link #setType(AlertType)} instead!
-	 */
-	@Deprecated
-	public void setType(String typeName) {
-		if (typeName.equalsIgnoreCase(AlertType.DEFAULT.getWithoutPrefix()))
-			setType(AlertType.DEFAULT);
-		else if (typeName.equalsIgnoreCase(AlertType.ERROR.getWithoutPrefix()))
-			setType(AlertType.ERROR);
-		else if (typeName
-				.equalsIgnoreCase(AlertType.SUCCESS.getWithoutPrefix()))
-			setType(AlertType.SUCCESS);
-		else if (typeName.equalsIgnoreCase(AlertType.INFO.getWithoutPrefix()))
-			setType(AlertType.INFO);
-		else
-			throw new IllegalArgumentException("\"" + typeName
-					+ "\" is not a valid alert type.");
-
 		setFade();
 	}
 

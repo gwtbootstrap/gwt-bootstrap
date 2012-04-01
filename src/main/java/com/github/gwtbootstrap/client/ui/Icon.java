@@ -23,7 +23,11 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 
- * @author carlos
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @author Dominik Mayer
  */
 public class Icon extends Widget {
 
