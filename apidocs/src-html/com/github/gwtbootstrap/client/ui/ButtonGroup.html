@@ -19,37 +19,71 @@
 <FONT color="green">016</FONT>    package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
 <FONT color="green">017</FONT>    <a name="line.17"></a>
 <FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.DivWidget;<a name="line.18"></a>
-<FONT color="green">019</FONT>    import com.google.gwt.user.client.ui.Widget;<a name="line.19"></a>
-<FONT color="green">020</FONT>    <a name="line.20"></a>
-<FONT color="green">021</FONT>    /**<a name="line.21"></a>
-<FONT color="green">022</FONT>     *<a name="line.22"></a>
-<FONT color="green">023</FONT>     * @author carlos<a name="line.23"></a>
-<FONT color="green">024</FONT>     */<a name="line.24"></a>
-<FONT color="green">025</FONT>    public class ButtonGroup extends DivWidget {<a name="line.25"></a>
-<FONT color="green">026</FONT>        <a name="line.26"></a>
-<FONT color="green">027</FONT>        {<a name="line.27"></a>
-<FONT color="green">028</FONT>            setStyleName("btn-group");<a name="line.28"></a>
-<FONT color="green">029</FONT>        }<a name="line.29"></a>
-<FONT color="green">030</FONT>        <a name="line.30"></a>
-<FONT color="green">031</FONT>        public ButtonGroup() {<a name="line.31"></a>
-<FONT color="green">032</FONT>            // Needed for UiBinder<a name="line.32"></a>
-<FONT color="green">033</FONT>        }<a name="line.33"></a>
-<FONT color="green">034</FONT>        <a name="line.34"></a>
-<FONT color="green">035</FONT>        public ButtonGroup(Button... buttons) {<a name="line.35"></a>
-<FONT color="green">036</FONT>            super();<a name="line.36"></a>
-<FONT color="green">037</FONT>            for (Button btn : buttons) {<a name="line.37"></a>
-<FONT color="green">038</FONT>                add(btn);<a name="line.38"></a>
-<FONT color="green">039</FONT>            }<a name="line.39"></a>
-<FONT color="green">040</FONT>        }<a name="line.40"></a>
-<FONT color="green">041</FONT>    <a name="line.41"></a>
-<FONT color="green">042</FONT>        @Override<a name="line.42"></a>
-<FONT color="green">043</FONT>        public void add(Widget w) {<a name="line.43"></a>
-<FONT color="green">044</FONT>            if (!(w instanceof Button))<a name="line.44"></a>
-<FONT color="green">045</FONT>                    throw new IllegalArgumentException("A ButtonGroup can only contain Buttons.");<a name="line.45"></a>
-<FONT color="green">046</FONT>            <a name="line.46"></a>
-<FONT color="green">047</FONT>            super.add(w);<a name="line.47"></a>
-<FONT color="green">048</FONT>        }<a name="line.48"></a>
-<FONT color="green">049</FONT>    }<a name="line.49"></a>
+<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.19"></a>
+<FONT color="green">020</FONT>    import com.google.gwt.user.client.ui.Widget;<a name="line.20"></a>
+<FONT color="green">021</FONT>    <a name="line.21"></a>
+<FONT color="green">022</FONT>    //@formatter:off<a name="line.22"></a>
+<FONT color="green">023</FONT>    /**<a name="line.23"></a>
+<FONT color="green">024</FONT>     * ButtonGroups take buttons and combine them to one optically integrated widget.<a name="line.24"></a>
+<FONT color="green">025</FONT>     * <a name="line.25"></a>
+<FONT color="green">026</FONT>     * &lt;p&gt;<a name="line.26"></a>
+<FONT color="green">027</FONT>     * &lt;h3&gt;UiBinder Usage:&lt;/h3&gt;<a name="line.27"></a>
+<FONT color="green">028</FONT>     * <a name="line.28"></a>
+<FONT color="green">029</FONT>     * &lt;pre&gt;<a name="line.29"></a>
+<FONT color="green">030</FONT>     * {@code <a name="line.30"></a>
+<FONT color="green">031</FONT>     * &lt;b:ButtonGroup&gt;<a name="line.31"></a>
+<FONT color="green">032</FONT>     *     &lt;b:Button&gt;First Button&lt;/b:Button&gt;<a name="line.32"></a>
+<FONT color="green">033</FONT>     *     &lt;b:Button&gt;Second Button&lt;/b:Button&gt;<a name="line.33"></a>
+<FONT color="green">034</FONT>     *     &lt;b:Button&gt;Third Button&lt;/b:Button&gt;<a name="line.34"></a>
+<FONT color="green">035</FONT>     * &lt;/b:ButtonGroup&gt;}<a name="line.35"></a>
+<FONT color="green">036</FONT>     * &lt;/pre&gt;<a name="line.36"></a>
+<FONT color="green">037</FONT>     * <a name="line.37"></a>
+<FONT color="green">038</FONT>     * @since 2.0.2.0<a name="line.38"></a>
+<FONT color="green">039</FONT>     * <a name="line.39"></a>
+<FONT color="green">040</FONT>     * @author Carlos Alexandro Becker<a name="line.40"></a>
+<FONT color="green">041</FONT>     * <a name="line.41"></a>
+<FONT color="green">042</FONT>     * @see &lt;a href="http://twitter.github.com/bootstrap/components.html#buttonGroups"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.42"></a>
+<FONT color="green">043</FONT>     * @see Button<a name="line.43"></a>
+<FONT color="green">044</FONT>     * @see ButtonToolbar<a name="line.44"></a>
+<FONT color="green">045</FONT>     */<a name="line.45"></a>
+<FONT color="green">046</FONT>    //@formatter:on<a name="line.46"></a>
+<FONT color="green">047</FONT>    public class ButtonGroup extends DivWidget {<a name="line.47"></a>
+<FONT color="green">048</FONT>    <a name="line.48"></a>
+<FONT color="green">049</FONT>            /**<a name="line.49"></a>
+<FONT color="green">050</FONT>             * Creates an empty ButtonGroup.<a name="line.50"></a>
+<FONT color="green">051</FONT>             */<a name="line.51"></a>
+<FONT color="green">052</FONT>            public ButtonGroup() {<a name="line.52"></a>
+<FONT color="green">053</FONT>                    setStyleName(Constants.BTN_GROUP);<a name="line.53"></a>
+<FONT color="green">054</FONT>            }<a name="line.54"></a>
+<FONT color="green">055</FONT>    <a name="line.55"></a>
+<FONT color="green">056</FONT>            /**<a name="line.56"></a>
+<FONT color="green">057</FONT>             * Creates a ButtonGroup containing the provided Buttons.<a name="line.57"></a>
+<FONT color="green">058</FONT>             * <a name="line.58"></a>
+<FONT color="green">059</FONT>             * @param buttons<a name="line.59"></a>
+<FONT color="green">060</FONT>             *            the widgets to be added to the ButtonGroup<a name="line.60"></a>
+<FONT color="green">061</FONT>             */<a name="line.61"></a>
+<FONT color="green">062</FONT>            public ButtonGroup(Button... buttons) {<a name="line.62"></a>
+<FONT color="green">063</FONT>                    this();<a name="line.63"></a>
+<FONT color="green">064</FONT>                    for (Button btn : buttons) {<a name="line.64"></a>
+<FONT color="green">065</FONT>                            add(btn);<a name="line.65"></a>
+<FONT color="green">066</FONT>                    }<a name="line.66"></a>
+<FONT color="green">067</FONT>            }<a name="line.67"></a>
+<FONT color="green">068</FONT>    <a name="line.68"></a>
+<FONT color="green">069</FONT>            /**<a name="line.69"></a>
+<FONT color="green">070</FONT>             * Adds a new {@link Button} to the group.<a name="line.70"></a>
+<FONT color="green">071</FONT>             * <a name="line.71"></a>
+<FONT color="green">072</FONT>             * @param widget<a name="line.72"></a>
+<FONT color="green">073</FONT>             *            the Button to be added.<a name="line.73"></a>
+<FONT color="green">074</FONT>             */<a name="line.74"></a>
+<FONT color="green">075</FONT>            @Override<a name="line.75"></a>
+<FONT color="green">076</FONT>            public void add(Widget widget) {<a name="line.76"></a>
+<FONT color="green">077</FONT>                    if (!(widget instanceof Button))<a name="line.77"></a>
+<FONT color="green">078</FONT>                            throw new IllegalArgumentException(<a name="line.78"></a>
+<FONT color="green">079</FONT>                                            "A ButtonGroup can only contain Buttons.");<a name="line.79"></a>
+<FONT color="green">080</FONT>    <a name="line.80"></a>
+<FONT color="green">081</FONT>                    super.add(widget);<a name="line.81"></a>
+<FONT color="green">082</FONT>            }<a name="line.82"></a>
+<FONT color="green">083</FONT>    }<a name="line.83"></a>
 
 
 
