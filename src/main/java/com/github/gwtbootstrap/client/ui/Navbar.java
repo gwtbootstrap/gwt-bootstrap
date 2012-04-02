@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
+import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;
@@ -27,6 +28,25 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * not container
  * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Navbar>
+ *     <b:Brand>Bootstrap</b:Brand>
+ *     <b:Nav>
+ *         <b:NavLink>Link 1</b:NavLink>
+ *         <b:NavLink>Link 2</b:NavLink>
+ *     </b:Nav>
+ *     <b:NavForm size="1" />
+ *     <b:Nav alignment="RIGHT">
+ *         <b:NavLink>Link 3</b:NavLink>
+ *     </b:Nav>
+ * </b:Navbar>
+ * }
+ * </pre>
+ * </p>
  * 
  * @since 2.0.2.0
  * 
@@ -53,6 +73,9 @@ public class Navbar extends DivWidget {
 	private final NavbarInner navbarInner = new NavbarInner();
 	private Scrollspy spy;
 
+	/**
+	 * Creates an empty Navbar.
+	 */
 	public Navbar() {
 		setStyleName(NavbarConstants.NAVBAR);
 		navbarInner.add(container);
@@ -60,19 +83,25 @@ public class Navbar extends DivWidget {
 	}
 
 	/**
-	 * Define the default container implementation. You can override this in a
-	 * extended class if you want another impl, like FluidContainer.
+	 * Defines the default container implementation. You can override this in a
+	 * extended class if you want another implementation, like a
+	 * {@link FluidContainer}.
 	 */
 	protected Container getContainer() {
 		return new Container();
 	}
 
 	/**
+	 * Defines whether the Navbar should contain a {@link Scrollspy}.
+	 * 
 	 * @param scrollspy
-	 *            if true, will configure the scrollspy in the navbar.
+	 *            <code>true</code> to include a Scrollspy. Default:
+	 *            <code>false</code>
 	 */
 	public void setScrollspy(boolean scrollspy) {
-		spy = spy == null ? new Scrollspy(this) : spy;
+		if (spy == null)
+			spy = new Scrollspy(this);
+
 		if (scrollspy) {
 			spy.configure();
 		}
@@ -86,33 +115,44 @@ public class Navbar extends DivWidget {
 	 * {@link Container}.
 	 * 
 	 * @param position
-	 *            "top" or "bottom"
+	 *            the position of the Navbar
 	 */
-	// TODO: Allow unsetting
-	public void setFixed(String position) {
+	public void setPosition(NavbarPosition position) {
 		fixedTop = false;
+		for (NavbarPosition p : NavbarPosition.values())
+			if (!p.get().isEmpty())
+				removeStyleName(p.get());
 
-		if (position.equalsIgnoreCase("top")) {
-			fixedTop = true;
-			removeStyleName(NavbarConstants.NAVBAR_FIXED_BOTTOM);
-			addStyleName(NavbarConstants.NAVBAR_FIXED_TOP);
-			setPaddingTop(TOP_SPACE_IN_PIXEL);
-		} else if (position.equalsIgnoreCase("bottom")) {
-			removeStyleName(NavbarConstants.NAVBAR_FIXED_TOP);
-			addStyleName(NavbarConstants.NAVBAR_FIXED_BOTTOM);
-		}
-
+		addStyle(position);
+		setPaddingTop(true);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void add(Widget child) {
 		container.add(child);
 	}
 
-	protected void addWidget(Widget child) {
-		super.add(child);
+	/**
+	 * Adds a widget to the Navbar element, <b>not</b> the container.
+	 * 
+	 * @param widget
+	 *            widget to add
+	 */
+	protected void addWidget(Widget widget) {
+		super.add(widget);
 	}
 
+	/**
+	 * Activates or deactivates a top padding.
+	 * <p>
+	 * This method can be overridden. The default implementation sets a padding
+	 * only when the Navbar is fixed to the top.
+	 * 
+	 * @param padding
+	 */
 	protected void setPaddingTop(boolean padding) {
 		if (padding && fixedTop)
 			setPaddingTop(TOP_SPACE_IN_PIXEL);

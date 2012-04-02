@@ -22,13 +22,39 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
 /**
- * A Nav menu of the Navbar.
+ * Navigation menu of the {@link Navbar}.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Navbar>
+ *     <b:Brand>Bootstrap</b:Brand>
+ *     <b:Nav>
+ *         <b:NavLink>Link 1</b:NavLink>
+ *         <b:NavLink>Link 2</b:NavLink>
+ *     </b:Nav>
+ *     <b:NavForm size="1" />
+ *     <b:Nav alignment="RIGHT">
+ *         <b:NavLink>Link 3</b:NavLink>
+ *     </b:Nav>
+ * </b:Navbar>
+ * }
+ * </pre>
+ * </p>
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
 //@formatter:on
 public class Nav extends UnorderedList implements HasAlignment {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public Nav() {
 		addStyleName(Bootstrap.nav);
 	}

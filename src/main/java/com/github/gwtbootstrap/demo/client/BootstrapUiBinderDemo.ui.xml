@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
 	<g:HTMLPanel>
 
-		<b:ResponsiveNavbar fixed="top">
+		<b:ResponsiveNavbar position="TOP">
 			<b:Brand>Bootstrap</b:Brand>
 			<b:NavCollapse>
 				<b:Nav>
@@ -303,7 +303,7 @@
 				<g:Label>Some Text and a </g:Label>
 				<b:Button>Button</b:Button>
 			</b:Footer>
-			<b:Modal title="My Modal" show="false" backdrop="true"
+			<b:Modal title="My Modal" backdrop="NONE"
 				keyboard="true" animation="true" ui:field="modal">
 				<g:Label>Modal Content!</g:Label>
 				<b:Button ui:field="contentButton" icon="FILE" iconColor="WHITE"
