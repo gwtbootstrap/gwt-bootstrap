@@ -51,6 +51,7 @@ public class Showcase extends Composite implements EntryPoint {
 //        addSectionToContainer("Get Started", "setup", new Setup());
 //		addSectionToContainer("Get Support", "support", new Support());
 		addSectionToContainer("Buttons", "buttons", new Buttons());
+		addSectionToContainer("Grid System", "gridSystem", new GridSystem());
 
 		RootPanel.get("content").add(this);
 		Document doc = Document.get();
