@@ -23,34 +23,36 @@
 <FONT color="green">020</FONT>    import com.github.gwtbootstrap.client.ui.resources.Bootstrap;<a name="line.20"></a>
 <FONT color="green">021</FONT>    import com.google.gwt.user.client.ui.Widget;<a name="line.21"></a>
 <FONT color="green">022</FONT>    <a name="line.22"></a>
-<FONT color="green">023</FONT>    /**<a name="line.23"></a>
-<FONT color="green">024</FONT>     * Multi-Page Pagination<a name="line.24"></a>
-<FONT color="green">025</FONT>     * <a name="line.25"></a>
-<FONT color="green">026</FONT>     * @author Dominik Mayer<a name="line.26"></a>
-<FONT color="green">027</FONT>     */<a name="line.27"></a>
-<FONT color="green">028</FONT>    public class Pagination extends DivWidget {<a name="line.28"></a>
-<FONT color="green">029</FONT>    <a name="line.29"></a>
-<FONT color="green">030</FONT>            private UnorderedList list = new UnorderedList();<a name="line.30"></a>
-<FONT color="green">031</FONT>            <a name="line.31"></a>
-<FONT color="green">032</FONT>            public Pagination() {<a name="line.32"></a>
-<FONT color="green">033</FONT>                    setStyle(Bootstrap.Pagination.LEFT);<a name="line.33"></a>
-<FONT color="green">034</FONT>                    super.add(list);<a name="line.34"></a>
-<FONT color="green">035</FONT>            }<a name="line.35"></a>
-<FONT color="green">036</FONT>            <a name="line.36"></a>
-<FONT color="green">037</FONT>            public void setAlignment(String alignment) {<a name="line.37"></a>
-<FONT color="green">038</FONT>                    if (alignment.equalsIgnoreCase("right"))<a name="line.38"></a>
-<FONT color="green">039</FONT>                            setStyle(Bootstrap.Pagination.RIGHT);<a name="line.39"></a>
-<FONT color="green">040</FONT>                    else if (alignment.equalsIgnoreCase("centered"))<a name="line.40"></a>
-<FONT color="green">041</FONT>                            setStyle(Bootstrap.Pagination.CENTERED);<a name="line.41"></a>
-<FONT color="green">042</FONT>                    else<a name="line.42"></a>
-<FONT color="green">043</FONT>                            setStyle(Bootstrap.Pagination.LEFT);<a name="line.43"></a>
-<FONT color="green">044</FONT>            }<a name="line.44"></a>
-<FONT color="green">045</FONT>            <a name="line.45"></a>
-<FONT color="green">046</FONT>            @Override<a name="line.46"></a>
-<FONT color="green">047</FONT>            public void add(Widget child) {<a name="line.47"></a>
-<FONT color="green">048</FONT>                    list.add(child);<a name="line.48"></a>
-<FONT color="green">049</FONT>            }<a name="line.49"></a>
-<FONT color="green">050</FONT>    }<a name="line.50"></a>
+<FONT color="green">023</FONT>    //@formatter:off<a name="line.23"></a>
+<FONT color="green">024</FONT>    /**<a name="line.24"></a>
+<FONT color="green">025</FONT>     * Multi-Page Pagination<a name="line.25"></a>
+<FONT color="green">026</FONT>     * <a name="line.26"></a>
+<FONT color="green">027</FONT>     * @author Dominik Mayer<a name="line.27"></a>
+<FONT color="green">028</FONT>     */<a name="line.28"></a>
+<FONT color="green">029</FONT>    //@formatter:on<a name="line.29"></a>
+<FONT color="green">030</FONT>    public class Pagination extends DivWidget {<a name="line.30"></a>
+<FONT color="green">031</FONT>    <a name="line.31"></a>
+<FONT color="green">032</FONT>            private UnorderedList list = new UnorderedList();<a name="line.32"></a>
+<FONT color="green">033</FONT>    <a name="line.33"></a>
+<FONT color="green">034</FONT>            public Pagination() {<a name="line.34"></a>
+<FONT color="green">035</FONT>                    setStyle(Bootstrap.Pagination.LEFT);<a name="line.35"></a>
+<FONT color="green">036</FONT>                    super.add(list);<a name="line.36"></a>
+<FONT color="green">037</FONT>            }<a name="line.37"></a>
+<FONT color="green">038</FONT>    <a name="line.38"></a>
+<FONT color="green">039</FONT>            public void setAlignment(String alignment) {<a name="line.39"></a>
+<FONT color="green">040</FONT>                    if (alignment.equalsIgnoreCase("right"))<a name="line.40"></a>
+<FONT color="green">041</FONT>                            setStyle(Bootstrap.Pagination.RIGHT);<a name="line.41"></a>
+<FONT color="green">042</FONT>                    else if (alignment.equalsIgnoreCase("centered"))<a name="line.42"></a>
+<FONT color="green">043</FONT>                            setStyle(Bootstrap.Pagination.CENTERED);<a name="line.43"></a>
+<FONT color="green">044</FONT>                    else<a name="line.44"></a>
+<FONT color="green">045</FONT>                            setStyle(Bootstrap.Pagination.LEFT);<a name="line.45"></a>
+<FONT color="green">046</FONT>            }<a name="line.46"></a>
+<FONT color="green">047</FONT>    <a name="line.47"></a>
+<FONT color="green">048</FONT>            @Override<a name="line.48"></a>
+<FONT color="green">049</FONT>            public void add(Widget child) {<a name="line.49"></a>
+<FONT color="green">050</FONT>                    list.add(child);<a name="line.50"></a>
+<FONT color="green">051</FONT>            }<a name="line.51"></a>
+<FONT color="green">052</FONT>    }<a name="line.52"></a>
 
 
 
