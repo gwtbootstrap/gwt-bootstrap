@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconColor;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
@@ -69,7 +70,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 		super("a");
 		super.add(icon);
 		super.add(label);
-		setHref("javascript:;");
+		setEmptyHref();
 	}
 
 	/**
@@ -142,5 +143,20 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	public String getTargetHistoryToken() {
 		String[] hrefs = getHref().split("#");
 		return hrefs[1];
+	}
+
+	/**
+	 * Sets the <code>href</code>property of this element to "javascript:;" in
+	 * order to get another cursor (hand).
+	 */
+	public void setEmptyHref() {
+		setHref(Constants.EMPTY_HREF);
+	}
+
+	/**
+	 * Inverts the color of the icon.
+	 */
+	public void invertIconColor() {
+		icon.invertColor();
 	}
 }

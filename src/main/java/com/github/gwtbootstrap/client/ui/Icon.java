@@ -48,6 +48,10 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class Icon extends Widget {
 
+	private IconColor color = IconColor.BLACK;
+
+	private IconType type;
+
 	/**
 	 * Creates a widget but doesn't set an icon yet.
 	 * <p>
@@ -90,6 +94,8 @@ public class Icon extends Widget {
 	 *            the icon type
 	 */
 	public void setType(IconType type) {
+		this.type = type;
+
 		for (IconType t : IconType.values())
 			removeStyleName(t.get());
 
@@ -103,11 +109,32 @@ public class Icon extends Widget {
 	 *            the icon's color. Default: <code>BLACK</code>
 	 */
 	public void setColor(IconColor color) {
+		this.color = color;
+
 		for (IconColor c : IconColor.values())
 			if (!c.get().isEmpty())
 				removeStyleName(c.get());
 
 		if (!color.get().isEmpty())
 			addStyleName(color.get());
+	}
+
+	/**
+	 * Gets the color of the icon.
+	 * 
+	 * @return the icon's color
+	 */
+	public IconColor getColor() {
+		return color;
+	}
+
+	public void invertColor() {
+		if (type == null)
+			return;
+
+		if (color == IconColor.BLACK)
+			setColor(IconColor.WHITE);
+		else if (color == IconColor.WHITE)
+			setColor(IconColor.BLACK);
 	}
 }

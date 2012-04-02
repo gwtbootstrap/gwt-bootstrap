@@ -11,7 +11,7 @@
 		}
 	</ui:style>
 	<b:Container ui:field="container">
-		<b:Navbar fixed="top" scrollspy="true">
+		<b:Navbar position="TOP" scrollspy="true">
 			<b:Brand>GWT-Bootstrap</b:Brand>
 			<b:Nav ui:field="nav">
 			</b:Nav>

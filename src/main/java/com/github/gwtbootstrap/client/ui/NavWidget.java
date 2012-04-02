@@ -40,6 +40,10 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 
 	private final IconAnchor anchor = new IconAnchor();
 
+	private boolean invertIcon = true;
+
+	private boolean active = false;
+
 	public NavWidget() {
 //		this("");
 		super.add(anchor);
@@ -74,7 +78,23 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 		anchor.setIconColor(color);
 	}
 
+	/**
+	 * Sets whether the icon color of an active widget should be inverted.
+	 * 
+	 * @param invert
+	 *            <code>false</code> to keep the current color. Default:
+	 *            <code>true</code>
+	 */
+	public void setInvertIcon(boolean invert) {
+		this.invertIcon = invert;
+	}
+
 	public void setActive(boolean active) {
+		if (this.active != active && invertIcon)
+			anchor.invertIconColor();
+
+		this.active = active;
+
 		if (active)
 			addStyleName(Constants.ACTIVE);
 		else

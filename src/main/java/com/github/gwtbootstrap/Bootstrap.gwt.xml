@@ -5,8 +5,6 @@
     <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
   </replace-with>
 
-  <!-- <inherits name='com.google.gwt.user.theme.standard.Standard' />-->
-
   <entry-point class='com.github.gwtbootstrap.client.Bootstrap' />
 
   <source path='client' />

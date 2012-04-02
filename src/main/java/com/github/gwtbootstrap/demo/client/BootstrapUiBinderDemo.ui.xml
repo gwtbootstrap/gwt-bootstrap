@@ -132,6 +132,7 @@
 				<b:Label>Normal label</b:Label>
 				,
 				<b:Label type="INFO">Info label</b:Label>
+				<g:Button>GWT-Button</g:Button>
 				<br />
 				<br />
 			</g:HTMLPanel>

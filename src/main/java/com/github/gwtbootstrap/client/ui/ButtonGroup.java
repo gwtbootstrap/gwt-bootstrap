@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.user.client.ui.Widget;
@@ -46,11 +47,14 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class ButtonGroup extends DivWidget {
 
+	private ComplexWidget span = new ComplexWidget("span");
+
 	/**
 	 * Creates an empty ButtonGroup.
 	 */
 	public ButtonGroup() {
 		setStyleName(Constants.BTN_GROUP);
+//		super.add(span);
 	}
 
 	/**
@@ -78,6 +82,17 @@ public class ButtonGroup extends DivWidget {
 			throw new IllegalArgumentException(
 					"A ButtonGroup can only contain Buttons.");
 
+//		span.add(widget);
 		super.add(widget);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return
+	 */
+	@Override
+	public boolean remove(Widget widget) {
+		return span.remove(widget);
 	}
 }
