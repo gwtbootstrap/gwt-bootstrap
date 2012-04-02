@@ -18,11 +18,13 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.UnorderedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
  * The Nav List
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class NavList extends UnorderedList {
 
 	public NavList() {

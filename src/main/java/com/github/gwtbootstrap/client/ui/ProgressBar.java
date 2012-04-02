@@ -19,11 +19,13 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Style.Unit;
 
+//@formatter:off
 /**
  * The progress bar.
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class ProgressBar extends DivWidget {
 
 	public enum Style {

@@ -19,20 +19,54 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
 /**
- * A Fluid row for the Grid System. It extends Row so it can be used in any
- * place that Row can be used.
+ * Row that adapts its size to the parent widget.
+ * 
+ * <p>
+ * Part of the Bootstrap Grid System. It extends {@link Row} so it can be used 
+ * in any place that Row can be used in. In contrast to the fixed Row, a
+ * FluidRow adapts its size to the parent widget. The {@link Column Columns} are
+ * resized to fit that width.
+ * </p>
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:FluidContainer>
+ *     <b:FluidRow>
+ *         <b:Column size="4">...</b:Column>
+ *         <b:Column size="8">...</b:Column>
+ *     </b:FluidRow>
+ * </b:FluidContainer>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#fluidGridSystem">Bootstrap documentation</a>
+ * @see FluidContainer
+ * @see Container
  */
 //@formatter:on
 public class FluidRow extends Row {
 
+	/**
+	 * Creates an empty FluidRow.
+	 */
 	public FluidRow() {
 		this("");
 	}
 
+	/**
+	 * Creates a FluidRow with given html.
+	 * 
+	 * @param html
+	 *            the row's content
+	 */
 	public FluidRow(String html) {
-//		super(html);
 		setStyleName(Bootstrap.row_fluid);
 	}
 }

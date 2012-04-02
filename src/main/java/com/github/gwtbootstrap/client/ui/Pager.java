@@ -19,32 +19,35 @@ import com.github.gwtbootstrap.client.ui.base.UnorderedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.uibinder.client.UiConstructor;
 
+//@formatter:off
 /**
  * Pager that can be aligned
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class Pager extends UnorderedList {
 
 	private NavLink leftLink = new NavLink();
-	
+
 	private NavLink rightLink = new NavLink();
-	
+
 //	private boolean arrows;
-	
-	public @UiConstructor Pager(String left, String right) {
+
+	public @UiConstructor
+	Pager(String left, String right) {
 		setStyleName(Bootstrap.pager);
 		leftLink.setText(left);
 		rightLink.setText(right);
 		add(leftLink);
 		add(rightLink);
 	}
-	
+
 	public void setAligned(boolean aligned) {
 		leftLink.setStyleName(Bootstrap.previous);
 		rightLink.setStyleName(Bootstrap.next);
 	}
-	
+
 	public NavLink getLeft() {
 		return leftLink;
 	}
@@ -52,7 +55,7 @@ public class Pager extends UnorderedList {
 	public NavLink getRight() {
 		return rightLink;
 	}
-	
+
 	public void setArrows(boolean hasArrows) {
 		// TODO
 	}

@@ -17,12 +17,14 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.google.gwt.dom.client.Element;
 
+//@formatter:off
 /**
- * {@linkplain Navbar} uses this class for the scrollspy.
+ * {@linkplain}Navbar} uses this class for the scrollspy.
  * 
  * @author Carlos Alexandro Becker
  * 
  */
+//@formatter:on
 public class Scrollspy {
 
 	private Navbar navbar;

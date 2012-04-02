@@ -17,12 +17,14 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
+//@formatter:off
 /**
  * A Button that can be used in the Navbar
  * 
  * @author Dominik Mayer
  *
  */
+//@formatter:on
 public class NavbarButton extends Button {
 
 	public NavbarButton() {

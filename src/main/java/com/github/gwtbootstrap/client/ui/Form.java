@@ -16,11 +16,22 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
-import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.constants.FormType;
 
 //@formatter:off
 /**
- * A Form
+ * Styled HTML form.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:Form>...</b:Form>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
@@ -28,32 +39,20 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 //@formatter:on
 public class Form extends ComplexWidget {
 
-	public enum Type implements Style {
-		VERTICAL("vertical"), INLINE("inline"), SEARCH("search"), HORIZONTAL(
-				"horizontal");
-
-		private static final String PREFIX = "form-";
-
-		private String className;
-
-		private Type(String className) {
-			this.className = PREFIX + className;
-		}
-
-		/**
-		 * {@inheritDoc}
-		 */
-		public String get() {
-			return className;
-		}
-
-	}
-
+	/**
+	 * Creates an empty form.
+	 */
 	public Form() {
 		super("form");
 	}
 
-	public void setType(String type) {
-		addStyleName("form-" + type);
+	/**
+	 * Sets the type of the form.
+	 * 
+	 * @param type
+	 *            the form's type
+	 */
+	public void setType(FormType type) {
+		setStyle(type);
 	}
 }

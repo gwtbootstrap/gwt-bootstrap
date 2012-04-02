@@ -36,8 +36,8 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * {@code 
  * <b:Container>
  *     <b:Row>
- *         <b:Column>...</b:Column>
- *         <b:Column>...</b:Column>
+ *         <b:Column size="4">...</b:Column>
+ *         <b:Column size="8">...</b:Column>
  *     </b:Row>
  * </b:Container>}
  * </pre>

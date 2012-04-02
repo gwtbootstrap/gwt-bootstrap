@@ -19,15 +19,21 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.HasText;
 
+//@formatter:off
 /**
  * Header sections of the website.
  * 
+ * @since 2.0.2.0
+ * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#typography">Bootstrap documentation</a>
  */
+//@formatter:on
 public class PageHeader extends DivWidget implements HasText {
-	
+
 	private final Heading heading = new Heading(1);
-	
+
 	public PageHeader() {
 		setStyleName(Bootstrap.page_header);
 		add(heading);
@@ -40,9 +46,9 @@ public class PageHeader extends DivWidget implements HasText {
 	public void setText(String text) {
 		heading.setText(text);
 	}
-	
+
 	public void setSubtext(String text) {
 		heading.setSubtext(text);
 	}
-	
+
 }

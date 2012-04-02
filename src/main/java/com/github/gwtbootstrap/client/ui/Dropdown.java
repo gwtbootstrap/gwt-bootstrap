@@ -20,25 +20,56 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 
 //@formatter:off
 /**
+ * Dropdown menus that are usually used in a navigation context.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Dropdown text="I am the Caption">
+ *     <b:NavHeader>Header</b:NavHeader>
+ *     <b:NavLink>Link 1</b:NavLink>
+ *     <b:NavLink>Link 2</b:NavLink>
+ * </b:Dropdown>
+ * }
+ * </pre>
+ * </p>
  * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/javascript.html#dropdowns">Bootstrap documentation</a>
+ * @see DropdownButton
+ * @see SplitDropdownButton
  */
 //@formatter:on
 public class Dropdown extends DropdownBase {
 
+	/**
+	 * Creates an empty Dropdown without a caption.
+	 */
 	public Dropdown() {
 		super("li");
 		addStyleName("dropdown");
 	}
 
-	public Dropdown(final String text) {
+	/**
+	 * Creates an empty Dropdown with the given caption.
+	 * 
+	 * @param caption
+	 *            the dropdown's caption
+	 */
+	public Dropdown(final String caption) {
 		this();
-		setText(text);
+		setText(caption);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected IconAnchor createTrigger() {
 		final IconAnchor trigger = new IconAnchor();

@@ -23,28 +23,57 @@ import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 
 //@formatter:off
 /**
- * A Button with a dropdown menu.
+ * Button with a dropdown menu.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:DropdownButton text="I am the Caption">
+ *     <b:NavHeader>Header</b:NavHeader>
+ *     <b:NavLink>Link 1</b:NavLink>
+ *     <b:NavLink>Link 2</b:NavLink>
+ * </b:DropdownButton>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap documentation</a>
- *
+ * @see Dropdown
+ * @see SplitDropdownButton
  */
 //@formatter:on
 public class DropdownButton extends DropdownBase {
 
 	private Button trigger;
 
+	/**
+	 * Creates a DropdownButton without a caption.
+	 */
 	public DropdownButton() {
 		super("div");
 		addStyleName("btn-group");
 	}
 
-	public DropdownButton(String text) {
+	/**
+	 * Creates a DropdownButton with the given caption.
+	 * 
+	 * @param caption
+	 *            the button's caption
+	 */
+	public DropdownButton(String caption) {
 		this();
-		setText(text);
+		setText(caption);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected IconAnchor createTrigger() {
 		trigger = new Button();
@@ -52,14 +81,32 @@ public class DropdownButton extends DropdownBase {
 		return trigger;
 	}
 
+	/**
+	 * Sets the button's size.
+	 * 
+	 * @param size
+	 *            the button's size
+	 */
 	public void setSize(ButtonSize size) {
 		trigger.setSize(size);
 	}
 
+	/**
+	 * Sets the button's type.
+	 * 
+	 * @param type
+	 *            the button's type
+	 */
 	public void setType(ButtonType type) {
 		trigger.setType(type);
 	}
 
+	/**
+	 * Sets the button's icon.
+	 * 
+	 * @param type
+	 *            the icon's type
+	 */
 	public void setIcon(IconType type) {
 		trigger.setIcon(type);
 	}

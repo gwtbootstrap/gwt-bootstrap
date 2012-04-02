@@ -26,6 +26,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * A Container for Widgets in a Nav context (Navbar, NavList, ...). Example:<br>
  * <br>
@@ -34,6 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class NavWidget extends ListItem implements HasClickHandlers {
 
 	private final IconAnchor anchor = new IconAnchor();

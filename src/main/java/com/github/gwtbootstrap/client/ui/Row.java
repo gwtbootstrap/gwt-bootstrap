@@ -19,12 +19,14 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Style.Unit;
 
+//@formatter:off
 /**
  * This is the twBootstrap Grid System, enjoy.
  * 
  * @see Column
  * @author Carlos Alexandro Becker
  */
+//@formatter:on
 public class Row extends DivWidget {
 
 	public Row() {

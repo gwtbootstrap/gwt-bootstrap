@@ -36,6 +36,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * 
  * 
@@ -45,6 +46,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class Modal extends DivWidget implements HasVisibility,
 		HasVisibleHandlers, IsAnimated {
 
@@ -81,7 +83,7 @@ public class Modal extends DivWidget implements HasVisibility,
 			showHeader(false);
 		} else {
 			header.add(new Close(DismissType.MODAL));
-			header.add(new Heading(title, 3));
+			header.add(new Heading(3, title));
 			showHeader(true);
 		}
 	}

@@ -35,8 +35,8 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * {@code 
  * <b:FluidContainer>
  *     <b:FluidRow>
- *         <b:Column>...</b:Column>
- *         <b:Column>...</b:Column>
+ *         <b:Column size="4">...</b:Column>
+ *         <b:Column size="8">...</b:Column>
  *     </b:FluidRow>
  * </b:FluidContainer>}
  * </pre>

@@ -20,15 +20,33 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
 /**
- * A Footer.
+ * Simple wrapper for an HTML {@code <footer>} tag.
+ * <p>
+ * Doesn't have any special formatting.
+ * </p>
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:Footer>
+ *     <g:Label>Some text</g:Label>
+ * </b:Footer>}
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- *
  */
 //@formatter:on
 public class Footer extends ComplexWidget {
 
 	// TODO: No nice style in bootstrap. Delete?
+	/**
+	 * Creates an empty Footer.
+	 */
 	public Footer() {
 		super("footer");
 		setStyleName(Bootstrap.footer);

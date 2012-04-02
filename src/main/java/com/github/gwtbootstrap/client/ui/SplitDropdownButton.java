@@ -24,6 +24,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 
+//@formatter:off
 /**
  * Dropdown button.
  * 
@@ -34,6 +35,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  *      documentation</a>
  * 
  */
+//@formatter:on
 public class SplitDropdownButton extends DropdownBase implements
 		HasClickHandlers {
 

@@ -15,53 +15,121 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.HasText;
 
 //@formatter:off
 /**
+ * Heading with optional subtext.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code 
+ * <b:Heading size="2" text="And I'm the subtext">I'm the heading</b:Heading>}
+ * </pre>
+ * Specifying the <code>size</code> is mandatory.
+ * </p>
  *
- * @author carlos
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
  */
 //@formatter:on
 public class Heading extends ComplexWidget implements HasText {
 
-	private static final String SMALL = "small";
+	private static final int HEADER_MINIMUM = 1;
+
+	private static final int HEADER_MAXIMUM = 6;
+
+	private Small small = new Small();
 
 	private String text;
 
-	public Heading(String text, int size) {
+	/**
+	 * Creates a new Heading of given size.
+	 * 
+	 * @param size
+	 *            the size of the heading
+	 */
+	public @UiConstructor
+	Heading(int size) {
+		super("h" + size);
+		if (size < HEADER_MINIMUM || size > HEADER_MAXIMUM)
+			throw new IllegalArgumentException(
+					"The size of the header must be between 1 and 6.");
 
+		super.add(small);
+	}
+
+	/**
+	 * Creates a new Heading of given size and text.
+	 * 
+	 * @param size
+	 *            size of the heading
+	 * @param text
+	 *            text of the heading
+	 */
+	public Heading(int size, String text) {
 		this(size);
-		getElement().appendChild(Document.get().createElement(SMALL));
 		setText(text);
 	}
 
-	public @UiConstructor
-	Heading(int size) {
-		super("h" + (size < 1 ? 1 : size > 6 ? 6 : size));
+	/**
+	 * Creates a new Heading of given size, text and subtext.
+	 * 
+	 * @param size
+	 *            size of the heading
+	 * @param text
+	 *            text of the heading
+	 * @param subtext
+	 *            subtext of the heading
+	 */
+	public Heading(int size, String text, String subtext) {
+		this(size, text);
+		setSubtext(subtext);
 	}
 
-	public void setSubtext(String text) {
-		Element i = getElement().getElementsByTagName(SMALL).getItem(0);
-		i.setInnerText(text);
+	/**
+	 * Sets the heading's subtext.
+	 * 
+	 * @param subtext
+	 *            the heading's subtext
+	 */
+	public void setSubtext(String subtext) {
+		small.setText(subtext);
+		redraw();
 	}
 
+	private void redraw() {
+		setText(this.text);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setText(String text) {
 		this.text = text;
-		Element i = getElement().getElementsByTagName(SMALL).getItem(0);
-		getElement().setInnerHTML(
-				text
-						+ " "
-						+ (i != null ? i.toString() : "<" + SMALL + "></"
-								+ SMALL + ">"));
+		getElement().setInnerHTML(text + small.toString());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getText() {
 		return text;
+	}
+
+	private class Small extends AbstractTypography {
+
+		public Small() {
+			super("small");
+		}
 	}
 }

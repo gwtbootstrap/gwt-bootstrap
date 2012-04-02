@@ -89,4 +89,15 @@ public interface Constants {
 	public static final int MINIMUM_OFFSET = MINIMUM_SPAN_SIZE - 1;
 
 	public static final int MAXIMUM_OFFSET = MAXIMUM_SPAN_SIZE - 1;
+
+	// Table
+
+	public static final String TABLE = "table";
+
+	public static final String STRIPED = "striped";
+
+	public static final String BORDERED = "bordered";
+
+	public static final String CONDENSED = "condensed";
+
 }

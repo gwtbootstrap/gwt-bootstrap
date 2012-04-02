@@ -20,16 +20,40 @@ import com.google.gwt.user.client.DOM;
 
 //@formatter:off
 /**
+ * Simple wrapper for an HTML {@code <em>} tag.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Emphasis>I'm important</b:Emphasis>
+ * }
+ * </pre>
+ * </p>
  *
- * @author carlos
+ * @since 2.0.2.0
+ * 
+ * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
  */
 //@formatter:on
 public class Emphasis extends AbstractTypography {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public Emphasis() {
 		setElement(DOM.createElement("em"));
 	}
 
+	/**
+	 * Creates a widget with the given text.
+	 * 
+	 * @param text
+	 *            the widget's text
+	 */
 	public Emphasis(String text) {
 		this();
 		setText(text);

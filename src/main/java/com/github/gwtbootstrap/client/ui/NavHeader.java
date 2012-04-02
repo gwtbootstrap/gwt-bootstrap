@@ -19,11 +19,13 @@ import com.github.gwtbootstrap.client.ui.base.ListItem;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.HasText;
 
+//@formatter:off
 /**
  * Header for the nav list.
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class NavHeader extends ListItem implements HasText {
 
 	public NavHeader() {
@@ -37,6 +39,5 @@ public class NavHeader extends ListItem implements HasText {
 	public void setText(String text) {
 		getElement().setInnerText(text);
 	}
-	
-	
+
 }

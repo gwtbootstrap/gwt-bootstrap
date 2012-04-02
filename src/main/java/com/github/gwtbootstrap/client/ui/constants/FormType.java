@@ -15,34 +15,43 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.Close;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off
 /**
-* Default dismiss types of a {@link Close}.
-* <p>
-* Bootstraps provides a default functionality to close the widgets listed here. 
+* Type of a {@link Form}.
 * 
 * @since 2.0.2.0
 * 
 * @author Dominik Mayer
 * 
-* @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
+* @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
 * 
 */
 //@formatter:on
-public enum DismissType implements Style {
+public enum FormType implements Style {
 
-	ALERT("alert"), MODAL("modal");
+	VERTICAL("vertical"),
+
+	INLINE("inline"),
+
+	SEARCH("search"),
+
+	HORIZONTAL("horizontal");
+
+	private static final String PREFIX = "form-";
 
 	private String className;
 
-	private DismissType(String className) {
-		this.className = className;
+	private FormType(String className) {
+		this.className = PREFIX + className;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String get() {
 		return className;
 	}
+
 }

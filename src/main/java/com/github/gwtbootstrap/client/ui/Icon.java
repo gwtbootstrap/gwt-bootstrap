@@ -21,31 +21,74 @@ import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
+ * Widget with a black or white icon.
+ * <p>
+ * The icons are provided by <a href="http://glyphicons.com/">Glyphicons</a>
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Icon type="PLANE" />
+ * }
+ * </pre>
+ * </p>
  * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Bootstrap documentation</a>
  */
+//@formatter:on
 public class Icon extends Widget {
 
+	/**
+	 * Creates a widget but doesn't set an icon yet.
+	 * <p>
+	 * (This is probably not what you want to do most of the time.)
+	 */
 	public Icon() {
 		setElement(DOM.createElement("i"));
 	}
 
+	/**
+	 * Creates a black icon of given type.
+	 * 
+	 * @param type
+	 *            the icon type
+	 */
+	@UiConstructor
+	public Icon(IconType type) {
+		this();
+		setType(type);
+	}
+
+	/**
+	 * Creates an icon of given type and color.
+	 * 
+	 * @param type
+	 *            the icon type
+	 * 
+	 * @param color
+	 *            the icon color
+	 */
 	public Icon(IconType type, IconColor color) {
 		this(type);
 		setColor(color);
 	}
 
-	public @UiConstructor
-	Icon(IconType type) {
-		this();
-		setType(type);
-	}
-
+	/**
+	 * Sets the icon type.
+	 * 
+	 * @param type
+	 *            the icon type
+	 */
 	public void setType(IconType type) {
 		for (IconType t : IconType.values())
 			removeStyleName(t.get());
@@ -53,6 +96,12 @@ public class Icon extends Widget {
 		addStyleName(type.get());
 	}
 
+	/**
+	 * Sets the color of the icon.
+	 * 
+	 * @param color
+	 *            the icon's color. Default: <code>BLACK</code>
+	 */
 	public void setColor(IconColor color) {
 		for (IconColor c : IconColor.values())
 			if (!c.get().isEmpty())

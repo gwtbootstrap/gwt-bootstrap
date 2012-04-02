@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -30,6 +31,23 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public abstract class AbstractTypography extends Widget implements HasText,
 		HasStyle, IsResponsive {
+
+	/**
+	 * Creates a new widget without setting a DOM element.
+	 */
+	public AbstractTypography() {
+		super();
+	}
+
+	/**
+	 * Creates a new widget based on the given HTML tag.
+	 * 
+	 * @param tag
+	 *            the HTML tag to be used
+	 */
+	public AbstractTypography(String tag) {
+		setElement(DOM.createElement(tag));
+	}
 
 	/**
 	 * {@inheritDoc}

@@ -20,13 +20,36 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
 /**
+ * Special widget to promote something on a website.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Hero>
+ *     <b:Heading size="2">Hero Unit</b:Heading>
+ *     <b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
+ *     <b:Paragraph>More text.</b:Paragraph>
+ * </b:Hero>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  *
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#typography">Bootstrap documentation</a>
+ * @see Heading
+ * @see Paragraph
  */
 //@formatter:on
 public class Hero extends DivWidget {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public Hero() {
 		addStyleName(Bootstrap.hero_unit);
 	}

@@ -26,6 +26,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * A {@link Navbar} that hides the contents of a {@link NavCollapse} whenever
  * the width of the window is too small.
@@ -39,6 +40,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  * @author Carlos Alexandro Becker
  */
+//@formatter:on
 public class ResponsiveNavbar extends Navbar {
 
 	private static final int RESPONSIVE_WIDTH_IN_PIXEL = 980;

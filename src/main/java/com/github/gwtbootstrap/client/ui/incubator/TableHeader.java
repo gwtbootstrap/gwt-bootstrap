@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,27 +13,31 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui;
+package com.github.gwtbootstrap.client.ui.incubator;
 
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
-import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HasHTML;
 
 //@formatter:off
 /**
- * Simple html paragraph widget.
+ * Header for the column of a {@link Table}.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#tables">Bootstrap documentation</a>
  */
 //@formatter:on
-public class Paragraph extends ComplexWidget implements HasText {
+public class TableHeader extends HTMLPanel implements HasHTML {
 
-	/**
-	 * Creates an empty paragraph.
-	 */
-	public Paragraph() {
-		super("p");
+	public TableHeader() {
+		super("th", "");
+	}
+
+	public TableHeader(String html) {
+		this();
+		setHTML(html);
 	}
 
 	/**
@@ -50,4 +54,17 @@ public class Paragraph extends ComplexWidget implements HasText {
 		getElement().setInnerText(text);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getHTML() {
+		return getElement().getInnerHTML();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setHTML(String html) {
+		getElement().setInnerHTML(html);
+	}
 }

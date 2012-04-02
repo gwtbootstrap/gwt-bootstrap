@@ -21,11 +21,13 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * The container for a tabbable nav.
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class TabPanel extends DivWidget {
 
 	private static class TabContent extends DivWidget {

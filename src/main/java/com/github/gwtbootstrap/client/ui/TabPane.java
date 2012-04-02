@@ -21,11 +21,13 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.Random;
 
+//@formatter:off
 /**
  * Tab Pane for tabbable nav.
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class TabPane extends DivWidget {
 
 	private String heading;

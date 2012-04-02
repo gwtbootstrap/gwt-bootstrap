@@ -19,6 +19,7 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
  * {@link NavList} in a {@link Well}.
  * 
@@ -26,6 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @author Dominik Mayer
  */
+//@formatter:on
 public class WellNavList extends Well {
 
 	private NavList navList = new NavList();
