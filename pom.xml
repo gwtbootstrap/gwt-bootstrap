@@ -228,6 +228,7 @@
 								<module>com.github.gwtbootstrap.showcase.Showcase</module>
 								<module>com.github.gwtbootstrap.showcase.CustomCssShowcase</module>
 							</modules>
+							<localWorkers>2</localWorkers>
 							<runTarget>index.html</runTarget>
 							<webappDirectory>src/showcase/webapp</webappDirectory>
 							<hostedWebapp>src/showcase/webapp</hostedWebapp>
@@ -301,6 +302,7 @@
 					<runTarget>Bootstrap.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<i18nMessagesBundle>com.github.gwtbootstrap.client.Messages</i18nMessagesBundle>
+					<localWorkers>2</localWorkers>
 				</configuration>
 			</plugin>
 

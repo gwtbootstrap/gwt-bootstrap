@@ -26,4 +26,9 @@ public interface CustomResources extends Resources {
 	@Source("css/bootstrap-custom.css")
 	TextResource bootstrapCss();
 
+	@Source("gridCode.txt")
+	TextResource gridCode();
+	
+	@Source("offsetGridCode.txt")
+	TextResource offsetGridCode();
 }

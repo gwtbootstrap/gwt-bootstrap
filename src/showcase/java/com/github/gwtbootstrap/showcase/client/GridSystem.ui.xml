@@ -1,0 +1,136 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+				xmlns:g="urn:import:com.google.gwt.user.client.ui"
+				xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+		@external .span1,.span2,.span3,.span4,.span6,.span8,.span12;
+		.show-grid {
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+		
+		.show-grid .span1,
+		.show-grid .span2,
+		.show-grid .span3,
+		.show-grid .span4,
+		.show-grid .span6,
+		.show-grid .span8,
+		.show-grid .span12 {
+			background-color: #EEE;
+			text-align: center;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			min-height: 30px;
+			line-height: 30px;
+		}
+		
+		.show-grid .show-grid {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.show-grid .show-grid .span1,
+		.show-grid .show-grid .span2,
+		.show-grid .show-grid .span3,
+		.show-grid .show-grid .span4,
+		.show-grid .show-grid .span6,
+		.show-grid .show-grid .span8,
+		.show-grid .show-grid .span12{
+			background-color: #CCC;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<b:PageHeader subtext="12 columns grid system">Default grid system</b:PageHeader>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+			<b:Column size="1"><g:Label>1</g:Label></b:Column>
+		</b:Row>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="4"><g:Label>4</g:Label></b:Column>
+			<b:Column size="4"><g:Label>4</g:Label></b:Column>
+			<b:Column size="4"><g:Label>4</g:Label></b:Column>
+		</b:Row>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="4"><g:Label>4</g:Label></b:Column>
+			<b:Column size="8"><g:Label>8</g:Label></b:Column>
+		</b:Row>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="6"><g:Label>6</g:Label></b:Column>
+			<b:Column size="6"><g:Label>6</g:Label></b:Column>
+		</b:Row>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="12"><g:Label>12</g:Label></b:Column>
+		</b:Row>
+		<b:Row>
+			<!-- TODO soundTricker 2012/04/02 22:11 Write Explain -->
+			<!-- 
+			<b:Column size="6">
+				<g:HTMLPanel>
+					<b:Code>&lt;b:Row></b:Code> is foo bar ...
+				</g:HTMLPanel>
+			</b:Column>
+			 -->
+			<b:Column size="12">
+				<b:CodeBlock ui:field="gridCode" linenums="true" lang="xml"/>
+			</b:Column>
+		</b:Row>
+		
+		<h2>Offsetting columns</h2>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="4"><g:Label>4</g:Label></b:Column>
+			<b:Column size="4" offset="4"><g:Label>4 offset 4</g:Label></b:Column>
+		</b:Row>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="3" offset="3"><g:Label>3 offset 3</g:Label></b:Column>
+			<b:Column size="3" offset="3"><g:Label>3 offset 3</g:Label></b:Column>
+		</b:Row>
+		<b:Row addStyleNames="{style.show-grid}">
+			<b:Column size="8" offset="4"><g:Label>8 offset 4</g:Label></b:Column>
+		</b:Row>
+		<b:Row>
+			<!-- TODO soundTricker 2012/04/02 22:11 Write Explain -->
+			<!-- 
+			<b:Column size="6">
+				<g:HTMLPanel>
+					<b:Code>&lt;b:Row></b:Code> is foo bar ...
+				</g:HTMLPanel>
+			</b:Column>
+			 -->
+			<b:Column size="12">
+				<b:CodeBlock ui:field="offsetGridCode" linenums="true" lang="xml"/>
+			</b:Column>
+		</b:Row>
+		<h2>Nesting columns</h2>
+		<b:Row>
+			<b:Column size="6">
+				<g:HTMLPanel tag="p">
+				With the static (non-fluid) grid system in Bootstrap, nesting is easy. To nest your content, just add 
+				a new <b:Code>.row</b:Code> and set of <b:Code>.span*</b:Code> columns within an existing <b:Code>.span*</b:Code> column.
+				</g:HTMLPanel>
+				<g:HTMLPanel tag="h3">Example</g:HTMLPanel>
+				<b:Row addStyleNames="{style.show-grid}">
+					<b:Column size="6">
+						<g:Label>Level 1 of Column</g:Label>
+						<b:Row addStyleNames="{style.show-grid}">
+							<b:Column size="3"><g:Label>Level 3</g:Label></b:Column>
+							<b:Column size="3"><g:Label>Level 3</g:Label></b:Column>
+						</b:Row>
+					</b:Column>
+				</b:Row>
+			</b:Column>
+			<b:Column size="6">
+				<b:CodeBlock linenums="true"/>
+			</b:Column>
+		</b:Row>
+	</g:HTMLPanel>
+</ui:UiBinder> 
