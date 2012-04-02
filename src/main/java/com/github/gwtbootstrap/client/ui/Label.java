@@ -15,13 +15,26 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.Style;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.LabelType;
 import com.google.gwt.user.client.ui.InlineLabel;
 
 //@formatter:off
 /**
  * Colored label to show warnings, tags, ... You could have multiple types :)
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Label type="INFO">I'm the text!</b:Label>
+ * }
+ * </pre>
+ * All arguments are optional.
+ * </p>
  * 
  * @since 2.0.2.0
  * 
@@ -33,45 +46,55 @@ import com.google.gwt.user.client.ui.InlineLabel;
  * @see Badge
  */
 //@formatter:on
-public class Label extends InlineLabel {
+public class Label extends InlineLabel implements HasType<LabelType> {
 
+	/**
+	 * Creates an empty Label.
+	 */
 	public Label() {
-		setStyle(Bootstrap.Label.DEFAULT);
+		setStyleName(Constants.LABEL);
 	}
 
+	/**
+	 * Creates a Label with the given text.
+	 * 
+	 * @param text
+	 *            the text for the Label
+	 */
 	public Label(String text) {
 		this();
 		setText(text);
 	}
 
-	public Label(String text, Bootstrap.Label type) {
+	/**
+	 * Creates a Label of given Type with the given text.
+	 * 
+	 * @param type
+	 *            the type of the Label
+	 * @param text
+	 *            the text of the Label
+	 */
+	public Label(LabelType type, String text) {
 		setText(text);
 		setType(type);
 	}
 
-	public void setType(Bootstrap.Label type) {
-		assert type != null : "type should not be null";
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setType(LabelType type) {
+		if (type == null)
+			throw new IllegalArgumentException("Type cannot be null.");
+
+		for (LabelType t : LabelType.values())
+			if (!t.get().isEmpty())
+				removeStyleName(t.get());
 
 		setStyle(type);
 	}
 
 	private void setStyle(Style style) {
 		setStyleName(style.get());
-	}
-
-	public void setType(String typename) {
-		if (typename.equalsIgnoreCase("success"))
-			setStyle(Bootstrap.Label.SUCCESS);
-		else if (typename.equalsIgnoreCase("warning"))
-			setStyle(Bootstrap.Label.WARNING);
-		else if (typename.equalsIgnoreCase("important"))
-			setStyle(Bootstrap.Label.IMPORTANT);
-		else if (typename.equalsIgnoreCase("info"))
-			setStyle(Bootstrap.Label.INFO);
-		else if (typename.equalsIgnoreCase("inverse"))
-			setStyle(Bootstrap.Label.INVERSE);
-		else
-			setStyle(Bootstrap.Label.DEFAULT);
 	}
 
 }

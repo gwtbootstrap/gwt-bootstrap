@@ -32,6 +32,8 @@ public interface Constants {
 
 	public static final String DISABLED = "disabled";
 
+	public static final String FADE = "fade";
+
 	// Single use
 
 	public static final String BRAND = "brand";
@@ -53,6 +55,14 @@ public interface Constants {
 	public static final String DIVIDER_VERTICAL = "divider-vertical";
 
 	public static final String WELL = "well";
+
+	public static final String LABEL = "label";
+
+	public static final String MODAL_HEADER = "modal-header";
+
+	public static final String MODAL_FOOTER = "modal-footer";
+
+	public static final String ROW = "row";
 
 	// Dropdown
 

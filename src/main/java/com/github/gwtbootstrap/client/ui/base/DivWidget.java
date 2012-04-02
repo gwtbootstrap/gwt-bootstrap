@@ -87,6 +87,7 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
 	 * {@inheritDoc}
 	 */
 	public void addStyle(Style style) {
+//		if (!style.get().isEmpty())
 		addStyleName(style.get());
 	}
 

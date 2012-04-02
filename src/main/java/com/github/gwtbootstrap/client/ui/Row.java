@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Style.Unit;
 
 //@formatter:off
@@ -31,7 +31,7 @@ public class Row extends DivWidget {
 
 	public Row() {
 		super();
-		setStyleName(Bootstrap.row);
+		setStyleName(Constants.ROW);
 	}
 
 	public void setMarginTop(int margin) {

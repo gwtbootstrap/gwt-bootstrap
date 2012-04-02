@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,29 +15,41 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off
 /**
- * Constants used for the {@link Navbar} and for Navbar contents.
- * 
- * @since 2.0.2.0
- * 
- * @author Dominik Mayer
- * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
- */
+* Type of the Label.
+* 
+* @since 2.0.2.0
+* 
+* @author Dominik Mayer
+* 
+* @see <a href="http://twitter.github.com/bootstrap/components.html#labels">Bootstrap documentation</a>
+* 
+*/
 //@formatter:on
-public interface NavbarConstants {
+public enum LabelType implements Style {
 
-	public static final String NAVBAR = "navbar";
+	DEFAULT(""),
 
-	public static final String NAVBAR_FORM = "navbar-form";
+	SUCCESS("label-success"),
 
-	public static final String NAVBAR_SEARCH = "navbar-search";
+	WARNING("label-warning"),
 
-	public static final String NAVBAR_TEXT = "navbar-text";
+	IMPORTANT("label-important"),
 
-	public static final String NAVBAR_INNER = "navbar-inner";
+	INFO("label-info"),
 
+	INVERSE("label-inverse");
+
+	private String className;
+
+	private LabelType(String className) {
+		this.className = className;
+	}
+
+	public String get() {
+		return className;
+	}
 }

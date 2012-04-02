@@ -50,26 +50,6 @@ public interface Bootstrap {
 
 	public static final String sidebar = "sidebar";
 
-	public static final String content = "content";
-
-	public static final String row = "row";
-
-	public static final String fade = "fade";
-
-	public static final String in = "in";
-
-	public static final String out = "out";
-
-	public static final String notice = "notice";
-
-	public static final String important = "important";
-
-	public static final String actions = "actions";
-
-	public static final String twipsy = "twipsy";
-
-	public static final String fill = "fill";
-
 	public static final String nav = "nav";
 
 	public static final String nav_list = "nav-list";
@@ -127,8 +107,6 @@ public interface Bootstrap {
 
 	public static final String tab_content = "tab-content";
 
-	public static final String modal_footer = "modal-footer";
-
 	public static final String footer = "footer";
 
 	public static final String nav_collapse = "nav-collapse";
@@ -170,28 +148,6 @@ public interface Bootstrap {
 
 		private Tabs(String className) {
 			this.className = tabbable + className;
-		}
-
-		public String get() {
-			return className;
-		}
-	}
-
-	public enum Label implements Style {
-
-		DEFAULT(""),
-		SUCCESS("label-success"),
-		WARNING("label-warning"),
-		IMPORTANT("label-important"),
-		INFO("label-info"),
-		INVERSE("label-inverse");
-
-		private static final String label = "label ";
-
-		private String className;
-
-		private Label(String className) {
-			this.className = label + className;
 		}
 
 		public String get() {

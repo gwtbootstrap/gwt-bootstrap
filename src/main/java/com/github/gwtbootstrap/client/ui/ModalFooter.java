@@ -16,25 +16,40 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:on
 /**
- * Just the modal footer, if you want a different style for it :)
+ * Footer of a {@link Modal}.
+ * <p>
+ * (Just the modal footer, if you want a different style for it :))
+ * 
+ * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
  * 
+ * @author Dominik Mayer
  */
 //@formatter:on
 public class ModalFooter extends DivWidget {
 
+	/**
+	 * Creates an empty Footer.
+	 */
 	public ModalFooter() {
-		super(Bootstrap.modal_footer);
+		super(Constants.MODAL_FOOTER);
 	}
 
-	public ModalFooter(Widget w) {
+	/**
+	 * Creates a Footer and adds the given widgets.
+	 * 
+	 * @param widgets
+	 *            widgets to be added
+	 */
+	public ModalFooter(Widget... widgets) {
 		this();
-		add(w);
+		for (Widget w : widgets)
+			add(w);
 	}
 }

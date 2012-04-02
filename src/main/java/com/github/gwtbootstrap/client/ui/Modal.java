@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -22,6 +22,8 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
+import com.github.gwtbootstrap.client.ui.constants.BackdropType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.DismissType;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
@@ -33,18 +35,41 @@ import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**
+ * Popup dialog with optional header and {@link ModalFooter footer.}
+ * <p>
+ * By default, all other Modals are closed once a new one is opened. This
+ * setting can be {@link #hideOthers(boolean) overridden.}
  * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Modal title="My Modal" backdrop="STATIC">
+ *     <g:Label>Modal Content!</g:Label>
+ *     <b:ModalFooter>
+ *         <b:Button icon="FILE">Save</b:Button>
+ *     </b:ModalFooter>
+ * </b:Modal>
+ * }
+ * </pre>
+ * All arguments are optional.
+ * </p>
  * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/javascript.html#modals">Bootstrap documentation</a>
+ * @see PopupPanel
  */
 //@formatter:on
 public class Modal extends DivWidget implements HasVisibility,
@@ -56,12 +81,15 @@ public class Modal extends DivWidget implements HasVisibility,
 	private final DivWidget body = new DivWidget("modal-body");
 
 	private boolean keyboard = true;
-	private boolean backdrop = true;
+	private BackdropType backdropType = BackdropType.NORMAL;
 	private boolean show = false;
 	private boolean hideOthers = true;
 
 	private boolean configured = false;
 
+	/**
+	 * Creates an empty, hidden widget.
+	 */
 	public Modal() {
 		super("modal");
 		super.add(header);
@@ -71,11 +99,23 @@ public class Modal extends DivWidget implements HasVisibility,
 		setHandlerFunctions(getElement());
 	}
 
+	/**
+	 * Creates an empty, hidden widget with specified show behavior.
+	 * 
+	 * @param animated
+	 *            <code>true</code> if the widget should be animated.
+	 */
 	public Modal(boolean animated) {
 		this();
 		setAnimation(animated);
 	}
 
+	/**
+	 * Sets the title of the Modal.
+	 * 
+	 * @param title
+	 *            the title of the Modal
+	 */
 	@Override
 	public void setTitle(String title) {
 		header.clear();
@@ -90,20 +130,26 @@ public class Modal extends DivWidget implements HasVisibility,
 
 	private void showHeader(boolean show) {
 		if (show)
-			header.setStyleName("modal-header");
+			header.setStyleName(Constants.MODAL_HEADER);
 		else
-			header.removeStyleName("modal-header");
+			header.removeStyleName(Constants.MODAL_HEADER);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setAnimation(boolean animated) {
 		if (animated)
-			addStyleName("fade");
+			addStyleName(Constants.FADE);
 		else
-			removeStyleName("fade");
+			removeStyleName(Constants.FADE);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public boolean getAnimation() {
-		return getStyleName().contains("fade");
+		return getStyleName().contains(Constants.FADE);
 	}
 
 	/**
@@ -118,27 +164,41 @@ public class Modal extends DivWidget implements HasVisibility,
 		this.hideOthers = hideOthers;
 	}
 
-	public void setShow(boolean show) {
-		this.show = show;
-		reconfigure();
-	}
-
+	/**
+	 * Sets whether the Modal is closed when the <code>ESC</code> is pressed.
+	 * 
+	 * @param keyboard
+	 *            <code>true</code> if the Modal is closed by <code>ESC</code>
+	 *            key. Default: <code>true</code>
+	 */
 	public void setKeyboard(boolean keyboard) {
 		this.keyboard = keyboard;
 		reconfigure();
 	}
 
-	public void setBackdrop(boolean backdrop) {
-		this.backdrop = backdrop;
+	/**
+	 * Sets the type of the backdrop.
+	 * 
+	 * @param type
+	 *            the backdrop type
+	 */
+	public void setBackdrop(BackdropType type) {
+		backdropType = type;
 		reconfigure();
 	}
 
-	public void reconfigure() {
+	/**
+	 * Reconfigures the modal with changed settings.
+	 */
+	protected void reconfigure() {
 		if (configured) {
-			configure(getElement(), keyboard, backdrop, show);
+			configure(keyboard, backdropType, show);
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void add(Widget w) {
 		if (w instanceof ModalFooter) {
@@ -147,15 +207,21 @@ public class Modal extends DivWidget implements HasVisibility,
 			body.add(w);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void insert(Widget w, int beforeIndex) {
 		body.insert(w, beforeIndex);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		configure(getElement(), keyboard, backdrop, show);
+		configure(keyboard, backdropType, show);
 		configured = true;
 	}
 
@@ -182,34 +248,6 @@ public class Modal extends DivWidget implements HasVisibility,
 
 	private void changeVisibility(String visibility) {
 		changeVisibility(getElement(), visibility);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public HandlerRegistration addHideHandler(HideHandler handler) {
-		return addHandler(handler, HideEvent.getType());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
-		return addHandler(handler, HiddenEvent.getType());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public HandlerRegistration addShowHandler(ShowHandler handler) {
-		return addHandler(handler, ShowEvent.getType());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public HandlerRegistration addShownHandler(ShownHandler handler) {
-		return addHandler(handler, ShownEvent.getType());
 	}
 
 	/**
@@ -251,10 +289,25 @@ public class Modal extends DivWidget implements HasVisibility,
 		currentlyShown.add(this);
 	}
 
-	/*
-	 * native functions
-	 */
+	private void configure(boolean keyboard, BackdropType backdropType,
+			boolean show) {
+		if (backdropType == BackdropType.NORMAL)
+			configure(getElement(), keyboard, true, show);
+		else if (backdropType == BackdropType.NONE)
+			configure(getElement(), keyboard, false, show);
+		else if (backdropType == BackdropType.STATIC)
+			configure(getElement(), keyboard, BackdropType.STATIC.get(), show);
+	}
+
 	private native void configure(Element e, boolean k, boolean b, boolean s) /*-{
+		$wnd.jQuery(e).modal({
+			keyboard : k,
+			backdrop : b,
+			show : s
+		});
+	}-*/;
+
+	private native void configure(Element e, boolean k, String b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
 			keyboard : k,
 			backdrop : b,
@@ -284,4 +337,33 @@ public class Modal extends DivWidget implements HasVisibility,
 			that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();
 		});
 	}-*/;
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public HandlerRegistration addHideHandler(HideHandler handler) {
+		return addHandler(handler, HideEvent.getType());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
+		return addHandler(handler, HiddenEvent.getType());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public HandlerRegistration addShowHandler(ShowHandler handler) {
+		return addHandler(handler, ShowEvent.getType());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public HandlerRegistration addShownHandler(ShownHandler handler) {
+		return addHandler(handler, ShownEvent.getType());
+	}
+
 }

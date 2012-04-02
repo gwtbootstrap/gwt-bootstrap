@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,28 +16,48 @@
 package com.github.gwtbootstrap.client.ui.constants;
 
 import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.ResponsiveNavbar;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off
 /**
- * Constants used for the {@link Navbar} and for Navbar contents.
+ * Position of a fixed {@link Navbar}.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
+ * @see ResponsiveNavbar
  */
 //@formatter:on
-public interface NavbarConstants {
+public enum NavbarPosition implements Style {
 
-	public static final String NAVBAR = "navbar";
+	/**
+	 * The Navbar is not fixed and appears at the place where it was defined.
+	 */
+	DEFAULT(""),
 
-	public static final String NAVBAR_FORM = "navbar-form";
+	/**
+	 * The Navbar is fixed at the top.
+	 */
+	TOP("navbar-fixed-top"),
 
-	public static final String NAVBAR_SEARCH = "navbar-search";
+	/**
+	 * The Navbar is fixed at the bottom.
+	 */
+	BOTTOM("navbar-fixed-bottom");
 
-	public static final String NAVBAR_TEXT = "navbar-text";
+	private String className;
 
-	public static final String NAVBAR_INNER = "navbar-inner";
+	private NavbarPosition(String className) {
+		this.className = className;
+	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public String get() {
+		return className;
+	}
 }
