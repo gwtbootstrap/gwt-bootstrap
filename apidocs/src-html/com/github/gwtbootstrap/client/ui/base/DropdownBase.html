@@ -2,7 +2,7 @@
 <BODY BGCOLOR="white">
 <PRE>
 <FONT color="green">001</FONT>    /*<a name="line.1"></a>
-<FONT color="green">002</FONT>     *  Copyright 2012 GWT Bootstrap<a name="line.2"></a>
+<FONT color="green">002</FONT>     *  Copyright 2012 GWT-Bootstrap<a name="line.2"></a>
 <FONT color="green">003</FONT>     *<a name="line.3"></a>
 <FONT color="green">004</FONT>     *  Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
 <FONT color="green">005</FONT>     *  you may not use this file except in compliance with the License.<a name="line.5"></a>
@@ -129,28 +129,29 @@
 <FONT color="green">126</FONT>             * @return &lt;code&gt;true&lt;/code&gt; if the widget can be added to the Dropdown<a name="line.126"></a>
 <FONT color="green">127</FONT>             */<a name="line.127"></a>
 <FONT color="green">128</FONT>            protected boolean canBeAdded(Widget widget) {<a name="line.128"></a>
-<FONT color="green">129</FONT>                    return ((widget instanceof NavLink) || (widget instanceof NavText) || (widget instanceof NavHeader) || (widget instanceof Divider) );<a name="line.129"></a>
-<FONT color="green">130</FONT>            }<a name="line.130"></a>
-<FONT color="green">131</FONT>    <a name="line.131"></a>
-<FONT color="green">132</FONT>            /**<a name="line.132"></a>
-<FONT color="green">133</FONT>             * Adds a widget to the the dropdown widget, &lt;b&gt;not&lt;/b&gt; to the dropdown<a name="line.133"></a>
-<FONT color="green">134</FONT>             * menu.<a name="line.134"></a>
-<FONT color="green">135</FONT>             * <a name="line.135"></a>
-<FONT color="green">136</FONT>             * &lt;p&gt;<a name="line.136"></a>
-<FONT color="green">137</FONT>             * Use {@link #add(Widget)} if you want to add a widget to the dropdown<a name="line.137"></a>
-<FONT color="green">138</FONT>             * menu.<a name="line.138"></a>
-<FONT color="green">139</FONT>             * <a name="line.139"></a>
-<FONT color="green">140</FONT>             * @param widget<a name="line.140"></a>
-<FONT color="green">141</FONT>             *            the widget to be added.<a name="line.141"></a>
-<FONT color="green">142</FONT>             */<a name="line.142"></a>
-<FONT color="green">143</FONT>            protected void addWidget(Widget widget) {<a name="line.143"></a>
-<FONT color="green">144</FONT>                    super.add(widget);<a name="line.144"></a>
-<FONT color="green">145</FONT>            }<a name="line.145"></a>
-<FONT color="green">146</FONT>    <a name="line.146"></a>
-<FONT color="green">147</FONT>            private native void configure(Element e) /*-{<a name="line.147"></a>
-<FONT color="green">148</FONT>                    $wnd.jQuery(e).dropdown();<a name="line.148"></a>
-<FONT color="green">149</FONT>            }-*/;<a name="line.149"></a>
-<FONT color="green">150</FONT>    }<a name="line.150"></a>
+<FONT color="green">129</FONT>                    return ((widget instanceof NavLink) || (widget instanceof NavText)<a name="line.129"></a>
+<FONT color="green">130</FONT>                                    || (widget instanceof NavHeader) || (widget instanceof Divider));<a name="line.130"></a>
+<FONT color="green">131</FONT>            }<a name="line.131"></a>
+<FONT color="green">132</FONT>    <a name="line.132"></a>
+<FONT color="green">133</FONT>            /**<a name="line.133"></a>
+<FONT color="green">134</FONT>             * Adds a widget to the the dropdown widget, &lt;b&gt;not&lt;/b&gt; to the dropdown<a name="line.134"></a>
+<FONT color="green">135</FONT>             * menu.<a name="line.135"></a>
+<FONT color="green">136</FONT>             * <a name="line.136"></a>
+<FONT color="green">137</FONT>             * &lt;p&gt;<a name="line.137"></a>
+<FONT color="green">138</FONT>             * Use {@link #add(Widget)} if you want to add a widget to the dropdown<a name="line.138"></a>
+<FONT color="green">139</FONT>             * menu.<a name="line.139"></a>
+<FONT color="green">140</FONT>             * <a name="line.140"></a>
+<FONT color="green">141</FONT>             * @param widget<a name="line.141"></a>
+<FONT color="green">142</FONT>             *            the widget to be added.<a name="line.142"></a>
+<FONT color="green">143</FONT>             */<a name="line.143"></a>
+<FONT color="green">144</FONT>            protected void addWidget(Widget widget) {<a name="line.144"></a>
+<FONT color="green">145</FONT>                    super.add(widget);<a name="line.145"></a>
+<FONT color="green">146</FONT>            }<a name="line.146"></a>
+<FONT color="green">147</FONT>    <a name="line.147"></a>
+<FONT color="green">148</FONT>            private native void configure(Element e) /*-{<a name="line.148"></a>
+<FONT color="green">149</FONT>                    $wnd.jQuery(e).dropdown();<a name="line.149"></a>
+<FONT color="green">150</FONT>            }-*/;<a name="line.150"></a>
+<FONT color="green">151</FONT>    }<a name="line.151"></a>
 
 
 

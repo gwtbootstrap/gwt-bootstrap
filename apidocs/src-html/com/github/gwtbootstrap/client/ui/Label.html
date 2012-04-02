@@ -2,7 +2,7 @@
 <BODY BGCOLOR="white">
 <PRE>
 <FONT color="green">001</FONT>    /*<a name="line.1"></a>
-<FONT color="green">002</FONT>     *  Copyright 2012 GWT Bootstrap<a name="line.2"></a>
+<FONT color="green">002</FONT>     *  Copyright 2012 GWT-Bootstrap<a name="line.2"></a>
 <FONT color="green">003</FONT>     *<a name="line.3"></a>
 <FONT color="green">004</FONT>     *  Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
 <FONT color="green">005</FONT>     *  you may not use this file except in compliance with the License.<a name="line.5"></a>
@@ -78,7 +78,7 @@
 <FONT color="green">075</FONT>             *            the text of the Label<a name="line.75"></a>
 <FONT color="green">076</FONT>             */<a name="line.76"></a>
 <FONT color="green">077</FONT>            public Label(LabelType type, String text) {<a name="line.77"></a>
-<FONT color="green">078</FONT>                    setText(text);<a name="line.78"></a>
+<FONT color="green">078</FONT>                    this(text);<a name="line.78"></a>
 <FONT color="green">079</FONT>                    setType(type);<a name="line.79"></a>
 <FONT color="green">080</FONT>            }<a name="line.80"></a>
 <FONT color="green">081</FONT>    <a name="line.81"></a>
@@ -93,11 +93,11 @@
 <FONT color="green">090</FONT>                            if (!t.get().isEmpty())<a name="line.90"></a>
 <FONT color="green">091</FONT>                                    removeStyleName(t.get());<a name="line.91"></a>
 <FONT color="green">092</FONT>    <a name="line.92"></a>
-<FONT color="green">093</FONT>                    setStyle(type);<a name="line.93"></a>
+<FONT color="green">093</FONT>                    addStyle(type);<a name="line.93"></a>
 <FONT color="green">094</FONT>            }<a name="line.94"></a>
 <FONT color="green">095</FONT>    <a name="line.95"></a>
-<FONT color="green">096</FONT>            private void setStyle(Style style) {<a name="line.96"></a>
-<FONT color="green">097</FONT>                    setStyleName(style.get());<a name="line.97"></a>
+<FONT color="green">096</FONT>            private void addStyle(Style style) {<a name="line.96"></a>
+<FONT color="green">097</FONT>                    addStyleName(style.get());<a name="line.97"></a>
 <FONT color="green">098</FONT>            }<a name="line.98"></a>
 <FONT color="green">099</FONT>    <a name="line.99"></a>
 <FONT color="green">100</FONT>    }<a name="line.100"></a>
