@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -21,28 +21,31 @@ package com.github.gwtbootstrap.client.ui.base;
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- *
+ * 
  */
 public interface HasStyle {
-	
+
 	/**
-     * Replaces the widet's style with the provided one.
-     * 
-     * @param style the style to be applied to the Widget.
-     */
-    void setStyle(Style style);
-    
-    /**
-     * Adds the provided style to the widget.
-     * 
-     * @param style the style to be added to the Widget.
-     */
-    void addStyle(Style style);
-    
-    /**
-     * Removes the provided style from the widget.
-     * 
-     * @param style the style to be removed from the Widget.
-     */
-    void removeStyle(Style style);
+	 * Replaces the widet's style with the provided one.
+	 * 
+	 * @param style
+	 *            the style to be applied to the Widget.
+	 */
+	void setStyle(Style style);
+
+	/**
+	 * Adds the provided style to the widget.
+	 * 
+	 * @param style
+	 *            the style to be added to the Widget.
+	 */
+	void addStyle(Style style);
+
+	/**
+	 * Removes the provided style from the widget.
+	 * 
+	 * @param style
+	 *            the style to be removed from the Widget.
+	 */
+	void removeStyle(Style style);
 }

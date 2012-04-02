@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
+import com.github.gwtbootstrap.client.ui.Form;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off

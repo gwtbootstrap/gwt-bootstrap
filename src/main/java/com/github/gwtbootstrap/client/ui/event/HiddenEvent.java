@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -27,27 +27,27 @@ import com.google.gwt.event.shared.GwtEvent;
  * @see HideEvent
  * @see ShowEvent
  * @see ShownEvent
- *
+ * 
  */
 public class HiddenEvent extends GwtEvent<HiddenHandler> {
 
-	  private static final Type<HiddenHandler> TYPE = new Type<HiddenHandler>();
+	private static final Type<HiddenHandler> TYPE = new Type<HiddenHandler>();
 
-	  public static Type<HiddenHandler> getType() {
-	    return TYPE;
-	  }
-
-	  public HiddenEvent() {
-	  }
-
-	  @Override
-	  public final Type<HiddenHandler> getAssociatedType() {
-	    return TYPE;
-	  }
-
-	  @Override
-	  protected void dispatch(HiddenHandler handler) {
-	    handler.onHidden();
-	  }
-
+	public static Type<HiddenHandler> getType() {
+		return TYPE;
 	}
+
+	public HiddenEvent() {
+	}
+
+	@Override
+	public final Type<HiddenHandler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(HiddenHandler handler) {
+		handler.onHidden();
+	}
+
+}

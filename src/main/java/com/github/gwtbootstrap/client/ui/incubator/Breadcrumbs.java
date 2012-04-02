@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -29,9 +29,9 @@ public class Breadcrumbs extends UnorderedList {
 	public Breadcrumbs() {
 		setStyleName(Bootstrap.breadcrumb);
 	}
-	
+
 	//TODO
 	public void add(NavLink link) {
-		
+
 	}
 }

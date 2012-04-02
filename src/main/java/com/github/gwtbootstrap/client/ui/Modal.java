@@ -44,7 +44,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Popup dialog with optional header and {@link ModalFooter footer.}
  * <p>
  * By default, all other Modals are closed once a new one is opened. This
- * setting can be {@link #hideOthers(boolean) overridden.}
+ * setting can be {@link #setHideOthers(boolean) overridden.}
  * 
  * <p>
  * <h3>UiBinder Usage:</h3>

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -25,27 +25,27 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author Dominik Mayer
  * 
  * @see CloseEvent
- *
+ * 
  */
 public class ClosedEvent extends GwtEvent<ClosedHandler> {
 
-	  private static final Type<ClosedHandler> TYPE = new Type<ClosedHandler>();
+	private static final Type<ClosedHandler> TYPE = new Type<ClosedHandler>();
 
-	  public static Type<ClosedHandler> getType() {
-		  return TYPE;
-	  }
-
-	  public ClosedEvent() {
-	  }
-
-	  @Override
-	  public final Type<ClosedHandler> getAssociatedType() {
-		  return TYPE;
-	  }
-
-	  @Override
-	  protected void dispatch(ClosedHandler handler) {
-		  handler.onClosed();
-	  }
-
+	public static Type<ClosedHandler> getType() {
+		return TYPE;
 	}
+
+	public ClosedEvent() {
+	}
+
+	@Override
+	public final Type<ClosedHandler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(ClosedHandler handler) {
+		handler.onClosed();
+	}
+
+}

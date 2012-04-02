@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -24,9 +24,8 @@ import com.google.gwt.user.client.DOM;
  * A text element that shows more information in a tooltip.
  * 
  * <p>
- * It is usually used to show the meaning of abbreviations. The text is 
- * lightly underlined and on hover, the default cursor is replaced with a help 
- * cursor.
+ * It is usually used to show the meaning of abbreviations. The text is lightly
+ * underlined and on hover, the default cursor is replaced with a help cursor.
  * </p>
  * <p>
  * <h3>UiBinder Usage:</h3>
@@ -38,43 +37,50 @@ import com.google.gwt.user.client.DOM;
  * 
  * @since 2.0.2.0
  * 
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap
+ *      documentation</a>
  */
 public class Abbreviation extends AbstractTypography {
 
 	/**
 	 * Creates a new Abbreviation with both text and title set.
 	 * 
-	 * @param text the underlined text
-	 * @param title the content of the popup
+	 * @param text
+	 *            the underlined text
+	 * @param title
+	 *            the content of the popup
 	 */
-    public Abbreviation(String text, String title) {
-    	this(title);
-        setText(text);
-    }
-    
-    /**
-     * Creates an empty Abbreviation with only the content for the tooltip set.
-     * 
-     * @param title The content of the popup
-     */
-    public @UiConstructor Abbreviation(String title) {
-    	setElement(DOM.createElement("abbr"));
-    	setTitle(title);
-    }
-    
-    /**
-     * Specifies whether a slightly smaller text size should be used for the
-     * abbreviation. This does not affect the tooltip.
-     * 
-     * @param initialism <code>true</code> for the slightly smaller size. 
-     * Default: <code>false</code> 
-     */
-    public void setInitalism(boolean initialism) {
-    	if (initialism)
-    		addStyleName(Bootstrap.initialism);
-    	else
-    		removeStyleName(Bootstrap.initialism);
-    }
+	public Abbreviation(String text, String title) {
+		this(title);
+		setText(text);
+	}
+
+	/**
+	 * Creates an empty Abbreviation with only the content for the tooltip set.
+	 * 
+	 * @param title
+	 *            The content of the popup
+	 */
+	public @UiConstructor
+	Abbreviation(String title) {
+		setElement(DOM.createElement("abbr"));
+		setTitle(title);
+	}
+
+	/**
+	 * Specifies whether a slightly smaller text size should be used for the
+	 * abbreviation. This does not affect the tooltip.
+	 * 
+	 * @param initialism
+	 *            <code>true</code> for the slightly smaller size. Default:
+	 *            <code>false</code>
+	 */
+	public void setInitalism(boolean initialism) {
+		if (initialism)
+			addStyleName(Bootstrap.initialism);
+		else
+			removeStyleName(Bootstrap.initialism);
+	}
 
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.google.gwt.uibinder.client.UiConstructor;
 
-
 public class Section extends ComplexWidget {
 
-	public @UiConstructor Section(String target) {
+	public @UiConstructor
+	Section(String target) {
 		super("section");
 		getElement().setId(target);
 	}

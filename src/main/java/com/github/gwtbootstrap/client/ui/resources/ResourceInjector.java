@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -30,8 +30,7 @@ import com.google.gwt.resources.client.TextResource;
  */
 public class ResourceInjector {
 
-	private static final Configurator ADAPTER = GWT
-			.create(Configurator.class);
+	private static final Configurator ADAPTER = GWT.create(Configurator.class);
 
 	/**
 	 * Injects the required CSS styles and JavaScript files into the document

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT Bootstrap
+ *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ public class Label extends InlineLabel implements HasType<LabelType> {
 	 *            the text of the Label
 	 */
 	public Label(LabelType type, String text) {
-		setText(text);
+		this(text);
 		setType(type);
 	}
 
@@ -90,11 +90,11 @@ public class Label extends InlineLabel implements HasType<LabelType> {
 			if (!t.get().isEmpty())
 				removeStyleName(t.get());
 
-		setStyle(type);
+		addStyle(type);
 	}
 
-	private void setStyle(Style style) {
-		setStyleName(style.get());
+	private void addStyle(Style style) {
+		addStyleName(style.get());
 	}
 
 }
