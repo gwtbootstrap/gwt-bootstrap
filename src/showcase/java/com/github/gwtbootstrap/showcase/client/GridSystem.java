@@ -17,6 +17,9 @@ public class GridSystem extends Composite {
 	@UiField
 	CodeBlock offsetGridCode;
 	
+	@UiField
+	CodeBlock nestedGridCode;
+	
 	private static GridSystemUiBinder uiBinder = GWT.create(GridSystemUiBinder.class);
 
 	interface GridSystemUiBinder extends UiBinder<Widget, GridSystem> {
@@ -24,8 +27,10 @@ public class GridSystem extends Composite {
 
 	public GridSystem() {
 		initWidget(uiBinder.createAndBindUi(this));
-		gridCode.setHTML(CustomResources.RESOURCES.gridCode().getText());
-		offsetGridCode.setHTML(CustomResources.RESOURCES.offsetGridCode().getText());
+		CustomResources resources = CustomResources.RESOURCES;
+		gridCode.setHTML(resources.gridCode().getText());
+		offsetGridCode.setHTML(resources.offsetGridCode().getText());
+		nestedGridCode.setHTML(resources.nestedGridCode().getText());
 	}
 
 }

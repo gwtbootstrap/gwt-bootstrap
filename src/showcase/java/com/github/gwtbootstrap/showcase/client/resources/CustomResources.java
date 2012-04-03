@@ -31,4 +31,8 @@ public interface CustomResources extends Resources {
 	
 	@Source("offsetGridCode.txt")
 	TextResource offsetGridCode();
+	
+	@Source("nestedGridCode.txt")
+	TextResource nestedGridCode();
+
 }

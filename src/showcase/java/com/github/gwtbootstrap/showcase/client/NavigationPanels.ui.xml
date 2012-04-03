@@ -14,7 +14,7 @@
                         <b:NavLink>1</b:NavLink>
                         <b:NavLink active="true">2</b:NavLink>
                     </b:NavTabs>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:NavTabs&gt;
     &lt;b:NavLink&gt;1&lt;/b:NavLink&gt;
     &lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
@@ -29,7 +29,7 @@
                         <b:NavLink>1</b:NavLink>
                         <b:NavLink active="true">2</b:NavLink>
                     </b:NavPills>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:NavPills&gt;
     &lt;b:NavLink&gt;1&lt;/b:NavLink&gt;
     &lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
@@ -50,7 +50,7 @@
                         <li><code>tabPosition</code> is optional and defaults to <code>above</code>. Options: <code>below</code>, <code>left</code>, <code>right</code>. </li>
                         <li><code>href</code> is optional. If none is provided, gwt-bootstrap will generate a random string.</li>
                     </ul>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:TabPanel tabPosition=&quot;left&quot;&gt;
     &lt;b:TabPane heading=&quot;prost&quot; href=&quot;1&quot;&gt;&lt;g:Label&gt;Lalala&lt;/g:Label&gt;&lt;/b:TabPane&gt;
     &lt;b:TabPane heading=&quot;test&quot; active=&quot;true&quot;&gt;&lt;g:Label&gt;Huhu&lt;/g:Label&gt;&lt;/b:TabPane&gt;
@@ -78,7 +78,7 @@
                     </b:Navbar>
                     <p>You can also use a responsive version:</p>
                     <pre><code>&lt;b:ResponsiveNavbar /&gt;</code></pre><p>Make sure you enable the responsive design. It won't work otherwise.</p>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:Navbar&gt;
     &lt;b:Brand&gt;Bootstrap&lt;/b:Brand&gt;
     &lt;b:Nav&gt;
@@ -106,7 +106,7 @@
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:NavList>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:NavList&gt;
     &lt;b:NavHeader&gt;Header&lt;/b:NavHeader&gt;
     &lt;b:NavLink active=&quot;true&quot; icon=&quot;plane&quot;&gt;Test&lt;/b:NavLink&gt;
@@ -124,7 +124,7 @@
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:WellNavList>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:WellNavList&gt;
     &lt;b:NavHeader&gt;Header&lt;/b:NavHeader&gt;
     &lt;b:NavLink active=&quot;true&quot; icon=&quot;plane&quot;&gt;Test&lt;/b:NavLink&gt;

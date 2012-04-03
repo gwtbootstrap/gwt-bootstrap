@@ -1,0 +1,13 @@
+<b:Row>
+  <b:Column size="12">
+    <g:Label>Level 1 of Column</g:Label>
+    <b:Row addStyleNames="{style.show-grid}">
+      <b:Column size="6">
+        <g:Label>Level 2</g:Label>
+      </b:Column>
+      <b:Column size="6">
+        <g:Label>Level 2</g:Label>
+      </b:Column>
+    </b:Row>
+  </b:Column>
+</b:Row>

@@ -16,7 +16,7 @@
                         <b:Badge>2</b:Badge>
                         <b:Badge>3</b:Badge>
                     </b:NavWidget>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:NavWidget icon=&quot;STAR&quot; iconColor=&quot;WHITE&quot; text=&quot;Inbox&quot;&gt;
     &lt;b:Badge&gt;1&lt;/b:Badge&gt;
     &lt;b:Badge&gt;2&lt;/b:Badge&gt;
@@ -31,7 +31,7 @@
                     <b:NavLink active="false">1</b:NavLink>
                     <b:NavLink active="true">2</b:NavLink>
                     <b:NavLink active="false">3</b:NavLink>
-                    <pre class="prettyprint linenumbs">
+                    <pre class="prettyprint linenums">
 &lt;b:NavLink active=&quot;false&quot;&gt;1&lt;/b:NavLink&gt;
 &lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
 &lt;b:NavLink active=&quot;false&quot;&gt;3&lt;/b:NavLink&gt;</pre>

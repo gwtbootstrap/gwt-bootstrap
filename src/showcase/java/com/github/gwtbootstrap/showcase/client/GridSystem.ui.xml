@@ -40,7 +40,7 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<b:PageHeader subtext="12 columns grid system">Default grid system</b:PageHeader>
+		<b:PageHeader subtext="12 columns grid system">Default grid system </b:PageHeader>
 		<b:Row addStyleNames="{style.show-grid}">
 			<b:Column size="1"><g:Label>1</g:Label></b:Column>
 			<b:Column size="1"><g:Label>1</g:Label></b:Column>
@@ -72,20 +72,22 @@
 			<b:Column size="12"><g:Label>12</g:Label></b:Column>
 		</b:Row>
 		<b:Row>
-			<!-- TODO soundTricker 2012/04/02 22:11 Write Explain -->
-			<!-- 
 			<b:Column size="6">
-				<g:HTMLPanel>
-					<b:Code>&lt;b:Row></b:Code> is foo bar ...
+				<g:HTMLPanel tag="p">
+					The default grid system provided as part of GWT-Bootstrap is<br/>
+					 a 940px-wide, 12-column grid.
+				</g:HTMLPanel>
+				<g:HTMLPanel tag="p">
+					This is same as <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem" target="_blank">Twitter's Bootstrap Grid System.</a><br/>
+					If you need useing in uibinder,Use <b:Code>&lt;b:Row></b:Code> and <b:Code>&lt;b:Column></b:Code>.<br/>
+					Please see <a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/Row.html" target="_blank">Row</a> and <a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/Column.html" target="_blank">Column</a> Javadocs.
 				</g:HTMLPanel>
 			</b:Column>
-			 -->
-			<b:Column size="12">
-				<b:CodeBlock ui:field="gridCode" linenums="true" lang="xml"/>
+			<b:Column size="6">
+				<b:CodeBlock linenums="true" ui:field="gridCode" lang="xml"/>
 			</b:Column>
 		</b:Row>
-		
-		<h2>Offsetting columns</h2>
+		<b:Heading size="2">Offsetting columns</b:Heading>
 		<b:Row addStyleNames="{style.show-grid}">
 			<b:Column size="4"><g:Label>4</g:Label></b:Column>
 			<b:Column size="4" offset="4"><g:Label>4 offset 4</g:Label></b:Column>
@@ -98,39 +100,41 @@
 			<b:Column size="8" offset="4"><g:Label>8 offset 4</g:Label></b:Column>
 		</b:Row>
 		<b:Row>
-			<!-- TODO soundTricker 2012/04/02 22:11 Write Explain -->
-			<!-- 
-			<b:Column size="6">
-				<g:HTMLPanel>
-					<b:Code>&lt;b:Row></b:Code> is foo bar ...
-				</g:HTMLPanel>
-			</b:Column>
-			 -->
 			<b:Column size="12">
-				<b:CodeBlock ui:field="offsetGridCode" linenums="true" lang="xml"/>
+				<b:CodeBlock linenums="true" ui:field="offsetGridCode" lang="xml"/>
 			</b:Column>
 		</b:Row>
-		<h2>Nesting columns</h2>
+		<b:Heading size="2">Nesting columns</b:Heading>
 		<b:Row>
 			<b:Column size="6">
 				<g:HTMLPanel tag="p">
-				With the static (non-fluid) grid system in Bootstrap, nesting is easy. To nest your content, just add 
-				a new <b:Code>.row</b:Code> and set of <b:Code>.span*</b:Code> columns within an existing <b:Code>.span*</b:Code> column.
+				With the static (non-fluid) grid system in GWT-Bootstrap, nesting is easy. To nest your content, just add 
+				a new <b:Code>&lt;b:Row></b:Code> and add <b:Code>&lt;b:Column></b:Code>  within an existing <b:Code>&lt;b:Column></b:Code>.
 				</g:HTMLPanel>
-				<g:HTMLPanel tag="h3">Example</g:HTMLPanel>
+				<b:Heading size="3">Example</b:Heading>
+				<g:HTMLPanel tag="p">
+				Nested rows should include a set of columns that add up to the number of columns of it's parent. For example, two nested <b:Code>&lt;b:Column size="3"></b:Code> columns should be placed within a <b:Code>&lt;b:Column size="6"></b:Code>.
+				</g:HTMLPanel>
 				<b:Row addStyleNames="{style.show-grid}">
 					<b:Column size="6">
 						<g:Label>Level 1 of Column</g:Label>
 						<b:Row addStyleNames="{style.show-grid}">
-							<b:Column size="3"><g:Label>Level 3</g:Label></b:Column>
-							<b:Column size="3"><g:Label>Level 3</g:Label></b:Column>
+							<b:Column size="3"><g:Label>Level 2</g:Label></b:Column>
+							<b:Column size="3"><g:Label>Level 2</g:Label></b:Column>
 						</b:Row>
 					</b:Column>
 				</b:Row>
 			</b:Column>
 			<b:Column size="6">
-				<b:CodeBlock linenums="true"/>
+				<b:CodeBlock linenums="true" ui:field="nestedGridCode"/>
 			</b:Column>
 		</b:Row>
+<!-- TODO soundTricker 2012/04/03 14:01 create Fulid Showcase
+ 		<b:Heading size="2">Fluid Grid System</b:Heading>
+		<g:HTMLPanel tag="p">
+		Wait... soon...
+		Please see Fluid Showcase
+		</g:HTMLPanel>
+		 -->
 	</g:HTMLPanel>
 </ui:UiBinder> 
