@@ -90,6 +90,20 @@ public interface Resources extends ClientBundle {
 	@Source("css/bootstrap-responsive.min.css")
 	TextResource bootstrapResponsiveCss();
 
+	/**
+	 * Returns the GWT-Bootstrap CSS.
+	 * <p>
+	 * It contains styles that overrides conflicting GWT styles.
+	 * </p>
+	 * <p>
+	 * <b>Don't override this unless you know what you're doing!</b>
+	 * </p>
+	 * 
+	 * @return the GWT-Bootstrap styles
+	 */
+	@Source("css/gwt-bootstrap.css")
+	TextResource gwtBootstrapCss();
+
 //	@Source("js/bootstrap-collapse.js")
 //	TextResource bootstrapCollapseJs();
 

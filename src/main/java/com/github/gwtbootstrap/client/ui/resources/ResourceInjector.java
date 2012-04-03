@@ -41,6 +41,7 @@ public class ResourceInjector {
 		Resources res = ADAPTER.getResources();
 
 		injectCss(res.bootstrapCss());
+		injectCss(res.gwtBootstrapCss());
 		if (ADAPTER.hasResponsiveDesign())
 			activateResponsiveDesign(res);
 		injectJs(res.jquery());
