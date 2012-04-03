@@ -21,21 +21,61 @@ import com.google.gwt.user.client.ui.HasText;
 
 //@formatter:off
 /**
- * Header for the nav list.
+ * Header for menus in a navigation context.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:NavList>
+ *     <b:NavHeader>I'm the Header</b:NavHeader>
+ *     <b:NavLink>I'm a link to nowhere.</b:NavLink>
+ * </b:NavList>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navs">Bootstrap documentation</a>
+ * @see NavList
+ * @see WellNavList
+ * @see Dropdown
  */
 //@formatter:on
 public class NavHeader extends ListItem implements HasText {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public NavHeader() {
 		setStyleName(Bootstrap.nav_header);
 	}
 
+	/**
+	 * Creates a widget and sets the given text.
+	 * 
+	 * @param text
+	 *            the text of the widget
+	 */
+	public NavHeader(String text) {
+		this();
+		setText(text);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getText() {
 		return getElement().getInnerText();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setText(String text) {
 		getElement().setInnerText(text);
 	}

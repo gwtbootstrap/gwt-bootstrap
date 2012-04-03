@@ -19,19 +19,52 @@ import com.google.gwt.user.client.ui.HasText;
 
 //@formatter:off
 /**
- * A Link in the Navbar.
+ * Link, used in a navigation context.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:NavList>
+ *     <b:NavHeader>I'm the Header</b:NavHeader>
+ *     <b:NavLink icon="PLANE">I'm a link to nowhere.</b:NavLink>
+ * </b:NavList>
+ * }
+ * </pre>
+ * All arguments are optional
+ * </p>
+ * 
+ * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation (Navbar)</a>
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navs">Bootstrap documentation (Navs)</a>
+ * @see NavList
+ * @see WellNavList
+ * @see Dropdown
+ * @see Navbar
+ * @see ResponsiveNavbar
  */
 //@formatter:on
 public class NavLink extends NavWidget implements HasText {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public NavLink() {
 		super();
 	}
 
+	/**
+	 * Creates an empty widget of given text and href.
+	 * 
+	 * @param text
+	 *            text of the widget
+	 * @param href
+	 *            URL the link should point to
+	 */
 	public NavLink(String text, String href) {
 		super();
 		setText(text);

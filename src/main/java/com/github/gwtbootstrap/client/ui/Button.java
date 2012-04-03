@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.base.NavbarButton;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;

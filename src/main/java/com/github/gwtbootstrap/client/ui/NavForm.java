@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 
 //@formatter:off
 /**
- * Form for the Navbar.
+ * Form for the {@link Navbar}.
  * 
  * @since 2.0.2.0
  * 
@@ -31,11 +31,20 @@ import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 //@formatter:on
 public class NavForm extends NavFormBase {
 
+	/**
+	 * Creates an empty form.
+	 */
 	public NavForm() {
 		super();
 		addStyleName(NavbarConstants.NAVBAR_FORM);
 	}
 
+	/**
+	 * Creates an empty form of given size.
+	 * 
+	 * @param size
+	 *            the size in the Bootstrap grid system
+	 */
 	public NavForm(int size) {
 		super(size);
 		addStyleName(NavbarConstants.NAVBAR_FORM);

@@ -119,21 +119,6 @@ public interface Bootstrap {
 
 	public static final String initialism = "initialism";
 
-	public enum Button implements Style {
-
-		NAVBAR("btn-navbar");
-
-		private String className;
-
-		private Button(String className) {
-			this.className = className;
-		}
-
-		public String get() {
-			return className;
-		}
-	}
-
 	public enum Tabs implements Style {
 
 		ABOVE(""),

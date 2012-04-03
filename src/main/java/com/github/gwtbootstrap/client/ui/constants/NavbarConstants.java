@@ -40,4 +40,6 @@ public interface NavbarConstants {
 
 	public static final String NAVBAR_INNER = "navbar-inner";
 
+	public static final String NAVBAR_BUTTON = "btn-navbar";
+
 }

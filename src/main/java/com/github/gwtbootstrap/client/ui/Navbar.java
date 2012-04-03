@@ -20,13 +20,17 @@ import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**
- * The Navbar.
- * 
- * not container
+ * Navbar with optional text, links and forms.
+ * <p>
+ * The Navbar can be fixed on the top or bottom of the site where it will stay
+ * when the user scrolls the page. For proper rendering, a fixed Navbar cannot
+ * be part of any container. It has to be attached directly to the 
+ * {@link RootPanel}. 
  * 
  * <p>
  * <h3>UiBinder Usage:</h3>
@@ -54,6 +58,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
+ * @see ResponsiveNavbar
  */
 //@formatter:on
 public class Navbar extends DivWidget {

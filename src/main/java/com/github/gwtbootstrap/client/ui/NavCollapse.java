@@ -21,17 +21,42 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 //@formatter:off
 /**
  * A container for things hidden when the window width is too small. Has to be
- * placed inside a {@link ResponsiveNavbar}. (Works only in combination with
- * bootstrap-responsive.css.)
+ * placed inside a {@link ResponsiveNavbar}.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:ResponsiveNavbar>
+ *     <b:Brand>Bootstrap</b:Brand>
+ *     <b:NavCollapse>
+ *         <b:Nav>
+ *             <b:NavLink>Link 1</b:NavLink>
+ *             <b:NavLink>Link 2</b:NavLink>
+ *         </b:Nav>
+ *         <b:NavForm size="1" />
+ *         <b:Nav alignment="RIGHT">
+ *             <b:NavLink>Link 3</b:NavLink>
+ *         </b:Nav>
+ *     </b:NavCollapse>
+ * </b:ResponsiveNavbar>
+ * }
+ * </pre>
+ * </p>
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
 //@formatter:on
 public class NavCollapse extends DivWidget {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public NavCollapse() {
 		super(Bootstrap.nav_collapse);
 	}

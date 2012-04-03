@@ -128,6 +128,11 @@ public class Icon extends Widget {
 		return color;
 	}
 
+	/**
+	 * Inverts the color of the icon.
+	 * <p>
+	 * A black icon will become white, a white icon black.
+	 */
 	public void invertColor() {
 		if (type == null)
 			return;

@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.NavbarButton;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
@@ -32,13 +33,37 @@ import com.google.gwt.user.client.ui.Widget;
  * the width of the window is too small.
  * <p>
  * Only works when the Responsive Layout ist turned on. Create your own
- * {@link Configurator} and let {@link Configurator#hasResponsiveDesign()}
- * return true.
+ * {@link Configurator} and let {@link Configurator#hasResponsiveDesign()
+ * hasResponsiveDesign()} return <code>true</code>.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:ResponsiveNavbar>
+ *     <b:Brand>Bootstrap</b:Brand>
+ *     <b:NavCollapse>
+ *         <b:Nav>
+ *             <b:NavLink>Link 1</b:NavLink>
+ *             <b:NavLink>Link 2</b:NavLink>
+ *         </b:Nav>
+ *         <b:NavForm size="1" />
+ *         <b:Nav alignment="RIGHT">
+ *             <b:NavLink>Link 3</b:NavLink>
+ *         </b:Nav>
+ *     </b:NavCollapse>
+ * </b:ResponsiveNavbar>
+ * }
+ * </pre>
+ * </p>
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
  * @author Carlos Alexandro Becker
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  */
 //@formatter:on
 public class ResponsiveNavbar extends Navbar {
@@ -48,8 +73,17 @@ public class ResponsiveNavbar extends Navbar {
 	private final NavbarButton collapseButton = new NavbarButton();
 	private final DivWidget navCollapse = new DivWidget("nav-collapse");
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public ResponsiveNavbar() {
 		super();
+		addCollapseButton();
+		addWindowHandlers();
+		setPaddingTop();
+	}
+
+	private void addCollapseButton() {
 		collapseButton.getElement().setAttribute(Constants.DATA_TOGGLE,
 				Bootstrap.collapse);
 		collapseButton.getElement().setAttribute(Bootstrap.data_target,
@@ -58,11 +92,11 @@ public class ResponsiveNavbar extends Navbar {
 		collapseButton.add(new Icon(IconType.BAR));
 		collapseButton.add(new Icon(IconType.BAR));
 		add(collapseButton);
-		addWindowHandlers();
-		setPaddingTop();
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void add(Widget child) {
 		if (child instanceof Nav) {
@@ -103,6 +137,9 @@ public class ResponsiveNavbar extends Navbar {
 		return Window.getClientWidth() < RESPONSIVE_WIDTH_IN_PIXEL;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Container getContainer() {
 		return new FluidContainer();

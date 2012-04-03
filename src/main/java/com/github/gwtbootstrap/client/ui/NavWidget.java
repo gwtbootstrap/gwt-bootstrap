@@ -34,6 +34,14 @@ import com.google.gwt.user.client.ui.Widget;
  * {@code <b:NavWidget text="Inbox"><b:Badge /></b:NavWidget>}
  * 
  * @author Dominik Mayer
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation (Navbar)</a>
+ * @see <a href="http://twitter.github.com/bootstrap/components.html#navs">Bootstrap documentation (Navs)</a>
+ * @see NavList
+ * @see WellNavList
+ * @see Dropdown
+ * @see Navbar
+ * @see ResponsiveNavbar
  */
 //@formatter:on
 public class NavWidget extends ListItem implements HasClickHandlers {
@@ -45,7 +53,6 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 	private boolean active = false;
 
 	public NavWidget() {
-//		this("");
 		super.add(anchor);
 	}
 
@@ -112,10 +119,16 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 		return anchor;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return addDomHandler(handler, ClickEvent.getType());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void add(Widget w) {
 		anchor.add(w);

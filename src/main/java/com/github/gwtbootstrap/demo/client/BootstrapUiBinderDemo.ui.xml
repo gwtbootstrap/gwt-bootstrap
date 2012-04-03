@@ -20,11 +20,13 @@
 						ui:field="inbox">
 						<b:Badge>1</b:Badge>
 					</b:NavWidget>
+<!-- 					<b:NavbarButton>Button</b:NavbarButton> -->
 				</b:Nav>
 				<b:NavForm size="1" />
 				<b:Nav alignment="RIGHT">
 					<b:NavLink>Test</b:NavLink>
 				</b:Nav>
+<!-- 				<b:Button type ="INVERSE">Button</b:Button> -->
 				<b:NavText alignment="RIGHT">Right</b:NavText>
 				<b:NavSearch size="2" placeholder="Search" alignment="RIGHT" />
 			</b:NavCollapse>
