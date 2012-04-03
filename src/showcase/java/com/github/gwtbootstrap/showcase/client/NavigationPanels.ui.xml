@@ -1,0 +1,138 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Navigation">Navigation Panels</b:PageHeader>
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>NavTabs</h2>
+                    <b:NavTabs>
+                        <b:NavLink>1</b:NavLink>
+                        <b:NavLink active="true">2</b:NavLink>
+                    </b:NavTabs>
+                    <pre class="prettyprint linenumbs">
+&lt;b:NavTabs&gt;
+    &lt;b:NavLink&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
+&lt;/b:NavTabs&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>NavPills</h2>
+                    <b:NavPills>
+                        <b:NavLink>1</b:NavLink>
+                        <b:NavLink active="true">2</b:NavLink>
+                    </b:NavPills>
+                    <pre class="prettyprint linenumbs">
+&lt;b:NavPills&gt;
+    &lt;b:NavLink&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
+&lt;/b:NavPills&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        
+        <b:Row>
+            <b:Column size="8">
+                <g:HTMLPanel>
+                    <h2>TabPanel</h2>
+                    <b:TabPanel tabPosition="left">
+                        <b:TabPane heading="prost" href="1"><g:Label>Lalala</g:Label></b:TabPane>
+                        <b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
+                    </b:TabPanel>
+                    <ul>
+                        <li><code>tabPosition</code> is optional and defaults to <code>above</code>. Options: <code>below</code>, <code>left</code>, <code>right</code>. </li>
+                        <li><code>href</code> is optional. If none is provided, gwt-bootstrap will generate a random string.</li>
+                    </ul>
+                    <pre class="prettyprint linenumbs">
+&lt;b:TabPanel tabPosition=&quot;left&quot;&gt;
+    &lt;b:TabPane heading=&quot;prost&quot; href=&quot;1&quot;&gt;&lt;g:Label&gt;Lalala&lt;/g:Label&gt;&lt;/b:TabPane&gt;
+    &lt;b:TabPane heading=&quot;test&quot; active=&quot;true&quot;&gt;&lt;g:Label&gt;Huhu&lt;/g:Label&gt;&lt;/b:TabPane&gt;
+&lt;/b:TabPanel&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
+                    <h2>Navbar</h2>
+                    <b:Navbar>
+                        <b:Brand>Bootstrap</b:Brand>
+                        <b:Nav>
+                            <b:NavLink>Test</b:NavLink>
+                            <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+                        </b:Nav>
+                        <b:NavForm size="1"/>
+                        <b:Nav alignment="RIGHT">
+                            <b:NavLink>Test</b:NavLink>
+                        </b:Nav>
+                        <b:NavText alignment="RIGHT">Right</b:NavText>
+                        <b:NavSearch size="2" placeholder="Search" alignment="RIGHT"/>
+                    </b:Navbar>
+                    <p>You can also use a responsive version:</p>
+                    <pre><code>&lt;b:ResponsiveNavbar /&gt;</code></pre><p>Make sure you enable the responsive design. It won't work otherwise.</p>
+                    <pre class="prettyprint linenumbs">
+&lt;b:Navbar&gt;
+    &lt;b:Brand&gt;Bootstrap&lt;/b:Brand&gt;
+    &lt;b:Nav&gt;
+        &lt;b:NavLink&gt;Test&lt;/b:NavLink&gt;
+        &lt;b:NavLink href=&quot;http://www.google.com&quot;&gt;Another Test&lt;/b:NavLink&gt;
+    &lt;/b:Nav&gt;
+    &lt;b:NavForm size=&quot;1&quot;/&gt;
+    &lt;b:Nav alignment=&quot;RIGHT&quot;&gt;
+        &lt;b:NavLink&gt;Test&lt;/b:NavLink&gt;
+    &lt;/b:Nav&gt;
+    &lt;b:NavText alignment=&quot;RIGHT&quot;&gt;Right&lt;/b:NavText&gt;
+    &lt;b:NavSearch size=&quot;2&quot; placeholder=&quot;Search&quot; alignment=&quot;RIGHT&quot;/&gt;
+&lt;/b:Navbar&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>Nav Lists</h2>
+                    <b:NavList>
+                        <b:NavHeader>Header</b:NavHeader>
+                        <b:NavLink active="true" icon="PLANE">Test</b:NavLink>
+                        <b:Divider />
+                        <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+                    </b:NavList>
+                    <pre class="prettyprint linenumbs">
+&lt;b:NavList&gt;
+    &lt;b:NavHeader&gt;Header&lt;/b:NavHeader&gt;
+    &lt;b:NavLink active=&quot;true&quot; icon=&quot;plane&quot;&gt;Test&lt;/b:NavLink&gt;
+    &lt;b:Divider /&gt;
+    &lt;b:NavLink href=&quot;http://www.google.com&quot;&gt;Another Test&lt;/b:NavLink&gt;
+&lt;/b:NavList&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:WellNavList>
+                        <b:NavHeader>Header</b:NavHeader>
+                        <b:NavLink active="true" icon="PLANE">Test</b:NavLink>
+                        <b:Divider />
+                        <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
+                    </b:WellNavList>
+                    <pre class="prettyprint linenumbs">
+&lt;b:WellNavList&gt;
+    &lt;b:NavHeader&gt;Header&lt;/b:NavHeader&gt;
+    &lt;b:NavLink active=&quot;true&quot; icon=&quot;plane&quot;&gt;Test&lt;/b:NavLink&gt;
+    &lt;b:Divider /&gt;
+    &lt;b:NavLink href=&quot;http://www.google.com&quot;&gt;Another Test&lt;/b:NavLink&gt;
+&lt;/b:WellNavList&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>
