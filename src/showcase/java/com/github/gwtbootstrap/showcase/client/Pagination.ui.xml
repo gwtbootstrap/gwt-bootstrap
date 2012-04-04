@@ -1,0 +1,49 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Pagination">Pagination</b:PageHeader>
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:Pager left="Left" right="Right"/>
+                    <pre class="prettyprint linenums">&lt;b:Pager left=&quot;Left&quot; right=&quot;Right&quot;/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:Pager left="&larr; Older" right="Newer &rarr;" aligned="true"/>
+                    <pre class="prettyprint linenums">&lt;b:Pager left=&quot;&amp;larr; Older&quot; right=&quot;Newer &amp;rarr;&quot; aligned=&quot;true&quot;/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        
+        <b:Row>
+            <b:Column size="8">
+                <g:HTMLPanel>
+                    <b:Pagination>
+                        <b:NavLink href="http://www.google.com">1</b:NavLink>
+                        <b:NavLink active="true">2</b:NavLink>
+                        <b:NavLink>3</b:NavLink>
+                        <b:NavLink>4</b:NavLink>
+                        <b:NavLink>5</b:NavLink>
+                        <b:NavLink>6</b:NavLink>
+                    </b:Pagination>
+                    <pre class="prettyprint linenums">
+&lt;b:Pagination&gt;
+    &lt;b:NavLink href=&quot;http://www.google.com&quot;&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;3&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;4&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;5&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;6&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>

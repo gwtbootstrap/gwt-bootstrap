@@ -58,6 +58,7 @@ public class Showcase extends Composite implements EntryPoint {
         addSectionToContainer("Page Header",  "pageheader",  new PageHeader());
         addSectionToContainer("Progress Bar", "progressbar", new ProgressBar());
         addSectionToContainer("Alerts",       "alerts",      new Alerts());
+        addSectionToContainer("Pagination",   "pagination",  new Pagination());
 
 		RootPanel.get("content").add(this);
 		Document doc = Document.get();
