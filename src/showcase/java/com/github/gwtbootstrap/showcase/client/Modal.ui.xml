@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Modal">Modal</b:PageHeader>
+        
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
+                    <b:Button ui:field="onShow" text="show the modal" />
+                    <b:Modal ui:field="m" title="My Modal" backdrop="STATIC" keyboard="true" animation="true">
+                        <g:Label>Modal Content!</g:Label>
+                        <b:ModalFooter>
+                            <b:Button icon="FILE" type="PRIMARY">Save</b:Button>
+                        </b:ModalFooter>
+                    </b:Modal>
+                    <pre class="prettyprint linenums">
+&lt;b:Modal ui:field=&quot;m&quot; title=&quot;My Modal&quot; backdrop=&quot;STATIC&quot; keyboard=&quot;true&quot; animation=&quot;true&quot;&gt;
+    &lt;g:Label&gt;Modal Content!&lt;/g:Label&gt;
+    &lt;b:ModalFooter&gt;
+        &lt;b:Button icon=&quot;FILE&quot; type=&quot;PRIMARY&quot;&gt;Save&lt;/b:Button&gt;
+    &lt;/b:ModalFooter&gt;
+&lt;/b:Modal&gt;</pre>
+                    <p>As you can see, we have several optional settings. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss. Also, Modal implements the <code>HasVisibleHandlers</code> interface, so, it has the <code>show</code>, hide and <code>toggle</code> methods. The footer is optional.</p>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>
