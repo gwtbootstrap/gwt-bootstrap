@@ -5,7 +5,40 @@
         
     </ui:style>
     <g:HTMLPanel>
-        <b:PageHeader subtext="Styles for Navigation">Navigation Panels</b:PageHeader>
+        <b:PageHeader subtext="Styles for Navigation">Navigation</b:PageHeader>
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>NavWidget</h2>
+                    <p>Can contain several widgets. The most obvious example:</p>
+                    <b:NavWidget icon="STAR" iconColor="WHITE" text="Inbox">
+                        <b:Badge>1</b:Badge>
+                        <b:Badge>2</b:Badge>
+                        <b:Badge>3</b:Badge>
+                    </b:NavWidget>
+                    <pre class="prettyprint linenums">
+&lt;b:NavWidget icon=&quot;STAR&quot; iconColor=&quot;WHITE&quot; text=&quot;Inbox&quot;&gt;
+    &lt;b:Badge&gt;1&lt;/b:Badge&gt;
+    &lt;b:Badge&gt;2&lt;/b:Badge&gt;
+    &lt;b:Badge&gt;3&lt;/b:Badge&gt;
+&lt;/b:NavWidget&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>NavLink</h2>
+                    <p>Can only contain Text:</p>
+                    <b:NavLink active="false">1</b:NavLink>
+                    <b:NavLink active="true">2</b:NavLink>
+                    <b:NavLink active="false">3</b:NavLink>
+                    <pre class="prettyprint linenums">
+&lt;b:NavLink active=&quot;false&quot;&gt;1&lt;/b:NavLink&gt;
+&lt;b:NavLink active=&quot;true&quot;&gt;2&lt;/b:NavLink&gt;
+&lt;b:NavLink active=&quot;false&quot;&gt;3&lt;/b:NavLink&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        
         <b:Row>
             <b:Column size="6">
                 <g:HTMLPanel>

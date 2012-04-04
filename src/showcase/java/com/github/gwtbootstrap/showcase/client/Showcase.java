@@ -52,8 +52,7 @@ public class Showcase extends Composite implements EntryPoint {
 //		addSectionToContainer("Get Support", "support", new Support());
 		addSectionToContainer("Buttons",      "buttons",     new Buttons());
 		addSectionToContainer("Grid System",  "gridSystem",  new GridSystem());
-        addSectionToContainer("NavEntries",   "navEntries",  new NavigationEntries());
-        addSectionToContainer("NavPanels",    "navPanels",   new NavigationPanels());
+        addSectionToContainer("Navigation",   "navigation",  new Navigation());
         addSectionToContainer("Hero Unit",    "hero",        new HeroUnit());
         addSectionToContainer("Page Header",  "pageheader",  new PageHeader());
         addSectionToContainer("Progress Bar", "progressbar", new ProgressBar());

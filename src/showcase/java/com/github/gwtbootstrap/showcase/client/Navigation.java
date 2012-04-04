@@ -5,14 +5,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class NavigationPanels extends Composite {
+public class Navigation extends Composite {
 
-    private static NavigationPanelsUiBinder uiBinder = GWT.create(NavigationPanelsUiBinder.class);
+    private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
-    interface NavigationPanelsUiBinder extends UiBinder<Widget, NavigationPanels> {
+    interface NavigationEntriesUiBinder extends UiBinder<Widget, Navigation> {
     }
 
-    public NavigationPanels() {
+    public Navigation() {
         initWidget(uiBinder.createAndBindUi(this));
     }
 
