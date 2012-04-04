@@ -123,7 +123,11 @@ public class Navbar extends DivWidget {
 	 *            the position of the Navbar
 	 */
 	public void setPosition(NavbarPosition position) {
-		fixedTop = false;
+		if (position == NavbarPosition.TOP)
+			fixedTop = true;
+		else
+			fixedTop = false;
+
 		for (NavbarPosition p : NavbarPosition.values())
 			if (!p.get().isEmpty())
 				removeStyleName(p.get());
