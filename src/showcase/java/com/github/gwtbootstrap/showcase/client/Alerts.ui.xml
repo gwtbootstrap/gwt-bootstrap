@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Alerts">Alerts</b:PageHeader>
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:Alert type="SUCCESS" close="false" animation="true">TestAlert without close</b:Alert>
+                    <pre class="prettyprint linenums">
+&lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert without close&lt;/b:Alert&gt;</pre>
+               </g:HTMLPanel>
+            </b:Column>
+            
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:AlertBlock type="INFO" heading="Heading">AlertBlock</b:AlertBlock>
+                    <pre class="prettyprint linenums">
+&lt;b:AlertBlock style=&quot;info&quot; heading=&quot;Heading&quot;&gt;AlertBlock&lt;/b:AlertBlock&gt;</pre>
+               </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>
