@@ -110,4 +110,11 @@ public interface Constants {
 
 	public static final String CONDENSED = "condensed";
 
+	// Form controls
+	public static final String CONTROL_GROUP = "control-group";
+
+	public static final String CONTROL_LABEL = "control-label";
+
+	public static final String CONTROLS = "controls";
+
 }
