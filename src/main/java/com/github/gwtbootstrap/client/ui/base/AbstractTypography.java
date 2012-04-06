@@ -16,7 +16,6 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
@@ -67,67 +66,34 @@ public abstract class AbstractTypography extends Widget implements HasText,
 	 * {@inheritDoc}
 	 */
 	public void setStyle(Style style) {
-		setStyleName(style.get());
+		StyleHelper.setStyle(this, style);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void addStyle(Style style) {
-		addStyleName(style.get());
+		StyleHelper.addStyle(this, style);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void removeStyle(Style style) {
-		String styleString = style.get();
-		if (!styleString.isEmpty())
-			removeStyleName(styleString);
+		StyleHelper.removeStyle(this, style);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void setShowOn(Device device) {
-		removeResponsiveStyles();
-		switch (device) {
-			case PHONE:
-				addStyle(ResponsiveStyle.VISIBLE_PHONE);
-				break;
-			case TABLET:
-				addStyle(ResponsiveStyle.VISIBLE_TABLET);
-				break;
-			case DESKTOP:
-				addStyle(ResponsiveStyle.VISIBLE_DESKTOP);
-				break;
-		}
-	}
-
-	private void removeResponsiveStyles() {
-		removeStyle(ResponsiveStyle.VISIBLE_PHONE);
-		removeStyle(ResponsiveStyle.VISIBLE_TABLET);
-		removeStyle(ResponsiveStyle.VISIBLE_DESKTOP);
-		removeStyle(ResponsiveStyle.HIDDEN_PHONE);
-		removeStyle(ResponsiveStyle.HIDDEN_TABLET);
-		removeStyle(ResponsiveStyle.HIDDEN_DESKTOP);
+		ResponsiveHelper.setShowOn(this, device);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void setHideOn(Device device) {
-		removeResponsiveStyles();
-		switch (device) {
-			case PHONE:
-				addStyle(ResponsiveStyle.HIDDEN_PHONE);
-				break;
-			case TABLET:
-				addStyle(ResponsiveStyle.HIDDEN_TABLET);
-				break;
-			case DESKTOP:
-				addStyle(ResponsiveStyle.HIDDEN_DESKTOP);
-				break;
-		}
+		ResponsiveHelper.setHideOn(this, device);
 	}
 }

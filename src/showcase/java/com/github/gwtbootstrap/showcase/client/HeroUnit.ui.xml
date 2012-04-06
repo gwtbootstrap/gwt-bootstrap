@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+                xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Hero Unit">Hero Unit</b:PageHeader>
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
+                    <b:Hero>
+                        <b:Heading size="2">Hero Unit</b:Heading>
+                        <b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
+                        <b:Paragraph>More text.</b:Paragraph>
+                    </b:Hero>
+                    <pre class="prettyprint linenums">
+&lt;b:Hero&gt;
+    &lt;b:Heading size=&quot;2&quot;&gt;Hero Unit&lt;/b:Heading&gt;
+    &lt;b:Paragraph&gt;Some Text for the Hero Unit.&lt;/b:Paragraph&gt;
+    &lt;b:Paragraph&gt;More text.&lt;/b:Paragraph&gt;
+&lt;/b:Hero&gt;</pre>
+               </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>

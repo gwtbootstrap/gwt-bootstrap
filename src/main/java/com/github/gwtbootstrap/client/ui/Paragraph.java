@@ -15,8 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
-import com.google.gwt.user.client.ui.HasText;
+import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
+
 
 //@formatter:off
 /**
@@ -24,10 +24,11 @@ import com.google.gwt.user.client.ui.HasText;
  * 
  * @since 2.0.2.0
  * 
+ * @author ohashi keisuke
  * @author Dominik Mayer
  */
 //@formatter:on
-public class Paragraph extends ComplexWidget implements HasText {
+public class Paragraph extends HtmlWidget {
 
 	/**
 	 * Creates an empty paragraph.
@@ -35,19 +36,28 @@ public class Paragraph extends ComplexWidget implements HasText {
 	public Paragraph() {
 		super("p");
 	}
+	
+	/**
+	 * Creates include html paragraph.
+	 * @param html
+	 */
+	public Paragraph(String html) {
+		super("p", html);
+	}
 
 	/**
-	 * {@inheritDoc}
+	 * get Inner Text
+	 * @return innter Text
 	 */
 	public String getText() {
 		return getElement().getInnerText();
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * set Inner Text
+	 * @param text set Text
 	 */
 	public void setText(String text) {
 		getElement().setInnerText(text);
 	}
-
 }

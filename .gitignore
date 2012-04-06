@@ -42,4 +42,3 @@ src/showcase/webapp/WEB-INF/classes
 src/showcase/webapp/WEB-INF/deploy/*
 src/showcase/webapp/WEB-INF/lib
 src/showcase/webapp/bootstrap*
-src/showcase/webapp/img

@@ -5,14 +5,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class NavigationEntries extends Composite {
+public class PageHeader extends Composite {
 
-    private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
+    private static PageHeaderUiBinder uiBinder = GWT.create(PageHeaderUiBinder.class);
 
-    interface NavigationEntriesUiBinder extends UiBinder<Widget, NavigationEntries> {
+    interface PageHeaderUiBinder extends UiBinder<Widget, PageHeader> {
     }
 
-    public NavigationEntries() {
+    public PageHeader() {
         initWidget(uiBinder.createAndBindUi(this));
     }
 

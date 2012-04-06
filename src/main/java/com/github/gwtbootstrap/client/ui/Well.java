@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
@@ -29,12 +29,18 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
  */
 //@formatter:on
-public class Well extends DivWidget {
+public class Well extends HtmlWidget {
 
+	public Well(String html) {
+		super("div" ,html);
+		setStyleName(Constants.WELL);
+	}
+	
 	/**
 	 * Creates an empty Well.
 	 */
 	public Well() {
-		super(Constants.WELL);
+		super("div");
+		setStyleName(Constants.WELL);
 	}
 }

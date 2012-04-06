@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for PageHeader">Page Header</b:PageHeader>
+        
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
+                    <b:PageHeader subtext="What this is all about">Title</b:PageHeader>
+                    <pre class="prettyprint linenums">
+&lt;b:PageHeader subtext=&quot;What this is all about&quot;&gt;Title&lt;/b:PageHeader&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>

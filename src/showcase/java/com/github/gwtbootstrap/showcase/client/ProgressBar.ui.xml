@@ -1,0 +1,30 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Progress Bar">Progress Bar</b:PageHeader>
+        <b:Row>
+            <b:Column size="4">
+                <g:HTMLPanel>
+                    <b:ProgressBar percent="20"/>
+                    <pre class="prettyprint">&lt;b:ProgressBar percent=&quot;20&quot;/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="4">
+                <g:HTMLPanel>
+                    <b:ProgressBar type="STRIPED" percent="40"/>
+                    <pre class="prettyprint">&lt;b:ProgressBar type=&quot;STRIPED&quot; percent=&quot;40&quot;/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="4">
+                <g:HTMLPanel>
+                    <b:ProgressBar type="ANIMATED" percent="60"/>
+                    <pre class="prettyprint">&lt;b:ProgressBar type=&quot;ANIMATED&quot; percent=&quot;60&quot;/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>

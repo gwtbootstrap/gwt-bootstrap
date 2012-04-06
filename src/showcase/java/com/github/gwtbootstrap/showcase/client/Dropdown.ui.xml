@@ -1,0 +1,67 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Styles for Dropdown">Dropdown</b:PageHeader>
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <p>You can use Dropdowns in Navs, NavTabs and NavPills.</p>
+                    <b:NavPills>
+                        <b:Dropdown text="Dropdown example">
+                            <b:NavLink>Test 1</b:NavLink>
+                            <b:NavLink>Test 2</b:NavLink>
+                        </b:Dropdown>
+                    </b:NavPills>
+                    <pre class="prettyprint linenums">
+&lt;b:NavPills&gt;
+    &lt;b:Dropdown text=&quot;Dropdown example&quot;&gt;
+        &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+        &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+  &lt;/b:Dropdown&gt;
+&lt;/b:NavPills&gt;</pre>
+                    <p>All dropdowns can be converted into dropups by adding <code>dropup="true"</code>.</p>
+               </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+            
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>DropdownButton</h2>
+                    <b:NavPills>
+                        <b:DropdownButton dropup="true" text="Dropup example">
+                            <b:NavLink>Test 1</b:NavLink>
+                            <b:NavLink>Test 2</b:NavLink>
+                        </b:DropdownButton>
+                    </b:NavPills>
+                    <pre class="prettyprint linenums">
+&lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot;&gt;
+    &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+&lt;/b:DropdownButton&gt;</pre>
+               </g:HTMLPanel>
+            </b:Column>
+            
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <h2>SplitDropdownButton</h2>
+                    <b:NavPills>
+                        <b:SplitDropdownButton text="Dropdown example">
+                            <b:NavLink>Test 1</b:NavLink>
+                            <b:NavLink>Test 2</b:NavLink>
+                        </b:SplitDropdownButton>
+                    </b:NavPills>
+                    <pre class="prettyprint linenums">
+&lt;b:SplitDropdownButton text=&quot;Dropdown example&quot;&gt;
+    &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+&lt;/b:SplitDropdownButton&gt;</pre>
+               </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>
