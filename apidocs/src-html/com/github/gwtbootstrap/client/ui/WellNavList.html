@@ -39,35 +39,32 @@
 <FONT color="green">036</FONT>             * Creates an empty list.<a name="line.36"></a>
 <FONT color="green">037</FONT>             */<a name="line.37"></a>
 <FONT color="green">038</FONT>            public WellNavList() {<a name="line.38"></a>
-<FONT color="green">039</FONT>                    super.add(navList);<a name="line.39"></a>
-<FONT color="green">040</FONT>                    setStyle();<a name="line.40"></a>
-<FONT color="green">041</FONT>            }<a name="line.41"></a>
-<FONT color="green">042</FONT>    <a name="line.42"></a>
-<FONT color="green">043</FONT>            private void setStyle() {<a name="line.43"></a>
-<FONT color="green">044</FONT>                    Style style = getElement().getStyle();<a name="line.44"></a>
-<FONT color="green">045</FONT>                    style.setPaddingTop(8, Unit.PX);<a name="line.45"></a>
-<FONT color="green">046</FONT>                    style.setPaddingBottom(8, Unit.PX);<a name="line.46"></a>
-<FONT color="green">047</FONT>                    style.setPaddingLeft(0, Unit.PX);<a name="line.47"></a>
-<FONT color="green">048</FONT>                    style.setPaddingRight(0, Unit.PX);<a name="line.48"></a>
-<FONT color="green">049</FONT>            }<a name="line.49"></a>
-<FONT color="green">050</FONT>    <a name="line.50"></a>
-<FONT color="green">051</FONT>            //TODO: Restrict type of widgets that can be added?<a name="line.51"></a>
-<FONT color="green">052</FONT>            /**<a name="line.52"></a>
-<FONT color="green">053</FONT>             * {@inheritDoc}<a name="line.53"></a>
-<FONT color="green">054</FONT>             */<a name="line.54"></a>
-<FONT color="green">055</FONT>            @Override<a name="line.55"></a>
-<FONT color="green">056</FONT>            public void add(Widget child) {<a name="line.56"></a>
-<FONT color="green">057</FONT>                    navList.add(child);<a name="line.57"></a>
-<FONT color="green">058</FONT>            }<a name="line.58"></a>
-<FONT color="green">059</FONT>    <a name="line.59"></a>
-<FONT color="green">060</FONT>            /**<a name="line.60"></a>
-<FONT color="green">061</FONT>             * {@inheritDoc}<a name="line.61"></a>
-<FONT color="green">062</FONT>             */<a name="line.62"></a>
-<FONT color="green">063</FONT>            @Override<a name="line.63"></a>
-<FONT color="green">064</FONT>            public void insert(Widget w, int beforeIndex) {<a name="line.64"></a>
-<FONT color="green">065</FONT>                    navList.insert(w, beforeIndex);<a name="line.65"></a>
-<FONT color="green">066</FONT>            }<a name="line.66"></a>
-<FONT color="green">067</FONT>    }<a name="line.67"></a>
+<FONT color="green">039</FONT>                    this("");<a name="line.39"></a>
+<FONT color="green">040</FONT>                    super.add(navList);<a name="line.40"></a>
+<FONT color="green">041</FONT>                    setStyle();<a name="line.41"></a>
+<FONT color="green">042</FONT>            }<a name="line.42"></a>
+<FONT color="green">043</FONT>            <a name="line.43"></a>
+<FONT color="green">044</FONT>            public WellNavList(String html) {<a name="line.44"></a>
+<FONT color="green">045</FONT>                    super(html);<a name="line.45"></a>
+<FONT color="green">046</FONT>            }<a name="line.46"></a>
+<FONT color="green">047</FONT>    <a name="line.47"></a>
+<FONT color="green">048</FONT>            private void setStyle() {<a name="line.48"></a>
+<FONT color="green">049</FONT>                    Style style = getElement().getStyle();<a name="line.49"></a>
+<FONT color="green">050</FONT>                    style.setPaddingTop(8, Unit.PX);<a name="line.50"></a>
+<FONT color="green">051</FONT>                    style.setPaddingBottom(8, Unit.PX);<a name="line.51"></a>
+<FONT color="green">052</FONT>                    style.setPaddingLeft(0, Unit.PX);<a name="line.52"></a>
+<FONT color="green">053</FONT>                    style.setPaddingRight(0, Unit.PX);<a name="line.53"></a>
+<FONT color="green">054</FONT>            }<a name="line.54"></a>
+<FONT color="green">055</FONT>    <a name="line.55"></a>
+<FONT color="green">056</FONT>            //TODO: Restrict type of widgets that can be added?<a name="line.56"></a>
+<FONT color="green">057</FONT>            /**<a name="line.57"></a>
+<FONT color="green">058</FONT>             * {@inheritDoc}<a name="line.58"></a>
+<FONT color="green">059</FONT>             */<a name="line.59"></a>
+<FONT color="green">060</FONT>            @Override<a name="line.60"></a>
+<FONT color="green">061</FONT>            public void add(Widget child) {<a name="line.61"></a>
+<FONT color="green">062</FONT>                    navList.add(child);<a name="line.62"></a>
+<FONT color="green">063</FONT>            }<a name="line.63"></a>
+<FONT color="green">064</FONT>    }<a name="line.64"></a>
 
 
 

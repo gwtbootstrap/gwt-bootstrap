@@ -18,7 +18,7 @@
 <FONT color="green">015</FONT>     */<a name="line.15"></a>
 <FONT color="green">016</FONT>    package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
 <FONT color="green">017</FONT>    <a name="line.17"></a>
-<FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.DivWidget;<a name="line.18"></a>
+<FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.HtmlWidget;<a name="line.18"></a>
 <FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.19"></a>
 <FONT color="green">020</FONT>    <a name="line.20"></a>
 <FONT color="green">021</FONT>    //@formatter:off<a name="line.21"></a>
@@ -32,15 +32,21 @@
 <FONT color="green">029</FONT>     * @see &lt;a href="http://twitter.github.com/bootstrap/components.html#misc"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.29"></a>
 <FONT color="green">030</FONT>     */<a name="line.30"></a>
 <FONT color="green">031</FONT>    //@formatter:on<a name="line.31"></a>
-<FONT color="green">032</FONT>    public class Well extends DivWidget {<a name="line.32"></a>
+<FONT color="green">032</FONT>    public class Well extends HtmlWidget {<a name="line.32"></a>
 <FONT color="green">033</FONT>    <a name="line.33"></a>
-<FONT color="green">034</FONT>            /**<a name="line.34"></a>
-<FONT color="green">035</FONT>             * Creates an empty Well.<a name="line.35"></a>
-<FONT color="green">036</FONT>             */<a name="line.36"></a>
-<FONT color="green">037</FONT>            public Well() {<a name="line.37"></a>
-<FONT color="green">038</FONT>                    super(Constants.WELL);<a name="line.38"></a>
-<FONT color="green">039</FONT>            }<a name="line.39"></a>
-<FONT color="green">040</FONT>    }<a name="line.40"></a>
+<FONT color="green">034</FONT>            public Well(String html) {<a name="line.34"></a>
+<FONT color="green">035</FONT>                    super("div" ,html);<a name="line.35"></a>
+<FONT color="green">036</FONT>                    setStyleName(Constants.WELL);<a name="line.36"></a>
+<FONT color="green">037</FONT>            }<a name="line.37"></a>
+<FONT color="green">038</FONT>            <a name="line.38"></a>
+<FONT color="green">039</FONT>            /**<a name="line.39"></a>
+<FONT color="green">040</FONT>             * Creates an empty Well.<a name="line.40"></a>
+<FONT color="green">041</FONT>             */<a name="line.41"></a>
+<FONT color="green">042</FONT>            public Well() {<a name="line.42"></a>
+<FONT color="green">043</FONT>                    super("div");<a name="line.43"></a>
+<FONT color="green">044</FONT>                    setStyleName(Constants.WELL);<a name="line.44"></a>
+<FONT color="green">045</FONT>            }<a name="line.45"></a>
+<FONT color="green">046</FONT>    }<a name="line.46"></a>
 
 
 
