@@ -265,6 +265,8 @@
 							<b:Heading size="2">Hero Unit</b:Heading>
 							<b:Paragraph>Some Text for the Hero Unit.</b:Paragraph>
 							<b:Paragraph>More text.</b:Paragraph>
+							<b:Paragraph>Contains HTML <a href="#">text.</a></b:Paragraph>
+							<b:Paragraph>Contains Widget <b:Code>Code</b:Code>.</b:Paragraph>
 						</b:Hero>
 					</b:Column>
 					<b:Column size="2" offset="2">
@@ -316,6 +318,13 @@
 						type="PRIMARY">Save</b:Button>
 				</b:ModalFooter>
 			</b:Modal>
+			<b:Well>
+				Well can contains HTML tag.<br/>
+				<a href="#">anchor</a><br/>
+				with widget<b:Code>Code</b:Code>.
+			
+			
+			</b:Well>
 		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -36,8 +36,13 @@ public class WellNavList extends Well {
 	 * Creates an empty list.
 	 */
 	public WellNavList() {
+		this("");
 		super.add(navList);
 		setStyle();
+	}
+	
+	public WellNavList(String html) {
+		super(html);
 	}
 
 	private void setStyle() {
@@ -55,13 +60,5 @@ public class WellNavList extends Well {
 	@Override
 	public void add(Widget child) {
 		navList.add(child);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void insert(Widget w, int beforeIndex) {
-		navList.insert(w, beforeIndex);
 	}
 }
