@@ -29,6 +29,8 @@ public interface ShowHandler extends EventHandler {
 
 	/**
 	 * This method is called right before a widget is shown.
+	 * 
+	 * @param showEvent
 	 */
-	void onShow();
+	void onShow(ShowEvent showEvent);
 }

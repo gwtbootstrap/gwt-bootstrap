@@ -29,6 +29,8 @@ public interface HiddenHandler extends EventHandler {
 
 	/**
 	 * This method is called once the widget is hidden.
+	 * 
+	 * @param hiddenEvent
 	 */
-	void onHidden();
+	void onHidden(HiddenEvent hiddenEvent);
 }

@@ -48,7 +48,7 @@ public class ShownEvent extends GwtEvent<ShownHandler> {
 
 	@Override
 	protected void dispatch(ShownHandler handler) {
-		handler.onShown();
+		handler.onShown(this);
 	}
 
 }

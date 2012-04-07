@@ -29,7 +29,7 @@ import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
  * @author ohashi keisuke
  */
 public class ResponsiveHelper {
-	
+
 	/**
 	 * Sets the kind of device, this widget is shown on.
 	 * 
@@ -42,12 +42,12 @@ public class ResponsiveHelper {
 	 * </p>
 	 * 
 	 * @param widget
-	 *          The widget to be applyed responsive. 
-	 *          
+	 *            The widget to be applyed responsive.
+	 * 
 	 * @param device
-	 *          The device to show widget.
+	 *            The device to show widget.
 	 * @see Configurator#hasResponsiveDesign()
-	 * @see #setHideOn(Device)
+	 * @see #setHideOn(T, Device)
 	 */
 	public static <T extends HasStyle> void setShowOn(T widget, Device device) {
 		removeResponsiveStyles(widget);
@@ -76,25 +76,25 @@ public class ResponsiveHelper {
 	 * </p>
 	 * 
 	 * @param widget
-	 *          The widget to be applyed responsive. 
-	 *          
+	 *            The widget to be applyed responsive.
+	 * 
 	 * @param device
-	 *          The device to hide widget.
+	 *            The device to hide widget.
 	 * 
 	 * @see Configurator#hasResponsiveDesign()
-	 * @see #setShowOn(Device)
+	 * @see #setShowOn(T, Device)
 	 */
-	public static <T extends HasStyle> void setHideOn(T element ,Device device) {
-		removeResponsiveStyles(element);
+	public static <T extends HasStyle> void setHideOn(T widget, Device device) {
+		removeResponsiveStyles(widget);
 		switch (device) {
 			case PHONE:
-				element.addStyle(ResponsiveStyle.HIDDEN_PHONE);
+				widget.addStyle(ResponsiveStyle.HIDDEN_PHONE);
 				break;
 			case TABLET:
-				element.addStyle(ResponsiveStyle.HIDDEN_TABLET);
+				widget.addStyle(ResponsiveStyle.HIDDEN_TABLET);
 				break;
 			case DESKTOP:
-				element.addStyle(ResponsiveStyle.HIDDEN_DESKTOP);
+				widget.addStyle(ResponsiveStyle.HIDDEN_DESKTOP);
 				break;
 		}
 	}
@@ -107,6 +107,5 @@ public class ResponsiveHelper {
 		element.removeStyle(ResponsiveStyle.HIDDEN_TABLET);
 		element.removeStyle(ResponsiveStyle.HIDDEN_DESKTOP);
 	}
-	
 
 }

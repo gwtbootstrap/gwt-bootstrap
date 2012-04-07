@@ -29,6 +29,8 @@ public interface ShownHandler extends EventHandler {
 
 	/**
 	 * This method is called when the widget is completely shown.
+	 * 
+	 * @param shownEvent
 	 */
-	void onShown();
+	void onShown(ShownEvent shownEvent);
 }

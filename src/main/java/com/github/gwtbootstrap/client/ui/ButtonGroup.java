@@ -54,7 +54,7 @@ public class ButtonGroup extends DivWidget {
 	 */
 	public ButtonGroup() {
 		setStyleName(Constants.BTN_GROUP);
-//		super.add(span);
+		super.add(span);
 	}
 
 	/**
@@ -82,14 +82,12 @@ public class ButtonGroup extends DivWidget {
 			throw new IllegalArgumentException(
 					"A ButtonGroup can only contain Buttons.");
 
-//		span.add(widget);
-		super.add(widget);
+		span.add(widget);
+//		super.add(widget);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @return
 	 */
 	@Override
 	public boolean remove(Widget widget) {

@@ -13,39 +13,23 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.event;
-
-import com.google.gwt.event.shared.GwtEvent;
+package com.github.gwtbootstrap.client.ui.config;
 
 /**
- * Represents an event that is fired when a widget has been closed.
+ * {@link Configurator} with enabled responsive design.
  * 
  * @since 2.0.2.0
  * 
  * @author Dominik Mayer
- * 
- * @see CloseEvent
- * 
  */
-public class ClosedEvent extends GwtEvent<ClosedHandler> {
+public class ResponsiveConfigurator extends DefaultConfigurator {
 
-	private static final Type<ClosedHandler> TYPE = new Type<ClosedHandler>();
-
-	public static Type<ClosedHandler> getType() {
-		return TYPE;
-	}
-
-	public ClosedEvent() {
-	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public final Type<ClosedHandler> getAssociatedType() {
-		return TYPE;
-	}
-
-	@Override
-	protected void dispatch(ClosedHandler handler) {
-		handler.onClosed(this);
+	public boolean hasResponsiveDesign() {
+		return true;
 	}
 
 }

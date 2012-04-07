@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
+import com.google.gwt.dom.client.BodyElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -29,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
  * <p>
  * The Navbar can be fixed on the top or bottom of the site where it will stay
  * when the user scrolls the page. For proper rendering, a fixed Navbar cannot
- * be part of any container. It has to be attached directly to the 
+ * be part of any container! It has to be attached directly to the 
  * {@link RootPanel}. 
  * 
  * <p>
@@ -37,17 +38,23 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * <pre>
  * {@code
- * <b:Navbar>
- *     <b:Brand>Bootstrap</b:Brand>
- *     <b:Nav>
- *         <b:NavLink>Link 1</b:NavLink>
- *         <b:NavLink>Link 2</b:NavLink>
- *     </b:Nav>
- *     <b:NavForm size="1" />
- *     <b:Nav alignment="RIGHT">
- *         <b:NavLink>Link 3</b:NavLink>
- *     </b:Nav>
- * </b:Navbar>
+ * <g:FlowPanel>
+ *     <b:Navbar>
+ *         <b:Brand>Bootstrap</b:Brand>
+ *         <b:Nav>
+ *             <b:NavLink>Link 1</b:NavLink>
+ *             <b:NavLink>Link 2</b:NavLink>
+ *         </b:Nav>
+ *         <b:NavForm size="1" />
+ *         <b:Nav alignment="RIGHT">
+ *             <b:NavLink>Link 3</b:NavLink>
+ *         </b:Nav>
+ *     </b:Navbar>
+ *     <b:Container>
+ *         [...]
+ *     </b:Container>
+ * </g:FlowPanel>
+ * 
  * }
  * </pre>
  * </p>
@@ -123,7 +130,11 @@ public class Navbar extends DivWidget {
 	 *            the position of the Navbar
 	 */
 	public void setPosition(NavbarPosition position) {
-		fixedTop = false;
+		if (position == NavbarPosition.TOP)
+			fixedTop = true;
+		else
+			fixedTop = false;
+
 		for (NavbarPosition p : NavbarPosition.values())
 			if (!p.get().isEmpty())
 				removeStyleName(p.get());
@@ -166,6 +177,7 @@ public class Navbar extends DivWidget {
 	}
 
 	private void setPaddingTop(int pixels) {
-		Document.get().getBody().getStyle().setPaddingTop(pixels, Unit.PX);
+		BodyElement body = Document.get().getBody();
+		body.getStyle().setPaddingTop(pixels, Unit.PX);
 	}
 }

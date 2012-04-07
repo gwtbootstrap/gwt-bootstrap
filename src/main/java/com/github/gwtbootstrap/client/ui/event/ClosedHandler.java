@@ -29,6 +29,8 @@ public interface ClosedHandler extends EventHandler {
 
 	/**
 	 * This method is called when the has been closed.
+	 * 
+	 * @param closedEvent
 	 */
-	void onClosed();
+	void onClosed(ClosedEvent closedEvent);
 }

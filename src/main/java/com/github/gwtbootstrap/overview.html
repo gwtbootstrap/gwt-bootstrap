@@ -40,16 +40,11 @@
 	<code>"icon-plane"</code>).
 	</p>
 	<h2>Enabling <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Responsive Design</a></h2>
-	Create a {@link com.github.gwtbootstrap.client.ui.config.Configurator Configurator} 
-	and let {@link com.github.gwtbootstrap.client.ui.config.Configurator#hasResponsiveDesign() hasResponsiveDesign()}
-	return {@code true}.
-	<pre>
-	public interface MyConfigurator implements Configurator {
- 	
-		{@literal @Override}
-		public boolean hasResponsiveDesign() {
-			return true;
-		}
+	Add the following to your {@code *.gwt.xml} file:
+	<pre>{@literal
+<replace-with class="com.github.gwtbootstrap.client.ui.config.ResponsiveConfigurator">
+    <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
+</replace-with>
  	}</pre>
 	
 	<h2>Getting started with the library</h2>

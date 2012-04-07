@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='showcase'>
-  <inherits name='com.google.gwt.user.User' />
-  <inherits name='com.github.gwtbootstrap.Bootstrap' />
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.github.gwtbootstrap.Bootstrap' />
 
-  <entry-point class='com.github.gwtbootstrap.showcase.client.Showcase' />
+	<entry-point class='com.github.gwtbootstrap.showcase.client.Showcase' />
 
-  <source path='client' />
+	<replace-with class="com.github.gwtbootstrap.client.ui.config.ResponsiveConfigurator">
+		<when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
+	</replace-with>
+
+	<source path='client' />
 
 </module>

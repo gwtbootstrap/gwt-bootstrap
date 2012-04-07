@@ -29,6 +29,8 @@ public interface CloseHandler extends EventHandler {
 
 	/**
 	 * This method is called immediately before the widget will be closed.
+	 * 
+	 * @param closeEvent
 	 */
-	void onClose();
+	void onClose(CloseEvent closeEvent);
 }

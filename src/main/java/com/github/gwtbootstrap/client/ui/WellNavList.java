@@ -15,6 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;
@@ -28,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  */
 //@formatter:on
-public class WellNavList extends Well {
+public class WellNavList extends DivWidget {
 
 	private NavList navList = new NavList();
 
@@ -36,13 +38,9 @@ public class WellNavList extends Well {
 	 * Creates an empty list.
 	 */
 	public WellNavList() {
-		this("");
+		setStyleName(Constants.WELL);
 		super.add(navList);
 		setStyle();
-	}
-	
-	public WellNavList(String html) {
-		super(html);
 	}
 
 	private void setStyle() {
