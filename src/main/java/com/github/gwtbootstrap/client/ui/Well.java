@@ -32,10 +32,10 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 public class Well extends HtmlWidget {
 
 	public Well(String html) {
-		super("div" ,html);
+		super("div", html);
 		setStyleName(Constants.WELL);
 	}
-	
+
 	/**
 	 * Creates an empty Well.
 	 */
