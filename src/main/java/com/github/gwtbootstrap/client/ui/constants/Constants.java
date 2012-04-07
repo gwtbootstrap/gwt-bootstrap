@@ -117,4 +117,10 @@ public interface Constants {
 
 	public static final String CONTROLS = "controls";
 
+	public static final String HELP_BLOCK = "help-block";
+
+	public static final String HELP_INLINE = "help-inline";
+
+	public static final String FORM_ACTIONS = "form-actions";
+
 }
