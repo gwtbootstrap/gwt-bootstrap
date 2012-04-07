@@ -18,52 +18,56 @@ package com.github.gwtbootstrap.client.ui.base;
 import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
-
 /**
- * A customazable tag widget with support for HTML.
+ * Widget with support for HTML.
  * 
  * <p>
- * If extend this class,Chlid class always should create contstractor that has a String argment.
- * That argument is HTML text.
- * That constractor is used by {@link com.google.gwt.uibinder.elementparsers.HTMLPanelParser} on parse uibinder xml.
+ * When extendind this class, the child class should always expose a constructor
+ * with a String argument. This argument is HTML text. The constructor is used
+ * by the {@link com.google.gwt.uibinder.elementparsers.HTMLPanelParser
+ * HTMLPanelParser} to parse UiBinder XML.
  * </p>
- * <h3>Child Class Constractor Example</h3>
- * <pre>
- * {@code
+ * <h3>Child Class Constructor Example</h3>
  * 
+ * <pre>
  * public ChildPanel extends HtmlWidget {
- * 	public ChildPanel(String html) {
- * 		super("label", html); //label is child class html tag.
- * 	}
+ *     public ChildPanel(String html) {
+ *         super("label", html); //"label" is the HTML tag used for the child class.
+ *     }
  * }
- * }
+ * </pre>
  * 
  * @since 2.0.2.0
  * 
  * @author ohashi keisuke
  */
-public abstract class HtmlWidget extends HTMLPanel implements HasStyle, IsResponsive {
+public abstract class HtmlWidget extends HTMLPanel implements HasStyle,
+		IsResponsive {
 
 	/**
-	 * Empty HTML constractor
-	 * @param tag the tag of the root element
+	 * Creates an empty widget.
+	 * 
+	 * @param tag
+	 *            the tag of the root element
 	 */
 	protected HtmlWidget(String tag) {
 		super(tag, "");
 	}
-	
+
 	/**
 	 * Creates an HTML panel whose root element has the given tag, and with the
-	 * specified HTML contents. Any element within this HTML that has a specified
-	 * id can contain a child widget.
+	 * specified HTML contents. Any element within this HTML that has a
+	 * specified id can contain a child widget.
 	 * 
-	 * @param tag the tag of the root element
-	 * @param html the panel's HTML
+	 * @param tag
+	 *            the tag of the root element
+	 * @param html
+	 *            the panel's HTML
 	 */
-	protected HtmlWidget(String tag,String html) {
+	protected HtmlWidget(String tag, String html) {
 		super(tag, html);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
