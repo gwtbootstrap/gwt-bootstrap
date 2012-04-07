@@ -322,9 +322,52 @@
 				Well can contains HTML tag.<br/>
 				<a href="#">anchor</a><br/>
 				with widget<b:Code>Code</b:Code>.
-			
-			
 			</b:Well>
+			
+			<b:Form type="HORIZONTAL">
+				<b:Fieldset>
+					<b:Legend>Legend can include any widget and tag <b:Strong> Strong </b:Strong><small> small </small></b:Legend>
+					<b:ControlGroup>
+						<b:ControlLabel>controlLabel can include any widget ang tag <a>href</a> <b:Code>code</b:Code></b:ControlLabel>
+						<b:Controls>
+							<g:TextBox/>
+							<b:HelpBlock>Help Block can include any widget and tag <b:Strong> Strong </b:Strong> and <a>a tag</a></b:HelpBlock>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:ControlGroup>
+						<b:ControlLabel>controlLabel</b:ControlLabel>
+						<b:Controls>
+							<g:TextBox/>
+							<b:HelpInline>Help Inline can not include any widget and tag(only text)</b:HelpInline>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:ControlGroup type="ERROR">
+						<b:ControlLabel>control error type</b:ControlLabel>
+						<b:Controls>
+							<g:TextBox/>
+							<b:HelpInline>on error</b:HelpInline>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:ControlGroup type="SUCCESS">
+						<b:ControlLabel>control success type</b:ControlLabel>
+						<b:Controls>
+							<g:TextBox/>
+							<b:HelpInline>on success</b:HelpInline>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:ControlGroup type="WARNING">
+						<b:ControlLabel>control warning type</b:ControlLabel>
+						<b:Controls>
+							<g:TextBox/>
+							<b:HelpBlock>help block on warning</b:HelpBlock>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:FormActions>
+						<b:Button>button</b:Button>
+						<b:Button>button</b:Button>
+					</b:FormActions>
+				</b:Fieldset>
+			</b:Form>
 		</b:Container>
 	</g:HTMLPanel>
 </ui:UiBinder> 
