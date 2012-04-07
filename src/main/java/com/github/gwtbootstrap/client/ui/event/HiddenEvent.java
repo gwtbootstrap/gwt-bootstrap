@@ -47,7 +47,7 @@ public class HiddenEvent extends GwtEvent<HiddenHandler> {
 
 	@Override
 	protected void dispatch(HiddenHandler handler) {
-		handler.onHidden();
+		handler.onHidden(this);
 	}
 
 }

@@ -45,7 +45,7 @@ public class ClosedEvent extends GwtEvent<ClosedHandler> {
 
 	@Override
 	protected void dispatch(ClosedHandler handler) {
-		handler.onClosed();
+		handler.onClosed(this);
 	}
 
 }
