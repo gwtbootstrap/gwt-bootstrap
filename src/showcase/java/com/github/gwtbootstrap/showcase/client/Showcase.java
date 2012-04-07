@@ -50,16 +50,16 @@ public class Showcase extends Composite implements EntryPoint {
 		initWidget(uiBinder.createAndBindUi(this));
 //        addSectionToContainer("Get Started", "setup", new Setup());
 //		addSectionToContainer("Get Support", "support", new Support());
-		addSectionToContainer("Buttons",      "buttons",     new Buttons());
-		addSectionToContainer("Grid System",  "gridSystem",  new GridSystem());
-        addSectionToContainer("Navigation",   "navigation",  new Navigation());
-        addSectionToContainer("Hero Unit",    "hero",        new HeroUnit());
-        addSectionToContainer("Page Header",  "pageheader",  new PageHeader());
-        addSectionToContainer("Progress Bar", "progressbar", new ProgressBar());
-        addSectionToContainer("Alerts",       "alerts",      new Alerts());
-        addSectionToContainer("Pagination",   "pagination",  new Pagination());
-        addSectionToContainer("Dropdown",     "dropdown",    new Dropdown());
-        addSectionToContainer("Modal",        "modal",       new Modal());
+		addSectionToContainer("Buttons", "buttons", new Buttons());
+		addSectionToContainer("Grid System", "gridSystem", new GridSystem());
+		addSectionToContainer("Navigation", "navigation", new Navigation());
+		addSectionToContainer("Hero Unit", "hero", new HeroUnit());
+		addSectionToContainer("Page Header", "pageheader", new PageHeader());
+		addSectionToContainer("Progress Bar", "progressbar", new ProgressBar());
+		addSectionToContainer("Alerts", "alerts", new Alerts());
+		addSectionToContainer("Pagination", "pagination", new Pagination());
+		addSectionToContainer("Dropdown", "dropdown", new Dropdown());
+		addSectionToContainer("Modal", "modal", new Modal());
 
 		RootPanel.get("content").add(this);
 		Document doc = Document.get();
@@ -68,9 +68,11 @@ public class Showcase extends Composite implements EntryPoint {
 		script.setType("text/javascript");
 		script.setLang("javascript");
 		doc.getBody().appendChild(script);
-		
-		JavaScriptInjector.inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
-		JavaScriptInjector.inject("(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));");
+
+		JavaScriptInjector
+				.inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
+		JavaScriptInjector
+				.inject("(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));");
 	}
 
 	private void addSectionToContainer(String sectionName, String target,

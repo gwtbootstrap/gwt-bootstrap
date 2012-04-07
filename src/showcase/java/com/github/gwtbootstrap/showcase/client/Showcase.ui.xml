@@ -10,13 +10,15 @@
 			display: inline !important;
 		}
 	</ui:style>
-	<b:Container ui:field="container">
-		<b:Navbar position="TOP" scrollspy="true">
+	<g:FlowPanel>
+		<b:ResponsiveNavbar position="TOP" scrollspy="true">
 			<b:Brand>GWT-Bootstrap</b:Brand>
-			<b:Nav ui:field="nav">
-			</b:Nav>
-		</b:Navbar>
+			<b:NavCollapse>
+				<b:Nav ui:field="nav" />
+			</b:NavCollapse>
+		</b:ResponsiveNavbar>
 
+	<b:Container ui:field="container">
 		<b:Hero>
 			<g:VerticalPanel styleName="pull-right">
 				<g:HTMLPanel>
@@ -109,4 +111,5 @@
 			</footer>
 		</g:HTMLPanel>
 	</b:Container>
+	</g:FlowPanel>
 </ui:UiBinder>

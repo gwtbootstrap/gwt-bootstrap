@@ -41,19 +41,24 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * <pre>
  * {@code
- * <b:ResponsiveNavbar>
- *     <b:Brand>Bootstrap</b:Brand>
- *     <b:NavCollapse>
- *         <b:Nav>
- *             <b:NavLink>Link 1</b:NavLink>
- *             <b:NavLink>Link 2</b:NavLink>
- *         </b:Nav>
- *         <b:NavForm size="1" />
- *         <b:Nav alignment="RIGHT">
- *             <b:NavLink>Link 3</b:NavLink>
- *         </b:Nav>
- *     </b:NavCollapse>
- * </b:ResponsiveNavbar>
+ * <g:FlowPanel>
+ *     <b:ResponsiveNavbar>
+ *         <b:Brand>Bootstrap</b:Brand>
+ *         <b:NavCollapse>
+ *             <b:Nav>
+ *                 <b:NavLink>Link 1</b:NavLink>
+ *                 <b:NavLink>Link 2</b:NavLink>
+ *             </b:Nav>
+ *             <b:NavForm size="1" />
+ *             <b:Nav alignment="RIGHT">
+ *                 <b:NavLink>Link 3</b:NavLink>
+ *             </b:Nav>
+ *         </b:NavCollapse>
+ *     </b:ResponsiveNavbar>
+ *     <b:Container>
+ *         [...]
+ *     </b:Container>
+ * </g:FlowPanel>
  * }
  * </pre>
  * </p>

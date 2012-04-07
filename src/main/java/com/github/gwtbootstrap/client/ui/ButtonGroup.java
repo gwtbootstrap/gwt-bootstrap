@@ -88,8 +88,6 @@ public class ButtonGroup extends DivWidget {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @return
 	 */
 	@Override
 	public boolean remove(Widget widget) {
