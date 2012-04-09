@@ -258,10 +258,6 @@ public class Modal extends DivWidget implements HasVisibility,
 		fireEvent(new HideEvent());
 	}
 
-	protected void onHide(HideEvent e) {
-		fireEvent(e);
-	}
-
 	/**
 	 * This method is called once the widget is completely hidden.
 	 */

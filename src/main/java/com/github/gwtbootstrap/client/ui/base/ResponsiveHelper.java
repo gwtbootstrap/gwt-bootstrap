@@ -38,7 +38,7 @@ public class ResponsiveHelper {
 	 * </p>
 	 * 
 	 * <p>
-	 * <b>Only works if responsive design is turned on!</b>
+	 * <b>Only works if responsive design is turned on!</b> Testlink
 	 * </p>
 	 * 
 	 * @param widget
@@ -47,7 +47,7 @@ public class ResponsiveHelper {
 	 * @param device
 	 *            The device to show widget.
 	 * @see Configurator#hasResponsiveDesign()
-	 * @see #setHideOn(T, Device)
+	 * @see #setHideOn(HasStyle, Device)
 	 */
 	public static <T extends HasStyle> void setShowOn(T widget, Device device) {
 		removeResponsiveStyles(widget);
@@ -82,7 +82,7 @@ public class ResponsiveHelper {
 	 *            The device to hide widget.
 	 * 
 	 * @see Configurator#hasResponsiveDesign()
-	 * @see #setShowOn(T, Device)
+	 * @see #setShowOn(HasStyle, Device)
 	 */
 	public static <T extends HasStyle> void setHideOn(T widget, Device device) {
 		removeResponsiveStyles(widget);
