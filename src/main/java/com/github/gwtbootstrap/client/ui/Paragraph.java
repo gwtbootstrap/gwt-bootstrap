@@ -38,8 +38,8 @@ public class Paragraph extends HtmlWidget {
 	}
 	
 	/**
-	 * Creates include html paragraph.
-	 * @param html
+	 * Creates a widget with  the html set..
+	 * @param html content html
 	 */
 	public Paragraph(String html) {
 		super("p", html);

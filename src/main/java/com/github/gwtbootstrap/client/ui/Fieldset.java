@@ -17,9 +17,34 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 
-//TODO ohashi keisuke 2012/04/07 1:30 Should this class has ControlGroup and HasType<ControlGroupType> ? Bootstrap sample set them.
+//@formatter:off
+/**
+ * Simple wrapper for an HTML {@code <fieldset>} tag.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Fieldset>
+ * 	<b:ControlGroup/>
+ * </b:Fieldset>
+ * }
+ * </pre>
+ * </p>
+ *
+ * @since 2.0.2.0
+ * 
+ * @author ohashi keisuke
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
+//@formatter:on
 public class Fieldset extends ComplexWidget {
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public Fieldset() {
 		super("fieldset");
 	}

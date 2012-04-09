@@ -18,12 +18,42 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 
 
+/**
+ * Simple wrapper for an HTML {@code <label>} tag.
+ * 
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:FormLabel>
+ * 	FormLabel can include html and widgets<br/>
+ * 	<b:Code>code</b:Code>
+ * 	<a href="#"></a>
+ * </b:FormLabel>
+ * }
+ * </pre>
+ * </p>
+ *
+ * @since 2.0.2.0
+ * 
+ * @author ohashi keisuke
+ * 
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
 public class FormLabel extends HtmlWidget {
 
+	/**
+	 * Creates a widget with  the html set..
+	 * @param html content html
+	 */
 	public FormLabel(String html) {
 		super("label" ,html);
 	}
 	
+	/**
+	 * Creates an empty widget.
+	 */
 	public FormLabel() {
 		this("");
 	}

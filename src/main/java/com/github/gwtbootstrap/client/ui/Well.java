@@ -31,6 +31,10 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 //@formatter:on
 public class Well extends HtmlWidget {
 
+	/**
+	 * Creates a widget with  the html set..
+	 * @param html content html
+	 */
 	public Well(String html) {
 		super("div", html);
 		setStyleName(Constants.WELL);

@@ -20,17 +20,53 @@ import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
 
+/**
+ * ControlGroup is a form widget.
+ * <p>
+ * ControlGroup can include html and widget
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:ControlGroup>
+ * 	FormLabel can include html and widgets<br/>
+ * 	<b:Controls/>
+ * 	<a href="#"></a>
+ * </b:ControlGroup>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author yusuke kokubo
+ * @author ohashi keisuke
+ * 
+ * @see Controls
+ * @see Fieldset
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
 public class ControlGroup extends HtmlWidget implements HasType<ControlGroupType> {
 
+	/**
+	 * Creates a widget with  the html set..
+	 * @param html content html
+	 */
 	public ControlGroup(String html) {
 		super("div", html);
 		setStyleName(Constants.CONTROL_GROUP);
 	}
 
+	/**
+	 * Creates an empty paragraph.
+	 */
 	public ControlGroup() {
 		this("");
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setType(ControlGroupType type) {
 		for (ControlGroupType t : ControlGroupType.values())
 			removeStyle(t);
