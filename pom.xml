@@ -8,6 +8,7 @@
 	<artifactId>gwt-bootstrap</artifactId>
 	<version>2.0.2.0-SNAPSHOT</version>
 	<name>GWT-Bootstrap</name>
+	<inceptionYear>2012</inceptionYear>
 
 	<!-- project infomation -->
 	<url>http://gwtbootstrap.github.com/</url>
@@ -172,11 +173,9 @@
 	</reporting>
 
 	<profiles>
-		<!--
-		 for deploy to github maven repository.
-		 if you need deploy jars to maven repository in github pages,
-		 Run `mvn -PforGithubDeploy clean deploy site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`.
-		 -->
+		<!-- for deploy to github maven repository. if you need deploy jars to 
+			maven repository in github pages, Run `mvn -PforGithubDeploy clean deploy 
+			site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`. -->
 		<profile>
 			<id>forGithubDeploy</id>
 			<distributionManagement>
@@ -221,8 +220,8 @@
 								</goals>
 							</execution>
 						</executions>
-						<!-- Plugin configuration. There are many available options, see 
-							gwt-maven-plugin documentation at codehaus.org -->
+						<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+							documentation at codehaus.org -->
 						<configuration>
 							<modules>
 								<module>com.github.gwtbootstrap.showcase.Showcase</module>
@@ -282,6 +281,27 @@
 		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 		<testOutputDirectory>target/test-classes</testOutputDirectory>
 		<plugins>
+			<!-- append license header to GWT-Bootstrap source and resource files. -->
+			<plugin>
+				<groupId>com.google.code.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<header>src/license/header.txt</header>
+					<includes>
+						<include>src/**/*.java</include>
+						<include>src/main/java/**/*.xml</include>
+						<include>src/showcase/java/**/*.xml</include>
+					</includes>
+					<properties>
+						<year>${project.inceptionYear}</year>
+					</properties>
+					<encoding>UTF-8</encoding>
+					<headerDefinitions>
+						<headerDefinition>src/license/header-definition.xml</headerDefinition>
+					</headerDefinitions>
+				</configuration>
+			</plugin>
 			<!-- GWT Maven Plugin -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -296,8 +316,8 @@
 						</goals>
 					</execution>
 				</executions>
-				<!-- Plugin configuration. There are many available options, see 
-					gwt-maven-plugin documentation at codehaus.org -->
+				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+					documentation at codehaus.org -->
 				<configuration>
 					<runTarget>Bootstrap.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
@@ -435,7 +455,6 @@
 						<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
 					</additionalProjectnatures>
 					<additionalBuildcommands>
-						<buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
 						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
 						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
 						<buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
