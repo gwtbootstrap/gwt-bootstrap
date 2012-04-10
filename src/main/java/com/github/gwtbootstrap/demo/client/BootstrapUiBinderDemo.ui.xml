@@ -347,35 +347,39 @@
 					<b:ControlGroup>
 						<b:ControlLabel>controlLabel can include any widget ang tag <a>href</a> <b:Code>code</b:Code></b:ControlLabel>
 						<b:Controls>
-							<g:TextBox/>
+								<g:TextBox styleName=""/>
 							<b:HelpBlock>Help Block can include any widget and tag <b:Strong> Strong </b:Strong> and <a>a tag</a></b:HelpBlock>
 						</b:Controls>
 					</b:ControlGroup>
 					<b:ControlGroup>
 						<b:ControlLabel>controlLabel</b:ControlLabel>
 						<b:Controls>
-							<g:TextBox/>
+								<g:TextBox styleName=""/>
 							<b:HelpInline>Help Inline can not include any widget and tag(only text)</b:HelpInline>
 						</b:Controls>
 					</b:ControlGroup>
 					<b:ControlGroup type="ERROR">
 						<b:ControlLabel>control error type</b:ControlLabel>
 						<b:Controls>
-							<g:TextBox/>
+								<g:TextBox styleName=""/>
 							<b:HelpInline>on error</b:HelpInline>
 						</b:Controls>
 					</b:ControlGroup>
 					<b:ControlGroup type="SUCCESS">
 						<b:ControlLabel>control success type</b:ControlLabel>
 						<b:Controls>
-							<g:TextBox/>
+							<b:InputAddOn prependIcon="STAR" appendIcon="STAR">
+								<g:TextBox styleName=""/>
+							</b:InputAddOn>
 							<b:HelpInline>on success</b:HelpInline>
 						</b:Controls>
 					</b:ControlGroup>
 					<b:ControlGroup type="WARNING">
 						<b:ControlLabel>control warning type</b:ControlLabel>
 						<b:Controls>
-							<g:TextBox/>
+							<b:InputAddOn prependText="@" appendText="@">
+								<g:TextBox styleName=""/>
+							</b:InputAddOn>
 							<b:HelpBlock>help block on warning</b:HelpBlock>
 						</b:Controls>
 					</b:ControlGroup>
