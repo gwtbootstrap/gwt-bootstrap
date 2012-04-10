@@ -20,32 +20,78 @@ import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
 import com.google.gwt.user.client.ui.DirectionalTextHelper;
 
+/**
+ * ControlLabel is a form widget.That can show form input label.
+ * <p>
+ * ControlLabel can include html and widget
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:ControlLabel>
+ * 	ControlLabel can include html and widgets<br/>
+ * 	<b:Code>Code</b:Code>
+ * 	<a href="#"></a>
+ * </b:ControlLabel>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author kokubo yusuke 
+ * @author ohashi keisuke
+ * 
+ * @see ControlGroup
+ * @see ControlLabel
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
 public class ControlLabel extends FormLabel implements HasDirectionEstimator {
 
 	final DirectionalTextHelper directionalTextHelper;
 
+	/**
+	 * Creates a widget with  the html set..
+	 * @param html content html
+	 */
 	public ControlLabel(String html) {
 		super(html);
 		setStyleName(Constants.CONTROL_LABEL);
 		directionalTextHelper = new DirectionalTextHelper(getElement(), true);
 	}
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public ControlLabel() {
 		this("");
 	}
 
+	/**
+	 * Set <code>for</code> attribute.
+	 * @param id set id
+	 */
 	public void setFor(String id) {
 		getElement().setAttribute("for", id);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public DirectionEstimator getDirectionEstimator() {
 		return directionalTextHelper.getDirectionEstimator();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setDirectionEstimator(boolean enabled) {
 		directionalTextHelper.setDirectionEstimator(enabled);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setDirectionEstimator(DirectionEstimator directionEstimator) {
 		directionalTextHelper.setDirectionEstimator(directionEstimator);
 	}

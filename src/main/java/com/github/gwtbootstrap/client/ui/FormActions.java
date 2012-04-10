@@ -18,8 +18,33 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 
+/**
+ * FormActions is a form button container widget.
+ * <p>
+ * FormActions can include some widgets only.
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:FormActions>
+ * 	<b:Button/>
+ * </b:FormActions>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author ohashi keisuke
+ * 
+ * @see Form
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
 public class FormActions extends DivWidget {
 	
+	/**
+	 * Creates an empty widget.
+	 */
 	public FormActions() {
 		super(Constants.FORM_ACTIONS);
 	}

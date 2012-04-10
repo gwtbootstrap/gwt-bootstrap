@@ -18,10 +18,32 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.InlineLabel;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 
-
+/**
+ * HelpInline is a form help text widget.
+ * <p>
+ * HelpInline can include text only.
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:HelpInline>any text</b:HelpInline>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author ohashi keisuke 
+ * 
+ * @see Controls
+ * @see HelpBlock
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
 public class HelpInline extends InlineLabel {
 
-	
+	/**
+	 * Creates an empty widget.
+	 */
 	public HelpInline() {
 		super();
 		setStyleName(Constants.HELP_INLINE);

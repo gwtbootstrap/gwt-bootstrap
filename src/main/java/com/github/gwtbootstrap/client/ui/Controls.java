@@ -18,13 +18,46 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 
+/**
+ * Controls is a form widget.
+ * <p>
+ * Controls can include html and widget
+ * <h3>UiBinder Usage:</h3>
+ * 
+ * <pre>
+ * {@code
+ * <b:Controls>
+ * 	Controls can include html and widgets<br/>
+ * 	<b:ControlLabel>Email</b:ControlLabel>
+ * 	<a href="#"></a>
+ * </b:Controls>
+ * }
+ * </pre>
+ * </p>
+ * 
+ * @since 2.0.2.0
+ * 
+ * @author kokubo yusuke 
+ * @author ohashi keisuke
+ * 
+ * @see ControlGroup
+ * @see ControlLabel
+ * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ */
 public class Controls extends HtmlWidget {
 
+	/**
+	 * Creates a widget with  the html set..
+	 * @param html content html
+	 */
 	public Controls(String html) {
 		super("div", html);
 		setStyleName(Constants.CONTROLS);
 	}
 
+	/**
+	 * Creates an empty widget.
+	 */
 	public Controls() {
 		this("");
 	}

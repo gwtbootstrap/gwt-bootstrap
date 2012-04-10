@@ -29,7 +29,7 @@ import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
  * <pre>
  * {@code
  * <b:ControlGroup>
- * 	FormLabel can include html and widgets<br/>
+ * 	ControlGroup can include html and widgets<br/>
  * 	<b:Controls/>
  * 	<a href="#"></a>
  * </b:ControlGroup>
@@ -39,7 +39,7 @@ import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
  * 
  * @since 2.0.2.0
  * 
- * @author yusuke kokubo
+ * @author kokubo yusuke 
  * @author ohashi keisuke
  * 
  * @see Controls
@@ -58,7 +58,7 @@ public class ControlGroup extends HtmlWidget implements HasType<ControlGroupType
 	}
 
 	/**
-	 * Creates an empty paragraph.
+	 * Creates an empty widget.
 	 */
 	public ControlGroup() {
 		this("");
