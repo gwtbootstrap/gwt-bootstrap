@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.showcase.client;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
+import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -47,6 +48,11 @@ public class Showcase extends Composite implements EntryPoint {
 	}
 
 	public Showcase() {
+		
+		Configurator configurator = GWT.create(Configurator.class);
+		
+		GWT.log(String.valueOf(configurator.hasResponsiveDesign()));
+		
 		initWidget(uiBinder.createAndBindUi(this));
 //        addSectionToContainer("Get Started", "setup", new Setup());
 //		addSectionToContainer("Get Support", "support", new Support());

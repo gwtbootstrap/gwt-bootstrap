@@ -42,9 +42,7 @@
 	<h2>Enabling <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Responsive Design</a></h2>
 	Add the following to your {@code *.gwt.xml} file:
 	<pre>{@literal
-<replace-with class="com.github.gwtbootstrap.client.ui.config.ResponsiveConfigurator">
-    <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
-</replace-with>
+<set-property name="bootstrap.responsiveDesign" value="true"/>
  	}</pre>
 	
 	<h2>Getting started with the library</h2>
