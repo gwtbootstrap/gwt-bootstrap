@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='bootstrap'>
   <inherits name='com.google.gwt.user.User' />
-  <inherits name='com.google.gwt.junit.JUnit' />
+  <define-property name="bootstrap.responsiveDesign" values="true,false"/>
+  <set-property name="bootstrap.responsiveDesign" value="false"/>
 
-  <entry-point class='com.github.gwtbootstrap.client.BootstrapDemo' />
+  <replace-with class="com.github.gwtbootstrap.client.ui.config.DefaultConfigurator">
+    <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
+    <when-property-is name="bootstrap.responsiveDesign" value="false" />
+  </replace-with>
 
+  <replace-with class="com.github.gwtbootstrap.client.ui.config.ResponsiveConfigurator">
+    <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
+    <when-property-is name="bootstrap.responsiveDesign" value="true" />
+  </replace-with>
+
+  <entry-point class='com.github.gwtbootstrap.client.Bootstrap' />
   <source path='client' />
-
 </module>
