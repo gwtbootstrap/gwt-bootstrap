@@ -23,7 +23,7 @@ public interface CustomResources extends Resources {
 	
 	public static final CustomResources RESOURCES = GWT.create(CustomResources.class);
 	
-	@Source("css/bootstrap-custom.css")
+	@Source("css/bootstrap.min.css")
 	TextResource bootstrapCss();
 
 	@Source("gridCode.txt")
