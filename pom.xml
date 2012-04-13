@@ -201,6 +201,66 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<!--
+		 for developers build.
+		 this profile add src/demo/java to build path.
+		 -->
+		 <profile>
+		 	<id>dev</id>
+			<build>
+				<plugins>
+					<!-- GWT Maven Plugin -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>gwt-maven-plugin</artifactId>
+						<version>2.4.0</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>compile</goal>
+									<goal>test</goal>
+									<goal>resources</goal>
+								</goals>
+							</execution>
+						</executions>
+						<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+							documentation at codehaus.org -->
+						<configuration>
+							<modules>
+								<module>com.github.gwtbootstrap.demo.BootstrapDemo.gwt.xml</module>
+							</modules>
+							<localWorkers>2</localWorkers>
+							<runTarget>index.html</runTarget>
+							<webappDirectory>src/main/webapp</webappDirectory>
+							<hostedWebapp>src/main/webapp</hostedWebapp>
+							<webXml>${baseDir}/src/main/webapp/WEB-INF/web.xml</webXml>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>src/demo/java</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+		 		</plugins>
+		 	</build>
+		 </profile>
+		 
+		 
+		
 		<!-- for showcase build -->
 		<profile>
 			<id>showcase</id>
