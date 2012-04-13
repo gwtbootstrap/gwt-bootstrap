@@ -28,7 +28,7 @@
                 <g:HTMLPanel>
                     <h2>NavWidget</h2>
                     <p>Can contain several widgets. The most obvious example:</p>
-                    <b:NavWidget icon="STAR" iconColor="WHITE" text="Inbox">
+                    <b:NavWidget icon="STAR" text="Inbox">
                         <b:Badge>1</b:Badge>
                         <b:Badge>2</b:Badge>
                         <b:Badge>3</b:Badge>
