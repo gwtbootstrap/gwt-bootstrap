@@ -43,7 +43,7 @@ public interface Resources extends ClientBundle {
 	// Imported as a TextResource until GWT supports CSS3.
 	@Source("css/bootstrap.min.css")
 	TextResource bootstrapCss();
-
+	
 	/**
 	 * Returns the required jQuery version.
 	 * <p>
