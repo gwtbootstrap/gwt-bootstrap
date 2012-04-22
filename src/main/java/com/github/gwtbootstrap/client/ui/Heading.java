@@ -116,7 +116,11 @@ public class Heading extends ComplexWidget implements HasText {
 	 */
 	public void setText(String text) {
 		this.text = text;
-		getElement().setInnerHTML(text + small.toString());
+
+	    // Add a space after the main heading text to get the same effect as Twitter Bootstrap.
+        // <h1>Some text <small>Some subtext</small></h1>
+        //              ^- Note the space
+		getElement().setInnerHTML(text + " " + small.toString());
 	}
 
 	/**
