@@ -15,8 +15,13 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Button;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -27,8 +32,23 @@ public class Buttons extends Composite {
 	interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
 	}
 
+	@UiField
+	Button large;
+	
 	public Buttons() {
 		initWidget(uiBinder.createAndBindUi(this));
+		large.addClickHandler(new ClickHandler() {
+			
+			public void onClick(ClickEvent event) {
+				large.state().loading();
+				new Timer() {
+					@Override
+					public void run() {
+						large.state().complete();
+					}
+				}.schedule(500);
+			}
+		});
 	}
 
 }

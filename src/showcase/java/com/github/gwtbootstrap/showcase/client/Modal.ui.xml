@@ -30,6 +30,7 @@
                     <b:Button ui:field="onShow" text="show the modal" />
                     <b:Modal ui:field="m" title="My Modal" backdrop="STATIC" keyboard="true" animation="true">
                         <g:Label>Modal Content!</g:Label>
+                        <b:TextBox placeholder="Look, I'm a placeholder..." />
                         <b:ModalFooter>
                             <b:Button icon="FILE" type="PRIMARY">Save</b:Button>
                         </b:ModalFooter>
