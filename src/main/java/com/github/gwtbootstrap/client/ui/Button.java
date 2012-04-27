@@ -95,7 +95,7 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * <h3>UiBinder Usage:</h3>
  * 
  * <pre>
- * {@code <b:Button icon="TRASH" type="ERROR">Delete</b:Button>}
+ * {@code <b:Button icon="TRASH" type="ERROR" toggle="true">Delete</b:Button>}
  * </pre>
  * 
  * All arguments are optional.
@@ -203,6 +203,19 @@ public class Button extends IconAnchor implements HasClickHandlers,
 			removeStyleName(Constants.DISABLED);
 		else
 			addStyleName(Constants.DISABLED);
+	}
+	
+	/**
+	 * Enable ou disable the data-toggle behavior.
+	 * 
+	 * @param toggle <code>true</code> will enable this behavior.
+	 * <code>false</code> will disable it or do nothing if it never was enabled.
+	 */
+	public void setToggle(boolean toggle) {
+		if(toggle)
+			getElement().setAttribute(Constants.DATA_TOGGLE, "button");
+		else
+			getElement().removeAttribute(Constants.DATA_TOGGLE);
 	}
 
 	/**

@@ -15,14 +15,15 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.ToggleType;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**
- * ButtonGroups take buttons and combine them to one optically integrated widget.
+ * ButtonGroups take buttons and combine them to one optically integrated
+ * widget.
  * 
  * <p>
  * <h3>UiBinder Usage:</h3>
@@ -36,25 +37,37 @@ import com.google.gwt.user.client.ui.Widget;
  * </b:ButtonGroup>}
  * </pre>
  * 
+ * You can also use the buttons as checkboxes or radio buttons:
+ * 
+ * <pre>
+ * {@code
+ * <b:ButtonGroup toggle="radio">
+ * 	<b:Button text="1" />
+ * 		<b:Button text="2" />
+ * 	<b:Button text="3" />
+ * 	<b:Button text="4" />
+ * </b:ButtonGroup>
+ * }
+ * </pre>
+ * 
  * @since 2.0.2.0
  * 
  * @author Carlos Alexandro Becker
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonGroups">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/components.html#buttonGroups">Bootstrap
+ *      documentation</a>
  * @see Button
  * @see ButtonToolbar
  */
-//@formatter:on
+// @formatter:on
 public class ButtonGroup extends DivWidget {
-
-	private ComplexWidget span = new ComplexWidget("span");
 
 	/**
 	 * Creates an empty ButtonGroup.
 	 */
 	public ButtonGroup() {
 		setStyleName(Constants.BTN_GROUP);
-		super.add(span);
 	}
 
 	/**
@@ -82,15 +95,34 @@ public class ButtonGroup extends DivWidget {
 			throw new IllegalArgumentException(
 					"A ButtonGroup can only contain Buttons.");
 
-		span.add(widget);
-//		super.add(widget);
+		super.add(widget);
+		// super.add(widget);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Set/unset the data-toggle behavior.
+	 * 
+	 * @param type
 	 */
-	@Override
-	public boolean remove(Widget widget) {
-		return span.remove(widget);
+	public void setToggle(ToggleType type) {
+		if (type == null || type == ToggleType.NONE) {
+			getElement().removeAttribute(Constants.DATA_TOGGLE);
+			return;
+		}
+		getElement().setAttribute(Constants.DATA_TOGGLE, type.get());
+
+	}
+
+	/**
+	 * Set/unset the data-toggle behavior.
+	 * 
+	 * @param toggle
+	 */
+	public void setToggle(String toggle) {
+		try {
+			setToggle(ToggleType.valueOf(toggle.toUpperCase()));
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Invalid toggle option.");
+		}
 	}
 }
