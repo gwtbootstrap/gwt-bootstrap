@@ -123,10 +123,11 @@ public interface Constants {
 
 	public static final String FORM_ACTIONS = "form-actions";
 	
+	public static final String PLACEHOLDER = "placeholder";
+	
 	// Buttons
 	
 	public static final String DATA_LOADING_TEXT = "data-loading-text";
 
 	public static final String DATA_COMPLETE_TEXT = "data-complete-text";
-
 }
