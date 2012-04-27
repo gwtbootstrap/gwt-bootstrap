@@ -22,6 +22,7 @@ import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -95,7 +96,7 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * <h3>UiBinder Usage:</h3>
  * 
  * <pre>
- * {@code <b:Button icon="TRASH" type="ERROR" toggle="true">Delete</b:Button>}
+ * {@code <b:Button icon="TRASH" type="ERROR" toggle="true" loadingText="I'm loading..." completeText="Oh hoh, I completed the action!">Delete</b:Button>}
  * </pre>
  * 
  * All arguments are optional.
@@ -107,18 +108,22 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap
+ *      documentation</a>
  * @see ButtonGroup
  * @see ButtonToolbar
  * @see DropdownButton
  * @see SplitDropdownButton
  * @see NavbarButton
  */
-//@formatter:on
+// @formatter:on
 public class Button extends IconAnchor implements HasClickHandlers,
 		HasDoubleClickHandlers, HasEnabled, HasType<ButtonType>,
 		HasAllDragAndDropHandlers, HasAllFocusHandlers, HasAllGestureHandlers,
 		HasAllKeyHandlers, HasAllMouseHandlers, HasAllTouchHandlers {
+
+	private final LoadingStateBehavior state = new LoadingStateBehavior();
 
 	/**
 	 * Creates an empty Button.
@@ -204,18 +209,98 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		else
 			addStyleName(Constants.DISABLED);
 	}
-	
+
 	/**
 	 * Enable ou disable the data-toggle behavior.
 	 * 
-	 * @param toggle <code>true</code> will enable this behavior.
-	 * <code>false</code> will disable it or do nothing if it never was enabled.
+	 * @param toggle
+	 *            <code>true</code> will enable this behavior.
+	 *            <code>false</code> will disable it or do nothing if it never
+	 *            was enabled.
 	 */
 	public void setToggle(boolean toggle) {
-		if(toggle)
+		if (toggle)
 			getElement().setAttribute(Constants.DATA_TOGGLE, "button");
 		else
 			getElement().removeAttribute(Constants.DATA_TOGGLE);
+	}
+
+	/**
+	 * Set a Loading Text to show when some action are in work with this button.
+	 * 
+	 * @see LoadingStateBehavior
+	 * @param text
+	 */
+	public void setLoadingText(String text) {
+		if (text == null || text.trim().isEmpty()) {
+			getElement().removeAttribute(Constants.DATA_LOADING_TEXT);
+			return;
+		}
+
+		getElement().setAttribute(Constants.DATA_LOADING_TEXT, text);
+	}
+
+	/**
+	 * Set a Loading Text to show when some action are completed with this
+	 * button.
+	 * 
+	 * @see LoadingStateBehavior
+	 * @param text
+	 */
+	public void setCompleteText(String text) {
+		if (text == null || text.trim().isEmpty()) {
+			getElement().removeAttribute(Constants.DATA_COMPLETE_TEXT);
+			return;
+		}
+
+		getElement().setAttribute(Constants.DATA_COMPLETE_TEXT, text);
+	}
+
+	/**
+	 * A simple DSL to change the button state to loading, complete, or reset
+	 * it.
+	 * 
+	 * @return
+	 */
+	public LoadingStateBehavior state() {
+		return state;
+	}
+
+	/**
+	 * A simple class to encapsulate the button state managing from the user.
+	 * 
+	 * @author Carlos Alexandro Becker
+	 */
+	public class LoadingStateBehavior {
+
+		/**
+		 * put the button in the loading state.
+		 */
+		public void loading() {
+			setLoadingBehavior("loading");
+		}
+
+		/**
+		 * reset the button state.
+		 */
+		public void reset() {
+			setLoadingBehavior("reset");
+		}
+
+		/**
+		 * put the button in the completed state.
+		 */
+		public void complete() {
+			setLoadingBehavior("complete");
+		}
+
+		private void setLoadingBehavior(String behavior) {
+			setLoadingBehavior(getElement(), behavior);
+		}
+
+		private native void setLoadingBehavior(Element e, String behavior) /*-{
+			$wnd.jQuery(e).button(behavior);
+		}-*/;
 	}
 
 	/**
@@ -228,8 +313,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	/**
 	 * {@inheritDoc}
 	 */
-	public HandlerRegistration
-			addDoubleClickHandler(DoubleClickHandler handler) {
+	public HandlerRegistration addDoubleClickHandler(DoubleClickHandler handler) {
 		return addDomHandler(handler, DoubleClickEvent.getType());
 	}
 
@@ -406,8 +490,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	/**
 	 * {@inheritDoc}
 	 */
-	public HandlerRegistration
-			addTouchCancelHandler(TouchCancelHandler handler) {
+	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return addDomHandler(handler, TouchCancelEvent.getType());
 	}
 
