@@ -1,2 +1,4 @@
 a.btn {color:#333333;}
 a.btn-primary, a.btn-warning, a.btn-danger, a.btn-success, a.btn-info, a.btn-inverse {color:#ffffff;}
+div.input-prepend>input,textarea,select,.uneditable-input { margin-bottom: 0; }
+div.input-append>input,textarea,select,.uneditable-input { margin-bottom: 0; }
