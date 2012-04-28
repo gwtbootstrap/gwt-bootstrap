@@ -1,0 +1,189 @@
+<!--
+
+     Copyright 2012 GWT-Bootstrap
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<b:PageHeader subtext="Styles for Buttons">Buttons</b:PageHeader>
+		<b:Row>
+			<b:Column size="6">
+				<!-- <b:Table> -->
+				<!-- <b:TableHeader>Button</b:TableHeader> -->
+				<!-- <b:TableHeader>UiBinder</b:TableHeader> -->
+				<g:HTMLPanel>
+					<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Button</th>
+							<th>UiBinder</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<b:Button ui:field="defaultType" text="Default" toggle="true" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button>Default&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b:Button ui:field="primary" type="PRIMARY" text="Primary" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button type="PRIMARY">Primary&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b:Button ui:field="info" type="INFO" text="Info" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button type="INFO">Info&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b:Button ui:field="success" type="SUCCESS" text="Success" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button type="SUCCESS">Success&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b:Button ui:field="warning" type="WARNING" text="Warning" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button type="WARNING">Warning&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b:Button ui:field="danger" type="DANGER" text="Danger" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button type="DANGER">Danger&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b:Button ui:field="inverse" type="INVERSE" text="Inverse" />
+							</td>
+							<td>
+								<b:Code>&lt;b:Button type="INVERSE">Inverse&lt;/b:Button></b:Code>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+					<!-- </b:Table> -->
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="6">
+				<g:HTMLPanel>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Button</th>
+								<th>UiBinder</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<b:Button ui:field="large" size="LARGE" text="Large" loadingText="Loading..." completeText="Done!" />
+								</td>
+								<td>
+									<b:Code>&lt;b:Button size="LARGE">Large&lt;/b:Button></b:Code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b:Button ui:field="small" size="SMALL" text="Small" />
+								</td>
+								<td>
+									<b:Code>&lt;b:Button size="SMALL">Small&lt;/b:Button></b:Code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b:Button ui:field="mini" size="MINI" text="Mini" />
+								</td>
+								<td>
+									<b:Code>&lt;b:Button size="MINI">Mini&lt;/b:Button></b:Code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Radio data toggle behavior:
+									<b:ButtonGroup toggle="radio">
+										<b:Button text="1" />
+										<b:Button text="2" />
+										<b:Button text="3" />
+										<b:Button text="4" />
+									</b:ButtonGroup>
+								</td>
+								<td>
+									Checkbox data toggle behavior:
+									<b:ButtonGroup toggle="checkbox">
+										<b:Button text="1" />
+										<b:Button text="2" />
+										<b:Button text="3" />
+										<b:Button text="4" />
+									</b:ButtonGroup>
+								</td>
+								<td>
+									No data toggle behavior:
+									<b:ButtonGroup>
+										<b:Button text="1" />
+										<b:Button text="2" />
+										<b:Button text="3" />
+										<b:Button text="4" />
+									</b:ButtonGroup>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Button</th>
+								<th>UiBinder</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<b:Button ui:field="disabled" enabled="false" text="Disabled" />
+								</td>
+								<td>
+									<b:Code>&lt;b:Button enabled="false">Disabled&lt;/b:Button></b:Code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</g:HTMLPanel>
+			</b:Column>
+		</b:Row>
+	</g:HTMLPanel>
+</ui:UiBinder>
