@@ -40,8 +40,8 @@ public class ButtonCell extends com.google.gwt.cell.client.ButtonCell {
 
 	@Override
 	public void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
-		sb.appendHtmlConstant("<button type=\"button\" class=\"btn " + type != null ? type
-				.get() : "" + "\" tabindex=\"-1\">");
+		sb.appendHtmlConstant("<button type=\"button\" class=\"btn "
+				+ (type != null ? type.get() : "") + "\" tabindex=\"-1\">");
 		if (data != null) {
 			if (icon != null)
 				sb.appendHtmlConstant("<i class=\"" + icon.get() + "\"></i> ");
