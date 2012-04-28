@@ -39,7 +39,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<b:Button ui:field="defaultType" text="Default" toggle="true" />
+								<b:Button ui:field="defaultType" text="Default" />
 							</td>
 							<td>
 								<b:Code>&lt;b:Button>Default&lt;/b:Button></b:Code>
@@ -130,35 +130,6 @@
 								</td>
 								<td>
 									<b:Code>&lt;b:Button size="MINI">Mini&lt;/b:Button></b:Code>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Radio data toggle behavior:
-									<b:ButtonGroup toggle="radio">
-										<b:Button text="1" />
-										<b:Button text="2" />
-										<b:Button text="3" />
-										<b:Button text="4" />
-									</b:ButtonGroup>
-								</td>
-								<td>
-									Checkbox data toggle behavior:
-									<b:ButtonGroup toggle="checkbox">
-										<b:Button text="1" />
-										<b:Button text="2" />
-										<b:Button text="3" />
-										<b:Button text="4" />
-									</b:ButtonGroup>
-								</td>
-								<td>
-									No data toggle behavior:
-									<b:ButtonGroup>
-										<b:Button text="1" />
-										<b:Button text="2" />
-										<b:Button text="3" />
-										<b:Button text="4" />
-									</b:ButtonGroup>
 								</td>
 							</tr>
 						</tbody>

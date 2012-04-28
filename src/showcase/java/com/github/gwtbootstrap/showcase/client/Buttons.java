@@ -32,23 +32,8 @@ public class Buttons extends Composite {
 	interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
 	}
 
-	@UiField
-	Button large;
-	
 	public Buttons() {
 		initWidget(uiBinder.createAndBindUi(this));
-		large.addClickHandler(new ClickHandler() {
-			
-			public void onClick(ClickEvent event) {
-				large.state().loading();
-				new Timer() {
-					@Override
-					public void run() {
-						large.state().complete();
-					}
-				}.schedule(500);
-			}
-		});
 	}
 
 }
