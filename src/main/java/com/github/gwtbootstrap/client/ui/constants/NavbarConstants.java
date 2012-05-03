@@ -21,7 +21,7 @@ import com.github.gwtbootstrap.client.ui.Navbar;
 /**
  * Constants used for the {@link Navbar} and for Navbar contents.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

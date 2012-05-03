@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Technically it's an html {@code <a>} tag. The text of the popup will be the
  * content of the anchor's <code>title</code> attribute. 
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

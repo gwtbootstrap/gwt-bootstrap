@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.gwtbootstrap</groupId>
 	<artifactId>gwt-bootstrap</artifactId>
-	<version>2.0.2.0-SNAPSHOT</version>
+	<version>2.0.3.0-SNAPSHOT</version>
 	<name>GWT-Bootstrap</name>
 	<inceptionYear>2012</inceptionYear>
 
@@ -85,7 +85,7 @@
 		<!-- Convenience property to set the GWT version -->
 		<gwtVersion>2.4.0</gwtVersion>
 		<!-- GWT needs at least java 1.5 -->
-		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+		<webappDirectory>src/main/webapp</webappDirectory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -201,13 +201,10 @@
 				</plugins>
 			</build>
 		</profile>
-		
-		<!--
-		 for developers build.
-		 this profile add src/demo/java to build path.
-		 -->
-		 <profile>
-		 	<id>dev</id>
+
+		<!-- for developers build. this profile add src/demo/java to build path. -->
+		<profile>
+			<id>dev</id>
 			<build>
 				<plugins>
 					<!-- GWT Maven Plugin -->
@@ -255,12 +252,12 @@
 							</execution>
 						</executions>
 					</plugin>
-		 		</plugins>
-		 	</build>
-		 </profile>
-		 
-		 
-		
+				</plugins>
+			</build>
+		</profile>
+
+
+
 		<!-- for showcase build -->
 		<profile>
 			<id>showcase</id>
@@ -505,8 +502,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -557,7 +554,7 @@ filesCopiedToWebInfLib=
 								<![CDATA[
 eclipse.preferences.version=1
 jarsExcludedFromWebInfLib=
-warSrcDir=src/main/webapp
+warSrcDir=${webappDirectory}
 warSrcDirIsOutput=false
 							 ]]>
 							</content>
@@ -566,5 +563,60 @@ warSrcDirIsOutput=false
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-war-plugin
+										</artifactId>
+										<versionRange>
+											[2.1.1,)
+										</versionRange>
+										<goals>
+											<goal>exploded</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											gwt-maven-plugin
+										</artifactId>
+										<versionRange>
+											[2.4.0,)
+										</versionRange>
+										<goals>
+											<goal>resources</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

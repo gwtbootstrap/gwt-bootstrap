@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
  * <p>
  * Base of a lot of other components :)
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  */

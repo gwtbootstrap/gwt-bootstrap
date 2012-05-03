@@ -59,7 +59,7 @@ import com.google.gwt.user.client.ui.Widget;
  * </pre>
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * @author Carlos Alexandro Becker
@@ -84,6 +84,8 @@ public class Navbar extends DivWidget {
 	private final Container container = getContainer();
 	private final NavbarInner navbarInner = new NavbarInner();
 	private Scrollspy spy;
+
+	private boolean scrollspy;
 
 	/**
 	 * Creates an empty Navbar.
@@ -111,6 +113,12 @@ public class Navbar extends DivWidget {
 	 *            <code>false</code>
 	 */
 	public void setScrollspy(boolean scrollspy) {
+		this.scrollspy = scrollspy;
+	}
+	
+	@Override
+	protected void onAttach() {
+		super.onAttach();
 		if (spy == null)
 			spy = new Scrollspy(this);
 
@@ -119,7 +127,7 @@ public class Navbar extends DivWidget {
 		}
 		// TODO make a unconfigure feature.
 	}
-
+	
 	/**
 	 * Fix the Navbar at the top or bottom of the screen.
 	 * <p>
@@ -180,4 +188,5 @@ public class Navbar extends DivWidget {
 		BodyElement body = Document.get().getBody();
 		body.getStyle().setPaddingTop(pixels, Unit.PX);
 	}
+	
 }

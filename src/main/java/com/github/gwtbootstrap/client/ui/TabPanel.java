@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The container for a tabbable nav.
  * 
+ * @since 2.0.3.0
  * @author Dominik Mayer
  */
 //@formatter:on

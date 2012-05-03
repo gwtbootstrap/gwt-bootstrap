@@ -29,7 +29,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * Dropdown button.
  * 
  * @author Dominik Mayer
- * 
+ * @since 2.0.3.0
  * @see <a
  *      href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap
  *      documentation</a>

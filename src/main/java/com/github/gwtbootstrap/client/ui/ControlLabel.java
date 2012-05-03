@@ -37,7 +37,7 @@ import com.google.gwt.user.client.ui.DirectionalTextHelper;
  * </pre>
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author kokubo yusuke 
  * @author ohashi keisuke

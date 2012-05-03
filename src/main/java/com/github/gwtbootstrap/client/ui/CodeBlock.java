@@ -43,7 +43,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  * </pre>
  * All arguments are optional.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

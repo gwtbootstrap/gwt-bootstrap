@@ -22,6 +22,7 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 /**
  * The Nav List
  * 
+ * @since 2.0.3.0
  * @author Dominik Mayer
  */
 //@formatter:on

@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.constants.Placement;
 /**
  * Interface for widgets that have a placement.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

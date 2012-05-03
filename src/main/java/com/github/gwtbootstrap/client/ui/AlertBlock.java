@@ -31,7 +31,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * All parameters are optional and map to the class's setters.
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

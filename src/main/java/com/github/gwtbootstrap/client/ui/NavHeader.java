@@ -36,7 +36,7 @@ import com.google.gwt.user.client.ui.HasText;
  * </pre>
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

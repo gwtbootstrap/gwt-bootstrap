@@ -32,7 +32,7 @@ import com.google.gwt.user.client.ui.HasHTML;
 /**
  * Base class for Alert widgets.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * @author Carlos Alexandro Becker

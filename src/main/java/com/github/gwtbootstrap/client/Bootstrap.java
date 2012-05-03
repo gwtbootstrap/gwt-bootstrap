@@ -21,7 +21,7 @@ import com.google.gwt.core.client.EntryPoint;
 /**
  * The entry point class that is executed when GWT Bootstrap is loaded.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * 

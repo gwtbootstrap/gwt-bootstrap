@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.base;
 /**
  * Interface for widgets that can work as a link.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  */

@@ -18,6 +18,12 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 
 
+/**
+ * Simple wrapper for an HTML {@code <legend>} tag.
+ * 
+ * @since 2.0.3.0
+ * @author ohashi keisuke
+ */
 public class Legend extends HtmlWidget {
 
 	public Legend(String html) {

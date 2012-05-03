@@ -24,7 +24,7 @@ import com.google.gwt.resources.client.TextResource;
  * Utility class to inject our resources into modules page. Use it to inject
  * JavaScript and CSS files.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  */

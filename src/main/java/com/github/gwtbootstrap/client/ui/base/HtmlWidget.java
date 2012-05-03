@@ -37,7 +37,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  * }
  * </pre>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author ohashi keisuke
  */

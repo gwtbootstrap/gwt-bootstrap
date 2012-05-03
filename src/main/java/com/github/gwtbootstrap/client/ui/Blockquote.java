@@ -33,7 +33,7 @@ import com.google.gwt.user.client.DOM;
  * All arguments are optional.
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * 
@@ -133,7 +133,7 @@ public class Blockquote extends AbstractTypography {
 	/**
 	 * Element that shows the source of the quote.
 	 * 
-	 * @since 2.0.2.0
+	 * @since 2.0.3.0
 	 * 
 	 * @author Carlos Alexandro Becker
 	 */
@@ -154,7 +154,7 @@ public class Blockquote extends AbstractTypography {
 	/**
 	 * Element that shows the source of the quote in a smaller font.
 	 * 
-	 * @since 2.0.2.0
+	 * @since 2.0.3.0
 	 * 
 	 * @author Carlos Alexandro Becker
 	 */

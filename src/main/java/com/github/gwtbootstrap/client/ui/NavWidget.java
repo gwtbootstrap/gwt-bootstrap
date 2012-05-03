@@ -33,6 +33,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * {@code <b:NavWidget text="Inbox"><b:Badge /></b:NavWidget>}
  * 
+ * @since 2.0.3.0
  * @author Dominik Mayer
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation (Navbar)</a>

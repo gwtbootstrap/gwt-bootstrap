@@ -19,7 +19,7 @@ package com.github.gwtbootstrap.client.ui.base;
  * {@link com.google.gwt.user.client.ui.InlineLabel InlineLabel} without the GWT
  * CSS Styles.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

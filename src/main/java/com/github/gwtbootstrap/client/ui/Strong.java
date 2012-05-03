@@ -22,7 +22,7 @@ import com.google.gwt.user.client.DOM;
 /**
  * Simple wrapper for an HTML {@code <strong>} tag.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * 

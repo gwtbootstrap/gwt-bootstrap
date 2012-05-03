@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 /**
  * Simple html paragraph widget.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author ohashi keisuke
  * @author Dominik Mayer

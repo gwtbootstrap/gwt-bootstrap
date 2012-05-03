@@ -19,7 +19,7 @@ package com.github.gwtbootstrap.client.ui.base;
 /**
  * Interface for widgets that have size according to the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system.</a>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  *

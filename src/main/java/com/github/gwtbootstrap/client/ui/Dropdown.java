@@ -36,7 +36,7 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
  * </pre>
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer

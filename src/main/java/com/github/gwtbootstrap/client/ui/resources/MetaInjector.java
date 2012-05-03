@@ -22,7 +22,7 @@ import com.google.gwt.dom.client.MetaElement;
 /**
  * Methods to put a meta tag into the document header.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

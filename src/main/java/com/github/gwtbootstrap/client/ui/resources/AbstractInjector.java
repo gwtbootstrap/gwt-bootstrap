@@ -22,8 +22,8 @@ import com.google.gwt.dom.client.HeadElement;
 /**
  * Base class for classes that inject someting into the document header.
  * 
+ * @since 2.0.3.0
  * @author Carlos Alexandro Becker
- * 
  * @author Dominik Mayer
  */
 public abstract class AbstractInjector {
