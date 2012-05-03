@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.HasText;
 /**
  * Header sections of the website.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

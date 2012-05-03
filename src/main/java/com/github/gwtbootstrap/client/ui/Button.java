@@ -102,7 +102,7 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * All arguments are optional.
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * 

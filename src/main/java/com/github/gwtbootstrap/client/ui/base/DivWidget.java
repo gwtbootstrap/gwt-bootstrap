@@ -35,7 +35,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
  * 
  * </p>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer

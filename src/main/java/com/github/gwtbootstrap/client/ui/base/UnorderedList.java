@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.base;
 /**
  * Simple wrapper for an HTML {@code <ul>} tag.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  */

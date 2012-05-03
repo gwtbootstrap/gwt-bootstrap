@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
  * Contstants for pulling widgets to the left or right.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

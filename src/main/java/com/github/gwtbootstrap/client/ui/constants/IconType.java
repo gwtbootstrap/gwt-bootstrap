@@ -21,7 +21,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
  * Type of the <a href="http://glyphicons.com/">Glyphicon.</a>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * 

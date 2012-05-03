@@ -5,7 +5,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 /**
  * A TextBox with a placeholder attribute.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  * 

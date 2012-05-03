@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.HasText;
 /**
 * Base class for widgets that hover above other widgets.
 * 
-* @since 2.0.2.0
+* @since 2.0.3.0
 * 
 * @author Dominik Mayer
 * 

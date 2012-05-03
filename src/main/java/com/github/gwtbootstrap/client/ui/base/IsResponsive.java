@@ -24,7 +24,7 @@ import com.github.gwtbootstrap.client.ui.constants.Device;
  * <p>
  * <b>They are only used if the responsive design is turned on!</b>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

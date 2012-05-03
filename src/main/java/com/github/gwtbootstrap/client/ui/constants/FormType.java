@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
 * Type of a {@link Form}.
 * 
-* @since 2.0.2.0
+* @since 2.0.3.0
 * 
 * @author Dominik Mayer
 * 

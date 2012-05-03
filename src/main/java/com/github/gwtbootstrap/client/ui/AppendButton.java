@@ -16,7 +16,7 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
  * }
  * </pre>
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * @author Carlos Alexandro Becker
  * @see http://twitter.github.com/bootstrap/base-css.html#forms
  */

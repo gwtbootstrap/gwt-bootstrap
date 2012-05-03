@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
  * The way a responsive widget is shown.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  */

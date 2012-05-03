@@ -20,7 +20,7 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * Represents an event that is fired when a widget has been closed.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Dominik Mayer
  * 

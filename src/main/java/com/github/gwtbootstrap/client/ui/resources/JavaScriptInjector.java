@@ -22,7 +22,7 @@ import com.google.gwt.dom.client.ScriptElement;
 /**
  * Methods to inject JavaScript code into the document header.
  * 
- * @since 2.0.2.0
+ * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
  */

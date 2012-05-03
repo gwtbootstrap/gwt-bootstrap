@@ -23,6 +23,7 @@ import com.google.gwt.uibinder.client.UiConstructor;
 /**
  * Pager that can be aligned
  * 
+ * @since 2.0.3.0
  * @author Dominik Mayer
  */
 //@formatter:on
