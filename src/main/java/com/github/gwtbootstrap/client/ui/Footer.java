@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
+import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
@@ -39,16 +39,26 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
  * @since 2.0.3.0
  * 
  * @author Dominik Mayer
+ * @author ohashi keisuke
  */
 //@formatter:on
-public class Footer extends ComplexWidget {
+public class Footer extends HtmlWidget {
 
 	// TODO: No nice style in bootstrap. Delete?
 	/**
 	 * Creates an empty Footer.
 	 */
 	public Footer() {
-		super("footer");
+		this("");
+	}
+	
+	/**
+	 * Creates a widget with the html.
+	 * @param html content html
+	 */
+	public Footer(String html) {
+		super("footer" , html);
 		setStyleName(Bootstrap.footer);
 	}
+
 }
