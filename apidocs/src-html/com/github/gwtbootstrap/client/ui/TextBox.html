@@ -8,33 +8,41 @@
 <div class="sourceContainer">
 <pre><span class="sourceLineNo">001</span>package com.github.gwtbootstrap.client.ui;<a name="line.1"></a>
 <span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.3"></a>
-<span class="sourceLineNo">004</span><a name="line.4"></a>
-<span class="sourceLineNo">005</span>/**<a name="line.5"></a>
-<span class="sourceLineNo">006</span> * A TextBox with a placeholder attribute.<a name="line.6"></a>
-<span class="sourceLineNo">007</span> * <a name="line.7"></a>
-<span class="sourceLineNo">008</span> * @since 2.0.3.0<a name="line.8"></a>
+<span class="sourceLineNo">003</span>import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;<a name="line.3"></a>
+<span class="sourceLineNo">004</span>import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;<a name="line.4"></a>
+<span class="sourceLineNo">005</span>import com.google.gwt.core.client.GWT;<a name="line.5"></a>
+<span class="sourceLineNo">006</span><a name="line.6"></a>
+<span class="sourceLineNo">007</span>/**<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * A TextBox with a placeholder attribute.<a name="line.8"></a>
 <span class="sourceLineNo">009</span> * <a name="line.9"></a>
-<span class="sourceLineNo">010</span> * @author Carlos Alexandro Becker<a name="line.10"></a>
+<span class="sourceLineNo">010</span> * @since 2.0.3.0<a name="line.10"></a>
 <span class="sourceLineNo">011</span> * <a name="line.11"></a>
-<span class="sourceLineNo">012</span> */<a name="line.12"></a>
-<span class="sourceLineNo">013</span>public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox {<a name="line.13"></a>
-<span class="sourceLineNo">014</span><a name="line.14"></a>
-<span class="sourceLineNo">015</span>        /**<a name="line.15"></a>
-<span class="sourceLineNo">016</span>         * Set a placeholder attribute (HTML5).<a name="line.16"></a>
-<span class="sourceLineNo">017</span>         * <a name="line.17"></a>
-<span class="sourceLineNo">018</span>         * @param placeholder<a name="line.18"></a>
-<span class="sourceLineNo">019</span>         *            the String to show. Use a empty string or null to remove the attribute.<a name="line.19"></a>
-<span class="sourceLineNo">020</span>         */<a name="line.20"></a>
-<span class="sourceLineNo">021</span>        public void setPlaceholder(String placeholder) {<a name="line.21"></a>
-<span class="sourceLineNo">022</span>                if (placeholder == null || placeholder.trim().isEmpty()) {<a name="line.22"></a>
-<span class="sourceLineNo">023</span>                        getElement().removeAttribute(Constants.PLACEHOLDER);<a name="line.23"></a>
-<span class="sourceLineNo">024</span>                        return;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>                }<a name="line.25"></a>
-<span class="sourceLineNo">026</span>                getElement().setAttribute(Constants.PLACEHOLDER, placeholder);<a name="line.26"></a>
+<span class="sourceLineNo">012</span> * @author Carlos Alexandro Becker<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * @author ohashi keisuke<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * <a name="line.14"></a>
+<span class="sourceLineNo">015</span> */<a name="line.15"></a>
+<span class="sourceLineNo">016</span>public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder {<a name="line.16"></a>
+<span class="sourceLineNo">017</span><a name="line.17"></a>
+<span class="sourceLineNo">018</span>        /** placeholderHelper */<a name="line.18"></a>
+<span class="sourceLineNo">019</span>        private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);<a name="line.19"></a>
+<span class="sourceLineNo">020</span>        <a name="line.20"></a>
+<span class="sourceLineNo">021</span>        /**<a name="line.21"></a>
+<span class="sourceLineNo">022</span>         * {@inheritDoc}<a name="line.22"></a>
+<span class="sourceLineNo">023</span>         */<a name="line.23"></a>
+<span class="sourceLineNo">024</span>        @Override<a name="line.24"></a>
+<span class="sourceLineNo">025</span>        public void setPlaceholder(String placeholder) {<a name="line.25"></a>
+<span class="sourceLineNo">026</span>                placeholderHelper.setPlaceholer(getElement(), placeholder);<a name="line.26"></a>
 <span class="sourceLineNo">027</span>        }<a name="line.27"></a>
 <span class="sourceLineNo">028</span><a name="line.28"></a>
-<span class="sourceLineNo">029</span>}<a name="line.29"></a>
+<span class="sourceLineNo">029</span>        /**<a name="line.29"></a>
+<span class="sourceLineNo">030</span>         * {@inheritDoc}<a name="line.30"></a>
+<span class="sourceLineNo">031</span>         */<a name="line.31"></a>
+<span class="sourceLineNo">032</span>        @Override<a name="line.32"></a>
+<span class="sourceLineNo">033</span>        public String getPlaceholder() {<a name="line.33"></a>
+<span class="sourceLineNo">034</span>                return placeholderHelper.getPlaceholder(getElement());<a name="line.34"></a>
+<span class="sourceLineNo">035</span>        }<a name="line.35"></a>
+<span class="sourceLineNo">036</span><a name="line.36"></a>
+<span class="sourceLineNo">037</span>}<a name="line.37"></a>
 
 
 
