@@ -1,6 +1,8 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
+import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
+import com.google.gwt.core.client.GWT;
 
 /**
  * A TextBox with a placeholder attribute.
@@ -8,22 +10,28 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * @since 2.0.3.0
  * 
  * @author Carlos Alexandro Becker
+ * @author ohashi keisuke
  * 
  */
-public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox {
+public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder {
+
+	/** placeholderHelper */
+	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setPlaceholder(String placeholder) {
+		placeholderHelper.setPlaceholer(getElement(), placeholder);
+	}
 
 	/**
-	 * Set a placeholder attribute (HTML5).
-	 * 
-	 * @param placeholder
-	 *            the String to show. Use a empty string or null to remove the attribute.
+	 * {@inheritDoc}
 	 */
-	public void setPlaceholder(String placeholder) {
-		if (placeholder == null || placeholder.trim().isEmpty()) {
-			getElement().removeAttribute(Constants.PLACEHOLDER);
-			return;
-		}
-		getElement().setAttribute(Constants.PLACEHOLDER, placeholder);
+	@Override
+	public String getPlaceholder() {
+		return placeholderHelper.getPlaceholder(getElement());
 	}
 
 }
