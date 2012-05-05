@@ -125,6 +125,8 @@ public interface Constants {
 	
 	public static final String PLACEHOLDER = "placeholder";
 	
+	public static final String CHECKBOX = "checkbox";
+	
 	// Buttons
 	
 	public static final String DATA_LOADING_TEXT = "data-loading-text";

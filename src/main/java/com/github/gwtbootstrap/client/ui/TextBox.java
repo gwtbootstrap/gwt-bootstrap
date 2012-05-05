@@ -33,5 +33,6 @@ public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox impl
 	public String getPlaceholder() {
 		return placeholderHelper.getPlaceholder(getElement());
 	}
-
+	
+	//TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable,size,alternate size
 }

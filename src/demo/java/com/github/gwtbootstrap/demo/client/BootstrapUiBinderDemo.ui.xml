@@ -347,7 +347,25 @@
 					<b:ControlGroup>
 						<b:ControlLabel>controlLabel can include any widget ang tag <a>href</a> <b:Code>code</b:Code></b:ControlLabel>
 						<b:Controls>
-							<b:TextBox placeholder="can set placeholder"/>
+							<b:CheckBox>checkbox 1</b:CheckBox>
+							<b:CheckBox>checkbox 2</b:CheckBox>
+							<b:CheckBox>checkbox 3</b:CheckBox>
+							<b:HelpBlock>Help Block can include any widget and tag <b:Strong> Strong </b:Strong> and <a>a tag</a></b:HelpBlock>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:ControlGroup>
+						<b:ControlLabel>inline checkboxes</b:ControlLabel>
+						<b:Controls>
+							<b:CheckBox inline="true">1</b:CheckBox>
+							<b:CheckBox inline="true">2</b:CheckBox>
+							<b:CheckBox inline="true">3</b:CheckBox>
+							<b:HelpBlock>Help Block can include any widget and tag <b:Strong> Strong </b:Strong> and <a>a tag</a></b:HelpBlock>
+						</b:Controls>
+					</b:ControlGroup>
+					<b:ControlGroup>
+						<b:ControlLabel>controlLabel can include any widget ang tag <a>href</a> <b:Code>code</b:Code></b:ControlLabel>
+						<b:Controls>
+							<b:TextBox uneditable="true" placeholder="can set placeholder"/>
 							<b:HelpBlock>Help Block can include any widget and tag <b:Strong> Strong </b:Strong> and <a>a tag</a></b:HelpBlock>
 						</b:Controls>
 					</b:ControlGroup>
