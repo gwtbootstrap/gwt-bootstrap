@@ -15,6 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.google.gwt.dom.client.Element;
+
 /**
  * {@link com.google.gwt.user.client.ui.TextBox TextBox} without the GWT CSS
  * Styles.
@@ -31,5 +33,9 @@ public class TextBox extends com.google.gwt.user.client.ui.TextBox {
 	public TextBox() {
 		super();
 		setStyleName("");
+	}
+	
+	protected TextBox(Element elem) {
+		super(elem);
 	}
 }

@@ -127,9 +127,16 @@ public interface Constants {
 	
 	public static final String CHECKBOX = "checkbox";
 	
+	public static final String RADIO = "radio";
+	
+	public static final String INLINE = "inline";
+	
 	// Buttons
 	
 	public static final String DATA_LOADING_TEXT = "data-loading-text";
 
 	public static final String DATA_COMPLETE_TEXT = "data-complete-text";
+
+	public static final String SEARCH_QUERY = "search-query";
+
 }
