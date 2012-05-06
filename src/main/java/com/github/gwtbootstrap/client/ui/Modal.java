@@ -34,6 +34,7 @@ import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -87,6 +88,7 @@ public class Modal extends DivWidget implements HasVisibility,
 
 	private boolean configured = false;
 
+        private Close close = new Close(DismissType.MODAL);
 	/**
 	 * Creates an empty, hidden widget.
 	 */
@@ -122,7 +124,7 @@ public class Modal extends DivWidget implements HasVisibility,
 		if (title == null || title.isEmpty()) {
 			showHeader(false);
 		} else {
-			header.add(new Close(DismissType.MODAL));
+			header.add(close);
 			header.add(new Heading(3, title));
 			showHeader(true);
 		}
@@ -365,5 +367,15 @@ public class Modal extends DivWidget implements HasVisibility,
 	public HandlerRegistration addShownHandler(ShownHandler handler) {
 		return addHandler(handler, ShownEvent.getType());
 	}
+        
+        /**
+         * Show/Hide close button. The Modal must have a title.
+         * 
+         * @param visible <b>true</b> for show and <b>false</b> to hide. Defaults is <b>true</b>.
+         */
+        public void setCloseVisible(boolean visible) {
+            close.getElement().getStyle().setVisibility(visible ? 
+                    Style.Visibility.VISIBLE : Style.Visibility.HIDDEN);
+        }
 
 }
