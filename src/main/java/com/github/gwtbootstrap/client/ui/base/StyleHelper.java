@@ -67,5 +67,19 @@ public class StyleHelper {
 			widget.removeStyleName(styleString);
 		}
 	}
+	
+	/**
+	 * Change the style.
+	 * @param widget the widget to be changed style.
+	 * @param style the style to be applied to the widget.
+	 * @param styleEnums other styles.
+	 */
+	public static <S extends Style> void changeStyle(UIObject widget, S style,Class<S> styleEnums) {
+		for(S s : styleEnums.getEnumConstants()) {
+			removeStyle(widget, s);
+		}
+ 		
+		addStyle(widget, style);
+	}
 
 }

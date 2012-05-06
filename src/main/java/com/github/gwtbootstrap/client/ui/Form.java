@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.FormType;
 
 //@formatter:off
@@ -53,6 +54,6 @@ public class Form extends ComplexWidget {
 	 *            the form's type
 	 */
 	public void setType(FormType type) {
-		setStyle(type);
+		StyleHelper.changeStyle(this , type, FormType.class);
 	}
 }
