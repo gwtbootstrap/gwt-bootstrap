@@ -75,8 +75,22 @@
 <span class="sourceLineNo">067</span>                        widget.removeStyleName(styleString);<a name="line.67"></a>
 <span class="sourceLineNo">068</span>                }<a name="line.68"></a>
 <span class="sourceLineNo">069</span>        }<a name="line.69"></a>
-<span class="sourceLineNo">070</span><a name="line.70"></a>
-<span class="sourceLineNo">071</span>}<a name="line.71"></a>
+<span class="sourceLineNo">070</span>        <a name="line.70"></a>
+<span class="sourceLineNo">071</span>        /**<a name="line.71"></a>
+<span class="sourceLineNo">072</span>         * Change the style.<a name="line.72"></a>
+<span class="sourceLineNo">073</span>         * @param widget the widget to be changed style.<a name="line.73"></a>
+<span class="sourceLineNo">074</span>         * @param style the style to be applied to the widget.<a name="line.74"></a>
+<span class="sourceLineNo">075</span>         * @param styleEnums other styles.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>         */<a name="line.76"></a>
+<span class="sourceLineNo">077</span>        public static &lt;S extends Style&gt; void changeStyle(UIObject widget, S style,Class&lt;S&gt; styleEnums) {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>                for(S s : styleEnums.getEnumConstants()) {<a name="line.78"></a>
+<span class="sourceLineNo">079</span>                        removeStyle(widget, s);<a name="line.79"></a>
+<span class="sourceLineNo">080</span>                }<a name="line.80"></a>
+<span class="sourceLineNo">081</span>                <a name="line.81"></a>
+<span class="sourceLineNo">082</span>                addStyle(widget, style);<a name="line.82"></a>
+<span class="sourceLineNo">083</span>        }<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>}<a name="line.85"></a>
 
 
 
