@@ -10,19 +10,22 @@ import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.google.gwt.core.client.GWT;
 
 /**
- * A TextBox for Bootstrap form.
+ * A PasswordTextBox for Bootstrap form.
  * 
  * @since 2.0.3.0
  * 
- * @author Carlos Alexandro Becker
  * @author ohashi keisuke
  * 
  */
-public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder, HasAlternateSize, IsSearchQuery {
+public class PasswordTextBox extends com.google.gwt.user.client.ui.PasswordTextBox implements HasPlaceholder ,IsSearchQuery, HasAlternateSize{
 
+	public PasswordTextBox() {
+		super();
+		setStyleName("");
+	}
 	/** placeholderHelper */
 	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -54,7 +57,7 @@ public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox impl
 	public boolean isSearchQuery() {
 		return SearchQueryStyleHelper.isSearchQuery(this);
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -62,7 +65,5 @@ public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox impl
 	public void setAlternateSize(AlternateSize size) {
 		StyleHelper.changeStyle(this, size, AlternateSize.class);
 	}
-
-	// TODO 2012/05/05 ohashi keisuke. Should create setter for
-	// uneditable,disable,size
+	//TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable,size,alternate size
 }
