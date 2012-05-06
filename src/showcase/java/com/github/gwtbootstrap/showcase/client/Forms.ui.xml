@@ -1,0 +1,119 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:with
+		type="com.github.gwtbootstrap.showcase.client.resources.CustomResources"
+		field="res" />
+	<g:HTMLPanel>
+		<b:PageHeader>Forms</b:PageHeader>
+		<b:Heading size="2">Four types of forms</b:Heading>
+		<b:Paragraph>
+			GWT-Bootstrap provides simple markup and styles for four styles of
+			common web forms.
+			<br />
+			It's same as Twitter Bootstrap.
+			<br />
+			If you want to apply form's styles,Use
+			<b:Code>&lt;b:Form&gt;</b:Code>
+			tag or
+			<b:Code>&lt;b:WellForm&gt;</b:Code>
+			.
+		</b:Paragraph>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Code</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Vertical (default)</th>
+					<td>
+						<b:Code>&lt;b:Form type="VERTICAL"&gt;...&lt;/b:Form&gt;</b:Code>
+						<span class="muted">(not required)</span>
+					</td>
+					<td>Stacked, left-aligned labels over controls</td>
+				</tr>
+				<tr>
+					<th>Inline</th>
+					<td>
+						<b:Code>&lt;b:Form type="INLINE"&gt;...&lt;/b:Form&gt;</b:Code>
+					</td>
+					<td>Left-aligned label and inline-block controls for compact style</td>
+				</tr>
+				<tr>
+					<th>Search</th>
+					<td>
+						<b:Code>&lt;b:Form type="SEARCH"&gt;...&lt;/b:Form&gt;</b:Code>
+						or
+						<b:Code>&lt;b:NavSearch&gt;...&lt;/b:NavSearch&gt;</b:Code>
+
+					</td>
+					<td>Extra-rounded text input for a typical search aesthetic</td>
+				</tr>
+				<tr>
+					<th>Horizontal</th>
+					<td>
+						<b:Code>&lt;b:Form type="HORIZONTAL"&gt;...&lt;/b:Form&gt;</b:Code>
+					</td>
+					<td>Float left, right-aligned labels on same line as controls</td>
+				</tr>
+			</tbody>
+		</table>
+		<b:Heading size="2" subtext="using just form controls, no extra markup">
+			Example forms
+		</b:Heading>
+		<b:FluidRow>
+			<b:Column size="6">
+				<b:Heading size="3">Basic form</b:Heading>
+				<b:Paragraph>Smart and lightweight defaults without extra markup.</b:Paragraph>
+				<b:WellForm>
+					<b:ControlLabel>Label name</b:ControlLabel>
+					<b:TextBox placeholder="Type something…" />
+					<b:HelpBlock>Example block-level help text here.</b:HelpBlock>
+					<b:CheckBox> Check me out</b:CheckBox>
+					<g:SubmitButton addStyleNames="btn">Submit</g:SubmitButton>
+				</b:WellForm>
+				<b:CodeBlock linenums="true" ui:field="basicFormCode" />
+			</b:Column>
+			<b:Column size="6">
+				<b:Heading size="3">Search form</b:Heading>
+				<b:Paragraph>
+					Set
+					<b:Code>FormType.SEARCH</b:Code>
+					to our
+					<b:Code>Form</b:Code>
+					class and Set true to our form widget's
+					<b:Code>searchQuery</b:Code>
+					attribute.
+					<br />
+					If you need using search form in navbar ,You can use
+					<b:Code>&lt;b:NavSearch&gt;</b:Code>
+					.
+				</b:Paragraph>
+				<b:WellForm type="SEARCH">
+					<b:TextBox searchQuery="true" placeholder="search our site..." />
+					<b:CheckBox searchQuery="true">With other site?</b:CheckBox>
+					<g:SubmitButton addStyleNames="btn">Submit</g:SubmitButton>
+				</b:WellForm>
+				<b:CodeBlock linenums="true" ui:field="searchFormCode" />
+				<b:Heading size="3">Inline form</b:Heading>
+				<b:Paragraph>
+					Set
+					<b:Code>FormType.INLINE</b:Code>
+					to finesse
+					the vertical alignment and spacing of form controls.
+				</b:Paragraph>
+				<b:WellForm type="INLINE">
+					<b:TextBox alternateSize="SMALL" placeholder="Email"/>
+					<b:PasswordTextBox alternateSize="SMALL" placeholder="Passowrd"/>
+					<b:CheckBox> Remember me</b:CheckBox>
+					<g:SubmitButton addStyleNames="btn">Sign in</g:SubmitButton>
+				</b:WellForm>
+				<b:CodeBlock linenums="true" ui:field="inlineFormCode" />
+			</b:Column>
+		</b:FluidRow>
+	</g:HTMLPanel>
+</ui:UiBinder>

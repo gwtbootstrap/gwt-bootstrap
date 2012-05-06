@@ -1,0 +1,5 @@
+<b:WellForm type="SEARCH">
+	<b:TextBox searchQuery="true" placeholder="search our site..." />
+	<b:CheckBox searchQuery="true">With other site?</b:CheckBox>
+	<g:SubmitButton addStyleNames="btn">Submit</g:SubmitButton>
+</b:WellForm>

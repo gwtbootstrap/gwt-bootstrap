@@ -35,4 +35,13 @@ public interface CustomResources extends Resources {
 	@Source("nestedGridCode.txt")
 	TextResource nestedGridCode();
 
+	@Source("basicFormCode.txt")
+	TextResource basicFormCode();
+	
+	@Source("searchFormCode.txt")
+	TextResource searchFormCode();
+
+	@Source("inlineFormCode.txt")
+	TextResource inlineFormCode();
+
 }
