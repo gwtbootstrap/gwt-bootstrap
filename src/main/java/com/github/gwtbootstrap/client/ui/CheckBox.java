@@ -1,5 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.InputElement;
@@ -38,10 +40,10 @@ import com.google.gwt.user.client.ui.Widget;
  * Re-design for Bootstrap.
  * </p>
  * 
+ * @since 2.0.3.0
  * @author ohashi keisuke
- * 
  */
-public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>> {
+public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>>, IsSearchQuery {
 
 	public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;
 
@@ -170,8 +172,15 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 
 	protected CheckBox(Element elem) {
 		super(DOM.createLabel());
+		
+		assert elem.hasAttribute("type") : "The elem should has type attributes";
 
-		this.setStyleName(Constants.CHECKBOX);
+		//TODO 2012/05/06 ohashi keisuke. ugly code......
+		if(Constants.CHECKBOX.toLowerCase().equals(elem.getAttribute("type").toLowerCase())) {
+			this.setStyleName(Constants.CHECKBOX);
+		} else if(Constants.RADIO.toLowerCase().equals(elem.getAttribute("type").toLowerCase())){
+			this.setStyleName(Constants.RADIO);
+		}
 
 		inputElem = InputElement.as(elem);
 		spanElem = Document.get().createSpanElement();
@@ -558,19 +567,34 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 		DOM.setEventListener(asOld(e), listener);
 	}
 
-	private LabelElement asLabel() {
+	protected LabelElement asLabel() {
 		return LabelElement.as(getElement());
 	}
 
 	public void setInline(boolean inline) {
-		//TODO 2012/05/05 ohashi keisuke. Move to Constants
-		if(getStyleName().contains("inline")) {
-			removeStyleName("inline");
+		if(getStyleName().contains(Constants.INLINE)) {
+			removeStyleName(Constants.INLINE);
 		}
 		
 		if(inline) {
-			addStyleName("inline");
+			addStyleName(Constants.INLINE);
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setSearchQuery(boolean searchQuery) {
+		SearchQueryStyleHelper.setSearchQuery(inputElem, searchQuery);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean isSearchQuery() {
+		return SearchQueryStyleHelper.isSearchQuery(inputElem);
 	}
 
 }
