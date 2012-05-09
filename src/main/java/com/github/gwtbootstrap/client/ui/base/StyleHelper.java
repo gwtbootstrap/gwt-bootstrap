@@ -74,11 +74,26 @@ public class StyleHelper {
 	 * @param style the style to be applied to the widget.
 	 * @param styleEnums other styles.
 	 */
-	public static <S extends Style> void changeStyle(UIObject widget, S style,Class<S> styleEnums) {
-		for(S s : styleEnums.getEnumConstants()) {
+	public static <S extends Enum<S> & Style> void changeStyle(UIObject widget, S style,Class<S> styleEnums) {
+		assert styleEnums != null : "styleEnums should not be null.";
+		
+		changeStyle(widget, style, styleEnums.getEnumConstants());
+	}
+	
+	/**
+	 * Change the style.
+	 * @param widget the widget to be changed style.
+	 * @param style the style to be applied to the widget.
+	 * @param otherStyles other styles.
+	 */
+	public static <S extends Style> void changeStyle(UIObject widget,S style,S[] otherStyles) {
+		
+		assert widget != null && style != null && otherStyles != null : "any args should not be null.";
+		
+		for(S s : otherStyles) {
 			removeStyle(widget, s);
 		}
- 		
+		
 		addStyle(widget, style);
 	}
 

@@ -143,8 +143,7 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * @param type
 	 */
 	public void setType(AlertType type) {
-		super.setStyleName(Constants.ALERT);
-		super.addStyle(type);
+		StyleHelper.changeStyle(this, type, AlertType.class);
 		setFade();
 	}
 
