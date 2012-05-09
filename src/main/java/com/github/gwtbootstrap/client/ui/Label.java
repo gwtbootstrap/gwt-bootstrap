@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasType;
-import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.LabelType;
 import com.google.gwt.user.client.ui.InlineLabel;
@@ -83,18 +83,7 @@ public class Label extends InlineLabel implements HasType<LabelType> {
 	 * {@inheritDoc}
 	 */
 	public void setType(LabelType type) {
-		if (type == null)
-			throw new IllegalArgumentException("Type cannot be null.");
-
-		for (LabelType t : LabelType.values())
-			if (!t.get().isEmpty())
-				removeStyleName(t.get());
-
-		addStyle(type);
-	}
-
-	private void addStyle(Style style) {
-		addStyleName(style.get());
+		StyleHelper.changeStyle(this, type, LabelType.class);
 	}
 
 }

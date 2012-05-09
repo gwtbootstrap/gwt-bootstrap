@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasType;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.BadgeType;
 import com.google.gwt.user.client.ui.InlineLabel;
 
@@ -93,6 +94,6 @@ public class Badge extends InlineLabel implements HasType<BadgeType> {
 	 *            the new type
 	 */
 	public void setType(BadgeType type) {
-		setStyleName(type.get());
+		StyleHelper.changeStyle(this, type, BadgeType.class);
 	}
 }

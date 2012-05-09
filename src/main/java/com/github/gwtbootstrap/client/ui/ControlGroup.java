@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
 
@@ -68,8 +69,6 @@ public class ControlGroup extends HtmlWidget implements HasType<ControlGroupType
 	 * {@inheritDoc}
 	 */
 	public void setType(ControlGroupType type) {
-		for (ControlGroupType t : ControlGroupType.values())
-			removeStyle(t);
-		addStyle(type);
+		StyleHelper.changeStyle(this, type, ControlGroupType.class);
 	}
 }
