@@ -2,9 +2,11 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
+import com.github.gwtbootstrap.client.ui.base.HasSize;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
 import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
 import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
+import com.github.gwtbootstrap.client.ui.base.SizeHelper;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.google.gwt.core.client.GWT;
@@ -18,7 +20,7 @@ import com.google.gwt.core.client.GWT;
  * @author ohashi keisuke
  * 
  */
-public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder, HasAlternateSize, IsSearchQuery {
+public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize {
 
 	/** placeholderHelper */
 	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
@@ -63,6 +65,13 @@ public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox impl
 		StyleHelper.changeStyle(this, size, AlternateSize.class);
 	}
 
-	// TODO 2012/05/05 ohashi keisuke. Should create setter for
-	// uneditable,disable,size
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setSize(int size) {
+		SizeHelper.setSize(this, size);
+	}
+
+	// TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable
 }

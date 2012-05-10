@@ -67,7 +67,7 @@ public class NavFormBase extends Form implements HasAlignment, HasSize {
 	 * {@inheritDoc}
 	 */
 	public void setSize(int size) {
-		input.addStyleName("span" + size);
+		SizeHelper.setSize(input, size);
 	}
 
 	/**

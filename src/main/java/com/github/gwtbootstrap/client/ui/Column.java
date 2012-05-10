@@ -16,6 +16,8 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.SizeHelper;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.uibinder.client.UiConstructor;
@@ -49,12 +51,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @see Configurator#hasResponsiveDesign()
  */
 //@formatter:on
-public class Column extends DivWidget {
-
-	private static final String SIZE_ERROR_MESSAGE =
-			"The size of the Column has to be between "
-					+ Constants.MINIMUM_SPAN_SIZE + " and "
-					+ Constants.MAXIMUM_SPAN_SIZE + "!";
+public class Column extends DivWidget implements HasSize {
 
 	private static final String OFFSET_ERROR_MESSAGE =
 			"The offset of the Column has to be between "
@@ -121,13 +118,7 @@ public class Column extends DivWidget {
 	 *            the size of the Column
 	 */
 	public void setSize(int size) {
-		if (size < Constants.MINIMUM_SPAN_SIZE)
-			throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
-
-		if (size > Constants.MAXIMUM_SPAN_SIZE)
-			throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
-
-		setStyleName(Constants.SPAN + size);
+		SizeHelper.setSize(this, size);
 	}
 
 	/**
