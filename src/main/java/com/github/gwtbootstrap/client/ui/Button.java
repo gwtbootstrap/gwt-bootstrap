@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.base.NavbarButton;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
@@ -166,9 +167,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 *            the type of the Button.
 	 */
 	public void setType(ButtonType type) {
-		for (ButtonType t : ButtonType.values())
-			removeStyle(t);
-		addStyle(type);
+		StyleHelper.changeStyle(this, type, ButtonType.class);
 	}
 
 	/**
@@ -178,9 +177,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 *            the size of the Button.
 	 */
 	public void setSize(ButtonSize size) {
-		for (ButtonSize s : ButtonSize.values())
-			removeStyle(s);
-		addStyle(size);
+		StyleHelper.changeStyle(this, size, ButtonSize.class);
 	}
 
 	/**
