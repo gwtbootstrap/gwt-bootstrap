@@ -286,9 +286,9 @@
 							</modules>
 							<localWorkers>2</localWorkers>
 							<runTarget>index.html</runTarget>
-							<webappDirectory>src/showcase/webapp</webappDirectory>
-							<hostedWebapp>src/showcase/webapp</hostedWebapp>
-							<webXml>${baseDir}/src/showcase/webapp/WEB-INF/web.xml</webXml>
+							<webappDirectory>src/main/webapp</webappDirectory>
+							<hostedWebapp>src/main/webapp</hostedWebapp>
+							<webXml>${baseDir}/src/main/webapp/WEB-INF/web.xml</webXml>
 						</configuration>
 					</plugin>
 
@@ -322,8 +322,8 @@
 							</execution>
 						</executions>
 						<configuration>
-							<webappDirectory>src/showcase/webapp</webappDirectory>
-							<warSourceDirectory>src/showcase/webapp</warSourceDirectory>
+							<webappDirectory>src/main/webapp</webappDirectory>
+							<warSourceDirectory>src/main/webapp</warSourceDirectory>
 						</configuration>
 					</plugin>
 
