@@ -24,7 +24,7 @@
 <span class="sourceLineNo">016</span>package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
 <span class="sourceLineNo">017</span><a name="line.17"></a>
 <span class="sourceLineNo">018</span>import com.github.gwtbootstrap.client.ui.base.HasType;<a name="line.18"></a>
-<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.Style;<a name="line.19"></a>
+<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.StyleHelper;<a name="line.19"></a>
 <span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.20"></a>
 <span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.constants.LabelType;<a name="line.21"></a>
 <span class="sourceLineNo">022</span>import com.google.gwt.user.client.ui.InlineLabel;<a name="line.22"></a>
@@ -91,21 +91,10 @@
 <span class="sourceLineNo">083</span>         * {@inheritDoc}<a name="line.83"></a>
 <span class="sourceLineNo">084</span>         */<a name="line.84"></a>
 <span class="sourceLineNo">085</span>        public void setType(LabelType type) {<a name="line.85"></a>
-<span class="sourceLineNo">086</span>                if (type == null)<a name="line.86"></a>
-<span class="sourceLineNo">087</span>                        throw new IllegalArgumentException("Type cannot be null.");<a name="line.87"></a>
+<span class="sourceLineNo">086</span>                StyleHelper.changeStyle(this, type, LabelType.class);<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        }<a name="line.87"></a>
 <span class="sourceLineNo">088</span><a name="line.88"></a>
-<span class="sourceLineNo">089</span>                for (LabelType t : LabelType.values())<a name="line.89"></a>
-<span class="sourceLineNo">090</span>                        if (!t.get().isEmpty())<a name="line.90"></a>
-<span class="sourceLineNo">091</span>                                removeStyleName(t.get());<a name="line.91"></a>
-<span class="sourceLineNo">092</span><a name="line.92"></a>
-<span class="sourceLineNo">093</span>                addStyle(type);<a name="line.93"></a>
-<span class="sourceLineNo">094</span>        }<a name="line.94"></a>
-<span class="sourceLineNo">095</span><a name="line.95"></a>
-<span class="sourceLineNo">096</span>        private void addStyle(Style style) {<a name="line.96"></a>
-<span class="sourceLineNo">097</span>                addStyleName(style.get());<a name="line.97"></a>
-<span class="sourceLineNo">098</span>        }<a name="line.98"></a>
-<span class="sourceLineNo">099</span><a name="line.99"></a>
-<span class="sourceLineNo">100</span>}<a name="line.100"></a>
+<span class="sourceLineNo">089</span>}<a name="line.89"></a>
 
 
 
