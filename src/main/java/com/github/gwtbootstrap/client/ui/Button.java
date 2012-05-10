@@ -188,7 +188,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 * @return <code>false</code> if the Button is disabled.
 	 */
 	public boolean isEnabled() {
-		return getStyleName().contains(Constants.DISABLED);
+		return !getStyleName().contains(Constants.DISABLED);
 	}
 
 	/**
