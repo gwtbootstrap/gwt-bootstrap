@@ -15,9 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
@@ -25,20 +22,16 @@ import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.DismissType;
-import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
-import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
-import com.github.gwtbootstrap.client.ui.event.HideEvent;
-import com.github.gwtbootstrap.client.ui.event.HideHandler;
-import com.github.gwtbootstrap.client.ui.event.ShowEvent;
-import com.github.gwtbootstrap.client.ui.event.ShowHandler;
-import com.github.gwtbootstrap.client.ui.event.ShownEvent;
-import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.github.gwtbootstrap.client.ui.event.*;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import java.util.HashSet;
+import java.util.Set;
 
 //@formatter:off
 /**
@@ -106,10 +99,40 @@ public class Modal extends DivWidget implements HasVisibility,
 	 * 
 	 * @param animated
 	 *            <code>true</code> if the widget should be animated.
+         * 
 	 */
 	public Modal(boolean animated) {
+            this(animated, false);
+        }
+        
+	/**
+	 * Creates an empty, hidden widget with specified show behavior.
+	 * 
+	 * @param animated
+	 *            <code>true</code> if the widget should be animated.
+         * 
+         * @param dynamicSafe
+         *            <code>true</code> removes from RootPanel when hidden
+	 */
+	public Modal(boolean animated, boolean dynamicSafe) {
 		this();
 		setAnimation(animated);
+                
+                if (dynamicSafe) {
+                    addHiddenHandler(new HiddenHandler() {
+
+                        @Override
+                        public void onHidden(HiddenEvent hiddenEvent) {
+                            (new Timer() {
+
+                                @Override
+                                public void run() {
+                                    RootPanel.get().remove(Modal.this);
+                                }
+                            }).schedule(3000);
+                        }
+                    });
+                }
 	}
 
 	/**
