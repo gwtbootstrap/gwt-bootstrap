@@ -148,4 +148,18 @@ public abstract class DropdownBase extends ComplexWidget {
 	private native void configure(Element e) /*-{
 		$wnd.jQuery(e).dropdown();
 	}-*/;
+        
+        /**
+         * Pull the dropdown menu to right
+         * 
+         * @param rightDropdown 
+         *                      <code>true</code> pull to right, otherwise to left. Default is <code>false</code>
+         */
+        public void setRightDropdown(boolean rightDropdown) {
+            if (rightDropdown) {
+                menu.addStyleName("pull-right");
+            } else {
+                menu.removeStyleName("pull-right");
+            }
+        }
 }
