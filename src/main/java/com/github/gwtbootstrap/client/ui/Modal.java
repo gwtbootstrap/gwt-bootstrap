@@ -80,8 +80,26 @@ public class Modal extends DivWidget implements HasVisibility,
 	private boolean hideOthers = true;
 
 	private boolean configured = false;
-
         private Close close = new Close(DismissType.MODAL);
+        
+        private HandlerRegistration memoryLeakPreventHandlerRegistration;
+        private HiddenHandler memoryLeakPreventHandler = new HiddenHandler() {
+
+            @Override
+            public void onHidden(HiddenEvent hiddenEvent) {
+                (new Timer() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            Modal.this.removeFromParent();
+                        } catch (com.google.gwt.user.client.ui.AttachDetachException ex) {
+                        }
+                    }
+                }).schedule(3000);
+            }
+        };
+    
 	/**
 	 * Creates an empty, hidden widget.
 	 */
@@ -127,7 +145,10 @@ public class Modal extends DivWidget implements HasVisibility,
 
                                 @Override
                                 public void run() {
-                                    RootPanel.get().remove(Modal.this);
+                                    try {
+                                        Modal.this.removeFromParent();
+                                    } catch (com.google.gwt.user.client.ui.AttachDetachException ex) {
+                                    }
                                 }
                             }).schedule(3000);
                         }
@@ -401,4 +422,15 @@ public class Modal extends DivWidget implements HasVisibility,
                     Style.Visibility.VISIBLE : Style.Visibility.HIDDEN);
         }
 
+    protected void installMemoryLeakPrevention() {
+        removeMemoryLeakPrevention();
+        memoryLeakPreventHandlerRegistration = addHiddenHandler(memoryLeakPreventHandler);
+    }
+
+    protected void removeMemoryLeakPrevention() {
+        if (memoryLeakPreventHandlerRegistration != null) {
+            memoryLeakPreventHandlerRegistration.removeHandler();
+            memoryLeakPreventHandlerRegistration = null;
+        }
+    }
 }
