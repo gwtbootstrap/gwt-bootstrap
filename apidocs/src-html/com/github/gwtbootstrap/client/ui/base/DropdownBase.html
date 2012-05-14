@@ -156,7 +156,21 @@
 <span class="sourceLineNo">148</span>        private native void configure(Element e) /*-{<a name="line.148"></a>
 <span class="sourceLineNo">149</span>                $wnd.jQuery(e).dropdown();<a name="line.149"></a>
 <span class="sourceLineNo">150</span>        }-*/;<a name="line.150"></a>
-<span class="sourceLineNo">151</span>}<a name="line.151"></a>
+<span class="sourceLineNo">151</span>        <a name="line.151"></a>
+<span class="sourceLineNo">152</span>        /**<a name="line.152"></a>
+<span class="sourceLineNo">153</span>         * Pull the dropdown menu to right<a name="line.153"></a>
+<span class="sourceLineNo">154</span>         * <a name="line.154"></a>
+<span class="sourceLineNo">155</span>         * @param rightDropdown <a name="line.155"></a>
+<span class="sourceLineNo">156</span>         *                      &lt;code&gt;true&lt;/code&gt; pull to right, otherwise to left. Default is &lt;code&gt;false&lt;/code&gt;<a name="line.156"></a>
+<span class="sourceLineNo">157</span>         */<a name="line.157"></a>
+<span class="sourceLineNo">158</span>        public void setRightDropdown(boolean rightDropdown) {<a name="line.158"></a>
+<span class="sourceLineNo">159</span>            if (rightDropdown) {<a name="line.159"></a>
+<span class="sourceLineNo">160</span>                menu.addStyleName("pull-right");<a name="line.160"></a>
+<span class="sourceLineNo">161</span>            } else {<a name="line.161"></a>
+<span class="sourceLineNo">162</span>                menu.removeStyleName("pull-right");<a name="line.162"></a>
+<span class="sourceLineNo">163</span>            }<a name="line.163"></a>
+<span class="sourceLineNo">164</span>        }<a name="line.164"></a>
+<span class="sourceLineNo">165</span>}<a name="line.165"></a>
 
 
 
