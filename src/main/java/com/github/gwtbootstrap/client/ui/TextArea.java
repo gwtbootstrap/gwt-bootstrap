@@ -1,15 +1,26 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
+import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
 import com.github.gwtbootstrap.client.ui.base.SizeHelper;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.TextAreaElement;
 
-public class TextArea extends com.google.gwt.user.client.ui.TextArea implements HasSize , HasAlternateSize {
+/**
+ * A TextArea for Bootstrap form.
+ * 
+ * @since 2.0.3.0
+ * @author ohashi keisuke
+ */
+public class TextArea extends com.google.gwt.user.client.ui.TextArea implements HasSize , HasAlternateSize, HasPlaceholder {
+
+	/** placeholderHelper */
+	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
 
 	/**
 	 * Creates an empty text area.
@@ -27,7 +38,6 @@ public class TextArea extends com.google.gwt.user.client.ui.TextArea implements 
 	 */
 	protected TextArea(Element element) {
 		super(element.<Element> cast());
-		TextAreaElement.as(element);
 	}
 
 	/**
@@ -45,6 +55,20 @@ public class TextArea extends com.google.gwt.user.client.ui.TextArea implements 
 	public void setSize(int size) {
 		SizeHelper.setSize(this, size);
 	}
-	
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setPlaceholder(String placeholder) {
+		placeholderHelper.setPlaceholer(getElement(), placeholder);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getPlaceholder() {
+		return placeholderHelper.getPlaceholder(getElement());
+	}
 }

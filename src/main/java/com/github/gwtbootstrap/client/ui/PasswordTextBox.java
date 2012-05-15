@@ -65,5 +65,5 @@ public class PasswordTextBox extends com.google.gwt.user.client.ui.PasswordTextB
 	public void setAlternateSize(AlternateSize size) {
 		StyleHelper.changeStyle(this, size, AlternateSize.class);
 	}
-	//TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable,size,alternate size
+	//TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable
 }

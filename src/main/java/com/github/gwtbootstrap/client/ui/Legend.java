@@ -26,10 +26,18 @@ import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
  */
 public class Legend extends HtmlWidget {
 
+	/**
+	 * Create legend with html.
+	 * @param html
+	 * 			contents HTML
+	 */
 	public Legend(String html) {
 		super("legend", html);
 	}
 	
+	/**
+	 * Create an empty legend.
+	 */
 	public Legend() {
 		this("");
 	}
