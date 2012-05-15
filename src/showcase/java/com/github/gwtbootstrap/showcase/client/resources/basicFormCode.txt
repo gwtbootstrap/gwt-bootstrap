@@ -3,6 +3,5 @@
 	<b:TextBox placeholder="Type something…"/>
 	<b:HelpBlock>Example block-level help text here.</b:HelpBlock>
 	<b:CheckBox> Check me out</b:CheckBox>
-	<!-- maybe we will provide b:SubmitButton -->
-	<g:SubmitButton addStyleNames="btn">Submit</g:SubmitButton>
+	<b:SubmitButton addStyleNames="btn">Submit</b:SubmitButton>
 </b:WellForm>

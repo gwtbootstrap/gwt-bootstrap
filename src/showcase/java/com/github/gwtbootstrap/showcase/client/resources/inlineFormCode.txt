@@ -2,5 +2,5 @@
 	<b:TextBox alternateSize="SMALL" placeholder="Email"/>
 	<b:PasswordTextBox alternateSize="SMALL" placeholder="Passowrd"/>
 	<b:CheckBox> Remember me</b:CheckBox>
-	<g:SubmitButton addStyleNames="btn">Sign in</g:SubmitButton>
+	<b:SubmitButton addStyleNames="btn">Sign in</b:SubmitButton>
 </b:WellForm>

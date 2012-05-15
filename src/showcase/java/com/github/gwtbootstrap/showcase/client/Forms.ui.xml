@@ -74,7 +74,7 @@
 					<b:TextBox placeholder="Type something…" />
 					<b:HelpBlock>Example block-level help text here.</b:HelpBlock>
 					<b:CheckBox> Check me out</b:CheckBox>
-					<g:SubmitButton addStyleNames="btn">Submit</g:SubmitButton>
+					<b:SubmitButton addStyleNames="btn">Submit</b:SubmitButton>
 				</b:WellForm>
 				<b:CodeBlock linenums="true" ui:field="basicFormCode" />
 			</b:Column>
@@ -96,7 +96,7 @@
 				<b:WellForm type="SEARCH">
 					<b:TextBox searchQuery="true" placeholder="search our site..." />
 					<b:CheckBox searchQuery="true">With other site?</b:CheckBox>
-					<g:SubmitButton addStyleNames="btn">Submit</g:SubmitButton>
+					<b:SubmitButton addStyleNames="btn">Submit</b:SubmitButton>
 				</b:WellForm>
 				<b:CodeBlock linenums="true" ui:field="searchFormCode" />
 				<b:Heading size="3">Inline form</b:Heading>
@@ -110,7 +110,7 @@
 					<b:TextBox alternateSize="SMALL" placeholder="Email"/>
 					<b:PasswordTextBox alternateSize="SMALL" placeholder="Passowrd"/>
 					<b:CheckBox> Remember me</b:CheckBox>
-					<g:SubmitButton addStyleNames="btn">Sign in</g:SubmitButton>
+					<b:SubmitButton addStyleNames="btn">Sign in</b:SubmitButton>
 				</b:WellForm>
 				<b:CodeBlock linenums="true" ui:field="inlineFormCode" />
 			</b:Column>
