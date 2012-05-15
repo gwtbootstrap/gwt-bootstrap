@@ -21,6 +21,7 @@ import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.dom.client.BodyElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -84,6 +85,8 @@ public class Navbar extends DivWidget {
 	private final Container container = getContainer();
 	private final NavbarInner navbarInner = new NavbarInner();
 	private Scrollspy spy;
+	
+	private Element spyElement;
 
 	private boolean scrollspy;
 
@@ -114,6 +117,22 @@ public class Navbar extends DivWidget {
 	 */
 	public void setScrollspy(boolean scrollspy) {
 		this.scrollspy = scrollspy;
+	}
+	
+	/**
+	 * Defines scrollspy target element.
+	 * @param spyElement target element
+	 */
+	public void setSpyElement(Element spyElement) {
+		
+		assert spyElement != null;
+		
+		this.spyElement = spyElement;
+		if (spy == null)
+			spy = new Scrollspy(this);
+		
+		spy.setSpyElement(spyElement);
+		this.scrollspy = true;
 	}
 	
 	@Override
