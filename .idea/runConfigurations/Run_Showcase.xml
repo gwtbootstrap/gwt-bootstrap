@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Showcase" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+    <module name="gwt-bootstrap" />
+    <option name="VM_PARAMETERS" value="-Xmx1024m" />
+    <option name="SHELL_PARAMETERS" value="-war /home/carlos/workspace/gwtp/src/showcase/webapp" />
+    <option name="RUN_PAGE" value="index.html" />
+    <option name="GWT_MODULE" value="com.github.gwtbootstrap.showcase.Showcase" />
+    <option name="OPEN_IN_BROWSER" value="false" />
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method />
+  </configuration>
+</component>

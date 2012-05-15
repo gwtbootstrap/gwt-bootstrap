@@ -117,23 +117,35 @@ public class Modal extends DivWidget implements HasVisibility,
 	public Modal(boolean animated, boolean dynamicSafe) {
 		this();
 		setAnimation(animated);
-                
-                if (dynamicSafe) {
-                    addHiddenHandler(new HiddenHandler() {
-
-                        @Override
-                        public void onHidden(HiddenEvent hiddenEvent) {
-                            (new Timer() {
-
-                                @Override
-                                public void run() {
-                                    RootPanel.get().remove(Modal.this);
-                                }
-                            }).schedule(3000);
-                        }
-                    });
-                }
+        setDynamicSafe(dynamicSafe);
 	}
+
+    /**
+     * Configure the modal to be automatically removed from DOM when its closed.
+     * It could be set used to prevent memory leaks.
+     *
+     * Default is true.
+     *
+     * @param dynamicSafe if true, will add the hidden handlers to remove the HTML from DOM and to remove the handlers,
+     *                    if false, will do nothing.
+     */
+    public void setDynamicSafe(boolean dynamicSafe) {
+        if (dynamicSafe) {
+            addHiddenHandler(new HiddenHandler() {
+
+                @Override
+                public void onHidden(HiddenEvent hiddenEvent) {
+                    (new Timer() {
+                        @Override
+                        public void run() {
+                            unsetHandlerFunctions(getElement());
+                            RootPanel.get().remove(Modal.this);
+                        }
+                    }).schedule(3000);
+                }
+            });
+        }
+    }
 
 	/**
 	 * Sets the title of the Modal.
@@ -362,6 +374,14 @@ public class Modal extends DivWidget implements HasVisibility,
 			that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();
 		});
 	}-*/;
+
+    /**
+     * Unlinks all the Java functions that fire the events.
+     */
+    private native void unsetHandlerFunctions(Element e) /*-{
+		$wnd.jQuery(e).off();
+
+    }-*/;
 
 	/**
 	 * {@inheritDoc}
