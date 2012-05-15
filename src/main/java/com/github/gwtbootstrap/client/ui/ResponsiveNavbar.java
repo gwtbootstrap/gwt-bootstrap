@@ -129,7 +129,7 @@ public class ResponsiveNavbar extends Navbar {
 
 			public void onResize(final ResizeEvent event) {
 				resizeTimer.cancel();
-				resizeTimer.schedule(250);
+				resizeTimer.schedule(10);
 			}
 		});
 	}
