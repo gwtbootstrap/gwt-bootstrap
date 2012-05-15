@@ -26,6 +26,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 * @since 2.0.3.0
 * 
 * @author Dominik Mayer
+* @author Carlos A Becker
 * 
 * @see <a href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap documentation</a>
 * 
@@ -33,7 +34,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 //@formatter:on
 public enum AlertType implements Style {
 
-	DEFAULT(""), ERROR("error"), SUCCESS("success"), INFO("info");
+	DEFAULT(""), ERROR("error"), SUCCESS("success"), INFO("info"), WARNING("");
 
 	private String className;
 
