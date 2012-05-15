@@ -86,8 +86,6 @@ public class Navbar extends DivWidget {
 	private final NavbarInner navbarInner = new NavbarInner();
 	private Scrollspy spy;
 	
-	private Element spyElement;
-
 	private boolean scrollspy;
 
 	/**
@@ -127,7 +125,6 @@ public class Navbar extends DivWidget {
 		
 		assert spyElement != null;
 		
-		this.spyElement = spyElement;
 		if (spy == null)
 			spy = new Scrollspy(this);
 		
