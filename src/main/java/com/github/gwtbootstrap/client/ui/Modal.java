@@ -117,23 +117,35 @@ public class Modal extends DivWidget implements HasVisibility,
 	public Modal(boolean animated, boolean dynamicSafe) {
 		this();
 		setAnimation(animated);
-                
-                if (dynamicSafe) {
-                    addHiddenHandler(new HiddenHandler() {
-
-                        @Override
-                        public void onHidden(HiddenEvent hiddenEvent) {
-                            (new Timer() {
-
-                                @Override
-                                public void run() {
-                                    RootPanel.get().remove(Modal.this);
-                                }
-                            }).schedule(3000);
-                        }
-                    });
-                }
+        setDynamicSafe(dynamicSafe);
 	}
+
+    /**
+     * Setup the modal to prevent memory leaks.
+     * When modal is hidden, will remove all event handlers, and them
+     * remove the modal DOM from document DOM.
+     *
+     * Default is false.
+     *
+     * @param dynamicSafe
+     */
+    public void setDynamicSafe(boolean dynamicSafe) {
+        if (dynamicSafe) {
+            addHiddenHandler(new HiddenHandler() {
+
+                @Override
+                public void onHidden(HiddenEvent hiddenEvent) {
+                    (new Timer() {
+                        @Override
+                        public void run() {
+                            unsetHandlerFunctions(getElement());
+                            RootPanel.get().remove(Modal.this);
+                        }
+                    }).schedule(3000);
+                }
+            });
+        }
+    }
 
 	/**
 	 * Sets the title of the Modal.
@@ -362,6 +374,14 @@ public class Modal extends DivWidget implements HasVisibility,
 			that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();
 		});
 	}-*/;
+
+
+    /**
+     * Unlinks all the Java functions that fire the events.
+     */
+    private native void unsetHandlerFunctions(Element e) /*-{
+        $wnd.jQuery(e).off();
+    }-*/;
 
 	/**
 	 * {@inheritDoc}
