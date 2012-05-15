@@ -93,7 +93,7 @@
 					<b:Code>&lt;b:NavSearch&gt;</b:Code>
 					.
 				</b:Paragraph>
-				<b:WellForm type="SEARCH">
+				<b:WellForm type="SEARCH" target="" action="#">
 					<b:TextBox searchQuery="true" placeholder="search our site..." />
 					<b:CheckBox searchQuery="true">With other site?</b:CheckBox>
 					<b:SubmitButton addStyleNames="btn">Submit</b:SubmitButton>

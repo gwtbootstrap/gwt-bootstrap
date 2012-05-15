@@ -28,7 +28,6 @@ import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeUri;
-import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -52,7 +51,7 @@ import com.google.gwt.user.client.ui.impl.FormPanelImplHost;
  * @since 2.0.3.0
  * 
  * @author Dominik Mayer
- * 
+ * @author ohashi keisuke
  */
 // @formatter:on
 public class Form extends ComplexWidget implements FormPanelImplHost {
@@ -216,8 +215,8 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 		this(true);
 	}
 	
-	public @UiConstructor Form(boolean createForm) {
-		this(Document.get().createFormElement() , createForm);
+	public Form(boolean createIFrame) {
+		this(Document.get().createFormElement(), createIFrame);
 	}
 
 	/**
