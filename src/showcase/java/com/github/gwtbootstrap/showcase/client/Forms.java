@@ -22,7 +22,6 @@ public class Forms extends Composite {
 
 	public Forms() {
 		initWidget(uiBinder.createAndBindUi(this));
-		
 		basicFormCode.setHTML(CustomResources.RESOURCES.basicFormCode().getText());
 		searchFormCode.setHTML(CustomResources.RESOURCES.searchFormCode().getText());
 		inlineFormCode.setHTML(CustomResources.RESOURCES.inlineFormCode().getText());
