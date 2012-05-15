@@ -28,10 +28,11 @@
             <b:Column size="12">
                 <g:HTMLPanel>
                     <b:Button ui:field="onShow" text="show the modal" />
-                    <b:Modal ui:field="m" title="My Modal" backdrop="STATIC" keyboard="true" animation="true">
+                    <b:Modal ui:field="m" title="My Modal" backdrop="STATIC" keyboard="true" animation="true"
+                            dynamicSafe="true">
                         <g:Label>Modal Content!</g:Label>
                         <b:ModalFooter>
-                            <b:Button icon="FILE" type="PRIMARY">Save</b:Button>
+                            <b:Button iconColor="WHITE" icon="FILE" type="PRIMARY">Save</b:Button>
                         </b:ModalFooter>
                     </b:Modal>
                     <pre class="prettyprint linenums">
