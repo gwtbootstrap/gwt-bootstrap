@@ -27,7 +27,17 @@
         <b:Row>
             <b:Column size="6">
                 <g:HTMLPanel>
-                    <b2:DateBox format="dd/mm/yyy" />
+                    <b2:DateBox format="dd/mm/yyyy" autoClose="true" />
+                    <pre class="prettyprint linenums">
+                        &lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert
+                        without close&lt;/b:Alert&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b2:DateBoxAppended />
                     <pre class="prettyprint linenums">
                         &lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert
                         without close&lt;/b:Alert&gt;</pre>
