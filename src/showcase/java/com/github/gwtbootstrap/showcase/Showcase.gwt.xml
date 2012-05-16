@@ -19,6 +19,7 @@
 <module rename-to='showcase'>
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.github.gwtbootstrap.Bootstrap' />
+    <inherits name='com.github.gwtbootstrap.datepicker.Datepicker' />
 	
 	<!-- set responsive design -->
 	<set-property name="bootstrap.responsiveDesign" value="true"/>
