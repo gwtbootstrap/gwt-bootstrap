@@ -27,24 +27,49 @@
         <b:Row>
             <b:Column size="6">
                 <g:HTMLPanel>
-                    <b2:DateBox format="dd/mm/yyyy" autoClose="true" weekStart="3" language="br" startDate="01/01/2000"
-                            endDate="31/12/2012"/>
-                    <pre class="prettyprint linenums">
-xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
+                    <b2:DateBox format="dd/mm/yyyy" autoClose="true" weekStart="3" language="de" startDate="01/01/2000"
+                                endDate="31/12/2012" startView="year"/>
 
-&lt;b2:DateBox format=&quot;dd/mm/yyyy&quot; /&gt;</pre>
+                    <p>You will need to add a new xmlns to use this.</p>
+
+                    <p>
+                        <pre class="prettyprint linenums">
+xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
+                        </pre>
+                    </p>
+
+                    <p>Also, don't forget to add the</p>
+
+                    <p>
+                        <pre class="prettyprint linenums">
+&lt;inherits name='com.github.gwtbootstrap.datepicker.Datepicker' /&gt;
+                        </pre>
+                    </p>
+                    <p>to your GWT Module.</p>
+
+                    <p>
+                        Then, you can use it in the "b2" namespace.
+                    </p>
+                    <p>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateBox format="dd/mm/yyyy" autoClose="true" weekStart="3" language="de" startDate="01/01/2000" endDate="31/12/2012" startView="year" />
+                    </pre>
+                    </p>
+                    <p>
+                        Note that all the parameters are optional. Also, the datepicker will always try to get the user's browser language, so, usually you will not need to set a language by hand.
+                    </p>
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
         <!--<b:Row>-->
-            <!--<b:Column size="6">-->
-                <!--<g:HTMLPanel>-->
-                    <!--<b2:DateBoxAppended />-->
-                    <!--<pre class="prettyprint linenums">-->
-                        <!--&lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert-->
-                        <!--without close&lt;/b:Alert&gt;</pre>-->
-                <!--</g:HTMLPanel>-->
-            <!--</b:Column>-->
+        <!--<b:Column size="6">-->
+        <!--<g:HTMLPanel>-->
+        <!--<b2:DateBoxAppended />-->
+        <!--<pre class="prettyprint linenums">-->
+        <!--&lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert-->
+        <!--without close&lt;/b:Alert&gt;</pre>-->
+        <!--</g:HTMLPanel>-->
+        <!--</b:Column>-->
         <!--</b:Row>-->
     </g:HTMLPanel>
 </ui:UiBinder>

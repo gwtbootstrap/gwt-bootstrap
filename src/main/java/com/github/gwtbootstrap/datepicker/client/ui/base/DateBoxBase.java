@@ -11,13 +11,10 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Base DatePicker component.
@@ -25,8 +22,8 @@ import java.util.Map;
  * @author Carlos Alexandro Becker
  * @since 2.0.3.0
  */
-public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasDateFormat, HasVisibility,
-        HasVisibleHandlers, HasWeekStart {
+public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasVisibility,
+        HasVisibleHandlers, HasAllDatePickerHandlers {
 
     private final TextBox box;
     private String format;
@@ -56,14 +53,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
 
     public void setLanguage(String language) {
         this.language = language;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getFormat() {
-        return format;
+        LocaleUtil.forceLocale(language);
     }
 
     /**
@@ -145,10 +135,6 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
         configure(this);
     }
 
-    public void setAutoClose(boolean autoClose) {
-        getElement().setAttribute("data-date-autoclose", autoClose+"");
-    }
-
     /**
      * call jquery datepicker plugin in a element.
      *
@@ -176,61 +162,124 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
         execute(getElement(), cmd);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void show() {
         execute("show");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void hide() {
         execute("hide");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void toggle() {
         // TODO toggle.
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public HandlerRegistration addHideHandler(HideHandler handler) {
         return addHandler(handler, HideEvent.getType());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
         return addHandler(handler, HiddenEvent.getType());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public HandlerRegistration addShowHandler(ShowHandler handler) {
         return addHandler(handler, ShowEvent.getType());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public HandlerRegistration addShownHandler(ShownHandler handler) {
         return addHandler(handler, ShownEvent.getType());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setWeekStart(int start) {
-        getElement().setAttribute("data-date-weekstart", start+"");
+        getElement().setAttribute("data-date-weekstart", start + "");
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setStartDate(String startDate) {
         getElement().setAttribute("data-date-startdate", startDate);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setStartDate_(Date startDate) {
         setStartDate(dtf.format(startDate));
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setEndDate(String endDate) {
         getElement().setAttribute("data-date-enddate", endDate);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setEndDate_(Date endDate) {
         setEndDate(dtf.format(endDate));
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setAutoClose(boolean autoclose) {
+        getElement().setAttribute("data-date-autoclose", autoclose + "");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setStartView(ViewMode mode) {
+        setStartView(mode.name());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setStartView(String mode) {
+        getElement().setAttribute("data-date-startview", mode.toLowerCase());
+    }
 }
