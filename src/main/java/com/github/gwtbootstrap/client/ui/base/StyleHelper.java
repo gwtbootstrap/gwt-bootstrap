@@ -100,5 +100,5 @@ public class StyleHelper {
 
 		addStyle(widget, style);
 	}
-
+	
 }

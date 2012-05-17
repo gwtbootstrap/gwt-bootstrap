@@ -1,5 +1,6 @@
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
 import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
@@ -43,7 +44,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.3.0
  * @author ohashi keisuke
  */
-public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>>, IsSearchQuery {
+public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>>, IsSearchQuery,HasId {
 
 	public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;
 
@@ -335,9 +336,9 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	public void setEnabled(boolean enabled) {
 		inputElem.setDisabled(!enabled);
 		if (enabled) {
-			removeStyleDependentName("disabled");
+			inputElem.removeClassName(Constants.DISABLED);
 		} else {
-			addStyleDependentName("disabled");
+			inputElem.addClassName(Constants.DISABLED);
 		}
 	}
 
@@ -596,5 +597,23 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	public boolean isSearchQuery() {
 		return SearchQueryStyleHelper.isSearchQuery(inputElem);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getId() {
+		return getElement().getId();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setId(String id) {
+		inputElem.setId(id);
+		asLabel().setHtmlFor(id);
+	}
+
 
 }
