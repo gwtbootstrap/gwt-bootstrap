@@ -228,3 +228,4 @@ Also, Modal implements the `HasVisibleHandlers` interface, so, it has the `show`
 The footer is optional.
 
 
+
