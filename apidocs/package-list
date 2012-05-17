@@ -7,3 +7,8 @@ com.github.gwtbootstrap.client.ui.event
 com.github.gwtbootstrap.client.ui.incubator
 com.github.gwtbootstrap.client.ui.resources
 com.github.gwtbootstrap.client.ui.resources.prettify
+com.github.gwtbootstrap.datepicker.client
+com.github.gwtbootstrap.datepicker.client.ui
+com.github.gwtbootstrap.datepicker.client.ui.base
+com.github.gwtbootstrap.datepicker.client.ui.resources
+com.github.gwtbootstrap.datepicker.client.ui.util
