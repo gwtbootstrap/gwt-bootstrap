@@ -1,0 +1,12 @@
+<b:Form type="HORIZONTAL">
+  <b:Fieldset>
+    <b:ControlGroup>
+      <b:ControlLabel for="input01">TextBox</b:ControlLabel>
+      <b:Controls>
+        <!-- If you add id attribute to element,You should use b:id attribute. -->
+        <b:TextBox alternateSize="XLARGE" b:id="input01"></b:TextBox>
+        <b:HelpBlock>In addition to freeform text, any HTML5 text-based input appears like so.</b:HelpBlock>
+      </b:Controls>
+    </b:ControlGroup>
+  </b:Fieldset>
+</b:Form>
