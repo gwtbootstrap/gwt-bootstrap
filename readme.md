@@ -227,3 +227,5 @@ As you can see, we have several optional settings. These options are exactly equ
 Also, Modal implements the `HasVisibleHandlers` interface, so, it has the `show`, `hide` and `toggle` methods.
 The footer is optional.
 
+
+
