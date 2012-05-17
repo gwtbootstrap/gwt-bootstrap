@@ -1,6 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
+import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
@@ -9,6 +10,7 @@ import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
 import com.github.gwtbootstrap.client.ui.base.SizeHelper;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.core.client.GWT;
 
 /**
@@ -20,11 +22,11 @@ import com.google.gwt.core.client.GWT;
  * @author ohashi keisuke
  * 
  */
-public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize {
+public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId {
 
 	/** placeholderHelper */
 	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -71,6 +73,35 @@ public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox impl
 	@Override
 	public void setSize(int size) {
 		SizeHelper.setSize(this, size);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getId() {
+		return getElement().getId();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setId(String id) {
+		getElement().setId(id);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		if(enabled) {
+			removeStyleName(Constants.DISABLED);
+		} else {
+			addStyleName(Constants.DISABLED);
+		}
 	}
 
 	// TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable

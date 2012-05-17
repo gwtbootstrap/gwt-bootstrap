@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
+import com.google.gwt.dom.client.LabelElement;
 
 
 /**
@@ -57,4 +58,25 @@ public class FormLabel extends HtmlWidget {
 	public FormLabel() {
 		this("");
 	}
+	
+	/**
+	 * Set <code>for</code> attribute.
+	 * @param id set attribute value
+	 */
+	public void setFor(String id) {
+		getLabelElement().setHtmlFor(id);
+	}
+	
+	/**
+	 * Get <code>for</code> attribute
+	 * @return for attribute value
+	 */
+	public String getFor() {
+		return getLabelElement().getHtmlFor();
+	}
+	
+	protected LabelElement getLabelElement() {
+		return getElement().cast();
+	}
+
 }

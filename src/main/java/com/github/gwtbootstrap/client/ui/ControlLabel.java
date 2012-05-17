@@ -68,14 +68,6 @@ public class ControlLabel extends FormLabel implements HasDirectionEstimator {
 	}
 
 	/**
-	 * Set <code>for</code> attribute.
-	 * @param id set id
-	 */
-	public void setFor(String id) {
-		getElement().setAttribute("for", id);
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	public DirectionEstimator getDirectionEstimator() {

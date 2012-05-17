@@ -13,4 +13,5 @@ import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 public interface HasAlternateSize {
 
 	public void setAlternateSize(AlternateSize size);
+	
 }
