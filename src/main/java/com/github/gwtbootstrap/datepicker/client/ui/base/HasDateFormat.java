@@ -13,11 +13,4 @@ public interface HasDateFormat {
      * @param format: the date format (dd/mm/yyyy, e.g.)
      */
     void setFormat(String format);
-
-    /**
-     * get the atual component format.
-     * @return format: the date format (dd/mm/yyyy, e.g.)
-     */
-    String getFormat();
-
 }

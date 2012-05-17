@@ -1,7 +1,12 @@
 package com.github.gwtbootstrap.datepicker.client.ui.util;
 
+import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
+import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;
 import com.github.gwtbootstrap.datepicker.client.ui.resources.Resources;
 import com.google.gwt.resources.client.TextResource;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A utility class to get the User's Browser Locale.
@@ -13,6 +18,8 @@ public class LocaleUtil {
 
     private static String locale = null;
     private static String LANGUAGE = null;
+
+    private static List<String> loaded = new ArrayList<String>();
 
     public static String getLanguage() {
         if (LANGUAGE == null) {
@@ -44,6 +51,14 @@ public class LocaleUtil {
     private static final native String getBrowserLocale() /*-{
         return $wnd.navigator.userLanguage || $wnd.navigator.language;
     }-*/;
+
+
+    public static final void forceLocale(String locale_) {
+        locale = locale_;
+        if (!loaded.contains(locale)) {
+            JavaScriptInjector.inject(setupLocale().getText());
+        }
+    }
 
     private static TextResource setupLocale() {
         Resources r = Resources.RESOURCES;
@@ -110,7 +125,9 @@ public class LocaleUtil {
             tr = null;
             LANGUAGE = "en";
         }
+
+        loaded.add(LANGUAGE);
+
         return tr;
     }
-
 }

@@ -69,14 +69,6 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>, Has
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getFormat() {
-        return box.getFormat();
-    }
-
-    /**
      * An 'adapter' to change some aspects of the behavior of datepickerbase. //TODO may need refactor.
      */
     private class DateBoxAppendedAdapter extends DateBoxBase {
