@@ -16,6 +16,7 @@ public class Forms extends Composite {
 	@UiField CodeBlock basicFormCode;
 	@UiField CodeBlock searchFormCode;
 	@UiField CodeBlock inlineFormCode;
+	@UiField CodeBlock horizontalFormCode;
 	
 	interface FormsUiBinder extends UiBinder<Widget, Forms> {
 	}
@@ -25,6 +26,7 @@ public class Forms extends Composite {
 		basicFormCode.setHTML(CustomResources.RESOURCES.basicFormCode().getText());
 		searchFormCode.setHTML(CustomResources.RESOURCES.searchFormCode().getText());
 		inlineFormCode.setHTML(CustomResources.RESOURCES.inlineFormCode().getText());
+		horizontalFormCode.setHTML(CustomResources.RESOURCES.horizontalFormCode().getText());
 	}
 
 }

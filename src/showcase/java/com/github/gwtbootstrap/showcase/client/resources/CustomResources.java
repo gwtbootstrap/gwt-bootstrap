@@ -44,4 +44,6 @@ public interface CustomResources extends Resources {
 	@Source("inlineFormCode.txt")
 	TextResource inlineFormCode();
 
+	TextResource horizontalFormCode();
+
 }
