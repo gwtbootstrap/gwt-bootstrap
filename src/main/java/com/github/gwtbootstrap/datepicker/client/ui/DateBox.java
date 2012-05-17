@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.datepicker.client.ui;
 
-import com.github.gwtbootstrap.datepicker.client.ui.base.DatePickerBase;
+import com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase;
 
 /**
  * DateBox component.
@@ -8,7 +8,7 @@ import com.github.gwtbootstrap.datepicker.client.ui.base.DatePickerBase;
  * @since 2.0.3.0
  * @author Carlos Alexandro Becker
  */
-public class DateBox extends DatePickerBase {
+public class DateBox extends DateBoxBase {
 
 
 }

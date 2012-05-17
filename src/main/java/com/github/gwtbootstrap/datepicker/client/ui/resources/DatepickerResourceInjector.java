@@ -16,29 +16,34 @@
 package com.github.gwtbootstrap.datepicker.client.ui.resources;
 
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
+import com.github.gwtbootstrap.datepicker.client.ui.util.LocaleUtil;
 import com.google.gwt.resources.client.TextResource;
 
 /**
  * Utility class to inject our resources into modules page. Use it to inject
  * JavaScript and CSS files.
- * 
- * @since 2.0.3.0
- * 
+ *
  * @author Carlos Alexandro Becker
+ * @since 2.0.3.0
  */
 public class DatepickerResourceInjector {
 
 
-	/**
-	 * Injects the required CSS styles and JavaScript files into the document
-	 * header.
-	 */
-	public static void configure() {
-        System.out.println("Injetando o datepicker.js");
-		injectJs(Resources.RESOURCES.datepickerJs());
-	}
+    /**
+     * Injects the required CSS styles and JavaScript files into the document
+     * header.
+     */
+    public static void configure() {
+        Resources r = Resources.RESOURCES;
+        injectJs(r.datepickerJs());
 
-	private static void injectJs(TextResource r) {
-		JavaScriptInjector.inject(r.getText());
-	}
+        TextResource locale = LocaleUtil.getLocaleJsResource();
+        if (locale != null) {
+            JavaScriptInjector.inject(locale.getText());
+        }
+    }
+
+    private static void injectJs(TextResource r) {
+        JavaScriptInjector.inject(r.getText());
+    }
 }

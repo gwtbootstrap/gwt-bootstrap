@@ -3,7 +3,7 @@ package com.github.gwtbootstrap.datepicker.client.ui;
 import com.github.gwtbootstrap.client.ui.AddOn;
 import com.github.gwtbootstrap.client.ui.AppendButton;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
-import com.github.gwtbootstrap.datepicker.client.ui.base.DatePickerBase;
+import com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase;
 import com.github.gwtbootstrap.datepicker.client.ui.base.HasDateFormat;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -79,7 +79,7 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>, Has
     /**
      * An 'adapter' to change some aspects of the behavior of datepickerbase. //TODO may need refactor.
      */
-    private class DateBoxAppendedAdapter extends DatePickerBase {
+    private class DateBoxAppendedAdapter extends DateBoxBase {
         @Override
         protected void configure() {
             DateBoxAppended that = DateBoxAppended.this;

@@ -32,7 +32,7 @@ public class TextBox extends com.google.gwt.user.client.ui.TextBox {
 	 */
 	public TextBox() {
 		super();
-		setStyleName("");
+		getElement().removeAttribute("class");
 	}
 	
 	protected TextBox(Element elem) {

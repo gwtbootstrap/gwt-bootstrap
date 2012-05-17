@@ -46,6 +46,7 @@ public class JavaScriptInjector extends AbstractInjector {
 	private static ScriptElement createScriptElement() {
 		ScriptElement script = Document.get().createScriptElement();
 		script.setAttribute("type", "text/javascript");
+        script.setAttribute("charset", "UTF-8");
 		return script;
 	}
 
