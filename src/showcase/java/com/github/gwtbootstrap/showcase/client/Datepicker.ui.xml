@@ -27,22 +27,24 @@
         <b:Row>
             <b:Column size="6">
                 <g:HTMLPanel>
-                    <b2:DateBox format="dd/mm/yyyy" autoClose="true" />
+                    <b2:DateBox format="dd/mm/yyyy" autoClose="true" weekStart="3" language="br" startDate="01/01/2000"
+                            endDate="31/12/2012"/>
                     <pre class="prettyprint linenums">
-                        &lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert
-                        without close&lt;/b:Alert&gt;</pre>
+xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
+
+&lt;b2:DateBox format=&quot;dd/mm/yyyy&quot; /&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
-        <b:Row>
-            <b:Column size="6">
-                <g:HTMLPanel>
-                    <b2:DateBoxAppended />
-                    <pre class="prettyprint linenums">
-                        &lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert
-                        without close&lt;/b:Alert&gt;</pre>
-                </g:HTMLPanel>
-            </b:Column>
-        </b:Row>
+        <!--<b:Row>-->
+            <!--<b:Column size="6">-->
+                <!--<g:HTMLPanel>-->
+                    <!--<b2:DateBoxAppended />-->
+                    <!--<pre class="prettyprint linenums">-->
+                        <!--&lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert-->
+                        <!--without close&lt;/b:Alert&gt;</pre>-->
+                <!--</g:HTMLPanel>-->
+            <!--</b:Column>-->
+        <!--</b:Row>-->
     </g:HTMLPanel>
 </ui:UiBinder>

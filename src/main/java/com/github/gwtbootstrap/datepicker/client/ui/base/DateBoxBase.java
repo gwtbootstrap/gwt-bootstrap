@@ -4,12 +4,14 @@ import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.event.*;
+import com.github.gwtbootstrap.datepicker.client.ui.util.LocaleUtil;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -23,18 +25,19 @@ import java.util.Map;
  * @author Carlos Alexandro Becker
  * @since 2.0.3.0
  */
-public class DatePickerBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasDateFormat, HasVisibility,
-        HasVisibleHandlers {
+public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasDateFormat, HasVisibility,
+        HasVisibleHandlers, HasWeekStart {
 
     private final TextBox box;
     private String format;
+    private String language;
     private DateTimeFormat dtf;
-    private Map<String, String> options = new HashMap<String, String>();
 
-    public DatePickerBase() {
+    public DateBoxBase() {
         this.box = new TextBox();
         setElement(box.getElement());
         setFormat("mm/dd/yyyy");
+        this.language = LocaleUtil.getLanguage();
         setValue(new Date());
     }
 
@@ -49,6 +52,10 @@ public class DatePickerBase extends Widget implements HasValue<Date>, HasValueCh
         if (oldValue != null) {
             setValue(oldValue);
         }
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     /**
@@ -120,7 +127,8 @@ public class DatePickerBase extends Widget implements HasValue<Date>, HasValueCh
      */
     protected void configure(Widget w) {
         w.getElement().setAttribute("data-date-format", format);
-        configure(w.getElement(), options);
+        w.getElement().setAttribute("data-date-language", language);
+        configure(w.getElement());
     }
 
     /**
@@ -138,8 +146,7 @@ public class DatePickerBase extends Widget implements HasValue<Date>, HasValueCh
     }
 
     public void setAutoClose(boolean autoClose) {
-        options.put("autoclose", Boolean.toString(autoClose));
-        configure();
+        getElement().setAttribute("data-date-autoclose", autoClose+"");
     }
 
     /**
@@ -147,18 +154,17 @@ public class DatePickerBase extends Widget implements HasValue<Date>, HasValueCh
      *
      * @param e: Element that will be transformed in a datepicker.
      */
-    protected native void configure(Element e, Map<String, String> opts) /*-{
+    protected native void configure(Element e) /*-{
         var that = this;
-        $wnd.alert(opts);
-        $wnd.jQuery(e).datepicker(opts);
+        $wnd.jQuery(e).datepicker();
 //        $wnd.jQuery(e).on('changeDate', function () {
-//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DatePickerBase::onChange()();
+//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onChange()();
 //        });
 //        $wnd.jQuery(e).on("show", function () {
-//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DatePickerBase::show()();
+//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::show()();
 //        });
 //        $wnd.jQuery(e).on("hide", function () {
-//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DatePickerBase::hide()();
+//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::hide()();
 //        });
     }-*/;
 
@@ -182,11 +188,7 @@ public class DatePickerBase extends Widget implements HasValue<Date>, HasValueCh
 
     @Override
     public void toggle() {
-        if (options.containsKey("show")) {
-            hide();
-        } else {
-            show();
-        }
+        // TODO toggle.
     }
 
     @Override
@@ -208,4 +210,27 @@ public class DatePickerBase extends Widget implements HasValue<Date>, HasValueCh
     public HandlerRegistration addShownHandler(ShownHandler handler) {
         return addHandler(handler, ShownEvent.getType());
     }
+
+    @Override
+    public void setWeekStart(int start) {
+        getElement().setAttribute("data-date-weekstart", start+"");
+    }
+
+    public void setStartDate(String startDate) {
+        getElement().setAttribute("data-date-startdate", startDate);
+    }
+
+    public void setStartDate_(Date startDate) {
+        setStartDate(dtf.format(startDate));
+    }
+
+
+    public void setEndDate(String endDate) {
+        getElement().setAttribute("data-date-enddate", endDate);
+    }
+
+    public void setEndDate_(Date endDate) {
+        setEndDate(dtf.format(endDate));
+    }
+
 }

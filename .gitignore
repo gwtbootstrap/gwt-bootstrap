@@ -43,3 +43,6 @@ src/showcase/webapp/WEB-INF/deploy/*
 src/showcase/webapp/WEB-INF/lib
 src/showcase/webapp/bootstrap*
 maven
+
+.idea/
+*.iml
