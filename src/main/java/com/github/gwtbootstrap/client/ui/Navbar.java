@@ -18,25 +18,23 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
-import com.google.gwt.dom.client.BodyElement;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
+
 /**
  * Navbar with optional text, links and forms.
  * <p>
  * The Navbar can be fixed on the top or bottom of the site where it will stay
  * when the user scrolls the page. For proper rendering, a fixed Navbar cannot
- * be part of any container! It has to be attached directly to the 
- * {@link RootPanel}. 
- * 
+ * be part of any container! It has to be attached directly to the
+ * {@link RootPanel}.
+ * <p/>
  * <p>
  * <h3>UiBinder Usage:</h3>
- * 
+ * <p/>
  * <pre>
  * {@code
  * <g:FlowPanel>
@@ -55,154 +53,119 @@ import com.google.gwt.user.client.ui.Widget;
  *         [...]
  *     </b:Container>
  * </g:FlowPanel>
- * 
+ *
  * }
  * </pre>
  * </p>
- * 
- * @since 2.0.3.0
- * 
+ *
  * @author Dominik Mayer
  * @author Carlos Alexandro Becker
- * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  * @see ResponsiveNavbar
+ * @since 2.0.3.0
  */
 //@formatter:on
 public class Navbar extends DivWidget {
 
-	protected static final int TOP_SPACE_IN_PIXEL = 50;
+    private class NavbarInner extends DivWidget {
 
-	private boolean fixedTop = false;
+        public NavbarInner() {
+            setStyleName(NavbarConstants.NAVBAR_INNER);
+        }
+    }
 
-	private class NavbarInner extends DivWidget {
+    private final Container container = getContainer();
+    private final NavbarInner navbarInner = new NavbarInner();
+    private Scrollspy spy;
 
-		public NavbarInner() {
-			setStyleName(NavbarConstants.NAVBAR_INNER);
-		}
-	}
+    private boolean scrollspy;
 
-	private final Container container = getContainer();
-	private final NavbarInner navbarInner = new NavbarInner();
-	private Scrollspy spy;
-	
-	private boolean scrollspy;
+    /**
+     * Creates an empty Navbar.
+     */
+    public Navbar() {
+        setStyleName(NavbarConstants.NAVBAR);
+        navbarInner.add(container);
+        super.add(navbarInner);
+    }
 
-	/**
-	 * Creates an empty Navbar.
-	 */
-	public Navbar() {
-		setStyleName(NavbarConstants.NAVBAR);
-		navbarInner.add(container);
-		super.add(navbarInner);
-	}
+    /**
+     * Defines the default container implementation. You can override this in a
+     * extended class if you want another implementation, like a
+     * {@link FluidContainer}.
+     */
+    protected Container getContainer() {
+        return new Container();
+    }
 
-	/**
-	 * Defines the default container implementation. You can override this in a
-	 * extended class if you want another implementation, like a
-	 * {@link FluidContainer}.
-	 */
-	protected Container getContainer() {
-		return new Container();
-	}
+    /**
+     * Defines whether the Navbar should contain a {@link Scrollspy}.
+     *
+     * @param scrollspy <code>true</code> to include a Scrollspy. Default:
+     *                  <code>false</code>
+     */
+    public void setScrollspy(boolean scrollspy) {
+        this.scrollspy = scrollspy;
+    }
 
-	/**
-	 * Defines whether the Navbar should contain a {@link Scrollspy}.
-	 * 
-	 * @param scrollspy
-	 *            <code>true</code> to include a Scrollspy. Default:
-	 *            <code>false</code>
-	 */
-	public void setScrollspy(boolean scrollspy) {
-		this.scrollspy = scrollspy;
-	}
-	
-	/**
-	 * Defines scrollspy target element.
-	 * @param spyElement target element
-	 */
-	public void setSpyElement(Element spyElement) {
-		
-		assert spyElement != null;
-		
-		if (spy == null)
-			spy = new Scrollspy(this);
-		
-		spy.setSpyElement(spyElement);
-		this.scrollspy = true;
-	}
-	
-	@Override
-	protected void onAttach() {
-		super.onAttach();
-		if (spy == null)
-			spy = new Scrollspy(this);
+    /**
+     * Defines scrollspy target element.
+     *
+     * @param spyElement target element
+     */
+    public void setSpyElement(Element spyElement) {
 
-		if (scrollspy) {
-			spy.configure();
-		}
-		// TODO make a unconfigure feature.
-	}
-	
-	/**
-	 * Fix the Navbar at the top or bottom of the screen.
-	 * <p>
-	 * For this to work properly, the Navbar must not be a child of a
-	 * {@link Container}.
-	 * 
-	 * @param position
-	 *            the position of the Navbar
-	 */
-	public void setPosition(NavbarPosition position) {
-		if (position == NavbarPosition.TOP)
-			fixedTop = true;
-		else
-			fixedTop = false;
+        assert spyElement != null;
 
-		for (NavbarPosition p : NavbarPosition.values())
-			if (!p.get().isEmpty())
-				removeStyleName(p.get());
+        if (spy == null)
+            spy = new Scrollspy(this);
 
-		addStyle(position);
-		setPaddingTop(true);
-	}
+        spy.setSpyElement(spyElement);
+        this.scrollspy = true;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void add(Widget child) {
-		container.add(child);
-	}
+    @Override
+    protected void onAttach() {
+        super.onAttach();
+        if (spy == null)
+            spy = new Scrollspy(this);
 
-	/**
-	 * Adds a widget to the Navbar element, <b>not</b> the container.
-	 * 
-	 * @param widget
-	 *            widget to add
-	 */
-	protected void addWidget(Widget widget) {
-		super.add(widget);
-	}
+        if (scrollspy) {
+            spy.configure();
+        }
+        // TODO make a unconfigure feature.
+    }
 
-	/**
-	 * Activates or deactivates a top padding.
-	 * <p>
-	 * This method can be overridden. The default implementation sets a padding
-	 * only when the Navbar is fixed to the top.
-	 * 
-	 * @param padding
-	 */
-	protected void setPaddingTop(boolean padding) {
-		if (padding && fixedTop)
-			setPaddingTop(TOP_SPACE_IN_PIXEL);
-		else
-			setPaddingTop(0);
-	}
+    /**
+     * Fix the Navbar at the top or bottom of the screen.
+     * <p/>
+     * For this to work properly, the Navbar must not be a child of a
+     * {@link Container}.
+     *
+     * @param position the position of the Navbar
+     */
+    public void setPosition(NavbarPosition position) {
+        for (NavbarPosition p : NavbarPosition.values())
+            if (!p.get().isEmpty())
+                removeStyleName(p.get());
 
-	private void setPaddingTop(int pixels) {
-		BodyElement body = Document.get().getBody();
-		body.getStyle().setPaddingTop(pixels, Unit.PX);
-	}
-	
+        addStyle(position);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void add(Widget child) {
+        container.add(child);
+    }
+
+    /**
+     * Adds a widget to the Navbar element, <b>not</b> the container.
+     *
+     * @param widget widget to add
+     */
+    protected void addWidget(Widget widget) {
+        super.add(widget);
+    }
 }

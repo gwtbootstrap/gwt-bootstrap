@@ -21,10 +21,6 @@ import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
-import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -73,8 +69,6 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class ResponsiveNavbar extends Navbar {
 
-	private static final int RESPONSIVE_WIDTH_IN_PIXEL = 980;
-
 	private final NavbarButton collapseButton = new NavbarButton();
 	private final DivWidget navCollapse = new DivWidget("nav-collapse");
 
@@ -84,16 +78,9 @@ public class ResponsiveNavbar extends Navbar {
 	public ResponsiveNavbar() {
 		super();
 		addCollapseButton();
-		addWindowHandlers();
-        (new Timer() {
-            @Override
-            public void run() {
-                setPaddingTop();
-            }
-        }).schedule(10);
 	}
 
-	private void addCollapseButton() {
+    private void addCollapseButton() {
 		collapseButton.getElement().setAttribute(Constants.DATA_TOGGLE,
 				Bootstrap.collapse);
 		collapseButton.getElement().setAttribute(Bootstrap.data_target,
@@ -116,35 +103,6 @@ public class ResponsiveNavbar extends Navbar {
 			navCollapse.add(child);
 		} else
 			super.add(child);
-	}
-
-	private void addWindowHandlers() {
-
-		Window.addResizeHandler(new ResizeHandler() {
-
-			Timer resizeTimer = new Timer() {
-
-				@Override
-				public void run() {
-					setPaddingTop();
-//					navCollapse.getElement().setAttribute("style",
-//							"height: auto;");
-				}
-			};
-
-			public void onResize(final ResizeEvent event) {
-				resizeTimer.cancel();
-				resizeTimer.schedule(10);
-			}
-		});
-	}
-
-	private void setPaddingTop() {
-		setPaddingTop(!isResponsive());
-	}
-
-	private boolean isResponsive() {
-		return Window.getClientWidth() < RESPONSIVE_WIDTH_IN_PIXEL;
 	}
 
 	/**
