@@ -85,7 +85,12 @@ public class ResponsiveNavbar extends Navbar {
 		super();
 		addCollapseButton();
 		addWindowHandlers();
-		setPaddingTop();
+        (new Timer() {
+            @Override
+            public void run() {
+                setPaddingTop();
+            }
+        }).schedule(10);
 	}
 
 	private void addCollapseButton() {
