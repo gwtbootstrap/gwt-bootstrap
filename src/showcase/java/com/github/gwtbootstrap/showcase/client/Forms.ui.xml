@@ -168,6 +168,14 @@
 							</b:Controls>
 						</b:ControlGroup>
 						<b:ControlGroup>
+							<b:ControlLabel>RadioButton</b:ControlLabel>
+							<b:Controls>
+								<b:RadioButton name="radio">Radio1</b:RadioButton>
+								<b:RadioButton name="radio">Radio2</b:RadioButton>
+								<b:RadioButton name="radio">Radio3</b:RadioButton>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
 							<b:ControlLabel for="select01">Select list</b:ControlLabel>
 							<b:Controls>
 								<b:ListBox b:id="select01">
