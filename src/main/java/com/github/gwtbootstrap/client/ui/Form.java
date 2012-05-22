@@ -29,7 +29,6 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.impl.FormPanelImpl;
 import com.google.gwt.user.client.ui.impl.FormPanelImplHost;
@@ -116,7 +115,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 	}
 
 	/**
-	 * Handler for {@link FormPanel.SubmitCompleteEvent} events.
+	 * Handler for {@link SubmitCompleteEvent} events.
 	 */
 	public interface SubmitCompleteHandler extends EventHandler {
 
@@ -155,7 +154,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 
 		/**
 		 * Cancel the form submit. Firing this will prevent a subsequent
-		 * {@link FormPanel.SubmitCompleteEvent} from being fired.
+		 * {@link SubmitCompleteEvent} from being fired.
 		 */
 		public void cancel() {
 			this.canceled = true;
@@ -182,7 +181,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 	}
 
 	/**
-	 * Handler for {@link FormPanel.SubmitEvent} events.
+	 * Handler for {@link SubmitEvent} events.
 	 */
 	public interface SubmitHandler extends EventHandler {
 
@@ -442,12 +441,12 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 	}
 
 	/**
-	 * Fire a {@link FormPanel.SubmitEvent}.
+	 * Fire a {@link SubmitEvent}.
 	 * 
 	 * @return true to continue, false if canceled
 	 */
 	private boolean fireSubmitEvent() {
-		FormPanel.SubmitEvent event = new FormPanel.SubmitEvent();
+		Form.SubmitEvent event = new Form.SubmitEvent();
 		fireEvent(event);
 		return !event.isCanceled();
 	}
@@ -460,7 +459,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 	}
 
 	private void onFrameLoadImpl() {
-
+		
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 			
 			@Override
