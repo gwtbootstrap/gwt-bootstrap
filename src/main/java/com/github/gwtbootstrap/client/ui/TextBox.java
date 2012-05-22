@@ -104,5 +104,4 @@ public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox impl
 		}
 	}
 
-	// TODO 2012/05/05 ohashi keisuke. Should create setter for uneditable,disable
 }
