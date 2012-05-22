@@ -139,4 +139,6 @@ public interface Constants {
 
 	public static final String SEARCH_QUERY = "search-query";
 
+	public static final String UNEDITABLE_INPUT = "uneditable-input";
+
 }

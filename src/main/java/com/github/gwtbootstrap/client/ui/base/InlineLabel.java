@@ -15,6 +15,10 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.i18n.shared.DirectionEstimator;
+import com.google.gwt.user.client.ui.Label;
+
 /**
  * {@link com.google.gwt.user.client.ui.InlineLabel InlineLabel} without the GWT
  * CSS Styles.
@@ -22,7 +26,7 @@ package com.github.gwtbootstrap.client.ui.base;
  * @since 2.0.3.0
  * 
  * @author Dominik Mayer
- * 
+ * @author ohashi keisuke
  */
 public class InlineLabel extends com.google.gwt.user.client.ui.InlineLabel {
 
@@ -45,4 +49,50 @@ public class InlineLabel extends com.google.gwt.user.client.ui.InlineLabel {
 		setText(text);
 	}
 
+	/**
+	 * Creates a label with the specified text and direction.
+	 * 
+	 * @param text
+	 *            the new label's text
+	 * @param dir
+	 *            the text's direction. Note: {@code Direction.DEFAULT} means
+	 *            direction should be inherited from the widget's parent
+	 *            element.
+	 */
+	public InlineLabel(String text,
+		Direction dir) {
+		this();
+		setText(text, dir);
+	}
+
+	/**
+	 * Creates a label with the specified text and a default direction
+	 * estimator.
+	 * 
+	 * @param text
+	 *            the new label's text
+	 * @param directionEstimator
+	 *            A DirectionEstimator object used for automatic direction
+	 *            adjustment. For convenience,
+	 *            {@link Label#DEFAULT_DIRECTION_ESTIMATOR} can be used.
+	 */
+	public InlineLabel(String text,
+		DirectionEstimator directionEstimator) {
+		this();
+		setDirectionEstimator(directionEstimator);
+		setText(text);
+	}
+
+	/**
+	 * This constructor may be used by subclasses to explicitly use an existing
+	 * element. This element must be either a &lt;div&gt; &lt;span&gt; element.
+	 * 
+	 * @param element
+	 *            the element to be used
+	 */
+	protected InlineLabel(Element element) {
+		// super(element) also asserts that element is either a &lt;div&gt; or
+		// &lt;span&gt;.
+		super(element);
+	}
 }
