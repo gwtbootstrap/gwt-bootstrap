@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui" xmlns:bb="urn:import:com.github.gwtbootstrap.client.ui.base">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+	xmlns:bb="urn:import:com.github.gwtbootstrap.client.ui.base" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:with
 		type="com.github.gwtbootstrap.showcase.client.resources.CustomResources"
 		field="res" />
@@ -107,8 +108,9 @@
 					the vertical alignment and spacing of form controls.
 				</b:Paragraph>
 				<b:WellForm type="INLINE">
-					<b:TextBox alternateSize="SMALL" placeholder="Email"/>
-					<b:PasswordTextBox alternateSize="SMALL" placeholder="Passowrd"/>
+					<b:TextBox alternateSize="SMALL" placeholder="Email" />
+					<b:PasswordTextBox alternateSize="SMALL"
+						placeholder="Passowrd" />
 					<b:CheckBox> Remember me</b:CheckBox>
 					<b:SubmitButton addStyleNames="btn">Sign in</b:SubmitButton>
 				</b:WellForm>
@@ -120,32 +122,49 @@
 			<b:Column size="4">
 				<b:Paragraph></b:Paragraph>
 				<b:Paragraph>
-					Shown on the right are all the default form controls we support. Here's the bulleted list:
+					Shown on the right are all the default form controls we
+					support. Here's the bulleted list:
 				</b:Paragraph>
 				<bb:UnorderedList>
-					<bb:ListItem><g:InlineLabel>text inputs(text,password)</g:InlineLabel></bb:ListItem>
-					<bb:ListItem><g:InlineLabel>checkbox</g:InlineLabel></bb:ListItem>
-					<bb:ListItem><g:InlineLabel>radio</g:InlineLabel></bb:ListItem>
-					<bb:ListItem><g:InlineLabel>select(ListBox)</g:InlineLabel></bb:ListItem>
-					<bb:ListItem><g:InlineLabel>multiple select</g:InlineLabel></bb:ListItem>
-					<bb:ListItem><g:InlineLabel>file input</g:InlineLabel></bb:ListItem>
-					<bb:ListItem><g:InlineLabel>textarea</g:InlineLabel></bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>text inputs(text,password)</g:InlineLabel>
+					</bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>checkbox</g:InlineLabel>
+					</bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>radio</g:InlineLabel>
+					</bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>select(ListBox)</g:InlineLabel>
+					</bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>multiple select</g:InlineLabel>
+					</bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>file input</g:InlineLabel>
+					</bb:ListItem>
+					<bb:ListItem>
+						<g:InlineLabel>textarea</g:InlineLabel>
+					</bb:ListItem>
 				</bb:UnorderedList>
 			</b:Column>
 			<b:Column size="8">
 				<b:Form type="HORIZONTAL">
-   					<b:Fieldset>
+					<b:Fieldset>
 						<b:ControlGroup>
 							<b:ControlLabel for="input01">TextBox</b:ControlLabel>
 							<b:Controls>
 								<b:TextBox alternateSize="XLARGE" b:id="input01"></b:TextBox>
-								<b:HelpBlock>In addition to freeform text, any HTML5 text-based input appears like so.</b:HelpBlock>
+								<b:HelpBlock>In addition to freeform text, any HTML5 text-based
+									input appears like so.</b:HelpBlock>
 							</b:Controls>
 						</b:ControlGroup>
 						<b:ControlGroup>
 							<b:ControlLabel for="optionsCheckbox">CheckBox</b:ControlLabel>
 							<b:Controls>
-								<b:CheckBox b:id="optionsCheckbox">Option one is this and that—be sure to include why it's great</b:CheckBox>
+								<b:CheckBox b:id="optionsCheckbox">Option one is this and that—be sure
+									to include why it's great</b:CheckBox>
 							</b:Controls>
 						</b:ControlGroup>
 						<b:ControlGroup>
@@ -182,7 +201,8 @@
 						<b:ControlGroup>
 							<b:ControlLabel for="textarea">Textarea</b:ControlLabel>
 							<b:Controls>
-								<b:TextArea alternateSize="XLARGE" b:id="textarea" visibleLines="3"/>
+								<b:TextArea alternateSize="XLARGE" b:id="textarea"
+									visibleLines="3" />
 							</b:Controls>
 						</b:ControlGroup>
 						<b:FormActions>
@@ -193,29 +213,150 @@
 				</b:Form>
 				<b:Heading size="3">Example markup</b:Heading>
 				<b:Paragraph>
-				Given the above example form layout, here's the markup associated with the first input and control group. 
-				The <b:Code>&lt;b:ControlGroup&gt; ... &lt;/b:ControlGroup&gt;</b:Code>
-				,<b:Code>&lt;b:ControlLabel&gt; ... &lt;/b:ControlLabel&gt;</b:Code>
-				,and <b:Code>&lt;b:Controls&gt; ... &lt;/b:Controls&gt;</b:Code>
-				Tags are all required for styling.
+					Given the above example form layout, here's the markup associated
+					with the first input and control group.
+					The
+					<b:Code>&lt;b:ControlGroup&gt; ... &lt;/b:ControlGroup&gt;</b:Code>
+					,
+					<b:Code>&lt;b:ControlLabel&gt; ... &lt;/b:ControlLabel&gt;</b:Code>
+					,and
+					<b:Code>&lt;b:Controls&gt; ... &lt;/b:Controls&gt;</b:Code>
+					Tags are all required for styling.
 				</b:Paragraph>
-				<b:CodeBlock linenums="true" ui:field="horizontalFormCode"/>
+				<b:CodeBlock linenums="true" ui:field="horizontalFormCode" />
 			</b:Column>
 		</b:FluidRow>
-<!-- 		<br/>
+		<br />
 		<b:Heading size="2">
 			Form control states
 		</b:Heading>
 		<b:FluidRow>
 			<b:Column size="4">
+				<b:Paragraph>
+					GWT-Bootstrap features styles for browser-supported focused and
+					<b:Code>disabled</b:Code>
+					.
+				</b:Paragraph>
+
 				<b:Heading size="3">Form validation</b:Heading>
-				It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <b:Code>ControlGroup</b:Code>
-				
+				<b:Paragraph>
+					It also includes validation styles for errors, warnings, and
+					success. To use, add the error class to the surrounding
+					<b:Code>ControlGroup</b:Code>
+				</b:Paragraph>
 			</b:Column>
-			<b:Column size="8"></b:Column>
+			<b:Column size="8">
+				<b:Form type="HORIZONTAL">
+					<b:Fieldset>
+						<b:ControlGroup>
+							<b:ControlLabel for="focusedInput">Focused input</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="focusedInput" value="This is focused…"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Uneditable input</b:ControlLabel>
+							<b:Controls>
+								<b:UneditableInput>Some value here</b:UneditableInput>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="disabledInput">Disabled input</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="disabledInput"
+									placeholder="Disabled input here…" enabled="false"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="optionsCheckbox2">Disabled checkbox</b:ControlLabel>
+							<b:Controls>
+									<b:CheckBox b:id="optionsCheckbox2" enabled="false">This is a disabled checkbox</b:CheckBox>
+							</b:Controls>
+						</b:ControlGroup>
+ 						<b:ControlGroup type="WARNING">
+							<b:ControlLabel for="inputWarning">Input with warning</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="inputWarning"/>
+								<b:HelpInline>Something may have gone wrong</b:HelpInline>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup type="ERROR">
+							<b:ControlLabel for="inputError">Input with error</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="inputError"/>
+									<b:HelpInline>Please correct the error</b:HelpInline>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup type="SUCCESS">
+							<b:ControlLabel for="inputSuccess">Input with success</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="inputSuccess"/>
+								<b:HelpInline>Woohoo!</b:HelpInline>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup type="SUCCESS">
+							<b:ControlLabel for="selectError">Select with success</b:ControlLabel>
+							<b:Controls>
+								<b:ListBox b:id="selectError">
+									<g:item>1</g:item>
+									<g:item>2</g:item>
+									<g:item>3</g:item>
+									<g:item>4</g:item>
+									<g:item>5</g:item>
+								</b:ListBox>
+								<b:HelpInline>Woohoo!</b:HelpInline>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:FormActions>
+							<b:SubmitButton type="PRIMARY">Save changes</b:SubmitButton>
+							<b:Button>Cancel</b:Button>
+						</b:FormActions>
+					</b:Fieldset>
+				</b:Form>
+			</b:Column>
 		</b:FluidRow>
+		<br/>
+		<b:Heading size="2">
+			Event Handle
+		</b:Heading>		
 		<b:FluidRow>
-			
+			<b:Column size="4">
+				<b:Paragraph>
+					The GWT-Bootstrap <b:Code>Form</b:Code> class has <b:Code>addSubmitHandler</b:Code> and <b:Code>addSubmitCompleteHandler</b:Code>.
+					They are same as native GWT `FormPanel`.If you need in UiBinder,Use <b:Code>@UiHandler</b:Code> annotation.
+				</b:Paragraph>
+			</b:Column>
+			<b:Column size="8">
+				<b:Form type="HORIZONTAL" action="//gwtbootstrap.github.com" ui:field="submitExampleForm">
+					<b:Fieldset>
+						<b:ControlGroup>
+							<b:ControlLabel for="name">User Name</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="name" ui:field="name" placeholder="input user name"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel for="example">Select favorite</b:ControlLabel>
+							<b:Controls>
+								<b:ListBox b:id="example" ui:field="example">
+									<g:item>foo</g:item>
+									<g:item>bar</g:item>
+									<g:item>hoge</g:item>
+									<g:item>piyo</g:item>
+									<g:item>woo</g:item>
+									<g:item>hoo</g:item>
+								</b:ListBox>
+								<b:HelpInline>Woohoo!</b:HelpInline>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:FormActions>
+							<b:SubmitButton type="PRIMARY">Save changes</b:SubmitButton>
+							<b:Button>Cancel</b:Button>
+						</b:FormActions>
+					</b:Fieldset>
+				</b:Form>
+<!-- 				<c:CellTable ui:field="exampleTable"/> -->
+			</b:Column>
 		</b:FluidRow>
- -->	</g:HTMLPanel>
+	</g:HTMLPanel>
 </ui:UiBinder>
