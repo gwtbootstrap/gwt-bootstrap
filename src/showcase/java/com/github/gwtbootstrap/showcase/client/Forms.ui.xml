@@ -363,7 +363,7 @@
 						</b:FormActions>
 					</b:Fieldset>
 				</b:Form>
-<!-- 				<c:CellTable ui:field="exampleTable"/> -->
+ 				<c:CellTable ui:field="exampleTable"/>
 			</b:Column>
 		</b:FluidRow>
 	</g:HTMLPanel>
