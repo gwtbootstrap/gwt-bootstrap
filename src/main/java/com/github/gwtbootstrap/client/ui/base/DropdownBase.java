@@ -20,7 +20,14 @@ import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -41,6 +48,8 @@ public abstract class DropdownBase extends ComplexWidget {
 	private IconAnchor trigger;
 
 	private NavLink link;
+
+	private NavLinkClickHandler handler = new NavLinkClickHandler();
 
 	/**
 	 * Creates a new widget of the given type.
@@ -107,11 +116,15 @@ public abstract class DropdownBase extends ComplexWidget {
 	 */
 	@Override
 	public void add(Widget widget) {
-		if (canBeAdded(widget))
+		if (canBeAdded(widget)) {
 			menu.add(widget);
-		else
+			if (widget instanceof NavLink) {
+				((NavLink) widget).addClickHandler(handler);
+			}
+		} else {
 			throw new IllegalArgumentException("Only NavLink, NavText and "
 					+ "Divider can be added to the Dropdown");
+		}
 	}
 
 	/**
@@ -148,18 +161,41 @@ public abstract class DropdownBase extends ComplexWidget {
 	private native void configure(Element e) /*-{
 		$wnd.jQuery(e).dropdown();
 	}-*/;
-        
-        /**
-         * Pull the dropdown menu to right
-         * 
-         * @param rightDropdown 
-         *                      <code>true</code> pull to right, otherwise to left. Default is <code>false</code>
-         */
-        public void setRightDropdown(boolean rightDropdown) {
-            if (rightDropdown) {
-                menu.addStyleName("pull-right");
-            } else {
-                menu.removeStyleName("pull-right");
-            }
-        }
+
+	/**
+	 * Pull the dropdown menu to right
+	 * 
+	 * @param rightDropdown
+	 *                      <code>true</code> pull to right, otherwise to left. Default is <code>false</code>
+	 */
+	public void setRightDropdown(boolean rightDropdown) {
+		if (rightDropdown) {
+			menu.addStyleName("pull-right");
+		} else {
+			menu.removeStyleName("pull-right");
+		}
+	}
+
+	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+		return addDomHandler(handler, ChangeEvent.getType());
+	}
+
+	private class NavLinkClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			link = (NavLink) event.getSource();
+			DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);
+		}
+
+	}
+
+	/**
+	 * Method to get the {@link NavLink} that has been clicked most recently.
+	 * 
+	 * @return Last clicked NavLink or <code>null</code> if none have been clicked.
+	 */
+	public NavLink getLastSelectedNavLink() {
+		return link;
+	}
 }
