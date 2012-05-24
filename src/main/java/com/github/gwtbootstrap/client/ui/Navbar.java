@@ -145,10 +145,11 @@ public class Navbar extends DivWidget {
      * @param position the position of the Navbar
      */
     public void setPosition(NavbarPosition position) {
-        for (NavbarPosition p : NavbarPosition.values())
-            if (!p.get().isEmpty())
+        for (NavbarPosition p : NavbarPosition.values()) {
+            if (!p.get().isEmpty()) {
                 removeStyleName(p.get());
-
+            }
+        }
         addStyle(position);
     }
 
