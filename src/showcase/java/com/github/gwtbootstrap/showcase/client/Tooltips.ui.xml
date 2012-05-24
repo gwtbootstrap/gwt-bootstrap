@@ -1,0 +1,36 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:HTMLPanel>
+        <b:PageHeader subtext="have fun with tooltips.">Tooltips</b:PageHeader>
+        <b:Row>
+            <b:Column size="8">
+                <b:Well>
+                    <g:HTMLPanel>
+                        Tight pants next level keffiyeh
+                        <b:Tooltip text='you probably' tooltip='first tooltip' href="#" />
+                        haven't heard of them. Photo booth beard raw denim
+                        letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable
+                        quinoa 8-bit american apparel
+                        <b:Tooltip text='have a' tooltip='another tooltip' href="#"/>
+                        terry richardson vinyl chambray. Beard stumptown, cardigans
+                        banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan
+                        chambray. A really ironic artisan<b:Tooltip text='whatever keytar'
+                                                                    tooltip='Another one here too' href="#"/>, scenester
+                        farm-to-table banksy Austin <b:Tooltip text='twitter handle' tooltip='The last tip' href="#"/> freegan cred raw denim single-origin coffee viral.
+                    </g:HTMLPanel>
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b:Tooltip text='have a' tooltip='another tooltip' href="#"/&gt;
+                    </pre>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="4">
+                <g:HTMLPanel>
+
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>
