@@ -83,7 +83,7 @@ public class ProgressBar extends DivWidget {
 		if (width == null)
 			return 0;
 		else
-			return Integer.valueOf(width);
+			return Integer.valueOf(width.substring(0, width.indexOf("%")));
 	}
 
 }

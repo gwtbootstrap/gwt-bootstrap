@@ -17,10 +17,15 @@ package com.github.gwtbootstrap.showcase.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ProgressBar extends Composite {
+
+    @UiField
+    com.github.gwtbootstrap.client.ui.ProgressBar progress1;
 
     private static ProgressBarUiBinder uiBinder = GWT.create(ProgressBarUiBinder.class);
 
@@ -29,6 +34,7 @@ public class ProgressBar extends Composite {
 
     public ProgressBar() {
         initWidget(uiBinder.createAndBindUi(this));
+        progress1.getPercent();
     }
 
 }
