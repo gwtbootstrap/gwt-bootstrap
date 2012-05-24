@@ -15,12 +15,11 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.octo.gwt.test.GwtTest;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 
 /**
