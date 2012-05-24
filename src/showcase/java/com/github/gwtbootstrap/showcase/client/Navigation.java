@@ -15,12 +15,23 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.NavLink;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Navigation extends Composite {
+
+    @UiField
+    NavLink navlink1;
+
+    @UiField
+    NavLink navlink2;
 
     private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
@@ -29,6 +40,14 @@ public class Navigation extends Composite {
 
     public Navigation() {
         initWidget(uiBinder.createAndBindUi(this));
+        ClickHandler handler = new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                Window.alert("ClickHandler navlink example.");
+            }
+        };
+        navlink1.addClickHandler(handler);
+        navlink2.addClickHandler(handler);
     }
 
 }

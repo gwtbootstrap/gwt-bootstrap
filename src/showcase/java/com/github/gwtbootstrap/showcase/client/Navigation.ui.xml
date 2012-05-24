@@ -116,7 +116,7 @@
                     <b:Navbar>
                         <b:Brand>Bootstrap</b:Brand>
                         <b:Nav>
-                            <b:NavLink>Test</b:NavLink>
+                            <b:NavLink ui:field="navlink1">Test</b:NavLink>
                             <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                         </b:Nav>
                         <b:NavForm size="1"/>
@@ -152,7 +152,7 @@
                     <h2>Nav Lists</h2>
                     <b:NavList>
                         <b:NavHeader>Header</b:NavHeader>
-                        <b:NavLink active="true" icon="PLANE">Test</b:NavLink>
+                        <b:NavLink active="true" icon="PLANE" iconColor="BLACK">Test</b:NavLink>
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:NavList>
@@ -170,7 +170,7 @@
                 <g:HTMLPanel>
                     <b:WellNavList>
                         <b:NavHeader>Header</b:NavHeader>
-                        <b:NavLink active="true" icon="PLANE">Test</b:NavLink>
+                        <b:NavLink active="true" icon="PLANE" iconColor="BLACK" ui:field="navlink2">Test</b:NavLink>
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:WellNavList>
