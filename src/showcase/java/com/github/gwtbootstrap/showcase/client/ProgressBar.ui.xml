@@ -26,7 +26,7 @@
         <b:Row>
             <b:Column size="4">
                 <g:HTMLPanel>
-                    <b:ProgressBar percent="20"/>
+                    <b:ProgressBar percent="20" ui:field="progress1"/>
                     <pre class="prettyprint">&lt;b:ProgressBar percent=&quot;20&quot;/&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
