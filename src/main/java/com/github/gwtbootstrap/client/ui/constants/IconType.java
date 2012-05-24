@@ -174,12 +174,8 @@ public enum IconType implements Style {
     ZOOM_IN("zoom-in"),
     ZOOM_OUT("zoom-out"),
 
-    // original icons from bootstrap, that not exist in font awesome.
-    BAR("bar"),
-    BELL("bell"),
-    BRIEFCASE("briefcase"),
-    BULLHORN("bullhorn"),
-    CERTIFICATE("certificate");
+    // original icons from bootstrap, that not exist in font awesome page, but 'exists'
+    BAR("bar");
 
     private static final String PREFIX = "icon-";
 
