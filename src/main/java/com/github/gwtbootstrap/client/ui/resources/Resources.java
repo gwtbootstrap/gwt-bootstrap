@@ -104,6 +104,9 @@ public interface Resources extends ClientBundle {
 	@Source("css/gwt-bootstrap.css")
 	TextResource gwtBootstrapCss();
 
+    @Source("css/font-awesome.css")
+    TextResource fontAwesomeCss();
+
 //	@Source("js/bootstrap-collapse.js")
 //	TextResource bootstrapCollapseJs();
 

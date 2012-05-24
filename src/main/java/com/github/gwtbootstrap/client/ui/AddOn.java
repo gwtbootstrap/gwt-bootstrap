@@ -2,7 +2,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
-import com.github.gwtbootstrap.client.ui.constants.IconColor;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
 
@@ -85,10 +85,9 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setIconColor(IconColor color) {
-		icon.setColor(color);
-	}
+    @Override
+    public void setIconSize(IconSize size) {
+        icon.setIconsSize(size);
+    }
+
 }
