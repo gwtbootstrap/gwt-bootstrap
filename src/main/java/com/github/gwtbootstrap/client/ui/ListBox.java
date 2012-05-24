@@ -70,7 +70,7 @@ public class ListBox extends com.google.gwt.user.client.ui.ListBox implements Ha
 	public void setSize(int size) {
 		SizeHelper.setSize(this, size);
 	}
-	
+
 	/**
 	 * Get Selected Value.
 	 * <p>
@@ -78,11 +78,11 @@ public class ListBox extends com.google.gwt.user.client.ui.ListBox implements Ha
 	 * @return Selected Value.(If there is nothing selected item,return null)
 	 */
 	public String getValue() {
-		
+
 		if(getSelectedIndex() == -1) {
 			return null;
 		}
-		
+
 		return getValue(getSelectedIndex());
 	}
 
@@ -128,6 +128,22 @@ public class ListBox extends com.google.gwt.user.client.ui.ListBox implements Ha
 			removeStyleName(Constants.DISABLED);
 		} else {
 			addStyleName(Constants.DISABLED);
+		}
+	}
+
+	/**
+	 * Selects item which has the given value. If value
+	 * is not found, nothing is done.
+	 * @param value to be selected (<code>null</code>-safe)
+	 */
+	public void setSelectedValue(String value) {
+		if (value == null) {
+			value = "";
+		}
+		for(int i = 0; i < getItemCount(); i++) {
+			if (getValue(i).equals(value)) {
+				setSelectedIndex(i);
+			}
 		}
 	}
 }
