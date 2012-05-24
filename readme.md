@@ -1,4 +1,6 @@
-[GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Build Status](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/)
+[GWT-Bootstrap](http://gwtbootstrap.github.com/)
+[![Build Status on Jenkins](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/)
+[![Build Status on Travis-CI](https://secure.travis-ci.org/caarlos0/gwt-bootstrap.png?branch=master)](http://travis-ci.org/caarlos0/gwt-bootstrap)
 =================
 
 Based on [Bootstrap, from Twitter.](http://twitter.github.com/bootstrap/index.html), GWT-Bootstrap
