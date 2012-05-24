@@ -11,7 +11,7 @@ import com.google.gwt.view.client.ProvidesKey;
 public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<T> {
 
 	public static enum TableType implements com.github.gwtbootstrap.client.ui.base.Style {
-		BORDERED("table-borderd"),
+		BORDERED("table-bordered"),
 		STRIPED("table-striped"),
 		CONDENSED("table-condensed");
 		
