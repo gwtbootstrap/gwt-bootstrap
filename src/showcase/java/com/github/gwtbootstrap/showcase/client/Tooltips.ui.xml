@@ -28,7 +28,11 @@
             </b:Column>
             <b:Column size="4">
                 <g:HTMLPanel>
-
+                    You can also made tooltips look like
+                    <b:Tooltip tooltip="But its not a button, is a tooltip :)" type="INFO">Buttons</b:Tooltip>
+                    <pre class="prettyprint linenums">
+&lt;b:Tooltip text='have a' tooltip='another tooltip' href="#" type="INFO" /&gt;
+                    </pre>
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
