@@ -16,8 +16,10 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasHref;
+import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.HoverBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
@@ -37,7 +39,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @see Popover
  */
 //@formatter:on
-public class Tooltip extends HoverBase implements HasHref {
+public class Tooltip extends HoverBase implements HasHref, HasType<ButtonType> {
 
 	private IconAnchor anchor = new IconAnchor();
 
@@ -162,5 +164,15 @@ public class Tooltip extends HoverBase implements HasHref {
 	private native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).tooltip(visibility);
 	}-*/;
+
+    /**
+     * Support for setting Button styles in tooltips, so tooltips will look like buttons.
+     *
+     * @param style ButtonStyle for the tooltip.
+     */
+    @Override
+    public void setType(ButtonType style) {
+        anchor.getElement().setClassName("btn " + style.get());
+    }
 
 }
