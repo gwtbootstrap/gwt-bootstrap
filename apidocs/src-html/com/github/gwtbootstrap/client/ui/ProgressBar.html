@@ -91,7 +91,7 @@
 <span class="sourceLineNo">083</span>                if (width == null)<a name="line.83"></a>
 <span class="sourceLineNo">084</span>                        return 0;<a name="line.84"></a>
 <span class="sourceLineNo">085</span>                else<a name="line.85"></a>
-<span class="sourceLineNo">086</span>                        return Integer.valueOf(width);<a name="line.86"></a>
+<span class="sourceLineNo">086</span>                        return Integer.valueOf(width.substring(0, width.indexOf("%")));<a name="line.86"></a>
 <span class="sourceLineNo">087</span>        }<a name="line.87"></a>
 <span class="sourceLineNo">088</span><a name="line.88"></a>
 <span class="sourceLineNo">089</span>}<a name="line.89"></a>
