@@ -102,6 +102,7 @@
 
 			<g:FlowPanel ui:field="sections" />
 
+            <g:HTMLPanel><hr /></g:HTMLPanel>
 			<b:Footer>
 				<b:Paragraph addStyleNames="pull-right">
 					<a href="#">Back to top</a>
