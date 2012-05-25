@@ -1,0 +1,234 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b='urn:import:com.github.gwtbootstrap.client.ui'>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Iconic font for use with GWT-Bootstrap">Icons</b:PageHeader>
+        <b:Row>
+            <b:Column size="12">
+
+                <g:HTMLPanel>
+                    GWT-Bootstrap has a lot of Icons managed by
+                    <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>.
+
+                    The sintax is pretty simple:
+
+                    <pre class="prettyprint linenums">
+                        &lt;b:Icon type="ASTERISK" iconsSize="LARGE" /&gt;</pre>
+
+                    You can use any Font Awesome Icon. See the complete list bellow.
+                </g:HTMLPanel>
+
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
+                    <section id="base-icons" class="row">
+                        <div class="span12">
+                            <h1>Base Icons</h1>
+                            <p>Inspired by the Glyphicon set that comes with<a
+                                    href="http://twitter.github.com/bootstrap/"
+                                    target="_blank">Twitter Bootstrap 2.0</a>,
+                                Font Awesome is designed from scratch for a full array of web-related actions.
+                            </p>
+                        </div>
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-glass">GLASS</li>
+                                <li class="icon-music">MUSIC</li>
+                                <li class="icon-search">SEARCH</li>
+                                <li class="icon-envelope">ENVELOPE</li>
+                                <li class="icon-heart">HEART</li>
+                                <li class="icon-star">STAR</li>
+                                <li class="icon-star-empty">STAR-EMPTY</li>
+                                <li class="icon-user">USER</li>
+                                <li class="icon-film">FILM</li>
+                                <li class="icon-th-large">TH_LARGE</li>
+                                <li class="icon-th">TH</li>
+                                <li class="icon-th-list">TH_LIST</li>
+                                <li class="icon-ok">OK</li>
+                                <li class="icon-remove">REMOVE</li>
+                                <li class="icon-zoom-in">ZOOM_IN</li>
+
+                                <li class="icon-zoom-out">ZOOM_OUT</li>
+                                <li class="icon-off">OFF</li>
+                                <li class="icon-signal">SIGNAL</li>
+                                <li class="icon-cog">COG</li>
+                                <li class="icon-trash">TRASH</li>
+                                <li class="icon-home">HOME</li>
+                                <li class="icon-file">FILE</li>
+                                <li class="icon-time">TIME</li>
+                                <li class="icon-road">ROAD</li>
+                                <li class="icon-download-alt">DONWLOAD_ALT</li>
+                                <li class="icon-download">DOWNLOAD</li>
+                                <li class="icon-upload">UPLOAD</li>
+                                <li class="icon-inbox">INBOX</li>
+                                <li class="icon-play-circle">PLAY_CIRCLE</li>
+                                <li class="icon-repeat">REPEAT</li>
+                            </ul>
+                        </div>
+
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-refresh">REFRESH</li>
+                                <li class="icon-list-alt">LIST_ALT</li>
+                                <li class="icon-lock">LOCK</li>
+                                <li class="icon-flag">FLAG</li>
+                                <li class="icon-headphones">HEADPHONES</li>
+                                <li class="icon-volume-off">VOLUME_OFF</li>
+                                <li class="icon-volume-down">VOLUME_DOWN</li>
+                                <li class="icon-volume-up">VOLUME_UP</li>
+                                <li class="icon-qrcode">QRCODE</li>
+                                <li class="icon-barcode">BARCODE</li>
+                                <li class="icon-tag">TAG</li>
+                                <li class="icon-tags">TAGS</li>
+                                <li class="icon-book">BOOK</li>
+                                <li class="icon-bookmark">BOOKMARK</li>
+                                <li class="icon-print">PRINT</li>
+
+                                <li class="icon-camera">CAMERA</li>
+                                <li class="icon-font">FONT</li>
+                                <li class="icon-bold">BOLD</li>
+                                <li class="icon-italic">ITALIC</li>
+                                <li class="icon-text-height">TEXT_HEIGHT</li>
+                                <li class="icon-text-width">TEXT_WIDTH</li>
+                                <li class="icon-align-left">ALIGN_LEFT</li>
+                                <li class="icon-align-center">ALIGN_CENTER</li>
+                                <li class="icon-align-right">ALIGN_RIGHT</li>
+                                <li class="icon-align-justify">ALIGN_JUSTIFY</li>
+                                <li class="icon-list">LIST</li>
+                                <li class="icon-indent-left">IDENT_LEFT</li>
+                                <li class="icon-indent-right">IDENT_RIGHT</li>
+                                <li class="icon-facetime-video">FACETIME_VIDEO</li>
+                                <li class="icon-picture">PICTURE</li>
+                            </ul>
+                        </div>
+
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-pencil">PENCIL</li>
+                                <li class="icon-map-marker">MAP_MARKER</li>
+                                <li class="icon-adjust">ADJUST</li>
+                                <li class="icon-tint">TINT</li>
+                                <li class="icon-edit">EDIT</li>
+                                <li class="icon-share">SHARE</li>
+                                <li class="icon-check">CHECK</li>
+                                <li class="icon-move">MOVE</li>
+                                <li class="icon-step-backward">STEP_BACKWARD</li>
+                                <li class="icon-fast-backward">FAST_BACKWARD</li>
+                                <li class="icon-backward">BACKWARD</li>
+                                <li class="icon-play">PLAY</li>
+                                <li class="icon-pause">PAUSE</li>
+                                <li class="icon-stop">STOP</li>
+                                <li class="icon-forward">FORWARD</li>
+
+                                <li class="icon-fast-forward">FAST_FORWARD</li>
+                                <li class="icon-step-forward">STEP_FORWARD</li>
+                                <li class="icon-eject">EJECT</li>
+                                <li class="icon-chevron-left">CHEVRON_LEFT</li>
+                                <li class="icon-chevron-right">CHEVRON_RIGHT</li>
+                                <li class="icon-plus-sign">PLUS_SIGN</li>
+                                <li class="icon-minus-sign">MINUS_SIGN</li>
+                                <li class="icon-remove-sign">REMOVE_SIGN</li>
+                                <li class="icon-ok-sign">OK_SIGN</li>
+                                <li class="icon-question-sign">QUESTION_SIGN</li>
+                                <li class="icon-info-sign">INFO_SIGN</li>
+                                <li class="icon-screenshot">SCREENSHOT</li>
+                                <li class="icon-remove-circle">REMOVE_CIRCLE</li>
+                                <li class="icon-ok-circle">OK_CIRCLE</li>
+                                <li class="icon-ban-circle">BAN_CIRCLE</li>
+                            </ul>
+                        </div>
+
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-arrow-left">ARROW_LEFT</li>
+                                <li class="icon-arrow-right">ARROW_RIGHT</li>
+                                <li class="icon-arrow-up">ARROW_UP</li>
+                                <li class="icon-arrow-down">ARROW_DOWN</li>
+                                <li class="icon-share-alt">SHARE_ALT</li>
+                                <li class="icon-resize-full">RESIZE_FULL</li>
+                                <li class="icon-resize-small">RESIZE_SMALL</li>
+                                <li class="icon-plus">PLUS</li>
+                                <li class="icon-minus">MINUS</li>
+                                <li class="icon-asterisk">ASTERISK</li>
+                                <li class="icon-exclamation-sign">EXCLAMATION_SIGN</li>
+                                <li class="icon-gift">GIFT</li>
+                                <li class="icon-leaf">LEAF</li>
+                                <li class="icon-fire">FIRE</li>
+                                <li class="icon-eye-open">EYE_OPEN</li>
+
+                                <li class="icon-eye-close">EYE_CLOSE</li>
+                                <li class="icon-warning-sign">WARNING_SIGN</li>
+                                <li class="icon-plane">PLANE</li>
+                                <li class="icon-calendar">CALENDAR</li>
+                                <li class="icon-random">RANDOM</li>
+                                <li class="icon-comment">COMMENT</li>
+                                <li class="icon-magnet">MAGNET</li>
+                                <li class="icon-chevron-up">CHEVRON_UP</li>
+                                <li class="icon-chevron-down">CHEVRON_DOWN</li>
+                                <li class="icon-retweet">RETWEET</li>
+                                <li class="icon-shopping-cart">SHOPPING_CART</li>
+                                <li class="icon-folder-close">FOLDER_CLOSE</li>
+                                <li class="icon-folder-open">FOLDER_OPEN</li>
+                                <li class="icon-resize-vertical">RESIZE_VERTICAL</li>
+                                <li class="icon-resize-horizontal">RESIZE_HORIZONTAL</li>
+                            </ul>
+                        </div>
+                    </section>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
+                    <section id="extended-icons" class="row">
+                        <div class="span12">
+                            <h1>Extended Icons</h1>
+                            <p>
+                                But wait, there's more! Font Awesome also includes this set of ever-expanding
+                                extra-awesome pictograms.
+                            </p>
+                        </div>
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-camera-retro">CAMERA_RETRO</li>
+                                <li class="icon-bar-chart">BAR_CHART</li>
+                                <li class="icon-cogs">COGS</li>
+                                <li class="icon-external-link">EXTERNAL_LINK</li>
+                                <li class="icon-pushpin">PUSHPIN</li>
+                            </ul>
+                        </div>
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-facebook-sign">FACEBOOK_SIGN</li>
+                                <li class="icon-twitter-sign">TWITTER_SIGN</li>
+                                <li class="icon-linkedin-sign">LINKEDIN_SIGN</li>
+                                <li class="icon-github-sign">GITHUB_SIGN</li>
+                                <li class="icon-key">KEY</li>
+                            </ul>
+                        </div>
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-thumbs-up">THUMBS_UP</li>
+                                <li class="icon-thumbs-down">THUMBS_DOWN</li>
+                                <li class="icon-comments">COMMENTS</li>
+                                <li class="icon-trophy">TROPHY</li>
+                                <li class="icon-upload-alt">UPLOAD_ALT</li>
+                            </ul>
+                        </div>
+                        <div class="span3">
+                            <ul class="the-icons">
+                                <li class="icon-signin">SIGNIN</li>
+                                <li class="icon-signout">SIGNOUT</li>
+                                <li class="icon-star-half">STAR_HALF</li>
+                                <li class="icon-heart-empty">HEART_EMPTY</li>
+                                <li class="icon-lemon">LEMON</li>
+                            </ul>
+                        </div>
+                    </section>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder>
