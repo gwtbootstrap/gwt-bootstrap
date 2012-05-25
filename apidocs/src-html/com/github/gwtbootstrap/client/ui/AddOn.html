@@ -10,7 +10,7 @@
 <span class="sourceLineNo">002</span><a name="line.2"></a>
 <span class="sourceLineNo">003</span>import com.github.gwtbootstrap.client.ui.base.ComplexWidget;<a name="line.3"></a>
 <span class="sourceLineNo">004</span>import com.github.gwtbootstrap.client.ui.base.HasIcon;<a name="line.4"></a>
-<span class="sourceLineNo">005</span>import com.github.gwtbootstrap.client.ui.constants.IconColor;<a name="line.5"></a>
+<span class="sourceLineNo">005</span>import com.github.gwtbootstrap.client.ui.constants.IconSize;<a name="line.5"></a>
 <span class="sourceLineNo">006</span>import com.github.gwtbootstrap.client.ui.constants.IconType;<a name="line.6"></a>
 <span class="sourceLineNo">007</span>import com.google.gwt.user.client.ui.HasText;<a name="line.7"></a>
 <span class="sourceLineNo">008</span><a name="line.8"></a>
@@ -93,13 +93,12 @@
 <span class="sourceLineNo">085</span>                }<a name="line.85"></a>
 <span class="sourceLineNo">086</span>        }<a name="line.86"></a>
 <span class="sourceLineNo">087</span><a name="line.87"></a>
-<span class="sourceLineNo">088</span>        /**<a name="line.88"></a>
-<span class="sourceLineNo">089</span>         * {@inheritDoc}<a name="line.89"></a>
-<span class="sourceLineNo">090</span>         */<a name="line.90"></a>
-<span class="sourceLineNo">091</span>        public void setIconColor(IconColor color) {<a name="line.91"></a>
-<span class="sourceLineNo">092</span>                icon.setColor(color);<a name="line.92"></a>
-<span class="sourceLineNo">093</span>        }<a name="line.93"></a>
-<span class="sourceLineNo">094</span>}<a name="line.94"></a>
+<span class="sourceLineNo">088</span>    @Override<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    public void setIconSize(IconSize size) {<a name="line.89"></a>
+<span class="sourceLineNo">090</span>        icon.setIconsSize(size);<a name="line.90"></a>
+<span class="sourceLineNo">091</span>    }<a name="line.91"></a>
+<span class="sourceLineNo">092</span><a name="line.92"></a>
+<span class="sourceLineNo">093</span>}<a name="line.93"></a>
 
 
 
