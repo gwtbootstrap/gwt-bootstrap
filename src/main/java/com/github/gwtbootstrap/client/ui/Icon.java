@@ -15,131 +15,86 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.constants.IconColor;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
+
 /**
  * Widget with a black or white icon.
  * <p>
  * The icons are provided by <a href="http://glyphicons.com/">Glyphicons</a>
- * 
+ * and <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>.
+ *
+ * <p/>
  * <p>
  * <h3>UiBinder Usage:</h3>
- * 
+ * <p/>
  * <pre>
  * {@code
  * <b:Icon type="PLANE" />
  * }
  * </pre>
  * </p>
- * 
- * @since 2.0.3.0
- * 
+ *
  * @author Carlos Alexandro Becker
- * 
  * @author Dominik Mayer
- * 
  * @see <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Bootstrap documentation</a>
+ * @see <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome page</a>
+ * @since 2.0.3.0
  */
 //@formatter:on
 public class Icon extends Widget {
 
-	private IconColor color = IconColor.BLACK;
+    private IconType type;
 
-	private IconType type;
+    /**
+     * Creates a widget but doesn't set an icon yet.
+     * <p/>
+     * (This is probably not what you want to do most of the time.)
+     */
+    public Icon() {
+        setElement(DOM.createElement("i"));
+    }
 
-	/**
-	 * Creates a widget but doesn't set an icon yet.
-	 * <p>
-	 * (This is probably not what you want to do most of the time.)
-	 */
-	public Icon() {
-		setElement(DOM.createElement("i"));
-	}
+    /**
+     * Creates a black icon of given type.
+     *
+     * @param type the icon type
+     */
+    @UiConstructor
+    public Icon(IconType type) {
+        this();
+        setType(type);
+    }
 
-	/**
-	 * Creates a black icon of given type.
-	 * 
-	 * @param type
-	 *            the icon type
-	 */
-	@UiConstructor
-	public Icon(IconType type) {
-		this();
-		setType(type);
-	}
+    /**
+     * Sets the icon type.
+     *
+     * @param type the icon type
+     */
+    public void setType(IconType type) {
+        this.type = type;
 
-	/**
-	 * Creates an icon of given type and color.
-	 * 
-	 * @param type
-	 *            the icon type
-	 * 
-	 * @param color
-	 *            the icon color
-	 */
-	public Icon(IconType type, IconColor color) {
-		this(type);
-		setColor(color);
-	}
+        for (IconType t : IconType.values())
+            removeStyleName(t.get());
 
-	/**
-	 * Sets the icon type.
-	 * 
-	 * @param type
-	 *            the icon type
-	 */
-	public void setType(IconType type) {
-		this.type = type;
+        addStyleName(type.get());
+    }
 
-		for (IconType t : IconType.values())
-			removeStyleName(t.get());
+    /**
+     * Sets the icon size.
+     *
+     * @param size the icon size
+     */
+    public void setIconsSize(IconSize size) {
+        for (IconSize s : IconSize.values())
+            removeStyleName(s.get());
 
-		addStyleName(type.get());
-	}
+        addStyleName(size.get());
+    }
 
-	/**
-	 * Sets the color of the icon.
-	 * 
-	 * @param color
-	 *            the icon's color. Default: <code>BLACK</code>
-	 */
-	public void setColor(IconColor color) {
-		this.color = color;
-
-		for (IconColor c : IconColor.values())
-			if (!c.get().isEmpty())
-				removeStyleName(c.get());
-
-		if (!color.get().isEmpty())
-			addStyleName(color.get());
-	}
-
-	/**
-	 * Gets the color of the icon.
-	 * 
-	 * @return the icon's color
-	 */
-	public IconColor getColor() {
-		return color;
-	}
-
-	/**
-	 * Inverts the color of the icon.
-	 * <p>
-	 * A black icon will become white, a white icon black.
-	 */
-	public void invertColor() {
-		if (type == null)
-			return;
-
-		if (color == IconColor.BLACK)
-			setColor(IconColor.WHITE);
-		else if (color == IconColor.WHITE)
-			setColor(IconColor.BLACK);
-	}
 }

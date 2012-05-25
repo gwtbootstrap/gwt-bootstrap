@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.constants.IconColor;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 
 /**
@@ -36,13 +36,13 @@ public interface HasIcon {
 	public void setIcon(IconType type);
 
 	/**
-	 * Sets the color of the icon.
+	 * Sets the size of the icon.
 	 * 
 	 * <p>
-	 * Default is black.
+	 * Default is DEFAULT.
 	 * 
-	 * @param color
-	 *            the new color.
+	 * @param size
+	 *            the new size.
 	 */
-	public void setIconColor(IconColor color);
+	public void setIconSize(IconSize size);
 }

@@ -15,10 +15,11 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.constants.IconColor;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -45,11 +46,9 @@ import com.google.gwt.user.client.ui.Widget;
  * @see ResponsiveNavbar
  */
 //@formatter:on
-public class NavWidget extends ListItem implements HasClickHandlers {
+public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 
 	private final IconAnchor anchor = new IconAnchor();
-
-	private boolean invertIcon = true;
 
 	private boolean active = false;
 
@@ -82,25 +81,12 @@ public class NavWidget extends ListItem implements HasClickHandlers {
 		anchor.setIcon(type);
 	}
 
-	public void setIconColor(IconColor color) {
-		anchor.setIconColor(color);
-	}
-
-	/**
-	 * Sets whether the icon color of an active widget should be inverted.
-	 * 
-	 * @param invert
-	 *            <code>false</code> to keep the current color. Default:
-	 *            <code>true</code>
-	 */
-	public void setInvertIcon(boolean invert) {
-		this.invertIcon = invert;
-	}
+    @Override
+    public void setIconSize(IconSize size) {
+        anchor.setIconSize(size);
+    }
 
 	public void setActive(boolean active) {
-		if (this.active != active && invertIcon)
-			anchor.invertIconColor();
-
 		this.active = active;
 
 		if (active)
