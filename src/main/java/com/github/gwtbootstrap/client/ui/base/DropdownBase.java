@@ -22,180 +22,173 @@ import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
+
 /**
  * Base class for dropdown widgets.
- * 
- * @since 2.0.3.0
- * 
+ *
  * @author Carlos A Becker
  * @author Dominik Mayer
- * 
+ * @since 2.0.3.0
  */
 //@formatter:on
 public abstract class DropdownBase extends ComplexWidget {
 
-	private UnorderedList menu = new UnorderedList();
+    private UnorderedList menu = new UnorderedList();
 
-	private IconAnchor trigger;
+    private IconAnchor trigger;
 
-	private NavLink link;
+    private NavLink link;
 
-	private NavLinkClickHandler handler = new NavLinkClickHandler();
+    private NavLinkClickHandler handler = new NavLinkClickHandler();
 
-	/**
-	 * Creates a new widget of the given type.
-	 * 
-	 * @param type
-	 *            the HTML tag to be used for the widget
-	 */
-	public DropdownBase(String type) {
-		super(type);
-		createAndAddTrigger();
-		menu.setStyleName("dropdown-menu");
-		super.add(menu);
-	}
+    /**
+     * Creates a new widget of the given type.
+     *
+     * @param type the HTML tag to be used for the widget
+     */
+    public DropdownBase(String type) {
+        super(type);
+        createAndAddTrigger();
+        menu.setStyleName("dropdown-menu");
+        super.add(menu);
+    }
 
-	private void createAndAddTrigger() {
-		trigger = createTrigger();
-		trigger.addStyleName("dropdown-toggle");
-		trigger.getElement().setAttribute(Constants.DATA_TOGGLE, "dropdown");
-		super.add(trigger);
-	}
+    private void createAndAddTrigger() {
+        trigger = createTrigger();
+        trigger.addStyleName("dropdown-toggle");
+        trigger.getElement().setAttribute(Constants.DATA_TOGGLE, "dropdown");
+        super.add(trigger);
+    }
 
-	/**
-	 * Sets the text of the dropdown trigger.
-	 * 
-	 * @param text
-	 */
-	public void setText(String text) {
-		trigger.setText(text);
-	}
+    /**
+     * Sets the text of the dropdown trigger.
+     *
+     * @param text
+     */
+    public void setText(String text) {
+        trigger.setText(text);
+    }
 
-	/**
-	 * Implement this method to create the trigger appropriate for your widget.
-	 * It has to be an {@link IconAnchor} or a subtype.
-	 * 
-	 * @return the created trigger
-	 */
-	protected abstract IconAnchor createTrigger();
+    /**
+     * Implement this method to create the trigger appropriate for your widget.
+     * It has to be an {@link IconAnchor} or a subtype.
+     *
+     * @return the created trigger
+     */
+    protected abstract IconAnchor createTrigger();
 
-	public void setDropup(boolean dropup) {
-		if (dropup)
-			addStyleName(Constants.DROPUP);
-		else
-			removeStyleName(Constants.DROPUP);
-	}
+    public void setDropup(boolean dropup) {
+        if (dropup)
+            addStyleName(Constants.DROPUP);
+        else
+            removeStyleName(Constants.DROPUP);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onLoad() {
-		super.onLoad();
-		if (trigger != null) {
-			configure(trigger.getElement());
-		}
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        if (trigger != null) {
+            configure(trigger.getElement());
+        }
+    }
 
-	/**
-	 * Adds a widget to the dropdown menu.
-	 * 
-	 * @param widget
-	 *            the widget that will be added to the menu
-	 * 
-	 * @see #addWidget(Widget)
-	 */
-	@Override
-	public void add(Widget widget) {
-		if (canBeAdded(widget)) {
-			menu.add(widget);
-			if (widget instanceof NavLink) {
-				((NavLink) widget).addClickHandler(handler);
-			}
-		} else {
-			throw new IllegalArgumentException("Only NavLink, NavText and "
-					+ "Divider can be added to the Dropdown");
-		}
-	}
+    /**
+     * Adds a widget to the dropdown menu.
+     *
+     * @param widget the widget that will be added to the menu
+     * @see #addWidget(Widget)
+     */
+    @Override
+    public void add(Widget widget) {
+        if (canBeAdded(widget)) {
+            menu.add(widget);
+            if (widget instanceof NavLink) {
+                ((NavLink) widget).addClickHandler(handler);
+            }
+        } else {
+            throw new IllegalArgumentException("Only NavLink, NavText and "
+                    + "Divider can be added to the Dropdown");
+        }
+    }
 
-	/**
-	 * Checks whether a widget can be added to the dropdown.
-	 * <p>
-	 * By default, the dropdown accepts {@link NavLink}, {@link NavText} and
-	 * {@link Divider} widgets. Override this class to allow more widgets.
-	 * 
-	 * @param widget
-	 *            the widget that should be added
-	 * 
-	 * @return <code>true</code> if the widget can be added to the Dropdown
-	 */
-	protected boolean canBeAdded(Widget widget) {
-		return ((widget instanceof NavLink) || (widget instanceof NavText)
-				|| (widget instanceof NavHeader) || (widget instanceof Divider));
-	}
+    /**
+     * Checks whether a widget can be added to the dropdown.
+     * <p/>
+     * By default, the dropdown accepts {@link NavLink}, {@link NavText} and
+     * {@link Divider} widgets. Override this class to allow more widgets.
+     *
+     * @param widget the widget that should be added
+     * @return <code>true</code> if the widget can be added to the Dropdown
+     */
+    protected boolean canBeAdded(Widget widget) {
+        return ((widget instanceof NavLink) || (widget instanceof NavText)
+                || (widget instanceof NavHeader) || (widget instanceof Divider));
+    }
 
-	/**
-	 * Adds a widget to the the dropdown widget, <b>not</b> to the dropdown
-	 * menu.
-	 * 
-	 * <p>
-	 * Use {@link #add(Widget)} if you want to add a widget to the dropdown
-	 * menu.
-	 * 
-	 * @param widget
-	 *            the widget to be added.
-	 */
-	protected void addWidget(Widget widget) {
-		super.add(widget);
-	}
+    /**
+     * Adds a widget to the the dropdown widget, <b>not</b> to the dropdown
+     * menu.
+     * <p/>
+     * <p/>
+     * Use {@link #add(Widget)} if you want to add a widget to the dropdown
+     * menu.
+     *
+     * @param widget the widget to be added.
+     */
+    protected void addWidget(Widget widget) {
+        super.add(widget);
+    }
 
-	private native void configure(Element e) /*-{
-		$wnd.jQuery(e).dropdown();
-	}-*/;
+    private native void configure(Element e) /*-{
+        $wnd.jQuery(e).dropdown();
+    }-*/;
 
-	/**
-	 * Pull the dropdown menu to right
-	 * 
-	 * @param rightDropdown
-	 *                      <code>true</code> pull to right, otherwise to left. Default is <code>false</code>
-	 */
-	public void setRightDropdown(boolean rightDropdown) {
-		if (rightDropdown) {
-			menu.addStyleName("pull-right");
-		} else {
-			menu.removeStyleName("pull-right");
-		}
-	}
+    /**
+     * Pull the dropdown menu to right
+     *
+     * @param rightDropdown <code>true</code> pull to right, otherwise to left. Default is <code>false</code>
+     */
+    public void setRightDropdown(boolean rightDropdown) {
+        if (rightDropdown) {
+            menu.addStyleName("pull-right");
+        } else {
+            menu.removeStyleName("pull-right");
+        }
+    }
 
-	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
-		return addDomHandler(handler, ChangeEvent.getType());
-	}
+    public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+        return addDomHandler(handler, ChangeEvent.getType());
+    }
 
-	private class NavLinkClickHandler implements ClickHandler {
+    private class NavLinkClickHandler implements ClickHandler {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			link = (NavLink) event.getSource();
-			DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);
-		}
+        @Override
+        public void onClick(ClickEvent event) {
+            link = (NavLink) event.getSource();
+            DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);
+        }
 
-	}
+    }
 
-	/**
-	 * Method to get the {@link NavLink} that has been clicked most recently.
-	 * 
-	 * @return Last clicked NavLink or <code>null</code> if none have been clicked.
-	 */
-	public NavLink getLastSelectedNavLink() {
-		return link;
-	}
+    /**
+     * Method to get the {@link NavLink} that has been clicked most recently.
+     *
+     * @return Last clicked NavLink or <code>null</code> if none have been clicked.
+     */
+    public NavLink getLastSelectedNavLink() {
+        return link;
+    }
+
+    @Override
+    public void clear() {
+        menu.clear();
+    }
 }
