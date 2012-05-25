@@ -17,7 +17,7 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.constants.IconColor;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
 
@@ -81,14 +81,12 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 			this.icon.setType(type);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setIconColor(IconColor color) {
-		icon.setColor(color);
-	}
+    @Override
+    public void setIconSize(IconSize size) {
+        icon.setIconsSize(size);
+    }
 
-	/**
+    /**
 	 * {@inheritDoc}
 	 */
 	public void setText(String text) {
@@ -151,12 +149,5 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	 */
 	public void setEmptyHref() {
 		setHref(Constants.EMPTY_HREF);
-	}
-
-	/**
-	 * Inverts the color of the icon.
-	 */
-	public void invertIconColor() {
-		icon.invertColor();
 	}
 }

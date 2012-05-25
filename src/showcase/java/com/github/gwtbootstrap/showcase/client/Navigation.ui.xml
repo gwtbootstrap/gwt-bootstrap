@@ -119,6 +119,14 @@
                             <b:NavLink ui:field="navlink1">Test</b:NavLink>
                             <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                         </b:Nav>
+                        <b:Nav>
+                            <b:Dropdown text="Icons?">
+                                <b:NavLink icon="ASTERISK" iconSize="LARGE">asterisk</b:NavLink>
+                                <b:NavLink icon="HOME" iconSize="LARGE">home</b:NavLink>
+                                <b:NavLink icon="TWITTER_SIGN" iconSize="LARGE">twitter</b:NavLink>
+                                <b:NavLink icon="ROAD" iconSize="LARGE" >road</b:NavLink>
+                            </b:Dropdown>
+                        </b:Nav>
                         <b:NavForm size="1"/>
                         <b:Nav alignment="RIGHT">
                             <b:NavLink>Test</b:NavLink>
@@ -152,7 +160,7 @@
                     <h2>Nav Lists</h2>
                     <b:NavList>
                         <b:NavHeader>Header</b:NavHeader>
-                        <b:NavLink active="true" icon="PLANE" iconColor="BLACK">Test</b:NavLink>
+                        <b:NavLink active="true" icon="PLANE" >Test</b:NavLink>
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:NavList>
@@ -170,7 +178,7 @@
                 <g:HTMLPanel>
                     <b:WellNavList>
                         <b:NavHeader>Header</b:NavHeader>
-                        <b:NavLink active="true" icon="PLANE" iconColor="BLACK" ui:field="navlink2">Test</b:NavLink>
+                        <b:NavLink active="true" icon="PLANE"  ui:field="navlink2">Test</b:NavLink>
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:WellNavList>
