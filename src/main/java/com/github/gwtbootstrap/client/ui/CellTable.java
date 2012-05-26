@@ -1,4 +1,4 @@
-package com.github.gwtbootstrap.client.ui.incubator;
+package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.google.gwt.core.client.GWT;
@@ -51,7 +51,7 @@ public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<
 	@ImportedWithPrefix("gwt-bootstrap-cellTable")
 	public interface Style extends com.google.gwt.user.cellview.client.CellTable.Style {
 
-		String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/incubator/GwtBootstrapCellTable.css";
+		String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapCellTable.css";
 	}
 
 	public CellTable() {
