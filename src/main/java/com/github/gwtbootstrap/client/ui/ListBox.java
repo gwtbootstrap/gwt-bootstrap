@@ -19,7 +19,7 @@ import com.google.gwt.dom.client.Element;
  * @author ohashi keisuke
  * 
  */
-public class ListBox extends com.google.gwt.user.client.ui.ListBox implements HasSize, HasAlternateSize, IsSearchQuery,HasId {
+public class ListBox extends com.google.gwt.user.client.ui.ListBox implements HasSize, HasAlternateSize, IsSearchQuery, HasId {
 
 	{
 		setStyleName("");

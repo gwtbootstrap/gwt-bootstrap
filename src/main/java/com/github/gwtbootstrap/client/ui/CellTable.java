@@ -72,7 +72,7 @@ public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<
 	}
 
 	public CellTable(ProvidesKey<T> keyProvider) {
-		super(keyProvider);
+		this(DEFAULT_PAGESIZE, keyProvider);
 	}
 	
 	public void setStriped(boolean striped) {
