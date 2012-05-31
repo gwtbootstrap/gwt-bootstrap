@@ -1,0 +1,66 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<b:Heading size="2">
+			Event Handle, CellTable, Pagination
+		</b:Heading>
+		<b:FluidRow>
+			<b:Column size="4">
+				<b:Paragraph>
+					The GWT-Bootstrap
+					<b:Code>Form</b:Code>
+					class has
+					<b:Code>addSubmitHandler</b:Code>
+					and
+					<b:Code>addSubmitCompleteHandler</b:Code>
+					.
+					They are same as native GWT `FormPanel`.If you need in
+					UiBinder,Use
+					<b:Code>@UiHandler</b:Code>
+					annotation.
+				</b:Paragraph>
+			</b:Column>
+			<b:Column size="8">
+				<b:Form type="HORIZONTAL" action="//gwtbootstrap.github.com"
+					ui:field="submitExampleForm">
+					<b:Fieldset>
+						<b:Legend>Register User Infomation<small>* is required</small></b:Legend>
+						<b:ControlGroup ui:field="userNameControlGroup">
+							<b:ControlLabel for="name"><font color="red">*</font> User Name</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="name" ui:field="userName" placeholder="input user name" />
+								<b:HelpInline ui:field="userNameHelpInline"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup ui:field="ageControlGroup">
+							<b:ControlLabel for="age">Age</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox b:id="age" ui:field="age" placeholder="input your age" />
+								<b:HelpInline ui:field="ageHelpInline"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup ui:field="favoriteNameControlGroup">
+							<b:ControlLabel for="favorite">Select favorite</b:ControlLabel>
+							<b:Controls>
+								<b:ValueListBox b:id="favorite" ui:field="favorite"/>
+								<b:HelpInline>Woohoo!</b:HelpInline>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:FormActions>
+							<b:SubmitButton type="PRIMARY" ui:field="saveButton">Save changes</b:SubmitButton>
+							<b:Button>Cancel</b:Button>
+							<b:Button ui:field="add5Entity">Add 5 entity</b:Button>
+						</b:FormActions>
+					</b:Fieldset>
+				</b:Form>
+				<b:Pagination ui:field="pagination"/>
+				<b:CellTable ui:field="exampleTable" bordered="true" condensed="true" striped="true" />
+			</b:Column>
+		</b:FluidRow>
+	</g:HTMLPanel>
+</ui:UiBinder> 
