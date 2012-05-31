@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
-	xmlns:bb="urn:import:com.github.gwtbootstrap.client.ui.base" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+	xmlns:bb="urn:import:com.github.gwtbootstrap.client.ui.base" xmlns:c="urn:import:com.google.gwt.user.cellview.client" xmlns:f="urn:import:com.github.gwtbootstrap.showcase.client.forms">
 	<ui:with
 		type="com.github.gwtbootstrap.showcase.client.resources.CustomResources"
 		field="res" />
@@ -343,47 +343,6 @@
 			</b:Column>
 		</b:FluidRow>
 		<br/>
-		<b:Heading size="2">
-			Event Handle
-		</b:Heading>		
-		<b:FluidRow>
-			<b:Column size="4">
-				<b:Paragraph>
-					The GWT-Bootstrap <b:Code>Form</b:Code> class has <b:Code>addSubmitHandler</b:Code> and <b:Code>addSubmitCompleteHandler</b:Code>.
-					They are same as native GWT `FormPanel`.If you need in UiBinder,Use <b:Code>@UiHandler</b:Code> annotation.
-				</b:Paragraph>
-			</b:Column>
-			<b:Column size="8">
-				<b:Form type="HORIZONTAL" action="//gwtbootstrap.github.com" ui:field="submitExampleForm">
-					<b:Fieldset>
-						<b:ControlGroup>
-							<b:ControlLabel for="name">User Name</b:ControlLabel>
-							<b:Controls>
-								<b:TextBox b:id="name" ui:field="name" placeholder="input user name"/>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup>
-							<b:ControlLabel for="example">Select favorite</b:ControlLabel>
-							<b:Controls>
-								<b:ListBox b:id="example" ui:field="example">
-									<g:item>foo</g:item>
-									<g:item>bar</g:item>
-									<g:item>hoge</g:item>
-									<g:item>piyo</g:item>
-									<g:item>woo</g:item>
-									<g:item>hoo</g:item>
-								</b:ListBox>
-								<b:HelpInline>Woohoo!</b:HelpInline>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:FormActions>
-							<b:SubmitButton type="PRIMARY">Save changes</b:SubmitButton>
-							<b:Button>Cancel</b:Button>
-						</b:FormActions>
-					</b:Fieldset>
-				</b:Form>
- 				<c:CellTable ui:field="exampleTable"/>
-			</b:Column>
-		</b:FluidRow>
+		<f:CellTables/>
 	</g:HTMLPanel>
 </ui:UiBinder>

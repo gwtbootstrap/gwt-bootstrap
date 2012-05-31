@@ -20,6 +20,7 @@ import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
+import com.github.gwtbootstrap.showcase.client.forms.Forms;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
