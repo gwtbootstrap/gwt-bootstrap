@@ -50,4 +50,9 @@ public class Pagination extends DivWidget {
 	public void add(Widget child) {
 		list.add(child);
 	}
+	
+	@Override
+	public void clear() {
+		list.clear();
+	}
 }
