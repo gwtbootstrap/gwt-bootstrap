@@ -31,6 +31,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.RangeChangeEvent;
 
 public class CellTables extends Composite implements Editor<Person> {
 
@@ -191,6 +192,14 @@ public class CellTables extends Composite implements Editor<Person> {
 		});
 
 		exampleTable.addColumnSortHandler(favoriteColHandler);
+		
+		exampleTable.addRangeChangeHandler(new RangeChangeEvent.Handler() {
+			
+			@Override
+			public void onRangeChange(RangeChangeEvent event) {
+				rebuildPager();
+			}
+		});
 
 		pager.setDisplay(exampleTable);
 
@@ -249,6 +258,8 @@ public class CellTables extends Composite implements Editor<Person> {
 		setPerson(new Person());
 		e.cancel();
 	}
+	
+	
 
 	private void addPerson(Person person) {
 		if (person.getId() == null) {
@@ -258,18 +269,24 @@ public class CellTables extends Composite implements Editor<Person> {
 
 		dataProvider.flush();
 
+		rebuildPager();
+		
+	}
+
+	private void rebuildPager() {
 		pagination.clear();
 
 		if (pager.getPageCount() == 0) {
 			return;
 		}
 
-		NavLink prev = new NavLink("<", "javascript:;");
+		NavLink prev = new NavLink("<");
 
 		prev.addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				GWT.log(String.valueOf("prev"));
 				pager.previousPage();
 			}
 		});
@@ -279,28 +296,34 @@ public class CellTables extends Composite implements Editor<Person> {
 		pagination.add(prev);
 
 		int before = 2;
-
+		int after = 2;
+		
 		while (!pager.hasPreviousPages(before) && before > 0) {
 			before--;
+			if(pager.hasNextPages(after + 1)) {
+				after++;
+			}
 		}
 
-		int after = 2;
 
 		while (!pager.hasNextPages(after) && after > 0) {
 			after--;
+			if(pager.hasPreviousPages(before+1)) {
+				before++;
+			}
 		}
 
 		for (int i = pager.getPage() - before; i <= pager.getPage() + after; i++) {
 
 			final int index = i + 1;
 
-			NavLink page = new NavLink(String.valueOf(index), "javascript:;");
+			NavLink page = new NavLink(String.valueOf(index));
 
 			page.addClickHandler(new ClickHandler() {
 
 				@Override
 				public void onClick(ClickEvent event) {
-					pager.setPage(index);
+					pager.setPage(index - 1);
 				}
 			});
 
@@ -311,12 +334,13 @@ public class CellTables extends Composite implements Editor<Person> {
 			pagination.add(page);
 		}
 
-		NavLink next = new NavLink(">", "javascript:;");
+		NavLink next = new NavLink(">");
 
 		next.addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				GWT.log(String.valueOf("next"));
 				pager.nextPage();
 			}
 		});
@@ -325,6 +349,8 @@ public class CellTables extends Composite implements Editor<Person> {
 
 		pagination.add(next);
 	}
+	
+	
 
 	@UiHandler("add5Entity")
 	public void onClickAdd5Entity(ClickEvent e) {
