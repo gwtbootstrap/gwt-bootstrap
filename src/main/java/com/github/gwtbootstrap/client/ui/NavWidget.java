@@ -94,12 +94,23 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 		else
 			removeStyleName(Constants.ACTIVE);
 	}
+	
+	public boolean isActive() {
+		return active;
+	}
 
 	public void setDisabled(boolean disabled) {
+		
 		if (disabled)
 			addStyleName(Constants.DISABLED);
 		else
 			removeStyleName(Constants.DISABLED);
+		
+		anchor.setEnabled(!disabled);
+	}
+	
+	public boolean isDisabled() {
+		return !anchor.isEnabled();
 	}
 
 	protected IconAnchor getAnchor() {
@@ -119,5 +130,13 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	@Override
 	public void add(Widget w) {
 		anchor.add(w);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void clear() {
+		anchor.clear();
 	}
 }
