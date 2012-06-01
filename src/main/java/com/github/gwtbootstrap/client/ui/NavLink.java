@@ -38,6 +38,7 @@ import com.google.gwt.user.client.ui.HasText;
  * @since 2.0.3.0
  * 
  * @author Dominik Mayer
+ * @author ohashi keisuke
  * 
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation (Navbar)</a>
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navs">Bootstrap documentation (Navs)</a>
@@ -55,6 +56,17 @@ public class NavLink extends NavWidget implements HasText {
 	 */
 	public NavLink() {
 		super();
+	}
+
+	/**
+	 * Creates an empty widget of given text.
+	 * 
+	 * @param text
+	 *            text of the widget
+	 */
+	public NavLink(String text) {
+		super();
+		setText(text);
 	}
 
 	/**

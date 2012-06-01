@@ -19,6 +19,12 @@ import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasText;
 
 /**
@@ -49,10 +55,10 @@ import com.google.gwt.user.client.ui.HasText;
  * @since 2.0.3.0
  * 
  * @author Dominik Mayer
- * 
+ * @author ohashi keisuke
  */
 public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
-		HasHref {
+		HasHref, HasClickHandlers, HasEnabled {
 
 	private Icon icon = new Icon();
 
@@ -149,5 +155,29 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	 */
 	public void setEmptyHref() {
 		setHref(Constants.EMPTY_HREF);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HandlerRegistration addClickHandler(ClickHandler handler) {
+		return addDomHandler(handler, ClickEvent.getType());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean isEnabled() {
+	    return !DOM.getElementPropertyBoolean(getElement(), "disabled");
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setEnabled(boolean enabled) {
+	    DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
 	}
 }
