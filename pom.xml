@@ -87,6 +87,13 @@
 		<!-- GWT needs at least java 1.5 -->
 		<webappDirectory>src/main/webapp</webappDirectory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--
+		Right now(2012/06/02),github site-maven-plugin is not supported encrypt password.
+		But we need it for CI server.
+		this property is for it.
+		If you need encrypt password,Add option `-Dgithub.sites.plugin.version=0.7-SNAPSHOT` in running `mvn site`.
+		 -->
+		<github.sites.plugin.version>0.5</github.sites.plugin.version>
 	</properties>
 
 	<repositories>
@@ -478,7 +485,7 @@
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
-				<version>0.5</version>
+				<version>${github.sites.plugin.version}</version>
 				<configuration>
 					<message>Building site for ${project.version}</message>
 				</configuration>
