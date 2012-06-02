@@ -1,140 +1,145 @@
-<HTML>
-<BODY BGCOLOR="white">
-<PRE>
-<FONT color="green">001</FONT>    package com.github.gwtbootstrap.datepicker.client.ui.util;<a name="line.1"></a>
-<FONT color="green">002</FONT>    <a name="line.2"></a>
-<FONT color="green">003</FONT>    import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;<a name="line.3"></a>
-<FONT color="green">004</FONT>    import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;<a name="line.4"></a>
-<FONT color="green">005</FONT>    import com.github.gwtbootstrap.datepicker.client.ui.resources.Resources;<a name="line.5"></a>
-<FONT color="green">006</FONT>    import com.google.gwt.resources.client.TextResource;<a name="line.6"></a>
-<FONT color="green">007</FONT>    <a name="line.7"></a>
-<FONT color="green">008</FONT>    import java.util.ArrayList;<a name="line.8"></a>
-<FONT color="green">009</FONT>    import java.util.List;<a name="line.9"></a>
-<FONT color="green">010</FONT>    <a name="line.10"></a>
-<FONT color="green">011</FONT>    /**<a name="line.11"></a>
-<FONT color="green">012</FONT>     * A utility class to get the User's Browser Locale.<a name="line.12"></a>
-<FONT color="green">013</FONT>     *<a name="line.13"></a>
-<FONT color="green">014</FONT>     * @author Carlos A Becker<a name="line.14"></a>
-<FONT color="green">015</FONT>     * @since 2.0.3.0<a name="line.15"></a>
-<FONT color="green">016</FONT>     */<a name="line.16"></a>
-<FONT color="green">017</FONT>    public class LocaleUtil {<a name="line.17"></a>
-<FONT color="green">018</FONT>    <a name="line.18"></a>
-<FONT color="green">019</FONT>        private static String locale = null;<a name="line.19"></a>
-<FONT color="green">020</FONT>        private static String LANGUAGE = null;<a name="line.20"></a>
-<FONT color="green">021</FONT>    <a name="line.21"></a>
-<FONT color="green">022</FONT>        private static List&lt;String&gt; loaded = new ArrayList&lt;String&gt;();<a name="line.22"></a>
-<FONT color="green">023</FONT>    <a name="line.23"></a>
-<FONT color="green">024</FONT>        public static String getLanguage() {<a name="line.24"></a>
-<FONT color="green">025</FONT>            if (LANGUAGE == null) {<a name="line.25"></a>
-<FONT color="green">026</FONT>                setupLocale();<a name="line.26"></a>
-<FONT color="green">027</FONT>            }<a name="line.27"></a>
-<FONT color="green">028</FONT>            return LANGUAGE;<a name="line.28"></a>
-<FONT color="green">029</FONT>        }<a name="line.29"></a>
-<FONT color="green">030</FONT>    <a name="line.30"></a>
-<FONT color="green">031</FONT>        /**<a name="line.31"></a>
-<FONT color="green">032</FONT>         * Get the string of locale based on user's browser configuration.<a name="line.32"></a>
-<FONT color="green">033</FONT>         *<a name="line.33"></a>
-<FONT color="green">034</FONT>         * @return<a name="line.34"></a>
-<FONT color="green">035</FONT>         */<a name="line.35"></a>
-<FONT color="green">036</FONT>        public static String getLocale() {<a name="line.36"></a>
-<FONT color="green">037</FONT>            if (locale == null) {<a name="line.37"></a>
-<FONT color="green">038</FONT>                locale = getBrowserLocale();<a name="line.38"></a>
-<FONT color="green">039</FONT>            }<a name="line.39"></a>
-<FONT color="green">040</FONT>            return locale;<a name="line.40"></a>
-<FONT color="green">041</FONT>        }<a name="line.41"></a>
-<FONT color="green">042</FONT>    <a name="line.42"></a>
-<FONT color="green">043</FONT>        public static TextResource getLocaleJsResource() {<a name="line.43"></a>
-<FONT color="green">044</FONT>            String locale = getLocale();<a name="line.44"></a>
-<FONT color="green">045</FONT>            if (locale == null) {<a name="line.45"></a>
-<FONT color="green">046</FONT>                return null;<a name="line.46"></a>
-<FONT color="green">047</FONT>            }<a name="line.47"></a>
-<FONT color="green">048</FONT>            return setupLocale();<a name="line.48"></a>
-<FONT color="green">049</FONT>        }<a name="line.49"></a>
-<FONT color="green">050</FONT>    <a name="line.50"></a>
-<FONT color="green">051</FONT>        private static final native String getBrowserLocale() /*-{<a name="line.51"></a>
-<FONT color="green">052</FONT>            return $wnd.navigator.userLanguage || $wnd.navigator.language;<a name="line.52"></a>
-<FONT color="green">053</FONT>        }-*/;<a name="line.53"></a>
-<FONT color="green">054</FONT>    <a name="line.54"></a>
-<FONT color="green">055</FONT>    <a name="line.55"></a>
-<FONT color="green">056</FONT>        public static final void forceLocale(String locale_) {<a name="line.56"></a>
-<FONT color="green">057</FONT>            locale = locale_;<a name="line.57"></a>
-<FONT color="green">058</FONT>            TextResource t = setupLocale();<a name="line.58"></a>
-<FONT color="green">059</FONT>            if (!loaded.contains(locale) &amp;&amp; t != null) {<a name="line.59"></a>
-<FONT color="green">060</FONT>                JavaScriptInjector.inject(t.getText());<a name="line.60"></a>
-<FONT color="green">061</FONT>            }<a name="line.61"></a>
-<FONT color="green">062</FONT>        }<a name="line.62"></a>
-<FONT color="green">063</FONT>    <a name="line.63"></a>
-<FONT color="green">064</FONT>        private static TextResource setupLocale() {<a name="line.64"></a>
-<FONT color="green">065</FONT>            Resources r = Resources.RESOURCES;<a name="line.65"></a>
-<FONT color="green">066</FONT>            TextResource tr = null;<a name="line.66"></a>
-<FONT color="green">067</FONT>    <a name="line.67"></a>
-<FONT color="green">068</FONT>            /*<a name="line.68"></a>
-<FONT color="green">069</FONT>               Script used to gen the basic if-else block:<a name="line.69"></a>
-<FONT color="green">070</FONT>               for a in `ls`; do echo "else if(locale.equals(\"`echo $a | cut -f2 -d.`\")) { tr = r.`echo $a | cut -f2 -d.`(); LANGUAGE = \"`echo $a | cut -f2 -d.`\"; }"; done<a name="line.70"></a>
-<FONT color="green">071</FONT>            */<a name="line.71"></a>
-<FONT color="green">072</FONT>    <a name="line.72"></a>
-<FONT color="green">073</FONT>    <a name="line.73"></a>
-<FONT color="green">074</FONT>            if (locale.equalsIgnoreCase("pt-br") || locale.contains("pt")) {<a name="line.74"></a>
-<FONT color="green">075</FONT>                tr = r.br();<a name="line.75"></a>
-<FONT color="green">076</FONT>                LANGUAGE = "br";<a name="line.76"></a>
-<FONT color="green">077</FONT>            } else if (locale.equals("da")) {<a name="line.77"></a>
-<FONT color="green">078</FONT>                tr = r.da();<a name="line.78"></a>
-<FONT color="green">079</FONT>                LANGUAGE = "da";<a name="line.79"></a>
-<FONT color="green">080</FONT>            } else if (locale.equals("de")) {<a name="line.80"></a>
-<FONT color="green">081</FONT>                tr = r.de();<a name="line.81"></a>
-<FONT color="green">082</FONT>                LANGUAGE = "de";<a name="line.82"></a>
-<FONT color="green">083</FONT>            } else if (locale.equals("es")) {<a name="line.83"></a>
-<FONT color="green">084</FONT>                tr = r.es();<a name="line.84"></a>
-<FONT color="green">085</FONT>                LANGUAGE = "es";<a name="line.85"></a>
-<FONT color="green">086</FONT>            } else if (locale.equals("fi")) {<a name="line.86"></a>
-<FONT color="green">087</FONT>                tr = r.fi();<a name="line.87"></a>
-<FONT color="green">088</FONT>                LANGUAGE = "fi";<a name="line.88"></a>
-<FONT color="green">089</FONT>            } else if (locale.equals("fr")) {<a name="line.89"></a>
-<FONT color="green">090</FONT>                tr = r.fr();<a name="line.90"></a>
-<FONT color="green">091</FONT>                LANGUAGE = "fr";<a name="line.91"></a>
-<FONT color="green">092</FONT>            } else if (locale.equals("is")) {<a name="line.92"></a>
-<FONT color="green">093</FONT>                tr = r.is();<a name="line.93"></a>
-<FONT color="green">094</FONT>                LANGUAGE = "is";<a name="line.94"></a>
-<FONT color="green">095</FONT>            } else if (locale.equals("it")) {<a name="line.95"></a>
-<FONT color="green">096</FONT>                tr = r.it();<a name="line.96"></a>
-<FONT color="green">097</FONT>                LANGUAGE = "it";<a name="line.97"></a>
-<FONT color="green">098</FONT>            } else if (locale.equals("lv")) {<a name="line.98"></a>
-<FONT color="green">099</FONT>                tr = r.lv();<a name="line.99"></a>
-<FONT color="green">100</FONT>                LANGUAGE = "lv";<a name="line.100"></a>
-<FONT color="green">101</FONT>            } else if (locale.equals("nb")) {<a name="line.101"></a>
-<FONT color="green">102</FONT>                tr = r.nb();<a name="line.102"></a>
-<FONT color="green">103</FONT>                LANGUAGE = "nb";<a name="line.103"></a>
-<FONT color="green">104</FONT>            } else if (locale.equals("nl")) {<a name="line.104"></a>
-<FONT color="green">105</FONT>                tr = r.nl();<a name="line.105"></a>
-<FONT color="green">106</FONT>                LANGUAGE = "nl";<a name="line.106"></a>
-<FONT color="green">107</FONT>            } else if (locale.equals("pl")) {<a name="line.107"></a>
-<FONT color="green">108</FONT>                tr = r.pl();<a name="line.108"></a>
-<FONT color="green">109</FONT>                LANGUAGE = "pl";<a name="line.109"></a>
-<FONT color="green">110</FONT>            } else if (locale.equals("ru")) {<a name="line.110"></a>
-<FONT color="green">111</FONT>                tr = r.ru();<a name="line.111"></a>
-<FONT color="green">112</FONT>                LANGUAGE = "ru";<a name="line.112"></a>
-<FONT color="green">113</FONT>            } else if (locale.equals("sv")) {<a name="line.113"></a>
-<FONT color="green">114</FONT>                tr = r.sv();<a name="line.114"></a>
-<FONT color="green">115</FONT>                LANGUAGE = "sv";<a name="line.115"></a>
-<FONT color="green">116</FONT>            } else if (locale.equals("th")) {<a name="line.116"></a>
-<FONT color="green">117</FONT>                tr = r.th();<a name="line.117"></a>
-<FONT color="green">118</FONT>                LANGUAGE = "th";<a name="line.118"></a>
-<FONT color="green">119</FONT>            } else if (locale.equals("tr")) {<a name="line.119"></a>
-<FONT color="green">120</FONT>                tr = r.tr();<a name="line.120"></a>
-<FONT color="green">121</FONT>                LANGUAGE = "tr";<a name="line.121"></a>
-<FONT color="green">122</FONT>            } else if (locale.equals("zh-CN")) {<a name="line.122"></a>
-<FONT color="green">123</FONT>                tr = r.zh_CN();<a name="line.123"></a>
-<FONT color="green">124</FONT>                LANGUAGE = "zh-CN";<a name="line.124"></a>
-<FONT color="green">125</FONT>            } else {<a name="line.125"></a>
-<FONT color="green">126</FONT>                tr = null;<a name="line.126"></a>
-<FONT color="green">127</FONT>                LANGUAGE = "en";<a name="line.127"></a>
-<FONT color="green">128</FONT>            }<a name="line.128"></a>
-<FONT color="green">129</FONT>    <a name="line.129"></a>
-<FONT color="green">130</FONT>            loaded.add(LANGUAGE);<a name="line.130"></a>
-<FONT color="green">131</FONT>    <a name="line.131"></a>
-<FONT color="green">132</FONT>            return tr;<a name="line.132"></a>
-<FONT color="green">133</FONT>        }<a name="line.133"></a>
-<FONT color="green">134</FONT>    }<a name="line.134"></a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package com.github.gwtbootstrap.datepicker.client.ui.util;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;<a name="line.3"></a>
+<span class="sourceLineNo">004</span>import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;<a name="line.4"></a>
+<span class="sourceLineNo">005</span>import com.github.gwtbootstrap.datepicker.client.ui.resources.Resources;<a name="line.5"></a>
+<span class="sourceLineNo">006</span>import com.google.gwt.resources.client.TextResource;<a name="line.6"></a>
+<span class="sourceLineNo">007</span><a name="line.7"></a>
+<span class="sourceLineNo">008</span>import java.util.ArrayList;<a name="line.8"></a>
+<span class="sourceLineNo">009</span>import java.util.List;<a name="line.9"></a>
+<span class="sourceLineNo">010</span><a name="line.10"></a>
+<span class="sourceLineNo">011</span>/**<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * A utility class to get the User's Browser Locale.<a name="line.12"></a>
+<span class="sourceLineNo">013</span> *<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * @author Carlos A Becker<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * @since 2.0.3.0<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>public class LocaleUtil {<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>    private static String locale = null;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>    private static String LANGUAGE = null;<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>    private static List&lt;String&gt; loaded = new ArrayList&lt;String&gt;();<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>    public static String getLanguage() {<a name="line.24"></a>
+<span class="sourceLineNo">025</span>        if (LANGUAGE == null) {<a name="line.25"></a>
+<span class="sourceLineNo">026</span>            setupLocale();<a name="line.26"></a>
+<span class="sourceLineNo">027</span>        }<a name="line.27"></a>
+<span class="sourceLineNo">028</span>        return LANGUAGE;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>    }<a name="line.29"></a>
+<span class="sourceLineNo">030</span><a name="line.30"></a>
+<span class="sourceLineNo">031</span>    /**<a name="line.31"></a>
+<span class="sourceLineNo">032</span>     * Get the string of locale based on user's browser configuration.<a name="line.32"></a>
+<span class="sourceLineNo">033</span>     *<a name="line.33"></a>
+<span class="sourceLineNo">034</span>     * @return<a name="line.34"></a>
+<span class="sourceLineNo">035</span>     */<a name="line.35"></a>
+<span class="sourceLineNo">036</span>    public static String getLocale() {<a name="line.36"></a>
+<span class="sourceLineNo">037</span>        if (locale == null) {<a name="line.37"></a>
+<span class="sourceLineNo">038</span>            locale = getBrowserLocale();<a name="line.38"></a>
+<span class="sourceLineNo">039</span>        }<a name="line.39"></a>
+<span class="sourceLineNo">040</span>        return locale;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>    }<a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span>    public static TextResource getLocaleJsResource() {<a name="line.43"></a>
+<span class="sourceLineNo">044</span>        String locale = getLocale();<a name="line.44"></a>
+<span class="sourceLineNo">045</span>        if (locale == null) {<a name="line.45"></a>
+<span class="sourceLineNo">046</span>            return null;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>        }<a name="line.47"></a>
+<span class="sourceLineNo">048</span>        return setupLocale();<a name="line.48"></a>
+<span class="sourceLineNo">049</span>    }<a name="line.49"></a>
+<span class="sourceLineNo">050</span><a name="line.50"></a>
+<span class="sourceLineNo">051</span>    private static final native String getBrowserLocale() /*-{<a name="line.51"></a>
+<span class="sourceLineNo">052</span>        return $wnd.navigator.userLanguage || $wnd.navigator.language;<a name="line.52"></a>
+<span class="sourceLineNo">053</span>    }-*/;<a name="line.53"></a>
+<span class="sourceLineNo">054</span><a name="line.54"></a>
+<span class="sourceLineNo">055</span><a name="line.55"></a>
+<span class="sourceLineNo">056</span>    public static final void forceLocale(String locale_) {<a name="line.56"></a>
+<span class="sourceLineNo">057</span>        locale = locale_;<a name="line.57"></a>
+<span class="sourceLineNo">058</span>        TextResource t = setupLocale();<a name="line.58"></a>
+<span class="sourceLineNo">059</span>        if (!loaded.contains(locale) &amp;&amp; t != null) {<a name="line.59"></a>
+<span class="sourceLineNo">060</span>            JavaScriptInjector.inject(t.getText());<a name="line.60"></a>
+<span class="sourceLineNo">061</span>        }<a name="line.61"></a>
+<span class="sourceLineNo">062</span>    }<a name="line.62"></a>
+<span class="sourceLineNo">063</span><a name="line.63"></a>
+<span class="sourceLineNo">064</span>    private static TextResource setupLocale() {<a name="line.64"></a>
+<span class="sourceLineNo">065</span>        Resources r = Resources.RESOURCES;<a name="line.65"></a>
+<span class="sourceLineNo">066</span>        TextResource tr = null;<a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67"></a>
+<span class="sourceLineNo">068</span>        /*<a name="line.68"></a>
+<span class="sourceLineNo">069</span>           Script used to gen the basic if-else block:<a name="line.69"></a>
+<span class="sourceLineNo">070</span>           for a in `ls`; do echo "else if(locale.equals(\"`echo $a | cut -f2 -d.`\")) { tr = r.`echo $a | cut -f2 -d.`(); LANGUAGE = \"`echo $a | cut -f2 -d.`\"; }"; done<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        */<a name="line.71"></a>
+<span class="sourceLineNo">072</span><a name="line.72"></a>
+<span class="sourceLineNo">073</span><a name="line.73"></a>
+<span class="sourceLineNo">074</span>        if (locale.equalsIgnoreCase("pt-br") || locale.contains("pt")) {<a name="line.74"></a>
+<span class="sourceLineNo">075</span>            tr = r.br();<a name="line.75"></a>
+<span class="sourceLineNo">076</span>            LANGUAGE = "br";<a name="line.76"></a>
+<span class="sourceLineNo">077</span>        } else if (locale.equals("da")) {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>            tr = r.da();<a name="line.78"></a>
+<span class="sourceLineNo">079</span>            LANGUAGE = "da";<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        } else if (locale.equals("de")) {<a name="line.80"></a>
+<span class="sourceLineNo">081</span>            tr = r.de();<a name="line.81"></a>
+<span class="sourceLineNo">082</span>            LANGUAGE = "de";<a name="line.82"></a>
+<span class="sourceLineNo">083</span>        } else if (locale.equals("es")) {<a name="line.83"></a>
+<span class="sourceLineNo">084</span>            tr = r.es();<a name="line.84"></a>
+<span class="sourceLineNo">085</span>            LANGUAGE = "es";<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        } else if (locale.equals("fi")) {<a name="line.86"></a>
+<span class="sourceLineNo">087</span>            tr = r.fi();<a name="line.87"></a>
+<span class="sourceLineNo">088</span>            LANGUAGE = "fi";<a name="line.88"></a>
+<span class="sourceLineNo">089</span>        } else if (locale.equals("fr")) {<a name="line.89"></a>
+<span class="sourceLineNo">090</span>            tr = r.fr();<a name="line.90"></a>
+<span class="sourceLineNo">091</span>            LANGUAGE = "fr";<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        } else if (locale.equals("is")) {<a name="line.92"></a>
+<span class="sourceLineNo">093</span>            tr = r.is();<a name="line.93"></a>
+<span class="sourceLineNo">094</span>            LANGUAGE = "is";<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        } else if (locale.equals("it")) {<a name="line.95"></a>
+<span class="sourceLineNo">096</span>            tr = r.it();<a name="line.96"></a>
+<span class="sourceLineNo">097</span>            LANGUAGE = "it";<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        } else if (locale.equals("lv")) {<a name="line.98"></a>
+<span class="sourceLineNo">099</span>            tr = r.lv();<a name="line.99"></a>
+<span class="sourceLineNo">100</span>            LANGUAGE = "lv";<a name="line.100"></a>
+<span class="sourceLineNo">101</span>        } else if (locale.equals("nb")) {<a name="line.101"></a>
+<span class="sourceLineNo">102</span>            tr = r.nb();<a name="line.102"></a>
+<span class="sourceLineNo">103</span>            LANGUAGE = "nb";<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        } else if (locale.equals("nl")) {<a name="line.104"></a>
+<span class="sourceLineNo">105</span>            tr = r.nl();<a name="line.105"></a>
+<span class="sourceLineNo">106</span>            LANGUAGE = "nl";<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        } else if (locale.equals("pl")) {<a name="line.107"></a>
+<span class="sourceLineNo">108</span>            tr = r.pl();<a name="line.108"></a>
+<span class="sourceLineNo">109</span>            LANGUAGE = "pl";<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        } else if (locale.equals("ru")) {<a name="line.110"></a>
+<span class="sourceLineNo">111</span>            tr = r.ru();<a name="line.111"></a>
+<span class="sourceLineNo">112</span>            LANGUAGE = "ru";<a name="line.112"></a>
+<span class="sourceLineNo">113</span>        } else if (locale.equals("sv")) {<a name="line.113"></a>
+<span class="sourceLineNo">114</span>            tr = r.sv();<a name="line.114"></a>
+<span class="sourceLineNo">115</span>            LANGUAGE = "sv";<a name="line.115"></a>
+<span class="sourceLineNo">116</span>        } else if (locale.equals("th")) {<a name="line.116"></a>
+<span class="sourceLineNo">117</span>            tr = r.th();<a name="line.117"></a>
+<span class="sourceLineNo">118</span>            LANGUAGE = "th";<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        } else if (locale.equals("tr")) {<a name="line.119"></a>
+<span class="sourceLineNo">120</span>            tr = r.tr();<a name="line.120"></a>
+<span class="sourceLineNo">121</span>            LANGUAGE = "tr";<a name="line.121"></a>
+<span class="sourceLineNo">122</span>        } else if (locale.equals("zh-CN")) {<a name="line.122"></a>
+<span class="sourceLineNo">123</span>            tr = r.zh_CN();<a name="line.123"></a>
+<span class="sourceLineNo">124</span>            LANGUAGE = "zh-CN";<a name="line.124"></a>
+<span class="sourceLineNo">125</span>        } else {<a name="line.125"></a>
+<span class="sourceLineNo">126</span>            tr = null;<a name="line.126"></a>
+<span class="sourceLineNo">127</span>            LANGUAGE = "en";<a name="line.127"></a>
+<span class="sourceLineNo">128</span>        }<a name="line.128"></a>
+<span class="sourceLineNo">129</span><a name="line.129"></a>
+<span class="sourceLineNo">130</span>        loaded.add(LANGUAGE);<a name="line.130"></a>
+<span class="sourceLineNo">131</span><a name="line.131"></a>
+<span class="sourceLineNo">132</span>        return tr;<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    }<a name="line.133"></a>
+<span class="sourceLineNo">134</span>}<a name="line.134"></a>
 
 
 
@@ -195,6 +200,7 @@
 
 
 
-</PRE>
-</BODY>
-</HTML>
+</pre>
+</div>
+</body>
+</html>

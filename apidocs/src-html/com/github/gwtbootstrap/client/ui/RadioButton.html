@@ -1,275 +1,280 @@
-<HTML>
-<BODY BGCOLOR="white">
-<PRE>
-<FONT color="green">001</FONT>    package com.github.gwtbootstrap.client.ui;<a name="line.1"></a>
-<FONT color="green">002</FONT>    <a name="line.2"></a>
-<FONT color="green">003</FONT>    import com.google.gwt.dom.client.Element;<a name="line.3"></a>
-<FONT color="green">004</FONT>    import com.google.gwt.dom.client.EventTarget;<a name="line.4"></a>
-<FONT color="green">005</FONT>    import com.google.gwt.event.logical.shared.ValueChangeEvent;<a name="line.5"></a>
-<FONT color="green">006</FONT>    import com.google.gwt.i18n.client.HasDirection.Direction;<a name="line.6"></a>
-<FONT color="green">007</FONT>    import com.google.gwt.i18n.shared.DirectionEstimator;<a name="line.7"></a>
-<FONT color="green">008</FONT>    import com.google.gwt.safehtml.shared.SafeHtml;<a name="line.8"></a>
-<FONT color="green">009</FONT>    import com.google.gwt.uibinder.client.UiConstructor;<a name="line.9"></a>
-<FONT color="green">010</FONT>    import com.google.gwt.user.client.DOM;<a name="line.10"></a>
-<FONT color="green">011</FONT>    import com.google.gwt.user.client.Event;<a name="line.11"></a>
-<FONT color="green">012</FONT>    import com.google.gwt.user.client.ui.DirectionalTextHelper;<a name="line.12"></a>
-<FONT color="green">013</FONT>    <a name="line.13"></a>
-<FONT color="green">014</FONT>    /**<a name="line.14"></a>
-<FONT color="green">015</FONT>     * RadioButton widgets.<a name="line.15"></a>
-<FONT color="green">016</FONT>     * &lt;p&gt;<a name="line.16"></a>
-<FONT color="green">017</FONT>     * Re-design for Bootstrap.<a name="line.17"></a>
-<FONT color="green">018</FONT>     * &lt;/p&gt;<a name="line.18"></a>
-<FONT color="green">019</FONT>     * <a name="line.19"></a>
-<FONT color="green">020</FONT>     * @since 2.0.3.0<a name="line.20"></a>
-<FONT color="green">021</FONT>     * @author ohashi keisuke<a name="line.21"></a>
-<FONT color="green">022</FONT>     */<a name="line.22"></a>
-<FONT color="green">023</FONT>    public class RadioButton extends CheckBox {<a name="line.23"></a>
-<FONT color="green">024</FONT>    <a name="line.24"></a>
-<FONT color="green">025</FONT>            public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;<a name="line.25"></a>
-<FONT color="green">026</FONT>    <a name="line.26"></a>
-<FONT color="green">027</FONT>            private Boolean oldValue;<a name="line.27"></a>
-<FONT color="green">028</FONT>    <a name="line.28"></a>
-<FONT color="green">029</FONT>            /**<a name="line.29"></a>
-<FONT color="green">030</FONT>             * Creates a new radio associated with a particular group name. All radio<a name="line.30"></a>
-<FONT color="green">031</FONT>             * buttons associated with the same group name belong to a<a name="line.31"></a>
-<FONT color="green">032</FONT>             * mutually-exclusive set.<a name="line.32"></a>
-<FONT color="green">033</FONT>             * <a name="line.33"></a>
-<FONT color="green">034</FONT>             * Radio buttons are grouped by their name attribute, so changing their name<a name="line.34"></a>
-<FONT color="green">035</FONT>             * using the setName() method will also change their associated group.<a name="line.35"></a>
-<FONT color="green">036</FONT>             * <a name="line.36"></a>
-<FONT color="green">037</FONT>             * @param name<a name="line.37"></a>
-<FONT color="green">038</FONT>             *            the group name with which to associate the radio button<a name="line.38"></a>
-<FONT color="green">039</FONT>             */<a name="line.39"></a>
-<FONT color="green">040</FONT>            @UiConstructor<a name="line.40"></a>
-<FONT color="green">041</FONT>            public RadioButton(String name) {<a name="line.41"></a>
-<FONT color="green">042</FONT>                    super(DOM.createInputRadio(name));<a name="line.42"></a>
-<FONT color="green">043</FONT>    <a name="line.43"></a>
-<FONT color="green">044</FONT>                    sinkEvents(Event.ONCLICK);<a name="line.44"></a>
-<FONT color="green">045</FONT>                    sinkEvents(Event.ONMOUSEUP);<a name="line.45"></a>
-<FONT color="green">046</FONT>                    sinkEvents(Event.ONBLUR);<a name="line.46"></a>
-<FONT color="green">047</FONT>                    sinkEvents(Event.ONKEYDOWN);<a name="line.47"></a>
-<FONT color="green">048</FONT>            }<a name="line.48"></a>
-<FONT color="green">049</FONT>    <a name="line.49"></a>
-<FONT color="green">050</FONT>            /**<a name="line.50"></a>
-<FONT color="green">051</FONT>             * Creates a new radio associated with a particular group, and initialized<a name="line.51"></a>
-<FONT color="green">052</FONT>             * with the given HTML label. All radio buttons associated with the same<a name="line.52"></a>
-<FONT color="green">053</FONT>             * group name belong to a mutually-exclusive set.<a name="line.53"></a>
-<FONT color="green">054</FONT>             * <a name="line.54"></a>
-<FONT color="green">055</FONT>             * Radio buttons are grouped by their name attribute, so changing their name<a name="line.55"></a>
-<FONT color="green">056</FONT>             * using the setName() method will also change their associated group.<a name="line.56"></a>
-<FONT color="green">057</FONT>             * <a name="line.57"></a>
-<FONT color="green">058</FONT>             * @param name<a name="line.58"></a>
-<FONT color="green">059</FONT>             *            the group name with which to associate the radio button<a name="line.59"></a>
-<FONT color="green">060</FONT>             * @param label<a name="line.60"></a>
-<FONT color="green">061</FONT>             *            this radio button's html label<a name="line.61"></a>
-<FONT color="green">062</FONT>             */<a name="line.62"></a>
-<FONT color="green">063</FONT>            public RadioButton(String name,<a name="line.63"></a>
-<FONT color="green">064</FONT>                    SafeHtml label) {<a name="line.64"></a>
-<FONT color="green">065</FONT>                    this(name, label.asString(), true);<a name="line.65"></a>
-<FONT color="green">066</FONT>            }<a name="line.66"></a>
-<FONT color="green">067</FONT>    <a name="line.67"></a>
-<FONT color="green">068</FONT>            /**<a name="line.68"></a>
-<FONT color="green">069</FONT>             * @see #RadioButton(String, SafeHtml)<a name="line.69"></a>
-<FONT color="green">070</FONT>             * <a name="line.70"></a>
-<FONT color="green">071</FONT>             * @param name<a name="line.71"></a>
-<FONT color="green">072</FONT>             *            the group name with which to associate the radio button<a name="line.72"></a>
-<FONT color="green">073</FONT>             * @param label<a name="line.73"></a>
-<FONT color="green">074</FONT>             *            this radio button's html label<a name="line.74"></a>
-<FONT color="green">075</FONT>             * @param dir<a name="line.75"></a>
-<FONT color="green">076</FONT>             *            the text's direction. Note that {@code DEFAULT} means<a name="line.76"></a>
-<FONT color="green">077</FONT>             *            direction should be inherited from the widget's parent<a name="line.77"></a>
-<FONT color="green">078</FONT>             *            element.<a name="line.78"></a>
-<FONT color="green">079</FONT>             */<a name="line.79"></a>
-<FONT color="green">080</FONT>            public RadioButton(String name,<a name="line.80"></a>
-<FONT color="green">081</FONT>                    SafeHtml label,<a name="line.81"></a>
-<FONT color="green">082</FONT>                    Direction dir) {<a name="line.82"></a>
-<FONT color="green">083</FONT>                    this(name);<a name="line.83"></a>
-<FONT color="green">084</FONT>                    setHTML(label, dir);<a name="line.84"></a>
-<FONT color="green">085</FONT>            }<a name="line.85"></a>
-<FONT color="green">086</FONT>    <a name="line.86"></a>
-<FONT color="green">087</FONT>            /**<a name="line.87"></a>
-<FONT color="green">088</FONT>             * @see #RadioButton(String, SafeHtml)<a name="line.88"></a>
-<FONT color="green">089</FONT>             * <a name="line.89"></a>
-<FONT color="green">090</FONT>             * @param name<a name="line.90"></a>
-<FONT color="green">091</FONT>             *            the group name with which to associate the radio button<a name="line.91"></a>
-<FONT color="green">092</FONT>             * @param label<a name="line.92"></a>
-<FONT color="green">093</FONT>             *            this radio button's html label<a name="line.93"></a>
-<FONT color="green">094</FONT>             * @param directionEstimator<a name="line.94"></a>
-<FONT color="green">095</FONT>             *            A DirectionEstimator object used for automatic direction<a name="line.95"></a>
-<FONT color="green">096</FONT>             *            adjustment. For convenience,<a name="line.96"></a>
-<FONT color="green">097</FONT>             *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.97"></a>
-<FONT color="green">098</FONT>             */<a name="line.98"></a>
-<FONT color="green">099</FONT>            public RadioButton(String name,<a name="line.99"></a>
-<FONT color="green">100</FONT>                    SafeHtml label,<a name="line.100"></a>
-<FONT color="green">101</FONT>                    DirectionEstimator directionEstimator) {<a name="line.101"></a>
-<FONT color="green">102</FONT>                    this(name);<a name="line.102"></a>
-<FONT color="green">103</FONT>                    setDirectionEstimator(directionEstimator);<a name="line.103"></a>
-<FONT color="green">104</FONT>                    setHTML(label.asString());<a name="line.104"></a>
-<FONT color="green">105</FONT>            }<a name="line.105"></a>
-<FONT color="green">106</FONT>    <a name="line.106"></a>
-<FONT color="green">107</FONT>            /**<a name="line.107"></a>
-<FONT color="green">108</FONT>             * Creates a new radio associated with a particular group, and initialized<a name="line.108"></a>
-<FONT color="green">109</FONT>             * with the given HTML label. All radio buttons associated with the same<a name="line.109"></a>
-<FONT color="green">110</FONT>             * group name belong to a mutually-exclusive set.<a name="line.110"></a>
-<FONT color="green">111</FONT>             * <a name="line.111"></a>
-<FONT color="green">112</FONT>             * Radio buttons are grouped by their name attribute, so changing their name<a name="line.112"></a>
-<FONT color="green">113</FONT>             * using the setName() method will also change their associated group.<a name="line.113"></a>
-<FONT color="green">114</FONT>             * <a name="line.114"></a>
-<FONT color="green">115</FONT>             * @param name<a name="line.115"></a>
-<FONT color="green">116</FONT>             *            the group name with which to associate the radio button<a name="line.116"></a>
-<FONT color="green">117</FONT>             * @param label<a name="line.117"></a>
-<FONT color="green">118</FONT>             *            this radio button's label<a name="line.118"></a>
-<FONT color="green">119</FONT>             */<a name="line.119"></a>
-<FONT color="green">120</FONT>            public RadioButton(String name,<a name="line.120"></a>
-<FONT color="green">121</FONT>                    String label) {<a name="line.121"></a>
-<FONT color="green">122</FONT>                    this(name);<a name="line.122"></a>
-<FONT color="green">123</FONT>                    setText(label);<a name="line.123"></a>
-<FONT color="green">124</FONT>            }<a name="line.124"></a>
-<FONT color="green">125</FONT>    <a name="line.125"></a>
-<FONT color="green">126</FONT>            /**<a name="line.126"></a>
-<FONT color="green">127</FONT>             * @see #RadioButton(String, SafeHtml)<a name="line.127"></a>
-<FONT color="green">128</FONT>             * <a name="line.128"></a>
-<FONT color="green">129</FONT>             * @param name<a name="line.129"></a>
-<FONT color="green">130</FONT>             *            the group name with which to associate the radio button<a name="line.130"></a>
-<FONT color="green">131</FONT>             * @param label<a name="line.131"></a>
-<FONT color="green">132</FONT>             *            this radio button's label<a name="line.132"></a>
-<FONT color="green">133</FONT>             * @param dir<a name="line.133"></a>
-<FONT color="green">134</FONT>             *            the text's direction. Note that {@code DEFAULT} means<a name="line.134"></a>
-<FONT color="green">135</FONT>             *            direction should be inherited from the widget's parent<a name="line.135"></a>
-<FONT color="green">136</FONT>             *            element.<a name="line.136"></a>
-<FONT color="green">137</FONT>             */<a name="line.137"></a>
-<FONT color="green">138</FONT>            public RadioButton(String name,<a name="line.138"></a>
-<FONT color="green">139</FONT>                    String label,<a name="line.139"></a>
-<FONT color="green">140</FONT>                    Direction dir) {<a name="line.140"></a>
-<FONT color="green">141</FONT>                    this(name);<a name="line.141"></a>
-<FONT color="green">142</FONT>                    setText(label, dir);<a name="line.142"></a>
-<FONT color="green">143</FONT>            }<a name="line.143"></a>
-<FONT color="green">144</FONT>    <a name="line.144"></a>
-<FONT color="green">145</FONT>            /**<a name="line.145"></a>
-<FONT color="green">146</FONT>             * @see #RadioButton(String, SafeHtml)<a name="line.146"></a>
-<FONT color="green">147</FONT>             * <a name="line.147"></a>
-<FONT color="green">148</FONT>             * @param name<a name="line.148"></a>
-<FONT color="green">149</FONT>             *            the group name with which to associate the radio button<a name="line.149"></a>
-<FONT color="green">150</FONT>             * @param label<a name="line.150"></a>
-<FONT color="green">151</FONT>             *            this radio button's label<a name="line.151"></a>
-<FONT color="green">152</FONT>             * @param directionEstimator<a name="line.152"></a>
-<FONT color="green">153</FONT>             *            A DirectionEstimator object used for automatic direction<a name="line.153"></a>
-<FONT color="green">154</FONT>             *            adjustment. For convenience,<a name="line.154"></a>
-<FONT color="green">155</FONT>             *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.155"></a>
-<FONT color="green">156</FONT>             */<a name="line.156"></a>
-<FONT color="green">157</FONT>            public RadioButton(String name,<a name="line.157"></a>
-<FONT color="green">158</FONT>                    String label,<a name="line.158"></a>
-<FONT color="green">159</FONT>                    DirectionEstimator directionEstimator) {<a name="line.159"></a>
-<FONT color="green">160</FONT>                    this(name);<a name="line.160"></a>
-<FONT color="green">161</FONT>                    setDirectionEstimator(directionEstimator);<a name="line.161"></a>
-<FONT color="green">162</FONT>                    setText(label);<a name="line.162"></a>
-<FONT color="green">163</FONT>            }<a name="line.163"></a>
-<FONT color="green">164</FONT>    <a name="line.164"></a>
-<FONT color="green">165</FONT>            /**<a name="line.165"></a>
-<FONT color="green">166</FONT>             * Creates a new radio button associated with a particular group, and<a name="line.166"></a>
-<FONT color="green">167</FONT>             * initialized with the given label (optionally treated as HTML). All radio<a name="line.167"></a>
-<FONT color="green">168</FONT>             * buttons associated with the same group name belong to a<a name="line.168"></a>
-<FONT color="green">169</FONT>             * mutually-exclusive set.<a name="line.169"></a>
-<FONT color="green">170</FONT>             * <a name="line.170"></a>
-<FONT color="green">171</FONT>             * Radio buttons are grouped by their name attribute, so changing their name<a name="line.171"></a>
-<FONT color="green">172</FONT>             * using the setName() method will also change their associated group.<a name="line.172"></a>
-<FONT color="green">173</FONT>             * <a name="line.173"></a>
-<FONT color="green">174</FONT>             * @param name<a name="line.174"></a>
-<FONT color="green">175</FONT>             *            name the group with which to associate the radio button<a name="line.175"></a>
-<FONT color="green">176</FONT>             * @param label<a name="line.176"></a>
-<FONT color="green">177</FONT>             *            this radio button's label<a name="line.177"></a>
-<FONT color="green">178</FONT>             * @param asHTML<a name="line.178"></a>
-<FONT color="green">179</FONT>             *            &lt;code&gt;true&lt;/code&gt; to treat the specified label as HTML<a name="line.179"></a>
-<FONT color="green">180</FONT>             */<a name="line.180"></a>
-<FONT color="green">181</FONT>            public RadioButton(String name,<a name="line.181"></a>
-<FONT color="green">182</FONT>                    String label,<a name="line.182"></a>
-<FONT color="green">183</FONT>                    boolean asHTML) {<a name="line.183"></a>
-<FONT color="green">184</FONT>                    this(name);<a name="line.184"></a>
-<FONT color="green">185</FONT>                    if (asHTML) {<a name="line.185"></a>
-<FONT color="green">186</FONT>                            setHTML(label);<a name="line.186"></a>
-<FONT color="green">187</FONT>                    } else {<a name="line.187"></a>
-<FONT color="green">188</FONT>                            setText(label);<a name="line.188"></a>
-<FONT color="green">189</FONT>                    }<a name="line.189"></a>
-<FONT color="green">190</FONT>            }<a name="line.190"></a>
-<FONT color="green">191</FONT>    <a name="line.191"></a>
-<FONT color="green">192</FONT>            /**<a name="line.192"></a>
-<FONT color="green">193</FONT>             * Overridden to send ValueChangeEvents only when appropriate.<a name="line.193"></a>
-<FONT color="green">194</FONT>             */<a name="line.194"></a>
-<FONT color="green">195</FONT>            @Override<a name="line.195"></a>
-<FONT color="green">196</FONT>            public void onBrowserEvent(Event event) {<a name="line.196"></a>
-<FONT color="green">197</FONT>                    switch (DOM.eventGetType(event)) {<a name="line.197"></a>
-<FONT color="green">198</FONT>                    case Event.ONMOUSEUP:<a name="line.198"></a>
-<FONT color="green">199</FONT>                    case Event.ONBLUR:<a name="line.199"></a>
-<FONT color="green">200</FONT>                    case Event.ONKEYDOWN:<a name="line.200"></a>
-<FONT color="green">201</FONT>                            // Note the old value for onValueChange purposes (in ONCLICK case)<a name="line.201"></a>
-<FONT color="green">202</FONT>                            oldValue = getValue();<a name="line.202"></a>
-<FONT color="green">203</FONT>                            break;<a name="line.203"></a>
-<FONT color="green">204</FONT>    <a name="line.204"></a>
-<FONT color="green">205</FONT>                    case Event.ONCLICK:<a name="line.205"></a>
-<FONT color="green">206</FONT>                            EventTarget target = event.getEventTarget();<a name="line.206"></a>
-<FONT color="green">207</FONT>                            if (Element.is(target) &amp;&amp; asLabel().isOrHasChild(Element.as(target))) {<a name="line.207"></a>
-<FONT color="green">208</FONT>    <a name="line.208"></a>
-<FONT color="green">209</FONT>                                    // They clicked the label. Note our pre-click value, and<a name="line.209"></a>
-<FONT color="green">210</FONT>                                    // short circuit event routing so that other click handlers<a name="line.210"></a>
-<FONT color="green">211</FONT>                                    // don't hear about it<a name="line.211"></a>
-<FONT color="green">212</FONT>                                    oldValue = getValue();<a name="line.212"></a>
-<FONT color="green">213</FONT>                                    return;<a name="line.213"></a>
-<FONT color="green">214</FONT>                            }<a name="line.214"></a>
-<FONT color="green">215</FONT>    <a name="line.215"></a>
-<FONT color="green">216</FONT>                            // It's not the label. Let our handlers hear about the<a name="line.216"></a>
-<FONT color="green">217</FONT>                            // click...<a name="line.217"></a>
-<FONT color="green">218</FONT>                            super.onBrowserEvent(event);<a name="line.218"></a>
-<FONT color="green">219</FONT>                            // ...and now maybe tell them about the change<a name="line.219"></a>
-<FONT color="green">220</FONT>                            ValueChangeEvent.fireIfNotEqual(RadioButton.this, oldValue, getValue());<a name="line.220"></a>
-<FONT color="green">221</FONT>                            return;<a name="line.221"></a>
-<FONT color="green">222</FONT>                    }<a name="line.222"></a>
-<FONT color="green">223</FONT>    <a name="line.223"></a>
-<FONT color="green">224</FONT>                    super.onBrowserEvent(event);<a name="line.224"></a>
-<FONT color="green">225</FONT>            }<a name="line.225"></a>
-<FONT color="green">226</FONT>    <a name="line.226"></a>
-<FONT color="green">227</FONT>            /**<a name="line.227"></a>
-<FONT color="green">228</FONT>             * Change the group name of this radio button.<a name="line.228"></a>
-<FONT color="green">229</FONT>             * <a name="line.229"></a>
-<FONT color="green">230</FONT>             * Radio buttons are grouped by their name attribute, so changing their name<a name="line.230"></a>
-<FONT color="green">231</FONT>             * using the setName() method will also change their associated group.<a name="line.231"></a>
-<FONT color="green">232</FONT>             * <a name="line.232"></a>
-<FONT color="green">233</FONT>             * If changing this group name results in a new radio group with multiple<a name="line.233"></a>
-<FONT color="green">234</FONT>             * radio buttons selected, this radio button will remain selected and the<a name="line.234"></a>
-<FONT color="green">235</FONT>             * other radio buttons will be unselected.<a name="line.235"></a>
-<FONT color="green">236</FONT>             * <a name="line.236"></a>
-<FONT color="green">237</FONT>             * @param name<a name="line.237"></a>
-<FONT color="green">238</FONT>             *            name the group with which to associate the radio button<a name="line.238"></a>
-<FONT color="green">239</FONT>             */<a name="line.239"></a>
-<FONT color="green">240</FONT>            @Override<a name="line.240"></a>
-<FONT color="green">241</FONT>            public void setName(String name) {<a name="line.241"></a>
-<FONT color="green">242</FONT>                    // Just changing the radio button name tends to break groupiness,<a name="line.242"></a>
-<FONT color="green">243</FONT>                    // so we have to replace it. Note that replaceInputElement is careful<a name="line.243"></a>
-<FONT color="green">244</FONT>                    // not to propagate name when it propagates everything else<a name="line.244"></a>
-<FONT color="green">245</FONT>                    replaceInputElement(DOM.createInputRadio(name));<a name="line.245"></a>
-<FONT color="green">246</FONT>            }<a name="line.246"></a>
-<FONT color="green">247</FONT>    <a name="line.247"></a>
-<FONT color="green">248</FONT>            @Override<a name="line.248"></a>
-<FONT color="green">249</FONT>            public void sinkEvents(int eventBitsToAdd) {<a name="line.249"></a>
-<FONT color="green">250</FONT>                    // Like CheckBox, we want to hear about inputElem. We<a name="line.250"></a>
-<FONT color="green">251</FONT>                    // also want to know what's going on with the label, to<a name="line.251"></a>
-<FONT color="green">252</FONT>                    // make sure onBrowserEvent is able to record value changes<a name="line.252"></a>
-<FONT color="green">253</FONT>                    // initiated by label events<a name="line.253"></a>
-<FONT color="green">254</FONT>                    if (isOrWasAttached()) {<a name="line.254"></a>
-<FONT color="green">255</FONT>                            Event.sinkEvents(inputElem, eventBitsToAdd | Event.getEventsSunk(inputElem));<a name="line.255"></a>
-<FONT color="green">256</FONT>                            Event.sinkEvents(asLabel(), eventBitsToAdd | Event.getEventsSunk(asLabel()));<a name="line.256"></a>
-<FONT color="green">257</FONT>                    } else {<a name="line.257"></a>
-<FONT color="green">258</FONT>                            super.sinkEvents(eventBitsToAdd);<a name="line.258"></a>
-<FONT color="green">259</FONT>                    }<a name="line.259"></a>
-<FONT color="green">260</FONT>            }<a name="line.260"></a>
-<FONT color="green">261</FONT>    <a name="line.261"></a>
-<FONT color="green">262</FONT>            /**<a name="line.262"></a>
-<FONT color="green">263</FONT>             * No-op. CheckBox's click handler is no good for radio button, so don't use<a name="line.263"></a>
-<FONT color="green">264</FONT>             * it. Our event handling is all done in {@link #onBrowserEvent}<a name="line.264"></a>
-<FONT color="green">265</FONT>             */<a name="line.265"></a>
-<FONT color="green">266</FONT>            @Override<a name="line.266"></a>
-<FONT color="green">267</FONT>            protected void ensureDomEventHandlers() {<a name="line.267"></a>
-<FONT color="green">268</FONT>            }<a name="line.268"></a>
-<FONT color="green">269</FONT>    }<a name="line.269"></a>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package com.github.gwtbootstrap.client.ui;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>import com.google.gwt.dom.client.Element;<a name="line.3"></a>
+<span class="sourceLineNo">004</span>import com.google.gwt.dom.client.EventTarget;<a name="line.4"></a>
+<span class="sourceLineNo">005</span>import com.google.gwt.event.logical.shared.ValueChangeEvent;<a name="line.5"></a>
+<span class="sourceLineNo">006</span>import com.google.gwt.i18n.client.HasDirection.Direction;<a name="line.6"></a>
+<span class="sourceLineNo">007</span>import com.google.gwt.i18n.shared.DirectionEstimator;<a name="line.7"></a>
+<span class="sourceLineNo">008</span>import com.google.gwt.safehtml.shared.SafeHtml;<a name="line.8"></a>
+<span class="sourceLineNo">009</span>import com.google.gwt.uibinder.client.UiConstructor;<a name="line.9"></a>
+<span class="sourceLineNo">010</span>import com.google.gwt.user.client.DOM;<a name="line.10"></a>
+<span class="sourceLineNo">011</span>import com.google.gwt.user.client.Event;<a name="line.11"></a>
+<span class="sourceLineNo">012</span>import com.google.gwt.user.client.ui.DirectionalTextHelper;<a name="line.12"></a>
+<span class="sourceLineNo">013</span><a name="line.13"></a>
+<span class="sourceLineNo">014</span>/**<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * RadioButton widgets.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * &lt;p&gt;<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * Re-design for Bootstrap.<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * &lt;/p&gt;<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * <a name="line.19"></a>
+<span class="sourceLineNo">020</span> * @since 2.0.3.0<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * @author ohashi keisuke<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span>public class RadioButton extends CheckBox {<a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24"></a>
+<span class="sourceLineNo">025</span>        public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;<a name="line.25"></a>
+<span class="sourceLineNo">026</span><a name="line.26"></a>
+<span class="sourceLineNo">027</span>        private Boolean oldValue;<a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span>        /**<a name="line.29"></a>
+<span class="sourceLineNo">030</span>         * Creates a new radio associated with a particular group name. All radio<a name="line.30"></a>
+<span class="sourceLineNo">031</span>         * buttons associated with the same group name belong to a<a name="line.31"></a>
+<span class="sourceLineNo">032</span>         * mutually-exclusive set.<a name="line.32"></a>
+<span class="sourceLineNo">033</span>         * <a name="line.33"></a>
+<span class="sourceLineNo">034</span>         * Radio buttons are grouped by their name attribute, so changing their name<a name="line.34"></a>
+<span class="sourceLineNo">035</span>         * using the setName() method will also change their associated group.<a name="line.35"></a>
+<span class="sourceLineNo">036</span>         * <a name="line.36"></a>
+<span class="sourceLineNo">037</span>         * @param name<a name="line.37"></a>
+<span class="sourceLineNo">038</span>         *            the group name with which to associate the radio button<a name="line.38"></a>
+<span class="sourceLineNo">039</span>         */<a name="line.39"></a>
+<span class="sourceLineNo">040</span>        @UiConstructor<a name="line.40"></a>
+<span class="sourceLineNo">041</span>        public RadioButton(String name) {<a name="line.41"></a>
+<span class="sourceLineNo">042</span>                super(DOM.createInputRadio(name));<a name="line.42"></a>
+<span class="sourceLineNo">043</span><a name="line.43"></a>
+<span class="sourceLineNo">044</span>                sinkEvents(Event.ONCLICK);<a name="line.44"></a>
+<span class="sourceLineNo">045</span>                sinkEvents(Event.ONMOUSEUP);<a name="line.45"></a>
+<span class="sourceLineNo">046</span>                sinkEvents(Event.ONBLUR);<a name="line.46"></a>
+<span class="sourceLineNo">047</span>                sinkEvents(Event.ONKEYDOWN);<a name="line.47"></a>
+<span class="sourceLineNo">048</span>        }<a name="line.48"></a>
+<span class="sourceLineNo">049</span><a name="line.49"></a>
+<span class="sourceLineNo">050</span>        /**<a name="line.50"></a>
+<span class="sourceLineNo">051</span>         * Creates a new radio associated with a particular group, and initialized<a name="line.51"></a>
+<span class="sourceLineNo">052</span>         * with the given HTML label. All radio buttons associated with the same<a name="line.52"></a>
+<span class="sourceLineNo">053</span>         * group name belong to a mutually-exclusive set.<a name="line.53"></a>
+<span class="sourceLineNo">054</span>         * <a name="line.54"></a>
+<span class="sourceLineNo">055</span>         * Radio buttons are grouped by their name attribute, so changing their name<a name="line.55"></a>
+<span class="sourceLineNo">056</span>         * using the setName() method will also change their associated group.<a name="line.56"></a>
+<span class="sourceLineNo">057</span>         * <a name="line.57"></a>
+<span class="sourceLineNo">058</span>         * @param name<a name="line.58"></a>
+<span class="sourceLineNo">059</span>         *            the group name with which to associate the radio button<a name="line.59"></a>
+<span class="sourceLineNo">060</span>         * @param label<a name="line.60"></a>
+<span class="sourceLineNo">061</span>         *            this radio button's html label<a name="line.61"></a>
+<span class="sourceLineNo">062</span>         */<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        public RadioButton(String name,<a name="line.63"></a>
+<span class="sourceLineNo">064</span>                SafeHtml label) {<a name="line.64"></a>
+<span class="sourceLineNo">065</span>                this(name, label.asString(), true);<a name="line.65"></a>
+<span class="sourceLineNo">066</span>        }<a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67"></a>
+<span class="sourceLineNo">068</span>        /**<a name="line.68"></a>
+<span class="sourceLineNo">069</span>         * @see #RadioButton(String, SafeHtml)<a name="line.69"></a>
+<span class="sourceLineNo">070</span>         * <a name="line.70"></a>
+<span class="sourceLineNo">071</span>         * @param name<a name="line.71"></a>
+<span class="sourceLineNo">072</span>         *            the group name with which to associate the radio button<a name="line.72"></a>
+<span class="sourceLineNo">073</span>         * @param label<a name="line.73"></a>
+<span class="sourceLineNo">074</span>         *            this radio button's html label<a name="line.74"></a>
+<span class="sourceLineNo">075</span>         * @param dir<a name="line.75"></a>
+<span class="sourceLineNo">076</span>         *            the text's direction. Note that {@code DEFAULT} means<a name="line.76"></a>
+<span class="sourceLineNo">077</span>         *            direction should be inherited from the widget's parent<a name="line.77"></a>
+<span class="sourceLineNo">078</span>         *            element.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>         */<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        public RadioButton(String name,<a name="line.80"></a>
+<span class="sourceLineNo">081</span>                SafeHtml label,<a name="line.81"></a>
+<span class="sourceLineNo">082</span>                Direction dir) {<a name="line.82"></a>
+<span class="sourceLineNo">083</span>                this(name);<a name="line.83"></a>
+<span class="sourceLineNo">084</span>                setHTML(label, dir);<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        }<a name="line.85"></a>
+<span class="sourceLineNo">086</span><a name="line.86"></a>
+<span class="sourceLineNo">087</span>        /**<a name="line.87"></a>
+<span class="sourceLineNo">088</span>         * @see #RadioButton(String, SafeHtml)<a name="line.88"></a>
+<span class="sourceLineNo">089</span>         * <a name="line.89"></a>
+<span class="sourceLineNo">090</span>         * @param name<a name="line.90"></a>
+<span class="sourceLineNo">091</span>         *            the group name with which to associate the radio button<a name="line.91"></a>
+<span class="sourceLineNo">092</span>         * @param label<a name="line.92"></a>
+<span class="sourceLineNo">093</span>         *            this radio button's html label<a name="line.93"></a>
+<span class="sourceLineNo">094</span>         * @param directionEstimator<a name="line.94"></a>
+<span class="sourceLineNo">095</span>         *            A DirectionEstimator object used for automatic direction<a name="line.95"></a>
+<span class="sourceLineNo">096</span>         *            adjustment. For convenience,<a name="line.96"></a>
+<span class="sourceLineNo">097</span>         *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.97"></a>
+<span class="sourceLineNo">098</span>         */<a name="line.98"></a>
+<span class="sourceLineNo">099</span>        public RadioButton(String name,<a name="line.99"></a>
+<span class="sourceLineNo">100</span>                SafeHtml label,<a name="line.100"></a>
+<span class="sourceLineNo">101</span>                DirectionEstimator directionEstimator) {<a name="line.101"></a>
+<span class="sourceLineNo">102</span>                this(name);<a name="line.102"></a>
+<span class="sourceLineNo">103</span>                setDirectionEstimator(directionEstimator);<a name="line.103"></a>
+<span class="sourceLineNo">104</span>                setHTML(label.asString());<a name="line.104"></a>
+<span class="sourceLineNo">105</span>        }<a name="line.105"></a>
+<span class="sourceLineNo">106</span><a name="line.106"></a>
+<span class="sourceLineNo">107</span>        /**<a name="line.107"></a>
+<span class="sourceLineNo">108</span>         * Creates a new radio associated with a particular group, and initialized<a name="line.108"></a>
+<span class="sourceLineNo">109</span>         * with the given HTML label. All radio buttons associated with the same<a name="line.109"></a>
+<span class="sourceLineNo">110</span>         * group name belong to a mutually-exclusive set.<a name="line.110"></a>
+<span class="sourceLineNo">111</span>         * <a name="line.111"></a>
+<span class="sourceLineNo">112</span>         * Radio buttons are grouped by their name attribute, so changing their name<a name="line.112"></a>
+<span class="sourceLineNo">113</span>         * using the setName() method will also change their associated group.<a name="line.113"></a>
+<span class="sourceLineNo">114</span>         * <a name="line.114"></a>
+<span class="sourceLineNo">115</span>         * @param name<a name="line.115"></a>
+<span class="sourceLineNo">116</span>         *            the group name with which to associate the radio button<a name="line.116"></a>
+<span class="sourceLineNo">117</span>         * @param label<a name="line.117"></a>
+<span class="sourceLineNo">118</span>         *            this radio button's label<a name="line.118"></a>
+<span class="sourceLineNo">119</span>         */<a name="line.119"></a>
+<span class="sourceLineNo">120</span>        public RadioButton(String name,<a name="line.120"></a>
+<span class="sourceLineNo">121</span>                String label) {<a name="line.121"></a>
+<span class="sourceLineNo">122</span>                this(name);<a name="line.122"></a>
+<span class="sourceLineNo">123</span>                setText(label);<a name="line.123"></a>
+<span class="sourceLineNo">124</span>        }<a name="line.124"></a>
+<span class="sourceLineNo">125</span><a name="line.125"></a>
+<span class="sourceLineNo">126</span>        /**<a name="line.126"></a>
+<span class="sourceLineNo">127</span>         * @see #RadioButton(String, SafeHtml)<a name="line.127"></a>
+<span class="sourceLineNo">128</span>         * <a name="line.128"></a>
+<span class="sourceLineNo">129</span>         * @param name<a name="line.129"></a>
+<span class="sourceLineNo">130</span>         *            the group name with which to associate the radio button<a name="line.130"></a>
+<span class="sourceLineNo">131</span>         * @param label<a name="line.131"></a>
+<span class="sourceLineNo">132</span>         *            this radio button's label<a name="line.132"></a>
+<span class="sourceLineNo">133</span>         * @param dir<a name="line.133"></a>
+<span class="sourceLineNo">134</span>         *            the text's direction. Note that {@code DEFAULT} means<a name="line.134"></a>
+<span class="sourceLineNo">135</span>         *            direction should be inherited from the widget's parent<a name="line.135"></a>
+<span class="sourceLineNo">136</span>         *            element.<a name="line.136"></a>
+<span class="sourceLineNo">137</span>         */<a name="line.137"></a>
+<span class="sourceLineNo">138</span>        public RadioButton(String name,<a name="line.138"></a>
+<span class="sourceLineNo">139</span>                String label,<a name="line.139"></a>
+<span class="sourceLineNo">140</span>                Direction dir) {<a name="line.140"></a>
+<span class="sourceLineNo">141</span>                this(name);<a name="line.141"></a>
+<span class="sourceLineNo">142</span>                setText(label, dir);<a name="line.142"></a>
+<span class="sourceLineNo">143</span>        }<a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144"></a>
+<span class="sourceLineNo">145</span>        /**<a name="line.145"></a>
+<span class="sourceLineNo">146</span>         * @see #RadioButton(String, SafeHtml)<a name="line.146"></a>
+<span class="sourceLineNo">147</span>         * <a name="line.147"></a>
+<span class="sourceLineNo">148</span>         * @param name<a name="line.148"></a>
+<span class="sourceLineNo">149</span>         *            the group name with which to associate the radio button<a name="line.149"></a>
+<span class="sourceLineNo">150</span>         * @param label<a name="line.150"></a>
+<span class="sourceLineNo">151</span>         *            this radio button's label<a name="line.151"></a>
+<span class="sourceLineNo">152</span>         * @param directionEstimator<a name="line.152"></a>
+<span class="sourceLineNo">153</span>         *            A DirectionEstimator object used for automatic direction<a name="line.153"></a>
+<span class="sourceLineNo">154</span>         *            adjustment. For convenience,<a name="line.154"></a>
+<span class="sourceLineNo">155</span>         *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.155"></a>
+<span class="sourceLineNo">156</span>         */<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        public RadioButton(String name,<a name="line.157"></a>
+<span class="sourceLineNo">158</span>                String label,<a name="line.158"></a>
+<span class="sourceLineNo">159</span>                DirectionEstimator directionEstimator) {<a name="line.159"></a>
+<span class="sourceLineNo">160</span>                this(name);<a name="line.160"></a>
+<span class="sourceLineNo">161</span>                setDirectionEstimator(directionEstimator);<a name="line.161"></a>
+<span class="sourceLineNo">162</span>                setText(label);<a name="line.162"></a>
+<span class="sourceLineNo">163</span>        }<a name="line.163"></a>
+<span class="sourceLineNo">164</span><a name="line.164"></a>
+<span class="sourceLineNo">165</span>        /**<a name="line.165"></a>
+<span class="sourceLineNo">166</span>         * Creates a new radio button associated with a particular group, and<a name="line.166"></a>
+<span class="sourceLineNo">167</span>         * initialized with the given label (optionally treated as HTML). All radio<a name="line.167"></a>
+<span class="sourceLineNo">168</span>         * buttons associated with the same group name belong to a<a name="line.168"></a>
+<span class="sourceLineNo">169</span>         * mutually-exclusive set.<a name="line.169"></a>
+<span class="sourceLineNo">170</span>         * <a name="line.170"></a>
+<span class="sourceLineNo">171</span>         * Radio buttons are grouped by their name attribute, so changing their name<a name="line.171"></a>
+<span class="sourceLineNo">172</span>         * using the setName() method will also change their associated group.<a name="line.172"></a>
+<span class="sourceLineNo">173</span>         * <a name="line.173"></a>
+<span class="sourceLineNo">174</span>         * @param name<a name="line.174"></a>
+<span class="sourceLineNo">175</span>         *            name the group with which to associate the radio button<a name="line.175"></a>
+<span class="sourceLineNo">176</span>         * @param label<a name="line.176"></a>
+<span class="sourceLineNo">177</span>         *            this radio button's label<a name="line.177"></a>
+<span class="sourceLineNo">178</span>         * @param asHTML<a name="line.178"></a>
+<span class="sourceLineNo">179</span>         *            &lt;code&gt;true&lt;/code&gt; to treat the specified label as HTML<a name="line.179"></a>
+<span class="sourceLineNo">180</span>         */<a name="line.180"></a>
+<span class="sourceLineNo">181</span>        public RadioButton(String name,<a name="line.181"></a>
+<span class="sourceLineNo">182</span>                String label,<a name="line.182"></a>
+<span class="sourceLineNo">183</span>                boolean asHTML) {<a name="line.183"></a>
+<span class="sourceLineNo">184</span>                this(name);<a name="line.184"></a>
+<span class="sourceLineNo">185</span>                if (asHTML) {<a name="line.185"></a>
+<span class="sourceLineNo">186</span>                        setHTML(label);<a name="line.186"></a>
+<span class="sourceLineNo">187</span>                } else {<a name="line.187"></a>
+<span class="sourceLineNo">188</span>                        setText(label);<a name="line.188"></a>
+<span class="sourceLineNo">189</span>                }<a name="line.189"></a>
+<span class="sourceLineNo">190</span>        }<a name="line.190"></a>
+<span class="sourceLineNo">191</span><a name="line.191"></a>
+<span class="sourceLineNo">192</span>        /**<a name="line.192"></a>
+<span class="sourceLineNo">193</span>         * Overridden to send ValueChangeEvents only when appropriate.<a name="line.193"></a>
+<span class="sourceLineNo">194</span>         */<a name="line.194"></a>
+<span class="sourceLineNo">195</span>        @Override<a name="line.195"></a>
+<span class="sourceLineNo">196</span>        public void onBrowserEvent(Event event) {<a name="line.196"></a>
+<span class="sourceLineNo">197</span>                switch (DOM.eventGetType(event)) {<a name="line.197"></a>
+<span class="sourceLineNo">198</span>                case Event.ONMOUSEUP:<a name="line.198"></a>
+<span class="sourceLineNo">199</span>                case Event.ONBLUR:<a name="line.199"></a>
+<span class="sourceLineNo">200</span>                case Event.ONKEYDOWN:<a name="line.200"></a>
+<span class="sourceLineNo">201</span>                        // Note the old value for onValueChange purposes (in ONCLICK case)<a name="line.201"></a>
+<span class="sourceLineNo">202</span>                        oldValue = getValue();<a name="line.202"></a>
+<span class="sourceLineNo">203</span>                        break;<a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204"></a>
+<span class="sourceLineNo">205</span>                case Event.ONCLICK:<a name="line.205"></a>
+<span class="sourceLineNo">206</span>                        EventTarget target = event.getEventTarget();<a name="line.206"></a>
+<span class="sourceLineNo">207</span>                        if (Element.is(target) &amp;&amp; asLabel().isOrHasChild(Element.as(target))) {<a name="line.207"></a>
+<span class="sourceLineNo">208</span><a name="line.208"></a>
+<span class="sourceLineNo">209</span>                                // They clicked the label. Note our pre-click value, and<a name="line.209"></a>
+<span class="sourceLineNo">210</span>                                // short circuit event routing so that other click handlers<a name="line.210"></a>
+<span class="sourceLineNo">211</span>                                // don't hear about it<a name="line.211"></a>
+<span class="sourceLineNo">212</span>                                oldValue = getValue();<a name="line.212"></a>
+<span class="sourceLineNo">213</span>                                return;<a name="line.213"></a>
+<span class="sourceLineNo">214</span>                        }<a name="line.214"></a>
+<span class="sourceLineNo">215</span><a name="line.215"></a>
+<span class="sourceLineNo">216</span>                        // It's not the label. Let our handlers hear about the<a name="line.216"></a>
+<span class="sourceLineNo">217</span>                        // click...<a name="line.217"></a>
+<span class="sourceLineNo">218</span>                        super.onBrowserEvent(event);<a name="line.218"></a>
+<span class="sourceLineNo">219</span>                        // ...and now maybe tell them about the change<a name="line.219"></a>
+<span class="sourceLineNo">220</span>                        ValueChangeEvent.fireIfNotEqual(RadioButton.this, oldValue, getValue());<a name="line.220"></a>
+<span class="sourceLineNo">221</span>                        return;<a name="line.221"></a>
+<span class="sourceLineNo">222</span>                }<a name="line.222"></a>
+<span class="sourceLineNo">223</span><a name="line.223"></a>
+<span class="sourceLineNo">224</span>                super.onBrowserEvent(event);<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        }<a name="line.225"></a>
+<span class="sourceLineNo">226</span><a name="line.226"></a>
+<span class="sourceLineNo">227</span>        /**<a name="line.227"></a>
+<span class="sourceLineNo">228</span>         * Change the group name of this radio button.<a name="line.228"></a>
+<span class="sourceLineNo">229</span>         * <a name="line.229"></a>
+<span class="sourceLineNo">230</span>         * Radio buttons are grouped by their name attribute, so changing their name<a name="line.230"></a>
+<span class="sourceLineNo">231</span>         * using the setName() method will also change their associated group.<a name="line.231"></a>
+<span class="sourceLineNo">232</span>         * <a name="line.232"></a>
+<span class="sourceLineNo">233</span>         * If changing this group name results in a new radio group with multiple<a name="line.233"></a>
+<span class="sourceLineNo">234</span>         * radio buttons selected, this radio button will remain selected and the<a name="line.234"></a>
+<span class="sourceLineNo">235</span>         * other radio buttons will be unselected.<a name="line.235"></a>
+<span class="sourceLineNo">236</span>         * <a name="line.236"></a>
+<span class="sourceLineNo">237</span>         * @param name<a name="line.237"></a>
+<span class="sourceLineNo">238</span>         *            name the group with which to associate the radio button<a name="line.238"></a>
+<span class="sourceLineNo">239</span>         */<a name="line.239"></a>
+<span class="sourceLineNo">240</span>        @Override<a name="line.240"></a>
+<span class="sourceLineNo">241</span>        public void setName(String name) {<a name="line.241"></a>
+<span class="sourceLineNo">242</span>                // Just changing the radio button name tends to break groupiness,<a name="line.242"></a>
+<span class="sourceLineNo">243</span>                // so we have to replace it. Note that replaceInputElement is careful<a name="line.243"></a>
+<span class="sourceLineNo">244</span>                // not to propagate name when it propagates everything else<a name="line.244"></a>
+<span class="sourceLineNo">245</span>                replaceInputElement(DOM.createInputRadio(name));<a name="line.245"></a>
+<span class="sourceLineNo">246</span>        }<a name="line.246"></a>
+<span class="sourceLineNo">247</span><a name="line.247"></a>
+<span class="sourceLineNo">248</span>        @Override<a name="line.248"></a>
+<span class="sourceLineNo">249</span>        public void sinkEvents(int eventBitsToAdd) {<a name="line.249"></a>
+<span class="sourceLineNo">250</span>                // Like CheckBox, we want to hear about inputElem. We<a name="line.250"></a>
+<span class="sourceLineNo">251</span>                // also want to know what's going on with the label, to<a name="line.251"></a>
+<span class="sourceLineNo">252</span>                // make sure onBrowserEvent is able to record value changes<a name="line.252"></a>
+<span class="sourceLineNo">253</span>                // initiated by label events<a name="line.253"></a>
+<span class="sourceLineNo">254</span>                if (isOrWasAttached()) {<a name="line.254"></a>
+<span class="sourceLineNo">255</span>                        Event.sinkEvents(inputElem, eventBitsToAdd | Event.getEventsSunk(inputElem));<a name="line.255"></a>
+<span class="sourceLineNo">256</span>                        Event.sinkEvents(asLabel(), eventBitsToAdd | Event.getEventsSunk(asLabel()));<a name="line.256"></a>
+<span class="sourceLineNo">257</span>                } else {<a name="line.257"></a>
+<span class="sourceLineNo">258</span>                        super.sinkEvents(eventBitsToAdd);<a name="line.258"></a>
+<span class="sourceLineNo">259</span>                }<a name="line.259"></a>
+<span class="sourceLineNo">260</span>        }<a name="line.260"></a>
+<span class="sourceLineNo">261</span><a name="line.261"></a>
+<span class="sourceLineNo">262</span>        /**<a name="line.262"></a>
+<span class="sourceLineNo">263</span>         * No-op. CheckBox's click handler is no good for radio button, so don't use<a name="line.263"></a>
+<span class="sourceLineNo">264</span>         * it. Our event handling is all done in {@link #onBrowserEvent}<a name="line.264"></a>
+<span class="sourceLineNo">265</span>         */<a name="line.265"></a>
+<span class="sourceLineNo">266</span>        @Override<a name="line.266"></a>
+<span class="sourceLineNo">267</span>        protected void ensureDomEventHandlers() {<a name="line.267"></a>
+<span class="sourceLineNo">268</span>        }<a name="line.268"></a>
+<span class="sourceLineNo">269</span>}<a name="line.269"></a>
 
 
 
@@ -330,6 +335,7 @@
 
 
 
-</PRE>
-</BODY>
-</HTML>
+</pre>
+</div>
+</body>
+</html>
