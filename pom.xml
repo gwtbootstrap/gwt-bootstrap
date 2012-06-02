@@ -91,9 +91,14 @@
 		Right now(2012/06/02),github site-maven-plugin is not supported encrypt password.
 		But we need it for CI server.
 		this property is for it.
-		If you need encrypt password,Add option `-Dgithub.sites.plugin.version=0.7-SNAPSHOT` in running `mvn site`.
+		If you need encrypt password in settings.xml,
+		Add option `-Dgithub.sites.plugin.version=0.7-SNAPSHOT` to `mvn site` goal.
+		
+		If you need encrypt password in settings.xml for donwloads plugin,
+		Add option `-Dgithub.downloads.plugin.version=0.6-SNAPSHOT` to `mvn site` goal.
 		 -->
-		<github.sites.plugin.version>0.5</github.sites.plugin.version>
+		<github.sites.plugin.version>0.6</github.sites.plugin.version>
+		<github.downloads.plugin.version>0.5</github.downloads.plugin.version>
 	</properties>
 
 	<repositories>
@@ -502,7 +507,7 @@
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
-				<version>0.4</version>
+				<version>${github.downloads.plugin.version}</version>
 				<configuration>
 					<description>${project.version} release of ${project.name}</description>
 					<override>true</override>
