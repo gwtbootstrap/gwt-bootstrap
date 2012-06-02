@@ -1,435 +1,430 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-<title>Source code</title>
-<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
-</head>
-<body>
-<div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
-<span class="sourceLineNo">002</span> *  Copyright 2012 GWT-Bootstrap<a name="line.2"></a>
-<span class="sourceLineNo">003</span> *<a name="line.3"></a>
-<span class="sourceLineNo">004</span> *  Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
-<span class="sourceLineNo">005</span> *  you may not use this file except in compliance with the License.<a name="line.5"></a>
-<span class="sourceLineNo">006</span> *  You may obtain a copy of the License at<a name="line.6"></a>
-<span class="sourceLineNo">007</span> *<a name="line.7"></a>
-<span class="sourceLineNo">008</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.8"></a>
-<span class="sourceLineNo">009</span> *<a name="line.9"></a>
-<span class="sourceLineNo">010</span> *  Unless required by applicable law or agreed to in writing, software<a name="line.10"></a>
-<span class="sourceLineNo">011</span> *  distributed under the License is distributed on an "AS IS" BASIS,<a name="line.11"></a>
-<span class="sourceLineNo">012</span> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.12"></a>
-<span class="sourceLineNo">013</span> *  See the License for the specific language governing permissions and<a name="line.13"></a>
-<span class="sourceLineNo">014</span> *  limitations under the License.<a name="line.14"></a>
-<span class="sourceLineNo">015</span> */<a name="line.15"></a>
-<span class="sourceLineNo">016</span>package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
-<span class="sourceLineNo">017</span><a name="line.17"></a>
-<span class="sourceLineNo">018</span>import com.github.gwtbootstrap.client.ui.base.DivWidget;<a name="line.18"></a>
-<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.HasVisibility;<a name="line.19"></a>
-<span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;<a name="line.20"></a>
-<span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.base.IsAnimated;<a name="line.21"></a>
-<span class="sourceLineNo">022</span>import com.github.gwtbootstrap.client.ui.constants.BackdropType;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import com.github.gwtbootstrap.client.ui.constants.DismissType;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import com.github.gwtbootstrap.client.ui.event.*;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import com.google.gwt.dom.client.Element;<a name="line.26"></a>
-<span class="sourceLineNo">027</span>import com.google.gwt.dom.client.Style;<a name="line.27"></a>
-<span class="sourceLineNo">028</span>import com.google.gwt.event.shared.HandlerRegistration;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import com.google.gwt.user.client.Timer;<a name="line.29"></a>
-<span class="sourceLineNo">030</span>import com.google.gwt.user.client.ui.PopupPanel;<a name="line.30"></a>
-<span class="sourceLineNo">031</span>import com.google.gwt.user.client.ui.RootPanel;<a name="line.31"></a>
-<span class="sourceLineNo">032</span>import com.google.gwt.user.client.ui.Widget;<a name="line.32"></a>
-<span class="sourceLineNo">033</span>import java.util.HashSet;<a name="line.33"></a>
-<span class="sourceLineNo">034</span>import java.util.Set;<a name="line.34"></a>
-<span class="sourceLineNo">035</span><a name="line.35"></a>
-<span class="sourceLineNo">036</span>//@formatter:off<a name="line.36"></a>
-<span class="sourceLineNo">037</span>/**<a name="line.37"></a>
-<span class="sourceLineNo">038</span> * Popup dialog with optional header and {@link ModalFooter footer.}<a name="line.38"></a>
-<span class="sourceLineNo">039</span> * &lt;p&gt;<a name="line.39"></a>
-<span class="sourceLineNo">040</span> * By default, all other Modals are closed once a new one is opened. This<a name="line.40"></a>
-<span class="sourceLineNo">041</span> * setting can be {@link #setHideOthers(boolean) overridden.}<a name="line.41"></a>
-<span class="sourceLineNo">042</span> * <a name="line.42"></a>
-<span class="sourceLineNo">043</span> * &lt;p&gt;<a name="line.43"></a>
-<span class="sourceLineNo">044</span> * &lt;h3&gt;UiBinder Usage:&lt;/h3&gt;<a name="line.44"></a>
-<span class="sourceLineNo">045</span> * <a name="line.45"></a>
-<span class="sourceLineNo">046</span> * &lt;pre&gt;<a name="line.46"></a>
-<span class="sourceLineNo">047</span> * {@code<a name="line.47"></a>
-<span class="sourceLineNo">048</span> * &lt;b:Modal title="My Modal" backdrop="STATIC"&gt;<a name="line.48"></a>
-<span class="sourceLineNo">049</span> *     &lt;g:Label&gt;Modal Content!&lt;/g:Label&gt;<a name="line.49"></a>
-<span class="sourceLineNo">050</span> *     &lt;b:ModalFooter&gt;<a name="line.50"></a>
-<span class="sourceLineNo">051</span> *         &lt;b:Button icon="FILE"&gt;Save&lt;/b:Button&gt;<a name="line.51"></a>
-<span class="sourceLineNo">052</span> *     &lt;/b:ModalFooter&gt;<a name="line.52"></a>
-<span class="sourceLineNo">053</span> * &lt;/b:Modal&gt;<a name="line.53"></a>
-<span class="sourceLineNo">054</span> * }<a name="line.54"></a>
-<span class="sourceLineNo">055</span> * &lt;/pre&gt;<a name="line.55"></a>
-<span class="sourceLineNo">056</span> * All arguments are optional.<a name="line.56"></a>
-<span class="sourceLineNo">057</span> * &lt;/p&gt;<a name="line.57"></a>
-<span class="sourceLineNo">058</span> * <a name="line.58"></a>
-<span class="sourceLineNo">059</span> * @since 2.0.3.0<a name="line.59"></a>
-<span class="sourceLineNo">060</span> * <a name="line.60"></a>
-<span class="sourceLineNo">061</span> * @author Carlos Alexandro Becker<a name="line.61"></a>
-<span class="sourceLineNo">062</span> * <a name="line.62"></a>
-<span class="sourceLineNo">063</span> * @author Dominik Mayer<a name="line.63"></a>
-<span class="sourceLineNo">064</span> * <a name="line.64"></a>
-<span class="sourceLineNo">065</span> * @see &lt;a href="http://twitter.github.com/bootstrap/javascript.html#modals"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.65"></a>
-<span class="sourceLineNo">066</span> * @see PopupPanel<a name="line.66"></a>
-<span class="sourceLineNo">067</span> */<a name="line.67"></a>
-<span class="sourceLineNo">068</span>//@formatter:on<a name="line.68"></a>
-<span class="sourceLineNo">069</span>public class Modal extends DivWidget implements HasVisibility,<a name="line.69"></a>
-<span class="sourceLineNo">070</span>                HasVisibleHandlers, IsAnimated {<a name="line.70"></a>
-<span class="sourceLineNo">071</span><a name="line.71"></a>
-<span class="sourceLineNo">072</span>        private static Set&lt;Modal&gt; currentlyShown = new HashSet&lt;Modal&gt;();<a name="line.72"></a>
-<span class="sourceLineNo">073</span><a name="line.73"></a>
-<span class="sourceLineNo">074</span>        private final DivWidget header = new DivWidget();<a name="line.74"></a>
-<span class="sourceLineNo">075</span>        private final DivWidget body = new DivWidget("modal-body");<a name="line.75"></a>
-<span class="sourceLineNo">076</span><a name="line.76"></a>
-<span class="sourceLineNo">077</span>        private boolean keyboard = true;<a name="line.77"></a>
-<span class="sourceLineNo">078</span>        private BackdropType backdropType = BackdropType.NORMAL;<a name="line.78"></a>
-<span class="sourceLineNo">079</span>        private boolean show = false;<a name="line.79"></a>
-<span class="sourceLineNo">080</span>        private boolean hideOthers = true;<a name="line.80"></a>
-<span class="sourceLineNo">081</span><a name="line.81"></a>
-<span class="sourceLineNo">082</span>        private boolean configured = false;<a name="line.82"></a>
-<span class="sourceLineNo">083</span><a name="line.83"></a>
-<span class="sourceLineNo">084</span>        private Close close = new Close(DismissType.MODAL);<a name="line.84"></a>
-<span class="sourceLineNo">085</span>        /**<a name="line.85"></a>
-<span class="sourceLineNo">086</span>         * Creates an empty, hidden widget.<a name="line.86"></a>
-<span class="sourceLineNo">087</span>         */<a name="line.87"></a>
-<span class="sourceLineNo">088</span>        public Modal() {<a name="line.88"></a>
-<span class="sourceLineNo">089</span>                super("modal");<a name="line.89"></a>
-<span class="sourceLineNo">090</span>                super.add(header);<a name="line.90"></a>
-<span class="sourceLineNo">091</span>                super.add(body);<a name="line.91"></a>
-<span class="sourceLineNo">092</span>                setVisible(false);<a name="line.92"></a>
-<span class="sourceLineNo">093</span>                RootPanel.get().add(this);<a name="line.93"></a>
-<span class="sourceLineNo">094</span>                setHandlerFunctions(getElement());<a name="line.94"></a>
-<span class="sourceLineNo">095</span>        }<a name="line.95"></a>
-<span class="sourceLineNo">096</span><a name="line.96"></a>
-<span class="sourceLineNo">097</span>        /**<a name="line.97"></a>
-<span class="sourceLineNo">098</span>         * Creates an empty, hidden widget with specified show behavior.<a name="line.98"></a>
-<span class="sourceLineNo">099</span>         * <a name="line.99"></a>
-<span class="sourceLineNo">100</span>         * @param animated<a name="line.100"></a>
-<span class="sourceLineNo">101</span>         *            &lt;code&gt;true&lt;/code&gt; if the widget should be animated.<a name="line.101"></a>
-<span class="sourceLineNo">102</span>         * <a name="line.102"></a>
-<span class="sourceLineNo">103</span>         */<a name="line.103"></a>
-<span class="sourceLineNo">104</span>        public Modal(boolean animated) {<a name="line.104"></a>
-<span class="sourceLineNo">105</span>            this(animated, false);<a name="line.105"></a>
-<span class="sourceLineNo">106</span>        }<a name="line.106"></a>
-<span class="sourceLineNo">107</span>        <a name="line.107"></a>
-<span class="sourceLineNo">108</span>        /**<a name="line.108"></a>
-<span class="sourceLineNo">109</span>         * Creates an empty, hidden widget with specified show behavior.<a name="line.109"></a>
-<span class="sourceLineNo">110</span>         * <a name="line.110"></a>
-<span class="sourceLineNo">111</span>         * @param animated<a name="line.111"></a>
-<span class="sourceLineNo">112</span>         *            &lt;code&gt;true&lt;/code&gt; if the widget should be animated.<a name="line.112"></a>
-<span class="sourceLineNo">113</span>         * <a name="line.113"></a>
-<span class="sourceLineNo">114</span>         * @param dynamicSafe<a name="line.114"></a>
-<span class="sourceLineNo">115</span>         *            &lt;code&gt;true&lt;/code&gt; removes from RootPanel when hidden<a name="line.115"></a>
-<span class="sourceLineNo">116</span>         */<a name="line.116"></a>
-<span class="sourceLineNo">117</span>        public Modal(boolean animated, boolean dynamicSafe) {<a name="line.117"></a>
-<span class="sourceLineNo">118</span>                this();<a name="line.118"></a>
-<span class="sourceLineNo">119</span>                setAnimation(animated);<a name="line.119"></a>
-<span class="sourceLineNo">120</span>        setDynamicSafe(dynamicSafe);<a name="line.120"></a>
-<span class="sourceLineNo">121</span>        }<a name="line.121"></a>
-<span class="sourceLineNo">122</span><a name="line.122"></a>
-<span class="sourceLineNo">123</span>    /**<a name="line.123"></a>
-<span class="sourceLineNo">124</span>     * Setup the modal to prevent memory leaks.<a name="line.124"></a>
-<span class="sourceLineNo">125</span>     * When modal is hidden, will remove all event handlers, and them<a name="line.125"></a>
-<span class="sourceLineNo">126</span>     * remove the modal DOM from document DOM.<a name="line.126"></a>
-<span class="sourceLineNo">127</span>     *<a name="line.127"></a>
-<span class="sourceLineNo">128</span>     * Default is false.<a name="line.128"></a>
-<span class="sourceLineNo">129</span>     *<a name="line.129"></a>
-<span class="sourceLineNo">130</span>     * @param dynamicSafe<a name="line.130"></a>
-<span class="sourceLineNo">131</span>     */<a name="line.131"></a>
-<span class="sourceLineNo">132</span>    public void setDynamicSafe(boolean dynamicSafe) {<a name="line.132"></a>
-<span class="sourceLineNo">133</span>        if (dynamicSafe) {<a name="line.133"></a>
-<span class="sourceLineNo">134</span>            addHiddenHandler(new HiddenHandler() {<a name="line.134"></a>
-<span class="sourceLineNo">135</span><a name="line.135"></a>
-<span class="sourceLineNo">136</span>                @Override<a name="line.136"></a>
-<span class="sourceLineNo">137</span>                public void onHidden(HiddenEvent hiddenEvent) {<a name="line.137"></a>
-<span class="sourceLineNo">138</span>                    (new Timer() {<a name="line.138"></a>
-<span class="sourceLineNo">139</span>                        @Override<a name="line.139"></a>
-<span class="sourceLineNo">140</span>                        public void run() {<a name="line.140"></a>
-<span class="sourceLineNo">141</span>                            unsetHandlerFunctions(getElement());<a name="line.141"></a>
-<span class="sourceLineNo">142</span>                            RootPanel.get().remove(Modal.this);<a name="line.142"></a>
-<span class="sourceLineNo">143</span>                        }<a name="line.143"></a>
-<span class="sourceLineNo">144</span>                    }).schedule(3000);<a name="line.144"></a>
-<span class="sourceLineNo">145</span>                }<a name="line.145"></a>
-<span class="sourceLineNo">146</span>            });<a name="line.146"></a>
-<span class="sourceLineNo">147</span>        }<a name="line.147"></a>
-<span class="sourceLineNo">148</span>    }<a name="line.148"></a>
-<span class="sourceLineNo">149</span><a name="line.149"></a>
-<span class="sourceLineNo">150</span>        /**<a name="line.150"></a>
-<span class="sourceLineNo">151</span>         * Sets the title of the Modal.<a name="line.151"></a>
-<span class="sourceLineNo">152</span>         * <a name="line.152"></a>
-<span class="sourceLineNo">153</span>         * @param title<a name="line.153"></a>
-<span class="sourceLineNo">154</span>         *            the title of the Modal<a name="line.154"></a>
-<span class="sourceLineNo">155</span>         */<a name="line.155"></a>
-<span class="sourceLineNo">156</span>        @Override<a name="line.156"></a>
-<span class="sourceLineNo">157</span>        public void setTitle(String title) {<a name="line.157"></a>
-<span class="sourceLineNo">158</span>                header.clear();<a name="line.158"></a>
-<span class="sourceLineNo">159</span>                if (title == null || title.isEmpty()) {<a name="line.159"></a>
-<span class="sourceLineNo">160</span>                        showHeader(false);<a name="line.160"></a>
-<span class="sourceLineNo">161</span>                } else {<a name="line.161"></a>
-<span class="sourceLineNo">162</span>                        header.add(close);<a name="line.162"></a>
-<span class="sourceLineNo">163</span>                        header.add(new Heading(3, title));<a name="line.163"></a>
-<span class="sourceLineNo">164</span>                        showHeader(true);<a name="line.164"></a>
-<span class="sourceLineNo">165</span>                }<a name="line.165"></a>
-<span class="sourceLineNo">166</span>        }<a name="line.166"></a>
-<span class="sourceLineNo">167</span><a name="line.167"></a>
-<span class="sourceLineNo">168</span>        private void showHeader(boolean show) {<a name="line.168"></a>
-<span class="sourceLineNo">169</span>                if (show)<a name="line.169"></a>
-<span class="sourceLineNo">170</span>                        header.setStyleName(Constants.MODAL_HEADER);<a name="line.170"></a>
-<span class="sourceLineNo">171</span>                else<a name="line.171"></a>
-<span class="sourceLineNo">172</span>                        header.removeStyleName(Constants.MODAL_HEADER);<a name="line.172"></a>
-<span class="sourceLineNo">173</span>        }<a name="line.173"></a>
-<span class="sourceLineNo">174</span><a name="line.174"></a>
-<span class="sourceLineNo">175</span>        /**<a name="line.175"></a>
-<span class="sourceLineNo">176</span>         * {@inheritDoc}<a name="line.176"></a>
-<span class="sourceLineNo">177</span>         */<a name="line.177"></a>
-<span class="sourceLineNo">178</span>        public void setAnimation(boolean animated) {<a name="line.178"></a>
-<span class="sourceLineNo">179</span>                if (animated)<a name="line.179"></a>
-<span class="sourceLineNo">180</span>                        addStyleName(Constants.FADE);<a name="line.180"></a>
-<span class="sourceLineNo">181</span>                else<a name="line.181"></a>
-<span class="sourceLineNo">182</span>                        removeStyleName(Constants.FADE);<a name="line.182"></a>
-<span class="sourceLineNo">183</span>        }<a name="line.183"></a>
-<span class="sourceLineNo">184</span><a name="line.184"></a>
-<span class="sourceLineNo">185</span>        /**<a name="line.185"></a>
-<span class="sourceLineNo">186</span>         * {@inheritDoc}<a name="line.186"></a>
-<span class="sourceLineNo">187</span>         */<a name="line.187"></a>
-<span class="sourceLineNo">188</span>        public boolean getAnimation() {<a name="line.188"></a>
-<span class="sourceLineNo">189</span>                return getStyleName().contains(Constants.FADE);<a name="line.189"></a>
-<span class="sourceLineNo">190</span>        }<a name="line.190"></a>
-<span class="sourceLineNo">191</span><a name="line.191"></a>
-<span class="sourceLineNo">192</span>        /**<a name="line.192"></a>
-<span class="sourceLineNo">193</span>         * Sets whether this Modal appears on top of others or is the only one<a name="line.193"></a>
-<span class="sourceLineNo">194</span>         * visible on screen.<a name="line.194"></a>
-<span class="sourceLineNo">195</span>         * <a name="line.195"></a>
-<span class="sourceLineNo">196</span>         * @param hideOthers<a name="line.196"></a>
-<span class="sourceLineNo">197</span>         *            &lt;code&gt;true&lt;/code&gt; to make sure that this modal is the only one<a name="line.197"></a>
-<span class="sourceLineNo">198</span>         *            shown. All others will be hidden. Default: &lt;code&gt;true&lt;/code&gt;<a name="line.198"></a>
-<span class="sourceLineNo">199</span>         */<a name="line.199"></a>
-<span class="sourceLineNo">200</span>        public void setHideOthers(boolean hideOthers) {<a name="line.200"></a>
-<span class="sourceLineNo">201</span>                this.hideOthers = hideOthers;<a name="line.201"></a>
-<span class="sourceLineNo">202</span>        }<a name="line.202"></a>
-<span class="sourceLineNo">203</span><a name="line.203"></a>
-<span class="sourceLineNo">204</span>        /**<a name="line.204"></a>
-<span class="sourceLineNo">205</span>         * Sets whether the Modal is closed when the &lt;code&gt;ESC&lt;/code&gt; is pressed.<a name="line.205"></a>
-<span class="sourceLineNo">206</span>         * <a name="line.206"></a>
-<span class="sourceLineNo">207</span>         * @param keyboard<a name="line.207"></a>
-<span class="sourceLineNo">208</span>         *            &lt;code&gt;true&lt;/code&gt; if the Modal is closed by &lt;code&gt;ESC&lt;/code&gt;<a name="line.208"></a>
-<span class="sourceLineNo">209</span>         *            key. Default: &lt;code&gt;true&lt;/code&gt;<a name="line.209"></a>
-<span class="sourceLineNo">210</span>         */<a name="line.210"></a>
-<span class="sourceLineNo">211</span>        public void setKeyboard(boolean keyboard) {<a name="line.211"></a>
-<span class="sourceLineNo">212</span>                this.keyboard = keyboard;<a name="line.212"></a>
-<span class="sourceLineNo">213</span>                reconfigure();<a name="line.213"></a>
-<span class="sourceLineNo">214</span>        }<a name="line.214"></a>
-<span class="sourceLineNo">215</span><a name="line.215"></a>
-<span class="sourceLineNo">216</span>        /**<a name="line.216"></a>
-<span class="sourceLineNo">217</span>         * Sets the type of the backdrop.<a name="line.217"></a>
-<span class="sourceLineNo">218</span>         * <a name="line.218"></a>
-<span class="sourceLineNo">219</span>         * @param type<a name="line.219"></a>
-<span class="sourceLineNo">220</span>         *            the backdrop type<a name="line.220"></a>
-<span class="sourceLineNo">221</span>         */<a name="line.221"></a>
-<span class="sourceLineNo">222</span>        public void setBackdrop(BackdropType type) {<a name="line.222"></a>
-<span class="sourceLineNo">223</span>                backdropType = type;<a name="line.223"></a>
-<span class="sourceLineNo">224</span>                reconfigure();<a name="line.224"></a>
-<span class="sourceLineNo">225</span>        }<a name="line.225"></a>
-<span class="sourceLineNo">226</span><a name="line.226"></a>
-<span class="sourceLineNo">227</span>        /**<a name="line.227"></a>
-<span class="sourceLineNo">228</span>         * Reconfigures the modal with changed settings.<a name="line.228"></a>
-<span class="sourceLineNo">229</span>         */<a name="line.229"></a>
-<span class="sourceLineNo">230</span>        protected void reconfigure() {<a name="line.230"></a>
-<span class="sourceLineNo">231</span>                if (configured) {<a name="line.231"></a>
-<span class="sourceLineNo">232</span>                        configure(keyboard, backdropType, show);<a name="line.232"></a>
-<span class="sourceLineNo">233</span>                }<a name="line.233"></a>
-<span class="sourceLineNo">234</span>        }<a name="line.234"></a>
-<span class="sourceLineNo">235</span><a name="line.235"></a>
-<span class="sourceLineNo">236</span>        /**<a name="line.236"></a>
-<span class="sourceLineNo">237</span>         * {@inheritDoc}<a name="line.237"></a>
-<span class="sourceLineNo">238</span>         */<a name="line.238"></a>
-<span class="sourceLineNo">239</span>        @Override<a name="line.239"></a>
-<span class="sourceLineNo">240</span>        public void add(Widget w) {<a name="line.240"></a>
-<span class="sourceLineNo">241</span>                if (w instanceof ModalFooter) {<a name="line.241"></a>
-<span class="sourceLineNo">242</span>                        super.add(w);<a name="line.242"></a>
-<span class="sourceLineNo">243</span>                } else<a name="line.243"></a>
-<span class="sourceLineNo">244</span>                        body.add(w);<a name="line.244"></a>
-<span class="sourceLineNo">245</span>        }<a name="line.245"></a>
-<span class="sourceLineNo">246</span><a name="line.246"></a>
-<span class="sourceLineNo">247</span>        /**<a name="line.247"></a>
-<span class="sourceLineNo">248</span>         * {@inheritDoc}<a name="line.248"></a>
-<span class="sourceLineNo">249</span>         */<a name="line.249"></a>
-<span class="sourceLineNo">250</span>        @Override<a name="line.250"></a>
-<span class="sourceLineNo">251</span>        public void insert(Widget w, int beforeIndex) {<a name="line.251"></a>
-<span class="sourceLineNo">252</span>                body.insert(w, beforeIndex);<a name="line.252"></a>
-<span class="sourceLineNo">253</span>        }<a name="line.253"></a>
-<span class="sourceLineNo">254</span><a name="line.254"></a>
-<span class="sourceLineNo">255</span>        /**<a name="line.255"></a>
-<span class="sourceLineNo">256</span>         * {@inheritDoc}<a name="line.256"></a>
-<span class="sourceLineNo">257</span>         */<a name="line.257"></a>
-<span class="sourceLineNo">258</span>        @Override<a name="line.258"></a>
-<span class="sourceLineNo">259</span>        protected void onLoad() {<a name="line.259"></a>
-<span class="sourceLineNo">260</span>                super.onLoad();<a name="line.260"></a>
-<span class="sourceLineNo">261</span>                configure(keyboard, backdropType, show);<a name="line.261"></a>
-<span class="sourceLineNo">262</span>                configured = true;<a name="line.262"></a>
-<span class="sourceLineNo">263</span>        }<a name="line.263"></a>
-<span class="sourceLineNo">264</span><a name="line.264"></a>
-<span class="sourceLineNo">265</span>        /**<a name="line.265"></a>
-<span class="sourceLineNo">266</span>         * {@inheritDoc}<a name="line.266"></a>
-<span class="sourceLineNo">267</span>         */<a name="line.267"></a>
-<span class="sourceLineNo">268</span>        public void show() {<a name="line.268"></a>
-<span class="sourceLineNo">269</span>                changeVisibility("show");<a name="line.269"></a>
-<span class="sourceLineNo">270</span>        }<a name="line.270"></a>
-<span class="sourceLineNo">271</span><a name="line.271"></a>
-<span class="sourceLineNo">272</span>        /**<a name="line.272"></a>
-<span class="sourceLineNo">273</span>         * {@inheritDoc}<a name="line.273"></a>
-<span class="sourceLineNo">274</span>         */<a name="line.274"></a>
-<span class="sourceLineNo">275</span>        public void hide() {<a name="line.275"></a>
-<span class="sourceLineNo">276</span>                changeVisibility("hide");<a name="line.276"></a>
-<span class="sourceLineNo">277</span>        }<a name="line.277"></a>
-<span class="sourceLineNo">278</span><a name="line.278"></a>
-<span class="sourceLineNo">279</span>        /**<a name="line.279"></a>
-<span class="sourceLineNo">280</span>         * {@inheritDoc}<a name="line.280"></a>
-<span class="sourceLineNo">281</span>         */<a name="line.281"></a>
-<span class="sourceLineNo">282</span>        public void toggle() {<a name="line.282"></a>
-<span class="sourceLineNo">283</span>                changeVisibility("toggle");<a name="line.283"></a>
-<span class="sourceLineNo">284</span>        }<a name="line.284"></a>
-<span class="sourceLineNo">285</span><a name="line.285"></a>
-<span class="sourceLineNo">286</span>        private void changeVisibility(String visibility) {<a name="line.286"></a>
-<span class="sourceLineNo">287</span>                changeVisibility(getElement(), visibility);<a name="line.287"></a>
-<span class="sourceLineNo">288</span>        }<a name="line.288"></a>
-<span class="sourceLineNo">289</span><a name="line.289"></a>
-<span class="sourceLineNo">290</span>        /**<a name="line.290"></a>
-<span class="sourceLineNo">291</span>         * This method is called immediately when the widget's {@link #hide()}<a name="line.291"></a>
-<span class="sourceLineNo">292</span>         * method is executed.<a name="line.292"></a>
-<span class="sourceLineNo">293</span>         */<a name="line.293"></a>
-<span class="sourceLineNo">294</span>        protected void onHide() {<a name="line.294"></a>
-<span class="sourceLineNo">295</span>                fireEvent(new HideEvent());<a name="line.295"></a>
-<span class="sourceLineNo">296</span>        }<a name="line.296"></a>
-<span class="sourceLineNo">297</span><a name="line.297"></a>
-<span class="sourceLineNo">298</span>        /**<a name="line.298"></a>
-<span class="sourceLineNo">299</span>         * This method is called once the widget is completely hidden.<a name="line.299"></a>
-<span class="sourceLineNo">300</span>         */<a name="line.300"></a>
-<span class="sourceLineNo">301</span>        protected void onHidden() {<a name="line.301"></a>
-<span class="sourceLineNo">302</span>                fireEvent(new HiddenEvent());<a name="line.302"></a>
-<span class="sourceLineNo">303</span>                currentlyShown.remove(this);<a name="line.303"></a>
-<span class="sourceLineNo">304</span>        }<a name="line.304"></a>
-<span class="sourceLineNo">305</span><a name="line.305"></a>
-<span class="sourceLineNo">306</span>        /**<a name="line.306"></a>
-<span class="sourceLineNo">307</span>         * This method is called immediately when the widget's {@link #show()}<a name="line.307"></a>
-<span class="sourceLineNo">308</span>         * method is executed.<a name="line.308"></a>
-<span class="sourceLineNo">309</span>         */<a name="line.309"></a>
-<span class="sourceLineNo">310</span>        protected void onShow() {<a name="line.310"></a>
-<span class="sourceLineNo">311</span>                if (hideOthers)<a name="line.311"></a>
-<span class="sourceLineNo">312</span>                        hideShownModals();<a name="line.312"></a>
-<span class="sourceLineNo">313</span>                fireEvent(new ShowEvent());<a name="line.313"></a>
-<span class="sourceLineNo">314</span>        }<a name="line.314"></a>
-<span class="sourceLineNo">315</span><a name="line.315"></a>
-<span class="sourceLineNo">316</span>        private void hideShownModals() {<a name="line.316"></a>
-<span class="sourceLineNo">317</span>                for (Modal m : currentlyShown)<a name="line.317"></a>
-<span class="sourceLineNo">318</span>                        m.hide();<a name="line.318"></a>
-<span class="sourceLineNo">319</span>        }<a name="line.319"></a>
-<span class="sourceLineNo">320</span><a name="line.320"></a>
-<span class="sourceLineNo">321</span>        /**<a name="line.321"></a>
-<span class="sourceLineNo">322</span>         * This method is called once the widget is completely shown.<a name="line.322"></a>
-<span class="sourceLineNo">323</span>         */<a name="line.323"></a>
-<span class="sourceLineNo">324</span>        protected void onShown() {<a name="line.324"></a>
-<span class="sourceLineNo">325</span>                fireEvent(new ShownEvent());<a name="line.325"></a>
-<span class="sourceLineNo">326</span>                currentlyShown.add(this);<a name="line.326"></a>
-<span class="sourceLineNo">327</span>        }<a name="line.327"></a>
-<span class="sourceLineNo">328</span><a name="line.328"></a>
-<span class="sourceLineNo">329</span>        private void configure(boolean keyboard, BackdropType backdropType,<a name="line.329"></a>
-<span class="sourceLineNo">330</span>                        boolean show) {<a name="line.330"></a>
-<span class="sourceLineNo">331</span>                if (backdropType == BackdropType.NORMAL)<a name="line.331"></a>
-<span class="sourceLineNo">332</span>                        configure(getElement(), keyboard, true, show);<a name="line.332"></a>
-<span class="sourceLineNo">333</span>                else if (backdropType == BackdropType.NONE)<a name="line.333"></a>
-<span class="sourceLineNo">334</span>                        configure(getElement(), keyboard, false, show);<a name="line.334"></a>
-<span class="sourceLineNo">335</span>                else if (backdropType == BackdropType.STATIC)<a name="line.335"></a>
-<span class="sourceLineNo">336</span>                        configure(getElement(), keyboard, BackdropType.STATIC.get(), show);<a name="line.336"></a>
-<span class="sourceLineNo">337</span>        }<a name="line.337"></a>
-<span class="sourceLineNo">338</span><a name="line.338"></a>
-<span class="sourceLineNo">339</span>        private native void configure(Element e, boolean k, boolean b, boolean s) /*-{<a name="line.339"></a>
-<span class="sourceLineNo">340</span>                $wnd.jQuery(e).modal({<a name="line.340"></a>
-<span class="sourceLineNo">341</span>                        keyboard : k,<a name="line.341"></a>
-<span class="sourceLineNo">342</span>                        backdrop : b,<a name="line.342"></a>
-<span class="sourceLineNo">343</span>                        show : s<a name="line.343"></a>
-<span class="sourceLineNo">344</span>                });<a name="line.344"></a>
-<span class="sourceLineNo">345</span>        }-*/;<a name="line.345"></a>
-<span class="sourceLineNo">346</span><a name="line.346"></a>
-<span class="sourceLineNo">347</span>        private native void configure(Element e, boolean k, String b, boolean s) /*-{<a name="line.347"></a>
-<span class="sourceLineNo">348</span>                $wnd.jQuery(e).modal({<a name="line.348"></a>
-<span class="sourceLineNo">349</span>                        keyboard : k,<a name="line.349"></a>
-<span class="sourceLineNo">350</span>                        backdrop : b,<a name="line.350"></a>
-<span class="sourceLineNo">351</span>                        show : s<a name="line.351"></a>
-<span class="sourceLineNo">352</span>                });<a name="line.352"></a>
-<span class="sourceLineNo">353</span>        }-*/;<a name="line.353"></a>
-<span class="sourceLineNo">354</span><a name="line.354"></a>
-<span class="sourceLineNo">355</span>        private native void changeVisibility(Element e, String visibility) /*-{<a name="line.355"></a>
-<span class="sourceLineNo">356</span>                $wnd.jQuery(e).modal(visibility);<a name="line.356"></a>
-<span class="sourceLineNo">357</span>        }-*/;<a name="line.357"></a>
-<span class="sourceLineNo">358</span><a name="line.358"></a>
-<span class="sourceLineNo">359</span>        /**<a name="line.359"></a>
-<span class="sourceLineNo">360</span>         * Links the Java functions that fire the events.<a name="line.360"></a>
-<span class="sourceLineNo">361</span>         */<a name="line.361"></a>
-<span class="sourceLineNo">362</span>        private native void setHandlerFunctions(Element e) /*-{<a name="line.362"></a>
-<span class="sourceLineNo">363</span>                var that = this;<a name="line.363"></a>
-<span class="sourceLineNo">364</span>                $wnd.jQuery(e).on('hide', function() {<a name="line.364"></a>
-<span class="sourceLineNo">365</span>                        that.@com.github.gwtbootstrap.client.ui.Modal::onHide()();<a name="line.365"></a>
-<span class="sourceLineNo">366</span>                });<a name="line.366"></a>
-<span class="sourceLineNo">367</span>                $wnd.jQuery(e).on('hidden', function() {<a name="line.367"></a>
-<span class="sourceLineNo">368</span>                        that.@com.github.gwtbootstrap.client.ui.Modal::onHidden()();<a name="line.368"></a>
-<span class="sourceLineNo">369</span>                });<a name="line.369"></a>
-<span class="sourceLineNo">370</span>                $wnd.jQuery(e).on('show', function() {<a name="line.370"></a>
-<span class="sourceLineNo">371</span>                        that.@com.github.gwtbootstrap.client.ui.Modal::onShow()();<a name="line.371"></a>
-<span class="sourceLineNo">372</span>                });<a name="line.372"></a>
-<span class="sourceLineNo">373</span>                $wnd.jQuery(e).on('shown', function() {<a name="line.373"></a>
-<span class="sourceLineNo">374</span>                        that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();<a name="line.374"></a>
-<span class="sourceLineNo">375</span>                });<a name="line.375"></a>
-<span class="sourceLineNo">376</span>        }-*/;<a name="line.376"></a>
-<span class="sourceLineNo">377</span><a name="line.377"></a>
-<span class="sourceLineNo">378</span><a name="line.378"></a>
-<span class="sourceLineNo">379</span>    /**<a name="line.379"></a>
-<span class="sourceLineNo">380</span>     * Unlinks all the Java functions that fire the events.<a name="line.380"></a>
-<span class="sourceLineNo">381</span>     */<a name="line.381"></a>
-<span class="sourceLineNo">382</span>    private native void unsetHandlerFunctions(Element e) /*-{<a name="line.382"></a>
-<span class="sourceLineNo">383</span>        $wnd.jQuery(e).off();<a name="line.383"></a>
-<span class="sourceLineNo">384</span>    }-*/;<a name="line.384"></a>
-<span class="sourceLineNo">385</span><a name="line.385"></a>
-<span class="sourceLineNo">386</span>        /**<a name="line.386"></a>
-<span class="sourceLineNo">387</span>         * {@inheritDoc}<a name="line.387"></a>
-<span class="sourceLineNo">388</span>         */<a name="line.388"></a>
-<span class="sourceLineNo">389</span>        public HandlerRegistration addHideHandler(HideHandler handler) {<a name="line.389"></a>
-<span class="sourceLineNo">390</span>                return addHandler(handler, HideEvent.getType());<a name="line.390"></a>
-<span class="sourceLineNo">391</span>        }<a name="line.391"></a>
-<span class="sourceLineNo">392</span><a name="line.392"></a>
-<span class="sourceLineNo">393</span>        /**<a name="line.393"></a>
-<span class="sourceLineNo">394</span>         * {@inheritDoc}<a name="line.394"></a>
-<span class="sourceLineNo">395</span>         */<a name="line.395"></a>
-<span class="sourceLineNo">396</span>        public HandlerRegistration addHiddenHandler(HiddenHandler handler) {<a name="line.396"></a>
-<span class="sourceLineNo">397</span>                return addHandler(handler, HiddenEvent.getType());<a name="line.397"></a>
-<span class="sourceLineNo">398</span>        }<a name="line.398"></a>
-<span class="sourceLineNo">399</span><a name="line.399"></a>
-<span class="sourceLineNo">400</span>        /**<a name="line.400"></a>
-<span class="sourceLineNo">401</span>         * {@inheritDoc}<a name="line.401"></a>
-<span class="sourceLineNo">402</span>         */<a name="line.402"></a>
-<span class="sourceLineNo">403</span>        public HandlerRegistration addShowHandler(ShowHandler handler) {<a name="line.403"></a>
-<span class="sourceLineNo">404</span>                return addHandler(handler, ShowEvent.getType());<a name="line.404"></a>
-<span class="sourceLineNo">405</span>        }<a name="line.405"></a>
-<span class="sourceLineNo">406</span><a name="line.406"></a>
-<span class="sourceLineNo">407</span>        /**<a name="line.407"></a>
-<span class="sourceLineNo">408</span>         * {@inheritDoc}<a name="line.408"></a>
-<span class="sourceLineNo">409</span>         */<a name="line.409"></a>
-<span class="sourceLineNo">410</span>        public HandlerRegistration addShownHandler(ShownHandler handler) {<a name="line.410"></a>
-<span class="sourceLineNo">411</span>                return addHandler(handler, ShownEvent.getType());<a name="line.411"></a>
-<span class="sourceLineNo">412</span>        }<a name="line.412"></a>
-<span class="sourceLineNo">413</span>        <a name="line.413"></a>
-<span class="sourceLineNo">414</span>        /**<a name="line.414"></a>
-<span class="sourceLineNo">415</span>         * Show/Hide close button. The Modal must have a title.<a name="line.415"></a>
-<span class="sourceLineNo">416</span>         * <a name="line.416"></a>
-<span class="sourceLineNo">417</span>         * @param visible &lt;b&gt;true&lt;/b&gt; for show and &lt;b&gt;false&lt;/b&gt; to hide. Defaults is &lt;b&gt;true&lt;/b&gt;.<a name="line.417"></a>
-<span class="sourceLineNo">418</span>         */<a name="line.418"></a>
-<span class="sourceLineNo">419</span>        public void setCloseVisible(boolean visible) {<a name="line.419"></a>
-<span class="sourceLineNo">420</span>            close.getElement().getStyle().setVisibility(visible ? <a name="line.420"></a>
-<span class="sourceLineNo">421</span>                    Style.Visibility.VISIBLE : Style.Visibility.HIDDEN);<a name="line.421"></a>
-<span class="sourceLineNo">422</span>        }<a name="line.422"></a>
-<span class="sourceLineNo">423</span><a name="line.423"></a>
-<span class="sourceLineNo">424</span>}<a name="line.424"></a>
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>     *  Copyright 2012 GWT-Bootstrap<a name="line.2"></a>
+<FONT color="green">003</FONT>     *<a name="line.3"></a>
+<FONT color="green">004</FONT>     *  Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
+<FONT color="green">005</FONT>     *  you may not use this file except in compliance with the License.<a name="line.5"></a>
+<FONT color="green">006</FONT>     *  You may obtain a copy of the License at<a name="line.6"></a>
+<FONT color="green">007</FONT>     *<a name="line.7"></a>
+<FONT color="green">008</FONT>     *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.8"></a>
+<FONT color="green">009</FONT>     *<a name="line.9"></a>
+<FONT color="green">010</FONT>     *  Unless required by applicable law or agreed to in writing, software<a name="line.10"></a>
+<FONT color="green">011</FONT>     *  distributed under the License is distributed on an "AS IS" BASIS,<a name="line.11"></a>
+<FONT color="green">012</FONT>     *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.12"></a>
+<FONT color="green">013</FONT>     *  See the License for the specific language governing permissions and<a name="line.13"></a>
+<FONT color="green">014</FONT>     *  limitations under the License.<a name="line.14"></a>
+<FONT color="green">015</FONT>     */<a name="line.15"></a>
+<FONT color="green">016</FONT>    package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
+<FONT color="green">017</FONT>    <a name="line.17"></a>
+<FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.base.DivWidget;<a name="line.18"></a>
+<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.base.HasVisibility;<a name="line.19"></a>
+<FONT color="green">020</FONT>    import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;<a name="line.20"></a>
+<FONT color="green">021</FONT>    import com.github.gwtbootstrap.client.ui.base.IsAnimated;<a name="line.21"></a>
+<FONT color="green">022</FONT>    import com.github.gwtbootstrap.client.ui.constants.BackdropType;<a name="line.22"></a>
+<FONT color="green">023</FONT>    import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.23"></a>
+<FONT color="green">024</FONT>    import com.github.gwtbootstrap.client.ui.constants.DismissType;<a name="line.24"></a>
+<FONT color="green">025</FONT>    import com.github.gwtbootstrap.client.ui.event.*;<a name="line.25"></a>
+<FONT color="green">026</FONT>    import com.google.gwt.dom.client.Element;<a name="line.26"></a>
+<FONT color="green">027</FONT>    import com.google.gwt.dom.client.Style;<a name="line.27"></a>
+<FONT color="green">028</FONT>    import com.google.gwt.event.shared.HandlerRegistration;<a name="line.28"></a>
+<FONT color="green">029</FONT>    import com.google.gwt.user.client.Timer;<a name="line.29"></a>
+<FONT color="green">030</FONT>    import com.google.gwt.user.client.ui.PopupPanel;<a name="line.30"></a>
+<FONT color="green">031</FONT>    import com.google.gwt.user.client.ui.RootPanel;<a name="line.31"></a>
+<FONT color="green">032</FONT>    import com.google.gwt.user.client.ui.Widget;<a name="line.32"></a>
+<FONT color="green">033</FONT>    import java.util.HashSet;<a name="line.33"></a>
+<FONT color="green">034</FONT>    import java.util.Set;<a name="line.34"></a>
+<FONT color="green">035</FONT>    <a name="line.35"></a>
+<FONT color="green">036</FONT>    //@formatter:off<a name="line.36"></a>
+<FONT color="green">037</FONT>    /**<a name="line.37"></a>
+<FONT color="green">038</FONT>     * Popup dialog with optional header and {@link ModalFooter footer.}<a name="line.38"></a>
+<FONT color="green">039</FONT>     * &lt;p&gt;<a name="line.39"></a>
+<FONT color="green">040</FONT>     * By default, all other Modals are closed once a new one is opened. This<a name="line.40"></a>
+<FONT color="green">041</FONT>     * setting can be {@link #setHideOthers(boolean) overridden.}<a name="line.41"></a>
+<FONT color="green">042</FONT>     * <a name="line.42"></a>
+<FONT color="green">043</FONT>     * &lt;p&gt;<a name="line.43"></a>
+<FONT color="green">044</FONT>     * &lt;h3&gt;UiBinder Usage:&lt;/h3&gt;<a name="line.44"></a>
+<FONT color="green">045</FONT>     * <a name="line.45"></a>
+<FONT color="green">046</FONT>     * &lt;pre&gt;<a name="line.46"></a>
+<FONT color="green">047</FONT>     * {@code<a name="line.47"></a>
+<FONT color="green">048</FONT>     * &lt;b:Modal title="My Modal" backdrop="STATIC"&gt;<a name="line.48"></a>
+<FONT color="green">049</FONT>     *     &lt;g:Label&gt;Modal Content!&lt;/g:Label&gt;<a name="line.49"></a>
+<FONT color="green">050</FONT>     *     &lt;b:ModalFooter&gt;<a name="line.50"></a>
+<FONT color="green">051</FONT>     *         &lt;b:Button icon="FILE"&gt;Save&lt;/b:Button&gt;<a name="line.51"></a>
+<FONT color="green">052</FONT>     *     &lt;/b:ModalFooter&gt;<a name="line.52"></a>
+<FONT color="green">053</FONT>     * &lt;/b:Modal&gt;<a name="line.53"></a>
+<FONT color="green">054</FONT>     * }<a name="line.54"></a>
+<FONT color="green">055</FONT>     * &lt;/pre&gt;<a name="line.55"></a>
+<FONT color="green">056</FONT>     * All arguments are optional.<a name="line.56"></a>
+<FONT color="green">057</FONT>     * &lt;/p&gt;<a name="line.57"></a>
+<FONT color="green">058</FONT>     * <a name="line.58"></a>
+<FONT color="green">059</FONT>     * @since 2.0.3.0<a name="line.59"></a>
+<FONT color="green">060</FONT>     * <a name="line.60"></a>
+<FONT color="green">061</FONT>     * @author Carlos Alexandro Becker<a name="line.61"></a>
+<FONT color="green">062</FONT>     * <a name="line.62"></a>
+<FONT color="green">063</FONT>     * @author Dominik Mayer<a name="line.63"></a>
+<FONT color="green">064</FONT>     * <a name="line.64"></a>
+<FONT color="green">065</FONT>     * @see &lt;a href="http://twitter.github.com/bootstrap/javascript.html#modals"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.65"></a>
+<FONT color="green">066</FONT>     * @see PopupPanel<a name="line.66"></a>
+<FONT color="green">067</FONT>     */<a name="line.67"></a>
+<FONT color="green">068</FONT>    //@formatter:on<a name="line.68"></a>
+<FONT color="green">069</FONT>    public class Modal extends DivWidget implements HasVisibility,<a name="line.69"></a>
+<FONT color="green">070</FONT>                    HasVisibleHandlers, IsAnimated {<a name="line.70"></a>
+<FONT color="green">071</FONT>    <a name="line.71"></a>
+<FONT color="green">072</FONT>            private static Set&lt;Modal&gt; currentlyShown = new HashSet&lt;Modal&gt;();<a name="line.72"></a>
+<FONT color="green">073</FONT>    <a name="line.73"></a>
+<FONT color="green">074</FONT>            private final DivWidget header = new DivWidget();<a name="line.74"></a>
+<FONT color="green">075</FONT>            private final DivWidget body = new DivWidget("modal-body");<a name="line.75"></a>
+<FONT color="green">076</FONT>    <a name="line.76"></a>
+<FONT color="green">077</FONT>            private boolean keyboard = true;<a name="line.77"></a>
+<FONT color="green">078</FONT>            private BackdropType backdropType = BackdropType.NORMAL;<a name="line.78"></a>
+<FONT color="green">079</FONT>            private boolean show = false;<a name="line.79"></a>
+<FONT color="green">080</FONT>            private boolean hideOthers = true;<a name="line.80"></a>
+<FONT color="green">081</FONT>    <a name="line.81"></a>
+<FONT color="green">082</FONT>            private boolean configured = false;<a name="line.82"></a>
+<FONT color="green">083</FONT>    <a name="line.83"></a>
+<FONT color="green">084</FONT>            private Close close = new Close(DismissType.MODAL);<a name="line.84"></a>
+<FONT color="green">085</FONT>            /**<a name="line.85"></a>
+<FONT color="green">086</FONT>             * Creates an empty, hidden widget.<a name="line.86"></a>
+<FONT color="green">087</FONT>             */<a name="line.87"></a>
+<FONT color="green">088</FONT>            public Modal() {<a name="line.88"></a>
+<FONT color="green">089</FONT>                    super("modal");<a name="line.89"></a>
+<FONT color="green">090</FONT>                    super.add(header);<a name="line.90"></a>
+<FONT color="green">091</FONT>                    super.add(body);<a name="line.91"></a>
+<FONT color="green">092</FONT>                    setVisible(false);<a name="line.92"></a>
+<FONT color="green">093</FONT>                    RootPanel.get().add(this);<a name="line.93"></a>
+<FONT color="green">094</FONT>                    setHandlerFunctions(getElement());<a name="line.94"></a>
+<FONT color="green">095</FONT>            }<a name="line.95"></a>
+<FONT color="green">096</FONT>    <a name="line.96"></a>
+<FONT color="green">097</FONT>            /**<a name="line.97"></a>
+<FONT color="green">098</FONT>             * Creates an empty, hidden widget with specified show behavior.<a name="line.98"></a>
+<FONT color="green">099</FONT>             * <a name="line.99"></a>
+<FONT color="green">100</FONT>             * @param animated<a name="line.100"></a>
+<FONT color="green">101</FONT>             *            &lt;code&gt;true&lt;/code&gt; if the widget should be animated.<a name="line.101"></a>
+<FONT color="green">102</FONT>             * <a name="line.102"></a>
+<FONT color="green">103</FONT>             */<a name="line.103"></a>
+<FONT color="green">104</FONT>            public Modal(boolean animated) {<a name="line.104"></a>
+<FONT color="green">105</FONT>                this(animated, false);<a name="line.105"></a>
+<FONT color="green">106</FONT>            }<a name="line.106"></a>
+<FONT color="green">107</FONT>            <a name="line.107"></a>
+<FONT color="green">108</FONT>            /**<a name="line.108"></a>
+<FONT color="green">109</FONT>             * Creates an empty, hidden widget with specified show behavior.<a name="line.109"></a>
+<FONT color="green">110</FONT>             * <a name="line.110"></a>
+<FONT color="green">111</FONT>             * @param animated<a name="line.111"></a>
+<FONT color="green">112</FONT>             *            &lt;code&gt;true&lt;/code&gt; if the widget should be animated.<a name="line.112"></a>
+<FONT color="green">113</FONT>             * <a name="line.113"></a>
+<FONT color="green">114</FONT>             * @param dynamicSafe<a name="line.114"></a>
+<FONT color="green">115</FONT>             *            &lt;code&gt;true&lt;/code&gt; removes from RootPanel when hidden<a name="line.115"></a>
+<FONT color="green">116</FONT>             */<a name="line.116"></a>
+<FONT color="green">117</FONT>            public Modal(boolean animated, boolean dynamicSafe) {<a name="line.117"></a>
+<FONT color="green">118</FONT>                    this();<a name="line.118"></a>
+<FONT color="green">119</FONT>                    setAnimation(animated);<a name="line.119"></a>
+<FONT color="green">120</FONT>            setDynamicSafe(dynamicSafe);<a name="line.120"></a>
+<FONT color="green">121</FONT>            }<a name="line.121"></a>
+<FONT color="green">122</FONT>    <a name="line.122"></a>
+<FONT color="green">123</FONT>        /**<a name="line.123"></a>
+<FONT color="green">124</FONT>         * Setup the modal to prevent memory leaks.<a name="line.124"></a>
+<FONT color="green">125</FONT>         * When modal is hidden, will remove all event handlers, and them<a name="line.125"></a>
+<FONT color="green">126</FONT>         * remove the modal DOM from document DOM.<a name="line.126"></a>
+<FONT color="green">127</FONT>         *<a name="line.127"></a>
+<FONT color="green">128</FONT>         * Default is false.<a name="line.128"></a>
+<FONT color="green">129</FONT>         *<a name="line.129"></a>
+<FONT color="green">130</FONT>         * @param dynamicSafe<a name="line.130"></a>
+<FONT color="green">131</FONT>         */<a name="line.131"></a>
+<FONT color="green">132</FONT>        public void setDynamicSafe(boolean dynamicSafe) {<a name="line.132"></a>
+<FONT color="green">133</FONT>            if (dynamicSafe) {<a name="line.133"></a>
+<FONT color="green">134</FONT>                addHiddenHandler(new HiddenHandler() {<a name="line.134"></a>
+<FONT color="green">135</FONT>    <a name="line.135"></a>
+<FONT color="green">136</FONT>                    @Override<a name="line.136"></a>
+<FONT color="green">137</FONT>                    public void onHidden(HiddenEvent hiddenEvent) {<a name="line.137"></a>
+<FONT color="green">138</FONT>                        (new Timer() {<a name="line.138"></a>
+<FONT color="green">139</FONT>                            @Override<a name="line.139"></a>
+<FONT color="green">140</FONT>                            public void run() {<a name="line.140"></a>
+<FONT color="green">141</FONT>                                unsetHandlerFunctions(getElement());<a name="line.141"></a>
+<FONT color="green">142</FONT>                                RootPanel.get().remove(Modal.this);<a name="line.142"></a>
+<FONT color="green">143</FONT>                            }<a name="line.143"></a>
+<FONT color="green">144</FONT>                        }).schedule(3000);<a name="line.144"></a>
+<FONT color="green">145</FONT>                    }<a name="line.145"></a>
+<FONT color="green">146</FONT>                });<a name="line.146"></a>
+<FONT color="green">147</FONT>            }<a name="line.147"></a>
+<FONT color="green">148</FONT>        }<a name="line.148"></a>
+<FONT color="green">149</FONT>    <a name="line.149"></a>
+<FONT color="green">150</FONT>            /**<a name="line.150"></a>
+<FONT color="green">151</FONT>             * Sets the title of the Modal.<a name="line.151"></a>
+<FONT color="green">152</FONT>             * <a name="line.152"></a>
+<FONT color="green">153</FONT>             * @param title<a name="line.153"></a>
+<FONT color="green">154</FONT>             *            the title of the Modal<a name="line.154"></a>
+<FONT color="green">155</FONT>             */<a name="line.155"></a>
+<FONT color="green">156</FONT>            @Override<a name="line.156"></a>
+<FONT color="green">157</FONT>            public void setTitle(String title) {<a name="line.157"></a>
+<FONT color="green">158</FONT>                    header.clear();<a name="line.158"></a>
+<FONT color="green">159</FONT>                    if (title == null || title.isEmpty()) {<a name="line.159"></a>
+<FONT color="green">160</FONT>                            showHeader(false);<a name="line.160"></a>
+<FONT color="green">161</FONT>                    } else {<a name="line.161"></a>
+<FONT color="green">162</FONT>                            header.add(close);<a name="line.162"></a>
+<FONT color="green">163</FONT>                            header.add(new Heading(3, title));<a name="line.163"></a>
+<FONT color="green">164</FONT>                            showHeader(true);<a name="line.164"></a>
+<FONT color="green">165</FONT>                    }<a name="line.165"></a>
+<FONT color="green">166</FONT>            }<a name="line.166"></a>
+<FONT color="green">167</FONT>    <a name="line.167"></a>
+<FONT color="green">168</FONT>            private void showHeader(boolean show) {<a name="line.168"></a>
+<FONT color="green">169</FONT>                    if (show)<a name="line.169"></a>
+<FONT color="green">170</FONT>                            header.setStyleName(Constants.MODAL_HEADER);<a name="line.170"></a>
+<FONT color="green">171</FONT>                    else<a name="line.171"></a>
+<FONT color="green">172</FONT>                            header.removeStyleName(Constants.MODAL_HEADER);<a name="line.172"></a>
+<FONT color="green">173</FONT>            }<a name="line.173"></a>
+<FONT color="green">174</FONT>    <a name="line.174"></a>
+<FONT color="green">175</FONT>            /**<a name="line.175"></a>
+<FONT color="green">176</FONT>             * {@inheritDoc}<a name="line.176"></a>
+<FONT color="green">177</FONT>             */<a name="line.177"></a>
+<FONT color="green">178</FONT>            public void setAnimation(boolean animated) {<a name="line.178"></a>
+<FONT color="green">179</FONT>                    if (animated)<a name="line.179"></a>
+<FONT color="green">180</FONT>                            addStyleName(Constants.FADE);<a name="line.180"></a>
+<FONT color="green">181</FONT>                    else<a name="line.181"></a>
+<FONT color="green">182</FONT>                            removeStyleName(Constants.FADE);<a name="line.182"></a>
+<FONT color="green">183</FONT>            }<a name="line.183"></a>
+<FONT color="green">184</FONT>    <a name="line.184"></a>
+<FONT color="green">185</FONT>            /**<a name="line.185"></a>
+<FONT color="green">186</FONT>             * {@inheritDoc}<a name="line.186"></a>
+<FONT color="green">187</FONT>             */<a name="line.187"></a>
+<FONT color="green">188</FONT>            public boolean getAnimation() {<a name="line.188"></a>
+<FONT color="green">189</FONT>                    return getStyleName().contains(Constants.FADE);<a name="line.189"></a>
+<FONT color="green">190</FONT>            }<a name="line.190"></a>
+<FONT color="green">191</FONT>    <a name="line.191"></a>
+<FONT color="green">192</FONT>            /**<a name="line.192"></a>
+<FONT color="green">193</FONT>             * Sets whether this Modal appears on top of others or is the only one<a name="line.193"></a>
+<FONT color="green">194</FONT>             * visible on screen.<a name="line.194"></a>
+<FONT color="green">195</FONT>             * <a name="line.195"></a>
+<FONT color="green">196</FONT>             * @param hideOthers<a name="line.196"></a>
+<FONT color="green">197</FONT>             *            &lt;code&gt;true&lt;/code&gt; to make sure that this modal is the only one<a name="line.197"></a>
+<FONT color="green">198</FONT>             *            shown. All others will be hidden. Default: &lt;code&gt;true&lt;/code&gt;<a name="line.198"></a>
+<FONT color="green">199</FONT>             */<a name="line.199"></a>
+<FONT color="green">200</FONT>            public void setHideOthers(boolean hideOthers) {<a name="line.200"></a>
+<FONT color="green">201</FONT>                    this.hideOthers = hideOthers;<a name="line.201"></a>
+<FONT color="green">202</FONT>            }<a name="line.202"></a>
+<FONT color="green">203</FONT>    <a name="line.203"></a>
+<FONT color="green">204</FONT>            /**<a name="line.204"></a>
+<FONT color="green">205</FONT>             * Sets whether the Modal is closed when the &lt;code&gt;ESC&lt;/code&gt; is pressed.<a name="line.205"></a>
+<FONT color="green">206</FONT>             * <a name="line.206"></a>
+<FONT color="green">207</FONT>             * @param keyboard<a name="line.207"></a>
+<FONT color="green">208</FONT>             *            &lt;code&gt;true&lt;/code&gt; if the Modal is closed by &lt;code&gt;ESC&lt;/code&gt;<a name="line.208"></a>
+<FONT color="green">209</FONT>             *            key. Default: &lt;code&gt;true&lt;/code&gt;<a name="line.209"></a>
+<FONT color="green">210</FONT>             */<a name="line.210"></a>
+<FONT color="green">211</FONT>            public void setKeyboard(boolean keyboard) {<a name="line.211"></a>
+<FONT color="green">212</FONT>                    this.keyboard = keyboard;<a name="line.212"></a>
+<FONT color="green">213</FONT>                    reconfigure();<a name="line.213"></a>
+<FONT color="green">214</FONT>            }<a name="line.214"></a>
+<FONT color="green">215</FONT>    <a name="line.215"></a>
+<FONT color="green">216</FONT>            /**<a name="line.216"></a>
+<FONT color="green">217</FONT>             * Sets the type of the backdrop.<a name="line.217"></a>
+<FONT color="green">218</FONT>             * <a name="line.218"></a>
+<FONT color="green">219</FONT>             * @param type<a name="line.219"></a>
+<FONT color="green">220</FONT>             *            the backdrop type<a name="line.220"></a>
+<FONT color="green">221</FONT>             */<a name="line.221"></a>
+<FONT color="green">222</FONT>            public void setBackdrop(BackdropType type) {<a name="line.222"></a>
+<FONT color="green">223</FONT>                    backdropType = type;<a name="line.223"></a>
+<FONT color="green">224</FONT>                    reconfigure();<a name="line.224"></a>
+<FONT color="green">225</FONT>            }<a name="line.225"></a>
+<FONT color="green">226</FONT>    <a name="line.226"></a>
+<FONT color="green">227</FONT>            /**<a name="line.227"></a>
+<FONT color="green">228</FONT>             * Reconfigures the modal with changed settings.<a name="line.228"></a>
+<FONT color="green">229</FONT>             */<a name="line.229"></a>
+<FONT color="green">230</FONT>            protected void reconfigure() {<a name="line.230"></a>
+<FONT color="green">231</FONT>                    if (configured) {<a name="line.231"></a>
+<FONT color="green">232</FONT>                            configure(keyboard, backdropType, show);<a name="line.232"></a>
+<FONT color="green">233</FONT>                    }<a name="line.233"></a>
+<FONT color="green">234</FONT>            }<a name="line.234"></a>
+<FONT color="green">235</FONT>    <a name="line.235"></a>
+<FONT color="green">236</FONT>            /**<a name="line.236"></a>
+<FONT color="green">237</FONT>             * {@inheritDoc}<a name="line.237"></a>
+<FONT color="green">238</FONT>             */<a name="line.238"></a>
+<FONT color="green">239</FONT>            @Override<a name="line.239"></a>
+<FONT color="green">240</FONT>            public void add(Widget w) {<a name="line.240"></a>
+<FONT color="green">241</FONT>                    if (w instanceof ModalFooter) {<a name="line.241"></a>
+<FONT color="green">242</FONT>                            super.add(w);<a name="line.242"></a>
+<FONT color="green">243</FONT>                    } else<a name="line.243"></a>
+<FONT color="green">244</FONT>                            body.add(w);<a name="line.244"></a>
+<FONT color="green">245</FONT>            }<a name="line.245"></a>
+<FONT color="green">246</FONT>    <a name="line.246"></a>
+<FONT color="green">247</FONT>            /**<a name="line.247"></a>
+<FONT color="green">248</FONT>             * {@inheritDoc}<a name="line.248"></a>
+<FONT color="green">249</FONT>             */<a name="line.249"></a>
+<FONT color="green">250</FONT>            @Override<a name="line.250"></a>
+<FONT color="green">251</FONT>            public void insert(Widget w, int beforeIndex) {<a name="line.251"></a>
+<FONT color="green">252</FONT>                    body.insert(w, beforeIndex);<a name="line.252"></a>
+<FONT color="green">253</FONT>            }<a name="line.253"></a>
+<FONT color="green">254</FONT>    <a name="line.254"></a>
+<FONT color="green">255</FONT>            /**<a name="line.255"></a>
+<FONT color="green">256</FONT>             * {@inheritDoc}<a name="line.256"></a>
+<FONT color="green">257</FONT>             */<a name="line.257"></a>
+<FONT color="green">258</FONT>            @Override<a name="line.258"></a>
+<FONT color="green">259</FONT>            protected void onLoad() {<a name="line.259"></a>
+<FONT color="green">260</FONT>                    super.onLoad();<a name="line.260"></a>
+<FONT color="green">261</FONT>                    configure(keyboard, backdropType, show);<a name="line.261"></a>
+<FONT color="green">262</FONT>                    configured = true;<a name="line.262"></a>
+<FONT color="green">263</FONT>            }<a name="line.263"></a>
+<FONT color="green">264</FONT>    <a name="line.264"></a>
+<FONT color="green">265</FONT>            /**<a name="line.265"></a>
+<FONT color="green">266</FONT>             * {@inheritDoc}<a name="line.266"></a>
+<FONT color="green">267</FONT>             */<a name="line.267"></a>
+<FONT color="green">268</FONT>            public void show() {<a name="line.268"></a>
+<FONT color="green">269</FONT>                    changeVisibility("show");<a name="line.269"></a>
+<FONT color="green">270</FONT>            }<a name="line.270"></a>
+<FONT color="green">271</FONT>    <a name="line.271"></a>
+<FONT color="green">272</FONT>            /**<a name="line.272"></a>
+<FONT color="green">273</FONT>             * {@inheritDoc}<a name="line.273"></a>
+<FONT color="green">274</FONT>             */<a name="line.274"></a>
+<FONT color="green">275</FONT>            public void hide() {<a name="line.275"></a>
+<FONT color="green">276</FONT>                    changeVisibility("hide");<a name="line.276"></a>
+<FONT color="green">277</FONT>            }<a name="line.277"></a>
+<FONT color="green">278</FONT>    <a name="line.278"></a>
+<FONT color="green">279</FONT>            /**<a name="line.279"></a>
+<FONT color="green">280</FONT>             * {@inheritDoc}<a name="line.280"></a>
+<FONT color="green">281</FONT>             */<a name="line.281"></a>
+<FONT color="green">282</FONT>            public void toggle() {<a name="line.282"></a>
+<FONT color="green">283</FONT>                    changeVisibility("toggle");<a name="line.283"></a>
+<FONT color="green">284</FONT>            }<a name="line.284"></a>
+<FONT color="green">285</FONT>    <a name="line.285"></a>
+<FONT color="green">286</FONT>            private void changeVisibility(String visibility) {<a name="line.286"></a>
+<FONT color="green">287</FONT>                    changeVisibility(getElement(), visibility);<a name="line.287"></a>
+<FONT color="green">288</FONT>            }<a name="line.288"></a>
+<FONT color="green">289</FONT>    <a name="line.289"></a>
+<FONT color="green">290</FONT>            /**<a name="line.290"></a>
+<FONT color="green">291</FONT>             * This method is called immediately when the widget's {@link #hide()}<a name="line.291"></a>
+<FONT color="green">292</FONT>             * method is executed.<a name="line.292"></a>
+<FONT color="green">293</FONT>             */<a name="line.293"></a>
+<FONT color="green">294</FONT>            protected void onHide() {<a name="line.294"></a>
+<FONT color="green">295</FONT>                    fireEvent(new HideEvent());<a name="line.295"></a>
+<FONT color="green">296</FONT>            }<a name="line.296"></a>
+<FONT color="green">297</FONT>    <a name="line.297"></a>
+<FONT color="green">298</FONT>            /**<a name="line.298"></a>
+<FONT color="green">299</FONT>             * This method is called once the widget is completely hidden.<a name="line.299"></a>
+<FONT color="green">300</FONT>             */<a name="line.300"></a>
+<FONT color="green">301</FONT>            protected void onHidden() {<a name="line.301"></a>
+<FONT color="green">302</FONT>                    fireEvent(new HiddenEvent());<a name="line.302"></a>
+<FONT color="green">303</FONT>                    currentlyShown.remove(this);<a name="line.303"></a>
+<FONT color="green">304</FONT>            }<a name="line.304"></a>
+<FONT color="green">305</FONT>    <a name="line.305"></a>
+<FONT color="green">306</FONT>            /**<a name="line.306"></a>
+<FONT color="green">307</FONT>             * This method is called immediately when the widget's {@link #show()}<a name="line.307"></a>
+<FONT color="green">308</FONT>             * method is executed.<a name="line.308"></a>
+<FONT color="green">309</FONT>             */<a name="line.309"></a>
+<FONT color="green">310</FONT>            protected void onShow() {<a name="line.310"></a>
+<FONT color="green">311</FONT>                    if (hideOthers)<a name="line.311"></a>
+<FONT color="green">312</FONT>                            hideShownModals();<a name="line.312"></a>
+<FONT color="green">313</FONT>                    fireEvent(new ShowEvent());<a name="line.313"></a>
+<FONT color="green">314</FONT>            }<a name="line.314"></a>
+<FONT color="green">315</FONT>    <a name="line.315"></a>
+<FONT color="green">316</FONT>            private void hideShownModals() {<a name="line.316"></a>
+<FONT color="green">317</FONT>                    for (Modal m : currentlyShown)<a name="line.317"></a>
+<FONT color="green">318</FONT>                            m.hide();<a name="line.318"></a>
+<FONT color="green">319</FONT>            }<a name="line.319"></a>
+<FONT color="green">320</FONT>    <a name="line.320"></a>
+<FONT color="green">321</FONT>            /**<a name="line.321"></a>
+<FONT color="green">322</FONT>             * This method is called once the widget is completely shown.<a name="line.322"></a>
+<FONT color="green">323</FONT>             */<a name="line.323"></a>
+<FONT color="green">324</FONT>            protected void onShown() {<a name="line.324"></a>
+<FONT color="green">325</FONT>                    fireEvent(new ShownEvent());<a name="line.325"></a>
+<FONT color="green">326</FONT>                    currentlyShown.add(this);<a name="line.326"></a>
+<FONT color="green">327</FONT>            }<a name="line.327"></a>
+<FONT color="green">328</FONT>    <a name="line.328"></a>
+<FONT color="green">329</FONT>            private void configure(boolean keyboard, BackdropType backdropType,<a name="line.329"></a>
+<FONT color="green">330</FONT>                            boolean show) {<a name="line.330"></a>
+<FONT color="green">331</FONT>                    if (backdropType == BackdropType.NORMAL)<a name="line.331"></a>
+<FONT color="green">332</FONT>                            configure(getElement(), keyboard, true, show);<a name="line.332"></a>
+<FONT color="green">333</FONT>                    else if (backdropType == BackdropType.NONE)<a name="line.333"></a>
+<FONT color="green">334</FONT>                            configure(getElement(), keyboard, false, show);<a name="line.334"></a>
+<FONT color="green">335</FONT>                    else if (backdropType == BackdropType.STATIC)<a name="line.335"></a>
+<FONT color="green">336</FONT>                            configure(getElement(), keyboard, BackdropType.STATIC.get(), show);<a name="line.336"></a>
+<FONT color="green">337</FONT>            }<a name="line.337"></a>
+<FONT color="green">338</FONT>    <a name="line.338"></a>
+<FONT color="green">339</FONT>            private native void configure(Element e, boolean k, boolean b, boolean s) /*-{<a name="line.339"></a>
+<FONT color="green">340</FONT>                    $wnd.jQuery(e).modal({<a name="line.340"></a>
+<FONT color="green">341</FONT>                            keyboard : k,<a name="line.341"></a>
+<FONT color="green">342</FONT>                            backdrop : b,<a name="line.342"></a>
+<FONT color="green">343</FONT>                            show : s<a name="line.343"></a>
+<FONT color="green">344</FONT>                    });<a name="line.344"></a>
+<FONT color="green">345</FONT>            }-*/;<a name="line.345"></a>
+<FONT color="green">346</FONT>    <a name="line.346"></a>
+<FONT color="green">347</FONT>            private native void configure(Element e, boolean k, String b, boolean s) /*-{<a name="line.347"></a>
+<FONT color="green">348</FONT>                    $wnd.jQuery(e).modal({<a name="line.348"></a>
+<FONT color="green">349</FONT>                            keyboard : k,<a name="line.349"></a>
+<FONT color="green">350</FONT>                            backdrop : b,<a name="line.350"></a>
+<FONT color="green">351</FONT>                            show : s<a name="line.351"></a>
+<FONT color="green">352</FONT>                    });<a name="line.352"></a>
+<FONT color="green">353</FONT>            }-*/;<a name="line.353"></a>
+<FONT color="green">354</FONT>    <a name="line.354"></a>
+<FONT color="green">355</FONT>            private native void changeVisibility(Element e, String visibility) /*-{<a name="line.355"></a>
+<FONT color="green">356</FONT>                    $wnd.jQuery(e).modal(visibility);<a name="line.356"></a>
+<FONT color="green">357</FONT>            }-*/;<a name="line.357"></a>
+<FONT color="green">358</FONT>    <a name="line.358"></a>
+<FONT color="green">359</FONT>            /**<a name="line.359"></a>
+<FONT color="green">360</FONT>             * Links the Java functions that fire the events.<a name="line.360"></a>
+<FONT color="green">361</FONT>             */<a name="line.361"></a>
+<FONT color="green">362</FONT>            private native void setHandlerFunctions(Element e) /*-{<a name="line.362"></a>
+<FONT color="green">363</FONT>                    var that = this;<a name="line.363"></a>
+<FONT color="green">364</FONT>                    $wnd.jQuery(e).on('hide', function() {<a name="line.364"></a>
+<FONT color="green">365</FONT>                            that.@com.github.gwtbootstrap.client.ui.Modal::onHide()();<a name="line.365"></a>
+<FONT color="green">366</FONT>                    });<a name="line.366"></a>
+<FONT color="green">367</FONT>                    $wnd.jQuery(e).on('hidden', function() {<a name="line.367"></a>
+<FONT color="green">368</FONT>                            that.@com.github.gwtbootstrap.client.ui.Modal::onHidden()();<a name="line.368"></a>
+<FONT color="green">369</FONT>                    });<a name="line.369"></a>
+<FONT color="green">370</FONT>                    $wnd.jQuery(e).on('show', function() {<a name="line.370"></a>
+<FONT color="green">371</FONT>                            that.@com.github.gwtbootstrap.client.ui.Modal::onShow()();<a name="line.371"></a>
+<FONT color="green">372</FONT>                    });<a name="line.372"></a>
+<FONT color="green">373</FONT>                    $wnd.jQuery(e).on('shown', function() {<a name="line.373"></a>
+<FONT color="green">374</FONT>                            that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();<a name="line.374"></a>
+<FONT color="green">375</FONT>                    });<a name="line.375"></a>
+<FONT color="green">376</FONT>            }-*/;<a name="line.376"></a>
+<FONT color="green">377</FONT>    <a name="line.377"></a>
+<FONT color="green">378</FONT>    <a name="line.378"></a>
+<FONT color="green">379</FONT>        /**<a name="line.379"></a>
+<FONT color="green">380</FONT>         * Unlinks all the Java functions that fire the events.<a name="line.380"></a>
+<FONT color="green">381</FONT>         */<a name="line.381"></a>
+<FONT color="green">382</FONT>        private native void unsetHandlerFunctions(Element e) /*-{<a name="line.382"></a>
+<FONT color="green">383</FONT>            $wnd.jQuery(e).off();<a name="line.383"></a>
+<FONT color="green">384</FONT>        }-*/;<a name="line.384"></a>
+<FONT color="green">385</FONT>    <a name="line.385"></a>
+<FONT color="green">386</FONT>            /**<a name="line.386"></a>
+<FONT color="green">387</FONT>             * {@inheritDoc}<a name="line.387"></a>
+<FONT color="green">388</FONT>             */<a name="line.388"></a>
+<FONT color="green">389</FONT>            public HandlerRegistration addHideHandler(HideHandler handler) {<a name="line.389"></a>
+<FONT color="green">390</FONT>                    return addHandler(handler, HideEvent.getType());<a name="line.390"></a>
+<FONT color="green">391</FONT>            }<a name="line.391"></a>
+<FONT color="green">392</FONT>    <a name="line.392"></a>
+<FONT color="green">393</FONT>            /**<a name="line.393"></a>
+<FONT color="green">394</FONT>             * {@inheritDoc}<a name="line.394"></a>
+<FONT color="green">395</FONT>             */<a name="line.395"></a>
+<FONT color="green">396</FONT>            public HandlerRegistration addHiddenHandler(HiddenHandler handler) {<a name="line.396"></a>
+<FONT color="green">397</FONT>                    return addHandler(handler, HiddenEvent.getType());<a name="line.397"></a>
+<FONT color="green">398</FONT>            }<a name="line.398"></a>
+<FONT color="green">399</FONT>    <a name="line.399"></a>
+<FONT color="green">400</FONT>            /**<a name="line.400"></a>
+<FONT color="green">401</FONT>             * {@inheritDoc}<a name="line.401"></a>
+<FONT color="green">402</FONT>             */<a name="line.402"></a>
+<FONT color="green">403</FONT>            public HandlerRegistration addShowHandler(ShowHandler handler) {<a name="line.403"></a>
+<FONT color="green">404</FONT>                    return addHandler(handler, ShowEvent.getType());<a name="line.404"></a>
+<FONT color="green">405</FONT>            }<a name="line.405"></a>
+<FONT color="green">406</FONT>    <a name="line.406"></a>
+<FONT color="green">407</FONT>            /**<a name="line.407"></a>
+<FONT color="green">408</FONT>             * {@inheritDoc}<a name="line.408"></a>
+<FONT color="green">409</FONT>             */<a name="line.409"></a>
+<FONT color="green">410</FONT>            public HandlerRegistration addShownHandler(ShownHandler handler) {<a name="line.410"></a>
+<FONT color="green">411</FONT>                    return addHandler(handler, ShownEvent.getType());<a name="line.411"></a>
+<FONT color="green">412</FONT>            }<a name="line.412"></a>
+<FONT color="green">413</FONT>            <a name="line.413"></a>
+<FONT color="green">414</FONT>            /**<a name="line.414"></a>
+<FONT color="green">415</FONT>             * Show/Hide close button. The Modal must have a title.<a name="line.415"></a>
+<FONT color="green">416</FONT>             * <a name="line.416"></a>
+<FONT color="green">417</FONT>             * @param visible &lt;b&gt;true&lt;/b&gt; for show and &lt;b&gt;false&lt;/b&gt; to hide. Defaults is &lt;b&gt;true&lt;/b&gt;.<a name="line.417"></a>
+<FONT color="green">418</FONT>             */<a name="line.418"></a>
+<FONT color="green">419</FONT>            public void setCloseVisible(boolean visible) {<a name="line.419"></a>
+<FONT color="green">420</FONT>                close.getElement().getStyle().setVisibility(visible ? <a name="line.420"></a>
+<FONT color="green">421</FONT>                        Style.Visibility.VISIBLE : Style.Visibility.HIDDEN);<a name="line.421"></a>
+<FONT color="green">422</FONT>            }<a name="line.422"></a>
+<FONT color="green">423</FONT>    <a name="line.423"></a>
+<FONT color="green">424</FONT>    }<a name="line.424"></a>
 
 
 
@@ -490,7 +485,6 @@
 
 
 
-</pre>
-</div>
-</body>
-</html>
+</PRE>
+</BODY>
+</HTML>
