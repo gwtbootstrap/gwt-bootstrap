@@ -36,7 +36,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.3.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget {
+public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers {
 
     private UnorderedList menu = new UnorderedList();
 
@@ -190,5 +190,10 @@ public abstract class DropdownBase extends ComplexWidget {
     @Override
     public void clear() {
         menu.clear();
+    }
+
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler handler) {
+        return trigger.addClickHandler(handler);
     }
 }

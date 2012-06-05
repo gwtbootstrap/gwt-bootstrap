@@ -20,6 +20,8 @@ import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 //@formatter:off
 /**
@@ -111,4 +113,8 @@ public class DropdownButton extends DropdownBase {
 		trigger.setIcon(type);
 	}
 
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler handler) {
+        return trigger.addClickHandler(handler);
+    }
 }
