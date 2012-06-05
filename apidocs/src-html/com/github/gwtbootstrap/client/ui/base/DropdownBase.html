@@ -44,7 +44,7 @@
 <span class="sourceLineNo">036</span> * @since 2.0.3.0<a name="line.36"></a>
 <span class="sourceLineNo">037</span> */<a name="line.37"></a>
 <span class="sourceLineNo">038</span>//@formatter:on<a name="line.38"></a>
-<span class="sourceLineNo">039</span>public abstract class DropdownBase extends ComplexWidget {<a name="line.39"></a>
+<span class="sourceLineNo">039</span>public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers {<a name="line.39"></a>
 <span class="sourceLineNo">040</span><a name="line.40"></a>
 <span class="sourceLineNo">041</span>    private UnorderedList menu = new UnorderedList();<a name="line.41"></a>
 <span class="sourceLineNo">042</span><a name="line.42"></a>
@@ -199,7 +199,12 @@
 <span class="sourceLineNo">191</span>    public void clear() {<a name="line.191"></a>
 <span class="sourceLineNo">192</span>        menu.clear();<a name="line.192"></a>
 <span class="sourceLineNo">193</span>    }<a name="line.193"></a>
-<span class="sourceLineNo">194</span>}<a name="line.194"></a>
+<span class="sourceLineNo">194</span><a name="line.194"></a>
+<span class="sourceLineNo">195</span>    @Override<a name="line.195"></a>
+<span class="sourceLineNo">196</span>    public HandlerRegistration addClickHandler(ClickHandler handler) {<a name="line.196"></a>
+<span class="sourceLineNo">197</span>        return trigger.addClickHandler(handler);<a name="line.197"></a>
+<span class="sourceLineNo">198</span>    }<a name="line.198"></a>
+<span class="sourceLineNo">199</span>}<a name="line.199"></a>
 
 
 
