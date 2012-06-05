@@ -58,6 +58,10 @@ import com.google.gwt.user.client.ui.Widget;
  * </pre>
  * </p>
  *
+ * <b>NOTE</b>: We assume that most people will use the {@linkplain ResponsiveNavbar}, so, we automatically
+ * add a <code>padding-top: 50px</code> in <code>body</code>.If you don't want this, you have to put
+ * a <code>padding-top: 0px;</code> manually in your document <code>body</code> tag.
+ *
  * @author Dominik Mayer
  * @author Carlos Alexandro Becker
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
