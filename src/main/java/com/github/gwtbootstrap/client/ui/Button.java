@@ -222,6 +222,16 @@ public class Button extends IconAnchor implements HasClickHandlers,
 			getElement().removeAttribute(Constants.DATA_TOGGLE);
 	}
 
+    /**
+     * Verify if the property "toggle" is set.
+     *
+     * @return  true: if the data-toggle is equal 'button'
+     *          false: otherwise
+     */
+    boolean isToggled() {
+        return getElement().getAttribute(Constants.DATA_TOGGLE).equals("button");
+    }
+
 	/**
 	 * Set a Loading Text to show when some action are in work with this button.
 	 * 
