@@ -1,17 +1,11 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
-import com.github.gwtbootstrap.client.ui.base.HasId;
-import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
-import com.github.gwtbootstrap.client.ui.base.HasSize;
-import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
-import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
-import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
-import com.github.gwtbootstrap.client.ui.base.SizeHelper;
-import com.github.gwtbootstrap.client.ui.base.StyleHelper;
-import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
-import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.google.gwt.core.client.GWT;
+import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * A TextBox for Bootstrap form.
@@ -22,86 +16,100 @@ import com.google.gwt.core.client.GWT;
  * @author ohashi keisuke
  * 
  */
-public class TextBox extends com.github.gwtbootstrap.client.ui.base.TextBox implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId {
-
-	/** placeholderHelper */
-	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setPlaceholder(String placeholder) {
-		placeholderHelper.setPlaceholer(getElement(), placeholder);
-	}
+public class TextBox extends TextBoxBase {
 
 	/**
-	 * {@inheritDoc}
+	 * Creates a TextBox widget that wraps an existing &lt;input type='text'&gt;
+	 * element.
+	 * 
+	 * This element must already be attached to the document. If the element is
+	 * removed from the document, you must call
+	 * {@link RootPanel#detachNow(Widget)}.
+	 * 
+	 * @param element
+	 *            the element to be wrapped
 	 */
-	@Override
-	public String getPlaceholder() {
-		return placeholderHelper.getPlaceholder(getElement());
-	}
+	public static TextBox wrap(Element element) {
+		// Assert that the element is attached.
+		assert Document.get().getBody().isOrHasChild(element);
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setSearchQuery(boolean searchQuery) {
-		SearchQueryStyleHelper.setSearchQuery(this, searchQuery);
+		TextBox textBox = new TextBox(element);
+
+		// Mark it attached and remember it for cleanup.
+		textBox.onAttach();
+		RootPanel.detachOnWindowClose(textBox);
+
+		return textBox;
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Creates an empty text box.
 	 */
-	@Override
-	public boolean isSearchQuery() {
-		return SearchQueryStyleHelper.isSearchQuery(this);
+	public TextBox() {
+		this(Document.get().createTextInputElement(), "gwt-TextBox");
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * This constructor may be used by subclasses to explicitly use an existing
+	 * element. This element must be an &lt;input&gt; element whose type is
+	 * 'text'.
+	 * 
+	 * @param element
+	 *            the element to be used
 	 */
-	@Override
-	public void setAlternateSize(AlternateSize size) {
-		StyleHelper.changeStyle(this, size, AlternateSize.class);
+	protected TextBox(Element element) {
+		super(element);
+		assert InputElement.as(element).getType().equalsIgnoreCase("text");
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setSize(int size) {
-		SizeHelper.setSize(this, size);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getId() {
-		return getElement().getId();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setId(String id) {
-		getElement().setId(id);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setEnabled(boolean enabled) {
-		super.setEnabled(enabled);
-		if(enabled) {
-			removeStyleName(Constants.DISABLED);
-		} else {
-			addStyleName(Constants.DISABLED);
+	TextBox(Element element,
+		String styleName) {
+		super(element);
+		if (styleName != null) {
+			setStyleName(styleName);
 		}
+	}
+
+	/**
+	 * Gets the maximum allowable length of the text box.
+	 * 
+	 * @return the maximum length, in characters
+	 */
+	public int getMaxLength() {
+		return getInputElement().getMaxLength();
+	}
+
+	/**
+	 * Gets the number of visible characters in the text box.
+	 * 
+	 * @return the number of visible characters
+	 */
+	public int getVisibleLength() {
+		return getInputElement().getSize();
+	}
+
+	/**
+	 * Sets the maximum allowable length of the text box.
+	 * 
+	 * @param length
+	 *            the maximum length, in characters
+	 */
+	public void setMaxLength(int length) {
+		getInputElement().setMaxLength(length);
+	}
+
+	/**
+	 * Sets the number of visible characters in the text box.
+	 * 
+	 * @param length
+	 *            the number of visible characters
+	 */
+	public void setVisibleLength(int length) {
+		getInputElement().setSize(length);
+	}
+
+	private InputElement getInputElement() {
+		return getElement().cast();
 	}
 
 }

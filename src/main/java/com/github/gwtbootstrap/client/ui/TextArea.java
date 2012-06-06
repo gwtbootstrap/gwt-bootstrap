@@ -1,17 +1,11 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
-import com.github.gwtbootstrap.client.ui.base.HasId;
-import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
-import com.github.gwtbootstrap.client.ui.base.HasSize;
-import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
-import com.github.gwtbootstrap.client.ui.base.SizeHelper;
-import com.github.gwtbootstrap.client.ui.base.StyleHelper;
-import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
-import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.google.gwt.core.client.GWT;
+import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.TextAreaElement;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * A TextArea for Bootstrap form.
@@ -19,16 +13,38 @@ import com.google.gwt.dom.client.Element;
  * @since 2.0.3.0
  * @author ohashi keisuke
  */
-public class TextArea extends com.google.gwt.user.client.ui.TextArea implements HasSize , HasAlternateSize, HasPlaceholder, HasId {
+public class TextArea extends TextBoxBase {
 
-	/** placeholderHelper */
-	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+	/**
+	 * Creates a TextArea widget that wraps an existing &lt;textarea&gt;
+	 * element.
+	 * 
+	 * This element must already be attached to the document. If the element is
+	 * removed from the document, you must call
+	 * {@link RootPanel#detachNow(Widget)}.
+	 * 
+	 * @param element
+	 *            the element to be wrapped
+	 */
+	public static TextArea wrap(Element element) {
+		// Assert that the element is attached.
+		assert Document.get().getBody().isOrHasChild(element);
+
+		TextArea textArea = new TextArea(element);
+
+		// Mark it attached and remember it for cleanup.
+		textArea.onAttach();
+		RootPanel.detachOnWindowClose(textArea);
+
+		return textArea;
+	}
 
 	/**
 	 * Creates an empty text area.
 	 */
 	public TextArea() {
 		super(Document.get().createTextAreaElement());
+		setStyleName("gwt-TextArea");
 	}
 
 	/**
@@ -40,68 +56,61 @@ public class TextArea extends com.google.gwt.user.client.ui.TextArea implements 
 	 */
 	protected TextArea(Element element) {
 		super(element.<Element> cast());
+		TextAreaElement.as(element);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Gets the requested width of the text box (this is not an exact value, as
+	 * not all characters are created equal).
+	 * 
+	 * @return the requested width, in characters
 	 */
+	public int getCharacterWidth() {
+		return getTextAreaElement().getCols();
+	}
+
 	@Override
-	public void setAlternateSize(AlternateSize size) {
-		StyleHelper.changeStyle(this, size, AlternateSize.class);
+	public int getCursorPos() {
+		return getImpl().getTextAreaCursorPos(getElement());
+	}
+
+	@Override
+	public int getSelectionLength() {
+		return getImpl().getTextAreaSelectionLength(getElement());
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Gets the number of text lines that are visible.
+	 * 
+	 * @return the number of visible lines
 	 */
-	@Override
-	public void setSize(int size) {
-		SizeHelper.setSize(this, size);
+	public int getVisibleLines() {
+		return getTextAreaElement().getRows();
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Sets the requested width of the text box (this is not an exact value, as
+	 * not all characters are created equal).
+	 * 
+	 * @param width
+	 *            the requested width, in characters
 	 */
-	@Override
-	public void setPlaceholder(String placeholder) {
-		placeholderHelper.setPlaceholer(getElement(), placeholder);
+	public void setCharacterWidth(int width) {
+		getTextAreaElement().setCols(width);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Sets the number of text lines that are visible.
+	 * 
+	 * @param lines
+	 *            the number of visible lines
 	 */
-	@Override
-	public String getPlaceholder() {
-		return placeholderHelper.getPlaceholder(getElement());
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getId() {
-		return getElement().getId();
+	public void setVisibleLines(int lines) {
+		getTextAreaElement().setRows(lines);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setId(String id) {
-		getElement().setId(id);
+	private TextAreaElement getTextAreaElement() {
+		return getElement().cast();
 	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setEnabled(boolean enabled) {
-		super.setEnabled(enabled);
-		if(enabled) {
-			removeStyleName(Constants.DISABLED);
-		} else {
-			addStyleName(Constants.DISABLED);
-		}
-	}
-
 
 }
