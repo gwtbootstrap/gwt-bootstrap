@@ -36,7 +36,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.3.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers {
+public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers, HasText {
 
     private UnorderedList menu = new UnorderedList();
 
@@ -72,6 +72,13 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
      */
     public void setText(String text) {
         trigger.setText(text);
+    }
+    
+    /**
+     * @return the text of the dropdown trigger.
+     */
+    public void getText() {
+        return trigger.getText();
     }
 
     /**
