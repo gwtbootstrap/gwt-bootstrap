@@ -121,7 +121,7 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	 * {@inheritDoc}
 	 */
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
-		return addDomHandler(handler, ClickEvent.getType());
+		return anchor.addDomHandler(handler, ClickEvent.getType());
 	}
 
 	/**

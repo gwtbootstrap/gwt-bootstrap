@@ -1,26 +1,31 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
+import com.github.gwtbootstrap.client.ui.base.ValueBoxBase;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.i18n.client.LocaleInfo;
+import com.google.gwt.text.shared.Parser;
+import com.google.gwt.text.shared.Renderer;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * A TextBox for Bootstrap form.
+ * A text box cant parse its displayed value.Support Bootstarp style.
  * 
+ * It's a same as GWT's {@link com.google.gwt.user.client.ui.ValueBox}.
+ * But support Bootstarp styles.
+ * 
+ * @param <T> the value type
+ * @see com.google.gwt.user.client.ui.ValueBox
  * @since 2.0.3.0
- * 
- * @author Carlos Alexandro Becker
  * @author ohashi keisuke
- * 
  */
-public class TextBox extends TextBoxBase {
+public class ValueBox<T> extends ValueBoxBase<T> {
 
 	/**
-	 * Creates a TextBox widget that wraps an existing &lt;input type='text'&gt;
-	 * element.
+	 * Creates a ValueBox widget that wraps an existing &lt;input
+	 * type='text'&gt; element.
 	 * 
 	 * This element must already be attached to the document. If the element is
 	 * removed from the document, you must call
@@ -29,24 +34,17 @@ public class TextBox extends TextBoxBase {
 	 * @param element
 	 *            the element to be wrapped
 	 */
-	public static TextBox wrap(Element element) {
+	public static <T> ValueBox<T> wrap(Element element, Renderer<T> renderer, Parser<T> parser) {
 		// Assert that the element is attached.
 		assert Document.get().getBody().isOrHasChild(element);
 
-		TextBox textBox = new TextBox(element);
+		ValueBox<T> valueBox = new ValueBox<T>(element, renderer, parser);
 
 		// Mark it attached and remember it for cleanup.
-		textBox.onAttach();
-		RootPanel.detachOnWindowClose(textBox);
+		valueBox.onAttach();
+		RootPanel.detachOnWindowClose(valueBox);
 
-		return textBox;
-	}
-
-	/**
-	 * Creates an empty text box.
-	 */
-	public TextBox() {
-		this(Document.get().createTextInputElement(), "gwt-TextBox");
+		return valueBox;
 	}
 
 	/**
@@ -57,21 +55,20 @@ public class TextBox extends TextBoxBase {
 	 * @param element
 	 *            the element to be used
 	 */
-	protected TextBox(Element element) {
-		super(element);
+	protected ValueBox(Element element,
+		Renderer<T> renderer,
+		Parser<T> parser) {
+		super(element, renderer, parser);
+		// BiDi input is not expected - disable direction estimation.
+		setDirectionEstimator(false);
+		if (LocaleInfo.getCurrentLocale().isRTL()) {
+			setDirection(Direction.LTR);
+		}
 		assert InputElement.as(element).getType().equalsIgnoreCase("text");
 	}
 
-	TextBox(Element element,
-		String styleName) {
-		super(element);
-		if (styleName != null) {
-			setStyleName(styleName);
-		}
-	}
-
 	/**
-	 * Gets the maximum allowable length of the text box.
+	 * Gets the maximum allowable length.
 	 * 
 	 * @return the maximum length, in characters
 	 */
@@ -80,7 +77,7 @@ public class TextBox extends TextBoxBase {
 	}
 
 	/**
-	 * Gets the number of visible characters in the text box.
+	 * Gets the number of visible characters.
 	 * 
 	 * @return the number of visible characters
 	 */
@@ -89,7 +86,7 @@ public class TextBox extends TextBoxBase {
 	}
 
 	/**
-	 * Sets the maximum allowable length of the text box.
+	 * Sets the maximum allowable length.
 	 * 
 	 * @param length
 	 *            the maximum length, in characters
@@ -99,7 +96,7 @@ public class TextBox extends TextBoxBase {
 	}
 
 	/**
-	 * Sets the number of visible characters in the text box.
+	 * Sets the number of visible characters.
 	 * 
 	 * @param length
 	 *            the number of visible characters
