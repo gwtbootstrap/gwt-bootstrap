@@ -77,7 +77,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
     /**
      * @return the text of the dropdown trigger.
      */
-    public void getText() {
+    public String getText() {
         return trigger.getText();
     }
 
