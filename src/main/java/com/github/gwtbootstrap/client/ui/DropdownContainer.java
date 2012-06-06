@@ -28,8 +28,33 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
+//@formatter:off
 /**
- * @author cassio
+ * A dropdown that accepts any type of widget.
+ * <p>
+ * <h3>UiBinder Usage:</h3>
+ *
+ * <pre>
+ * {@code
+ * <b:DropdownContainer text="I am the Caption">
+ *     <b:NavHeader>Header</b:NavHeader>
+ *     <b:NavLink>Link 1</b:NavLink>
+ *     <b:NavLink>Link 2</b:NavLink>
+ *     <b:Button>Hey you, I'm a button</b:Button>
+ * </b:DropdownContainer>
+ * }
+ * </pre>
+ * </p>
+ *
+ * @since 2.0.3.0
+ *
+ * @author Carlos Alexandro Becker
+ * @author Cássio de Freitas e Silva
+ *
+ * @see <a href="http://twitter.github.com/bootstrap/javascript.html#dropdowns">Bootstrap documentation</a>
+ * @see DropdownButton
+ * @see SplitDropdownButton
+ * @see Dropdown
  */
 public class DropdownContainer extends Dropdown {
 
@@ -74,7 +99,7 @@ public class DropdownContainer extends Dropdown {
         handlerManager = createHandlerManager();
     }
 
-    public void showContainer() {
+    protected void showContainer() {
         menu.getElement().getStyle().setDisplay(Style.Display.BLOCK);
         menuVisible = true;
 
@@ -84,7 +109,7 @@ public class DropdownContainer extends Dropdown {
         }
     }
 
-    public void hideContainer() {
+    protected void hideContainer() {
         menu.getElement().getStyle().setDisplay(Style.Display.NONE);
         menuVisible = false;
 
