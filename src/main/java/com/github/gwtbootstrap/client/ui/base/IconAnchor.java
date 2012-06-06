@@ -24,6 +24,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasText;
 
@@ -179,5 +180,21 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	@Override
 	public void setEnabled(boolean enabled) {
 	    DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
+	}
+	
+	@Override
+	public void onBrowserEvent(Event event) {
+		
+		switch (DOM.eventGetType(event)) {
+		case Event.ONCLICK:
+			if(isEnabled()) {
+				super.onBrowserEvent(event);
+			}
+			break;
+		default:
+			super.onBrowserEvent(event);
+			break;
+		}
+		
 	}
 }

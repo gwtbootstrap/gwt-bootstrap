@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.Form;
 import com.github.gwtbootstrap.client.ui.constants.Alignment;
 
@@ -91,6 +92,6 @@ public class NavFormBase extends Form implements HasAlignment, HasSize {
 	 *            the placeholder text
 	 */
 	public void setPlaceholder(String placeholder) {
-		input.setText(placeholder);
+		input.setPlaceholder(placeholder);
 	}
 }
