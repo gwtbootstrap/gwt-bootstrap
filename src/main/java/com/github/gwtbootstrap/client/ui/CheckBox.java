@@ -603,7 +603,7 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	 */
 	@Override
 	public String getId() {
-		return getElement().getId();
+		return inputElem.getId();
 	}
 
 	/**

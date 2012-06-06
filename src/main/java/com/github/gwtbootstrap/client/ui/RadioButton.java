@@ -1,5 +1,6 @@
 package com.github.gwtbootstrap.client.ui;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -194,6 +195,7 @@ public class RadioButton extends CheckBox {
 	 */
 	@Override
 	public void onBrowserEvent(Event event) {
+
 		switch (DOM.eventGetType(event)) {
 		case Event.ONMOUSEUP:
 		case Event.ONBLUR:
@@ -204,8 +206,11 @@ public class RadioButton extends CheckBox {
 
 		case Event.ONCLICK:
 			EventTarget target = event.getEventTarget();
-			if (Element.is(target) && asLabel().isOrHasChild(Element.as(target))) {
-
+			
+			if (Element.is(target) 
+				&& !Element.as(target).getTagName().toUpperCase().equals("INPUT")
+				&& asLabel().isOrHasChild(Element.as(target))) {
+				GWT.log("test");
 				// They clicked the label. Note our pre-click value, and
 				// short circuit event routing so that other click handlers
 				// don't hear about it
@@ -220,7 +225,6 @@ public class RadioButton extends CheckBox {
 			ValueChangeEvent.fireIfNotEqual(RadioButton.this, oldValue, getValue());
 			return;
 		}
-
 		super.onBrowserEvent(event);
 	}
 
@@ -247,16 +251,7 @@ public class RadioButton extends CheckBox {
 
 	@Override
 	public void sinkEvents(int eventBitsToAdd) {
-		// Like CheckBox, we want to hear about inputElem. We
-		// also want to know what's going on with the label, to
-		// make sure onBrowserEvent is able to record value changes
-		// initiated by label events
-		if (isOrWasAttached()) {
-			Event.sinkEvents(inputElem, eventBitsToAdd | Event.getEventsSunk(inputElem));
-			Event.sinkEvents(asLabel(), eventBitsToAdd | Event.getEventsSunk(asLabel()));
-		} else {
-			super.sinkEvents(eventBitsToAdd);
-		}
+		super.sinkEvents(eventBitsToAdd);
 	}
 
 	/**
