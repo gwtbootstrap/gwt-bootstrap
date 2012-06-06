@@ -5,8 +5,10 @@ import java.util.Comparator;
 
 import com.github.gwtbootstrap.client.ui.CellTable;
 import com.github.gwtbootstrap.client.ui.ControlGroup;
+import com.github.gwtbootstrap.client.ui.Form;
 import com.github.gwtbootstrap.client.ui.Form.SubmitEvent;
 import com.github.gwtbootstrap.client.ui.HelpInline;
+import com.github.gwtbootstrap.client.ui.IntegerBox;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Pagination;
 import com.github.gwtbootstrap.client.ui.SubmitButton;
@@ -41,8 +43,7 @@ public class CellTables extends Composite implements Editor<Person> {
 	TextBox userName;
 
 	@UiField
-	@Editor.Ignore
-	TextBox age;
+	IntegerBox age;
 
 	@UiField
 	ControlGroup ageControlGroup;
@@ -69,6 +70,9 @@ public class CellTables extends Composite implements Editor<Person> {
 
 	@UiField
 	Pagination pagination;
+	
+	@UiField
+	Form submitExampleForm;
 
 	SimplePager pager = new SimplePager();
 
@@ -234,18 +238,14 @@ public class CellTables extends Composite implements Editor<Person> {
 		if (person.getUserName() == null || person.getUserName().isEmpty()) {
 
 			userNameControlGroup.setType(ControlGroupType.ERROR);
-			userNameHelpInline.setText("user name shoul be input");
+			userNameHelpInline.setText("UserName should be input");
 			hasError = true;
 		}
 
-		if (age.getValue() != null) {
-			try {
-				person.setAge(Integer.parseInt(age.getValue()));
-			} catch (NumberFormatException nfe) {
-				ageControlGroup.setType(ControlGroupType.ERROR);
-				ageHelpInline.setText("Age should be numeric.");
-				hasError = true;
-			}
+		if (person.getAge() == null) {
+			ageControlGroup.setType(ControlGroupType.ERROR);
+			ageHelpInline.setText("Age should be numeric.");
+			hasError = true;
 		}
 
 		if (hasError) {
@@ -350,8 +350,6 @@ public class CellTables extends Composite implements Editor<Person> {
 		pagination.add(next);
 	}
 	
-	
-
 	@UiHandler("add5Entity")
 	public void onClickAdd5Entity(ClickEvent e) {
 
@@ -369,17 +367,17 @@ public class CellTables extends Composite implements Editor<Person> {
 	public void setPerson(Person person) {
 		driver.edit(person);
 
-		if (person.getAge() != null) {
-			age.setValue(person.getAge().toString());
-		} else {
-			age.setValue("");
-		}
-
 		ageControlGroup.setType(ControlGroupType.NONE);
 		ageHelpInline.setText("");
 
 		userNameControlGroup.setType(ControlGroupType.NONE);
 		userNameHelpInline.setText("");
 	}
+	
+	@UiHandler("cancelButton")
+	public void onCancelClick(ClickEvent e) {
+		submitExampleForm.reset();
 
+	}
+	
 }

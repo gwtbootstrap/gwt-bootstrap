@@ -40,7 +40,7 @@
 						<b:ControlGroup ui:field="ageControlGroup">
 							<b:ControlLabel for="age">Age</b:ControlLabel>
 							<b:Controls>
-								<b:TextBox b:id="age" ui:field="age" placeholder="input your age" />
+								<b:IntegerBox b:id="age" ui:field="age" placeholder="input your age" />
 								<b:HelpInline ui:field="ageHelpInline"/>
 							</b:Controls>
 						</b:ControlGroup>
@@ -53,7 +53,7 @@
 						</b:ControlGroup>
 						<b:FormActions>
 							<b:SubmitButton type="PRIMARY" ui:field="saveButton">Save changes</b:SubmitButton>
-							<b:Button>Cancel</b:Button>
+							<b:Button ui:field="cancelButton">Cancel</b:Button>
 							<b:Button ui:field="add5Entity">Add 5 entity</b:Button>
 						</b:FormActions>
 					</b:Fieldset>
