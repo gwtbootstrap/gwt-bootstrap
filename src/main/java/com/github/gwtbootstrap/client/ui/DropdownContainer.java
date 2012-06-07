@@ -85,6 +85,10 @@ public class DropdownContainer extends Dropdown {
         return true;
     }
 
+    public DropdownContainer() {
+        this("");
+    }
+
     public DropdownContainer(String caption) {
         super(caption);
         for (Widget widget : getChildren()) {
