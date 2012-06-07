@@ -1,5 +1,7 @@
 package com.github.gwtbootstrap.showcase.client.forms;
 
+import java.util.Date;
+
 
 public class Person {
 	
@@ -8,6 +10,8 @@ public class Person {
 	private Integer age;
 
 	private String userName;
+	
+	private Date birthDay;
 	
 	private Favorite favorite = Favorite.NONE;
 	
@@ -54,13 +58,23 @@ public class Person {
 		
 	}
 	
-	public Person(Integer id, String userName,Integer age, Favorite choice) {
+	public Person(Integer id, String userName,Integer age, Favorite choice, Date birthDay) {
 		this.id = id;
 		this.userName = userName;
 		this.age = age;
 		this.favorite = choice;
+		this.birthDay = birthDay;
 	}
-	
+
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
 	public enum Favorite implements HasDisplayLabel {
 		NONE("none"),
 		JAVE("Java"),
