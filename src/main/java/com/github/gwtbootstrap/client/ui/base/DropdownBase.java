@@ -181,7 +181,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
 
         @Override
         public void onClick(ClickEvent event) {
-            link = (NavLink) event.getSource();
+//            link = (NavLink) event.getSource();
             DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);
         }
 
