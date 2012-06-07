@@ -1,11 +1,22 @@
 package com.github.gwtbootstrap.datepicker.client.ui.base;
 
+import java.util.Date;
+
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
-import com.github.gwtbootstrap.client.ui.event.*;
+import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
+import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
+import com.github.gwtbootstrap.client.ui.event.HideEvent;
+import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowEvent;
+import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownEvent;
+import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.gwtbootstrap.datepicker.client.ui.util.LocaleUtil;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.editor.client.IsEditor;
+import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -14,8 +25,6 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
-import java.util.Date;
-
 /**
  * Base DatePicker component.
  *
@@ -23,12 +32,13 @@ import java.util.Date;
  * @since 2.0.3.0
  */
 public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasVisibility,
-        HasVisibleHandlers, HasAllDatePickerHandlers {
+        HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>> {
 
     private final TextBox box;
     private String format;
     private String language;
     private DateTimeFormat dtf;
+	private TakesValueEditor<Date> editor;
 
     public DateBoxBase() {
         this.box = new TextBox();
@@ -70,7 +80,11 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public Date getValue() {
-        return dtf != null ? dtf.parse(box.getValue()) : null;
+        try {
+            return dtf != null && box.getValue() != null ? dtf.parse(box.getValue()) : null;
+        } catch(Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -86,7 +100,8 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public void setValue(Date value, boolean fireEvents) {
-        box.setValue(dtf.format(value));
+        box.setValue(value != null ? dtf.format(value) : null);
+        
         if (fireEvents) {
             ValueChangeEvent.fire(this, value);
         }
@@ -282,4 +297,16 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     public void setStartView(String mode) {
         getElement().setAttribute("data-date-startview", mode.toLowerCase());
     }
+
+	/**
+	 * Retuen Editor
+	 * @return editor
+	 */
+	@Override
+	public TakesValueEditor<Date> asEditor() {
+		if(editor == null){
+			editor = TakesValueEditor.of(this);
+		}
+		return editor;
+	}
 }

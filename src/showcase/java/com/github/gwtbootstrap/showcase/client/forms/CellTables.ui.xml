@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui" xmlns:d="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
 	<ui:style>
 		
 	</ui:style>
@@ -42,6 +42,12 @@
 							<b:Controls>
 								<b:IntegerBox b:id="age" ui:field="age" placeholder="input your age" />
 								<b:HelpInline ui:field="ageHelpInline"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup ui:field="birthDayControlGroup">
+							<b:ControlLabel for="birthDay">Birth Day</b:ControlLabel>
+							<b:Controls>
+								<d:DateBox ui:field="birthDay" format="dd/mm/yyyy" autoClose="true"/>
 							</b:Controls>
 						</b:ControlGroup>
 						<b:ControlGroup ui:field="favoriteNameControlGroup">

@@ -15,6 +15,7 @@ import com.github.gwtbootstrap.client.ui.SubmitButton;
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
+import com.github.gwtbootstrap.datepicker.client.ui.DateBox;
 import com.github.gwtbootstrap.showcase.client.forms.Person.Favorite;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -23,6 +24,7 @@ import com.google.gwt.editor.client.adapters.SimpleEditor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -67,6 +69,9 @@ public class CellTables extends Composite implements Editor<Person> {
 
 	@UiField
 	SubmitButton saveButton;
+	
+	@UiField
+	DateBox birthDay;
 
 	@UiField
 	Pagination pagination;
@@ -161,19 +166,63 @@ public class CellTables extends Composite implements Editor<Person> {
 		};
 		ageCol.setSortable(true);
 		exampleTable.addColumn(ageCol, "Age");
-
+		
 		ListHandler<Person> ageColHandler = new ListHandler<Person>(dataProvider.getList());
 
 		ageColHandler.setComparator(ageCol, new Comparator<Person>() {
 
 			@Override
 			public int compare(Person o1, Person o2) {
+				if(o2.getAge() == null) {
+					return 1;
+				}
+				
+				if(o1.getAge() == null) {
+					return -1;
+				}
 				return o1.getAge().compareTo(o2.getAge());
 			}
 		});
 
 		exampleTable.addColumnSortHandler(ageColHandler);
 
+		TextColumn<Person> birthDayCol = new TextColumn<Person>() {
+			
+			@Override
+			public String getValue(Person object) {
+				if(object.getBirthDay() != null) {
+					return DateTimeFormat.getFormat("dd/MM/yyyy").format(object.getBirthDay());
+				} else {
+					return "";
+				}
+			}
+		};
+		
+		exampleTable.addColumn(birthDayCol, "Birth Day");
+		
+		birthDayCol.setSortable(true);
+		
+		
+		
+		ListHandler<Person> birthDayColHandler = new ListHandler<Person>(dataProvider.getList());
+		birthDayColHandler.setComparator(birthDayCol, new Comparator<Person>() {
+
+			@Override
+			public int compare(Person o1, Person o2) {
+				if(o2.getBirthDay() == null) {
+					return 1;
+				}
+				
+				if(o1.getBirthDay() == null) {
+					return -1;
+				}
+				
+				return o1.getBirthDay().compareTo(o2.getBirthDay());
+			}
+		});
+		
+		exampleTable.addColumnSortHandler(birthDayColHandler);
+		
 		TextColumn<Person> favoriteCol = new TextColumn<Person>() {
 
 			@Override
