@@ -24,8 +24,9 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 
@@ -37,7 +38,7 @@ import com.google.gwt.user.client.ui.HasText;
  * @since 2.0.3.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers {
+public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers, HasWidgets, HasText {
 
     private UnorderedList menu = new UnorderedList();
 
