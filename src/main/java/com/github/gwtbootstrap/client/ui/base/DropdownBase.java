@@ -37,7 +37,7 @@ import com.google.gwt.user.client.ui.HasText;
  * @since 2.0.3.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers, HasText {
+public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers {
 
     private UnorderedList menu = new UnorderedList();
 
