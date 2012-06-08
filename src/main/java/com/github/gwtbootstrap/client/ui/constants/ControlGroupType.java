@@ -17,6 +17,13 @@ package com.github.gwtbootstrap.client.ui.constants;
 
 import com.github.gwtbootstrap.client.ui.base.Style;
 
+/**
+ * Type of {@link com.github.gwtbootstrap.client.ui.ControlGroup}
+ * 
+ * @since 2.0.3.0
+ * @author ohashi keisuke
+ *
+ */
 public enum ControlGroupType implements Style {
 
 	WARNING("warning"),
@@ -30,6 +37,9 @@ public enum ControlGroupType implements Style {
 		this.className = className;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String get() {
 		return className;
 	}

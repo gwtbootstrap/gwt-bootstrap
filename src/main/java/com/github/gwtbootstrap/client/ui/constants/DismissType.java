@@ -42,6 +42,9 @@ public enum DismissType implements Style {
 		this.className = className;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String get() {
 		return className;
 	}

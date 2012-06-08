@@ -19,7 +19,10 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 
 
 /**
- * input alternate size
+ * Type of an input element's Alternate size
+ * 
+ * @since 2.0.3.0
+ * 
  * @author ohashi keisuke
  */
 public enum AlternateSize implements Style {

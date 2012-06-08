@@ -42,6 +42,9 @@ public enum AlertType implements Style {
 		this.className = className;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String get() {
 		if (className.isEmpty())
 			return className;
@@ -49,6 +52,10 @@ public enum AlertType implements Style {
 			return Constants.ALERT + "-" + className;
 	}
 
+	/**
+	 * Get style name without prefix.
+	 * @return non-prefix style name
+	 */
 	public String getWithoutPrefix() {
 		return className;
 	}

@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * 
  * @since 2.0.3.0
  * 
- * @author soundTricker
+ * @author ohashi keisuke
  */
 public class DefaultConfigurator implements Configurator {
 

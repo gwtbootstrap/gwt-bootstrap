@@ -18,6 +18,9 @@ package com.github.gwtbootstrap.client.ui.base;
 
 /**
  * Has Id Attribute
+ * 
+ * @since 2.0.3.0
+ * 
  * @author ohashi keisuke
  */
 public interface HasId {

@@ -171,6 +171,9 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 		setFade();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public boolean getAnimation() {
 		return fade;
 	}

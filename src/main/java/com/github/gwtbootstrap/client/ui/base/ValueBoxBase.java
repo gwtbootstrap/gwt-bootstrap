@@ -27,8 +27,9 @@ import com.google.gwt.text.shared.Renderer;
  * 
  * <pre>
  * It is GWT's {@link com.google.gwt.user.client.ui.ValueBoxBase} extending for Bootstrap style.
- * 
+ * </pre>
  * @since 2.0.3.0
+ * 
  * @author ohashi keisuke
  * @see com.google.gwt.user.client.ui.ValueBoxBase
  * @param <T> the value type

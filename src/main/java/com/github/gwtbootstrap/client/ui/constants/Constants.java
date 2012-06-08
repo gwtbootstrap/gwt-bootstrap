@@ -141,4 +141,6 @@ public interface Constants {
 
 	public static final String UNEDITABLE_INPUT = "uneditable-input";
 
+	public static final String ADD_ON = "add-on";
+
 }
