@@ -15,13 +15,12 @@
  */
 package com.github.gwtbootstrap.datepicker.client.ui.util;
 
-import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
-import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;
-import com.github.gwtbootstrap.datepicker.client.ui.resources.Resources;
-import com.google.gwt.resources.client.TextResource;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
+import com.github.gwtbootstrap.datepicker.client.ui.resources.Resources;
+import com.google.gwt.resources.client.TextResource;
 
 /**
  * A utility class to get the User's Browser Locale.
