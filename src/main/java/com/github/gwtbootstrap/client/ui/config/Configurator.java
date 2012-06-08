@@ -22,12 +22,35 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * <h3>Using custom css/js resources.</h3>
  * 
  * <p>
- * If you need to adapt resources, implement this interface, and add a
- * <code>replace-with</code> tag to your module xml. Example:
+ * If you need to adapt resources,Create your resource package and Add your files and implement this interface, and add a
+ * <code>replace-with</code> tag and <code>public</code> tag to your module xml. Example:
  * </p>
  * 
  * <p>
- * 1. Create a Resources Interface (extending {@link Resources}) override the
+ * 1. Create your Resources package and add css,js directory to that.  (under your module xml package)<br>
+ * ex.
+ * <pre>
+ * com.example
+ *       YourModuleXml.gwt.xml
+ *       resources
+ *         css
+ *         js
+ * </pre>
+ * 2. Add your resources to adove css,js directory.
+ * (Bootstarp's css filename should be <code>bootstarp.min.css</code> and Bootstrap's js filename should be <code>bootstrap.min.js</code>)
+ * <pre>
+ * com.example
+ *       YourModuleXml.gwt.xml
+ *       resources
+ *         css
+ *           bootstrap.min.css < your custom css
+ *           bootstrap-responsive.min.css < your custom css
+ *         js
+ *           bootstrap.min.js < your custom js
+ * </pre>
+ * 
+ * 
+ * 3. Create a Resources Interface (extending {@link Resources}) override the
  * getters of the files you want to replace.
  * 
  * <pre>
@@ -40,7 +63,7 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * 
  * <p>
- * 2. Create a <code>Configurator</code>.
+ * 4. Create a <code>Configurator</code>.
  * 
  * <pre>
  * 	public MyConfigurator implements Configurator {
@@ -53,17 +76,24 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * 
  * <p>
- * 3. Add a <code>replace-with</code> tag to your module xml (
+ * 5. Add a <code>replace-with</code> tag and <code>public<tag> to your module xml (
  * <code>*.gwt.xml</code>).
  * 
  * <pre>
- * {@literal <replace-with class="userpackage.MyConfigurator">
+ * {@literal
+ *  <replace-with class="userpackage.MyConfigurator">
  * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
- * </replace-with>}
+ * </replace-with>
+ * <public path="resources">
+ * <-- If you copy this,you should remove while-space at `** /*`. -->
+ *  <exclude name="** /*.java"/> 
+ *	<exclude name="** /*.class"/>
+ * </public>
+ * 
+ * }
  * </pre>
  * 
  * </p>
- * 
  * @since 2.0.3.0
  * 
  * @author soundTricker
