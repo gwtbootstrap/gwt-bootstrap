@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.InputAddOn;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.user.client.ui.HasText;
@@ -62,7 +63,7 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
 	 */
 	public AddOn() {
 		super("span");
-		setStyleName("add-on");
+		setStyleName(Constants.ADD_ON);
 	}
 	
 	/**

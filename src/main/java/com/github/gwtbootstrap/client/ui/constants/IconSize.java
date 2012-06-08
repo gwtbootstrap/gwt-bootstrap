@@ -18,19 +18,24 @@ package com.github.gwtbootstrap.client.ui.constants;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
+ * Size of {@link com.github.gwtbootstrap.client.ui.Icon}
+ * @since 2.0.3.0
  * @author: Carlos A Becker
  */
 public enum IconSize implements Style {
 
     LARGE("large"), SMALL("small"), DEFAULT("");
 
-    String style;
+    private String style;
 
 
-    IconSize(String style) {
+    private IconSize(String style) {
         this.style = style;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String get() {
         return "icon-" + style;

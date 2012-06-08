@@ -58,8 +58,7 @@ import com.google.gwt.user.client.ui.HasText;
  * @author Dominik Mayer
  * @author ohashi keisuke
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
-		HasHref, HasClickHandlers, HasEnabled {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled {
 
 	private Icon icon = new Icon();
 
@@ -88,12 +87,15 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 			this.icon.setType(type);
 	}
 
-    @Override
-    public void setIconSize(IconSize size) {
-        icon.setIconsSize(size);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setIconSize(IconSize size) {
+		icon.setIconsSize(size);
+	}
 
-    /**
+	/**
 	 * {@inheritDoc}
 	 */
 	public void setText(String text) {
@@ -171,7 +173,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	 */
 	@Override
 	public boolean isEnabled() {
-	    return !DOM.getElementPropertyBoolean(getElement(), "disabled");
+		return !DOM.getElementPropertyBoolean(getElement(), "disabled");
 	}
 
 	/**
@@ -179,15 +181,17 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 	 */
 	@Override
 	public void setEnabled(boolean enabled) {
-	    DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
+		DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onBrowserEvent(Event event) {
-		
 		switch (DOM.eventGetType(event)) {
 		case Event.ONCLICK:
-			if(isEnabled()) {
+			if (isEnabled()) {
 				super.onBrowserEvent(event);
 			}
 			break;
@@ -195,6 +199,6 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon,
 			super.onBrowserEvent(event);
 			break;
 		}
-		
+
 	}
 }

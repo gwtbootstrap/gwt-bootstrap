@@ -91,6 +91,10 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
      */
     protected abstract IconAnchor createTrigger();
 
+    /**
+     * Set dropup style.
+     * @param dropup true:Set Dropup false:Un-set Dropup 
+     */
     public void setDropup(boolean dropup) {
         if (dropup)
             addStyleName(Constants.DROPUP);
