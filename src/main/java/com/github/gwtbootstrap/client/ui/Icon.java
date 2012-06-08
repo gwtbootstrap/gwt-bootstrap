@@ -16,7 +16,6 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
-import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.uibinder.client.UiConstructor;
@@ -90,6 +89,15 @@ public class Icon extends Widget {
      */
     public void setIconsSize(IconSize size) {
         StyleHelper.changeStyle(this, size, IconSize.class);
+    }
+    
+    /**
+     * Get the icon type
+     * 
+     * @return icon type.
+     */
+    public IconType getIconType() {
+    	return type;
     }
 
 }

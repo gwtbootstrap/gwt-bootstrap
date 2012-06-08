@@ -22,8 +22,9 @@ import com.google.gwt.dom.client.Element;
 /**
  * {@linkplain Navbar} uses this class for the scrollspy.
  * 
+ * @since 2.0.3.0
  * @author Carlos Alexandro Becker
-	 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#scrollspy">Twitter Bootstrap ScrollSpy</a>
+ * @see <a href="http://twitter.github.com/bootstrap/javascript.html#scrollspy">Twitter Bootstrap ScrollSpy</a>
  */
 //@formatter:on
 public class Scrollspy {
