@@ -14,17 +14,21 @@
 	<url>http://gwtbootstrap.github.com/</url>
 	<description>A GWT Library that provides the widgets of Twitter Bootstrap.</description>
 	<scm>
-		<url>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</url>
+		<url>https://github.com/gwtbootstrap/gwt-bootstrap</url>
 		<connection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</connection>
 		<developerConnection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</developerConnection>
 	</scm>
 	<distributionManagement>
 		<repository>
-			<id>repo</id>
-			<url>http://gwtbootstrap.github.com/maven/release</url>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<uniqueVersion>false</uniqueVersion>
+			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshot-repo</id>
+			<id>com.github.gwtbootstrap</id>
+			<name>GWT-Bootstrap Snapshot repository</name>
+			<uniqueVersion>false</uniqueVersion>
 			<url>http://gwtbootstrap.github.com/maven/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
@@ -38,8 +42,10 @@
 	</organization>
 	<mailingLists>
 		<mailingList>
+			<name>GWT-Bootstrap</name>
 			<archive>https://groups.google.com/d/forum/gwt-bootstrap</archive>
-			<name>${project.artifactId}</name>
+			<subscribe>gwt-bootstrap+subscribe@googlegroups.com</subscribe>
+			<unsubscribe>gwt-bootstrap+unsubscribe@googlegroups.com</unsubscribe>
 			<post>https://groups.google.com/d/forum/gwt-bootstrap</post>
 		</mailingList>
 	</mailingLists>
@@ -48,31 +54,52 @@
 			<id>caarlos0</id>
 			<name>Carlos Alexandro Becker</name>
 			<url>https://github.com/caarlos0</url>
+			<roles>
+				<role>lead</role>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
 		</developer>
 		<developer>
 			<id>dominikmayer</id>
 			<name>Dominik Mayer</name>
 			<url>https://github.com/dominikmayer</url>
+			<roles>
+				<role>developer</role>
+			</roles>
 		</developer>
 		<developer>
 			<id>YusukeKokubo</id>
 			<name>Yusuke Kokubo</name>
 			<url>https://github.com/YusukeKokubo</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-9</timezone>
 		</developer>
 		<developer>
 			<id>xosler</id>
 			<name>Alexandre Schossler</name>
 			<url>https://github.com/xosler</url>
+			<roles>
+				<role>developer</role>
+			</roles>
 		</developer>
 		<developer>
 			<id>soundTricker</id>
 			<name>Keisuke Oohashi</name>
 			<url>https://github.com/soundTricker</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-9</timezone>
 		</developer>
 	</developers>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
 			<comments>Same as Twitter Bootstrap</comments>
 		</license>
 	</licenses>
@@ -87,16 +114,12 @@
 		<!-- GWT needs at least java 1.5 -->
 		<webappDirectory>src/main/webapp</webappDirectory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!--
-		Right now(2012/06/02),github site-maven-plugin is not supported encrypt password.
-		But we need it for CI server.
-		this property is for it.
-		If you need encrypt password in settings.xml,
-		Add option `-Dgithub.sites.plugin.version=0.7-SNAPSHOT` to `mvn site` goal.
-		
-		If you need encrypt password in settings.xml for donwloads plugin,
-		Add option `-Dgithub.downloads.plugin.version=0.6-SNAPSHOT` to `mvn site` goal.
-		 -->
+		<!-- Right now(2012/06/02),github site-maven-plugin is not supported encrypt 
+			password. But we need it for CI server. this property is for it. If you need 
+			encrypt password in settings.xml, Add option `-Dgithub.sites.plugin.version=0.7-SNAPSHOT` 
+			to `mvn site` goal. If you need encrypt password in settings.xml for donwloads 
+			plugin, Add option `-Dgithub.downloads.plugin.version=0.6-SNAPSHOT` to `mvn 
+			site` goal. -->
 		<github.sites.plugin.version>0.6</github.sites.plugin.version>
 		<github.downloads.plugin.version>0.5</github.downloads.plugin.version>
 	</properties>
@@ -189,8 +212,34 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
 	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.0-alpha-4</version>
+						<executions>
+							<execution>
+								<id>sign-artifaces</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<!-- for deploy to github maven repository. if you need deploy jars to 
 			maven repository in github pages, Run `mvn -PforGithubDeploy clean deploy 
 			site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`. -->
