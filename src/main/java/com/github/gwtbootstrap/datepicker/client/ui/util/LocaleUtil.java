@@ -26,7 +26,7 @@ import com.google.gwt.resources.client.TextResource;
  * A utility class to get the User's Browser Locale.
  *
  * @author Carlos A Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public class LocaleUtil {
 

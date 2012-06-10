@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.constants.Alignment;
 /**
  * Interface for widgets that can be aligned on the left or right side.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

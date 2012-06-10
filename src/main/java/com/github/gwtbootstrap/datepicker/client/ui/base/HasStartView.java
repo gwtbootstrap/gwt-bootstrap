@@ -19,7 +19,7 @@ package com.github.gwtbootstrap.datepicker.client.ui.base;
  * Define a element that have the startView property.
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public interface HasStartView {
 

@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Multi-Page Pagination
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Dominik Mayer
  */
 //@formatter:on

@@ -21,7 +21,7 @@ package com.github.gwtbootstrap.client.ui.base;
  * Interface for has Placeholder attribute element.
  * @author ohashi keisuke
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @see PlaceholderHelper
  */

@@ -22,6 +22,7 @@ import com.google.gwt.user.client.Element;
 /**
  * The helper class for {@link HasPlaceholder} interface.
  * 
+ * @since 2.0.4.0
  * @author ohashi keisuke
  *
  */

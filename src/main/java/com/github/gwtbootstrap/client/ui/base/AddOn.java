@@ -43,7 +43,7 @@ import com.google.gwt.user.client.ui.HasText;
  * </pre>
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author ohashi keisuke
  * @see InputAddOn

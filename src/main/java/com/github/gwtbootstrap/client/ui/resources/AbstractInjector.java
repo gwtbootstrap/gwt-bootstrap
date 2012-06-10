@@ -22,7 +22,7 @@ import com.google.gwt.dom.client.HeadElement;
 /**
  * Base class for classes that inject someting into the document header.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  */

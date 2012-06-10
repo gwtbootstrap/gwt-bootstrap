@@ -24,7 +24,7 @@ import com.google.gwt.resources.client.TextResource;
  * JavaScript and CSS files.
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public class DatepickerResourceInjector {
 

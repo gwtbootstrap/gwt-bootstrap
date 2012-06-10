@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Wrapper for an HTML Table.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

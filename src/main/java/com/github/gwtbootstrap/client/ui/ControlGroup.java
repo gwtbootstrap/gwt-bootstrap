@@ -38,7 +38,7 @@ import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
  * </pre>
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author kokubo yusuke 
  * @author ohashi keisuke

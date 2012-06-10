@@ -34,7 +34,7 @@ import com.google.gwt.user.client.ui.Label;
 /**
  * Uneditable style text input.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class UneditableInput extends InlineLabel implements HasAlternateSize, IsSearchQuery, HasSize, HasId {

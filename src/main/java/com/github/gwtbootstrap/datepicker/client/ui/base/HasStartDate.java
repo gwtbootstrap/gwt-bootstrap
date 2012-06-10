@@ -21,7 +21,7 @@ import java.util.Date;
  * Define a element to the startDateProperty
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public interface HasStartDate {
 

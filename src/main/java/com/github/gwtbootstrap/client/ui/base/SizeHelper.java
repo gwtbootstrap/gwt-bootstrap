@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.UIObject;
 /**
  * THe helper for {@link HasSize} interface.
  * 
+ * @since 2.0.4.0
  * @author ohashi keisuke
  * 
  */

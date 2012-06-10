@@ -23,7 +23,7 @@ import com.google.gwt.dom.client.Style.Unit;
 /**
  * The progress bar.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Dominik Mayer
  */
 //@formatter:on

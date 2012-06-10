@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A PasswordTextBox for Bootstrap form.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author ohashi keisuke
  * 

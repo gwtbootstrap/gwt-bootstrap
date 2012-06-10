@@ -24,7 +24,7 @@ import com.google.gwt.dom.client.Style.Unit;
  * This is the twBootstrap Grid System, enjoy.
  * 
  * @see Column
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Carlos Alexandro Becker
  */
 //@formatter:on

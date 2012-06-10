@@ -23,7 +23,7 @@ import com.google.gwt.resources.client.TextResource;
 /**
  * Interface that provides the Bootstrap resources.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  * 
@@ -59,7 +59,7 @@ public interface Resources extends ClientBundle {
 	 * Returns a version of Bootstrap with all plugins included.
 	 * <p>
 	 * The first three digits in the GWT Bootstrap version number specify the
-	 * provided Bootstrap version. (GWT Bootstrap 2.0.3.0 uses Bootstrap 2.0.2.
+	 * provided Bootstrap version. (GWT Bootstrap 2.0.4.0 uses Bootstrap 2.0.2.
 	 * GWT Bootstrap 2.1.2.3 will use Bootstrap 2.1.2.)
 	 * </p>
 	 * <p>

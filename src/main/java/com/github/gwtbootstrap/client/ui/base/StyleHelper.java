@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.UIObject;
 /**
  * The Helper class for {@link HasStyle} interface.
  *
- * @since 2.0.3.0
+ * @since 2.0.4.0
  *
  * @see HasStyle
  * @see Style

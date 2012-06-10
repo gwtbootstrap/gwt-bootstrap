@@ -20,7 +20,7 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * Represents an event that is fired when a widget is completely hidden.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

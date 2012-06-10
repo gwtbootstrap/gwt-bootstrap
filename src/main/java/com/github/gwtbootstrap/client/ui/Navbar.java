@@ -66,7 +66,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation</a>
  * @see ResponsiveNavbar
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 //@formatter:on
 public class Navbar extends DivWidget {

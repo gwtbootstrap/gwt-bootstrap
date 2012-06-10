@@ -23,7 +23,7 @@ import com.google.gwt.resources.client.TextResource;
  * Interface that provides the DateBox resources.
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public interface Resources extends ClientBundle {
 

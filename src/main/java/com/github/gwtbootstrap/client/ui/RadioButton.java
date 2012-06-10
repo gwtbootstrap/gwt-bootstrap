@@ -33,7 +33,7 @@ import com.google.gwt.user.client.ui.DirectionalTextHelper;
  * Re-design for Bootstrap.
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class RadioButton extends CheckBox {

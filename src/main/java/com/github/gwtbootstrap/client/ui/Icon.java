@@ -45,7 +45,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  * @see <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Bootstrap documentation</a>
  * @see <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome page</a>
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 //@formatter:on
 public class Icon extends Widget {

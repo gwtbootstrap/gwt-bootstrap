@@ -19,7 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
  * Size of {@link com.github.gwtbootstrap.client.ui.Icon}
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author: Carlos A Becker
  */
 public enum IconSize implements Style {

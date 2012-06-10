@@ -22,7 +22,7 @@ import com.google.gwt.text.shared.testing.PassthroughRenderer;
 /**
  * Abstract base class for most text entry widgets. and Support boostrap style.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  * @see com.google.gwt.user.client.ui.TextBoxBase
  */

@@ -25,7 +25,7 @@ import com.google.gwt.resources.client.TextResource;
 /**
  * Resources for prettify plugin.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos A Becker
  * 

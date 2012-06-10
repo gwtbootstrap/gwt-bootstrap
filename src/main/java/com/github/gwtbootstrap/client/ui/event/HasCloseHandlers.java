@@ -21,7 +21,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * Interface for widgets that handle {@link CloseEvent}s and {@link ClosedEvent}
  * s.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

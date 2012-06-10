@@ -35,7 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
  *
  * @author Carlos A Becker
  * @author Dominik Mayer
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 //@formatter:on
 public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers, HasWidgets, HasText {

@@ -29,7 +29,7 @@ import java.util.Date;
 /**
  * DateBoxAppended component.
  *
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Carlos Alexandro Becker
  */
 public class DateBoxAppended extends AppendButton implements HasValue<Date>, HasDateFormat {

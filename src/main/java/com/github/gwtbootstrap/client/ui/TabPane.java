@@ -25,7 +25,7 @@ import com.google.gwt.user.client.Random;
 /**
  * Tab Pane for tabbable nav.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Dominik Mayer
  */
 //@formatter:on

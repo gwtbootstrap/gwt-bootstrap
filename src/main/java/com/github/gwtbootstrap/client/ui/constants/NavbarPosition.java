@@ -23,7 +23,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
  * Position of a fixed {@link Navbar}.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

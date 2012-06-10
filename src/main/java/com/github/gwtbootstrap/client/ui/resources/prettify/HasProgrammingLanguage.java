@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.resources.prettify;
 /**
  * Interface for components that have a programming language property.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  * 

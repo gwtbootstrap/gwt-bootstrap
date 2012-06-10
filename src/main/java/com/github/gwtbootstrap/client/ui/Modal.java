@@ -56,7 +56,7 @@ import java.util.Set;
  * All arguments are optional.
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  * 

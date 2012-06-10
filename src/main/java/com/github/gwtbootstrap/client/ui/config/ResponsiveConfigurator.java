@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.config;
 /**
  * {@link Configurator} with enabled responsive design.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  */
