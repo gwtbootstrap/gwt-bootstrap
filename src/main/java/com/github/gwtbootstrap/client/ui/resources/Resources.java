@@ -104,9 +104,17 @@ public interface Resources extends ClientBundle {
 	@Source("css/gwt-bootstrap.css")
 	TextResource gwtBootstrapCss();
 
-    @Source("css/font-awesome.css")
-    TextResource fontAwesomeCss();
+        @Source("css/font-awesome.css")
+        TextResource fontAwesomeCss();
 
+	/**
+	 * Returns the bootstrap-carousel JavaScript.
+	 * 
+	 * @return the bootstrap-carousel JavaScript.
+	 */
+	@Source("js/bootstrap-carousel.js")
+	TextResource bootstrapCarouselJs();
+        
 //	@Source("js/bootstrap-collapse.js")
 //	TextResource bootstrapCollapseJs();
 
