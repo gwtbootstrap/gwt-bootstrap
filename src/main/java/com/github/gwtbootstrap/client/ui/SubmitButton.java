@@ -39,7 +39,7 @@ import com.google.gwt.user.client.ui.HasValue;
 /**
  * A SubmitButton for Bootstrap form.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class SubmitButton extends FocusWidget implements HasType<ButtonType>, HasValue<String>, HasText, HasName, HasChangeHandlers {

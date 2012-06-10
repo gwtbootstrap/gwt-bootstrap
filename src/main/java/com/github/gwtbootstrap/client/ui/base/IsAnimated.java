@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.base;
 /**
  * Interface for components that can be animated.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  */

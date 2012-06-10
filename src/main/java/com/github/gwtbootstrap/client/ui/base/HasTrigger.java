@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.constants.Trigger;
 /**
  * Interface for widgets that are triggered by an action.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

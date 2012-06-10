@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.HasHTML;
 /**
  * Header for the column of a {@link Table}.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

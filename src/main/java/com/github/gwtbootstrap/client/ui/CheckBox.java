@@ -56,7 +56,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Re-design for Bootstrap.
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>>, IsSearchQuery,HasId {

@@ -46,7 +46,7 @@ import com.google.gwt.user.client.ui.Widget;
  * </pre>
  * </p>
  *
- * @since 2.0.3.0
+ * @since 2.0.4.0
  *
  * @author Carlos Alexandro Becker
  * @author Cássio de Freitas e Silva

@@ -21,7 +21,7 @@ import com.github.gwtbootstrap.client.ui.constants.IconType;
 /**
  * Interface for widgets that have icons.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

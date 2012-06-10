@@ -44,7 +44,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Base DatePicker component.
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasVisibility,
         HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>> {

@@ -35,7 +35,7 @@ import com.google.gwt.user.client.ui.HasText;
  * All arguments are optional
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * @author ohashi keisuke

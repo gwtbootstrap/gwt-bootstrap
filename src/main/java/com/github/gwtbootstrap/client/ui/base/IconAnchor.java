@@ -53,7 +53,7 @@ import com.google.gwt.user.client.ui.HasText;
  * All parameter are optional. All setters can be used as parameters.
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * @author ohashi keisuke

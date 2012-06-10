@@ -24,7 +24,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
  * A ButtonCell with Bootstrap Style, supporting Icons and icon types.
  * 
  * @author Carlos A Becker
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @see Button
  * 

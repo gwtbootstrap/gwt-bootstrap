@@ -22,7 +22,7 @@ import com.google.gwt.text.client.LongRenderer;
 /**
  * A ValueBox that uses {@link LongParser} and {@link LongRenderer}. for Bootstrap
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class LongBox extends ValueBox<Long> {

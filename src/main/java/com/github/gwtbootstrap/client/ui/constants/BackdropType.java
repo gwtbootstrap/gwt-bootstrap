@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
 * Type of a {@link Modal Modal's} backdrop.
 * 
-* @since 2.0.3.0
+* @since 2.0.4.0
 * 
 * @author Dominik Mayer
 * 

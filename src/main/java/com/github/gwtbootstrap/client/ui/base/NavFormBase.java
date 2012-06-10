@@ -24,7 +24,7 @@ import com.github.gwtbootstrap.client.ui.constants.Alignment;
  * Base class for forms inside a {@link com.github.gwtbootstrap.client.ui.Navbar
  * Navbar.}
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

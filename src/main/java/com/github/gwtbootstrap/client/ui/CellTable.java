@@ -23,6 +23,15 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ProvidesKey;
 
+/**
+ * 
+ * CellTable for Bootstrap style.
+ * 
+ * @since 2.0.4.0
+ * @author ohashi keisuke
+ *
+ * @param <T> Data Set
+ */
 public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<T> {
 
 	public static enum TableType implements com.github.gwtbootstrap.client.ui.base.Style {

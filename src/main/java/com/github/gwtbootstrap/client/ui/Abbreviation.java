@@ -35,7 +35,7 @@ import com.google.gwt.user.client.DOM;
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @see <a
  *      href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap

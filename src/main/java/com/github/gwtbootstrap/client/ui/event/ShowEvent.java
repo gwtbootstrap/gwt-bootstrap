@@ -21,7 +21,7 @@ import com.google.gwt.event.shared.GwtEvent;
  * Represents an event that is fired immediately when a widget's
  * <code>show()</code> method is called.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

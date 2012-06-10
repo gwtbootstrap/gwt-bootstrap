@@ -18,6 +18,13 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.google.gwt.uibinder.client.UiConstructor;
 
+/**
+ * The <code>section</code> element
+ * 
+ * @since 2.0.4.0
+ * @author ohashi keisuke
+ *
+ */
 public class Section extends ComplexWidget {
 
 	public @UiConstructor

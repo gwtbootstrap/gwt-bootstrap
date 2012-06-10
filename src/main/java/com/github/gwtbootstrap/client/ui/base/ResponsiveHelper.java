@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
 /**
  * The Helper class for {@link IsResponsive} interface.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @see IsResponsive
  * @see Device

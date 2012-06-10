@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase;
 /**
  * DateBox component.
  *
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author Carlos Alexandro Becker
  */
 public class DateBox extends DateBoxBase {

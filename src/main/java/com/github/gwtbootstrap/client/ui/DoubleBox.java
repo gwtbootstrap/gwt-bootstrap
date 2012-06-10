@@ -23,7 +23,7 @@ import com.google.gwt.text.client.DoubleRenderer;
 /**
  * A ValueBox that uses {@link DobuleParser} and {@link DoubleRenderer}. for Bootstrap
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class DoubleBox extends ValueBox<Double> {

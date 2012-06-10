@@ -29,7 +29,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * Interface for components that can trigger actions when they are shown or
  * hidden.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

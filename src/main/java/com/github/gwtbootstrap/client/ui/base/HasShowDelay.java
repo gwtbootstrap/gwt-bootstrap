@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.base;
 /**
  * Interface for widgets that can have a delay when they are shown or hidden.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * 

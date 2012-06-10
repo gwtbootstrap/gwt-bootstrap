@@ -25,7 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * A TextBox for Bootstrap form.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  * @author ohashi keisuke

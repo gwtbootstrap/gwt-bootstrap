@@ -29,7 +29,7 @@ import com.google.gwt.dom.client.Element;
 /**
  * A ListBox for Bootstrap form.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author ohashi keisuke
  * 

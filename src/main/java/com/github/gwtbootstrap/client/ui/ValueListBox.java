@@ -50,7 +50,7 @@ import com.google.gwt.view.client.SimpleKeyProvider;
  * 
  * @param <T> the value type
  * @author ohashi keisuke
- * @since 2.0.3.0
+ * @since 2.0.4.0
  */
 public class ValueListBox<T> extends Composite implements HasConstrainedValue<T>, IsEditor<TakesValueEditor<T>>, HasName, HasId, HasEnabled, HasSize, HasAlternateSize, IsSearchQuery {
 

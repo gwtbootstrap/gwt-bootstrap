@@ -21,7 +21,7 @@ import com.google.gwt.dom.client.Element;
  * {@link com.google.gwt.user.client.ui.TextBox TextBox} without the GWT CSS
  * Styles.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  */

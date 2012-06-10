@@ -42,7 +42,7 @@ import com.google.gwt.user.client.ui.Widget;
  * Setting the <code>size</code> is mandatory.
  * </p>
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer

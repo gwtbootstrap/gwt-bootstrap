@@ -33,7 +33,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @param <T> the value type
  * @see com.google.gwt.user.client.ui.ValueBox
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class ValueBox<T> extends ValueBoxBase<T> {

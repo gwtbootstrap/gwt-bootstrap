@@ -22,6 +22,7 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 /**
  * The Breadcrumbs container
  * 
+ * @since 2.0.4.0
  * @author Dominik Mayer
  */
 public class Breadcrumbs extends UnorderedList {

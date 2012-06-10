@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
  * A helper class to inject and configure Google Code Prettify in our code
  * components.
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
  * 

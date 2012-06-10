@@ -22,7 +22,7 @@ import com.google.gwt.text.client.IntegerRenderer;
 /**
  * A ValueBox that uses {@link IntegerParser} and {@link IntegerRenderer}. for Bootstrap
  * 
- * @since 2.0.3.0
+ * @since 2.0.4.0
  * @author ohashi keisuke
  */
 public class IntegerBox extends ValueBox<Integer> {
