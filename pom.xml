@@ -59,6 +59,7 @@
 				<role>architect</role>
 				<role>developer</role>
 			</roles>
+			<timezone>-3</timezone>
 		</developer>
 		<developer>
 			<id>dominikmayer</id>
@@ -75,7 +76,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-9</timezone>
+			<timezone>+9</timezone>
 		</developer>
 		<developer>
 			<id>xosler</id>
@@ -92,7 +93,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-9</timezone>
+			<timezone>+9</timezone>
 		</developer>
 	</developers>
 	<contributors>
@@ -102,6 +103,21 @@
 			<roles>
 				<role>developer</role>
 			</roles>
+		</contributor>
+		<contributor>
+			<name>PerWiklander</name>
+			<url>https://github.com/PerWiklander</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>ksfreitas</name>
+			<url>https://github.com/ksfreitas</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-3</timezone>
 		</contributor>
 	</contributors>
 	<licenses>
