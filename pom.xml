@@ -119,6 +119,15 @@
 			</roles>
 			<timezone>-3</timezone>
 		</contributor>
+		<contributor>
+			<name>tjwebb</name>
+			<url>https://github.com/tjwebb</url>
+			<roles>
+				<role>developer</role>
+				<role>ci server</role>
+			</roles>
+			<timezone>-3</timezone>
+		</contributor>
 	</contributors>
 	<licenses>
 		<license>
