@@ -32,7 +32,7 @@
                             dynamicSafe="true">
                         <g:Label>Modal Content!</g:Label>
                         <b:ModalFooter>
-                            <b:Button icon="FILE" type="PRIMARY">Save</b:Button>
+                            <b:Button icon="FILE" type="PRIMARY" ui:field="saveButton">Save</b:Button>
                         </b:ModalFooter>
                     </b:Modal>
                     <pre class="prettyprint linenums">

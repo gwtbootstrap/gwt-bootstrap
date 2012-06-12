@@ -25,20 +25,25 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Modal extends Composite {
 
-    private static ModalUiBinder uiBinder = GWT.create(ModalUiBinder.class);
+	private static ModalUiBinder uiBinder = GWT.create(ModalUiBinder.class);
 
-    interface ModalUiBinder extends UiBinder<Widget, Modal> {
-    }
+	interface ModalUiBinder extends UiBinder<Widget, Modal> {
+	}
 
-    @UiField
-    com.github.gwtbootstrap.client.ui.Modal m;
-    
-    public Modal() {
-        initWidget(uiBinder.createAndBindUi(this));
-    }
+	@UiField
+	com.github.gwtbootstrap.client.ui.Modal m;
 
-    @UiHandler("onShow")
-    void onAddClick(ClickEvent event) {
-        m.show();
-    }
+	public Modal() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
+
+	@UiHandler("onShow")
+	void onAddClick(ClickEvent event) {
+		m.show();
+	}
+
+	@UiHandler("saveButton")
+	public void onSaveClick(ClickEvent e) {
+		m.hide();
+	}
 }
