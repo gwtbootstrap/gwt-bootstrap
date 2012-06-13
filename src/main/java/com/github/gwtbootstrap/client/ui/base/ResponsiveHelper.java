@@ -100,6 +100,7 @@ public class ResponsiveHelper {
 	}
 
 	private static <T extends HasStyle> void removeResponsiveStyles(T element) {
+		
 		element.removeStyle(ResponsiveStyle.VISIBLE_PHONE);
 		element.removeStyle(ResponsiveStyle.VISIBLE_TABLET);
 		element.removeStyle(ResponsiveStyle.VISIBLE_DESKTOP);
