@@ -15,23 +15,32 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.constants.DismissType;
-import com.github.gwtbootstrap.client.ui.event.*;
+import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
+import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
+import com.github.gwtbootstrap.client.ui.event.HideEvent;
+import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowEvent;
+import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownEvent;
+import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
-import java.util.HashSet;
-import java.util.Set;
 
 //@formatter:off
 /**
@@ -53,6 +62,7 @@ import java.util.Set;
  * </b:Modal>
  * }
  * </pre>
+ * 
  * All arguments are optional.
  * </p>
  * 
@@ -62,26 +72,32 @@ import java.util.Set;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/javascript.html#modals">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/javascript.html#modals">Bootstrap
+ *      documentation</a>
  * @see PopupPanel
  */
-//@formatter:on
-public class Modal extends DivWidget implements HasVisibility,
-		HasVisibleHandlers, IsAnimated {
+// @formatter:on
+public class Modal extends DivWidget implements HasVisibility, HasVisibleHandlers, IsAnimated {
 
 	private static Set<Modal> currentlyShown = new HashSet<Modal>();
 
 	private final DivWidget header = new DivWidget();
+
 	private final DivWidget body = new DivWidget("modal-body");
 
 	private boolean keyboard = true;
+
 	private BackdropType backdropType = BackdropType.NORMAL;
+
 	private boolean show = false;
+
 	private boolean hideOthers = true;
 
 	private boolean configured = false;
 
-        private Close close = new Close(DismissType.MODAL);
+	private Close close = new Close();
+
 	/**
 	 * Creates an empty, hidden widget.
 	 */
@@ -99,53 +115,55 @@ public class Modal extends DivWidget implements HasVisibility,
 	 * 
 	 * @param animated
 	 *            <code>true</code> if the widget should be animated.
-         * 
+	 * 
 	 */
 	public Modal(boolean animated) {
-            this(animated, false);
-        }
-        
+		this(animated, false);
+	}
+
 	/**
 	 * Creates an empty, hidden widget with specified show behavior.
 	 * 
 	 * @param animated
 	 *            <code>true</code> if the widget should be animated.
-         * 
-         * @param dynamicSafe
-         *            <code>true</code> removes from RootPanel when hidden
+	 * 
+	 * @param dynamicSafe
+	 *            <code>true</code> removes from RootPanel when hidden
 	 */
-	public Modal(boolean animated, boolean dynamicSafe) {
+	public Modal(boolean animated,
+		boolean dynamicSafe) {
 		this();
 		setAnimation(animated);
-        setDynamicSafe(dynamicSafe);
+		setDynamicSafe(dynamicSafe);
 	}
 
-    /**
-     * Setup the modal to prevent memory leaks.
-     * When modal is hidden, will remove all event handlers, and them
-     * remove the modal DOM from document DOM.
-     *
-     * Default is false.
-     *
-     * @param dynamicSafe
-     */
-    public void setDynamicSafe(boolean dynamicSafe) {
-        if (dynamicSafe) {
-            addHiddenHandler(new HiddenHandler() {
+	/**
+	 * Setup the modal to prevent memory leaks. When modal is hidden, will
+	 * remove all event handlers, and them remove the modal DOM from document
+	 * DOM.
+	 * 
+	 * Default is false.
+	 * 
+	 * @param dynamicSafe
+	 */
+	public void setDynamicSafe(boolean dynamicSafe) {
+		if (dynamicSafe) {
+			addHiddenHandler(new HiddenHandler() {
 
-                @Override
-                public void onHidden(HiddenEvent hiddenEvent) {
-                    (new Timer() {
-                        @Override
-                        public void run() {
-                            unsetHandlerFunctions(getElement());
-                            RootPanel.get().remove(Modal.this);
-                        }
-                    }).schedule(3000);
-                }
-            });
-        }
-    }
+				@Override
+				public void onHidden(HiddenEvent hiddenEvent) {
+					(new Timer() {
+
+						@Override
+						public void run() {
+							unsetHandlerFunctions(getElement());
+							RootPanel.get().remove(Modal.this);
+						}
+					}).schedule(3000);
+				}
+			});
+		}
+	}
 
 	/**
 	 * Sets the title of the Modal.
@@ -159,6 +177,15 @@ public class Modal extends DivWidget implements HasVisibility,
 		if (title == null || title.isEmpty()) {
 			showHeader(false);
 		} else {
+
+			close.addClickHandler(new ClickHandler() {
+				
+				@Override
+				public void onClick(ClickEvent event) {
+					Modal.this.hide();
+				}
+			});
+			
 			header.add(close);
 			header.add(new Heading(3, title));
 			showHeader(true);
@@ -326,8 +353,7 @@ public class Modal extends DivWidget implements HasVisibility,
 		currentlyShown.add(this);
 	}
 
-	private void configure(boolean keyboard, BackdropType backdropType,
-			boolean show) {
+	private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
 		if (backdropType == BackdropType.NORMAL)
 			configure(getElement(), keyboard, true, show);
 		else if (backdropType == BackdropType.NONE)
@@ -336,20 +362,20 @@ public class Modal extends DivWidget implements HasVisibility,
 			configure(getElement(), keyboard, BackdropType.STATIC.get(), show);
 	}
 
+	// @formatter:off
 	private native void configure(Element e, boolean k, boolean b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
-			keyboard : k,
-			backdrop : b,
-			show : s
-		});
+							keyboard : k,
+							backdrop : b,
+							show : s
+	});
 	}-*/;
-
 	private native void configure(Element e, boolean k, String b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
-			keyboard : k,
-			backdrop : b,
-			show : s
-		});
+							keyboard : k,
+							backdrop : b,
+							show : s
+						});
 	}-*/;
 
 	private native void changeVisibility(Element e, String visibility) /*-{
@@ -375,13 +401,13 @@ public class Modal extends DivWidget implements HasVisibility,
 		});
 	}-*/;
 
-
-    /**
-     * Unlinks all the Java functions that fire the events.
-     */
-    private native void unsetHandlerFunctions(Element e) /*-{
-        $wnd.jQuery(e).off();
-    }-*/;
+	/**
+	 * Unlinks all the Java functions that fire the events.
+	 */
+	private native void unsetHandlerFunctions(Element e) /*-{
+		$wnd.jQuery(e).off();
+	}-*/;
+	// @formatter:on
 
 	/**
 	 * {@inheritDoc}
@@ -410,15 +436,18 @@ public class Modal extends DivWidget implements HasVisibility,
 	public HandlerRegistration addShownHandler(ShownHandler handler) {
 		return addHandler(handler, ShownEvent.getType());
 	}
-        
-        /**
-         * Show/Hide close button. The Modal must have a title.
-         * 
-         * @param visible <b>true</b> for show and <b>false</b> to hide. Defaults is <b>true</b>.
-         */
-        public void setCloseVisible(boolean visible) {
-            close.getElement().getStyle().setVisibility(visible ? 
-                    Style.Visibility.VISIBLE : Style.Visibility.HIDDEN);
-        }
+
+	/**
+	 * Show/Hide close button. The Modal must have a title.
+	 * 
+	 * @param visible
+	 *            <b>true</b> for show and <b>false</b> to hide. Defaults is
+	 *            <b>true</b>.
+	 */
+	public void setCloseVisible(boolean visible) {
+		close.getElement().getStyle().setVisibility(visible
+															? Style.Visibility.VISIBLE
+															: Style.Visibility.HIDDEN);
+	}
 
 }
