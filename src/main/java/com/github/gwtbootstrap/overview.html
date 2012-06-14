@@ -16,7 +16,23 @@
 	{@literal <inherits name="com.github.gwtbootstrap.Bootstrap" />}
 	</pre>
 	to your {@code *.gwt.xml} file. 
-	<br /><br />
+	<br />
+	and Add below to your html's head tag.
+	<pre>{@literal
+	<head>
+ 		<!-- before your module(*.nocache.js) loading  -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!--[if IE 7]>
+ 		<link rel="stylesheet" href="{your module name}/css/font-awesome-ie7.css">
+		<![endif]-->
+		<!-- your module(*.nocache.js) loading  -->
+		...
+	</head>
+}
+	</pre>
+	<br />
 	<p>
 		<strong>IMPORTANT: </strong>If you are using <a href="http://code.google.com/p/gwt-platform/">GWT-Platform</a>, 
 		please take a look at <a href="https://github.com/gwtbootstrap/gwt-bootstrap/issues/82#issuecomment-5354194">this comment on issue #82</a>.
