@@ -24,6 +24,7 @@ import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.DismissType;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
@@ -34,10 +35,7 @@ import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -96,7 +94,11 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 
 	private boolean configured = false;
 
-	private Close close = new Close();
+	private Close close = new Close(DismissType.MODAL);
+
+	private String title;
+
+	private boolean closeVisible = true;
 
 	/**
 	 * Creates an empty, hidden widget.
@@ -106,8 +108,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		super.add(header);
 		super.add(body);
 		setVisible(false);
-		RootPanel.get().add(this);
-		setHandlerFunctions(getElement());
 	}
 
 	/**
@@ -152,14 +152,8 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 
 				@Override
 				public void onHidden(HiddenEvent hiddenEvent) {
-					(new Timer() {
-
-						@Override
-						public void run() {
-							unsetHandlerFunctions(getElement());
-							RootPanel.get().remove(Modal.this);
-						}
-					}).schedule(3000);
+					unsetHandlerFunctions(getElement());
+					Modal.this.removeFromParent();
 				}
 			});
 		}
@@ -173,18 +167,16 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 */
 	@Override
 	public void setTitle(String title) {
+		this.title = title;
+		
 		header.clear();
 		if (title == null || title.isEmpty()) {
 			showHeader(false);
 		} else {
-
-			close.addClickHandler(new ClickHandler() {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					Modal.this.hide();
-				}
-			});
+			
+			close = new Close(DismissType.MODAL);
+			
+			setCloseVisible(closeVisible);
 			
 			header.add(close);
 			header.add(new Heading(3, title));
@@ -282,18 +274,25 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	protected void onLoad() {
-		super.onLoad();
-		configure(keyboard, backdropType, show);
-		configured = true;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
 	public void show() {
+		
+		if(!this.isAttached()) {
+			
+			//close anchor reset
+			setTitle(title);
+			
+			RootPanel.get().add(this);
+		}
+		
 		changeVisibility("show");
+	}
+	
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		configure(keyboard, backdropType, show);
+		setHandlerFunctions(getElement());
+		configured = true;
 	}
 
 	/**
@@ -354,6 +353,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	}
 
 	private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
+		
 		if (backdropType == BackdropType.NORMAL)
 			configure(getElement(), keyboard, true, show);
 		else if (backdropType == BackdropType.NONE)
@@ -368,7 +368,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 							keyboard : k,
 							backdrop : b,
 							show : s
-	});
+						});
 	}-*/;
 	private native void configure(Element e, boolean k, String b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
@@ -405,7 +405,10 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 * Unlinks all the Java functions that fire the events.
 	 */
 	private native void unsetHandlerFunctions(Element e) /*-{
-		$wnd.jQuery(e).off();
+		$wnd.jQuery(e).off('hide');
+		$wnd.jQuery(e).off('hidden');
+		$wnd.jQuery(e).off('show');
+		$wnd.jQuery(e).off('shown');
 	}-*/;
 	// @formatter:on
 
@@ -445,6 +448,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 *            <b>true</b>.
 	 */
 	public void setCloseVisible(boolean visible) {
+		this.closeVisible = visible;
 		close.getElement().getStyle().setVisibility(visible
 															? Style.Visibility.VISIBLE
 															: Style.Visibility.HIDDEN);
