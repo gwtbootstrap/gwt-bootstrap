@@ -23,6 +23,8 @@ import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
 import com.github.gwtbootstrap.showcase.client.forms.Forms;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -86,7 +88,13 @@ public class Showcase extends Composite implements EntryPoint {
 		JavaScriptInjector
 				.inject("(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));");
 		
-		History.fireCurrentHistoryState();
+		Scheduler.get().scheduleFinally(new ScheduledCommand() {
+			
+			@Override
+			public void execute() {
+				History.fireCurrentHistoryState();
+			}
+		});
 	}
 
 	private void addSectionToContainer(String sectionName, String target,
