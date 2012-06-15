@@ -98,8 +98,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 
 	private String title;
 
-	private boolean closeVisible = true;
-
 	/**
 	 * Creates an empty, hidden widget.
 	 */
@@ -168,16 +166,12 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	@Override
 	public void setTitle(String title) {
 		this.title = title;
-		
+
 		header.clear();
 		if (title == null || title.isEmpty()) {
 			showHeader(false);
 		} else {
-			
-			close = new Close(DismissType.MODAL);
-			
-			setCloseVisible(closeVisible);
-			
+
 			header.add(close);
 			header.add(new Heading(3, title));
 			showHeader(true);
@@ -233,6 +227,15 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	}
 
 	/**
+	 * Get Keyboard enable state
+	 * 
+	 * @return true:enable false:disable
+	 */
+	public boolean isKeyboardEnable() {
+		return this.keyboard;
+	}
+
+	/**
 	 * Sets the type of the backdrop.
 	 * 
 	 * @param type
@@ -241,6 +244,16 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	public void setBackdrop(BackdropType type) {
 		backdropType = type;
 		reconfigure();
+
+	}
+
+	/**
+	 * Get backdrop type.
+	 * 
+	 * @return backdrop type.
+	 */
+	public BackdropType getBackdropType() {
+		return this.backdropType;
 	}
 
 	/**
@@ -248,7 +261,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 */
 	protected void reconfigure() {
 		if (configured) {
-			configure(keyboard, backdropType, show);
+			reconfigure(keyboard, backdropType, show);
 		}
 	}
 
@@ -275,18 +288,15 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 * {@inheritDoc}
 	 */
 	public void show() {
-		
-		if(!this.isAttached()) {
-			
-			//close anchor reset
-			setTitle(title);
-			
+
+		if (!this.isAttached()) {
+
 			RootPanel.get().add(this);
 		}
-		
+
 		changeVisibility("show");
 	}
-	
+
 	@Override
 	protected void onAttach() {
 		super.onAttach();
@@ -352,23 +362,72 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		currentlyShown.add(this);
 	}
 
-	private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
-		
-		if (backdropType == BackdropType.NORMAL)
-			configure(getElement(), keyboard, true, show);
-		else if (backdropType == BackdropType.NONE)
-			configure(getElement(), keyboard, false, show);
-		else if (backdropType == BackdropType.STATIC)
-			configure(getElement(), keyboard, BackdropType.STATIC.get(), show);
+	private void reconfigure(boolean keyboard, BackdropType backdropType, boolean show) {
+
+		if (backdropType == BackdropType.NORMAL) {
+			reconfigure(getElement(), keyboard, true, show);
+		} else if (backdropType == BackdropType.NONE) {
+			reconfigure(getElement(), keyboard, false, show);
+		} else if (backdropType == BackdropType.STATIC) {
+			reconfigure(getElement(), keyboard, BackdropType.STATIC.get(), show);
+		}
 	}
 
-	// @formatter:off
+	private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
+
+		if (backdropType == BackdropType.NORMAL) {
+			configure(getElement(), keyboard, true, show);
+		} else if (backdropType == BackdropType.NONE) {
+			configure(getElement(), keyboard, false, show);
+		} else if (backdropType == BackdropType.STATIC) {
+			configure(getElement(), keyboard, BackdropType.STATIC.get(), show);
+		}
+	}
+
+	//@formatter:off
+	
+	private native void reconfigure(Element e, boolean k, boolean b, boolean s) /*-{
+		var modal = null;
+		if($wnd.jQuery(e).data('modal')) {
+			modal = $wnd.jQuery(e).data('modal');
+			$wnd.jQuery(e).removeData('modal');
+		}
+		$wnd.jQuery(e).modal({
+						keyboard : k,
+						backdrop : b,
+						show : s
+					});
+					
+		if(modal) {
+			$wnd.jQuery(e).data('modal').isShown = modal.isShown;
+		}
+
+	}-*/;
+	private native void reconfigure(Element e, boolean k, String b, boolean s) /*-{
+		var modal = null;
+		if($wnd.jQuery(e).data('modal')) {
+			modal = $wnd.jQuery(e).data('modal');
+			$wnd.jQuery(e).removeData('modal');
+		}
+		$wnd.jQuery(e).modal({
+						keyboard : k,
+						backdrop : b,
+						show : s
+					});
+					
+		if(modal) {
+			$wnd.jQuery(e).data('modal').isShown = modal.isShown;
+		}
+	}-*/;
+	
+	
 	private native void configure(Element e, boolean k, boolean b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
 							keyboard : k,
 							backdrop : b,
 							show : s
 						});
+
 	}-*/;
 	private native void configure(Element e, boolean k, String b, boolean s) /*-{
 		$wnd.jQuery(e).modal({
@@ -410,7 +469,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		$wnd.jQuery(e).off('show');
 		$wnd.jQuery(e).off('shown');
 	}-*/;
-	// @formatter:on
+	//@formatter:on
 
 	/**
 	 * {@inheritDoc}
@@ -448,7 +507,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 *            <b>true</b>.
 	 */
 	public void setCloseVisible(boolean visible) {
-		this.closeVisible = visible;
 		close.getElement().getStyle().setVisibility(visible
 															? Style.Visibility.VISIBLE
 															: Style.Visibility.HIDDEN);
