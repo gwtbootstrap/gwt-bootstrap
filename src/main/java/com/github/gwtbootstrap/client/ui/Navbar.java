@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -71,106 +72,122 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class Navbar extends DivWidget {
 
-    private class NavbarInner extends DivWidget {
+	private class NavbarInner extends DivWidget {
 
-        public NavbarInner() {
-            setStyleName(NavbarConstants.NAVBAR_INNER);
-        }
-    }
+		public NavbarInner() {
+			setStyleName(NavbarConstants.NAVBAR_INNER);
+		}
+	}
 
-    private final Container container = getContainer();
-    private final NavbarInner navbarInner = new NavbarInner();
-    private Scrollspy spy;
+	private final Container container = getContainer();
 
-    private boolean scrollspy;
+	private final NavbarInner navbarInner = new NavbarInner();
 
-    /**
-     * Creates an empty Navbar.
-     */
-    public Navbar() {
-        setStyleName(NavbarConstants.NAVBAR);
-        navbarInner.add(container);
-        super.add(navbarInner);
-    }
+	private Scrollspy spy;
 
-    /**
-     * Defines the default container implementation. You can override this in a
-     * extended class if you want another implementation, like a
-     * {@link FluidContainer}.
-     */
-    protected Container getContainer() {
-        return new Container();
-    }
+	private boolean scrollspy;
 
-    /**
-     * Defines whether the Navbar should contain a {@link Scrollspy}.
-     *
-     * @param scrollspy <code>true</code> to include a Scrollspy. Default:
-     *                  <code>false</code>
-     */
-    public void setScrollspy(boolean scrollspy) {
-        this.scrollspy = scrollspy;
-    }
+	/**
+	 * Creates an empty Navbar.
+	 */
+	public Navbar() {
+		setStyleName(NavbarConstants.NAVBAR);
+		navbarInner.add(container);
+		super.add(navbarInner);
+		
+		setId(Document.get().createUniqueId());
+	}
 
-    /**
-     * Defines scrollspy target element.
-     *
-     * @param spyElement target element
-     */
-    public void setSpyElement(Element spyElement) {
+	public void setId(String id) {
+		getElement().setId(id);
+	}
+	
+	public String getId() {
+		return getElement().getId();
+	}
 
-        assert spyElement != null;
+	/**
+	 * Defines the default container implementation. You can override this in a
+	 * extended class if you want another implementation, like a
+	 * {@link FluidContainer}.
+	 */
+	protected Container getContainer() {
+		return new Container();
+	}
 
-        if (spy == null)
-            spy = new Scrollspy(this);
+	/**
+	 * Defines whether the Navbar should contain a {@link Scrollspy}.
+	 * 
+	 * @param scrollspy
+	 *            <code>true</code> to include a Scrollspy. Default:
+	 *            <code>false</code>
+	 */
+	public void setScrollspy(boolean scrollspy) {
+		this.scrollspy = scrollspy;
+	}
 
-        spy.setSpyElement(spyElement);
-        this.scrollspy = true;
-    }
+	/**
+	 * Defines scrollspy target element.
+	 * 
+	 * @param spyElement
+	 *            target element
+	 */
+	public void setSpyElement(Element spyElement) {
 
-    @Override
-    protected void onAttach() {
-        super.onAttach();
-        if (spy == null)
-            spy = new Scrollspy(this);
+		assert spyElement != null;
 
-        if (scrollspy) {
-            spy.configure();
-        }
-        // TODO make a unconfigure feature.
-    }
+		if (spy == null)
+			spy = new Scrollspy(this);
 
-    /**
-     * Fix the Navbar at the top or bottom of the screen.
-     * <p/>
-     * For this to work properly, the Navbar must not be a child of a
-     * {@link Container}.
-     *
-     * @param position the position of the Navbar
-     */
-    public void setPosition(NavbarPosition position) {
-        for (NavbarPosition p : NavbarPosition.values()) {
-            if (!p.get().isEmpty()) {
-                removeStyleName(p.get());
-            }
-        }
-        addStyle(position);
-    }
+		spy.setSpyElement(spyElement);
+		this.scrollspy = true;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void add(Widget child) {
-        container.add(child);
-    }
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		if (spy == null)
+			spy = new Scrollspy(this);
 
-    /**
-     * Adds a widget to the Navbar element, <b>not</b> the container.
-     *
-     * @param widget widget to add
-     */
-    protected void addWidget(Widget widget) {
-        super.add(widget);
-    }
+		if (scrollspy) {
+			spy.configure();
+		}
+		// TODO make a unconfigure feature.
+	}
+
+	/**
+	 * Fix the Navbar at the top or bottom of the screen.
+	 * <p/>
+	 * For this to work properly, the Navbar must not be a child of a
+	 * {@link Container}.
+	 * 
+	 * @param position
+	 *            the position of the Navbar
+	 */
+	public void setPosition(NavbarPosition position) {
+		for (NavbarPosition p : NavbarPosition.values()) {
+			if (!p.get().isEmpty()) {
+				removeStyleName(p.get());
+			}
+		}
+		addStyle(position);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void add(Widget child) {
+		container.add(child);
+	}
+
+	/**
+	 * Adds a widget to the Navbar element, <b>not</b> the container.
+	 * 
+	 * @param widget
+	 *            widget to add
+	 */
+	protected void addWidget(Widget widget) {
+		super.add(widget);
+	}
 }
