@@ -19,6 +19,8 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -38,17 +40,30 @@ public class TabPanel extends DivWidget {
 		}
 	}
 
-	private static class TabLink extends NavLink {
+	static class TabLink extends NavLink {
 
 		public TabLink(TabPane pane) {
-			super(pane.getHeading(), "#" + pane.getId());
+			super(pane.getHeading());
+			GWT.log("create tab link");
 
 			IconAnchor anchor = getAnchor();
 			anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
-
-			if (pane.isActive())
-				addStyleName(Constants.ACTIVE);
+			anchor.getElement().setAttribute(Constants.DATA_TARGET,  "#" + pane.getId());
+			if (pane.isActive()) {
+				GWT.log("set active to tab link");
+				show();
+			}
 		}
+		
+		public void show() {
+			setActive(true);
+			show(getAnchor().getElement());
+		}
+		
+		public native void show(Element e)/*-{
+			$wnd.jQuery(e).tab('show');
+		}-*/;
+
 	}
 
 	private NavTabs tabs = new NavTabs();
@@ -91,5 +106,24 @@ public class TabPanel extends DivWidget {
 		TabLink tabLink = new TabLink(child);
 		tabs.add(tabLink);
 		tabContent.add(child);
+	}
+	
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		
+		for(int i = 0;i < tabs.getWidgetCount();i++) {
+			
+			Widget widget = tabs.getWidget(i);
+			
+			if (widget instanceof TabLink) {
+				TabLink tabLink = (TabLink) widget;
+				
+				if(tabLink.isActive()) {
+					tabLink.show();
+					break;
+				}
+			}
+		}
 	}
 }
