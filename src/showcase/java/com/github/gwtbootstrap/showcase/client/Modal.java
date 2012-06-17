@@ -46,4 +46,5 @@ public class Modal extends Composite {
 	public void onSaveClick(ClickEvent e) {
 		m.hide();
 	}
+	
 }

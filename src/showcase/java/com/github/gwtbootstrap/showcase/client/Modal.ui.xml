@@ -31,6 +31,7 @@
                     <b:Modal ui:field="m" title="My Modal" backdrop="STATIC" keyboard="true" animation="true"
                             dynamicSafe="true">
                         <g:Label>Modal Content!</g:Label>
+                        
                         <b:ModalFooter>
                             <b:Button icon="FILE" type="PRIMARY" ui:field="saveButton">Save</b:Button>
                         </b:ModalFooter>
