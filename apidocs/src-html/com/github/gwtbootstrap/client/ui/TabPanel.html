@@ -27,80 +27,114 @@
 <span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.IconAnchor;<a name="line.19"></a>
 <span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.20"></a>
 <span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.resources.Bootstrap;<a name="line.21"></a>
-<span class="sourceLineNo">022</span>import com.google.gwt.user.client.ui.Widget;<a name="line.22"></a>
-<span class="sourceLineNo">023</span><a name="line.23"></a>
-<span class="sourceLineNo">024</span>//@formatter:off<a name="line.24"></a>
-<span class="sourceLineNo">025</span>/**<a name="line.25"></a>
-<span class="sourceLineNo">026</span> * The container for a tabbable nav.<a name="line.26"></a>
-<span class="sourceLineNo">027</span> * <a name="line.27"></a>
-<span class="sourceLineNo">028</span> * @since 2.0.4.0<a name="line.28"></a>
-<span class="sourceLineNo">029</span> * @author Dominik Mayer<a name="line.29"></a>
-<span class="sourceLineNo">030</span> */<a name="line.30"></a>
-<span class="sourceLineNo">031</span>//@formatter:on<a name="line.31"></a>
-<span class="sourceLineNo">032</span>public class TabPanel extends DivWidget {<a name="line.32"></a>
-<span class="sourceLineNo">033</span><a name="line.33"></a>
-<span class="sourceLineNo">034</span>        private static class TabContent extends DivWidget {<a name="line.34"></a>
+<span class="sourceLineNo">022</span>import com.google.gwt.core.client.GWT;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import com.google.gwt.user.client.Element;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import com.google.gwt.user.client.ui.Widget;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>//@formatter:off<a name="line.26"></a>
+<span class="sourceLineNo">027</span>/**<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * The container for a tabbable nav.<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * <a name="line.29"></a>
+<span class="sourceLineNo">030</span> * @since 2.0.4.0<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * @author Dominik Mayer<a name="line.31"></a>
+<span class="sourceLineNo">032</span> */<a name="line.32"></a>
+<span class="sourceLineNo">033</span>//@formatter:on<a name="line.33"></a>
+<span class="sourceLineNo">034</span>public class TabPanel extends DivWidget {<a name="line.34"></a>
 <span class="sourceLineNo">035</span><a name="line.35"></a>
-<span class="sourceLineNo">036</span>                public TabContent() {<a name="line.36"></a>
-<span class="sourceLineNo">037</span>                        setStyleName(Bootstrap.tab_content);<a name="line.37"></a>
-<span class="sourceLineNo">038</span>                }<a name="line.38"></a>
-<span class="sourceLineNo">039</span>        }<a name="line.39"></a>
-<span class="sourceLineNo">040</span><a name="line.40"></a>
-<span class="sourceLineNo">041</span>        private static class TabLink extends NavLink {<a name="line.41"></a>
+<span class="sourceLineNo">036</span>        private static class TabContent extends DivWidget {<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>                public TabContent() {<a name="line.38"></a>
+<span class="sourceLineNo">039</span>                        setStyleName(Bootstrap.tab_content);<a name="line.39"></a>
+<span class="sourceLineNo">040</span>                }<a name="line.40"></a>
+<span class="sourceLineNo">041</span>        }<a name="line.41"></a>
 <span class="sourceLineNo">042</span><a name="line.42"></a>
-<span class="sourceLineNo">043</span>                public TabLink(TabPane pane) {<a name="line.43"></a>
-<span class="sourceLineNo">044</span>                        super(pane.getHeading(), "#" + pane.getId());<a name="line.44"></a>
-<span class="sourceLineNo">045</span><a name="line.45"></a>
-<span class="sourceLineNo">046</span>                        IconAnchor anchor = getAnchor();<a name="line.46"></a>
-<span class="sourceLineNo">047</span>                        anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");<a name="line.47"></a>
+<span class="sourceLineNo">043</span>        static class TabLink extends NavLink {<a name="line.43"></a>
+<span class="sourceLineNo">044</span><a name="line.44"></a>
+<span class="sourceLineNo">045</span>                public TabLink(TabPane pane) {<a name="line.45"></a>
+<span class="sourceLineNo">046</span>                        super(pane.getHeading());<a name="line.46"></a>
+<span class="sourceLineNo">047</span>                        GWT.log("create tab link");<a name="line.47"></a>
 <span class="sourceLineNo">048</span><a name="line.48"></a>
-<span class="sourceLineNo">049</span>                        if (pane.isActive())<a name="line.49"></a>
-<span class="sourceLineNo">050</span>                                addStyleName(Constants.ACTIVE);<a name="line.50"></a>
-<span class="sourceLineNo">051</span>                }<a name="line.51"></a>
-<span class="sourceLineNo">052</span>        }<a name="line.52"></a>
-<span class="sourceLineNo">053</span><a name="line.53"></a>
-<span class="sourceLineNo">054</span>        private NavTabs tabs = new NavTabs();<a name="line.54"></a>
-<span class="sourceLineNo">055</span><a name="line.55"></a>
-<span class="sourceLineNo">056</span>        private TabContent tabContent = new TabContent();<a name="line.56"></a>
-<span class="sourceLineNo">057</span><a name="line.57"></a>
-<span class="sourceLineNo">058</span>        public TabPanel() {<a name="line.58"></a>
-<span class="sourceLineNo">059</span>                this(Bootstrap.Tabs.ABOVE);<a name="line.59"></a>
-<span class="sourceLineNo">060</span>        }<a name="line.60"></a>
-<span class="sourceLineNo">061</span><a name="line.61"></a>
-<span class="sourceLineNo">062</span>        public TabPanel(Bootstrap.Tabs position) {<a name="line.62"></a>
-<span class="sourceLineNo">063</span>                setStyle(position);<a name="line.63"></a>
-<span class="sourceLineNo">064</span>                super.add(tabs);<a name="line.64"></a>
-<span class="sourceLineNo">065</span>                super.add(tabContent);<a name="line.65"></a>
-<span class="sourceLineNo">066</span>        }<a name="line.66"></a>
-<span class="sourceLineNo">067</span><a name="line.67"></a>
-<span class="sourceLineNo">068</span>        public void setTabPosition(String position) {<a name="line.68"></a>
-<span class="sourceLineNo">069</span>                if (position.equalsIgnoreCase("below"))<a name="line.69"></a>
-<span class="sourceLineNo">070</span>                        setStyle(Bootstrap.Tabs.BELOW);<a name="line.70"></a>
-<span class="sourceLineNo">071</span>                else if (position.equalsIgnoreCase("left"))<a name="line.71"></a>
-<span class="sourceLineNo">072</span>                        setStyle(Bootstrap.Tabs.LEFT);<a name="line.72"></a>
-<span class="sourceLineNo">073</span>                else if (position.equalsIgnoreCase("right"))<a name="line.73"></a>
-<span class="sourceLineNo">074</span>                        setStyle(Bootstrap.Tabs.RIGHT);<a name="line.74"></a>
-<span class="sourceLineNo">075</span>                else<a name="line.75"></a>
-<span class="sourceLineNo">076</span>                        setStyle(Bootstrap.Tabs.ABOVE);<a name="line.76"></a>
-<span class="sourceLineNo">077</span>        }<a name="line.77"></a>
-<span class="sourceLineNo">078</span><a name="line.78"></a>
-<span class="sourceLineNo">079</span>        @Override<a name="line.79"></a>
-<span class="sourceLineNo">080</span>        public void add(Widget child) {<a name="line.80"></a>
-<span class="sourceLineNo">081</span><a name="line.81"></a>
-<span class="sourceLineNo">082</span>                if (!(child instanceof TabPane))<a name="line.82"></a>
-<span class="sourceLineNo">083</span>                        throw new IllegalArgumentException("Only Tab Panes can be added"<a name="line.83"></a>
-<span class="sourceLineNo">084</span>                                        + "to a TabPanel");<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span>                add((TabPane) child);<a name="line.86"></a>
-<span class="sourceLineNo">087</span>        }<a name="line.87"></a>
-<span class="sourceLineNo">088</span><a name="line.88"></a>
-<span class="sourceLineNo">089</span>        private void add(TabPane child) {<a name="line.89"></a>
-<span class="sourceLineNo">090</span><a name="line.90"></a>
-<span class="sourceLineNo">091</span>                TabLink tabLink = new TabLink(child);<a name="line.91"></a>
-<span class="sourceLineNo">092</span>                tabs.add(tabLink);<a name="line.92"></a>
-<span class="sourceLineNo">093</span>                tabContent.add(child);<a name="line.93"></a>
-<span class="sourceLineNo">094</span>        }<a name="line.94"></a>
-<span class="sourceLineNo">095</span>}<a name="line.95"></a>
+<span class="sourceLineNo">049</span>                        IconAnchor anchor = getAnchor();<a name="line.49"></a>
+<span class="sourceLineNo">050</span>                        anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");<a name="line.50"></a>
+<span class="sourceLineNo">051</span>                        anchor.getElement().setAttribute(Constants.DATA_TARGET,  "#" + pane.getId());<a name="line.51"></a>
+<span class="sourceLineNo">052</span>                        if (pane.isActive()) {<a name="line.52"></a>
+<span class="sourceLineNo">053</span>                                GWT.log("set active to tab link");<a name="line.53"></a>
+<span class="sourceLineNo">054</span>                                show();<a name="line.54"></a>
+<span class="sourceLineNo">055</span>                        }<a name="line.55"></a>
+<span class="sourceLineNo">056</span>                }<a name="line.56"></a>
+<span class="sourceLineNo">057</span>                <a name="line.57"></a>
+<span class="sourceLineNo">058</span>                public void show() {<a name="line.58"></a>
+<span class="sourceLineNo">059</span>                        setActive(true);<a name="line.59"></a>
+<span class="sourceLineNo">060</span>                        show(getAnchor().getElement());<a name="line.60"></a>
+<span class="sourceLineNo">061</span>                }<a name="line.61"></a>
+<span class="sourceLineNo">062</span>                <a name="line.62"></a>
+<span class="sourceLineNo">063</span>                public native void show(Element e)/*-{<a name="line.63"></a>
+<span class="sourceLineNo">064</span>                        $wnd.jQuery(e).tab('show');<a name="line.64"></a>
+<span class="sourceLineNo">065</span>                }-*/;<a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span>        }<a name="line.67"></a>
+<span class="sourceLineNo">068</span><a name="line.68"></a>
+<span class="sourceLineNo">069</span>        private NavTabs tabs = new NavTabs();<a name="line.69"></a>
+<span class="sourceLineNo">070</span><a name="line.70"></a>
+<span class="sourceLineNo">071</span>        private TabContent tabContent = new TabContent();<a name="line.71"></a>
+<span class="sourceLineNo">072</span><a name="line.72"></a>
+<span class="sourceLineNo">073</span>        public TabPanel() {<a name="line.73"></a>
+<span class="sourceLineNo">074</span>                this(Bootstrap.Tabs.ABOVE);<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        }<a name="line.75"></a>
+<span class="sourceLineNo">076</span><a name="line.76"></a>
+<span class="sourceLineNo">077</span>        public TabPanel(Bootstrap.Tabs position) {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>                setStyle(position);<a name="line.78"></a>
+<span class="sourceLineNo">079</span>                super.add(tabs);<a name="line.79"></a>
+<span class="sourceLineNo">080</span>                super.add(tabContent);<a name="line.80"></a>
+<span class="sourceLineNo">081</span>        }<a name="line.81"></a>
+<span class="sourceLineNo">082</span><a name="line.82"></a>
+<span class="sourceLineNo">083</span>        public void setTabPosition(String position) {<a name="line.83"></a>
+<span class="sourceLineNo">084</span>                if (position.equalsIgnoreCase("below"))<a name="line.84"></a>
+<span class="sourceLineNo">085</span>                        setStyle(Bootstrap.Tabs.BELOW);<a name="line.85"></a>
+<span class="sourceLineNo">086</span>                else if (position.equalsIgnoreCase("left"))<a name="line.86"></a>
+<span class="sourceLineNo">087</span>                        setStyle(Bootstrap.Tabs.LEFT);<a name="line.87"></a>
+<span class="sourceLineNo">088</span>                else if (position.equalsIgnoreCase("right"))<a name="line.88"></a>
+<span class="sourceLineNo">089</span>                        setStyle(Bootstrap.Tabs.RIGHT);<a name="line.89"></a>
+<span class="sourceLineNo">090</span>                else<a name="line.90"></a>
+<span class="sourceLineNo">091</span>                        setStyle(Bootstrap.Tabs.ABOVE);<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        }<a name="line.92"></a>
+<span class="sourceLineNo">093</span><a name="line.93"></a>
+<span class="sourceLineNo">094</span>        @Override<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        public void add(Widget child) {<a name="line.95"></a>
+<span class="sourceLineNo">096</span><a name="line.96"></a>
+<span class="sourceLineNo">097</span>                if (!(child instanceof TabPane))<a name="line.97"></a>
+<span class="sourceLineNo">098</span>                        throw new IllegalArgumentException("Only Tab Panes can be added"<a name="line.98"></a>
+<span class="sourceLineNo">099</span>                                        + "to a TabPanel");<a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span>                add((TabPane) child);<a name="line.101"></a>
+<span class="sourceLineNo">102</span>        }<a name="line.102"></a>
+<span class="sourceLineNo">103</span><a name="line.103"></a>
+<span class="sourceLineNo">104</span>        private void add(TabPane child) {<a name="line.104"></a>
+<span class="sourceLineNo">105</span><a name="line.105"></a>
+<span class="sourceLineNo">106</span>                TabLink tabLink = new TabLink(child);<a name="line.106"></a>
+<span class="sourceLineNo">107</span>                tabs.add(tabLink);<a name="line.107"></a>
+<span class="sourceLineNo">108</span>                tabContent.add(child);<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        }<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        <a name="line.110"></a>
+<span class="sourceLineNo">111</span>        @Override<a name="line.111"></a>
+<span class="sourceLineNo">112</span>        protected void onAttach() {<a name="line.112"></a>
+<span class="sourceLineNo">113</span>                super.onAttach();<a name="line.113"></a>
+<span class="sourceLineNo">114</span>                <a name="line.114"></a>
+<span class="sourceLineNo">115</span>                for(int i = 0;i &lt; tabs.getWidgetCount();i++) {<a name="line.115"></a>
+<span class="sourceLineNo">116</span>                        <a name="line.116"></a>
+<span class="sourceLineNo">117</span>                        Widget widget = tabs.getWidget(i);<a name="line.117"></a>
+<span class="sourceLineNo">118</span>                        <a name="line.118"></a>
+<span class="sourceLineNo">119</span>                        if (widget instanceof TabLink) {<a name="line.119"></a>
+<span class="sourceLineNo">120</span>                                TabLink tabLink = (TabLink) widget;<a name="line.120"></a>
+<span class="sourceLineNo">121</span>                                <a name="line.121"></a>
+<span class="sourceLineNo">122</span>                                if(tabLink.isActive()) {<a name="line.122"></a>
+<span class="sourceLineNo">123</span>                                        tabLink.show();<a name="line.123"></a>
+<span class="sourceLineNo">124</span>                                        break;<a name="line.124"></a>
+<span class="sourceLineNo">125</span>                                }<a name="line.125"></a>
+<span class="sourceLineNo">126</span>                        }<a name="line.126"></a>
+<span class="sourceLineNo">127</span>                }<a name="line.127"></a>
+<span class="sourceLineNo">128</span>        }<a name="line.128"></a>
+<span class="sourceLineNo">129</span>}<a name="line.129"></a>
 
 
 
