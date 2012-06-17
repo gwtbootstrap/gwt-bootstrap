@@ -50,6 +50,10 @@ public class Scrollspy {
 	public Scrollspy(Navbar navbar) {
 		super();
 		this.navbar = navbar;
+		
+		if(navbar.getId() != null && navbar.getId().length() > 0) {
+			setTarget("#" + navbar.getId());
+		}
 	}
 
 	/**
