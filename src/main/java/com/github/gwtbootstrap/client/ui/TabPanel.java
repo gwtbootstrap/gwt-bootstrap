@@ -19,7 +19,6 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -29,6 +28,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @since 2.0.4.0
  * @author Dominik Mayer
+ * @author ohashi keisuke
  */
 //@formatter:on
 public class TabPanel extends DivWidget {
@@ -44,13 +44,11 @@ public class TabPanel extends DivWidget {
 
 		public TabLink(TabPane pane) {
 			super(pane.getHeading());
-			GWT.log("create tab link");
 
 			IconAnchor anchor = getAnchor();
 			anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
 			anchor.getElement().setAttribute(Constants.DATA_TARGET,  "#" + pane.getId());
 			if (pane.isActive()) {
-				GWT.log("set active to tab link");
 				show();
 			}
 		}
