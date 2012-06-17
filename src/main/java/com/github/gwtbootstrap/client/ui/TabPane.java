@@ -18,7 +18,6 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.Random;
 
@@ -54,8 +53,6 @@ public class TabPane extends DivWidget {
 	}
 
 	public void setActive(boolean active) {
-		
-		GWT.log("tabpane set active");
 		
 		if (active) {
 			addStyleName(Constants.ACTIVE);
