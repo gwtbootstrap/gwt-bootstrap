@@ -93,7 +93,7 @@
                 <g:HTMLPanel>
                     <h2>TabPanel</h2>
                     <b:TabPanel tabPosition="left">
-                        <b:TabPane heading="prost" href="1"><g:Label>Lalala</g:Label></b:TabPane>
+                        <b:TabPane heading="prost"><g:Label>Lalala</g:Label></b:TabPane>
                         <b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
                     </b:TabPanel>
                     <ul>
