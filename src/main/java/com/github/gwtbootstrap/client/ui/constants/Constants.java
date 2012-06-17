@@ -143,4 +143,6 @@ public interface Constants {
 
 	public static final String ADD_ON = "add-on";
 
+	public static final String DATA_TARGET = "data-target";
+
 }

@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.Random;
 
@@ -34,7 +35,7 @@ public class TabPane extends DivWidget {
 	private String heading;
 
 	private String href;
-
+	
 	public @UiConstructor
 	TabPane(String heading) {
 		setStyleName(Bootstrap.tab_pane);
@@ -53,11 +54,16 @@ public class TabPane extends DivWidget {
 	}
 
 	public void setActive(boolean active) {
-		if (active)
-			setStyleName(Constants.ACTIVE);
-		else
+		
+		GWT.log("tabpane set active");
+		
+		if (active) {
+			addStyleName(Constants.ACTIVE);
+		} else {
 			removeStyleName(Constants.ACTIVE);
+		}
 	}
+	
 
 	public String getHeading() {
 		return heading;
