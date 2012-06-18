@@ -118,6 +118,24 @@
 						License v2.0</a>
 					.
 				</b:Paragraph>
+				<b:Paragraph>
+					"Bootstrap, from Twitter" Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+				</b:Paragraph>
+				<b:Paragraph>
+					<a href="http://twitter.github.com/bootstrap" target="_blank">Documentation of Bootstrap,from Twitter</a> is used our showcase use as a reference,
+					licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+				</b:Paragraph>
+				<b:Paragraph>
+					Icons from <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome</a>,
+					licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+				</b:Paragraph>
+				<b:Paragraph>
+					Datepicker component from <a href="http://www.eyecon.ro/bootstrap-datepicker/">Datepicker for Bootstrap</a>,
+					licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+				</b:Paragraph>
+				<b:Paragraph>
+					About licenses of other Java libraries,Please see our <a href="http://gwtbootstrap.github.com/gwt-bootstrap/dependencies.html">maven site</a>.
+				</b:Paragraph>
 			</b:Footer>
 		</b:FluidContainer>
 	</g:FlowPanel>
