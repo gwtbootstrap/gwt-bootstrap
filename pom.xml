@@ -380,7 +380,6 @@
 						<configuration>
 							<modules>
 								<module>com.github.gwtbootstrap.showcase.Showcase</module>
-								<module>com.github.gwtbootstrap.showcase.CustomCssShowcase</module>
 							</modules>
 							<localWorkers>2</localWorkers>
 							<runTarget>index.html</runTarget>
