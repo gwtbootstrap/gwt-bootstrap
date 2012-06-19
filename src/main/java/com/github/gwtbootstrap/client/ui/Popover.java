@@ -19,7 +19,6 @@ import com.github.gwtbootstrap.client.ui.base.HoverBase;
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.HasWidgets;
 
 //@formatter:off
 /**
@@ -28,12 +27,16 @@ import com.google.gwt.user.client.ui.HasWidgets;
  * @since 2.0.4.0
  * 
  * @author Dominik Mayer
+ * @author ohashi keisuke
  * 
  * @see <a href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap documentation</a>
  * @see Tooltip
  */
 //@formatter:on
-public class Popover extends HoverBase implements HasWidgets {
+public class Popover extends HoverBase {
+
+	private String content;
+	private String heading;
 
 	/**
 	 * Creates an empty Popover.
@@ -46,19 +49,23 @@ public class Popover extends HoverBase implements HasWidgets {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void setText(String text) {
-		setDataAttribute("content", text);
+	public void setText(String content) {
+		this.content = content;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getText() {
-		return getDataAttribute("content");
+		return this.content;
 	}
 
-	public void setHeading(String text) {
-		setDataAttribute("original-title", text);
+	public void setHeading(String heading) {
+		this.heading = heading;
+	}
+	
+	public String getHeading() {
+		return this.heading;
 	}
 
 	/**
@@ -66,7 +73,14 @@ public class Popover extends HoverBase implements HasWidgets {
 	 */
 	@Override
 	public void reconfigure() {
-		configure(getElement(), getAnimation(), getPlacement().get(),
+		
+		removeDataIfExists();
+		
+		setDataAttribute(getWidget().getElement(), "original-title", heading);
+		
+		setDataAttribute(getWidget().getElement(), "content", content);
+		
+		configure(getWidget().getElement(), getAnimation(), getPlacement().get(),
 				getTrigger().get(), getShowDelay(), getHideDelay());
 	}
 
@@ -75,7 +89,7 @@ public class Popover extends HoverBase implements HasWidgets {
 	 */
 	@Override
 	protected void changeVisibility(VisibilityChange visibilityChange) {
-		changeVisibility(getElement(), visibilityChange.get());
+		changeVisibility(getWidget().getElement(), visibilityChange.get());
 	}
 
 	private native void configure(Element element, boolean animated,
@@ -94,4 +108,9 @@ public class Popover extends HoverBase implements HasWidgets {
 	private native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).popover(visibility);
 	}-*/;
+
+	@Override
+	protected String getDataName() {
+		return "popover";
+	}
 }

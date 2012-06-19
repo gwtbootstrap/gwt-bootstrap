@@ -15,11 +15,9 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.HasHref;
-import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.HoverBase;
-import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.Placement;
+import com.github.gwtbootstrap.client.ui.constants.Trigger;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
@@ -39,80 +37,39 @@ import com.google.gwt.user.client.ui.Widget;
  * @see Popover
  */
 //@formatter:on
-public class Tooltip extends HoverBase implements HasHref, HasType<ButtonType> {
+public class Tooltip extends HoverBase {
 
-	private IconAnchor anchor = new IconAnchor();
+	private String tooltip;
 
 	/**
 	 * Creates an empty link without text and tooltip text.
 	 */
 	public Tooltip() {
 		super();
-		super.add(anchor);
 	}
 
 	/**
 	 * Creates a link with the
 	 * 
-	 * @param text
-	 * @param tooltip
+	 * @param tooltip get
 	 */
-	public Tooltip(String text, String tooltip) {
+	public Tooltip(String tooltip) {
 		this();
-		setText(text);
-		setTooltip(tooltip);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setText(String text) {
-		anchor.setText(text);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getText() {
-		return anchor.getText();
+		setText(tooltip);
 	}
 
 	/**
 	 * Sets the text that should appear in the tooltip.
 	 * 
-	 * @param text
+	 * @param tooltop
 	 *            the text
 	 */
-	public void setTooltip(String text) {
-		setDataAttribute("original-title", (text));
+	public void setText(String tooltop) {
+		this.tooltip = tooltop;
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setHref(String href) {
-		anchor.setHref(href);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getHref() {
-		return anchor.getHref();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setTargetHistoryToken(String targetHistoryToken) {
-		anchor.setTargetHistoryToken(targetHistoryToken);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getTargetHistoryToken() {
-		return anchor.getTargetHistoryToken();
+	
+	public String getText() {
+		return this.tooltip;
 	}
 
 	/**
@@ -120,7 +77,12 @@ public class Tooltip extends HoverBase implements HasHref, HasType<ButtonType> {
 	 */
 	@Override
 	public void reconfigure() {
-		configure(getElement(), getAnimation(), getPlacement().get(),
+		
+		removeDataIfExists();
+		
+		setDataAttribute(getWidget().getElement(), "original-title", tooltip);
+		
+		configure(getWidget().getElement(), getAnimation(), getPlacement().get(),
 				getTrigger().get(), getShowDelay(), getHideDelay());
 	}
 
@@ -128,27 +90,24 @@ public class Tooltip extends HoverBase implements HasHref, HasType<ButtonType> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void add(Widget w) {
-		anchor.add(w);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void insert(Widget w, int beforeIndex) {
-		anchor.insert(w, beforeIndex);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	protected void changeVisibility(VisibilityChange visibilityChange) {
-		changeVisibility(getElement(), visibilityChange.get());
+		changeVisibility(getWidget().getElement(), visibilityChange.get());
+	}
+	
+	/**
+	 * 
+	 * @param e
+	 * @param animated
+	 * @param placement
+	 * @param trigger
+	 * @param showDelay
+	 * @param hideDelay
+	 */
+	public static void configure(Widget e,boolean animated,Placement placement,Trigger trigger,int showDelay,int hideDelay) {
+		configure(e.getElement(), animated, placement.get(),trigger.get(), showDelay, hideDelay);
 	}
 
-	private native void configure(Element element, boolean animated,
+	private static native void configure(Element element, boolean animated,
 			String placement, String trigger, int showDelay, int hideDelay) /*-{
 		$wnd.jQuery(element).tooltip({
 			animation : animated,
@@ -161,18 +120,16 @@ public class Tooltip extends HoverBase implements HasHref, HasType<ButtonType> {
 		});
 	}-*/;
 
-	private native void changeVisibility(Element e, String visibility) /*-{
+	public static native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).tooltip(visibility);
 	}-*/;
 
-    /**
-     * Support for setting Button styles in tooltips, so tooltips will look like buttons.
-     *
-     * @param style ButtonStyle for the tooltip.
-     */
-    @Override
-    public void setType(ButtonType style) {
-        anchor.getElement().setClassName("btn " + style.get());
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getDataName() {
+		return "tooltip";
+	}
 
 }

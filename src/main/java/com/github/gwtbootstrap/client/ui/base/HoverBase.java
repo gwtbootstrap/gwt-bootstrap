@@ -15,10 +15,19 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.Trigger;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**
@@ -31,8 +40,9 @@ import com.google.gwt.user.client.ui.HasText;
 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap documentation</a>
 */
 //@formatter:on
-public abstract class HoverBase extends ComplexWidget implements IsAnimated,
-		HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
+public abstract class HoverBase extends ComplexWidget implements HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
+
+	Widget widget;
 
 	/**
 	 * Whether the widget is animated or not.
@@ -72,19 +82,34 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	@Override
 	protected void onLoad() {
 		super.onLoad();
+		
+		removeDataIfExists();
+		
 		reconfigure();
 	}
+	
+	protected void removeDataIfExists() {
+		removeDataIfExists(getWidget().getElement(), getDataName());
+	}
+	
+	protected native void removeDataIfExists(Element e, String dataName) /*-{
+		if($wnd.jQuery(e).data(dataName)) {
+			$wnd.jQuery(e).removeData(dataName);
+		}
+	}-*/;
 
 	/**
 	 * Adds an HTML data attribute to the widget's tag.
+	 * 
+	 * @param e target element
 	 * 
 	 * @param attribute
 	 *            the name of the attribute without leading <code>"data-"</code>
 	 * @param value
 	 *            the value to be stored
 	 */
-	protected void setDataAttribute(String attribute, String value) {
-		getElement().setAttribute("data-" + attribute, value);
+	protected void setDataAttribute(Element e , String attribute, String value) {
+		e.setAttribute("data-" + attribute, value);
 	}
 
 	/**
@@ -110,7 +135,7 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	 * be called when a parameter is updated because it would deactivate all
 	 * other parameters. No idea why...
 	 */
-	protected abstract void reconfigure();
+	public abstract void reconfigure();
 
 	/**
 	 * {@inheritDoc}
@@ -204,4 +229,143 @@ public abstract class HoverBase extends ComplexWidget implements IsAnimated,
 	 */
 	protected abstract void changeVisibility(VisibilityChange visibilityChange);
 
+	/**
+	 * Adds a widget to this panel.
+	 * 
+	 * @param w
+	 *            the child widget to be added
+	 */
+	@Override
+	public void add(Widget w) {
+		// Can't add() more than one widget to a SimplePanel.
+		if (getWidget() != null) {
+			throw new IllegalStateException("SimplePanel can only contain one child widget");
+		}
+		setWidget(w);
+	}
+
+	/**
+	 * Gets the panel's child widget.
+	 * 
+	 * @return the child widget, or <code>null</code> if none is present
+	 */
+	public Widget getWidget() {
+		return widget;
+	}
+
+	public Iterator<Widget> iterator() {
+		// Return a simple iterator that enumerates the 0 or 1 elements in this
+		// panel.
+		return new Iterator<Widget>() {
+
+			boolean hasElement = widget != null;
+
+			Widget returned = null;
+
+			public boolean hasNext() {
+				return hasElement;
+			}
+
+			public Widget next() {
+				if (!hasElement || (widget == null)) {
+					throw new NoSuchElementException();
+				}
+				hasElement = false;
+				return (returned = widget);
+			}
+
+			public void remove() {
+				if (returned != null) {
+					HoverBase.this.remove(returned);
+				}
+			}
+		};
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		// Validate.
+		if (widget != w) {
+			return false;
+		}
+
+		// Orphan.
+		try {
+			orphan(w);
+		} finally {
+			// Physical detach.
+			getContainerElement().removeChild(w.getElement());
+
+			// Logical detach.
+			widget = null;
+		}
+		return true;
+	}
+
+	public void setWidget(IsWidget w) {
+		setWidget(asWidgetOrNull(w));
+	}
+	
+	/**
+	 * Sets this panel's widget. Any existing child widget will be removed.
+	 * 
+	 * @param w
+	 *            the panel's new widget, or <code>null</code> to clear the
+	 *            panel
+	 */
+	public void setWidget(Widget w) {
+		// Validate
+		if (w == widget) {
+			return;
+		}
+		
+		if(w.getParent() != null) {
+			if(widget != null) {
+				remove(widget);
+			}
+			widget = w;
+			return;
+		}
+
+		// Detach new child.
+		if (w != null) {
+			w.removeFromParent();
+		}
+
+		// Remove old child.
+		if (widget != null) {
+			remove(widget);
+		}
+
+		// Logical attach.
+		widget = w;
+
+		if (w != null) {
+			// Physical attach.
+			DOM.appendChild(getContainerElement(), widget.getElement());
+
+			adopt(widget);
+		}
+	}
+
+	/**
+	 * Override this method to specify that an element other than the root
+	 * element be the container for the panel's child widget. This can be useful
+	 * when you want to create a simple panel that decorates its contents.
+	 * 
+	 * Note that this method continues to return the
+	 * {@link com.google.gwt.user.client.Element} class defined in the
+	 * <code>User</code> module to maintain backwards compatibility.
+	 * 
+	 * @return the element to be used as the panel's container
+	 */
+	protected com.google.gwt.user.client.Element getContainerElement() {
+		return getElement();
+	}
+	
+	/**
+	 * Get data name of JS Data API.
+	 * @return data name
+	 */
+	protected abstract String getDataName();
 }
