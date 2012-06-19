@@ -1,57 +1,109 @@
-<!--
-
-     Copyright 2012 GWT-Bootstrap
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-         http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
-
--->
+<!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version 
+	2.0 (the "License"); you may not use this file except in compliance with 
+	the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'
-             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
-    <g:HTMLPanel>
-        <b:PageHeader subtext="have fun with tooltips.">Tooltips</b:PageHeader>
-        <b:Row>
-            <b:Column size="8">
-                <b:Well>
-                    <g:HTMLPanel>
-                        Tight pants next level keffiyeh
-                        <b:Tooltip text='you probably' tooltip='first tooltip' href="#" />
-                        haven't heard of them. Photo booth beard raw denim
-                        letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable
-                        quinoa 8-bit american apparel
-                        <b:Tooltip text='have a' tooltip='another tooltip' href="#"/>
-                        terry richardson vinyl chambray. Beard stumptown, cardigans
-                        banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan
-                        chambray. A really ironic artisan<b:Tooltip text='whatever keytar'
-                                                                    tooltip='Another one here too' href="#"/>, scenester
-                        farm-to-table banksy Austin <b:Tooltip text='twitter handle' tooltip='The last tip' href="#"/> freegan cred raw denim single-origin coffee viral.
-                    </g:HTMLPanel>
-                </b:Well>
-                <g:HTMLPanel>
-                    <pre class="prettyprint linenums">
-&lt;b:Tooltip text='have a' tooltip='another tooltip' href="#"/&gt;
-                    </pre>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="4">
-                <g:HTMLPanel>
-                    You can also made tooltips look like
-                    <b:Tooltip tooltip="But its not a button, is a tooltip :)" type="INFO">Buttons</b:Tooltip>
-                    <pre class="prettyprint linenums">
-&lt;b:Tooltip text='have a' tooltip='another tooltip' href="#" type="INFO" /&gt;
-                    </pre>
-                </g:HTMLPanel>
-            </b:Column>
-        </b:Row>
-    </g:HTMLPanel>
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+	xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
+	<g:HTMLPanel>
+		<b:PageHeader subtext="have fun with tooltips.">Tooltips</b:PageHeader>
+		<b:Row>
+			<b:Column size="12">
+				<b:Well>
+					<g:HTMLPanel>
+						Tight pants next level keffiyeh
+						<b:Tooltip text='first tooltip'>
+							<bs:IconAnchor href="#">you probably</bs:IconAnchor>
+						</b:Tooltip>
+						haven't heard of them. Photo booth beard raw denim
+						letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's
+						fixie sustainable
+						quinoa 8-bit american apparel
+						<b:Tooltip text='another tooltip'>
+							<bs:IconAnchor href="#">have a</bs:IconAnchor>
+						</b:Tooltip>
+						terry richardson vinyl chambray. Beard stumptown, cardigans
+						banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko
+						mcsweeney's cleanse vegan
+						chambray. A really ironic artisan
+						<b:Tooltip text='Another one here too'>
+							<bs:IconAnchor href="#">whatever keytar</bs:IconAnchor>
+						</b:Tooltip>
+						, scenester
+						farm-to-table banksy Austin
+						<b:Tooltip text='The last tip'>
+							<bs:IconAnchor href="#">twitter handle</bs:IconAnchor>
+						</b:Tooltip>
+						freegan cred raw denim single-origin coffee viral.
+					</g:HTMLPanel>
+				</b:Well>
+				<g:HTMLPanel>
+					<pre class="prettyprint linenums">
+&lt;b:Tooltip text='another tooltip'&gt;&lt;bs:IconAnchor href='#'&gt;&lt;have a&lt;/bs:IconAnchor&gt;</pre>
+			</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="12">
+				<g:HTMLPanel>
+					You can also made tooltips look like
+					<br />
+					<b:Tooltip text="Show a tooltip on mouse over button. :)">
+						<b:Button type="INFO">Buttons</b:Button>
+					</b:Tooltip>
+					<br />
+					<b:Tooltip text="Show a tooltip on Textbox get focus :)"
+						trigger="FOCUS">
+						<b:TextBox />
+					</b:Tooltip>
+					<b:Tooltip text="Show a tooltip on clic button"
+						trigger="MANUAL">
+						<b:Button type="INFO" ui:field="button">Click me!</b:Button>
+					</b:Tooltip>
+					<pre class="prettyprint linenums">
+&lt;b:Tooltip text='another tooltip'&gt;&lt;b:Button type="INFO"&gt;Buttons&lt;/b:Button&gt;&lt;/b:Tooltip&gt;
+&lt;b:Tooltip text='another tooltip' trigger="FOCUS"&gt;&lt;b:TextBox/&gt;&lt;/b:Tooltip&gt;
+&lt;b:Tooltip text='another tooltip' trigger="MANUAL"&gt;&lt;b:Button type="INFO"&gt;Click me!&lt;/b:Button&gt;&lt;/b:Tooltip&gt;</pre>
+					<b:AlertBlock type="INFO" heading="Manual tooltip">
+					<p>
+					If you want to show tooltip on your need time,<br/>
+					You should set MANUAL to Tooltip's trigger attribute and call <code>Tooltip#changeVisibility</code> static method like below.</p>
+					<pre class="prettyprint linenums">
+@UiHandler("button")
+public void onClickButton(ClickEvent e) {
+    Tooltip.changeVisibility(e.getRelativeElement(), VisibilityChange.TOGGLE.get());
+}</pre>
+					</b:AlertBlock>
+					<p>
+					If you want to apply tooltop on your code,Create <code>Tooltip</code> instance ,Call <code>Tooltip#setWidget</code> ,Set setting by setters and Call <code>Tooltip#configure</code>.<br/>
+					<strong>For example</strong>,<code>DropdownButton</code> can not add <code>Tooltip</code> as a child.If you need apply <code>Tooltip</code> to DropdownButton children,you should write like below.
+					</p>
+					<b:DropdownButton text="Tooltip Button">
+						<b:NavLink ui:field="fooNavlink">foo</b:NavLink>
+						<b:NavLink ui:field="barNavlink">bar</b:NavLink>
+						<b:Divider ui:field="divider"/>
+						<b:NavText ui:field="navText">text</b:NavText>
+					</b:DropdownButton>
+					<b:Label>*.ui.xml</b:Label>
+					<pre class="prettyprint linenums">
+&lt;b:DropdownButton text="Tooltip Button"&gt;
+	&lt;b:NavLink ui:field="fooNavlink"&gt;foo&lt;/b:NavLink&gt;
+	&lt;b:NavLink ui:field="barNavlink"&gt;bar&lt;/b:NavLink&gt;
+	&lt;b:Divider ui:field="divider"/&gt;
+	&lt;b:NavText ui:field="navText"&gt;text&lt;/b:NavText&gt;
+&lt;/b:DropdownButton&gt;</pre>
+					<b:Label>*.java</b:Label>
+					<pre class="prettyprint linenums">
+private void setupTooltip(Widget w, String message) {
+	Tooltip tooltip = new Tooltip();
+	tooltip.setWidget(w);
+	tooltip.setText(message);
+	tooltip.setPlacement(Placement.RIGHT);
+	tooltip.reconfigure();
+}</pre>
+				</g:HTMLPanel>
+			</b:Column>
+		</b:Row>
+	</g:HTMLPanel>
 </ui:UiBinder>

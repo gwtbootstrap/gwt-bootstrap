@@ -15,11 +15,17 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Divider;
+import com.github.gwtbootstrap.client.ui.NavLink;
+import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.Tooltip;
+import com.github.gwtbootstrap.client.ui.constants.Placement;
+import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -28,12 +34,47 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Tooltips extends Composite {
 
-    interface TooltipsUiBinder extends UiBinder<Widget, Tooltips> {
-    }
+	@UiField
+	NavLink fooNavlink;
 
-    private static TooltipsUiBinder ourUiBinder = GWT.create(TooltipsUiBinder.class);
+	@UiField
+	NavLink barNavlink;
 
-    public Tooltips() {
-        initWidget(ourUiBinder.createAndBindUi(this));
-    }
+	@UiField
+	Divider divider;
+
+	@UiField
+	NavText navText;
+
+	interface TooltipsUiBinder extends UiBinder<Widget, Tooltips> {
+	}
+
+	private static TooltipsUiBinder ourUiBinder = GWT.create(TooltipsUiBinder.class);
+
+	public Tooltips() {
+		initWidget(ourUiBinder.createAndBindUi(this));
+		
+		setupTooltip(fooNavlink, "say foo!");
+		setupTooltip(barNavlink, "say bar!");
+		setupTooltip(divider, "It's a divider");
+		setupTooltip(navText, "You can use this after login.");
+
+	}
+	
+	private void setupTooltip(Widget w, String message) {
+		Tooltip tooltip = new Tooltip();
+		
+		tooltip.setWidget(w);
+		
+		tooltip.setText(message);
+		
+		tooltip.setPlacement(Placement.RIGHT);
+		
+		tooltip.reconfigure();
+	}
+
+	@UiHandler("button")
+	public void onClickButton(ClickEvent e) {
+		Tooltip.changeVisibility(e.getRelativeElement(), VisibilityChange.TOGGLE.get());
+	}
 }
