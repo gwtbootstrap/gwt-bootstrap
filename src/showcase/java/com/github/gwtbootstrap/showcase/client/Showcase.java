@@ -73,6 +73,7 @@ public class Showcase extends Composite implements EntryPoint {
 		addSectionToContainer("Modal", "modal", new Modal());
         addSectionToContainer("Datepicker", "datepicker", new Datepicker());
         addSectionToContainer("Tooltip", "tooltip", new Tooltips());
+        addSectionToContainer("Popover", "popover", new Popovers());
         addSectionToContainer("Icons", "icons", new Icons());
 
 		RootPanel.get("content").add(this);

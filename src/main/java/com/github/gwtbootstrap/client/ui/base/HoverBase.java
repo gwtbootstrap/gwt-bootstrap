@@ -94,6 +94,14 @@ public abstract class HoverBase extends ComplexWidget implements HasWidgets, Has
 	
 	protected native void removeDataIfExists(Element e, String dataName) /*-{
 		if($wnd.jQuery(e).data(dataName)) {
+			var data = $wnd.jQuery(e).data(dataName);
+			var eventIn, eventOut;
+			if (data.options.trigger != 'manual') {
+				eventIn  = data.options.trigger == 'hover' ? 'mouseenter' : 'focus'
+				eventOut = data.options.trigger == 'hover' ? 'mouseleave' : 'blur'
+				data.$element.off(eventIn);
+				data.$element.off(eventOut);
+			}
 			$wnd.jQuery(e).removeData(dataName);
 		}
 	}-*/;
