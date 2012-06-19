@@ -76,7 +76,7 @@ public void onClickButton(ClickEvent e) {
 }</pre>
 					</b:AlertBlock>
 					<p>
-					If you want to apply tooltop on your code,Create <code>Tooltip</code> instance ,Call <code>Tooltip#setWidget</code> ,Set setting by setters and Call <code>Tooltip#configure</code>.<br/>
+					If you want to apply tooltip on your code,Create <code>Tooltip</code> instance ,Call <code>Tooltip#setWidget</code> ,Set setting by setters and Call <code>Tooltip#reconfigure</code>.<br/>
 					<strong>For example</strong>,<code>DropdownButton</code> can not add <code>Tooltip</code> as a child.If you need apply <code>Tooltip</code> to DropdownButton children,you should write like below.
 					</p>
 					<b:DropdownButton text="Tooltip Button">

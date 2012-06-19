@@ -1,0 +1,125 @@
+<!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version 
+	2.0 (the "License"); you may not use this file except in compliance with 
+	the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+	xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
+	<g:HTMLPanel>
+		<b:PageHeader subtext="have fun with popovers">Popovers</b:PageHeader>
+		<b:Row>
+			<b:Column size="12">
+				<b:Heading size="2">Hover over the button to trigger the popover.</b:Heading>
+			</b:Column>
+			<b:Column size="6">
+				<b:Form type="HORIZONTAL">
+					<b:Fieldset>
+						<b:Legend>Setup popover options</b:Legend>
+						<b:ControlGroup>
+							<b:ControlLabel>Animation</b:ControlLabel>
+							<b:Controls>
+								<b:CheckBox ui:field="animation">is animated?</b:CheckBox>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Title</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox ui:field="heading" placeholder="input title"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Content</b:ControlLabel>
+							<b:Controls>
+								<b:TextBox ui:field="text" placeholder="input content"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Show Placement</b:ControlLabel>
+							<b:Controls>
+								<b:ValueListBox ui:field="placement"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Show Trigger</b:ControlLabel>
+							<b:Controls>
+								<b:ValueListBox ui:field="trigger"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Show Delay</b:ControlLabel>
+							<b:Controls>
+								<b:IntegerBox ui:field="showDelay" placeholder="input showDelay"/>
+							</b:Controls>
+						</b:ControlGroup>
+						<b:ControlGroup>
+							<b:ControlLabel>Hide Delay</b:ControlLabel>
+							<b:Controls>
+								<b:IntegerBox ui:field="hideDelay" placeholder="input hideDelay"/>
+							</b:Controls>
+						</b:ControlGroup>
+					</b:Fieldset>
+				</b:Form>
+			</b:Column>
+			<b:Column size="6">
+				<b:Well>
+					<g:HTMLPanel>
+						<b:Popover text="you can any text content hear." heading="A Tiltle" ui:field="popover">
+						<b:Button>hover for popover</b:Button>
+					</b:Popover>
+				</g:HTMLPanel>
+				</b:Well>
+				<g:HTMLPanel>
+					<pre class="prettyprint linenums">
+&lt;b:Popover text="you can any text content hear." heading="A Tiltle"&gt;
+	&lt;b:Button&gt;hover for popover&lt;/b:Button&gt;
+&lt;/b:Popover&gt;</pre>
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="12">
+				<g:HTMLPanel>
+					<b:AlertBlock type="INFO" heading="Manual popover">
+					<p>
+					If you want to show popover on your need time,<br/>
+					You should set MANUAL to Popover's trigger attribute and call <code>Popover#changeVisibility</code> static method like below.</p>
+					<pre class="prettyprint linenums">
+@UiHandler("button")
+public void onClickButton(ClickEvent e) {
+    Popover.changeVisibility(e.getRelativeElement(), VisibilityChange.TOGGLE.get());
+}</pre>
+					</b:AlertBlock>
+					<p>
+					If you want to apply popover on your code,Create <code>Popover</code> instance ,Call <code>Popover#setWidget</code> ,Set setting by setters and Call <code>Popover#reconfigure</code>.<br/>
+					<strong>For example</strong>,<code>DropdownButton</code> can not add <code>Popover</code> as a child. If you need apply <code>Popover</code> to DropdownButton children,you should write like below.
+					</p>
+					<b:DropdownButton text="Popover Button">
+						<b:NavLink ui:field="fooNavlink">foo</b:NavLink>
+						<b:NavLink ui:field="barNavlink">bar</b:NavLink>
+						<b:Divider ui:field="divider"/>
+						<b:NavText ui:field="navText">text</b:NavText>
+					</b:DropdownButton>
+					<b:Label>*.ui.xml</b:Label>
+					<pre class="prettyprint linenums">
+&lt;b:DropdownButton text="Popover Button"&gt;
+	&lt;b:NavLink ui:field="fooNavlink"&gt;foo&lt;/b:NavLink&gt;
+	&lt;b:NavLink ui:field="barNavlink"&gt;bar&lt;/b:NavLink&gt;
+	&lt;b:Divider ui:field="divider"/&gt;
+	&lt;b:NavText ui:field="navText"&gt;text&lt;/b:NavText&gt;
+&lt;/b:DropdownButton&gt;</pre>
+					<b:Label>*.java</b:Label>
+					<pre class="prettyprint linenums">
+private void setupTooltip(Widget w, String message, String heading) {
+	Popover popover = new Tooltip();
+	popover.setWidget(w);
+	popover.setText(message);
+	popover.setHeading(heading);
+	popover.setPlacement(Placement.RIGHT);
+	popover.reconfigure();
+}</pre>
+				</g:HTMLPanel>
+			</b:Column>
+		</b:Row>
+	</g:HTMLPanel>
+</ui:UiBinder>
