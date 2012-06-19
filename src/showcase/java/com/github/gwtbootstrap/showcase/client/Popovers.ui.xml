@@ -110,8 +110,8 @@ public void onClickButton(ClickEvent e) {
 &lt;/b:DropdownButton&gt;</pre>
 					<b:Label>*.java</b:Label>
 					<pre class="prettyprint linenums">
-private void setupTooltip(Widget w, String message, String heading) {
-	Popover popover = new Tooltip();
+private void setupPopover(Widget w, String message, String heading) {
+	Popover popover = new Popover();
 	popover.setWidget(w);
 	popover.setText(message);
 	popover.setHeading(heading);
