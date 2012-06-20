@@ -30,10 +30,7 @@ import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 
 public class Showcase extends Composite implements EntryPoint {
 
@@ -44,6 +41,8 @@ public class Showcase extends Composite implements EntryPoint {
 	FlowPanel sections;
 	@UiField
 	Nav nav;
+    @UiField
+    HTMLPanel github_buttons;
 
 	private static ShowcaseUiBinder uiBinder = GWT
 			.create(ShowcaseUiBinder.class);
@@ -83,6 +82,11 @@ public class Showcase extends Composite implements EntryPoint {
 		script.setType("text/javascript");
 		script.setLang("javascript");
 		doc.getBody().appendChild(script);
+
+        github_buttons.getElement().setInnerHTML("<iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=watch&count=true\"\n" +
+                "                                allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"110px\" height=\"20px\"></iframe>" +
+                "<br /><iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=fork&count=true\"\n" +
+                "  allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"95px\" height=\"20px\"></iframe>");
 
 		JavaScriptInjector
 				.inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
