@@ -15,20 +15,40 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Alert;
+import com.github.gwtbootstrap.client.ui.AlertBlock;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Alerts extends Composite {
 
-    private static AlertsUiBinder uiBinder = GWT.create(AlertsUiBinder.class);
+	@UiField
+	Alert alert;
 
-    interface AlertsUiBinder extends UiBinder<Widget, Alerts> {
-    }
+	@UiField
+	AlertBlock alertBlock;
 
-    public Alerts() {
-        initWidget(uiBinder.createAndBindUi(this));
-    }
+	private static AlertsUiBinder uiBinder = GWT.create(AlertsUiBinder.class);
+
+	interface AlertsUiBinder extends UiBinder<Widget, Alerts> {
+	}
+
+	public Alerts() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
+
+	@UiHandler("alertClose")
+	public void onClickClose(ClickEvent e) {
+		alert.close();
+	}
+	@UiHandler("alertBlockClose")
+	public void onClickBlockClose(ClickEvent e) {
+		alertBlock.close();
+	}
 
 }

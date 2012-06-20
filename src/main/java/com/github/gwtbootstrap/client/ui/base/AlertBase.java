@@ -27,7 +27,6 @@ import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.google.gwt.user.client.ui.HasHTML;
 
 /**
  * Base class for Alert widgets.
@@ -41,8 +40,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  *      href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap
  *      documentation</a>
  */
-public abstract class AlertBase extends DivWidget implements HasHTML,
-		IsAnimated, HasCloseHandlers, HasType<AlertType> {
+public abstract class AlertBase extends HtmlWidget implements IsAnimated, HasCloseHandlers, HasType<AlertType> {
 
 	private Close close;
 
@@ -51,12 +49,16 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	private String heading = "";
 
 	private boolean fade;
-
+	
 	/**
 	 * Initializes an Alert with a close icon.
 	 */
 	public AlertBase() {
-		this(true);
+		this("", true);
+	}
+	
+	public AlertBase(String html) {
+		this(html , true);
 	}
 
 	/**
@@ -65,7 +67,9 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 	 * @param hasClose
 	 *            whether the Alert should have a close icon.
 	 */
-	public AlertBase(boolean hasClose) {
+	public AlertBase(String html, boolean hasClose) {
+		super("div", html);
+		this.html = html;
 		super.setStyleName(Constants.ALERT);
 		setClose(hasClose);
 		setHandlerFunctions(getElement());
@@ -265,6 +269,17 @@ public abstract class AlertBase extends DivWidget implements HasHTML,
 
 	private native void configure(Element e) /*-{
 		$wnd.jQuery(e).alert(e);
+	}-*/;
+	
+	/**
+	 * Close this alert.
+	 */
+	public void close() {
+		close(getElement());
+	}
+	
+	private native void close(Element e)/*-{
+		$wnd.jQuery(e).alert('close');
 	}-*/;
 
 	/**

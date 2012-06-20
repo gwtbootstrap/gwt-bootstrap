@@ -41,8 +41,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  * 
  * @author ohashi keisuke
  */
-public abstract class HtmlWidget extends HTMLPanel implements HasStyle,
-		IsResponsive {
+public class HtmlWidget extends HTMLPanel implements HasStyle, IsResponsive {
 
 	/**
 	 * Creates an empty widget.

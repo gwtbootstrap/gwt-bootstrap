@@ -48,6 +48,11 @@ public class AlertBlock extends AlertBase {
 	 * Creates an empty widget with a close icon.
 	 */
 	public AlertBlock() {
+		this("");
+	}
+	
+	public AlertBlock(String html) {
+		super(html);
 		setUp();
 	}
 
@@ -64,7 +69,7 @@ public class AlertBlock extends AlertBase {
 	 *            whether the Alert should have a close icon.
 	 */
 	public AlertBlock(boolean hasClose) {
-		super(hasClose);
+		super("", hasClose);
 		setUp();
 	}
 
