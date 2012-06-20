@@ -38,6 +38,15 @@ import com.github.gwtbootstrap.client.ui.base.AlertBase;
  */
 public class Alert extends AlertBase {
 
+	
+	public Alert() {
+		super("");
+	}
+	
+	public Alert(String html) {
+		super(html);
+	}
+	
 	/**
 	 * Sets the text of an optional heading. It is wrapped in {@code <strong>}
 	 * tags and placed before the text.
