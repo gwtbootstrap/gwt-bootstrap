@@ -28,8 +28,9 @@
             <b:Column size="12">
                 <g:HTMLPanel>
                     <b:Button ui:field="onShow" text="show the modal" />
-                    <b:Modal ui:field="m" title="My Modal" backdrop="STATIC" keyboard="true" animation="true"
-                            dynamicSafe="true">
+                    <b:Modal ui:field="m" title="My Modal" closeVisible="true" keyboard="true" animation="true">
+                        <g:Label>Modal Content!</g:Label>
+                        <g:Label>Modal Content!</g:Label>
                         <g:Label>Modal Content!</g:Label>
                         
                         <b:ModalFooter>
