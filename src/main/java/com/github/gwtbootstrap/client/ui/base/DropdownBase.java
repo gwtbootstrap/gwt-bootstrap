@@ -15,14 +15,16 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import com.github.gwtbootstrap.client.ui.Divider;
-import com.github.gwtbootstrap.client.ui.NavHeader;
 import com.github.gwtbootstrap.client.ui.NavLink;
-import com.github.gwtbootstrap.client.ui.NavText;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.*;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -121,29 +123,10 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
      */
     @Override
     public void add(Widget widget) {
-        if (canBeAdded(widget)) {
-            menu.add(widget);
-            if (widget instanceof NavLink) {
-                ((NavLink) widget).addClickHandler(handler);
-            }
-        } else {
-            throw new IllegalArgumentException("Only NavLink, NavText and "
-                    + "Divider can be added to the Dropdown");
+        menu.add(widget);
+        if (widget instanceof NavLink) {
+            ((NavLink) widget).addClickHandler(handler);
         }
-    }
-
-    /**
-     * Checks whether a widget can be added to the dropdown.
-     * <p/>
-     * By default, the dropdown accepts {@link NavLink}, {@link NavText} and
-     * {@link Divider} widgets. Override this class to allow more widgets.
-     *
-     * @param widget the widget that should be added
-     * @return <code>true</code> if the widget can be added to the Dropdown
-     */
-    protected boolean canBeAdded(Widget widget) {
-        return ((widget instanceof NavLink) || (widget instanceof NavText)
-                || (widget instanceof NavHeader) || (widget instanceof Divider));
     }
 
     /**
@@ -185,7 +168,6 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
 
         @Override
         public void onClick(ClickEvent event) {
-//            link = (NavLink) event.getSource();
             DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);
         }
 

@@ -55,8 +55,11 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * 
  * <pre>
  * 	public interface MyResources extends Resources {
- * 		{@literal @Source("mycss/custom-bootstrap.min.css")}
+ * 		{@literal @Source("css/bootstrap.min.css")}
  * 		TextResource bootstrapCss();
+ *
+ * 		{@literal @Source("css/bootstrap-responsive.min.css")}
+ * 		TextResource bootstrapResponsiveCss();
  * 	}
  * </pre>
  * 
@@ -96,8 +99,8 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * @since 2.0.4.0
  * 
- * @author soundTricker
  * @author Dominik Mayer
+ * @author ohashi keisuke
  * 
  * @see Resources
  * @see DefaultConfigurator

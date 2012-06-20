@@ -14,7 +14,7 @@
 			<b:Column size="12">
 				<b:Heading size="2">Hover over the button to trigger the popover.</b:Heading>
 			</b:Column>
-			<b:Column size="6">
+			<b:Column size="12">
 				<b:Form type="HORIZONTAL">
 					<b:Fieldset>
 						<b:Legend>Setup popover options</b:Legend>
@@ -63,7 +63,7 @@
 					</b:Fieldset>
 				</b:Form>
 			</b:Column>
-			<b:Column size="6">
+			<b:Column size="12">
 				<b:Well>
 					<g:HTMLPanel>
 						<b:Popover text="you can any text content hear." heading="A Tiltle" ui:field="popover">

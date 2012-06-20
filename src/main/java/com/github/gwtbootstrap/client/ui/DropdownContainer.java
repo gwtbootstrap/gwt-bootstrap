@@ -80,11 +80,6 @@ public class DropdownContainer extends Dropdown {
         return trigger;
     }
 
-    @Override
-    protected boolean canBeAdded(Widget widget) {
-        return true;
-    }
-
     public DropdownContainer() {
         this("");
     }
