@@ -20,9 +20,12 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
@@ -39,7 +42,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget implements HasClickHandlers, HasWidgets, HasText {
+public abstract class DropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText {
 
 	private UnorderedList menu = new UnorderedList();
 
@@ -132,6 +135,10 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
 		}
 	}
 
+	@Override
+	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+		return addDomHandler(handler, ChangeEvent.getType());
+	}
 	/**
 	 * Adds a widget to the the dropdown widget, <b>not</b> to the dropdown
 	 * menu.
@@ -148,8 +155,8 @@ public abstract class DropdownBase extends ComplexWidget implements HasClickHand
 	}
 
 	private native void configure(Element e) /*-{
-												$wnd.jQuery(e).dropdown();
-												}-*/;
+		$wnd.jQuery(e).dropdown();
+	}-*/;
 
 	/**
 	 * Pull the dropdown menu to right
