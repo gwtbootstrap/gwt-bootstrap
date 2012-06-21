@@ -24,622 +24,669 @@
 <span class="sourceLineNo">016</span>package com.github.gwtbootstrap.client.ui;<a name="line.16"></a>
 <span class="sourceLineNo">017</span><a name="line.17"></a>
 <span class="sourceLineNo">018</span>import com.github.gwtbootstrap.client.ui.base.HasId;<a name="line.18"></a>
-<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;<a name="line.19"></a>
-<span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;<a name="line.20"></a>
-<span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.21"></a>
-<span class="sourceLineNo">022</span>import com.google.gwt.dom.client.Document;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import com.google.gwt.dom.client.InputElement;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import com.google.gwt.dom.client.LabelElement;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import com.google.gwt.dom.client.SpanElement;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import com.google.gwt.editor.client.IsEditor;<a name="line.26"></a>
-<span class="sourceLineNo">027</span>import com.google.gwt.editor.client.LeafValueEditor;<a name="line.27"></a>
-<span class="sourceLineNo">028</span>import com.google.gwt.editor.client.adapters.TakesValueEditor;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import com.google.gwt.event.dom.client.ClickEvent;<a name="line.29"></a>
-<span class="sourceLineNo">030</span>import com.google.gwt.event.dom.client.ClickHandler;<a name="line.30"></a>
-<span class="sourceLineNo">031</span>import com.google.gwt.event.logical.shared.ValueChangeEvent;<a name="line.31"></a>
-<span class="sourceLineNo">032</span>import com.google.gwt.event.logical.shared.ValueChangeHandler;<a name="line.32"></a>
-<span class="sourceLineNo">033</span>import com.google.gwt.event.shared.HandlerRegistration;<a name="line.33"></a>
-<span class="sourceLineNo">034</span>import com.google.gwt.i18n.client.HasDirection.Direction;<a name="line.34"></a>
-<span class="sourceLineNo">035</span>import com.google.gwt.i18n.shared.DirectionEstimator;<a name="line.35"></a>
-<span class="sourceLineNo">036</span>import com.google.gwt.i18n.shared.HasDirectionEstimator;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import com.google.gwt.safehtml.shared.SafeHtml;<a name="line.37"></a>
-<span class="sourceLineNo">038</span>import com.google.gwt.user.client.DOM;<a name="line.38"></a>
-<span class="sourceLineNo">039</span>import com.google.gwt.user.client.Element;<a name="line.39"></a>
-<span class="sourceLineNo">040</span>import com.google.gwt.user.client.Event;<a name="line.40"></a>
-<span class="sourceLineNo">041</span>import com.google.gwt.user.client.EventListener;<a name="line.41"></a>
-<span class="sourceLineNo">042</span>import com.google.gwt.user.client.ui.ButtonBase;<a name="line.42"></a>
-<span class="sourceLineNo">043</span>import com.google.gwt.user.client.ui.DirectionalTextHelper;<a name="line.43"></a>
-<span class="sourceLineNo">044</span>import com.google.gwt.user.client.ui.FormPanel;<a name="line.44"></a>
-<span class="sourceLineNo">045</span>import com.google.gwt.user.client.ui.HasDirectionalSafeHtml;<a name="line.45"></a>
-<span class="sourceLineNo">046</span>import com.google.gwt.user.client.ui.HasName;<a name="line.46"></a>
-<span class="sourceLineNo">047</span>import com.google.gwt.user.client.ui.HasValue;<a name="line.47"></a>
-<span class="sourceLineNo">048</span>import com.google.gwt.user.client.ui.HasWordWrap;<a name="line.48"></a>
-<span class="sourceLineNo">049</span>import com.google.gwt.user.client.ui.RadioButton;<a name="line.49"></a>
-<span class="sourceLineNo">050</span>import com.google.gwt.user.client.ui.UIObject;<a name="line.50"></a>
-<span class="sourceLineNo">051</span>import com.google.gwt.user.client.ui.Widget;<a name="line.51"></a>
-<span class="sourceLineNo">052</span><a name="line.52"></a>
-<span class="sourceLineNo">053</span>/**<a name="line.53"></a>
-<span class="sourceLineNo">054</span> * CheckBox widgets.<a name="line.54"></a>
-<span class="sourceLineNo">055</span> * &lt;p&gt;<a name="line.55"></a>
-<span class="sourceLineNo">056</span> * Re-design for Bootstrap.<a name="line.56"></a>
-<span class="sourceLineNo">057</span> * &lt;/p&gt;<a name="line.57"></a>
-<span class="sourceLineNo">058</span> * <a name="line.58"></a>
-<span class="sourceLineNo">059</span> * @since 2.0.4.0<a name="line.59"></a>
-<span class="sourceLineNo">060</span> * @author ohashi keisuke<a name="line.60"></a>
-<span class="sourceLineNo">061</span> */<a name="line.61"></a>
-<span class="sourceLineNo">062</span>public class CheckBox extends ButtonBase implements HasName, HasValue&lt;Boolean&gt;, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor&lt;LeafValueEditor&lt;Boolean&gt;&gt;, IsSearchQuery,HasId {<a name="line.62"></a>
-<span class="sourceLineNo">063</span><a name="line.63"></a>
-<span class="sourceLineNo">064</span>        public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;<a name="line.64"></a>
-<span class="sourceLineNo">065</span><a name="line.65"></a>
-<span class="sourceLineNo">066</span>        final DirectionalTextHelper directionalTextHelper;<a name="line.66"></a>
-<span class="sourceLineNo">067</span><a name="line.67"></a>
-<span class="sourceLineNo">068</span>        InputElement inputElem;<a name="line.68"></a>
-<span class="sourceLineNo">069</span>        SpanElement spanElem;<a name="line.69"></a>
-<span class="sourceLineNo">070</span>        <a name="line.70"></a>
+<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.HasStyle;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.base.IsResponsive;<a name="line.20"></a>
+<span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import com.github.gwtbootstrap.client.ui.base.Style;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import com.github.gwtbootstrap.client.ui.base.StyleHelper;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import com.github.gwtbootstrap.client.ui.constants.Device;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import com.google.gwt.dom.client.Document;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import com.google.gwt.dom.client.InputElement;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import com.google.gwt.dom.client.LabelElement;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import com.google.gwt.dom.client.SpanElement;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import com.google.gwt.editor.client.IsEditor;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import com.google.gwt.editor.client.LeafValueEditor;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import com.google.gwt.editor.client.adapters.TakesValueEditor;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>import com.google.gwt.event.dom.client.ClickEvent;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>import com.google.gwt.event.dom.client.ClickHandler;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import com.google.gwt.event.logical.shared.ValueChangeEvent;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import com.google.gwt.event.logical.shared.ValueChangeHandler;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import com.google.gwt.event.shared.HandlerRegistration;<a name="line.39"></a>
+<span class="sourceLineNo">040</span>import com.google.gwt.i18n.client.HasDirection.Direction;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>import com.google.gwt.i18n.shared.DirectionEstimator;<a name="line.41"></a>
+<span class="sourceLineNo">042</span>import com.google.gwt.i18n.shared.HasDirectionEstimator;<a name="line.42"></a>
+<span class="sourceLineNo">043</span>import com.google.gwt.safehtml.shared.SafeHtml;<a name="line.43"></a>
+<span class="sourceLineNo">044</span>import com.google.gwt.user.client.DOM;<a name="line.44"></a>
+<span class="sourceLineNo">045</span>import com.google.gwt.user.client.Element;<a name="line.45"></a>
+<span class="sourceLineNo">046</span>import com.google.gwt.user.client.Event;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>import com.google.gwt.user.client.EventListener;<a name="line.47"></a>
+<span class="sourceLineNo">048</span>import com.google.gwt.user.client.ui.ButtonBase;<a name="line.48"></a>
+<span class="sourceLineNo">049</span>import com.google.gwt.user.client.ui.DirectionalTextHelper;<a name="line.49"></a>
+<span class="sourceLineNo">050</span>import com.google.gwt.user.client.ui.FormPanel;<a name="line.50"></a>
+<span class="sourceLineNo">051</span>import com.google.gwt.user.client.ui.HasDirectionalSafeHtml;<a name="line.51"></a>
+<span class="sourceLineNo">052</span>import com.google.gwt.user.client.ui.HasName;<a name="line.52"></a>
+<span class="sourceLineNo">053</span>import com.google.gwt.user.client.ui.HasValue;<a name="line.53"></a>
+<span class="sourceLineNo">054</span>import com.google.gwt.user.client.ui.HasWordWrap;<a name="line.54"></a>
+<span class="sourceLineNo">055</span>import com.google.gwt.user.client.ui.RadioButton;<a name="line.55"></a>
+<span class="sourceLineNo">056</span>import com.google.gwt.user.client.ui.UIObject;<a name="line.56"></a>
+<span class="sourceLineNo">057</span>import com.google.gwt.user.client.ui.Widget;<a name="line.57"></a>
+<span class="sourceLineNo">058</span><a name="line.58"></a>
+<span class="sourceLineNo">059</span>/**<a name="line.59"></a>
+<span class="sourceLineNo">060</span> * CheckBox widgets.<a name="line.60"></a>
+<span class="sourceLineNo">061</span> * &lt;p&gt;<a name="line.61"></a>
+<span class="sourceLineNo">062</span> * Re-design for Bootstrap.<a name="line.62"></a>
+<span class="sourceLineNo">063</span> * &lt;/p&gt;<a name="line.63"></a>
+<span class="sourceLineNo">064</span> * <a name="line.64"></a>
+<span class="sourceLineNo">065</span> * @since 2.0.4.0<a name="line.65"></a>
+<span class="sourceLineNo">066</span> * @author ohashi keisuke<a name="line.66"></a>
+<span class="sourceLineNo">067</span> */<a name="line.67"></a>
+<span class="sourceLineNo">068</span>public class CheckBox extends ButtonBase implements HasName, HasValue&lt;Boolean&gt;, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor&lt;LeafValueEditor&lt;Boolean&gt;&gt;, IsSearchQuery, HasId, IsResponsive, HasStyle{<a name="line.68"></a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span>        public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;<a name="line.70"></a>
 <span class="sourceLineNo">071</span><a name="line.71"></a>
-<span class="sourceLineNo">072</span>        private LeafValueEditor&lt;Boolean&gt; editor;<a name="line.72"></a>
+<span class="sourceLineNo">072</span>        final DirectionalTextHelper directionalTextHelper;<a name="line.72"></a>
 <span class="sourceLineNo">073</span><a name="line.73"></a>
-<span class="sourceLineNo">074</span>        private boolean valueChangeHandlerInitialized;<a name="line.74"></a>
-<span class="sourceLineNo">075</span><a name="line.75"></a>
-<span class="sourceLineNo">076</span>        /**<a name="line.76"></a>
-<span class="sourceLineNo">077</span>         * Creates a check box with no label.<a name="line.77"></a>
-<span class="sourceLineNo">078</span>         */<a name="line.78"></a>
-<span class="sourceLineNo">079</span>        public CheckBox() {<a name="line.79"></a>
-<span class="sourceLineNo">080</span>                this(DOM.createInputCheck());<a name="line.80"></a>
-<span class="sourceLineNo">081</span>        }<a name="line.81"></a>
-<span class="sourceLineNo">082</span><a name="line.82"></a>
-<span class="sourceLineNo">083</span>        /**<a name="line.83"></a>
-<span class="sourceLineNo">084</span>         * Creates a check box with the specified text label.<a name="line.84"></a>
-<span class="sourceLineNo">085</span>         * <a name="line.85"></a>
-<span class="sourceLineNo">086</span>         * @param label<a name="line.86"></a>
-<span class="sourceLineNo">087</span>         *            the check box's label<a name="line.87"></a>
-<span class="sourceLineNo">088</span>         */<a name="line.88"></a>
-<span class="sourceLineNo">089</span>        public CheckBox(SafeHtml label) {<a name="line.89"></a>
-<span class="sourceLineNo">090</span>                this(label.asString(), true);<a name="line.90"></a>
-<span class="sourceLineNo">091</span>        }<a name="line.91"></a>
-<span class="sourceLineNo">092</span><a name="line.92"></a>
-<span class="sourceLineNo">093</span>        /**<a name="line.93"></a>
-<span class="sourceLineNo">094</span>         * Creates a check box with the specified text label.<a name="line.94"></a>
-<span class="sourceLineNo">095</span>         * <a name="line.95"></a>
-<span class="sourceLineNo">096</span>         * @param label<a name="line.96"></a>
-<span class="sourceLineNo">097</span>         *            the check box's label<a name="line.97"></a>
-<span class="sourceLineNo">098</span>         * @param dir<a name="line.98"></a>
-<span class="sourceLineNo">099</span>         *            the text's direction. Note that {@code DEFAULT} means<a name="line.99"></a>
-<span class="sourceLineNo">100</span>         *            direction should be inherited from the widget's parent<a name="line.100"></a>
-<span class="sourceLineNo">101</span>         *            element.<a name="line.101"></a>
-<span class="sourceLineNo">102</span>         */<a name="line.102"></a>
-<span class="sourceLineNo">103</span>        public CheckBox(SafeHtml label,<a name="line.103"></a>
-<span class="sourceLineNo">104</span>                Direction dir) {<a name="line.104"></a>
-<span class="sourceLineNo">105</span>                this();<a name="line.105"></a>
-<span class="sourceLineNo">106</span>                setHTML(label, dir);<a name="line.106"></a>
-<span class="sourceLineNo">107</span>        }<a name="line.107"></a>
-<span class="sourceLineNo">108</span><a name="line.108"></a>
-<span class="sourceLineNo">109</span>        /**<a name="line.109"></a>
-<span class="sourceLineNo">110</span>         * Creates a check box with the specified text label.<a name="line.110"></a>
-<span class="sourceLineNo">111</span>         * <a name="line.111"></a>
-<span class="sourceLineNo">112</span>         * @param label<a name="line.112"></a>
-<span class="sourceLineNo">113</span>         *            the check box's label<a name="line.113"></a>
-<span class="sourceLineNo">114</span>         * @param directionEstimator<a name="line.114"></a>
-<span class="sourceLineNo">115</span>         *            A DirectionEstimator object used for automatic direction<a name="line.115"></a>
-<span class="sourceLineNo">116</span>         *            adjustment. For convenience,<a name="line.116"></a>
-<span class="sourceLineNo">117</span>         *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.117"></a>
-<span class="sourceLineNo">118</span>         */<a name="line.118"></a>
-<span class="sourceLineNo">119</span>        public CheckBox(SafeHtml label,<a name="line.119"></a>
-<span class="sourceLineNo">120</span>                DirectionEstimator directionEstimator) {<a name="line.120"></a>
-<span class="sourceLineNo">121</span>                this();<a name="line.121"></a>
-<span class="sourceLineNo">122</span>                setDirectionEstimator(directionEstimator);<a name="line.122"></a>
-<span class="sourceLineNo">123</span>                setHTML(label.asString());<a name="line.123"></a>
-<span class="sourceLineNo">124</span>        }<a name="line.124"></a>
-<span class="sourceLineNo">125</span><a name="line.125"></a>
-<span class="sourceLineNo">126</span>        /**<a name="line.126"></a>
-<span class="sourceLineNo">127</span>         * Creates a check box with the specified text label.<a name="line.127"></a>
-<span class="sourceLineNo">128</span>         * <a name="line.128"></a>
-<span class="sourceLineNo">129</span>         * @param label<a name="line.129"></a>
-<span class="sourceLineNo">130</span>         *            the check box's label<a name="line.130"></a>
-<span class="sourceLineNo">131</span>         */<a name="line.131"></a>
-<span class="sourceLineNo">132</span>        public CheckBox(String label) {<a name="line.132"></a>
-<span class="sourceLineNo">133</span>                this();<a name="line.133"></a>
-<span class="sourceLineNo">134</span>                setText(label);<a name="line.134"></a>
-<span class="sourceLineNo">135</span>        }<a name="line.135"></a>
-<span class="sourceLineNo">136</span><a name="line.136"></a>
-<span class="sourceLineNo">137</span>        /**<a name="line.137"></a>
-<span class="sourceLineNo">138</span>         * Creates a check box with the specified text label.<a name="line.138"></a>
-<span class="sourceLineNo">139</span>         * <a name="line.139"></a>
-<span class="sourceLineNo">140</span>         * @param label<a name="line.140"></a>
-<span class="sourceLineNo">141</span>         *            the check box's label<a name="line.141"></a>
-<span class="sourceLineNo">142</span>         * @param dir<a name="line.142"></a>
-<span class="sourceLineNo">143</span>         *            the text's direction. Note that {@code DEFAULT} means<a name="line.143"></a>
-<span class="sourceLineNo">144</span>         *            direction should be inherited from the widget's parent<a name="line.144"></a>
-<span class="sourceLineNo">145</span>         *            element.<a name="line.145"></a>
-<span class="sourceLineNo">146</span>         */<a name="line.146"></a>
-<span class="sourceLineNo">147</span>        public CheckBox(String label,<a name="line.147"></a>
-<span class="sourceLineNo">148</span>                Direction dir) {<a name="line.148"></a>
-<span class="sourceLineNo">149</span>                this();<a name="line.149"></a>
-<span class="sourceLineNo">150</span>                setText(label, dir);<a name="line.150"></a>
-<span class="sourceLineNo">151</span>        }<a name="line.151"></a>
-<span class="sourceLineNo">152</span><a name="line.152"></a>
-<span class="sourceLineNo">153</span>        /**<a name="line.153"></a>
-<span class="sourceLineNo">154</span>         * Creates a label with the specified text and a default direction<a name="line.154"></a>
-<span class="sourceLineNo">155</span>         * estimator.<a name="line.155"></a>
-<span class="sourceLineNo">156</span>         * <a name="line.156"></a>
-<span class="sourceLineNo">157</span>         * @param label<a name="line.157"></a>
-<span class="sourceLineNo">158</span>         *            the check box's label<a name="line.158"></a>
-<span class="sourceLineNo">159</span>         * @param directionEstimator<a name="line.159"></a>
-<span class="sourceLineNo">160</span>         *            A DirectionEstimator object used for automatic direction<a name="line.160"></a>
-<span class="sourceLineNo">161</span>         *            adjustment. For convenience,<a name="line.161"></a>
-<span class="sourceLineNo">162</span>         *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.162"></a>
-<span class="sourceLineNo">163</span>         */<a name="line.163"></a>
-<span class="sourceLineNo">164</span>        public CheckBox(String label,<a name="line.164"></a>
-<span class="sourceLineNo">165</span>                DirectionEstimator directionEstimator) {<a name="line.165"></a>
-<span class="sourceLineNo">166</span>                this();<a name="line.166"></a>
-<span class="sourceLineNo">167</span>                setDirectionEstimator(directionEstimator);<a name="line.167"></a>
-<span class="sourceLineNo">168</span>                setText(label);<a name="line.168"></a>
-<span class="sourceLineNo">169</span>        }<a name="line.169"></a>
-<span class="sourceLineNo">170</span><a name="line.170"></a>
-<span class="sourceLineNo">171</span>        /**<a name="line.171"></a>
-<span class="sourceLineNo">172</span>         * Creates a check box with the specified text label.<a name="line.172"></a>
-<span class="sourceLineNo">173</span>         * <a name="line.173"></a>
-<span class="sourceLineNo">174</span>         * @param label<a name="line.174"></a>
-<span class="sourceLineNo">175</span>         *            the check box's label<a name="line.175"></a>
-<span class="sourceLineNo">176</span>         * @param asHTML<a name="line.176"></a>
-<span class="sourceLineNo">177</span>         *            &lt;code&gt;true&lt;/code&gt; to treat the specified label as html<a name="line.177"></a>
-<span class="sourceLineNo">178</span>         */<a name="line.178"></a>
-<span class="sourceLineNo">179</span>        public CheckBox(String label,<a name="line.179"></a>
-<span class="sourceLineNo">180</span>                boolean asHTML) {<a name="line.180"></a>
-<span class="sourceLineNo">181</span>                this();<a name="line.181"></a>
-<span class="sourceLineNo">182</span>                if (asHTML) {<a name="line.182"></a>
-<span class="sourceLineNo">183</span>                        setHTML(label);<a name="line.183"></a>
-<span class="sourceLineNo">184</span>                } else {<a name="line.184"></a>
-<span class="sourceLineNo">185</span>                        setText(label);<a name="line.185"></a>
-<span class="sourceLineNo">186</span>                }<a name="line.186"></a>
-<span class="sourceLineNo">187</span>        }<a name="line.187"></a>
-<span class="sourceLineNo">188</span><a name="line.188"></a>
-<span class="sourceLineNo">189</span>        protected CheckBox(Element elem) {<a name="line.189"></a>
-<span class="sourceLineNo">190</span>                super(DOM.createLabel());<a name="line.190"></a>
-<span class="sourceLineNo">191</span>                <a name="line.191"></a>
-<span class="sourceLineNo">192</span>                assert elem.hasAttribute("type") : "The elem should has type attributes";<a name="line.192"></a>
-<span class="sourceLineNo">193</span><a name="line.193"></a>
-<span class="sourceLineNo">194</span>                //TODO 2012/05/06 ohashi keisuke. ugly code......<a name="line.194"></a>
-<span class="sourceLineNo">195</span>                if(Constants.CHECKBOX.toLowerCase().equals(elem.getAttribute("type").toLowerCase())) {<a name="line.195"></a>
-<span class="sourceLineNo">196</span>                        this.setStyleName(Constants.CHECKBOX);<a name="line.196"></a>
-<span class="sourceLineNo">197</span>                } else if(Constants.RADIO.toLowerCase().equals(elem.getAttribute("type").toLowerCase())){<a name="line.197"></a>
-<span class="sourceLineNo">198</span>                        this.setStyleName(Constants.RADIO);<a name="line.198"></a>
-<span class="sourceLineNo">199</span>                }<a name="line.199"></a>
-<span class="sourceLineNo">200</span><a name="line.200"></a>
-<span class="sourceLineNo">201</span>                inputElem = InputElement.as(elem);<a name="line.201"></a>
-<span class="sourceLineNo">202</span>                spanElem = Document.get().createSpanElement();<a name="line.202"></a>
-<span class="sourceLineNo">203</span>                <a name="line.203"></a>
-<span class="sourceLineNo">204</span>                getElement().appendChild(inputElem);<a name="line.204"></a>
-<span class="sourceLineNo">205</span>                getElement().appendChild(spanElem);<a name="line.205"></a>
+<span class="sourceLineNo">074</span>        InputElement inputElem;<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        SpanElement spanElem;<a name="line.75"></a>
+<span class="sourceLineNo">076</span>        <a name="line.76"></a>
+<span class="sourceLineNo">077</span><a name="line.77"></a>
+<span class="sourceLineNo">078</span>        private LeafValueEditor&lt;Boolean&gt; editor;<a name="line.78"></a>
+<span class="sourceLineNo">079</span><a name="line.79"></a>
+<span class="sourceLineNo">080</span>        private boolean valueChangeHandlerInitialized;<a name="line.80"></a>
+<span class="sourceLineNo">081</span><a name="line.81"></a>
+<span class="sourceLineNo">082</span>        /**<a name="line.82"></a>
+<span class="sourceLineNo">083</span>         * Creates a check box with no label.<a name="line.83"></a>
+<span class="sourceLineNo">084</span>         */<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        public CheckBox() {<a name="line.85"></a>
+<span class="sourceLineNo">086</span>                this(DOM.createInputCheck());<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        }<a name="line.87"></a>
+<span class="sourceLineNo">088</span><a name="line.88"></a>
+<span class="sourceLineNo">089</span>        /**<a name="line.89"></a>
+<span class="sourceLineNo">090</span>         * Creates a check box with the specified text label.<a name="line.90"></a>
+<span class="sourceLineNo">091</span>         * <a name="line.91"></a>
+<span class="sourceLineNo">092</span>         * @param label<a name="line.92"></a>
+<span class="sourceLineNo">093</span>         *            the check box's label<a name="line.93"></a>
+<span class="sourceLineNo">094</span>         */<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        public CheckBox(SafeHtml label) {<a name="line.95"></a>
+<span class="sourceLineNo">096</span>                this(label.asString(), true);<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        }<a name="line.97"></a>
+<span class="sourceLineNo">098</span><a name="line.98"></a>
+<span class="sourceLineNo">099</span>        /**<a name="line.99"></a>
+<span class="sourceLineNo">100</span>         * Creates a check box with the specified text label.<a name="line.100"></a>
+<span class="sourceLineNo">101</span>         * <a name="line.101"></a>
+<span class="sourceLineNo">102</span>         * @param label<a name="line.102"></a>
+<span class="sourceLineNo">103</span>         *            the check box's label<a name="line.103"></a>
+<span class="sourceLineNo">104</span>         * @param dir<a name="line.104"></a>
+<span class="sourceLineNo">105</span>         *            the text's direction. Note that {@code DEFAULT} means<a name="line.105"></a>
+<span class="sourceLineNo">106</span>         *            direction should be inherited from the widget's parent<a name="line.106"></a>
+<span class="sourceLineNo">107</span>         *            element.<a name="line.107"></a>
+<span class="sourceLineNo">108</span>         */<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        public CheckBox(SafeHtml label,<a name="line.109"></a>
+<span class="sourceLineNo">110</span>                Direction dir) {<a name="line.110"></a>
+<span class="sourceLineNo">111</span>                this();<a name="line.111"></a>
+<span class="sourceLineNo">112</span>                setHTML(label, dir);<a name="line.112"></a>
+<span class="sourceLineNo">113</span>        }<a name="line.113"></a>
+<span class="sourceLineNo">114</span><a name="line.114"></a>
+<span class="sourceLineNo">115</span>        /**<a name="line.115"></a>
+<span class="sourceLineNo">116</span>         * Creates a check box with the specified text label.<a name="line.116"></a>
+<span class="sourceLineNo">117</span>         * <a name="line.117"></a>
+<span class="sourceLineNo">118</span>         * @param label<a name="line.118"></a>
+<span class="sourceLineNo">119</span>         *            the check box's label<a name="line.119"></a>
+<span class="sourceLineNo">120</span>         * @param directionEstimator<a name="line.120"></a>
+<span class="sourceLineNo">121</span>         *            A DirectionEstimator object used for automatic direction<a name="line.121"></a>
+<span class="sourceLineNo">122</span>         *            adjustment. For convenience,<a name="line.122"></a>
+<span class="sourceLineNo">123</span>         *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.123"></a>
+<span class="sourceLineNo">124</span>         */<a name="line.124"></a>
+<span class="sourceLineNo">125</span>        public CheckBox(SafeHtml label,<a name="line.125"></a>
+<span class="sourceLineNo">126</span>                DirectionEstimator directionEstimator) {<a name="line.126"></a>
+<span class="sourceLineNo">127</span>                this();<a name="line.127"></a>
+<span class="sourceLineNo">128</span>                setDirectionEstimator(directionEstimator);<a name="line.128"></a>
+<span class="sourceLineNo">129</span>                setHTML(label.asString());<a name="line.129"></a>
+<span class="sourceLineNo">130</span>        }<a name="line.130"></a>
+<span class="sourceLineNo">131</span><a name="line.131"></a>
+<span class="sourceLineNo">132</span>        /**<a name="line.132"></a>
+<span class="sourceLineNo">133</span>         * Creates a check box with the specified text label.<a name="line.133"></a>
+<span class="sourceLineNo">134</span>         * <a name="line.134"></a>
+<span class="sourceLineNo">135</span>         * @param label<a name="line.135"></a>
+<span class="sourceLineNo">136</span>         *            the check box's label<a name="line.136"></a>
+<span class="sourceLineNo">137</span>         */<a name="line.137"></a>
+<span class="sourceLineNo">138</span>        public CheckBox(String label) {<a name="line.138"></a>
+<span class="sourceLineNo">139</span>                this();<a name="line.139"></a>
+<span class="sourceLineNo">140</span>                setText(label);<a name="line.140"></a>
+<span class="sourceLineNo">141</span>        }<a name="line.141"></a>
+<span class="sourceLineNo">142</span><a name="line.142"></a>
+<span class="sourceLineNo">143</span>        /**<a name="line.143"></a>
+<span class="sourceLineNo">144</span>         * Creates a check box with the specified text label.<a name="line.144"></a>
+<span class="sourceLineNo">145</span>         * <a name="line.145"></a>
+<span class="sourceLineNo">146</span>         * @param label<a name="line.146"></a>
+<span class="sourceLineNo">147</span>         *            the check box's label<a name="line.147"></a>
+<span class="sourceLineNo">148</span>         * @param dir<a name="line.148"></a>
+<span class="sourceLineNo">149</span>         *            the text's direction. Note that {@code DEFAULT} means<a name="line.149"></a>
+<span class="sourceLineNo">150</span>         *            direction should be inherited from the widget's parent<a name="line.150"></a>
+<span class="sourceLineNo">151</span>         *            element.<a name="line.151"></a>
+<span class="sourceLineNo">152</span>         */<a name="line.152"></a>
+<span class="sourceLineNo">153</span>        public CheckBox(String label,<a name="line.153"></a>
+<span class="sourceLineNo">154</span>                Direction dir) {<a name="line.154"></a>
+<span class="sourceLineNo">155</span>                this();<a name="line.155"></a>
+<span class="sourceLineNo">156</span>                setText(label, dir);<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        }<a name="line.157"></a>
+<span class="sourceLineNo">158</span><a name="line.158"></a>
+<span class="sourceLineNo">159</span>        /**<a name="line.159"></a>
+<span class="sourceLineNo">160</span>         * Creates a label with the specified text and a default direction<a name="line.160"></a>
+<span class="sourceLineNo">161</span>         * estimator.<a name="line.161"></a>
+<span class="sourceLineNo">162</span>         * <a name="line.162"></a>
+<span class="sourceLineNo">163</span>         * @param label<a name="line.163"></a>
+<span class="sourceLineNo">164</span>         *            the check box's label<a name="line.164"></a>
+<span class="sourceLineNo">165</span>         * @param directionEstimator<a name="line.165"></a>
+<span class="sourceLineNo">166</span>         *            A DirectionEstimator object used for automatic direction<a name="line.166"></a>
+<span class="sourceLineNo">167</span>         *            adjustment. For convenience,<a name="line.167"></a>
+<span class="sourceLineNo">168</span>         *            {@link #DEFAULT_DIRECTION_ESTIMATOR} can be used.<a name="line.168"></a>
+<span class="sourceLineNo">169</span>         */<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        public CheckBox(String label,<a name="line.170"></a>
+<span class="sourceLineNo">171</span>                DirectionEstimator directionEstimator) {<a name="line.171"></a>
+<span class="sourceLineNo">172</span>                this();<a name="line.172"></a>
+<span class="sourceLineNo">173</span>                setDirectionEstimator(directionEstimator);<a name="line.173"></a>
+<span class="sourceLineNo">174</span>                setText(label);<a name="line.174"></a>
+<span class="sourceLineNo">175</span>        }<a name="line.175"></a>
+<span class="sourceLineNo">176</span><a name="line.176"></a>
+<span class="sourceLineNo">177</span>        /**<a name="line.177"></a>
+<span class="sourceLineNo">178</span>         * Creates a check box with the specified text label.<a name="line.178"></a>
+<span class="sourceLineNo">179</span>         * <a name="line.179"></a>
+<span class="sourceLineNo">180</span>         * @param label<a name="line.180"></a>
+<span class="sourceLineNo">181</span>         *            the check box's label<a name="line.181"></a>
+<span class="sourceLineNo">182</span>         * @param asHTML<a name="line.182"></a>
+<span class="sourceLineNo">183</span>         *            &lt;code&gt;true&lt;/code&gt; to treat the specified label as html<a name="line.183"></a>
+<span class="sourceLineNo">184</span>         */<a name="line.184"></a>
+<span class="sourceLineNo">185</span>        public CheckBox(String label,<a name="line.185"></a>
+<span class="sourceLineNo">186</span>                boolean asHTML) {<a name="line.186"></a>
+<span class="sourceLineNo">187</span>                this();<a name="line.187"></a>
+<span class="sourceLineNo">188</span>                if (asHTML) {<a name="line.188"></a>
+<span class="sourceLineNo">189</span>                        setHTML(label);<a name="line.189"></a>
+<span class="sourceLineNo">190</span>                } else {<a name="line.190"></a>
+<span class="sourceLineNo">191</span>                        setText(label);<a name="line.191"></a>
+<span class="sourceLineNo">192</span>                }<a name="line.192"></a>
+<span class="sourceLineNo">193</span>        }<a name="line.193"></a>
+<span class="sourceLineNo">194</span><a name="line.194"></a>
+<span class="sourceLineNo">195</span>        protected CheckBox(Element elem) {<a name="line.195"></a>
+<span class="sourceLineNo">196</span>                super(DOM.createLabel());<a name="line.196"></a>
+<span class="sourceLineNo">197</span>                <a name="line.197"></a>
+<span class="sourceLineNo">198</span>                assert elem.hasAttribute("type") : "The elem should has type attributes";<a name="line.198"></a>
+<span class="sourceLineNo">199</span><a name="line.199"></a>
+<span class="sourceLineNo">200</span>                //TODO 2012/05/06 ohashi keisuke. ugly code......<a name="line.200"></a>
+<span class="sourceLineNo">201</span>                if(Constants.CHECKBOX.toLowerCase().equals(elem.getAttribute("type").toLowerCase())) {<a name="line.201"></a>
+<span class="sourceLineNo">202</span>                        this.setStyleName(Constants.CHECKBOX);<a name="line.202"></a>
+<span class="sourceLineNo">203</span>                } else if(Constants.RADIO.toLowerCase().equals(elem.getAttribute("type").toLowerCase())){<a name="line.203"></a>
+<span class="sourceLineNo">204</span>                        this.setStyleName(Constants.RADIO);<a name="line.204"></a>
+<span class="sourceLineNo">205</span>                }<a name="line.205"></a>
 <span class="sourceLineNo">206</span><a name="line.206"></a>
-<span class="sourceLineNo">207</span>                String uid = DOM.createUniqueId();<a name="line.207"></a>
-<span class="sourceLineNo">208</span>                inputElem.setPropertyString("id", uid);<a name="line.208"></a>
-<span class="sourceLineNo">209</span>                asLabel().setHtmlFor(uid);<a name="line.209"></a>
-<span class="sourceLineNo">210</span>                directionalTextHelper = new DirectionalTextHelper(spanElem, false);<a name="line.210"></a>
-<span class="sourceLineNo">211</span>                setTabIndex(0);<a name="line.211"></a>
-<span class="sourceLineNo">212</span>        }<a name="line.212"></a>
-<span class="sourceLineNo">213</span><a name="line.213"></a>
-<span class="sourceLineNo">214</span>        public HandlerRegistration addValueChangeHandler(ValueChangeHandler&lt;Boolean&gt; handler) {<a name="line.214"></a>
-<span class="sourceLineNo">215</span>                // Is this the first value change handler? If so, time to add handlers<a name="line.215"></a>
-<span class="sourceLineNo">216</span>                if (!valueChangeHandlerInitialized) {<a name="line.216"></a>
-<span class="sourceLineNo">217</span>                        ensureDomEventHandlers();<a name="line.217"></a>
-<span class="sourceLineNo">218</span>                        valueChangeHandlerInitialized = true;<a name="line.218"></a>
-<span class="sourceLineNo">219</span>                }<a name="line.219"></a>
-<span class="sourceLineNo">220</span>                return addHandler(handler, ValueChangeEvent.getType());<a name="line.220"></a>
-<span class="sourceLineNo">221</span>        }<a name="line.221"></a>
-<span class="sourceLineNo">222</span><a name="line.222"></a>
-<span class="sourceLineNo">223</span>        public LeafValueEditor&lt;Boolean&gt; asEditor() {<a name="line.223"></a>
-<span class="sourceLineNo">224</span>                if (editor == null) {<a name="line.224"></a>
-<span class="sourceLineNo">225</span>                        editor = TakesValueEditor.of(this);<a name="line.225"></a>
-<span class="sourceLineNo">226</span>                }<a name="line.226"></a>
-<span class="sourceLineNo">227</span>                return editor;<a name="line.227"></a>
-<span class="sourceLineNo">228</span>        }<a name="line.228"></a>
-<span class="sourceLineNo">229</span><a name="line.229"></a>
-<span class="sourceLineNo">230</span>        public DirectionEstimator getDirectionEstimator() {<a name="line.230"></a>
-<span class="sourceLineNo">231</span>                return directionalTextHelper.getDirectionEstimator();<a name="line.231"></a>
-<span class="sourceLineNo">232</span>        }<a name="line.232"></a>
-<span class="sourceLineNo">233</span><a name="line.233"></a>
-<span class="sourceLineNo">234</span>        /**<a name="line.234"></a>
-<span class="sourceLineNo">235</span>         * Returns the value property of the input element that backs this widget.<a name="line.235"></a>
-<span class="sourceLineNo">236</span>         * This is the value that will be associated with the CheckBox name and<a name="line.236"></a>
-<span class="sourceLineNo">237</span>         * submitted to the server if a {@link FormPanel} that holds it is submitted<a name="line.237"></a>
-<span class="sourceLineNo">238</span>         * and the box is checked.<a name="line.238"></a>
-<span class="sourceLineNo">239</span>         * &lt;p&gt;<a name="line.239"></a>
-<span class="sourceLineNo">240</span>         * Don't confuse this with {@link #getValue}, which returns true or false if<a name="line.240"></a>
-<span class="sourceLineNo">241</span>         * the widget is checked.<a name="line.241"></a>
-<span class="sourceLineNo">242</span>         */<a name="line.242"></a>
-<span class="sourceLineNo">243</span>        public String getFormValue() {<a name="line.243"></a>
-<span class="sourceLineNo">244</span>                return inputElem.getValue();<a name="line.244"></a>
-<span class="sourceLineNo">245</span>        }<a name="line.245"></a>
-<span class="sourceLineNo">246</span><a name="line.246"></a>
-<span class="sourceLineNo">247</span>        @Override<a name="line.247"></a>
-<span class="sourceLineNo">248</span>        public String getHTML() {<a name="line.248"></a>
-<span class="sourceLineNo">249</span>                return directionalTextHelper.getTextOrHtml(true);<a name="line.249"></a>
-<span class="sourceLineNo">250</span>        }<a name="line.250"></a>
-<span class="sourceLineNo">251</span><a name="line.251"></a>
-<span class="sourceLineNo">252</span>        public String getName() {<a name="line.252"></a>
-<span class="sourceLineNo">253</span>                return inputElem.getName();<a name="line.253"></a>
-<span class="sourceLineNo">254</span>        }<a name="line.254"></a>
-<span class="sourceLineNo">255</span><a name="line.255"></a>
-<span class="sourceLineNo">256</span>        @Override<a name="line.256"></a>
-<span class="sourceLineNo">257</span>        public int getTabIndex() {<a name="line.257"></a>
-<span class="sourceLineNo">258</span>                return inputElem.getTabIndex();<a name="line.258"></a>
-<span class="sourceLineNo">259</span>        }<a name="line.259"></a>
-<span class="sourceLineNo">260</span><a name="line.260"></a>
-<span class="sourceLineNo">261</span>        @Override<a name="line.261"></a>
-<span class="sourceLineNo">262</span>        public String getText() {<a name="line.262"></a>
-<span class="sourceLineNo">263</span>                return directionalTextHelper.getTextOrHtml(false);<a name="line.263"></a>
-<span class="sourceLineNo">264</span>        }<a name="line.264"></a>
-<span class="sourceLineNo">265</span><a name="line.265"></a>
-<span class="sourceLineNo">266</span>        public Direction getTextDirection() {<a name="line.266"></a>
-<span class="sourceLineNo">267</span>                return directionalTextHelper.getTextDirection();<a name="line.267"></a>
-<span class="sourceLineNo">268</span>        }<a name="line.268"></a>
-<span class="sourceLineNo">269</span><a name="line.269"></a>
-<span class="sourceLineNo">270</span>        /**<a name="line.270"></a>
-<span class="sourceLineNo">271</span>         * Determines whether this check box is currently checked.<a name="line.271"></a>
-<span class="sourceLineNo">272</span>         * &lt;p&gt;<a name="line.272"></a>
-<span class="sourceLineNo">273</span>         * Note that this &lt;em&gt;does not&lt;/em&gt; return the value property of the<a name="line.273"></a>
-<span class="sourceLineNo">274</span>         * checkbox input element wrapped by this widget. For access to that<a name="line.274"></a>
-<span class="sourceLineNo">275</span>         * property, see {@link #getFormValue()}<a name="line.275"></a>
-<span class="sourceLineNo">276</span>         * <a name="line.276"></a>
-<span class="sourceLineNo">277</span>         * @return &lt;code&gt;true&lt;/code&gt; if the check box is checked, false otherwise.<a name="line.277"></a>
-<span class="sourceLineNo">278</span>         *         Will not return null<a name="line.278"></a>
-<span class="sourceLineNo">279</span>         */<a name="line.279"></a>
-<span class="sourceLineNo">280</span>        public Boolean getValue() {<a name="line.280"></a>
-<span class="sourceLineNo">281</span>                if (isAttached()) {<a name="line.281"></a>
-<span class="sourceLineNo">282</span>                        return inputElem.isChecked();<a name="line.282"></a>
-<span class="sourceLineNo">283</span>                } else {<a name="line.283"></a>
-<span class="sourceLineNo">284</span>                        return inputElem.isDefaultChecked();<a name="line.284"></a>
-<span class="sourceLineNo">285</span>                }<a name="line.285"></a>
-<span class="sourceLineNo">286</span>        }<a name="line.286"></a>
-<span class="sourceLineNo">287</span><a name="line.287"></a>
-<span class="sourceLineNo">288</span>        public boolean getWordWrap() {<a name="line.288"></a>
-<span class="sourceLineNo">289</span>                return !getElement().getStyle().getProperty("whiteSpace").equals("nowrap");<a name="line.289"></a>
-<span class="sourceLineNo">290</span>        }<a name="line.290"></a>
-<span class="sourceLineNo">291</span><a name="line.291"></a>
-<span class="sourceLineNo">292</span>        /**<a name="line.292"></a>
-<span class="sourceLineNo">293</span>         * Determines whether this check box is currently checked.<a name="line.293"></a>
-<span class="sourceLineNo">294</span>         * <a name="line.294"></a>
-<span class="sourceLineNo">295</span>         * @return &lt;code&gt;true&lt;/code&gt; if the check box is checked<a name="line.295"></a>
-<span class="sourceLineNo">296</span>         * @deprecated Use {@link #getValue} instead<a name="line.296"></a>
-<span class="sourceLineNo">297</span>         */<a name="line.297"></a>
-<span class="sourceLineNo">298</span>        @Deprecated<a name="line.298"></a>
-<span class="sourceLineNo">299</span>        public boolean isChecked() {<a name="line.299"></a>
-<span class="sourceLineNo">300</span>                // Funny comparison b/c getValue could in theory return null<a name="line.300"></a>
-<span class="sourceLineNo">301</span>                return getValue() == true;<a name="line.301"></a>
-<span class="sourceLineNo">302</span>        }<a name="line.302"></a>
-<span class="sourceLineNo">303</span><a name="line.303"></a>
-<span class="sourceLineNo">304</span>        @Override<a name="line.304"></a>
-<span class="sourceLineNo">305</span>        public boolean isEnabled() {<a name="line.305"></a>
-<span class="sourceLineNo">306</span>                return !inputElem.isDisabled();<a name="line.306"></a>
-<span class="sourceLineNo">307</span>        }<a name="line.307"></a>
-<span class="sourceLineNo">308</span><a name="line.308"></a>
-<span class="sourceLineNo">309</span>        @Override<a name="line.309"></a>
-<span class="sourceLineNo">310</span>        public void setAccessKey(char key) {<a name="line.310"></a>
-<span class="sourceLineNo">311</span>                inputElem.setAccessKey("" + key);<a name="line.311"></a>
-<span class="sourceLineNo">312</span>        }<a name="line.312"></a>
-<span class="sourceLineNo">313</span><a name="line.313"></a>
-<span class="sourceLineNo">314</span>        /**<a name="line.314"></a>
-<span class="sourceLineNo">315</span>         * Checks or unchecks this check box. Does not fire {@link ValueChangeEvent}<a name="line.315"></a>
-<span class="sourceLineNo">316</span>         * . (If you want the event to fire, use {@link #setValue(Boolean, boolean)}<a name="line.316"></a>
-<span class="sourceLineNo">317</span>         * )<a name="line.317"></a>
-<span class="sourceLineNo">318</span>         * <a name="line.318"></a>
-<span class="sourceLineNo">319</span>         * @param checked<a name="line.319"></a>
-<span class="sourceLineNo">320</span>         *            &lt;code&gt;true&lt;/code&gt; to check the check box.<a name="line.320"></a>
-<span class="sourceLineNo">321</span>         * @deprecated Use {@link #setValue(Boolean)} instead<a name="line.321"></a>
-<span class="sourceLineNo">322</span>         */<a name="line.322"></a>
-<span class="sourceLineNo">323</span>        @Deprecated<a name="line.323"></a>
-<span class="sourceLineNo">324</span>        public void setChecked(boolean checked) {<a name="line.324"></a>
-<span class="sourceLineNo">325</span>                setValue(checked);<a name="line.325"></a>
-<span class="sourceLineNo">326</span>        }<a name="line.326"></a>
-<span class="sourceLineNo">327</span><a name="line.327"></a>
-<span class="sourceLineNo">328</span>        /**<a name="line.328"></a>
-<span class="sourceLineNo">329</span>         * {@inheritDoc}<a name="line.329"></a>
-<span class="sourceLineNo">330</span>         * &lt;p&gt;<a name="line.330"></a>
-<span class="sourceLineNo">331</span>         * See note at {@link #setDirectionEstimator(DirectionEstimator)}.<a name="line.331"></a>
-<span class="sourceLineNo">332</span>         */<a name="line.332"></a>
-<span class="sourceLineNo">333</span>        public void setDirectionEstimator(boolean enabled) {<a name="line.333"></a>
-<span class="sourceLineNo">334</span>                directionalTextHelper.setDirectionEstimator(enabled);<a name="line.334"></a>
-<span class="sourceLineNo">335</span>        }<a name="line.335"></a>
-<span class="sourceLineNo">336</span><a name="line.336"></a>
-<span class="sourceLineNo">337</span>        /**<a name="line.337"></a>
-<span class="sourceLineNo">338</span>         * {@inheritDoc}<a name="line.338"></a>
-<span class="sourceLineNo">339</span>         * &lt;p&gt;<a name="line.339"></a>
-<span class="sourceLineNo">340</span>         * Note: DirectionEstimator should be set before the label has any content;<a name="line.340"></a>
-<span class="sourceLineNo">341</span>         * it's highly recommended to set it using a constructor. Reason: if the<a name="line.341"></a>
-<span class="sourceLineNo">342</span>         * label already has non-empty content, this will update its direction<a name="line.342"></a>
-<span class="sourceLineNo">343</span>         * according to the new estimator's result. This may cause flicker, and thus<a name="line.343"></a>
-<span class="sourceLineNo">344</span>         * should be avoided.<a name="line.344"></a>
-<span class="sourceLineNo">345</span>         */<a name="line.345"></a>
-<span class="sourceLineNo">346</span>        public void setDirectionEstimator(DirectionEstimator directionEstimator) {<a name="line.346"></a>
-<span class="sourceLineNo">347</span>                directionalTextHelper.setDirectionEstimator(directionEstimator);<a name="line.347"></a>
-<span class="sourceLineNo">348</span>        }<a name="line.348"></a>
-<span class="sourceLineNo">349</span><a name="line.349"></a>
-<span class="sourceLineNo">350</span>        @Override<a name="line.350"></a>
-<span class="sourceLineNo">351</span>        public void setEnabled(boolean enabled) {<a name="line.351"></a>
-<span class="sourceLineNo">352</span>                inputElem.setDisabled(!enabled);<a name="line.352"></a>
-<span class="sourceLineNo">353</span>                if (enabled) {<a name="line.353"></a>
-<span class="sourceLineNo">354</span>                        inputElem.removeClassName(Constants.DISABLED);<a name="line.354"></a>
-<span class="sourceLineNo">355</span>                } else {<a name="line.355"></a>
-<span class="sourceLineNo">356</span>                        inputElem.addClassName(Constants.DISABLED);<a name="line.356"></a>
-<span class="sourceLineNo">357</span>                }<a name="line.357"></a>
-<span class="sourceLineNo">358</span>        }<a name="line.358"></a>
-<span class="sourceLineNo">359</span><a name="line.359"></a>
-<span class="sourceLineNo">360</span>        @Override<a name="line.360"></a>
-<span class="sourceLineNo">361</span>        public void setFocus(boolean focused) {<a name="line.361"></a>
-<span class="sourceLineNo">362</span>                if (focused) {<a name="line.362"></a>
-<span class="sourceLineNo">363</span>                        inputElem.focus();<a name="line.363"></a>
-<span class="sourceLineNo">364</span>                } else {<a name="line.364"></a>
-<span class="sourceLineNo">365</span>                        inputElem.blur();<a name="line.365"></a>
-<span class="sourceLineNo">366</span>                }<a name="line.366"></a>
-<span class="sourceLineNo">367</span>        }<a name="line.367"></a>
-<span class="sourceLineNo">368</span><a name="line.368"></a>
-<span class="sourceLineNo">369</span>        /**<a name="line.369"></a>
-<span class="sourceLineNo">370</span>         * Set the value property on the input element that backs this widget. This<a name="line.370"></a>
-<span class="sourceLineNo">371</span>         * is the value that will be associated with the CheckBox's name and<a name="line.371"></a>
-<span class="sourceLineNo">372</span>         * submitted to the server if a {@link FormPanel} that holds it is submitted<a name="line.372"></a>
-<span class="sourceLineNo">373</span>         * and the box is checked.<a name="line.373"></a>
-<span class="sourceLineNo">374</span>         * &lt;p&gt;<a name="line.374"></a>
-<span class="sourceLineNo">375</span>         * Don't confuse this with {@link #setValue}, which actually checks and<a name="line.375"></a>
-<span class="sourceLineNo">376</span>         * unchecks the box.<a name="line.376"></a>
-<span class="sourceLineNo">377</span>         * <a name="line.377"></a>
-<span class="sourceLineNo">378</span>         * @param value<a name="line.378"></a>
-<span class="sourceLineNo">379</span>         */<a name="line.379"></a>
-<span class="sourceLineNo">380</span>        public void setFormValue(String value) {<a name="line.380"></a>
-<span class="sourceLineNo">381</span>                inputElem.setAttribute("value", value);<a name="line.381"></a>
-<span class="sourceLineNo">382</span>        }<a name="line.382"></a>
-<span class="sourceLineNo">383</span><a name="line.383"></a>
-<span class="sourceLineNo">384</span>        public void setHTML(SafeHtml html, Direction dir) {<a name="line.384"></a>
-<span class="sourceLineNo">385</span>                directionalTextHelper.setTextOrHtml(html.asString(), dir, true);<a name="line.385"></a>
-<span class="sourceLineNo">386</span>        }<a name="line.386"></a>
-<span class="sourceLineNo">387</span><a name="line.387"></a>
-<span class="sourceLineNo">388</span>        @Override<a name="line.388"></a>
-<span class="sourceLineNo">389</span>        public void setHTML(String html) {<a name="line.389"></a>
-<span class="sourceLineNo">390</span>                directionalTextHelper.setTextOrHtml(html, true);<a name="line.390"></a>
-<span class="sourceLineNo">391</span>        }<a name="line.391"></a>
-<span class="sourceLineNo">392</span><a name="line.392"></a>
-<span class="sourceLineNo">393</span>        public void setName(String name) {<a name="line.393"></a>
-<span class="sourceLineNo">394</span>                inputElem.setName(name);<a name="line.394"></a>
-<span class="sourceLineNo">395</span>        }<a name="line.395"></a>
-<span class="sourceLineNo">396</span><a name="line.396"></a>
-<span class="sourceLineNo">397</span>        @Override<a name="line.397"></a>
-<span class="sourceLineNo">398</span>        public void setTabIndex(int index) {<a name="line.398"></a>
-<span class="sourceLineNo">399</span>                // Need to guard against call to setTabIndex before inputElem is<a name="line.399"></a>
-<span class="sourceLineNo">400</span>                // initialized. This happens because FocusWidget's (a superclass of<a name="line.400"></a>
-<span class="sourceLineNo">401</span>                // CheckBox) setElement method calls setTabIndex before inputElem is<a name="line.401"></a>
-<span class="sourceLineNo">402</span>                // initialized. See CheckBox's protected constructor for more<a name="line.402"></a>
-<span class="sourceLineNo">403</span>                // information.<a name="line.403"></a>
-<span class="sourceLineNo">404</span>                if (inputElem != null) {<a name="line.404"></a>
-<span class="sourceLineNo">405</span>                        inputElem.setTabIndex(index);<a name="line.405"></a>
-<span class="sourceLineNo">406</span>                }<a name="line.406"></a>
-<span class="sourceLineNo">407</span>        }<a name="line.407"></a>
-<span class="sourceLineNo">408</span><a name="line.408"></a>
-<span class="sourceLineNo">409</span>        @Override<a name="line.409"></a>
-<span class="sourceLineNo">410</span>        public void setText(String text) {<a name="line.410"></a>
-<span class="sourceLineNo">411</span>                directionalTextHelper.setTextOrHtml(text, false);<a name="line.411"></a>
-<span class="sourceLineNo">412</span>        }<a name="line.412"></a>
-<span class="sourceLineNo">413</span><a name="line.413"></a>
-<span class="sourceLineNo">414</span>        public void setText(String text, Direction dir) {<a name="line.414"></a>
-<span class="sourceLineNo">415</span>                directionalTextHelper.setTextOrHtml(text, dir, false);<a name="line.415"></a>
-<span class="sourceLineNo">416</span>        }<a name="line.416"></a>
-<span class="sourceLineNo">417</span><a name="line.417"></a>
-<span class="sourceLineNo">418</span>        /**<a name="line.418"></a>
-<span class="sourceLineNo">419</span>         * Checks or unchecks the check box.<a name="line.419"></a>
-<span class="sourceLineNo">420</span>         * &lt;p&gt;<a name="line.420"></a>
-<span class="sourceLineNo">421</span>         * Note that this &lt;em&gt;does not&lt;/em&gt; set the value property of the checkbox<a name="line.421"></a>
-<span class="sourceLineNo">422</span>         * input element wrapped by this widget. For access to that property, see<a name="line.422"></a>
-<span class="sourceLineNo">423</span>         * {@link #setFormValue(String)}<a name="line.423"></a>
-<span class="sourceLineNo">424</span>         * <a name="line.424"></a>
-<span class="sourceLineNo">425</span>         * @param value<a name="line.425"></a>
-<span class="sourceLineNo">426</span>         *            true to check, false to uncheck; null value implies false<a name="line.426"></a>
-<span class="sourceLineNo">427</span>         */<a name="line.427"></a>
-<span class="sourceLineNo">428</span>        public void setValue(Boolean value) {<a name="line.428"></a>
-<span class="sourceLineNo">429</span>                setValue(value, false);<a name="line.429"></a>
-<span class="sourceLineNo">430</span>        }<a name="line.430"></a>
-<span class="sourceLineNo">431</span><a name="line.431"></a>
-<span class="sourceLineNo">432</span>        /**<a name="line.432"></a>
-<span class="sourceLineNo">433</span>         * Checks or unchecks the check box, firing {@link ValueChangeEvent} if<a name="line.433"></a>
-<span class="sourceLineNo">434</span>         * appropriate.<a name="line.434"></a>
-<span class="sourceLineNo">435</span>         * &lt;p&gt;<a name="line.435"></a>
-<span class="sourceLineNo">436</span>         * Note that this &lt;em&gt;does not&lt;/em&gt; set the value property of the checkbox<a name="line.436"></a>
-<span class="sourceLineNo">437</span>         * input element wrapped by this widget. For access to that property, see<a name="line.437"></a>
-<span class="sourceLineNo">438</span>         * {@link #setFormValue(String)}<a name="line.438"></a>
-<span class="sourceLineNo">439</span>         * <a name="line.439"></a>
-<span class="sourceLineNo">440</span>         * @param value<a name="line.440"></a>
-<span class="sourceLineNo">441</span>         *            true to check, false to uncheck; null value implies false<a name="line.441"></a>
-<span class="sourceLineNo">442</span>         * @param fireEvents<a name="line.442"></a>
-<span class="sourceLineNo">443</span>         *            If true, and value has changed, fire a<a name="line.443"></a>
-<span class="sourceLineNo">444</span>         *            {@link ValueChangeEvent}<a name="line.444"></a>
-<span class="sourceLineNo">445</span>         */<a name="line.445"></a>
-<span class="sourceLineNo">446</span>        public void setValue(Boolean value, boolean fireEvents) {<a name="line.446"></a>
-<span class="sourceLineNo">447</span>                if (value == null) {<a name="line.447"></a>
-<span class="sourceLineNo">448</span>                        value = Boolean.FALSE;<a name="line.448"></a>
-<span class="sourceLineNo">449</span>                }<a name="line.449"></a>
-<span class="sourceLineNo">450</span><a name="line.450"></a>
-<span class="sourceLineNo">451</span>                Boolean oldValue = getValue();<a name="line.451"></a>
-<span class="sourceLineNo">452</span>                inputElem.setChecked(value);<a name="line.452"></a>
-<span class="sourceLineNo">453</span>                inputElem.setDefaultChecked(value);<a name="line.453"></a>
-<span class="sourceLineNo">454</span>                if (value.equals(oldValue)) {<a name="line.454"></a>
-<span class="sourceLineNo">455</span>                        return;<a name="line.455"></a>
-<span class="sourceLineNo">456</span>                }<a name="line.456"></a>
-<span class="sourceLineNo">457</span>                if (fireEvents) {<a name="line.457"></a>
-<span class="sourceLineNo">458</span>                        ValueChangeEvent.fire(this, value);<a name="line.458"></a>
-<span class="sourceLineNo">459</span>                }<a name="line.459"></a>
-<span class="sourceLineNo">460</span>        }<a name="line.460"></a>
-<span class="sourceLineNo">461</span><a name="line.461"></a>
-<span class="sourceLineNo">462</span>        public void setWordWrap(boolean wrap) {<a name="line.462"></a>
-<span class="sourceLineNo">463</span>                getElement().getStyle().setProperty("whiteSpace", wrap<a name="line.463"></a>
-<span class="sourceLineNo">464</span>                                                                                                                                ? "normal"<a name="line.464"></a>
-<span class="sourceLineNo">465</span>                                                                                                                                : "nowrap");<a name="line.465"></a>
+<span class="sourceLineNo">207</span>                inputElem = InputElement.as(elem);<a name="line.207"></a>
+<span class="sourceLineNo">208</span>                spanElem = Document.get().createSpanElement();<a name="line.208"></a>
+<span class="sourceLineNo">209</span>                <a name="line.209"></a>
+<span class="sourceLineNo">210</span>                getElement().appendChild(inputElem);<a name="line.210"></a>
+<span class="sourceLineNo">211</span>                getElement().appendChild(spanElem);<a name="line.211"></a>
+<span class="sourceLineNo">212</span><a name="line.212"></a>
+<span class="sourceLineNo">213</span>                String uid = DOM.createUniqueId();<a name="line.213"></a>
+<span class="sourceLineNo">214</span>                inputElem.setPropertyString("id", uid);<a name="line.214"></a>
+<span class="sourceLineNo">215</span>                asLabel().setHtmlFor(uid);<a name="line.215"></a>
+<span class="sourceLineNo">216</span>                directionalTextHelper = new DirectionalTextHelper(spanElem, false);<a name="line.216"></a>
+<span class="sourceLineNo">217</span>                setTabIndex(0);<a name="line.217"></a>
+<span class="sourceLineNo">218</span>        }<a name="line.218"></a>
+<span class="sourceLineNo">219</span><a name="line.219"></a>
+<span class="sourceLineNo">220</span>        public HandlerRegistration addValueChangeHandler(ValueChangeHandler&lt;Boolean&gt; handler) {<a name="line.220"></a>
+<span class="sourceLineNo">221</span>                // Is this the first value change handler? If so, time to add handlers<a name="line.221"></a>
+<span class="sourceLineNo">222</span>                if (!valueChangeHandlerInitialized) {<a name="line.222"></a>
+<span class="sourceLineNo">223</span>                        ensureDomEventHandlers();<a name="line.223"></a>
+<span class="sourceLineNo">224</span>                        valueChangeHandlerInitialized = true;<a name="line.224"></a>
+<span class="sourceLineNo">225</span>                }<a name="line.225"></a>
+<span class="sourceLineNo">226</span>                return addHandler(handler, ValueChangeEvent.getType());<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        }<a name="line.227"></a>
+<span class="sourceLineNo">228</span><a name="line.228"></a>
+<span class="sourceLineNo">229</span>        public LeafValueEditor&lt;Boolean&gt; asEditor() {<a name="line.229"></a>
+<span class="sourceLineNo">230</span>                if (editor == null) {<a name="line.230"></a>
+<span class="sourceLineNo">231</span>                        editor = TakesValueEditor.of(this);<a name="line.231"></a>
+<span class="sourceLineNo">232</span>                }<a name="line.232"></a>
+<span class="sourceLineNo">233</span>                return editor;<a name="line.233"></a>
+<span class="sourceLineNo">234</span>        }<a name="line.234"></a>
+<span class="sourceLineNo">235</span><a name="line.235"></a>
+<span class="sourceLineNo">236</span>        public DirectionEstimator getDirectionEstimator() {<a name="line.236"></a>
+<span class="sourceLineNo">237</span>                return directionalTextHelper.getDirectionEstimator();<a name="line.237"></a>
+<span class="sourceLineNo">238</span>        }<a name="line.238"></a>
+<span class="sourceLineNo">239</span><a name="line.239"></a>
+<span class="sourceLineNo">240</span>        /**<a name="line.240"></a>
+<span class="sourceLineNo">241</span>         * Returns the value property of the input element that backs this widget.<a name="line.241"></a>
+<span class="sourceLineNo">242</span>         * This is the value that will be associated with the CheckBox name and<a name="line.242"></a>
+<span class="sourceLineNo">243</span>         * submitted to the server if a {@link FormPanel} that holds it is submitted<a name="line.243"></a>
+<span class="sourceLineNo">244</span>         * and the box is checked.<a name="line.244"></a>
+<span class="sourceLineNo">245</span>         * &lt;p&gt;<a name="line.245"></a>
+<span class="sourceLineNo">246</span>         * Don't confuse this with {@link #getValue}, which returns true or false if<a name="line.246"></a>
+<span class="sourceLineNo">247</span>         * the widget is checked.<a name="line.247"></a>
+<span class="sourceLineNo">248</span>         */<a name="line.248"></a>
+<span class="sourceLineNo">249</span>        public String getFormValue() {<a name="line.249"></a>
+<span class="sourceLineNo">250</span>                return inputElem.getValue();<a name="line.250"></a>
+<span class="sourceLineNo">251</span>        }<a name="line.251"></a>
+<span class="sourceLineNo">252</span><a name="line.252"></a>
+<span class="sourceLineNo">253</span>        @Override<a name="line.253"></a>
+<span class="sourceLineNo">254</span>        public String getHTML() {<a name="line.254"></a>
+<span class="sourceLineNo">255</span>                return directionalTextHelper.getTextOrHtml(true);<a name="line.255"></a>
+<span class="sourceLineNo">256</span>        }<a name="line.256"></a>
+<span class="sourceLineNo">257</span><a name="line.257"></a>
+<span class="sourceLineNo">258</span>        public String getName() {<a name="line.258"></a>
+<span class="sourceLineNo">259</span>                return inputElem.getName();<a name="line.259"></a>
+<span class="sourceLineNo">260</span>        }<a name="line.260"></a>
+<span class="sourceLineNo">261</span><a name="line.261"></a>
+<span class="sourceLineNo">262</span>        @Override<a name="line.262"></a>
+<span class="sourceLineNo">263</span>        public int getTabIndex() {<a name="line.263"></a>
+<span class="sourceLineNo">264</span>                return inputElem.getTabIndex();<a name="line.264"></a>
+<span class="sourceLineNo">265</span>        }<a name="line.265"></a>
+<span class="sourceLineNo">266</span><a name="line.266"></a>
+<span class="sourceLineNo">267</span>        @Override<a name="line.267"></a>
+<span class="sourceLineNo">268</span>        public String getText() {<a name="line.268"></a>
+<span class="sourceLineNo">269</span>                return directionalTextHelper.getTextOrHtml(false);<a name="line.269"></a>
+<span class="sourceLineNo">270</span>        }<a name="line.270"></a>
+<span class="sourceLineNo">271</span><a name="line.271"></a>
+<span class="sourceLineNo">272</span>        public Direction getTextDirection() {<a name="line.272"></a>
+<span class="sourceLineNo">273</span>                return directionalTextHelper.getTextDirection();<a name="line.273"></a>
+<span class="sourceLineNo">274</span>        }<a name="line.274"></a>
+<span class="sourceLineNo">275</span><a name="line.275"></a>
+<span class="sourceLineNo">276</span>        /**<a name="line.276"></a>
+<span class="sourceLineNo">277</span>         * Determines whether this check box is currently checked.<a name="line.277"></a>
+<span class="sourceLineNo">278</span>         * &lt;p&gt;<a name="line.278"></a>
+<span class="sourceLineNo">279</span>         * Note that this &lt;em&gt;does not&lt;/em&gt; return the value property of the<a name="line.279"></a>
+<span class="sourceLineNo">280</span>         * checkbox input element wrapped by this widget. For access to that<a name="line.280"></a>
+<span class="sourceLineNo">281</span>         * property, see {@link #getFormValue()}<a name="line.281"></a>
+<span class="sourceLineNo">282</span>         * <a name="line.282"></a>
+<span class="sourceLineNo">283</span>         * @return &lt;code&gt;true&lt;/code&gt; if the check box is checked, false otherwise.<a name="line.283"></a>
+<span class="sourceLineNo">284</span>         *         Will not return null<a name="line.284"></a>
+<span class="sourceLineNo">285</span>         */<a name="line.285"></a>
+<span class="sourceLineNo">286</span>        public Boolean getValue() {<a name="line.286"></a>
+<span class="sourceLineNo">287</span>                if (isAttached()) {<a name="line.287"></a>
+<span class="sourceLineNo">288</span>                        return inputElem.isChecked();<a name="line.288"></a>
+<span class="sourceLineNo">289</span>                } else {<a name="line.289"></a>
+<span class="sourceLineNo">290</span>                        return inputElem.isDefaultChecked();<a name="line.290"></a>
+<span class="sourceLineNo">291</span>                }<a name="line.291"></a>
+<span class="sourceLineNo">292</span>        }<a name="line.292"></a>
+<span class="sourceLineNo">293</span><a name="line.293"></a>
+<span class="sourceLineNo">294</span>        public boolean getWordWrap() {<a name="line.294"></a>
+<span class="sourceLineNo">295</span>                return !getElement().getStyle().getProperty("whiteSpace").equals("nowrap");<a name="line.295"></a>
+<span class="sourceLineNo">296</span>        }<a name="line.296"></a>
+<span class="sourceLineNo">297</span><a name="line.297"></a>
+<span class="sourceLineNo">298</span>        /**<a name="line.298"></a>
+<span class="sourceLineNo">299</span>         * Determines whether this check box is currently checked.<a name="line.299"></a>
+<span class="sourceLineNo">300</span>         * <a name="line.300"></a>
+<span class="sourceLineNo">301</span>         * @return &lt;code&gt;true&lt;/code&gt; if the check box is checked<a name="line.301"></a>
+<span class="sourceLineNo">302</span>         * @deprecated Use {@link #getValue} instead<a name="line.302"></a>
+<span class="sourceLineNo">303</span>         */<a name="line.303"></a>
+<span class="sourceLineNo">304</span>        @Deprecated<a name="line.304"></a>
+<span class="sourceLineNo">305</span>        public boolean isChecked() {<a name="line.305"></a>
+<span class="sourceLineNo">306</span>                // Funny comparison b/c getValue could in theory return null<a name="line.306"></a>
+<span class="sourceLineNo">307</span>                return getValue() == true;<a name="line.307"></a>
+<span class="sourceLineNo">308</span>        }<a name="line.308"></a>
+<span class="sourceLineNo">309</span><a name="line.309"></a>
+<span class="sourceLineNo">310</span>        @Override<a name="line.310"></a>
+<span class="sourceLineNo">311</span>        public boolean isEnabled() {<a name="line.311"></a>
+<span class="sourceLineNo">312</span>                return !inputElem.isDisabled();<a name="line.312"></a>
+<span class="sourceLineNo">313</span>        }<a name="line.313"></a>
+<span class="sourceLineNo">314</span><a name="line.314"></a>
+<span class="sourceLineNo">315</span>        @Override<a name="line.315"></a>
+<span class="sourceLineNo">316</span>        public void setAccessKey(char key) {<a name="line.316"></a>
+<span class="sourceLineNo">317</span>                inputElem.setAccessKey("" + key);<a name="line.317"></a>
+<span class="sourceLineNo">318</span>        }<a name="line.318"></a>
+<span class="sourceLineNo">319</span><a name="line.319"></a>
+<span class="sourceLineNo">320</span>        /**<a name="line.320"></a>
+<span class="sourceLineNo">321</span>         * Checks or unchecks this check box. Does not fire {@link ValueChangeEvent}<a name="line.321"></a>
+<span class="sourceLineNo">322</span>         * . (If you want the event to fire, use {@link #setValue(Boolean, boolean)}<a name="line.322"></a>
+<span class="sourceLineNo">323</span>         * )<a name="line.323"></a>
+<span class="sourceLineNo">324</span>         * <a name="line.324"></a>
+<span class="sourceLineNo">325</span>         * @param checked<a name="line.325"></a>
+<span class="sourceLineNo">326</span>         *            &lt;code&gt;true&lt;/code&gt; to check the check box.<a name="line.326"></a>
+<span class="sourceLineNo">327</span>         * @deprecated Use {@link #setValue(Boolean)} instead<a name="line.327"></a>
+<span class="sourceLineNo">328</span>         */<a name="line.328"></a>
+<span class="sourceLineNo">329</span>        @Deprecated<a name="line.329"></a>
+<span class="sourceLineNo">330</span>        public void setChecked(boolean checked) {<a name="line.330"></a>
+<span class="sourceLineNo">331</span>                setValue(checked);<a name="line.331"></a>
+<span class="sourceLineNo">332</span>        }<a name="line.332"></a>
+<span class="sourceLineNo">333</span><a name="line.333"></a>
+<span class="sourceLineNo">334</span>        /**<a name="line.334"></a>
+<span class="sourceLineNo">335</span>         * {@inheritDoc}<a name="line.335"></a>
+<span class="sourceLineNo">336</span>         * &lt;p&gt;<a name="line.336"></a>
+<span class="sourceLineNo">337</span>         * See note at {@link #setDirectionEstimator(DirectionEstimator)}.<a name="line.337"></a>
+<span class="sourceLineNo">338</span>         */<a name="line.338"></a>
+<span class="sourceLineNo">339</span>        public void setDirectionEstimator(boolean enabled) {<a name="line.339"></a>
+<span class="sourceLineNo">340</span>                directionalTextHelper.setDirectionEstimator(enabled);<a name="line.340"></a>
+<span class="sourceLineNo">341</span>        }<a name="line.341"></a>
+<span class="sourceLineNo">342</span><a name="line.342"></a>
+<span class="sourceLineNo">343</span>        /**<a name="line.343"></a>
+<span class="sourceLineNo">344</span>         * {@inheritDoc}<a name="line.344"></a>
+<span class="sourceLineNo">345</span>         * &lt;p&gt;<a name="line.345"></a>
+<span class="sourceLineNo">346</span>         * Note: DirectionEstimator should be set before the label has any content;<a name="line.346"></a>
+<span class="sourceLineNo">347</span>         * it's highly recommended to set it using a constructor. Reason: if the<a name="line.347"></a>
+<span class="sourceLineNo">348</span>         * label already has non-empty content, this will update its direction<a name="line.348"></a>
+<span class="sourceLineNo">349</span>         * according to the new estimator's result. This may cause flicker, and thus<a name="line.349"></a>
+<span class="sourceLineNo">350</span>         * should be avoided.<a name="line.350"></a>
+<span class="sourceLineNo">351</span>         */<a name="line.351"></a>
+<span class="sourceLineNo">352</span>        public void setDirectionEstimator(DirectionEstimator directionEstimator) {<a name="line.352"></a>
+<span class="sourceLineNo">353</span>                directionalTextHelper.setDirectionEstimator(directionEstimator);<a name="line.353"></a>
+<span class="sourceLineNo">354</span>        }<a name="line.354"></a>
+<span class="sourceLineNo">355</span><a name="line.355"></a>
+<span class="sourceLineNo">356</span>        @Override<a name="line.356"></a>
+<span class="sourceLineNo">357</span>        public void setEnabled(boolean enabled) {<a name="line.357"></a>
+<span class="sourceLineNo">358</span>                inputElem.setDisabled(!enabled);<a name="line.358"></a>
+<span class="sourceLineNo">359</span>                if (enabled) {<a name="line.359"></a>
+<span class="sourceLineNo">360</span>                        inputElem.removeClassName(Constants.DISABLED);<a name="line.360"></a>
+<span class="sourceLineNo">361</span>                } else {<a name="line.361"></a>
+<span class="sourceLineNo">362</span>                        inputElem.addClassName(Constants.DISABLED);<a name="line.362"></a>
+<span class="sourceLineNo">363</span>                }<a name="line.363"></a>
+<span class="sourceLineNo">364</span>        }<a name="line.364"></a>
+<span class="sourceLineNo">365</span><a name="line.365"></a>
+<span class="sourceLineNo">366</span>        @Override<a name="line.366"></a>
+<span class="sourceLineNo">367</span>        public void setFocus(boolean focused) {<a name="line.367"></a>
+<span class="sourceLineNo">368</span>                if (focused) {<a name="line.368"></a>
+<span class="sourceLineNo">369</span>                        inputElem.focus();<a name="line.369"></a>
+<span class="sourceLineNo">370</span>                } else {<a name="line.370"></a>
+<span class="sourceLineNo">371</span>                        inputElem.blur();<a name="line.371"></a>
+<span class="sourceLineNo">372</span>                }<a name="line.372"></a>
+<span class="sourceLineNo">373</span>        }<a name="line.373"></a>
+<span class="sourceLineNo">374</span><a name="line.374"></a>
+<span class="sourceLineNo">375</span>        /**<a name="line.375"></a>
+<span class="sourceLineNo">376</span>         * Set the value property on the input element that backs this widget. This<a name="line.376"></a>
+<span class="sourceLineNo">377</span>         * is the value that will be associated with the CheckBox's name and<a name="line.377"></a>
+<span class="sourceLineNo">378</span>         * submitted to the server if a {@link FormPanel} that holds it is submitted<a name="line.378"></a>
+<span class="sourceLineNo">379</span>         * and the box is checked.<a name="line.379"></a>
+<span class="sourceLineNo">380</span>         * &lt;p&gt;<a name="line.380"></a>
+<span class="sourceLineNo">381</span>         * Don't confuse this with {@link #setValue}, which actually checks and<a name="line.381"></a>
+<span class="sourceLineNo">382</span>         * unchecks the box.<a name="line.382"></a>
+<span class="sourceLineNo">383</span>         * <a name="line.383"></a>
+<span class="sourceLineNo">384</span>         * @param value<a name="line.384"></a>
+<span class="sourceLineNo">385</span>         */<a name="line.385"></a>
+<span class="sourceLineNo">386</span>        public void setFormValue(String value) {<a name="line.386"></a>
+<span class="sourceLineNo">387</span>                inputElem.setAttribute("value", value);<a name="line.387"></a>
+<span class="sourceLineNo">388</span>        }<a name="line.388"></a>
+<span class="sourceLineNo">389</span><a name="line.389"></a>
+<span class="sourceLineNo">390</span>        public void setHTML(SafeHtml html, Direction dir) {<a name="line.390"></a>
+<span class="sourceLineNo">391</span>                directionalTextHelper.setTextOrHtml(html.asString(), dir, true);<a name="line.391"></a>
+<span class="sourceLineNo">392</span>        }<a name="line.392"></a>
+<span class="sourceLineNo">393</span><a name="line.393"></a>
+<span class="sourceLineNo">394</span>        @Override<a name="line.394"></a>
+<span class="sourceLineNo">395</span>        public void setHTML(String html) {<a name="line.395"></a>
+<span class="sourceLineNo">396</span>                directionalTextHelper.setTextOrHtml(html, true);<a name="line.396"></a>
+<span class="sourceLineNo">397</span>        }<a name="line.397"></a>
+<span class="sourceLineNo">398</span><a name="line.398"></a>
+<span class="sourceLineNo">399</span>        public void setName(String name) {<a name="line.399"></a>
+<span class="sourceLineNo">400</span>                inputElem.setName(name);<a name="line.400"></a>
+<span class="sourceLineNo">401</span>        }<a name="line.401"></a>
+<span class="sourceLineNo">402</span><a name="line.402"></a>
+<span class="sourceLineNo">403</span>        @Override<a name="line.403"></a>
+<span class="sourceLineNo">404</span>        public void setTabIndex(int index) {<a name="line.404"></a>
+<span class="sourceLineNo">405</span>                // Need to guard against call to setTabIndex before inputElem is<a name="line.405"></a>
+<span class="sourceLineNo">406</span>                // initialized. This happens because FocusWidget's (a superclass of<a name="line.406"></a>
+<span class="sourceLineNo">407</span>                // CheckBox) setElement method calls setTabIndex before inputElem is<a name="line.407"></a>
+<span class="sourceLineNo">408</span>                // initialized. See CheckBox's protected constructor for more<a name="line.408"></a>
+<span class="sourceLineNo">409</span>                // information.<a name="line.409"></a>
+<span class="sourceLineNo">410</span>                if (inputElem != null) {<a name="line.410"></a>
+<span class="sourceLineNo">411</span>                        inputElem.setTabIndex(index);<a name="line.411"></a>
+<span class="sourceLineNo">412</span>                }<a name="line.412"></a>
+<span class="sourceLineNo">413</span>        }<a name="line.413"></a>
+<span class="sourceLineNo">414</span><a name="line.414"></a>
+<span class="sourceLineNo">415</span>        @Override<a name="line.415"></a>
+<span class="sourceLineNo">416</span>        public void setText(String text) {<a name="line.416"></a>
+<span class="sourceLineNo">417</span>                directionalTextHelper.setTextOrHtml(text, false);<a name="line.417"></a>
+<span class="sourceLineNo">418</span>        }<a name="line.418"></a>
+<span class="sourceLineNo">419</span><a name="line.419"></a>
+<span class="sourceLineNo">420</span>        public void setText(String text, Direction dir) {<a name="line.420"></a>
+<span class="sourceLineNo">421</span>                directionalTextHelper.setTextOrHtml(text, dir, false);<a name="line.421"></a>
+<span class="sourceLineNo">422</span>        }<a name="line.422"></a>
+<span class="sourceLineNo">423</span><a name="line.423"></a>
+<span class="sourceLineNo">424</span>        /**<a name="line.424"></a>
+<span class="sourceLineNo">425</span>         * Checks or unchecks the check box.<a name="line.425"></a>
+<span class="sourceLineNo">426</span>         * &lt;p&gt;<a name="line.426"></a>
+<span class="sourceLineNo">427</span>         * Note that this &lt;em&gt;does not&lt;/em&gt; set the value property of the checkbox<a name="line.427"></a>
+<span class="sourceLineNo">428</span>         * input element wrapped by this widget. For access to that property, see<a name="line.428"></a>
+<span class="sourceLineNo">429</span>         * {@link #setFormValue(String)}<a name="line.429"></a>
+<span class="sourceLineNo">430</span>         * <a name="line.430"></a>
+<span class="sourceLineNo">431</span>         * @param value<a name="line.431"></a>
+<span class="sourceLineNo">432</span>         *            true to check, false to uncheck; null value implies false<a name="line.432"></a>
+<span class="sourceLineNo">433</span>         */<a name="line.433"></a>
+<span class="sourceLineNo">434</span>        public void setValue(Boolean value) {<a name="line.434"></a>
+<span class="sourceLineNo">435</span>                setValue(value, false);<a name="line.435"></a>
+<span class="sourceLineNo">436</span>        }<a name="line.436"></a>
+<span class="sourceLineNo">437</span><a name="line.437"></a>
+<span class="sourceLineNo">438</span>        /**<a name="line.438"></a>
+<span class="sourceLineNo">439</span>         * Checks or unchecks the check box, firing {@link ValueChangeEvent} if<a name="line.439"></a>
+<span class="sourceLineNo">440</span>         * appropriate.<a name="line.440"></a>
+<span class="sourceLineNo">441</span>         * &lt;p&gt;<a name="line.441"></a>
+<span class="sourceLineNo">442</span>         * Note that this &lt;em&gt;does not&lt;/em&gt; set the value property of the checkbox<a name="line.442"></a>
+<span class="sourceLineNo">443</span>         * input element wrapped by this widget. For access to that property, see<a name="line.443"></a>
+<span class="sourceLineNo">444</span>         * {@link #setFormValue(String)}<a name="line.444"></a>
+<span class="sourceLineNo">445</span>         * <a name="line.445"></a>
+<span class="sourceLineNo">446</span>         * @param value<a name="line.446"></a>
+<span class="sourceLineNo">447</span>         *            true to check, false to uncheck; null value implies false<a name="line.447"></a>
+<span class="sourceLineNo">448</span>         * @param fireEvents<a name="line.448"></a>
+<span class="sourceLineNo">449</span>         *            If true, and value has changed, fire a<a name="line.449"></a>
+<span class="sourceLineNo">450</span>         *            {@link ValueChangeEvent}<a name="line.450"></a>
+<span class="sourceLineNo">451</span>         */<a name="line.451"></a>
+<span class="sourceLineNo">452</span>        public void setValue(Boolean value, boolean fireEvents) {<a name="line.452"></a>
+<span class="sourceLineNo">453</span>                if (value == null) {<a name="line.453"></a>
+<span class="sourceLineNo">454</span>                        value = Boolean.FALSE;<a name="line.454"></a>
+<span class="sourceLineNo">455</span>                }<a name="line.455"></a>
+<span class="sourceLineNo">456</span><a name="line.456"></a>
+<span class="sourceLineNo">457</span>                Boolean oldValue = getValue();<a name="line.457"></a>
+<span class="sourceLineNo">458</span>                inputElem.setChecked(value);<a name="line.458"></a>
+<span class="sourceLineNo">459</span>                inputElem.setDefaultChecked(value);<a name="line.459"></a>
+<span class="sourceLineNo">460</span>                if (value.equals(oldValue)) {<a name="line.460"></a>
+<span class="sourceLineNo">461</span>                        return;<a name="line.461"></a>
+<span class="sourceLineNo">462</span>                }<a name="line.462"></a>
+<span class="sourceLineNo">463</span>                if (fireEvents) {<a name="line.463"></a>
+<span class="sourceLineNo">464</span>                        ValueChangeEvent.fire(this, value);<a name="line.464"></a>
+<span class="sourceLineNo">465</span>                }<a name="line.465"></a>
 <span class="sourceLineNo">466</span>        }<a name="line.466"></a>
 <span class="sourceLineNo">467</span><a name="line.467"></a>
-<span class="sourceLineNo">468</span>        // Unlike other widgets the CheckBox sinks on its inputElement, not<a name="line.468"></a>
-<span class="sourceLineNo">469</span>        // its wrapper<a name="line.469"></a>
-<span class="sourceLineNo">470</span>        @Override<a name="line.470"></a>
-<span class="sourceLineNo">471</span>        public void sinkEvents(int eventBitsToAdd) {<a name="line.471"></a>
-<span class="sourceLineNo">472</span>                if (isOrWasAttached()) {<a name="line.472"></a>
-<span class="sourceLineNo">473</span>                        Event.sinkEvents(inputElem, eventBitsToAdd | Event.getEventsSunk(inputElem));<a name="line.473"></a>
-<span class="sourceLineNo">474</span>                } else {<a name="line.474"></a>
-<span class="sourceLineNo">475</span>                        super.sinkEvents(eventBitsToAdd);<a name="line.475"></a>
-<span class="sourceLineNo">476</span>                }<a name="line.476"></a>
-<span class="sourceLineNo">477</span>        }<a name="line.477"></a>
-<span class="sourceLineNo">478</span><a name="line.478"></a>
-<span class="sourceLineNo">479</span>        protected void ensureDomEventHandlers() {<a name="line.479"></a>
-<span class="sourceLineNo">480</span>                addClickHandler(new ClickHandler() {<a name="line.480"></a>
-<span class="sourceLineNo">481</span><a name="line.481"></a>
-<span class="sourceLineNo">482</span>                        public void onClick(ClickEvent event) {<a name="line.482"></a>
-<span class="sourceLineNo">483</span>                                // Checkboxes always toggle their value, no need to compare<a name="line.483"></a>
-<span class="sourceLineNo">484</span>                                // with old value. Radio buttons are not so lucky, see<a name="line.484"></a>
-<span class="sourceLineNo">485</span>                                // overrides in RadioButton<a name="line.485"></a>
-<span class="sourceLineNo">486</span>                                ValueChangeEvent.fire(CheckBox.this, getValue());<a name="line.486"></a>
-<span class="sourceLineNo">487</span>                        }<a name="line.487"></a>
-<span class="sourceLineNo">488</span>                });<a name="line.488"></a>
-<span class="sourceLineNo">489</span>        }<a name="line.489"></a>
-<span class="sourceLineNo">490</span><a name="line.490"></a>
-<span class="sourceLineNo">491</span>        /**<a name="line.491"></a>
-<span class="sourceLineNo">492</span>         * &lt;b&gt;Affected Elements:&lt;/b&gt;<a name="line.492"></a>
-<span class="sourceLineNo">493</span>         * &lt;ul&gt;<a name="line.493"></a>
-<span class="sourceLineNo">494</span>         * &lt;li&gt;-label = label next to checkbox.&lt;/li&gt;<a name="line.494"></a>
-<span class="sourceLineNo">495</span>         * &lt;/ul&gt;<a name="line.495"></a>
-<span class="sourceLineNo">496</span>         * <a name="line.496"></a>
-<span class="sourceLineNo">497</span>         * @see UIObject#onEnsureDebugId(String)<a name="line.497"></a>
-<span class="sourceLineNo">498</span>         */<a name="line.498"></a>
-<span class="sourceLineNo">499</span>        @Override<a name="line.499"></a>
-<span class="sourceLineNo">500</span>        protected void onEnsureDebugId(String baseID) {<a name="line.500"></a>
-<span class="sourceLineNo">501</span>                super.onEnsureDebugId(baseID);<a name="line.501"></a>
-<span class="sourceLineNo">502</span>                ensureDebugId(asLabel(), baseID, "label");<a name="line.502"></a>
-<span class="sourceLineNo">503</span>                ensureDebugId(inputElem, baseID, "input");<a name="line.503"></a>
-<span class="sourceLineNo">504</span>                asLabel().setHtmlFor(inputElem.getId());<a name="line.504"></a>
-<span class="sourceLineNo">505</span>        }<a name="line.505"></a>
-<span class="sourceLineNo">506</span><a name="line.506"></a>
-<span class="sourceLineNo">507</span>        /**<a name="line.507"></a>
-<span class="sourceLineNo">508</span>         * This method is called when a widget is attached to the browser's<a name="line.508"></a>
-<span class="sourceLineNo">509</span>         * document. onAttach needs special handling for the CheckBox case. Must<a name="line.509"></a>
-<span class="sourceLineNo">510</span>         * still call {@link Widget#onAttach()} to preserve the<a name="line.510"></a>
-<span class="sourceLineNo">511</span>         * &lt;code&gt;onAttach&lt;/code&gt; contract.<a name="line.511"></a>
-<span class="sourceLineNo">512</span>         */<a name="line.512"></a>
-<span class="sourceLineNo">513</span>        @Override<a name="line.513"></a>
-<span class="sourceLineNo">514</span>        protected void onLoad() {<a name="line.514"></a>
-<span class="sourceLineNo">515</span>                setEventListener(inputElem, this);<a name="line.515"></a>
-<span class="sourceLineNo">516</span>        }<a name="line.516"></a>
-<span class="sourceLineNo">517</span><a name="line.517"></a>
-<span class="sourceLineNo">518</span>        /**<a name="line.518"></a>
-<span class="sourceLineNo">519</span>         * This method is called when a widget is detached from the browser's<a name="line.519"></a>
-<span class="sourceLineNo">520</span>         * document. Overridden because of IE bug that throws away checked state and<a name="line.520"></a>
-<span class="sourceLineNo">521</span>         * in order to clear the event listener off of the &lt;code&gt;inputElem&lt;/code&gt;.<a name="line.521"></a>
-<span class="sourceLineNo">522</span>         */<a name="line.522"></a>
-<span class="sourceLineNo">523</span>        @Override<a name="line.523"></a>
-<span class="sourceLineNo">524</span>        protected void onUnload() {<a name="line.524"></a>
-<span class="sourceLineNo">525</span>                // Clear out the inputElem's event listener (breaking the circular<a name="line.525"></a>
-<span class="sourceLineNo">526</span>                // reference between it and the widget).<a name="line.526"></a>
-<span class="sourceLineNo">527</span>                setEventListener(asOld(inputElem), null);<a name="line.527"></a>
-<span class="sourceLineNo">528</span>                setValue(getValue());<a name="line.528"></a>
-<span class="sourceLineNo">529</span>        }<a name="line.529"></a>
-<span class="sourceLineNo">530</span><a name="line.530"></a>
-<span class="sourceLineNo">531</span>        /**<a name="line.531"></a>
-<span class="sourceLineNo">532</span>         * Replace the current input element with a new one. Preserves all state<a name="line.532"></a>
-<span class="sourceLineNo">533</span>         * except for the name property, for nasty reasons related to radio button<a name="line.533"></a>
-<span class="sourceLineNo">534</span>         * grouping. (See implementation of {@link RadioButton#setName}.)<a name="line.534"></a>
-<span class="sourceLineNo">535</span>         * <a name="line.535"></a>
-<span class="sourceLineNo">536</span>         * @param elem<a name="line.536"></a>
-<span class="sourceLineNo">537</span>         *            the new input element<a name="line.537"></a>
-<span class="sourceLineNo">538</span>         */<a name="line.538"></a>
-<span class="sourceLineNo">539</span>        protected void replaceInputElement(Element elem) {<a name="line.539"></a>
-<span class="sourceLineNo">540</span>                InputElement newInputElem = InputElement.as(elem);<a name="line.540"></a>
-<span class="sourceLineNo">541</span>                // Collect information we need to set<a name="line.541"></a>
-<span class="sourceLineNo">542</span>                int tabIndex = getTabIndex();<a name="line.542"></a>
-<span class="sourceLineNo">543</span>                boolean checked = getValue();<a name="line.543"></a>
-<span class="sourceLineNo">544</span>                boolean enabled = isEnabled();<a name="line.544"></a>
-<span class="sourceLineNo">545</span>                String formValue = getFormValue();<a name="line.545"></a>
-<span class="sourceLineNo">546</span>                String uid = inputElem.getId();<a name="line.546"></a>
-<span class="sourceLineNo">547</span>                String accessKey = inputElem.getAccessKey();<a name="line.547"></a>
-<span class="sourceLineNo">548</span>                int sunkEvents = Event.getEventsSunk(inputElem);<a name="line.548"></a>
-<span class="sourceLineNo">549</span><a name="line.549"></a>
-<span class="sourceLineNo">550</span>                // Clear out the old input element<a name="line.550"></a>
-<span class="sourceLineNo">551</span>                setEventListener(asOld(inputElem), null);<a name="line.551"></a>
-<span class="sourceLineNo">552</span><a name="line.552"></a>
-<span class="sourceLineNo">553</span>                getElement().replaceChild(newInputElem, inputElem);<a name="line.553"></a>
-<span class="sourceLineNo">554</span><a name="line.554"></a>
-<span class="sourceLineNo">555</span>                // Sink events on the new element<a name="line.555"></a>
-<span class="sourceLineNo">556</span>                Event.sinkEvents(elem, Event.getEventsSunk(inputElem));<a name="line.556"></a>
-<span class="sourceLineNo">557</span>                Event.sinkEvents(inputElem, 0);<a name="line.557"></a>
-<span class="sourceLineNo">558</span>                inputElem = newInputElem;<a name="line.558"></a>
-<span class="sourceLineNo">559</span><a name="line.559"></a>
-<span class="sourceLineNo">560</span>                // Setup the new element<a name="line.560"></a>
-<span class="sourceLineNo">561</span>                Event.sinkEvents(inputElem, sunkEvents);<a name="line.561"></a>
-<span class="sourceLineNo">562</span>                inputElem.setId(uid);<a name="line.562"></a>
-<span class="sourceLineNo">563</span>                if (!"".equals(accessKey)) {<a name="line.563"></a>
-<span class="sourceLineNo">564</span>                        inputElem.setAccessKey(accessKey);<a name="line.564"></a>
-<span class="sourceLineNo">565</span>                }<a name="line.565"></a>
-<span class="sourceLineNo">566</span>                setTabIndex(tabIndex);<a name="line.566"></a>
-<span class="sourceLineNo">567</span>                setValue(checked);<a name="line.567"></a>
-<span class="sourceLineNo">568</span>                setEnabled(enabled);<a name="line.568"></a>
-<span class="sourceLineNo">569</span>                setFormValue(formValue);<a name="line.569"></a>
-<span class="sourceLineNo">570</span><a name="line.570"></a>
-<span class="sourceLineNo">571</span>                // Set the event listener<a name="line.571"></a>
-<span class="sourceLineNo">572</span>                if (isAttached()) {<a name="line.572"></a>
-<span class="sourceLineNo">573</span>                        setEventListener(asOld(inputElem), this);<a name="line.573"></a>
-<span class="sourceLineNo">574</span>                }<a name="line.574"></a>
-<span class="sourceLineNo">575</span>        }<a name="line.575"></a>
+<span class="sourceLineNo">468</span>        public void setWordWrap(boolean wrap) {<a name="line.468"></a>
+<span class="sourceLineNo">469</span>                getElement().getStyle().setProperty("whiteSpace", wrap<a name="line.469"></a>
+<span class="sourceLineNo">470</span>                                                                                                                                ? "normal"<a name="line.470"></a>
+<span class="sourceLineNo">471</span>                                                                                                                                : "nowrap");<a name="line.471"></a>
+<span class="sourceLineNo">472</span>        }<a name="line.472"></a>
+<span class="sourceLineNo">473</span><a name="line.473"></a>
+<span class="sourceLineNo">474</span>        // Unlike other widgets the CheckBox sinks on its inputElement, not<a name="line.474"></a>
+<span class="sourceLineNo">475</span>        // its wrapper<a name="line.475"></a>
+<span class="sourceLineNo">476</span>        @Override<a name="line.476"></a>
+<span class="sourceLineNo">477</span>        public void sinkEvents(int eventBitsToAdd) {<a name="line.477"></a>
+<span class="sourceLineNo">478</span>                if (isOrWasAttached()) {<a name="line.478"></a>
+<span class="sourceLineNo">479</span>                        Event.sinkEvents(inputElem, eventBitsToAdd | Event.getEventsSunk(inputElem));<a name="line.479"></a>
+<span class="sourceLineNo">480</span>                } else {<a name="line.480"></a>
+<span class="sourceLineNo">481</span>                        super.sinkEvents(eventBitsToAdd);<a name="line.481"></a>
+<span class="sourceLineNo">482</span>                }<a name="line.482"></a>
+<span class="sourceLineNo">483</span>        }<a name="line.483"></a>
+<span class="sourceLineNo">484</span><a name="line.484"></a>
+<span class="sourceLineNo">485</span>        protected void ensureDomEventHandlers() {<a name="line.485"></a>
+<span class="sourceLineNo">486</span>                addClickHandler(new ClickHandler() {<a name="line.486"></a>
+<span class="sourceLineNo">487</span><a name="line.487"></a>
+<span class="sourceLineNo">488</span>                        public void onClick(ClickEvent event) {<a name="line.488"></a>
+<span class="sourceLineNo">489</span>                                // Checkboxes always toggle their value, no need to compare<a name="line.489"></a>
+<span class="sourceLineNo">490</span>                                // with old value. Radio buttons are not so lucky, see<a name="line.490"></a>
+<span class="sourceLineNo">491</span>                                // overrides in RadioButton<a name="line.491"></a>
+<span class="sourceLineNo">492</span>                                ValueChangeEvent.fire(CheckBox.this, getValue());<a name="line.492"></a>
+<span class="sourceLineNo">493</span>                        }<a name="line.493"></a>
+<span class="sourceLineNo">494</span>                });<a name="line.494"></a>
+<span class="sourceLineNo">495</span>        }<a name="line.495"></a>
+<span class="sourceLineNo">496</span><a name="line.496"></a>
+<span class="sourceLineNo">497</span>        /**<a name="line.497"></a>
+<span class="sourceLineNo">498</span>         * &lt;b&gt;Affected Elements:&lt;/b&gt;<a name="line.498"></a>
+<span class="sourceLineNo">499</span>         * &lt;ul&gt;<a name="line.499"></a>
+<span class="sourceLineNo">500</span>         * &lt;li&gt;-label = label next to checkbox.&lt;/li&gt;<a name="line.500"></a>
+<span class="sourceLineNo">501</span>         * &lt;/ul&gt;<a name="line.501"></a>
+<span class="sourceLineNo">502</span>         * <a name="line.502"></a>
+<span class="sourceLineNo">503</span>         * @see UIObject#onEnsureDebugId(String)<a name="line.503"></a>
+<span class="sourceLineNo">504</span>         */<a name="line.504"></a>
+<span class="sourceLineNo">505</span>        @Override<a name="line.505"></a>
+<span class="sourceLineNo">506</span>        protected void onEnsureDebugId(String baseID) {<a name="line.506"></a>
+<span class="sourceLineNo">507</span>                super.onEnsureDebugId(baseID);<a name="line.507"></a>
+<span class="sourceLineNo">508</span>                ensureDebugId(asLabel(), baseID, "label");<a name="line.508"></a>
+<span class="sourceLineNo">509</span>                ensureDebugId(inputElem, baseID, "input");<a name="line.509"></a>
+<span class="sourceLineNo">510</span>                asLabel().setHtmlFor(inputElem.getId());<a name="line.510"></a>
+<span class="sourceLineNo">511</span>        }<a name="line.511"></a>
+<span class="sourceLineNo">512</span><a name="line.512"></a>
+<span class="sourceLineNo">513</span>        /**<a name="line.513"></a>
+<span class="sourceLineNo">514</span>         * This method is called when a widget is attached to the browser's<a name="line.514"></a>
+<span class="sourceLineNo">515</span>         * document. onAttach needs special handling for the CheckBox case. Must<a name="line.515"></a>
+<span class="sourceLineNo">516</span>         * still call {@link Widget#onAttach()} to preserve the<a name="line.516"></a>
+<span class="sourceLineNo">517</span>         * &lt;code&gt;onAttach&lt;/code&gt; contract.<a name="line.517"></a>
+<span class="sourceLineNo">518</span>         */<a name="line.518"></a>
+<span class="sourceLineNo">519</span>        @Override<a name="line.519"></a>
+<span class="sourceLineNo">520</span>        protected void onLoad() {<a name="line.520"></a>
+<span class="sourceLineNo">521</span>                setEventListener(inputElem, this);<a name="line.521"></a>
+<span class="sourceLineNo">522</span>        }<a name="line.522"></a>
+<span class="sourceLineNo">523</span><a name="line.523"></a>
+<span class="sourceLineNo">524</span>        /**<a name="line.524"></a>
+<span class="sourceLineNo">525</span>         * This method is called when a widget is detached from the browser's<a name="line.525"></a>
+<span class="sourceLineNo">526</span>         * document. Overridden because of IE bug that throws away checked state and<a name="line.526"></a>
+<span class="sourceLineNo">527</span>         * in order to clear the event listener off of the &lt;code&gt;inputElem&lt;/code&gt;.<a name="line.527"></a>
+<span class="sourceLineNo">528</span>         */<a name="line.528"></a>
+<span class="sourceLineNo">529</span>        @Override<a name="line.529"></a>
+<span class="sourceLineNo">530</span>        protected void onUnload() {<a name="line.530"></a>
+<span class="sourceLineNo">531</span>                // Clear out the inputElem's event listener (breaking the circular<a name="line.531"></a>
+<span class="sourceLineNo">532</span>                // reference between it and the widget).<a name="line.532"></a>
+<span class="sourceLineNo">533</span>                setEventListener(asOld(inputElem), null);<a name="line.533"></a>
+<span class="sourceLineNo">534</span>                setValue(getValue());<a name="line.534"></a>
+<span class="sourceLineNo">535</span>        }<a name="line.535"></a>
+<span class="sourceLineNo">536</span><a name="line.536"></a>
+<span class="sourceLineNo">537</span>        /**<a name="line.537"></a>
+<span class="sourceLineNo">538</span>         * Replace the current input element with a new one. Preserves all state<a name="line.538"></a>
+<span class="sourceLineNo">539</span>         * except for the name property, for nasty reasons related to radio button<a name="line.539"></a>
+<span class="sourceLineNo">540</span>         * grouping. (See implementation of {@link RadioButton#setName}.)<a name="line.540"></a>
+<span class="sourceLineNo">541</span>         * <a name="line.541"></a>
+<span class="sourceLineNo">542</span>         * @param elem<a name="line.542"></a>
+<span class="sourceLineNo">543</span>         *            the new input element<a name="line.543"></a>
+<span class="sourceLineNo">544</span>         */<a name="line.544"></a>
+<span class="sourceLineNo">545</span>        protected void replaceInputElement(Element elem) {<a name="line.545"></a>
+<span class="sourceLineNo">546</span>                InputElement newInputElem = InputElement.as(elem);<a name="line.546"></a>
+<span class="sourceLineNo">547</span>                // Collect information we need to set<a name="line.547"></a>
+<span class="sourceLineNo">548</span>                int tabIndex = getTabIndex();<a name="line.548"></a>
+<span class="sourceLineNo">549</span>                boolean checked = getValue();<a name="line.549"></a>
+<span class="sourceLineNo">550</span>                boolean enabled = isEnabled();<a name="line.550"></a>
+<span class="sourceLineNo">551</span>                String formValue = getFormValue();<a name="line.551"></a>
+<span class="sourceLineNo">552</span>                String uid = inputElem.getId();<a name="line.552"></a>
+<span class="sourceLineNo">553</span>                String accessKey = inputElem.getAccessKey();<a name="line.553"></a>
+<span class="sourceLineNo">554</span>                int sunkEvents = Event.getEventsSunk(inputElem);<a name="line.554"></a>
+<span class="sourceLineNo">555</span><a name="line.555"></a>
+<span class="sourceLineNo">556</span>                // Clear out the old input element<a name="line.556"></a>
+<span class="sourceLineNo">557</span>                setEventListener(asOld(inputElem), null);<a name="line.557"></a>
+<span class="sourceLineNo">558</span><a name="line.558"></a>
+<span class="sourceLineNo">559</span>                getElement().replaceChild(newInputElem, inputElem);<a name="line.559"></a>
+<span class="sourceLineNo">560</span><a name="line.560"></a>
+<span class="sourceLineNo">561</span>                // Sink events on the new element<a name="line.561"></a>
+<span class="sourceLineNo">562</span>                Event.sinkEvents(elem, Event.getEventsSunk(inputElem));<a name="line.562"></a>
+<span class="sourceLineNo">563</span>                Event.sinkEvents(inputElem, 0);<a name="line.563"></a>
+<span class="sourceLineNo">564</span>                inputElem = newInputElem;<a name="line.564"></a>
+<span class="sourceLineNo">565</span><a name="line.565"></a>
+<span class="sourceLineNo">566</span>                // Setup the new element<a name="line.566"></a>
+<span class="sourceLineNo">567</span>                Event.sinkEvents(inputElem, sunkEvents);<a name="line.567"></a>
+<span class="sourceLineNo">568</span>                inputElem.setId(uid);<a name="line.568"></a>
+<span class="sourceLineNo">569</span>                if (!"".equals(accessKey)) {<a name="line.569"></a>
+<span class="sourceLineNo">570</span>                        inputElem.setAccessKey(accessKey);<a name="line.570"></a>
+<span class="sourceLineNo">571</span>                }<a name="line.571"></a>
+<span class="sourceLineNo">572</span>                setTabIndex(tabIndex);<a name="line.572"></a>
+<span class="sourceLineNo">573</span>                setValue(checked);<a name="line.573"></a>
+<span class="sourceLineNo">574</span>                setEnabled(enabled);<a name="line.574"></a>
+<span class="sourceLineNo">575</span>                setFormValue(formValue);<a name="line.575"></a>
 <span class="sourceLineNo">576</span><a name="line.576"></a>
-<span class="sourceLineNo">577</span>        private Element asOld(com.google.gwt.dom.client.Element elem) {<a name="line.577"></a>
-<span class="sourceLineNo">578</span>                Element oldSchool = elem.cast();<a name="line.578"></a>
-<span class="sourceLineNo">579</span>                return oldSchool;<a name="line.579"></a>
-<span class="sourceLineNo">580</span>        }<a name="line.580"></a>
-<span class="sourceLineNo">581</span><a name="line.581"></a>
-<span class="sourceLineNo">582</span>        private void setEventListener(com.google.gwt.dom.client.Element e, EventListener listener) {<a name="line.582"></a>
-<span class="sourceLineNo">583</span>                DOM.setEventListener(asOld(e), listener);<a name="line.583"></a>
-<span class="sourceLineNo">584</span>        }<a name="line.584"></a>
-<span class="sourceLineNo">585</span><a name="line.585"></a>
-<span class="sourceLineNo">586</span>        protected LabelElement asLabel() {<a name="line.586"></a>
-<span class="sourceLineNo">587</span>                return LabelElement.as(getElement());<a name="line.587"></a>
-<span class="sourceLineNo">588</span>        }<a name="line.588"></a>
-<span class="sourceLineNo">589</span><a name="line.589"></a>
-<span class="sourceLineNo">590</span>        public void setInline(boolean inline) {<a name="line.590"></a>
-<span class="sourceLineNo">591</span>                if(getStyleName().contains(Constants.INLINE)) {<a name="line.591"></a>
-<span class="sourceLineNo">592</span>                        removeStyleName(Constants.INLINE);<a name="line.592"></a>
-<span class="sourceLineNo">593</span>                }<a name="line.593"></a>
-<span class="sourceLineNo">594</span>                <a name="line.594"></a>
-<span class="sourceLineNo">595</span>                if(inline) {<a name="line.595"></a>
-<span class="sourceLineNo">596</span>                        addStyleName(Constants.INLINE);<a name="line.596"></a>
-<span class="sourceLineNo">597</span>                }<a name="line.597"></a>
-<span class="sourceLineNo">598</span>        }<a name="line.598"></a>
-<span class="sourceLineNo">599</span><a name="line.599"></a>
-<span class="sourceLineNo">600</span>        /**<a name="line.600"></a>
-<span class="sourceLineNo">601</span>         * {@inheritDoc}<a name="line.601"></a>
-<span class="sourceLineNo">602</span>         */<a name="line.602"></a>
-<span class="sourceLineNo">603</span>        @Override<a name="line.603"></a>
-<span class="sourceLineNo">604</span>        public void setSearchQuery(boolean searchQuery) {<a name="line.604"></a>
-<span class="sourceLineNo">605</span>                SearchQueryStyleHelper.setSearchQuery(inputElem, searchQuery);<a name="line.605"></a>
-<span class="sourceLineNo">606</span>        }<a name="line.606"></a>
-<span class="sourceLineNo">607</span><a name="line.607"></a>
-<span class="sourceLineNo">608</span>        /**<a name="line.608"></a>
-<span class="sourceLineNo">609</span>         * {@inheritDoc}<a name="line.609"></a>
-<span class="sourceLineNo">610</span>         */<a name="line.610"></a>
-<span class="sourceLineNo">611</span>        @Override<a name="line.611"></a>
-<span class="sourceLineNo">612</span>        public boolean isSearchQuery() {<a name="line.612"></a>
-<span class="sourceLineNo">613</span>                return SearchQueryStyleHelper.isSearchQuery(inputElem);<a name="line.613"></a>
-<span class="sourceLineNo">614</span>        }<a name="line.614"></a>
-<span class="sourceLineNo">615</span><a name="line.615"></a>
-<span class="sourceLineNo">616</span>        /**<a name="line.616"></a>
-<span class="sourceLineNo">617</span>         * {@inheritDoc}<a name="line.617"></a>
-<span class="sourceLineNo">618</span>         */<a name="line.618"></a>
-<span class="sourceLineNo">619</span>        @Override<a name="line.619"></a>
-<span class="sourceLineNo">620</span>        public String getId() {<a name="line.620"></a>
-<span class="sourceLineNo">621</span>                return inputElem.getId();<a name="line.621"></a>
-<span class="sourceLineNo">622</span>        }<a name="line.622"></a>
-<span class="sourceLineNo">623</span><a name="line.623"></a>
-<span class="sourceLineNo">624</span>        /**<a name="line.624"></a>
-<span class="sourceLineNo">625</span>         * {@inheritDoc}<a name="line.625"></a>
-<span class="sourceLineNo">626</span>         */<a name="line.626"></a>
-<span class="sourceLineNo">627</span>        @Override<a name="line.627"></a>
-<span class="sourceLineNo">628</span>        public void setId(String id) {<a name="line.628"></a>
-<span class="sourceLineNo">629</span>                inputElem.setId(id);<a name="line.629"></a>
-<span class="sourceLineNo">630</span>                asLabel().setHtmlFor(id);<a name="line.630"></a>
-<span class="sourceLineNo">631</span>        }<a name="line.631"></a>
-<span class="sourceLineNo">632</span><a name="line.632"></a>
-<span class="sourceLineNo">633</span><a name="line.633"></a>
-<span class="sourceLineNo">634</span>}<a name="line.634"></a>
+<span class="sourceLineNo">577</span>                // Set the event listener<a name="line.577"></a>
+<span class="sourceLineNo">578</span>                if (isAttached()) {<a name="line.578"></a>
+<span class="sourceLineNo">579</span>                        setEventListener(asOld(inputElem), this);<a name="line.579"></a>
+<span class="sourceLineNo">580</span>                }<a name="line.580"></a>
+<span class="sourceLineNo">581</span>        }<a name="line.581"></a>
+<span class="sourceLineNo">582</span><a name="line.582"></a>
+<span class="sourceLineNo">583</span>        private Element asOld(com.google.gwt.dom.client.Element elem) {<a name="line.583"></a>
+<span class="sourceLineNo">584</span>                Element oldSchool = elem.cast();<a name="line.584"></a>
+<span class="sourceLineNo">585</span>                return oldSchool;<a name="line.585"></a>
+<span class="sourceLineNo">586</span>        }<a name="line.586"></a>
+<span class="sourceLineNo">587</span><a name="line.587"></a>
+<span class="sourceLineNo">588</span>        private void setEventListener(com.google.gwt.dom.client.Element e, EventListener listener) {<a name="line.588"></a>
+<span class="sourceLineNo">589</span>                DOM.setEventListener(asOld(e), listener);<a name="line.589"></a>
+<span class="sourceLineNo">590</span>        }<a name="line.590"></a>
+<span class="sourceLineNo">591</span><a name="line.591"></a>
+<span class="sourceLineNo">592</span>        protected LabelElement asLabel() {<a name="line.592"></a>
+<span class="sourceLineNo">593</span>                return LabelElement.as(getElement());<a name="line.593"></a>
+<span class="sourceLineNo">594</span>        }<a name="line.594"></a>
+<span class="sourceLineNo">595</span><a name="line.595"></a>
+<span class="sourceLineNo">596</span>        public void setInline(boolean inline) {<a name="line.596"></a>
+<span class="sourceLineNo">597</span>                if(getStyleName().contains(Constants.INLINE)) {<a name="line.597"></a>
+<span class="sourceLineNo">598</span>                        removeStyleName(Constants.INLINE);<a name="line.598"></a>
+<span class="sourceLineNo">599</span>                }<a name="line.599"></a>
+<span class="sourceLineNo">600</span>                <a name="line.600"></a>
+<span class="sourceLineNo">601</span>                if(inline) {<a name="line.601"></a>
+<span class="sourceLineNo">602</span>                        addStyleName(Constants.INLINE);<a name="line.602"></a>
+<span class="sourceLineNo">603</span>                }<a name="line.603"></a>
+<span class="sourceLineNo">604</span>        }<a name="line.604"></a>
+<span class="sourceLineNo">605</span><a name="line.605"></a>
+<span class="sourceLineNo">606</span>        /**<a name="line.606"></a>
+<span class="sourceLineNo">607</span>         * {@inheritDoc}<a name="line.607"></a>
+<span class="sourceLineNo">608</span>         */<a name="line.608"></a>
+<span class="sourceLineNo">609</span>        @Override<a name="line.609"></a>
+<span class="sourceLineNo">610</span>        public void setSearchQuery(boolean searchQuery) {<a name="line.610"></a>
+<span class="sourceLineNo">611</span>                SearchQueryStyleHelper.setSearchQuery(inputElem, searchQuery);<a name="line.611"></a>
+<span class="sourceLineNo">612</span>        }<a name="line.612"></a>
+<span class="sourceLineNo">613</span><a name="line.613"></a>
+<span class="sourceLineNo">614</span>        /**<a name="line.614"></a>
+<span class="sourceLineNo">615</span>         * {@inheritDoc}<a name="line.615"></a>
+<span class="sourceLineNo">616</span>         */<a name="line.616"></a>
+<span class="sourceLineNo">617</span>        @Override<a name="line.617"></a>
+<span class="sourceLineNo">618</span>        public boolean isSearchQuery() {<a name="line.618"></a>
+<span class="sourceLineNo">619</span>                return SearchQueryStyleHelper.isSearchQuery(inputElem);<a name="line.619"></a>
+<span class="sourceLineNo">620</span>        }<a name="line.620"></a>
+<span class="sourceLineNo">621</span><a name="line.621"></a>
+<span class="sourceLineNo">622</span>        /**<a name="line.622"></a>
+<span class="sourceLineNo">623</span>         * {@inheritDoc}<a name="line.623"></a>
+<span class="sourceLineNo">624</span>         */<a name="line.624"></a>
+<span class="sourceLineNo">625</span>        @Override<a name="line.625"></a>
+<span class="sourceLineNo">626</span>        public String getId() {<a name="line.626"></a>
+<span class="sourceLineNo">627</span>                return inputElem.getId();<a name="line.627"></a>
+<span class="sourceLineNo">628</span>        }<a name="line.628"></a>
+<span class="sourceLineNo">629</span><a name="line.629"></a>
+<span class="sourceLineNo">630</span>        /**<a name="line.630"></a>
+<span class="sourceLineNo">631</span>         * {@inheritDoc}<a name="line.631"></a>
+<span class="sourceLineNo">632</span>         */<a name="line.632"></a>
+<span class="sourceLineNo">633</span>        @Override<a name="line.633"></a>
+<span class="sourceLineNo">634</span>        public void setId(String id) {<a name="line.634"></a>
+<span class="sourceLineNo">635</span>                inputElem.setId(id);<a name="line.635"></a>
+<span class="sourceLineNo">636</span>                asLabel().setHtmlFor(id);<a name="line.636"></a>
+<span class="sourceLineNo">637</span>        }<a name="line.637"></a>
+<span class="sourceLineNo">638</span><a name="line.638"></a>
+<span class="sourceLineNo">639</span><a name="line.639"></a>
+<span class="sourceLineNo">640</span>        /**<a name="line.640"></a>
+<span class="sourceLineNo">641</span>         * {@inheritDoc}<a name="line.641"></a>
+<span class="sourceLineNo">642</span>         */<a name="line.642"></a>
+<span class="sourceLineNo">643</span>        @Override<a name="line.643"></a>
+<span class="sourceLineNo">644</span>        public void setShowOn(Device device) {<a name="line.644"></a>
+<span class="sourceLineNo">645</span>                ResponsiveHelper.setShowOn(this, device);<a name="line.645"></a>
+<span class="sourceLineNo">646</span>        }<a name="line.646"></a>
+<span class="sourceLineNo">647</span><a name="line.647"></a>
+<span class="sourceLineNo">648</span>        /**<a name="line.648"></a>
+<span class="sourceLineNo">649</span>         * {@inheritDoc}<a name="line.649"></a>
+<span class="sourceLineNo">650</span>         */<a name="line.650"></a>
+<span class="sourceLineNo">651</span>        @Override<a name="line.651"></a>
+<span class="sourceLineNo">652</span>        public void setHideOn(Device device) {<a name="line.652"></a>
+<span class="sourceLineNo">653</span>                ResponsiveHelper.setHideOn(this, device);<a name="line.653"></a>
+<span class="sourceLineNo">654</span>                <a name="line.654"></a>
+<span class="sourceLineNo">655</span>        }<a name="line.655"></a>
+<span class="sourceLineNo">656</span><a name="line.656"></a>
+<span class="sourceLineNo">657</span>        /**<a name="line.657"></a>
+<span class="sourceLineNo">658</span>         * {@inheritDoc}<a name="line.658"></a>
+<span class="sourceLineNo">659</span>         */<a name="line.659"></a>
+<span class="sourceLineNo">660</span>        @Override<a name="line.660"></a>
+<span class="sourceLineNo">661</span>        public void setStyle(Style style) {<a name="line.661"></a>
+<span class="sourceLineNo">662</span>                StyleHelper.setStyle(this, style);<a name="line.662"></a>
+<span class="sourceLineNo">663</span>        }<a name="line.663"></a>
+<span class="sourceLineNo">664</span><a name="line.664"></a>
+<span class="sourceLineNo">665</span>        /**<a name="line.665"></a>
+<span class="sourceLineNo">666</span>         * {@inheritDoc}<a name="line.666"></a>
+<span class="sourceLineNo">667</span>         */<a name="line.667"></a>
+<span class="sourceLineNo">668</span>        @Override<a name="line.668"></a>
+<span class="sourceLineNo">669</span>        public void addStyle(Style style) {<a name="line.669"></a>
+<span class="sourceLineNo">670</span>                StyleHelper.addStyle(this, style);<a name="line.670"></a>
+<span class="sourceLineNo">671</span>        }<a name="line.671"></a>
+<span class="sourceLineNo">672</span><a name="line.672"></a>
+<span class="sourceLineNo">673</span>        /**<a name="line.673"></a>
+<span class="sourceLineNo">674</span>         * {@inheritDoc}<a name="line.674"></a>
+<span class="sourceLineNo">675</span>         */<a name="line.675"></a>
+<span class="sourceLineNo">676</span>        @Override<a name="line.676"></a>
+<span class="sourceLineNo">677</span>        public void removeStyle(Style style) {<a name="line.677"></a>
+<span class="sourceLineNo">678</span>                StyleHelper.removeStyle(this, style);<a name="line.678"></a>
+<span class="sourceLineNo">679</span>                <a name="line.679"></a>
+<span class="sourceLineNo">680</span>        }<a name="line.680"></a>
+<span class="sourceLineNo">681</span>}<a name="line.681"></a>
 
 
 
