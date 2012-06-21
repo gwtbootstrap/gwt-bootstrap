@@ -24,12 +24,17 @@ import java.util.Map;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
 import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
 import com.github.gwtbootstrap.client.ui.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -52,7 +57,7 @@ import com.google.gwt.view.client.SimpleKeyProvider;
  * @author ohashi keisuke
  * @since 2.0.4.0
  */
-public class ValueListBox<T> extends Composite implements HasConstrainedValue<T>, IsEditor<TakesValueEditor<T>>, HasName, HasId, HasEnabled, HasSize, HasAlternateSize, IsSearchQuery {
+public class ValueListBox<T> extends Composite implements HasConstrainedValue<T>, IsEditor<TakesValueEditor<T>>, HasName, HasId, HasEnabled, HasSize, HasAlternateSize, IsSearchQuery, IsResponsive, HasStyle {
 
 	private final Map<Object, Integer> valueKeyToIndex = new HashMap<Object, Integer>();
 
@@ -247,4 +252,48 @@ public class ValueListBox<T> extends Composite implements HasConstrainedValue<T>
 	public boolean isEnabled() {
 		return getListBox().isEnabled();
 	}
+	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setShowOn(Device device) {
+		ResponsiveHelper.setShowOn(this, device);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHideOn(Device device) {
+		ResponsiveHelper.setHideOn(this, device);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStyle(Style style) {
+		StyleHelper.setStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void addStyle(Style style) {
+		StyleHelper.addStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeStyle(Style style) {
+		StyleHelper.removeStyle(this, style);
+		
+	}
+
 }

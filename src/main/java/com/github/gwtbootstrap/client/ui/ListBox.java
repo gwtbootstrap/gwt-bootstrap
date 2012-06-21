@@ -18,12 +18,17 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
 import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
 import com.github.gwtbootstrap.client.ui.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.dom.client.Element;
 
 /**
@@ -34,7 +39,7 @@ import com.google.gwt.dom.client.Element;
  * @author ohashi keisuke
  * 
  */
-public class ListBox extends com.google.gwt.user.client.ui.ListBox implements HasSize, HasAlternateSize, IsSearchQuery, HasId {
+public class ListBox extends com.google.gwt.user.client.ui.ListBox implements HasSize, HasAlternateSize, IsSearchQuery, HasId , IsResponsive , HasStyle{
 
 	{
 		setStyleName("");
@@ -161,5 +166,48 @@ public class ListBox extends com.google.gwt.user.client.ui.ListBox implements Ha
 				return;
 			}
 		}
+	}
+	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setShowOn(Device device) {
+		ResponsiveHelper.setShowOn(this, device);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHideOn(Device device) {
+		ResponsiveHelper.setHideOn(this, device);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStyle(Style style) {
+		StyleHelper.setStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void addStyle(Style style) {
+		StyleHelper.addStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeStyle(Style style) {
+		StyleHelper.removeStyle(this, style);
+		
 	}
 }

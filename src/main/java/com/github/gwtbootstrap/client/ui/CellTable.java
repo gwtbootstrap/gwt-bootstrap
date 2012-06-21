@@ -15,7 +15,11 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.CssResource.ImportedWithPrefix;
 import com.google.gwt.resources.client.ImageResource;
@@ -32,7 +36,7 @@ import com.google.gwt.view.client.ProvidesKey;
  *
  * @param <T> Data Set
  */
-public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<T> {
+public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<T> implements HasStyle, IsResponsive {
 
 	public static enum TableType implements com.github.gwtbootstrap.client.ui.base.Style {
 		BORDERED("table-bordered"),
@@ -135,5 +139,49 @@ public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<
 		return (loadingImg == null)
 									? null
 									: new Image(loadingImg);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setShowOn(Device device) {
+		ResponsiveHelper.setShowOn(this, device);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHideOn(Device device) {
+		ResponsiveHelper.setHideOn(this, device);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+		StyleHelper.setStyle(this, style);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void addStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+		StyleHelper.addStyle(this, style);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+		StyleHelper.removeStyle(this, style);
+		
 	}
 }

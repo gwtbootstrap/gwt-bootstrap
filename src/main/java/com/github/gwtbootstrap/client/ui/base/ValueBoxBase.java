@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.text.shared.Parser;
@@ -34,7 +35,7 @@ import com.google.gwt.text.shared.Renderer;
  * @see com.google.gwt.user.client.ui.ValueBoxBase
  * @param <T> the value type
  */
-public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<T> implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId {
+public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<T> implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle{
 
 	/** placeholderHelper */
 	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
@@ -127,5 +128,47 @@ public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<
 		} else {
 			addStyleName(Constants.DISABLED);
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setShowOn(Device device) {
+		ResponsiveHelper.setShowOn(this, device);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHideOn(Device device) {
+		ResponsiveHelper.setHideOn(this, device);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStyle(Style style) {
+		StyleHelper.setStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void addStyle(Style style) {
+		StyleHelper.addStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeStyle(Style style) {
+		StyleHelper.removeStyle(this, style);
+		
 	}
 }
