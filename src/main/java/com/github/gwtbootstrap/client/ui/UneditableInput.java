@@ -18,13 +18,18 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.InlineLabel;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
 import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
 import com.github.gwtbootstrap.client.ui.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.user.client.ui.Label;
@@ -37,7 +42,7 @@ import com.google.gwt.user.client.ui.Label;
  * @since 2.0.4.0
  * @author ohashi keisuke
  */
-public class UneditableInput extends InlineLabel implements HasAlternateSize, IsSearchQuery, HasSize, HasId {
+public class UneditableInput extends InlineLabel implements HasAlternateSize, IsSearchQuery, HasSize, HasId, HasStyle, IsResponsive {
 
 	/**
 	 * Creates an empty widget.
@@ -143,5 +148,48 @@ public class UneditableInput extends InlineLabel implements HasAlternateSize, Is
 	@Override
 	public void setId(String id) {
 		getElement().setId(id);
+	}
+	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setShowOn(Device device) {
+		ResponsiveHelper.setShowOn(this, device);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHideOn(Device device) {
+		ResponsiveHelper.setHideOn(this, device);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStyle(Style style) {
+		StyleHelper.setStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void addStyle(Style style) {
+		StyleHelper.addStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeStyle(Style style) {
+		StyleHelper.removeStyle(this, style);
+		
 	}
 }

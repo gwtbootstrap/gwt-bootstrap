@@ -16,9 +16,15 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasId;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
 import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
+import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.LabelElement;
@@ -59,7 +65,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  * @author ohashi keisuke
  */
-public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>>, IsSearchQuery,HasId {
+public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, HasWordWrap, HasDirectionalSafeHtml, HasDirectionEstimator, IsEditor<LeafValueEditor<Boolean>>, IsSearchQuery, HasId, IsResponsive, HasStyle{
 
 	public static final DirectionEstimator DEFAULT_DIRECTION_ESTIMATOR = DirectionalTextHelper.DEFAULT_DIRECTION_ESTIMATOR;
 
@@ -631,4 +637,45 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	}
 
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setShowOn(Device device) {
+		ResponsiveHelper.setShowOn(this, device);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHideOn(Device device) {
+		ResponsiveHelper.setHideOn(this, device);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setStyle(Style style) {
+		StyleHelper.setStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void addStyle(Style style) {
+		StyleHelper.addStyle(this, style);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void removeStyle(Style style) {
+		StyleHelper.removeStyle(this, style);
+		
+	}
 }
