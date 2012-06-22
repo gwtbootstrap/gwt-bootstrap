@@ -1,309 +1,304 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-<title>Source code</title>
-<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
-</head>
-<body>
-<div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
-<span class="sourceLineNo">002</span> *  Copyright 2012 GWT-Bootstrap<a name="line.2"></a>
-<span class="sourceLineNo">003</span> *<a name="line.3"></a>
-<span class="sourceLineNo">004</span> *  Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
-<span class="sourceLineNo">005</span> *  you may not use this file except in compliance with the License.<a name="line.5"></a>
-<span class="sourceLineNo">006</span> *  You may obtain a copy of the License at<a name="line.6"></a>
-<span class="sourceLineNo">007</span> *<a name="line.7"></a>
-<span class="sourceLineNo">008</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.8"></a>
-<span class="sourceLineNo">009</span> *<a name="line.9"></a>
-<span class="sourceLineNo">010</span> *  Unless required by applicable law or agreed to in writing, software<a name="line.10"></a>
-<span class="sourceLineNo">011</span> *  distributed under the License is distributed on an "AS IS" BASIS,<a name="line.11"></a>
-<span class="sourceLineNo">012</span> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.12"></a>
-<span class="sourceLineNo">013</span> *  See the License for the specific language governing permissions and<a name="line.13"></a>
-<span class="sourceLineNo">014</span> *  limitations under the License.<a name="line.14"></a>
-<span class="sourceLineNo">015</span> */<a name="line.15"></a>
-<span class="sourceLineNo">016</span>package com.github.gwtbootstrap.client.ui.base;<a name="line.16"></a>
-<span class="sourceLineNo">017</span><a name="line.17"></a>
-<span class="sourceLineNo">018</span>import com.github.gwtbootstrap.client.ui.Close;<a name="line.18"></a>
-<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.constants.AlertType;<a name="line.19"></a>
-<span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.20"></a>
-<span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.constants.DismissType;<a name="line.21"></a>
-<span class="sourceLineNo">022</span>import com.github.gwtbootstrap.client.ui.event.CloseEvent;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import com.github.gwtbootstrap.client.ui.event.CloseHandler;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import com.github.gwtbootstrap.client.ui.event.ClosedEvent;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import com.github.gwtbootstrap.client.ui.event.ClosedHandler;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;<a name="line.26"></a>
-<span class="sourceLineNo">027</span>import com.google.gwt.dom.client.Element;<a name="line.27"></a>
-<span class="sourceLineNo">028</span>import com.google.gwt.event.shared.HandlerRegistration;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import com.google.gwt.safehtml.shared.SafeHtmlUtils;<a name="line.29"></a>
-<span class="sourceLineNo">030</span><a name="line.30"></a>
-<span class="sourceLineNo">031</span>/**<a name="line.31"></a>
-<span class="sourceLineNo">032</span> * Base class for Alert widgets.<a name="line.32"></a>
-<span class="sourceLineNo">033</span> * <a name="line.33"></a>
-<span class="sourceLineNo">034</span> * @since 2.0.4.0<a name="line.34"></a>
-<span class="sourceLineNo">035</span> * <a name="line.35"></a>
-<span class="sourceLineNo">036</span> * @author Dominik Mayer<a name="line.36"></a>
-<span class="sourceLineNo">037</span> * @author Carlos Alexandro Becker<a name="line.37"></a>
-<span class="sourceLineNo">038</span> * <a name="line.38"></a>
-<span class="sourceLineNo">039</span> * @see &lt;a<a name="line.39"></a>
-<span class="sourceLineNo">040</span> *      href="http://twitter.github.com/bootstrap/components.html#alerts"&gt;Bootstrap<a name="line.40"></a>
-<span class="sourceLineNo">041</span> *      documentation&lt;/a&gt;<a name="line.41"></a>
-<span class="sourceLineNo">042</span> */<a name="line.42"></a>
-<span class="sourceLineNo">043</span>public abstract class AlertBase extends HtmlWidget implements IsAnimated, HasCloseHandlers, HasType&lt;AlertType&gt; {<a name="line.43"></a>
-<span class="sourceLineNo">044</span><a name="line.44"></a>
-<span class="sourceLineNo">045</span>        private Close close;<a name="line.45"></a>
-<span class="sourceLineNo">046</span><a name="line.46"></a>
-<span class="sourceLineNo">047</span>        private String html = "";<a name="line.47"></a>
-<span class="sourceLineNo">048</span><a name="line.48"></a>
-<span class="sourceLineNo">049</span>        private String heading = "";<a name="line.49"></a>
-<span class="sourceLineNo">050</span><a name="line.50"></a>
-<span class="sourceLineNo">051</span>        private boolean fade;<a name="line.51"></a>
-<span class="sourceLineNo">052</span>        <a name="line.52"></a>
-<span class="sourceLineNo">053</span>        /**<a name="line.53"></a>
-<span class="sourceLineNo">054</span>         * Initializes an Alert with a close icon.<a name="line.54"></a>
-<span class="sourceLineNo">055</span>         */<a name="line.55"></a>
-<span class="sourceLineNo">056</span>        public AlertBase() {<a name="line.56"></a>
-<span class="sourceLineNo">057</span>                this("", true);<a name="line.57"></a>
-<span class="sourceLineNo">058</span>        }<a name="line.58"></a>
-<span class="sourceLineNo">059</span>        <a name="line.59"></a>
-<span class="sourceLineNo">060</span>        public AlertBase(String html) {<a name="line.60"></a>
-<span class="sourceLineNo">061</span>                this(html , true);<a name="line.61"></a>
-<span class="sourceLineNo">062</span>        }<a name="line.62"></a>
-<span class="sourceLineNo">063</span><a name="line.63"></a>
-<span class="sourceLineNo">064</span>        /**<a name="line.64"></a>
-<span class="sourceLineNo">065</span>         * Initializes an Alert with an optional close icon.<a name="line.65"></a>
-<span class="sourceLineNo">066</span>         * <a name="line.66"></a>
-<span class="sourceLineNo">067</span>         * @param hasClose<a name="line.67"></a>
-<span class="sourceLineNo">068</span>         *            whether the Alert should have a close icon.<a name="line.68"></a>
-<span class="sourceLineNo">069</span>         */<a name="line.69"></a>
-<span class="sourceLineNo">070</span>        public AlertBase(String html, boolean hasClose) {<a name="line.70"></a>
-<span class="sourceLineNo">071</span>                super("div", html);<a name="line.71"></a>
-<span class="sourceLineNo">072</span>                this.html = html;<a name="line.72"></a>
-<span class="sourceLineNo">073</span>                super.setStyleName(Constants.ALERT);<a name="line.73"></a>
-<span class="sourceLineNo">074</span>                setClose(hasClose);<a name="line.74"></a>
-<span class="sourceLineNo">075</span>                setHandlerFunctions(getElement());<a name="line.75"></a>
-<span class="sourceLineNo">076</span>        }<a name="line.76"></a>
-<span class="sourceLineNo">077</span><a name="line.77"></a>
-<span class="sourceLineNo">078</span>        /**<a name="line.78"></a>
-<span class="sourceLineNo">079</span>         * Sets whether the Alert has a close icon or not.<a name="line.79"></a>
-<span class="sourceLineNo">080</span>         * <a name="line.80"></a>
-<span class="sourceLineNo">081</span>         * @param hasClose<a name="line.81"></a>
-<span class="sourceLineNo">082</span>         *            &lt;code&gt;false&lt;/code&gt; if you don't want to have a close icon.<a name="line.82"></a>
-<span class="sourceLineNo">083</span>         *            Default: &lt;code&gt;true&lt;/code&gt;<a name="line.83"></a>
-<span class="sourceLineNo">084</span>         */<a name="line.84"></a>
-<span class="sourceLineNo">085</span>        public void setClose(boolean hasClose) {<a name="line.85"></a>
-<span class="sourceLineNo">086</span>                if (hasClose) {<a name="line.86"></a>
-<span class="sourceLineNo">087</span>                        close = new Close(DismissType.ALERT);<a name="line.87"></a>
-<span class="sourceLineNo">088</span>                        add(close);<a name="line.88"></a>
-<span class="sourceLineNo">089</span>                } else {<a name="line.89"></a>
-<span class="sourceLineNo">090</span>                        clear();<a name="line.90"></a>
-<span class="sourceLineNo">091</span>                        close = null;<a name="line.91"></a>
-<span class="sourceLineNo">092</span>                }<a name="line.92"></a>
-<span class="sourceLineNo">093</span>                redraw();<a name="line.93"></a>
-<span class="sourceLineNo">094</span>        }<a name="line.94"></a>
-<span class="sourceLineNo">095</span><a name="line.95"></a>
-<span class="sourceLineNo">096</span>        /**<a name="line.96"></a>
-<span class="sourceLineNo">097</span>         * Adds the Java functions that fire the Events to document. It is a<a name="line.97"></a>
-<span class="sourceLineNo">098</span>         * convenience method to have a cleaner code later on.<a name="line.98"></a>
-<span class="sourceLineNo">099</span>         */<a name="line.99"></a>
-<span class="sourceLineNo">100</span>        private native void setHandlerFunctions(Element e) /*-{<a name="line.100"></a>
-<span class="sourceLineNo">101</span>                var that = this;<a name="line.101"></a>
-<span class="sourceLineNo">102</span>                $wnd<a name="line.102"></a>
-<span class="sourceLineNo">103</span>                                .jQuery(e)<a name="line.103"></a>
-<span class="sourceLineNo">104</span>                                .bind(<a name="line.104"></a>
-<span class="sourceLineNo">105</span>                                                'close',<a name="line.105"></a>
-<span class="sourceLineNo">106</span>                                                function() {<a name="line.106"></a>
-<span class="sourceLineNo">107</span>                                                        that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();<a name="line.107"></a>
-<span class="sourceLineNo">108</span>                                                });<a name="line.108"></a>
-<span class="sourceLineNo">109</span>                $wnd<a name="line.109"></a>
-<span class="sourceLineNo">110</span>                                .jQuery(e)<a name="line.110"></a>
-<span class="sourceLineNo">111</span>                                .bind(<a name="line.111"></a>
-<span class="sourceLineNo">112</span>                                                'closed',<a name="line.112"></a>
-<span class="sourceLineNo">113</span>                                                function() {<a name="line.113"></a>
-<span class="sourceLineNo">114</span>                                                        that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();<a name="line.114"></a>
-<span class="sourceLineNo">115</span>                                                });<a name="line.115"></a>
-<span class="sourceLineNo">116</span>        }-*/;<a name="line.116"></a>
-<span class="sourceLineNo">117</span><a name="line.117"></a>
-<span class="sourceLineNo">118</span>        /**<a name="line.118"></a>
-<span class="sourceLineNo">119</span>         * This method is called immediately when the widget's close method is<a name="line.119"></a>
-<span class="sourceLineNo">120</span>         * executed.<a name="line.120"></a>
-<span class="sourceLineNo">121</span>         */<a name="line.121"></a>
-<span class="sourceLineNo">122</span>        protected void onClose() {<a name="line.122"></a>
-<span class="sourceLineNo">123</span>                fireEvent(new CloseEvent());<a name="line.123"></a>
-<span class="sourceLineNo">124</span>        }<a name="line.124"></a>
-<span class="sourceLineNo">125</span><a name="line.125"></a>
-<span class="sourceLineNo">126</span>        /**<a name="line.126"></a>
-<span class="sourceLineNo">127</span>         * This method is called once the widget is completely closed.<a name="line.127"></a>
-<span class="sourceLineNo">128</span>         */<a name="line.128"></a>
-<span class="sourceLineNo">129</span>        protected void onClosed() {<a name="line.129"></a>
-<span class="sourceLineNo">130</span>                fireEvent(new ClosedEvent());<a name="line.130"></a>
-<span class="sourceLineNo">131</span>        }<a name="line.131"></a>
-<span class="sourceLineNo">132</span><a name="line.132"></a>
-<span class="sourceLineNo">133</span>        /**<a name="line.133"></a>
-<span class="sourceLineNo">134</span>         * Initializes an Alert of given Type with a close icon.<a name="line.134"></a>
-<span class="sourceLineNo">135</span>         * <a name="line.135"></a>
-<span class="sourceLineNo">136</span>         * @param type<a name="line.136"></a>
-<span class="sourceLineNo">137</span>         *            of the Alert<a name="line.137"></a>
-<span class="sourceLineNo">138</span>         */<a name="line.138"></a>
-<span class="sourceLineNo">139</span>        public AlertBase(AlertType type) {<a name="line.139"></a>
-<span class="sourceLineNo">140</span>                this();<a name="line.140"></a>
-<span class="sourceLineNo">141</span>                setType(type);<a name="line.141"></a>
-<span class="sourceLineNo">142</span>        }<a name="line.142"></a>
-<span class="sourceLineNo">143</span><a name="line.143"></a>
-<span class="sourceLineNo">144</span>        /**<a name="line.144"></a>
-<span class="sourceLineNo">145</span>         * Sets the type of the Alert.<a name="line.145"></a>
-<span class="sourceLineNo">146</span>         * <a name="line.146"></a>
-<span class="sourceLineNo">147</span>         * @param type<a name="line.147"></a>
-<span class="sourceLineNo">148</span>         */<a name="line.148"></a>
-<span class="sourceLineNo">149</span>        public void setType(AlertType type) {<a name="line.149"></a>
-<span class="sourceLineNo">150</span>                StyleHelper.changeStyle(this, type, AlertType.class);<a name="line.150"></a>
-<span class="sourceLineNo">151</span>                setFade();<a name="line.151"></a>
-<span class="sourceLineNo">152</span>        }<a name="line.152"></a>
-<span class="sourceLineNo">153</span><a name="line.153"></a>
-<span class="sourceLineNo">154</span>        /**<a name="line.154"></a>
-<span class="sourceLineNo">155</span>         * Sets the text of an optional heading. The implementation depends on the<a name="line.155"></a>
-<span class="sourceLineNo">156</span>         * subclass.<a name="line.156"></a>
-<span class="sourceLineNo">157</span>         * <a name="line.157"></a>
-<span class="sourceLineNo">158</span>         * @param text<a name="line.158"></a>
-<span class="sourceLineNo">159</span>         *            the new heading<a name="line.159"></a>
-<span class="sourceLineNo">160</span>         */<a name="line.160"></a>
-<span class="sourceLineNo">161</span>        public void setHeading(String text) {<a name="line.161"></a>
-<span class="sourceLineNo">162</span>                heading = text;<a name="line.162"></a>
-<span class="sourceLineNo">163</span>                redraw();<a name="line.163"></a>
-<span class="sourceLineNo">164</span>        }<a name="line.164"></a>
-<span class="sourceLineNo">165</span><a name="line.165"></a>
-<span class="sourceLineNo">166</span>        /**<a name="line.166"></a>
-<span class="sourceLineNo">167</span>         * Sets whether the Alert should be animated.<a name="line.167"></a>
-<span class="sourceLineNo">168</span>         * <a name="line.168"></a>
-<span class="sourceLineNo">169</span>         * @param animated<a name="line.169"></a>
-<span class="sourceLineNo">170</span>         *            &lt;code&gt;true&lt;/code&gt; if the Alert should fade out. Default:<a name="line.170"></a>
-<span class="sourceLineNo">171</span>         *            &lt;code&gt;false&lt;/code&gt;<a name="line.171"></a>
-<span class="sourceLineNo">172</span>         */<a name="line.172"></a>
-<span class="sourceLineNo">173</span>        public void setAnimation(boolean animated) {<a name="line.173"></a>
-<span class="sourceLineNo">174</span>                this.fade = animated;<a name="line.174"></a>
-<span class="sourceLineNo">175</span>                setFade();<a name="line.175"></a>
-<span class="sourceLineNo">176</span>        }<a name="line.176"></a>
-<span class="sourceLineNo">177</span><a name="line.177"></a>
-<span class="sourceLineNo">178</span>        /**<a name="line.178"></a>
-<span class="sourceLineNo">179</span>         * {@inheritDoc}<a name="line.179"></a>
-<span class="sourceLineNo">180</span>         */<a name="line.180"></a>
-<span class="sourceLineNo">181</span>        public boolean getAnimation() {<a name="line.181"></a>
-<span class="sourceLineNo">182</span>                return fade;<a name="line.182"></a>
-<span class="sourceLineNo">183</span>        }<a name="line.183"></a>
-<span class="sourceLineNo">184</span><a name="line.184"></a>
-<span class="sourceLineNo">185</span>        /**<a name="line.185"></a>
-<span class="sourceLineNo">186</span>         * Delete the whole content of the Alert. This includes text, heading and<a name="line.186"></a>
-<span class="sourceLineNo">187</span>         * close icon.<a name="line.187"></a>
-<span class="sourceLineNo">188</span>         */<a name="line.188"></a>
-<span class="sourceLineNo">189</span>        @Override<a name="line.189"></a>
-<span class="sourceLineNo">190</span>        public void clear() {<a name="line.190"></a>
-<span class="sourceLineNo">191</span>                getElement().setInnerHTML("");<a name="line.191"></a>
-<span class="sourceLineNo">192</span>        }<a name="line.192"></a>
-<span class="sourceLineNo">193</span><a name="line.193"></a>
-<span class="sourceLineNo">194</span>        /**<a name="line.194"></a>
-<span class="sourceLineNo">195</span>         * Redraws the Alert according to the specified settings.<a name="line.195"></a>
-<span class="sourceLineNo">196</span>         */<a name="line.196"></a>
-<span class="sourceLineNo">197</span>        protected void redraw() {<a name="line.197"></a>
-<span class="sourceLineNo">198</span>                setHTML(html);<a name="line.198"></a>
-<span class="sourceLineNo">199</span>                configure(getElement());<a name="line.199"></a>
-<span class="sourceLineNo">200</span>        }<a name="line.200"></a>
-<span class="sourceLineNo">201</span><a name="line.201"></a>
-<span class="sourceLineNo">202</span>        /**<a name="line.202"></a>
-<span class="sourceLineNo">203</span>         * Sets the classes that define whether the Alert fades or not.<a name="line.203"></a>
-<span class="sourceLineNo">204</span>         */<a name="line.204"></a>
-<span class="sourceLineNo">205</span>        private void setFade() {<a name="line.205"></a>
-<span class="sourceLineNo">206</span>                if (fade) {<a name="line.206"></a>
-<span class="sourceLineNo">207</span>                        addStyleName("fade");<a name="line.207"></a>
-<span class="sourceLineNo">208</span>                        addStyleName("in");<a name="line.208"></a>
-<span class="sourceLineNo">209</span>                } else {<a name="line.209"></a>
-<span class="sourceLineNo">210</span>                        removeStyleName("fade");<a name="line.210"></a>
-<span class="sourceLineNo">211</span>                        removeStyleName("in");<a name="line.211"></a>
-<span class="sourceLineNo">212</span>                }<a name="line.212"></a>
-<span class="sourceLineNo">213</span>        }<a name="line.213"></a>
-<span class="sourceLineNo">214</span><a name="line.214"></a>
-<span class="sourceLineNo">215</span>        /**<a name="line.215"></a>
-<span class="sourceLineNo">216</span>         * {@inheritDoc}<a name="line.216"></a>
-<span class="sourceLineNo">217</span>         */<a name="line.217"></a>
-<span class="sourceLineNo">218</span>        public String getText() {<a name="line.218"></a>
-<span class="sourceLineNo">219</span>                return getHTML(); // TODO<a name="line.219"></a>
-<span class="sourceLineNo">220</span>        }<a name="line.220"></a>
-<span class="sourceLineNo">221</span><a name="line.221"></a>
-<span class="sourceLineNo">222</span>        /**<a name="line.222"></a>
-<span class="sourceLineNo">223</span>         * {@inheritDoc}<a name="line.223"></a>
-<span class="sourceLineNo">224</span>         */<a name="line.224"></a>
-<span class="sourceLineNo">225</span>        public void setText(String text) {<a name="line.225"></a>
-<span class="sourceLineNo">226</span>                setHTML(SafeHtmlUtils.htmlEscape(text));<a name="line.226"></a>
-<span class="sourceLineNo">227</span>        }<a name="line.227"></a>
-<span class="sourceLineNo">228</span><a name="line.228"></a>
-<span class="sourceLineNo">229</span>        /**<a name="line.229"></a>
-<span class="sourceLineNo">230</span>         * {@inheritDoc}<a name="line.230"></a>
-<span class="sourceLineNo">231</span>         */<a name="line.231"></a>
-<span class="sourceLineNo">232</span>        public String getHTML() {<a name="line.232"></a>
-<span class="sourceLineNo">233</span>                return html;<a name="line.233"></a>
-<span class="sourceLineNo">234</span>        }<a name="line.234"></a>
-<span class="sourceLineNo">235</span><a name="line.235"></a>
-<span class="sourceLineNo">236</span>        /**<a name="line.236"></a>
-<span class="sourceLineNo">237</span>         * {@inheritDoc}<a name="line.237"></a>
-<span class="sourceLineNo">238</span>         */<a name="line.238"></a>
-<span class="sourceLineNo">239</span>        public void setHTML(String html) {<a name="line.239"></a>
-<span class="sourceLineNo">240</span>                String output = "";<a name="line.240"></a>
-<span class="sourceLineNo">241</span>                if (close != null)<a name="line.241"></a>
-<span class="sourceLineNo">242</span>                        output = close.toString();<a name="line.242"></a>
-<span class="sourceLineNo">243</span>                output = output + heading + html;<a name="line.243"></a>
-<span class="sourceLineNo">244</span>                setHTMLOutput(html, output);<a name="line.244"></a>
-<span class="sourceLineNo">245</span>        }<a name="line.245"></a>
-<span class="sourceLineNo">246</span><a name="line.246"></a>
-<span class="sourceLineNo">247</span>        /**<a name="line.247"></a>
-<span class="sourceLineNo">248</span>         * Sets the HTML of the Alert. Override this method to implement a custom<a name="line.248"></a>
-<span class="sourceLineNo">249</span>         * formatting.<a name="line.249"></a>
-<span class="sourceLineNo">250</span>         * <a name="line.250"></a>
-<span class="sourceLineNo">251</span>         * @param html<a name="line.251"></a>
-<span class="sourceLineNo">252</span>         *            the html of the content without heading and close icon.<a name="line.252"></a>
-<span class="sourceLineNo">253</span>         * @param output<a name="line.253"></a>
-<span class="sourceLineNo">254</span>         *            the raw output to be put into the widget. Be careful!<a name="line.254"></a>
-<span class="sourceLineNo">255</span>         */<a name="line.255"></a>
-<span class="sourceLineNo">256</span>        protected void setHTMLOutput(String html, String output) {<a name="line.256"></a>
-<span class="sourceLineNo">257</span>                this.html = html;<a name="line.257"></a>
-<span class="sourceLineNo">258</span>                getElement().setInnerHTML(output);<a name="line.258"></a>
-<span class="sourceLineNo">259</span>        }<a name="line.259"></a>
-<span class="sourceLineNo">260</span><a name="line.260"></a>
-<span class="sourceLineNo">261</span>        /**<a name="line.261"></a>
-<span class="sourceLineNo">262</span>         * {@inheritDoc}<a name="line.262"></a>
-<span class="sourceLineNo">263</span>         */<a name="line.263"></a>
-<span class="sourceLineNo">264</span>        @Override<a name="line.264"></a>
-<span class="sourceLineNo">265</span>        protected void onLoad() {<a name="line.265"></a>
-<span class="sourceLineNo">266</span>                super.onLoad();<a name="line.266"></a>
-<span class="sourceLineNo">267</span>                configure(getElement());<a name="line.267"></a>
-<span class="sourceLineNo">268</span>        }<a name="line.268"></a>
-<span class="sourceLineNo">269</span><a name="line.269"></a>
-<span class="sourceLineNo">270</span>        private native void configure(Element e) /*-{<a name="line.270"></a>
-<span class="sourceLineNo">271</span>                $wnd.jQuery(e).alert(e);<a name="line.271"></a>
-<span class="sourceLineNo">272</span>        }-*/;<a name="line.272"></a>
-<span class="sourceLineNo">273</span>        <a name="line.273"></a>
-<span class="sourceLineNo">274</span>        /**<a name="line.274"></a>
-<span class="sourceLineNo">275</span>         * Close this alert.<a name="line.275"></a>
-<span class="sourceLineNo">276</span>         */<a name="line.276"></a>
-<span class="sourceLineNo">277</span>        public void close() {<a name="line.277"></a>
-<span class="sourceLineNo">278</span>                close(getElement());<a name="line.278"></a>
-<span class="sourceLineNo">279</span>        }<a name="line.279"></a>
-<span class="sourceLineNo">280</span>        <a name="line.280"></a>
-<span class="sourceLineNo">281</span>        private native void close(Element e)/*-{<a name="line.281"></a>
-<span class="sourceLineNo">282</span>                $wnd.jQuery(e).alert('close');<a name="line.282"></a>
-<span class="sourceLineNo">283</span>        }-*/;<a name="line.283"></a>
-<span class="sourceLineNo">284</span><a name="line.284"></a>
-<span class="sourceLineNo">285</span>        /**<a name="line.285"></a>
-<span class="sourceLineNo">286</span>         * {@inheritDoc}<a name="line.286"></a>
-<span class="sourceLineNo">287</span>         */<a name="line.287"></a>
-<span class="sourceLineNo">288</span>        public HandlerRegistration addCloseHandler(CloseHandler handler) {<a name="line.288"></a>
-<span class="sourceLineNo">289</span>                return addHandler(handler, CloseEvent.getType());<a name="line.289"></a>
-<span class="sourceLineNo">290</span>        }<a name="line.290"></a>
-<span class="sourceLineNo">291</span><a name="line.291"></a>
-<span class="sourceLineNo">292</span>        /**<a name="line.292"></a>
-<span class="sourceLineNo">293</span>         * {@inheritDoc}<a name="line.293"></a>
-<span class="sourceLineNo">294</span>         */<a name="line.294"></a>
-<span class="sourceLineNo">295</span>        public HandlerRegistration addClosedHandler(ClosedHandler handler) {<a name="line.295"></a>
-<span class="sourceLineNo">296</span>                return addHandler(handler, ClosedEvent.getType());<a name="line.296"></a>
-<span class="sourceLineNo">297</span>        }<a name="line.297"></a>
-<span class="sourceLineNo">298</span>}<a name="line.298"></a>
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /*<a name="line.1"></a>
+<FONT color="green">002</FONT>     *  Copyright 2012 GWT-Bootstrap<a name="line.2"></a>
+<FONT color="green">003</FONT>     *<a name="line.3"></a>
+<FONT color="green">004</FONT>     *  Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
+<FONT color="green">005</FONT>     *  you may not use this file except in compliance with the License.<a name="line.5"></a>
+<FONT color="green">006</FONT>     *  You may obtain a copy of the License at<a name="line.6"></a>
+<FONT color="green">007</FONT>     *<a name="line.7"></a>
+<FONT color="green">008</FONT>     *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.8"></a>
+<FONT color="green">009</FONT>     *<a name="line.9"></a>
+<FONT color="green">010</FONT>     *  Unless required by applicable law or agreed to in writing, software<a name="line.10"></a>
+<FONT color="green">011</FONT>     *  distributed under the License is distributed on an "AS IS" BASIS,<a name="line.11"></a>
+<FONT color="green">012</FONT>     *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.12"></a>
+<FONT color="green">013</FONT>     *  See the License for the specific language governing permissions and<a name="line.13"></a>
+<FONT color="green">014</FONT>     *  limitations under the License.<a name="line.14"></a>
+<FONT color="green">015</FONT>     */<a name="line.15"></a>
+<FONT color="green">016</FONT>    package com.github.gwtbootstrap.client.ui.base;<a name="line.16"></a>
+<FONT color="green">017</FONT>    <a name="line.17"></a>
+<FONT color="green">018</FONT>    import com.github.gwtbootstrap.client.ui.Close;<a name="line.18"></a>
+<FONT color="green">019</FONT>    import com.github.gwtbootstrap.client.ui.constants.AlertType;<a name="line.19"></a>
+<FONT color="green">020</FONT>    import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.20"></a>
+<FONT color="green">021</FONT>    import com.github.gwtbootstrap.client.ui.constants.DismissType;<a name="line.21"></a>
+<FONT color="green">022</FONT>    import com.github.gwtbootstrap.client.ui.event.CloseEvent;<a name="line.22"></a>
+<FONT color="green">023</FONT>    import com.github.gwtbootstrap.client.ui.event.CloseHandler;<a name="line.23"></a>
+<FONT color="green">024</FONT>    import com.github.gwtbootstrap.client.ui.event.ClosedEvent;<a name="line.24"></a>
+<FONT color="green">025</FONT>    import com.github.gwtbootstrap.client.ui.event.ClosedHandler;<a name="line.25"></a>
+<FONT color="green">026</FONT>    import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;<a name="line.26"></a>
+<FONT color="green">027</FONT>    import com.google.gwt.dom.client.Element;<a name="line.27"></a>
+<FONT color="green">028</FONT>    import com.google.gwt.event.shared.HandlerRegistration;<a name="line.28"></a>
+<FONT color="green">029</FONT>    import com.google.gwt.safehtml.shared.SafeHtmlUtils;<a name="line.29"></a>
+<FONT color="green">030</FONT>    <a name="line.30"></a>
+<FONT color="green">031</FONT>    /**<a name="line.31"></a>
+<FONT color="green">032</FONT>     * Base class for Alert widgets.<a name="line.32"></a>
+<FONT color="green">033</FONT>     * <a name="line.33"></a>
+<FONT color="green">034</FONT>     * @since 2.0.4.0<a name="line.34"></a>
+<FONT color="green">035</FONT>     * <a name="line.35"></a>
+<FONT color="green">036</FONT>     * @author Dominik Mayer<a name="line.36"></a>
+<FONT color="green">037</FONT>     * @author Carlos Alexandro Becker<a name="line.37"></a>
+<FONT color="green">038</FONT>     * <a name="line.38"></a>
+<FONT color="green">039</FONT>     * @see &lt;a<a name="line.39"></a>
+<FONT color="green">040</FONT>     *      href="http://twitter.github.com/bootstrap/components.html#alerts"&gt;Bootstrap<a name="line.40"></a>
+<FONT color="green">041</FONT>     *      documentation&lt;/a&gt;<a name="line.41"></a>
+<FONT color="green">042</FONT>     */<a name="line.42"></a>
+<FONT color="green">043</FONT>    public abstract class AlertBase extends HtmlWidget implements IsAnimated, HasCloseHandlers, HasType&lt;AlertType&gt; {<a name="line.43"></a>
+<FONT color="green">044</FONT>    <a name="line.44"></a>
+<FONT color="green">045</FONT>            private Close close;<a name="line.45"></a>
+<FONT color="green">046</FONT>    <a name="line.46"></a>
+<FONT color="green">047</FONT>            private String html = "";<a name="line.47"></a>
+<FONT color="green">048</FONT>    <a name="line.48"></a>
+<FONT color="green">049</FONT>            private String heading = "";<a name="line.49"></a>
+<FONT color="green">050</FONT>    <a name="line.50"></a>
+<FONT color="green">051</FONT>            private boolean fade;<a name="line.51"></a>
+<FONT color="green">052</FONT>            <a name="line.52"></a>
+<FONT color="green">053</FONT>            /**<a name="line.53"></a>
+<FONT color="green">054</FONT>             * Initializes an Alert with a close icon.<a name="line.54"></a>
+<FONT color="green">055</FONT>             */<a name="line.55"></a>
+<FONT color="green">056</FONT>            public AlertBase() {<a name="line.56"></a>
+<FONT color="green">057</FONT>                    this("", true);<a name="line.57"></a>
+<FONT color="green">058</FONT>            }<a name="line.58"></a>
+<FONT color="green">059</FONT>            <a name="line.59"></a>
+<FONT color="green">060</FONT>            public AlertBase(String html) {<a name="line.60"></a>
+<FONT color="green">061</FONT>                    this(html , true);<a name="line.61"></a>
+<FONT color="green">062</FONT>            }<a name="line.62"></a>
+<FONT color="green">063</FONT>    <a name="line.63"></a>
+<FONT color="green">064</FONT>            /**<a name="line.64"></a>
+<FONT color="green">065</FONT>             * Initializes an Alert with an optional close icon.<a name="line.65"></a>
+<FONT color="green">066</FONT>             * <a name="line.66"></a>
+<FONT color="green">067</FONT>             * @param hasClose<a name="line.67"></a>
+<FONT color="green">068</FONT>             *            whether the Alert should have a close icon.<a name="line.68"></a>
+<FONT color="green">069</FONT>             */<a name="line.69"></a>
+<FONT color="green">070</FONT>            public AlertBase(String html, boolean hasClose) {<a name="line.70"></a>
+<FONT color="green">071</FONT>                    super("div", html);<a name="line.71"></a>
+<FONT color="green">072</FONT>                    this.html = html;<a name="line.72"></a>
+<FONT color="green">073</FONT>                    super.setStyleName(Constants.ALERT);<a name="line.73"></a>
+<FONT color="green">074</FONT>                    setClose(hasClose);<a name="line.74"></a>
+<FONT color="green">075</FONT>                    setHandlerFunctions(getElement());<a name="line.75"></a>
+<FONT color="green">076</FONT>            }<a name="line.76"></a>
+<FONT color="green">077</FONT>    <a name="line.77"></a>
+<FONT color="green">078</FONT>            /**<a name="line.78"></a>
+<FONT color="green">079</FONT>             * Sets whether the Alert has a close icon or not.<a name="line.79"></a>
+<FONT color="green">080</FONT>             * <a name="line.80"></a>
+<FONT color="green">081</FONT>             * @param hasClose<a name="line.81"></a>
+<FONT color="green">082</FONT>             *            &lt;code&gt;false&lt;/code&gt; if you don't want to have a close icon.<a name="line.82"></a>
+<FONT color="green">083</FONT>             *            Default: &lt;code&gt;true&lt;/code&gt;<a name="line.83"></a>
+<FONT color="green">084</FONT>             */<a name="line.84"></a>
+<FONT color="green">085</FONT>            public void setClose(boolean hasClose) {<a name="line.85"></a>
+<FONT color="green">086</FONT>                    if (hasClose) {<a name="line.86"></a>
+<FONT color="green">087</FONT>                            close = new Close(DismissType.ALERT);<a name="line.87"></a>
+<FONT color="green">088</FONT>                            add(close);<a name="line.88"></a>
+<FONT color="green">089</FONT>                    } else {<a name="line.89"></a>
+<FONT color="green">090</FONT>                            clear();<a name="line.90"></a>
+<FONT color="green">091</FONT>                            close = null;<a name="line.91"></a>
+<FONT color="green">092</FONT>                    }<a name="line.92"></a>
+<FONT color="green">093</FONT>                    redraw();<a name="line.93"></a>
+<FONT color="green">094</FONT>            }<a name="line.94"></a>
+<FONT color="green">095</FONT>    <a name="line.95"></a>
+<FONT color="green">096</FONT>            /**<a name="line.96"></a>
+<FONT color="green">097</FONT>             * Adds the Java functions that fire the Events to document. It is a<a name="line.97"></a>
+<FONT color="green">098</FONT>             * convenience method to have a cleaner code later on.<a name="line.98"></a>
+<FONT color="green">099</FONT>             */<a name="line.99"></a>
+<FONT color="green">100</FONT>            private native void setHandlerFunctions(Element e) /*-{<a name="line.100"></a>
+<FONT color="green">101</FONT>                    var that = this;<a name="line.101"></a>
+<FONT color="green">102</FONT>                    $wnd<a name="line.102"></a>
+<FONT color="green">103</FONT>                                    .jQuery(e)<a name="line.103"></a>
+<FONT color="green">104</FONT>                                    .bind(<a name="line.104"></a>
+<FONT color="green">105</FONT>                                                    'close',<a name="line.105"></a>
+<FONT color="green">106</FONT>                                                    function() {<a name="line.106"></a>
+<FONT color="green">107</FONT>                                                            that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();<a name="line.107"></a>
+<FONT color="green">108</FONT>                                                    });<a name="line.108"></a>
+<FONT color="green">109</FONT>                    $wnd<a name="line.109"></a>
+<FONT color="green">110</FONT>                                    .jQuery(e)<a name="line.110"></a>
+<FONT color="green">111</FONT>                                    .bind(<a name="line.111"></a>
+<FONT color="green">112</FONT>                                                    'closed',<a name="line.112"></a>
+<FONT color="green">113</FONT>                                                    function() {<a name="line.113"></a>
+<FONT color="green">114</FONT>                                                            that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();<a name="line.114"></a>
+<FONT color="green">115</FONT>                                                    });<a name="line.115"></a>
+<FONT color="green">116</FONT>            }-*/;<a name="line.116"></a>
+<FONT color="green">117</FONT>    <a name="line.117"></a>
+<FONT color="green">118</FONT>            /**<a name="line.118"></a>
+<FONT color="green">119</FONT>             * This method is called immediately when the widget's close method is<a name="line.119"></a>
+<FONT color="green">120</FONT>             * executed.<a name="line.120"></a>
+<FONT color="green">121</FONT>             */<a name="line.121"></a>
+<FONT color="green">122</FONT>            protected void onClose() {<a name="line.122"></a>
+<FONT color="green">123</FONT>                    fireEvent(new CloseEvent());<a name="line.123"></a>
+<FONT color="green">124</FONT>            }<a name="line.124"></a>
+<FONT color="green">125</FONT>    <a name="line.125"></a>
+<FONT color="green">126</FONT>            /**<a name="line.126"></a>
+<FONT color="green">127</FONT>             * This method is called once the widget is completely closed.<a name="line.127"></a>
+<FONT color="green">128</FONT>             */<a name="line.128"></a>
+<FONT color="green">129</FONT>            protected void onClosed() {<a name="line.129"></a>
+<FONT color="green">130</FONT>                    fireEvent(new ClosedEvent());<a name="line.130"></a>
+<FONT color="green">131</FONT>            }<a name="line.131"></a>
+<FONT color="green">132</FONT>    <a name="line.132"></a>
+<FONT color="green">133</FONT>            /**<a name="line.133"></a>
+<FONT color="green">134</FONT>             * Initializes an Alert of given Type with a close icon.<a name="line.134"></a>
+<FONT color="green">135</FONT>             * <a name="line.135"></a>
+<FONT color="green">136</FONT>             * @param type<a name="line.136"></a>
+<FONT color="green">137</FONT>             *            of the Alert<a name="line.137"></a>
+<FONT color="green">138</FONT>             */<a name="line.138"></a>
+<FONT color="green">139</FONT>            public AlertBase(AlertType type) {<a name="line.139"></a>
+<FONT color="green">140</FONT>                    this();<a name="line.140"></a>
+<FONT color="green">141</FONT>                    setType(type);<a name="line.141"></a>
+<FONT color="green">142</FONT>            }<a name="line.142"></a>
+<FONT color="green">143</FONT>    <a name="line.143"></a>
+<FONT color="green">144</FONT>            /**<a name="line.144"></a>
+<FONT color="green">145</FONT>             * Sets the type of the Alert.<a name="line.145"></a>
+<FONT color="green">146</FONT>             * <a name="line.146"></a>
+<FONT color="green">147</FONT>             * @param type<a name="line.147"></a>
+<FONT color="green">148</FONT>             */<a name="line.148"></a>
+<FONT color="green">149</FONT>            public void setType(AlertType type) {<a name="line.149"></a>
+<FONT color="green">150</FONT>                    StyleHelper.changeStyle(this, type, AlertType.class);<a name="line.150"></a>
+<FONT color="green">151</FONT>                    setFade();<a name="line.151"></a>
+<FONT color="green">152</FONT>            }<a name="line.152"></a>
+<FONT color="green">153</FONT>    <a name="line.153"></a>
+<FONT color="green">154</FONT>            /**<a name="line.154"></a>
+<FONT color="green">155</FONT>             * Sets the text of an optional heading. The implementation depends on the<a name="line.155"></a>
+<FONT color="green">156</FONT>             * subclass.<a name="line.156"></a>
+<FONT color="green">157</FONT>             * <a name="line.157"></a>
+<FONT color="green">158</FONT>             * @param text<a name="line.158"></a>
+<FONT color="green">159</FONT>             *            the new heading<a name="line.159"></a>
+<FONT color="green">160</FONT>             */<a name="line.160"></a>
+<FONT color="green">161</FONT>            public void setHeading(String text) {<a name="line.161"></a>
+<FONT color="green">162</FONT>                    heading = text;<a name="line.162"></a>
+<FONT color="green">163</FONT>                    redraw();<a name="line.163"></a>
+<FONT color="green">164</FONT>            }<a name="line.164"></a>
+<FONT color="green">165</FONT>    <a name="line.165"></a>
+<FONT color="green">166</FONT>            /**<a name="line.166"></a>
+<FONT color="green">167</FONT>             * Sets whether the Alert should be animated.<a name="line.167"></a>
+<FONT color="green">168</FONT>             * <a name="line.168"></a>
+<FONT color="green">169</FONT>             * @param animated<a name="line.169"></a>
+<FONT color="green">170</FONT>             *            &lt;code&gt;true&lt;/code&gt; if the Alert should fade out. Default:<a name="line.170"></a>
+<FONT color="green">171</FONT>             *            &lt;code&gt;false&lt;/code&gt;<a name="line.171"></a>
+<FONT color="green">172</FONT>             */<a name="line.172"></a>
+<FONT color="green">173</FONT>            public void setAnimation(boolean animated) {<a name="line.173"></a>
+<FONT color="green">174</FONT>                    this.fade = animated;<a name="line.174"></a>
+<FONT color="green">175</FONT>                    setFade();<a name="line.175"></a>
+<FONT color="green">176</FONT>            }<a name="line.176"></a>
+<FONT color="green">177</FONT>    <a name="line.177"></a>
+<FONT color="green">178</FONT>            /**<a name="line.178"></a>
+<FONT color="green">179</FONT>             * {@inheritDoc}<a name="line.179"></a>
+<FONT color="green">180</FONT>             */<a name="line.180"></a>
+<FONT color="green">181</FONT>            public boolean getAnimation() {<a name="line.181"></a>
+<FONT color="green">182</FONT>                    return fade;<a name="line.182"></a>
+<FONT color="green">183</FONT>            }<a name="line.183"></a>
+<FONT color="green">184</FONT>    <a name="line.184"></a>
+<FONT color="green">185</FONT>            /**<a name="line.185"></a>
+<FONT color="green">186</FONT>             * Delete the whole content of the Alert. This includes text, heading and<a name="line.186"></a>
+<FONT color="green">187</FONT>             * close icon.<a name="line.187"></a>
+<FONT color="green">188</FONT>             */<a name="line.188"></a>
+<FONT color="green">189</FONT>            @Override<a name="line.189"></a>
+<FONT color="green">190</FONT>            public void clear() {<a name="line.190"></a>
+<FONT color="green">191</FONT>                    getElement().setInnerHTML("");<a name="line.191"></a>
+<FONT color="green">192</FONT>            }<a name="line.192"></a>
+<FONT color="green">193</FONT>    <a name="line.193"></a>
+<FONT color="green">194</FONT>            /**<a name="line.194"></a>
+<FONT color="green">195</FONT>             * Redraws the Alert according to the specified settings.<a name="line.195"></a>
+<FONT color="green">196</FONT>             */<a name="line.196"></a>
+<FONT color="green">197</FONT>            protected void redraw() {<a name="line.197"></a>
+<FONT color="green">198</FONT>                    setHTML(html);<a name="line.198"></a>
+<FONT color="green">199</FONT>                    configure(getElement());<a name="line.199"></a>
+<FONT color="green">200</FONT>            }<a name="line.200"></a>
+<FONT color="green">201</FONT>    <a name="line.201"></a>
+<FONT color="green">202</FONT>            /**<a name="line.202"></a>
+<FONT color="green">203</FONT>             * Sets the classes that define whether the Alert fades or not.<a name="line.203"></a>
+<FONT color="green">204</FONT>             */<a name="line.204"></a>
+<FONT color="green">205</FONT>            private void setFade() {<a name="line.205"></a>
+<FONT color="green">206</FONT>                    if (fade) {<a name="line.206"></a>
+<FONT color="green">207</FONT>                            addStyleName("fade");<a name="line.207"></a>
+<FONT color="green">208</FONT>                            addStyleName("in");<a name="line.208"></a>
+<FONT color="green">209</FONT>                    } else {<a name="line.209"></a>
+<FONT color="green">210</FONT>                            removeStyleName("fade");<a name="line.210"></a>
+<FONT color="green">211</FONT>                            removeStyleName("in");<a name="line.211"></a>
+<FONT color="green">212</FONT>                    }<a name="line.212"></a>
+<FONT color="green">213</FONT>            }<a name="line.213"></a>
+<FONT color="green">214</FONT>    <a name="line.214"></a>
+<FONT color="green">215</FONT>            /**<a name="line.215"></a>
+<FONT color="green">216</FONT>             * {@inheritDoc}<a name="line.216"></a>
+<FONT color="green">217</FONT>             */<a name="line.217"></a>
+<FONT color="green">218</FONT>            public String getText() {<a name="line.218"></a>
+<FONT color="green">219</FONT>                    return getHTML(); // TODO<a name="line.219"></a>
+<FONT color="green">220</FONT>            }<a name="line.220"></a>
+<FONT color="green">221</FONT>    <a name="line.221"></a>
+<FONT color="green">222</FONT>            /**<a name="line.222"></a>
+<FONT color="green">223</FONT>             * {@inheritDoc}<a name="line.223"></a>
+<FONT color="green">224</FONT>             */<a name="line.224"></a>
+<FONT color="green">225</FONT>            public void setText(String text) {<a name="line.225"></a>
+<FONT color="green">226</FONT>                    setHTML(SafeHtmlUtils.htmlEscape(text));<a name="line.226"></a>
+<FONT color="green">227</FONT>            }<a name="line.227"></a>
+<FONT color="green">228</FONT>    <a name="line.228"></a>
+<FONT color="green">229</FONT>            /**<a name="line.229"></a>
+<FONT color="green">230</FONT>             * {@inheritDoc}<a name="line.230"></a>
+<FONT color="green">231</FONT>             */<a name="line.231"></a>
+<FONT color="green">232</FONT>            public String getHTML() {<a name="line.232"></a>
+<FONT color="green">233</FONT>                    return html;<a name="line.233"></a>
+<FONT color="green">234</FONT>            }<a name="line.234"></a>
+<FONT color="green">235</FONT>    <a name="line.235"></a>
+<FONT color="green">236</FONT>            /**<a name="line.236"></a>
+<FONT color="green">237</FONT>             * {@inheritDoc}<a name="line.237"></a>
+<FONT color="green">238</FONT>             */<a name="line.238"></a>
+<FONT color="green">239</FONT>            public void setHTML(String html) {<a name="line.239"></a>
+<FONT color="green">240</FONT>                    String output = "";<a name="line.240"></a>
+<FONT color="green">241</FONT>                    if (close != null)<a name="line.241"></a>
+<FONT color="green">242</FONT>                            output = close.toString();<a name="line.242"></a>
+<FONT color="green">243</FONT>                    output = output + heading + html;<a name="line.243"></a>
+<FONT color="green">244</FONT>                    setHTMLOutput(html, output);<a name="line.244"></a>
+<FONT color="green">245</FONT>            }<a name="line.245"></a>
+<FONT color="green">246</FONT>    <a name="line.246"></a>
+<FONT color="green">247</FONT>            /**<a name="line.247"></a>
+<FONT color="green">248</FONT>             * Sets the HTML of the Alert. Override this method to implement a custom<a name="line.248"></a>
+<FONT color="green">249</FONT>             * formatting.<a name="line.249"></a>
+<FONT color="green">250</FONT>             * <a name="line.250"></a>
+<FONT color="green">251</FONT>             * @param html<a name="line.251"></a>
+<FONT color="green">252</FONT>             *            the html of the content without heading and close icon.<a name="line.252"></a>
+<FONT color="green">253</FONT>             * @param output<a name="line.253"></a>
+<FONT color="green">254</FONT>             *            the raw output to be put into the widget. Be careful!<a name="line.254"></a>
+<FONT color="green">255</FONT>             */<a name="line.255"></a>
+<FONT color="green">256</FONT>            protected void setHTMLOutput(String html, String output) {<a name="line.256"></a>
+<FONT color="green">257</FONT>                    this.html = html;<a name="line.257"></a>
+<FONT color="green">258</FONT>                    getElement().setInnerHTML(output);<a name="line.258"></a>
+<FONT color="green">259</FONT>            }<a name="line.259"></a>
+<FONT color="green">260</FONT>    <a name="line.260"></a>
+<FONT color="green">261</FONT>            /**<a name="line.261"></a>
+<FONT color="green">262</FONT>             * {@inheritDoc}<a name="line.262"></a>
+<FONT color="green">263</FONT>             */<a name="line.263"></a>
+<FONT color="green">264</FONT>            @Override<a name="line.264"></a>
+<FONT color="green">265</FONT>            protected void onLoad() {<a name="line.265"></a>
+<FONT color="green">266</FONT>                    super.onLoad();<a name="line.266"></a>
+<FONT color="green">267</FONT>                    configure(getElement());<a name="line.267"></a>
+<FONT color="green">268</FONT>            }<a name="line.268"></a>
+<FONT color="green">269</FONT>    <a name="line.269"></a>
+<FONT color="green">270</FONT>            private native void configure(Element e) /*-{<a name="line.270"></a>
+<FONT color="green">271</FONT>                    $wnd.jQuery(e).alert(e);<a name="line.271"></a>
+<FONT color="green">272</FONT>            }-*/;<a name="line.272"></a>
+<FONT color="green">273</FONT>            <a name="line.273"></a>
+<FONT color="green">274</FONT>            /**<a name="line.274"></a>
+<FONT color="green">275</FONT>             * Close this alert.<a name="line.275"></a>
+<FONT color="green">276</FONT>             */<a name="line.276"></a>
+<FONT color="green">277</FONT>            public void close() {<a name="line.277"></a>
+<FONT color="green">278</FONT>                    close(getElement());<a name="line.278"></a>
+<FONT color="green">279</FONT>            }<a name="line.279"></a>
+<FONT color="green">280</FONT>            <a name="line.280"></a>
+<FONT color="green">281</FONT>            private native void close(Element e)/*-{<a name="line.281"></a>
+<FONT color="green">282</FONT>                    $wnd.jQuery(e).alert('close');<a name="line.282"></a>
+<FONT color="green">283</FONT>            }-*/;<a name="line.283"></a>
+<FONT color="green">284</FONT>    <a name="line.284"></a>
+<FONT color="green">285</FONT>            /**<a name="line.285"></a>
+<FONT color="green">286</FONT>             * {@inheritDoc}<a name="line.286"></a>
+<FONT color="green">287</FONT>             */<a name="line.287"></a>
+<FONT color="green">288</FONT>            public HandlerRegistration addCloseHandler(CloseHandler handler) {<a name="line.288"></a>
+<FONT color="green">289</FONT>                    return addHandler(handler, CloseEvent.getType());<a name="line.289"></a>
+<FONT color="green">290</FONT>            }<a name="line.290"></a>
+<FONT color="green">291</FONT>    <a name="line.291"></a>
+<FONT color="green">292</FONT>            /**<a name="line.292"></a>
+<FONT color="green">293</FONT>             * {@inheritDoc}<a name="line.293"></a>
+<FONT color="green">294</FONT>             */<a name="line.294"></a>
+<FONT color="green">295</FONT>            public HandlerRegistration addClosedHandler(ClosedHandler handler) {<a name="line.295"></a>
+<FONT color="green">296</FONT>                    return addHandler(handler, ClosedEvent.getType());<a name="line.296"></a>
+<FONT color="green">297</FONT>            }<a name="line.297"></a>
+<FONT color="green">298</FONT>    }<a name="line.298"></a>
 
 
 
@@ -364,7 +359,6 @@
 
 
 
-</pre>
-</div>
-</body>
-</html>
+</PRE>
+</BODY>
+</HTML>
