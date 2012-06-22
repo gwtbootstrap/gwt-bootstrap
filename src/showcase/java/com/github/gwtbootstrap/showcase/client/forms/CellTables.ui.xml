@@ -81,8 +81,16 @@
 						</b:FormActions>
 					</b:Fieldset>
 				</b:Form>
-				<b:Pagination ui:field="pagination"/>
-				<b:CellTable ui:field="exampleTable" bordered="true" condensed="true" striped="true" />
+                <b:TabPanel>
+                    <b:TabPane active="true" heading="CellTable">
+                        <b:Pagination ui:field="pagination"/>
+                        <b:CellTable ui:field="exampleTable" bordered="true" condensed="true" striped="true" />
+                    </b:TabPane>
+                    <b:TabPane heading="DataGrid">
+                        <b:Pagination ui:field="dataGridPagination"/>
+                        <b:DataGrid ui:field="exampleDataGrid" bordered="true" condensed="true" striped="true" height="200px" width="100%"/>
+                    </b:TabPane>
+                </b:TabPanel>
 			</b:Column>
 		</b:FluidRow>
 	</g:HTMLPanel>

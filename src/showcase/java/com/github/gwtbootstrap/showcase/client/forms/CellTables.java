@@ -20,6 +20,7 @@ import java.util.Comparator;
 
 import com.github.gwtbootstrap.client.ui.CellTable;
 import com.github.gwtbootstrap.client.ui.ControlGroup;
+import com.github.gwtbootstrap.client.ui.DataGrid;
 import com.github.gwtbootstrap.client.ui.Form;
 import com.github.gwtbootstrap.client.ui.Form.SubmitEvent;
 import com.github.gwtbootstrap.client.ui.HelpInline;
@@ -43,6 +44,7 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.cellview.client.AbstractCellTable;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
@@ -82,6 +84,9 @@ public class CellTables extends Composite implements Editor<Person> {
 	@UiField(provided = true)
 	CellTable<Person> exampleTable = new CellTable<Person>(5);
 
+    @UiField(provided = true)
+    DataGrid<Person> exampleDataGrid = new DataGrid<Person>(20);
+
 	@UiField
 	SubmitButton saveButton;
 	
@@ -90,11 +95,15 @@ public class CellTables extends Composite implements Editor<Person> {
 
 	@UiField
 	Pagination pagination;
+
+	@UiField
+    Pagination dataGridPagination;
 	
 	@UiField
 	Form submitExampleForm;
 
 	SimplePager pager = new SimplePager();
+    SimplePager dataGridPager = new SimplePager();
 
 	ListDataProvider<Person> dataProvider = new ListDataProvider<Person>();
 
@@ -120,7 +129,12 @@ public class CellTables extends Composite implements Editor<Person> {
 
 		favorite.setAcceptableValues(Arrays.asList(Favorite.values()));
 
-		exampleTable.setEmptyTableWidget(new Label("Please add data."));
+		initTable(exampleTable, pager, pagination);
+        initTable(exampleDataGrid, dataGridPager, dataGridPagination);
+	}
+
+    private void initTable(AbstractCellTable<Person> exampleTable,final SimplePager pager,final Pagination pagination) {
+        exampleTable.setEmptyTableWidget(new Label("Please add data."));
 
 		TextColumn<Person> idCol = new TextColumn<Person>() {
 
@@ -265,7 +279,7 @@ public class CellTables extends Composite implements Editor<Person> {
 			
 			@Override
 			public void onRangeChange(RangeChangeEvent event) {
-				rebuildPager();
+				rebuildPager(pagination, pager);
 			}
 		});
 
@@ -274,7 +288,7 @@ public class CellTables extends Composite implements Editor<Person> {
 		pagination.clear();
 
 		dataProvider.addDataDisplay(exampleTable);
-	}
+    }
 
 	@UiHandler("age")
 	public void onAgeUpdate(KeyPressEvent event) {
@@ -333,11 +347,12 @@ public class CellTables extends Composite implements Editor<Person> {
 
 		dataProvider.flush();
 
-		rebuildPager();
+		rebuildPager(pagination, pager);
+        rebuildPager(dataGridPagination, dataGridPager);
 		
 	}
 
-	private void rebuildPager() {
+	private void rebuildPager(final Pagination pagination,final SimplePager pager) {
 		pagination.clear();
 
 		if (pager.getPageCount() == 0) {
