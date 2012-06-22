@@ -20,13 +20,11 @@ import java.util.Date;
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
-import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
 import com.github.gwtbootstrap.client.ui.event.HideHandler;
 import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
-import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.gwtbootstrap.datepicker.client.ui.util.LocaleUtil;
 import com.google.gwt.dom.client.Element;
@@ -101,6 +99,14 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
             return null;
         }
     }
+    
+    /**
+     * Get un-tranceform text
+     * @return text box value
+     */
+    public String getOriginalValue() {
+        return box.getValue();
+    }
 
     /**
      * {@inheritDoc}
@@ -157,6 +163,18 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     public void onChange() {
         ValueChangeEvent.fire(this, getValue());
     }
+    
+    public void onShow() {
+        fireEvent(new ShowEvent());
+    }
+    
+    public void onHide() {
+        fireEvent(new HideEvent());
+    }
+    public void reconfigure() {
+        removeDataIfExists(getElement());
+        configure();
+    }
 
     /**
      * configure this datepicker.
@@ -164,6 +182,21 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     protected void configure() {
         configure(this);
     }
+    
+    protected native void removeDataIfExists(Element e) /*-{
+        var $that = $wnd.jQuery(e);
+        if($that.data('datepicker')) {
+            console.log($that.data());
+            $that.removeData('dateFormat');
+            $that.removeData('dateLanguage');
+            $that.removeData('dateWeekstart');
+            $that.removeData('dateStartdate');
+            $that.removeData('dateEnddate');
+            $that.removeData('datepicker');
+            $that.off();
+            console.log($that.data());
+        }
+    }-*/;
 
     /**
      * call jquery datepicker plugin in a element.
@@ -173,15 +206,15 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     protected native void configure(Element e) /*-{
         var that = this;
         $wnd.jQuery(e).datepicker();
-//        $wnd.jQuery(e).on('changeDate', function () {
-//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onChange()();
-//        });
-//        $wnd.jQuery(e).on("show", function () {
-//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::show()();
-//        });
-//        $wnd.jQuery(e).on("hide", function () {
-//            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::hide()();
-//        });
+        $wnd.jQuery(e).datepicker().on('changeDate', function () {
+            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onChange()();
+        });
+        $wnd.jQuery(e).datepicker().on("show", function () {
+            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onShow()();
+        });
+        $wnd.jQuery(e).datepicker().on("hide", function () {
+            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onHide()();
+        });
     }-*/;
 
     private native void execute(Element e, String cmd) /*-{
@@ -213,7 +246,8 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public void toggle() {
-        // TODO toggle.
+        //TODO 2012/06/21 ohashi keisuke shoud be support
+        throw new UnsupportedOperationException("not support toggle");
     }
 
     /**
@@ -229,7 +263,8 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
-        return addHandler(handler, HiddenEvent.getType());
+        //TODO 2012/06/21 ohashi keisuke shoud be support
+        throw new UnsupportedOperationException("not support hidden event");
     }
 
     /**
@@ -245,7 +280,8 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public HandlerRegistration addShownHandler(ShownHandler handler) {
-        return addHandler(handler, ShownEvent.getType());
+    	//TODO 2012/06/21 ohashi keisuke shoud be support
+        throw new UnsupportedOperationException("not support shown event");
     }
 
     /**
