@@ -26,6 +26,7 @@
         <b:PageHeader subtext="and DateBoxes">Datepickers</b:PageHeader>
         <b:Row>
             <b:Column size="6">
+                <b:Heading size="4">DataBox markup</b:Heading>
                 <g:HTMLPanel>
                     <b2:DateBox format="dd/mm/yyyy" autoClose="true" />
 
@@ -58,6 +59,82 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                         Note that all the parameters are optional. Also, the datepicker will always try to get the user's browser language, so, usually you will not need to set a language by hand.
                     </p>
                 </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="4">DataBox methods and event</b:Heading>
+                <b:Paragraph>
+                <b:Code>DateBox</b:Code> has any methods and can handle show, hide and changeDate event.
+                Try below!
+                </b:Paragraph>
+                <b:Form type="HORIZONTAL">
+                    <b:Fieldset>
+                        <b:Legend>Setup popover options</b:Legend>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Auto Close</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox ui:field="autoClose">is closed auto?</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Format</b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox value="dd/mm/yyyy" ui:field="format" placeholder="input format ex:yyyy/mm/dd"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Language</b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox value="en" ui:field="language" placeholder="input anguage ex:en"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Week Start</b:ControlLabel>
+                            <b:Controls>
+                                <b:ListBox ui:field="weekStart">
+                                    <g:item>0</g:item>
+                                    <g:item>1</g:item>
+                                    <g:item>2</g:item>
+                                    <g:item>3</g:item>
+                                    <g:item>4</g:item>
+                                    <g:item>5</g:item>
+                                    <g:item>6</g:item>
+                                </b:ListBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Start Date</b:ControlLabel>
+                            <b:Controls>
+                                <b2:DateBox  format="dd/mm/yyyy" ui:field="startDate"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>End Date</b:ControlLabel>
+                            <b:Controls>
+                                <b2:DateBox  format="dd/mm/yyyy" ui:field="endDate"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>View Mode</b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox ui:field="viewMode"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        
+                    </b:Fieldset>
+                </b:Form>
+                <b:ButtonGroup>
+                    <b:Button ui:field="showButton">show</b:Button>
+                    <b:Button ui:field="hideButton">hide</b:Button>
+                </b:ButtonGroup>
+                <b:Alert heading="Event log">
+                    <g:ScrollPanel height="100px">
+                        <g:FlowPanel ui:field="logViewer"/>
+                    </g:ScrollPanel>
+                </b:Alert>
+                <b:Well>
+                    <b:Label type="INFO">Effective Datebox</b:Label>
+                    <b2:DateBox format="dd/mm/yyyy" ui:field="datePicker"/>
+                </b:Well>
             </b:Column>
         </b:Row>
         <!--<b:Row>-->

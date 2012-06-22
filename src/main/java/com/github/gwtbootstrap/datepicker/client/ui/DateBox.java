@@ -25,5 +25,4 @@ import com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase;
  */
 public class DateBox extends DateBoxBase {
 
-
 }
