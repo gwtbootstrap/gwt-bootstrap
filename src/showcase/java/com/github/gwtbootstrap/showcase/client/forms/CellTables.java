@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.showcase.client.forms;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 
 import com.github.gwtbootstrap.client.ui.CellTable;
 import com.github.gwtbootstrap.client.ui.ControlGroup;
@@ -48,6 +49,7 @@ import com.google.gwt.user.cellview.client.AbstractCellTable;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -431,14 +433,18 @@ public class CellTables extends Composite implements Editor<Person> {
 	
 	@UiHandler("add5Entity")
 	public void onClickAdd5Entity(ClickEvent e) {
-
+	    
+	    Date date = new Date();
+	    
 		for (int i = 0; i < 5; i++) {
 
 			Person p = new Person();
-
-			p.setAge(i + exampleTable.getRowCount());
+			p.setAge(exampleTable.getRowCount());
+			p.setFavorite(Favorite.values()[Random.nextInt(Favorite.values().length)]);
 			p.setUserName("userName" + exampleTable.getRowCount());
+			p.setBirthDay(date);
 			addPerson(p);
+			date.setTime(date.getTime() + 24 * 60 * 60 * (exampleTable.getRowCount() + 1) * 1000);
 		}
 
 	}
