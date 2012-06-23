@@ -47,6 +47,14 @@
 			});
 		} else {
 			if (this.component){
+				// For components that are not readonly, allow keyboard nav
+				this.element.find('input').on({
+					focus: $.proxy(this.show, this),
+					blur: $.proxy(this._hide, this),
+					keyup: $.proxy(this.update, this),
+					keydown: $.proxy(this.keydown, this)
+				});
+
 				this.component.on('click', $.proxy(this.show, this));
 				var element = this.element.find('input');
 				element.on({
@@ -194,7 +202,7 @@
 
 		update: function(){
 			this.date = DPGlobal.parseDate(
-				this.isInput ? this.element.prop('value') : this.element.data('date'),
+				this.isInput ? this.element.prop('value') : this.element.data('date') || this.element.find('input').prop('value'),
 				this.format, this.language
 			);
 			if (this.date < this.startDate) {
@@ -368,6 +376,7 @@
 						break;
 					case 'span':
 						if (!target.is('.disabled')) {
+							this.viewDate.setDate(1);
 							if (target.is('.month')) {
 								var month = target.parent().find('span').index(target);
 								this.viewDate.setMonth(month);
@@ -650,7 +659,15 @@
 				setters_map = {
 					yyyy: function(d,v){ return d.setFullYear(v); },
 					yy: function(d,v){ return d.setFullYear(2000+v); },
-					m: function(d,v){ return d.setMonth(v-1); },
+					m: function(d,v){
+						v -= 1;
+						while (v<0) v += 12;
+						v %= 12;
+						d.setMonth(v);
+						while (d.getMonth() != v)
+							d.setDate(d.getDate()-1);
+						return d;
+					},
 					d: function(d,v){ return d.setDate(v); }
 				},
 				val, filtered, part;
@@ -659,25 +676,27 @@
 			date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
 			if (parts.length == format.parts.length) {
 				for (var i=0, cnt = format.parts.length; i < cnt; i++) {
-					val = parseInt(parts[i], 10)||1;
+					val = parseInt(parts[i], 10);
 					part = format.parts[i];
-					switch(part) {
-						case 'MM':
-							filtered = $(dates[language].months).filter(function(){
-								var m = this.slice(0, parts[i].length),
-									p = parts[i].slice(0, m.length);
-								return m == p;
-							});
-							val = $.inArray(filtered[0], dates[language].months) + 1;
-							break;
-						case 'M':
-							filtered = $(dates[language].monthsShort).filter(function(){
-								var m = this.slice(0, parts[i].length),
-									p = parts[i].slice(0, m.length);
-								return m == p;
-							});
-							val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
-							break;
+					if (isNaN(val)) {
+						switch(part) {
+							case 'MM':
+								filtered = $(dates[language].months).filter(function(){
+									var m = this.slice(0, parts[i].length),
+										p = parts[i].slice(0, m.length);
+									return m == p;
+								});
+								val = $.inArray(filtered[0], dates[language].months) + 1;
+								break;
+							case 'M':
+								filtered = $(dates[language].monthsShort).filter(function(){
+									var m = this.slice(0, parts[i].length),
+										p = parts[i].slice(0, m.length);
+									return m == p;
+								});
+								val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
+								break;
+						}
 					}
 					parsed[part] = val;
 				}
