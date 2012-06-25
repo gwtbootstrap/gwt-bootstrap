@@ -18,8 +18,23 @@ package com.github.gwtbootstrap.datepicker.client.ui.base;
 import java.util.Date;
 
 import com.github.gwtbootstrap.client.ui.TextBox;
+import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
+import com.github.gwtbootstrap.client.ui.base.HasId;
+import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
+import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
+import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
+import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
+import com.github.gwtbootstrap.client.ui.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
+import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
 import com.github.gwtbootstrap.client.ui.event.HideHandler;
@@ -27,9 +42,13 @@ import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.gwtbootstrap.datepicker.client.ui.util.LocaleUtil;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -42,16 +61,20 @@ import com.google.gwt.user.client.ui.Widget;
  * Base DatePicker component.
  *
  * @author Carlos Alexandro Becker
+ * @author ohashi keisuke
  * @since 2.0.4.0
  */
 public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasVisibility,
-        HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>> {
+        HasChangeHandlers, HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>>, HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle {
 
     private final TextBox box;
     private String format;
     private String language;
     private DateTimeFormat dtf;
-	private TakesValueEditor<Date> editor;
+    private TakesValueEditor<Date> editor;
+
+    /** placeholderHelper */
+    private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
 
     public DateBoxBase() {
         this.box = new TextBox();
@@ -206,7 +229,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     protected native void configure(Element e) /*-{
         var that = this;
         $wnd.jQuery(e).datepicker();
-        $wnd.jQuery(e).datepicker().on('changeDate', function () {
+        $wnd.jQuery(e).on('change' , function() {
             that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onChange()();
         });
         $wnd.jQuery(e).datepicker().on("show", function () {
@@ -360,4 +383,115 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
 		}
 		return editor;
 	}
+
+    @Override
+    public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+        return addHandler(handler, ChangeEvent.getType());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setPlaceholder(String placeholder) {
+        placeholderHelper.setPlaceholer(getElement(), placeholder);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getPlaceholder() {
+        return placeholderHelper.getPlaceholder(getElement());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setSearchQuery(boolean searchQuery) {
+        SearchQueryStyleHelper.setSearchQuery(this, searchQuery);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isSearchQuery() {
+        return SearchQueryStyleHelper.isSearchQuery(this);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setAlternateSize(AlternateSize size) {
+        StyleHelper.changeStyle(this, size, AlternateSize.class);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setSize(int size) {
+        SizeHelper.setSize(this, size);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getId() {
+        return getElement().getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setId(String id) {
+        getElement().setId(id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setShowOn(Device device) {
+        ResponsiveHelper.setShowOn(this, device);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setHideOn(Device device) {
+        ResponsiveHelper.setHideOn(this, device);
+        
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setStyle(Style style) {
+        StyleHelper.setStyle(this, style);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void addStyle(Style style) {
+        StyleHelper.addStyle(this, style);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void removeStyle(Style style) {
+        StyleHelper.removeStyle(this, style);
+        
+    }
 }
