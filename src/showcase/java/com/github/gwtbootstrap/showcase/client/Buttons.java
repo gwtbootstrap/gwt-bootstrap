@@ -15,8 +15,12 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Button;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -24,11 +28,23 @@ public class Buttons extends Composite {
 
 	private static ButtonsUiBinder uiBinder = GWT.create(ButtonsUiBinder.class);
 
+    @UiField
+    Button defaultType;
+
+    @UiField
+    Button primary;
+
 	interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
 	}
 
 	public Buttons() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
+
+
+    @UiHandler("defaultType")
+    void handleClick(ClickEvent e) {
+        primary.setFocus(true);
+    }
 
 }

@@ -25,8 +25,11 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.HasEnabled;
+import com.google.gwt.user.client.ui.HasFocus;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.impl.FocusImpl;
 
 /**
  * An Anchor with optional image and caret.
@@ -58,7 +61,9 @@ import com.google.gwt.user.client.ui.HasText;
  * @author Dominik Mayer
  * @author ohashi keisuke
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable {
+
+    private static final FocusImpl impl = FocusImpl.getFocusImplForWidget();
 
 	private Icon icon = new Icon();
 
@@ -201,4 +206,43 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 		}
 
 	}
+
+    @Override
+    public int getTabIndex() {
+        return impl.getTabIndex(getElement());
+    }
+
+    @Override
+    public void setAccessKey(char key) {
+        DOM.setElementProperty(getElement(), "accessKey", "" + key);
+    }
+
+    @Override
+    public void setFocus(boolean focused) {
+        if (focused) {
+            impl.focus(getElement());
+        } else {
+            impl.blur(getElement());
+        }
+    }
+
+    @Override
+    public void setTabIndex(int index) {
+        impl.setTabIndex(getElement(), index);
+    }
+
+    @Override
+    protected void onAttach() {
+        super.onAttach();
+
+        // Accessibility: setting tab index to be 0 by default, ensuring element
+        // appears in tab sequence. We must ensure that the element doesn't already
+        // have a tabIndex set. This is not a problem for normal widgets, but when
+        // a widget is used to wrap an existing static element, it can already have
+        // a tabIndex.
+        int tabIndex = getTabIndex();
+        if (-1 == tabIndex) {
+            setTabIndex(0);
+        }
+    }
 }
