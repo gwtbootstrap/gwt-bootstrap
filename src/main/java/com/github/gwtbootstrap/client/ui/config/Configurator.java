@@ -19,38 +19,35 @@ import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.resources.Resources;
 
 /**
- * <h3>Using custom css/js resources.</h3>
+ * <h3>Using custom CSS/JS resources.</h3>
  * 
  * <p>
- * If you need to adapt resources,Create your resource package and Add your files and implement this interface, and add a
+ * If you need to adapt resources, create your resource package, add your files and implement this interface, then add a
  * <code>replace-with</code> tag and <code>public</code> tag to your module xml. Example:
  * </p>
  * 
  * <p>
- * 1. Create your Resources package and add css,js directory to that.  (under your module xml package)<br>
- * ex.
+ *
+ * 1. Create your Resources package and add css,js directory to that (under your module xml package) and add your resources to adove css,
+ * js directory. (Bootstarp's css filename should be <code>bootstrap.min.css</code> and Bootstrap's js filename should be <code>bootstrap.min.js</code>)
  * <pre>
- * com.example
- *       YourModuleXml.gwt.xml
- *       resources
- *         css
- *         js
- * </pre>
- * 2. Add your resources to adove css,js directory.
- * (Bootstarp's css filename should be <code>bootstarp.min.css</code> and Bootstrap's js filename should be <code>bootstrap.min.js</code>)
- * <pre>
- * com.example
- *       YourModuleXml.gwt.xml
- *       resources
- *         css
- *           bootstrap.min.css < your custom css
- *           bootstrap-responsive.min.css < your custom css
- *         js
- *           bootstrap.min.js < your custom js
+ * src/main/java/com/example
+ * |-- client
+ * |-- resources
+ * |   |-- css
+ * |   |   `-- bootstrap.min.css < your custom css
+ * |   |   `-- bootstrap-responsive.min.css < your custom css
+ * |   |-- js
+ * |   |   `-- bootstrap.min.js < your custom js
+ * |   |-- ExampleConfigurator.java < your custom Configurator class
+ * |   `-- ExampleResources.java < your custom Resources interface
+ * |-- server
+ * |-- shared
+ * `-- Example.gwt.xml < your module xml file
  * </pre>
  * 
  * 
- * 3. Create a Resources Interface (extending {@link Resources}) override the
+ * 2. Create a Resources Interface (extending {@link Resources}) override the
  * getters of the files you want to replace.
  * 
  * <pre>
@@ -66,7 +63,7 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * 
  * <p>
- * 4. Create a <code>Configurator</code>.
+ * 3. Create a <code>Configurator</code>.
  * 
  * <pre>
  * 	public MyConfigurator implements Configurator {
@@ -79,28 +76,31 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * 
  * <p>
- * 5. Add a <code>replace-with</code> tag and <code>public<tag> to your module xml (
- * <code>*.gwt.xml</code>).
+ * 4. Add a <code>replace-with</code> tag, <code>source</code> and <code>public<tag> to your module xml (
+ * <code>*.gwt.xml</code>):
  * 
  * <pre>
  * {@literal
- *  <replace-with class="userpackage.MyConfigurator">
- * 	 <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
+ * <source path='resources'/>
+ * <replace-with class="com.example.resources.ExampleConfigurator">
+ *     <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
  * </replace-with>
  * <public path="resources">
- * <-- If you copy this,you should remove while-space at `** /*`. -->
- *  <exclude name="** /*.java"/> 
- *	<exclude name="** /*.class"/>
+ *     <exclude name="** /*.java"/>
+ *     <exclude name="** /*.class"/>
  * </public>
- * 
+ *
  * }
  * </pre>
  * 
  * </p>
+ *
+ * <p>A more detailed tutorial and a full working example can be found <a href="http://caarlos0.github.com/code/2012/06/27/using-a-custom-bootstrap-theme-in-gwt-bootstrap">here</a>.</p>
  * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * @author ohashi keisuke
+ * @author Carlos A Becker
  * 
  * @see Resources
  * @see DefaultConfigurator
