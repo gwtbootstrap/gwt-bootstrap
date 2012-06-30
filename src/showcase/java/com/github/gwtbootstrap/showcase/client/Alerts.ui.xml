@@ -37,7 +37,7 @@
                 <g:HTMLPanel>
                     <b:AlertBlock type="INFO" heading="Heading" ui:field="alertBlock"><b:Icon type="GITHUB"/>AlertBlock<b:Button ui:field="alertBlockClose">close</b:Button></b:AlertBlock>
                     <pre class="prettyprint linenums">
-                        &lt;b:AlertBlock style=&quot;info&quot; heading=&quot;Heading&quot;&gt;AlertBlock&lt;/b:AlertBlock&gt;</pre>
+                        &lt;b:AlertBlock type=&quot;INFO&quot; heading=&quot;Heading&quot;&gt;AlertBlock&lt;/b:AlertBlock&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
