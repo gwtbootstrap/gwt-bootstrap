@@ -29,6 +29,7 @@ import com.github.gwtbootstrap.client.ui.IntegerBox;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Pagination;
 import com.github.gwtbootstrap.client.ui.SubmitButton;
+import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
@@ -84,10 +85,9 @@ public class CellTables extends Composite implements Editor<Person> {
 	ValueListBox<Person.Favorite> favorite;
 
 	@UiField(provided = true)
-	CellTable<Person> exampleTable = new CellTable<Person>(5);
+	CellTable<Person> exampleTable = new CellTable<Person>(5, GWT.<CellTable.SelectableResources>create(CellTable.SelectableResources.class));
 
-    @UiField(provided = true)
-    DataGrid<Person> exampleDataGrid = new DataGrid<Person>(20);
+    DataGrid<Person> exampleDataGrid = new DataGrid<Person>(20, GWT.<DataGrid.SelectableResources>create(DataGrid.SelectableResources.class));
 
 	@UiField
 	SubmitButton saveButton;
@@ -98,11 +98,13 @@ public class CellTables extends Composite implements Editor<Person> {
 	@UiField
 	Pagination pagination;
 
-	@UiField
-    Pagination dataGridPagination;
+    Pagination dataGridPagination = new Pagination();
 	
 	@UiField
 	Form submitExampleForm;
+	
+	@UiField
+	TabLink dataGridTab;
 
 	SimplePager pager = new SimplePager();
     SimplePager dataGridPager = new SimplePager();
@@ -122,8 +124,16 @@ public class CellTables extends Composite implements Editor<Person> {
 	public CellTables() {
 
 		favorite = new ValueListBox<Person.Favorite>(new DisplayLabelRenderer<Person.Favorite>());
+		exampleDataGrid.setBordered(true);
+		exampleDataGrid.setCondensed(true);
+		exampleDataGrid.setStriped(true);
+		exampleDataGrid.setHeight("200px");
+		exampleDataGrid.setWidth("100%");
 
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		dataGridTab.getTabPane().add(dataGridPagination);
+		dataGridTab.getTabPane().add(exampleDataGrid);
 
 		driver.initialize(this);
 
@@ -463,6 +473,11 @@ public class CellTables extends Composite implements Editor<Person> {
 	public void onCancelClick(ClickEvent e) {
 		submitExampleForm.reset();
 
+	}
+	
+	@UiHandler("dataGridTab")
+	public void onClickDataGridTab(ClickEvent e) {
+	    exampleDataGrid.onResize();
 	}
 	
 }
