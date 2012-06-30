@@ -16,10 +16,8 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -33,95 +31,89 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class TabPanel extends DivWidget {
 
-	private static class TabContent extends DivWidget {
+    private static class TabContent extends DivWidget {
 
-		public TabContent() {
-			setStyleName(Bootstrap.tab_content);
-		}
-	}
+        public TabContent() {
+            setStyleName(Bootstrap.tab_content);
+        }
+    }
 
-	static class TabLink extends NavLink {
+    private NavTabs tabs = new NavTabs();
 
-		public TabLink(TabPane pane) {
-			super(pane.getHeading());
+    private TabContent tabContent = new TabContent();
 
-			IconAnchor anchor = getAnchor();
-			anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
-			anchor.getElement().setAttribute(Constants.DATA_TARGET,  "#" + pane.getId());
-			if (pane.isActive()) {
-				show();
-			}
-		}
-		
-		public void show() {
-			setActive(true);
-			show(getAnchor().getElement());
-		}
-		
-		public native void show(Element e)/*-{
-			$wnd.jQuery(e).tab('show');
-		}-*/;
+    public TabPanel() {
+        this(Bootstrap.Tabs.ABOVE);
+    }
 
-	}
+    public TabPanel(Bootstrap.Tabs position) {
+        setStyle(position);
+        super.add(tabs);
+        super.add(tabContent);
+    }
 
-	private NavTabs tabs = new NavTabs();
+    public void setTabPosition(String position) {
+        if (position.equalsIgnoreCase("below"))
+            setStyle(Bootstrap.Tabs.BELOW);
+        else if (position.equalsIgnoreCase("left"))
+            setStyle(Bootstrap.Tabs.LEFT);
+        else if (position.equalsIgnoreCase("right"))
+            setStyle(Bootstrap.Tabs.RIGHT);
+        else
+            setStyle(Bootstrap.Tabs.ABOVE);
+    }
 
-	private TabContent tabContent = new TabContent();
+    @Override
+    public void add(Widget child) {
 
-	public TabPanel() {
-		this(Bootstrap.Tabs.ABOVE);
-	}
+        if (child instanceof TabPane) {
+            add((TabPane) child);
+            return;
+        }
 
-	public TabPanel(Bootstrap.Tabs position) {
-		setStyle(position);
-		super.add(tabs);
-		super.add(tabContent);
-	}
+        if (child instanceof TabLink) {
+            add((TabLink) child);
+            return;
+        }
+        throw new IllegalArgumentException("TabPanel can add"
+                + "only TabPane or TabLink");
+    }
 
-	public void setTabPosition(String position) {
-		if (position.equalsIgnoreCase("below"))
-			setStyle(Bootstrap.Tabs.BELOW);
-		else if (position.equalsIgnoreCase("left"))
-			setStyle(Bootstrap.Tabs.LEFT);
-		else if (position.equalsIgnoreCase("right"))
-			setStyle(Bootstrap.Tabs.RIGHT);
-		else
-			setStyle(Bootstrap.Tabs.ABOVE);
-	}
+    private void add(TabPane child) {
 
-	@Override
-	public void add(Widget child) {
+        TabLink tabLink = new TabLink(child);
+        tabs.add(tabLink);
+        tabContent.add(child);
+    }
+    
+    private void add(TabLink child) {
+        
+        TabPane pane = new TabPane(child.getText());
+        
+        pane.setHref(DOM.createUniqueId());
+        
+        child.setTablePane(pane);
+        
+        tabs.add(child);
+        tabContent.add(pane);
+    }
 
-		if (!(child instanceof TabPane))
-			throw new IllegalArgumentException("Only Tab Panes can be added"
-					+ "to a TabPanel");
+    @Override
+    protected void onAttach() {
+        super.onAttach();
 
-		add((TabPane) child);
-	}
+        for (int i = 0; i < tabs.getWidgetCount(); i++) {
 
-	private void add(TabPane child) {
+            Widget widget = tabs.getWidget(i);
 
-		TabLink tabLink = new TabLink(child);
-		tabs.add(tabLink);
-		tabContent.add(child);
-	}
-	
-	@Override
-	protected void onAttach() {
-		super.onAttach();
-		
-		for(int i = 0;i < tabs.getWidgetCount();i++) {
-			
-			Widget widget = tabs.getWidget(i);
-			
-			if (widget instanceof TabLink) {
-				TabLink tabLink = (TabLink) widget;
-				
-				if(tabLink.isActive()) {
-					tabLink.show();
-					break;
-				}
-			}
-		}
-	}
+            if (widget instanceof TabLink) {
+                TabLink tabLink = (TabLink) widget;
+
+                if (tabLink.isActive()) {
+                    tabLink.show();
+                    break;
+                }
+            }
+        }
+    }
 }
