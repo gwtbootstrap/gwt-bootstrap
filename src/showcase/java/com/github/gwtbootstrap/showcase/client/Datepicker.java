@@ -58,6 +58,9 @@ public class Datepicker extends Composite {
     @UiField
     ListBox weekStart;
     
+    @UiField
+    DateBox valueDate;
+    
     @UiField(provided=true)
     ValueListBox<ViewMode> viewMode = new ValueListBox<HasStartView.ViewMode>(new EnumRenderer<ViewMode>("Choose it")); 
     
@@ -136,6 +139,10 @@ public class Datepicker extends Composite {
         datePicker.reconfigure();
     }
     
+    @UiHandler("valueDate")
+    public void onChangeValueDate(ValueChangeEvent<Date> e) {
+        datePicker.setValue(e.getValue());
+    }
     
     @UiHandler("datePicker")
     public void onShow(ShowEvent e) {
