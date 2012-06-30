@@ -146,10 +146,18 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     public void setValue(Date value, boolean fireEvents) {
         box.setValue(value != null ? dtf.format(value) : null);
         
+        updateValue(box.getElement());
+        
         if (fireEvents) {
             ValueChangeEvent.fire(this, value);
         }
     }
+    
+    protected native void updateValue(Element e)/*-{
+        if($wnd.jQuery(e).data('datepicker')) {
+            $wnd.jQuery(e).data('datepicker').update();
+        }
+    }-*/;
 
     /**
      * {@inheritDoc}
