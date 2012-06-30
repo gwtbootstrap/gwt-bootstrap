@@ -73,21 +73,6 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets,
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	public boolean remove(Widget w) {
-		try {
-			getChildren().remove(w);
-			getElement().removeChild(w.getElement());
-			return true;
-		} catch (Exception e) {
-			System.out.println("Widget was not in element.");
-		}
-		return false;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
 	public void setStyle(Style style) {
 		StyleHelper.setStyle(this, style);
 	}
