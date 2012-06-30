@@ -33,155 +33,188 @@ import com.google.gwt.view.client.ProvidesKey;
  * 
  * @since 2.0.4.0
  * @author ohashi keisuke
- *
- * @param <T> Data Set
+ * 
+ * @param <T>
+ *            Data Set
  */
-public class CellTable<T> extends com.google.gwt.user.cellview.client.CellTable<T> implements HasStyle, IsResponsive {
+public class CellTable<T> extends
+        com.google.gwt.user.cellview.client.CellTable<T> implements HasStyle,
+        IsResponsive {
 
-	public static enum TableType implements com.github.gwtbootstrap.client.ui.base.Style {
-		BORDERED("table-bordered"),
-		STRIPED("table-striped"),
-		CONDENSED("table-condensed");
-		
-		private final String styleName;
+    public static enum TableType implements
+            com.github.gwtbootstrap.client.ui.base.Style {
+        BORDERED("table-bordered"), STRIPED("table-striped"), CONDENSED(
+                "table-condensed");
 
-		private TableType(String styleName) {
-			this.styleName = styleName;
-		}
+        private final String styleName;
 
-		@Override
-		public String get() {
-			return styleName;
-		}
-	}
-	
-	/**
-	 * The default page size.
-	 */
-	private static final int DEFAULT_PAGESIZE = 15;
+        private TableType(String styleName) {
+            this.styleName = styleName;
+        }
 
-	private static Resources DEFAULT_RESOURCES = null;
+        @Override
+        public String get() {
+            return styleName;
+        }
+    }
 
-	private static Resources getDefaultResources() {
-		if (DEFAULT_RESOURCES == null) {
-			DEFAULT_RESOURCES = GWT.create(Resources.class);
-		}
-		return DEFAULT_RESOURCES;
-	}
+    /**
+     * The default page size.
+     */
+    private static final int DEFAULT_PAGESIZE = 15;
 
-	public interface Resources extends com.google.gwt.user.cellview.client.CellTable.Resources {
+    private static Resources DEFAULT_RESOURCES = null;
 
-		@Override
-		@Source(Style.DEFAULT_CSS)
-		public Style cellTableStyle();
-	}
+    private static Resources getDefaultResources() {
+        if (DEFAULT_RESOURCES == null) {
+            DEFAULT_RESOURCES = GWT.create(Resources.class);
+        }
+        return DEFAULT_RESOURCES;
+    }
 
-	@ImportedWithPrefix("gwt-bootstrap-cellTable")
-	public interface Style extends com.google.gwt.user.cellview.client.CellTable.Style {
+    public interface Resources extends
+            com.google.gwt.user.cellview.client.CellTable.Resources {
 
-		String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapCellTable.css";
-	}
+        @Override
+        @Source(Style.DEFAULT_CSS)
+        public Style cellTableStyle();
+    }
 
-	public CellTable() {
-		this(DEFAULT_PAGESIZE);
-	}
+    public interface SelectableResources extends Resources {
 
-	public CellTable(int pageSize, ProvidesKey<T> keyProvider) {
-		this(pageSize, keyProvider , createDefaultLoadingIndicator(getDefaultResources()));
-	}
+        @Override
+        @Source(SelectableStyle.DEFAULT_CSS)
+        public Style cellTableStyle();
+    }
 
-	public CellTable(int pageSize, ProvidesKey<T> keyProvider, Widget loadingIndicator) {
-		super(pageSize, getDefaultResources(), keyProvider, loadingIndicator);
-		setStyleName("table");
-	}
+    @ImportedWithPrefix("gwt-bootstrap-cellTable")
+    public interface Style extends
+            com.google.gwt.user.cellview.client.CellTable.Style {
 
-	public CellTable(int pageSize) {
-		this(pageSize, null);
-	}
+        String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapCellTable.css";
+    }
 
-	public CellTable(ProvidesKey<T> keyProvider) {
-		this(DEFAULT_PAGESIZE, keyProvider);
-	}
-	
-	public void setStriped(boolean striped) {
-		if(striped) {
-			StyleHelper.addStyle(this, TableType.STRIPED);
-		} else {
-			StyleHelper.removeStyle(this, TableType.STRIPED);
-		}
-	}
-	
-	public void setBordered(boolean bordered) {
-		if(bordered) {
-			StyleHelper.addStyle(this, TableType.BORDERED);
-		} else {
-			StyleHelper.removeStyle(this, TableType.BORDERED);
-		}
-	}
+    @ImportedWithPrefix("gwt-bootstrap-cellTable")
+    public interface SelectableStyle extends
+            com.google.gwt.user.cellview.client.CellTable.Style {
 
-	public void setCondensed(boolean condensed) {
-		if(condensed) {
-			StyleHelper.addStyle(this, TableType.CONDENSED);
-		} else {
-			StyleHelper.removeStyle(this, TableType.CONDENSED);
-		}
-	}
-	/**
-	 * Create the default loading indicator using the loading image in the
-	 * specified {@link Resources}.
-	 * 
-	 * @param resources
-	 *            the resources
-	 * @return a widget loading indicator
-	 */
-	private static Widget createDefaultLoadingIndicator(Resources resources) {
-		ImageResource loadingImg = resources.cellTableLoading();
-		return (loadingImg == null)
-									? null
-									: new Image(loadingImg);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setShowOn(Device device) {
-		ResponsiveHelper.setShowOn(this, device);
-	}
+        String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapCellTableSelectable.css";
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setHideOn(Device device) {
-		ResponsiveHelper.setHideOn(this, device);
-		
-	}
+    public CellTable() {
+        this(DEFAULT_PAGESIZE);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
-		StyleHelper.setStyle(this, style);
-		
-	}
+    public CellTable(int pageSize, Resources resources,
+            ProvidesKey<T> keyProvider, Widget loadingIndicator) {
+        super(pageSize, resources, keyProvider, loadingIndicator);
+        setStyleName("table");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void addStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
-		StyleHelper.addStyle(this, style);
-		
-	}
+    public CellTable(int pageSize,
+            Resources resources,
+            ProvidesKey<T> keyProvider) {
+        this(pageSize, resources, keyProvider, createDefaultLoadingIndicator(getDefaultResources()));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void removeStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
-		StyleHelper.removeStyle(this, style);
-		
-	}
+    public CellTable(int pageSize, Resources resources) {
+        this(pageSize, resources , null);
+    }
+
+    public CellTable(int pageSize, ProvidesKey<T> keyProvider) {
+        this(pageSize, keyProvider, createDefaultLoadingIndicator(getDefaultResources()));
+    }
+
+    public CellTable(int pageSize, ProvidesKey<T> keyProvider, Widget loadingIndicator) {
+        this(pageSize, getDefaultResources(), keyProvider, loadingIndicator);
+    }
+
+    public CellTable(int pageSize) {
+        this(pageSize, getDefaultResources());
+    }
+
+    public CellTable(ProvidesKey<T> keyProvider) {
+        this(DEFAULT_PAGESIZE, keyProvider);
+    }
+
+    public void setStriped(boolean striped) {
+        if (striped) {
+            StyleHelper.addStyle(this, TableType.STRIPED);
+        } else {
+            StyleHelper.removeStyle(this, TableType.STRIPED);
+        }
+    }
+
+    public void setBordered(boolean bordered) {
+        if (bordered) {
+            StyleHelper.addStyle(this, TableType.BORDERED);
+        } else {
+            StyleHelper.removeStyle(this, TableType.BORDERED);
+        }
+    }
+
+    public void setCondensed(boolean condensed) {
+        if (condensed) {
+            StyleHelper.addStyle(this, TableType.CONDENSED);
+        } else {
+            StyleHelper.removeStyle(this, TableType.CONDENSED);
+        }
+    }
+
+    /**
+     * Create the default loading indicator using the loading image in the
+     * specified {@link Resources}.
+     * 
+     * @param resources
+     *            the resources
+     * @return a widget loading indicator
+     */
+    private static Widget createDefaultLoadingIndicator(Resources resources) {
+        ImageResource loadingImg = resources.cellTableLoading();
+        return (loadingImg == null) ? null : new Image(loadingImg);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setShowOn(Device device) {
+        ResponsiveHelper.setShowOn(this, device);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setHideOn(Device device) {
+        ResponsiveHelper.setHideOn(this, device);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+        StyleHelper.setStyle(this, style);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void addStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+        StyleHelper.addStyle(this, style);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void removeStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+        StyleHelper.removeStyle(this, style);
+
+    }
 }

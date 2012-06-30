@@ -24,6 +24,10 @@ public class DataGrid<T> extends
         com.google.gwt.user.cellview.client.DataGrid<T> implements HasStyle, IsResponsive {
     
     
+    /**
+     * Basic GWT-Bootstrap style Table Resource.
+     * @author ohashi keisuke
+     */
     public interface Resources extends com.google.gwt.user.cellview.client.DataGrid.Resources {
 
         @Override
@@ -31,10 +35,33 @@ public class DataGrid<T> extends
         Style dataGridStyle();
     }
     
+    /**
+     * Selectable GWT-Bootstrap style Table Resource.
+     * <p>
+     * If select row,apply style.
+     * It focus to Basic TwBootstrap style.
+     * If you use custom style,you should override {@ Resources} like this.
+     * </p>
+     * @author ohashi keisuke
+     *
+     */
+    public interface SelectableResources extends Resources {
+        
+        @Override
+        @Source(SelectableStyle.DEFAULT_CSS)
+        Style dataGridStyle();
+    }
+    
     @ImportedWithPrefix("gwt-bootstrap-dataGrid")
     public interface Style extends com.google.gwt.user.cellview.client.DataGrid.Style {
 
         String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapDataGrid.css";
+    }
+    
+    @ImportedWithPrefix("gwt-bootstrap-dataGrid")
+    public interface SelectableStyle extends com.google.gwt.user.cellview.client.DataGrid.Style {
+
+        String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapDataGridSelectable.css";
     }
     
     private static final int DEFAULT_PAGESIZE = 50;
