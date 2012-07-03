@@ -124,6 +124,9 @@ public class Navbar extends DivWidget {
 	 */
 	public void setScrollspy(boolean scrollspy) {
 		this.scrollspy = scrollspy;
+		if(scrollspy) {
+		    spy = new Scrollspy(this);
+		}
 	}
 
 	/**
@@ -190,4 +193,7 @@ public class Navbar extends DivWidget {
 	protected void addWidget(Widget widget) {
 		super.add(widget);
 	}
+    public Scrollspy getSpy() {
+        return spy;
+    }
 }
