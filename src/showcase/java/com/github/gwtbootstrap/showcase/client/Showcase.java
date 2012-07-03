@@ -15,22 +15,28 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
+import com.github.gwtbootstrap.client.ui.ResponsiveNavbar;
 import com.github.gwtbootstrap.client.ui.Section;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
 import com.github.gwtbootstrap.showcase.client.forms.Forms;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class Showcase extends Composite implements EntryPoint {
 
@@ -43,6 +49,10 @@ public class Showcase extends Composite implements EntryPoint {
 	Nav nav;
     @UiField
     HTMLPanel github_buttons;
+    
+    @UiField
+    ResponsiveNavbar navbar;
+    private Map<String , NavLink> map = new HashMap<String , NavLink>();
 
 	private static ShowcaseUiBinder uiBinder = GWT
 			.create(ShowcaseUiBinder.class);
@@ -57,6 +67,10 @@ public class Showcase extends Composite implements EntryPoint {
 		GWT.log(String.valueOf(configurator.hasResponsiveDesign()));
 		
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		navbar.getSpy().setOffset(30);
+		
+		
 //        addSectionToContainer("Get Started", "setup", new Setup());
 //		addSectionToContainer("Get Support", "support", new Support());
 		addSectionToContainer("Buttons", "buttons", new Buttons());
@@ -92,21 +106,19 @@ public class Showcase extends Composite implements EntryPoint {
 				.inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
 		JavaScriptInjector
 				.inject("(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));");
-		
-		Scheduler.get().scheduleFinally(new ScheduledCommand() {
-			
-			@Override
-			public void execute() {
-				History.fireCurrentHistoryState();
-			}
-		});
+		String token = History.getToken();
+		History.newItem("");
+        History.newItem(token);		
 	}
 
 	private void addSectionToContainer(String sectionName, String target,
 			Widget section) {
+	    NavLink navLink = new NavLink(sectionName, "#" + target);
 		nav.add(new NavLink(sectionName, "#" + target));
 		Section sec = new Section(target);
 		sec.add(section);
 		sections.add(sec);
+		
+		map.put(target , navLink);
 	}
 }

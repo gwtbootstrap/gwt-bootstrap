@@ -55,6 +55,13 @@ public class Scrollspy {
 			setTarget("#" + navbar.getId());
 		}
 	}
+	
+	/**
+	 * Create Empty Scrollspy
+	 */
+	public Scrollspy() {
+	    super();
+	}
 
 	/**
 	 * Get navbar
@@ -126,17 +133,7 @@ public class Scrollspy {
 		
 		assert spyTargetElement != null : "houston, we need a spy element here!";
 		
-		spyTargetElement.setAttribute("data-spy", "scroll");
-		
-		if(offset != null) {
-			spyTargetElement.setAttribute("data-offset", String.valueOf(offset));
-		}
-		
-		if(target != null && target.length() > 0) {
-			spyTargetElement.setAttribute("data-target", target);
-		}
-		
-		jsConfigure(navbar.getElement());
+		jsConfigure(spyTargetElement , target, offset == null ? -1 : offset );
 		
 		configured = true;
 	}
@@ -149,8 +146,43 @@ public class Scrollspy {
 		return spyElement != null ? spyElement : Document.get().getBody();
 	}
 	
-	private native void jsConfigure(Element e) /*-{
-		$wnd.jQuery(e).scrollspy();
+	public void refresh() {
+	    refresh(getSpyElement());
+	}
+	
+	private native void refresh(Element e) /*-{
+	    $wnd.jQuery(e).scrollspy('refresh');
+	}-*/;
+	
+	
+    private native void jsConfigure(Element e, String target,int offset) /*-{
+        var $this = $wnd.jQuery(e);
+        if($this.data('scrollspy')) {
+            $this.data('scrollspy').$scrollElement.off('scroll.scroll.data-api');
+            $this.removeData('spy');
+            $this.removeData('target');
+            $this.removeData('offset');
+            $this.removeData('scrollspy');
+        }
+        
+        var applyOptions = false;
+        var options = {};
+        if(target) {
+            options.target = target;
+            applyOptions = true;
+        }
+        
+        if(offset != -1) {
+            options.offset = offset;
+            applyOptions = true;
+        }
+        
+        
+        if(applyOptions) {
+            $this.scrollspy(options);
+        } else {
+            $this.scrollspy();
+        }
 	}-*/;
 
 }

@@ -113,7 +113,7 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 		return !anchor.isEnabled();
 	}
 
-	protected IconAnchor getAnchor() {
+	public IconAnchor getAnchor() {
 		return anchor;
 	}
 
