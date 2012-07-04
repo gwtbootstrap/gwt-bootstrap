@@ -17,7 +17,6 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -75,27 +74,29 @@ public class TabPanel extends DivWidget {
             add((TabLink) child);
             return;
         }
-        throw new IllegalArgumentException("TabPanel can add"
-                + "only TabPane or TabLink");
+        
+        throw new IllegalArgumentException("TabPanel can add only TabPane or TabLink " + child);
     }
 
     private void add(TabPane child) {
 
-        TabLink tabLink = new TabLink(child);
-        tabs.add(tabLink);
+        if(child.isCreateTabLink()) {
+            TabLink tabLink = new TabLink(child);
+            tabs.add(tabLink);
+        }
         tabContent.add(child);
     }
     
-    private void add(TabLink child) {
+    private void add(final TabLink child) {
         
-        TabPane pane = new TabPane(child.getText());
-        
-        pane.setHref(DOM.createUniqueId());
-        
-        child.setTablePane(pane);
-        
+        if(child.isCreateTabPane() && child.getTabPane() == null){
+            TabPane pane = new TabPane(child.getText());
+            child.setTablePane(pane);
+            tabContent.add(pane);
+        } else if(child.getTabPane() != null) {
+            tabContent.add(child.getTabPane());
+        }
         tabs.add(child);
-        tabContent.add(pane);
     }
 
     @Override

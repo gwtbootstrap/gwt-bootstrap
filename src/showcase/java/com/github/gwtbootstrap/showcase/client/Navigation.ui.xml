@@ -89,21 +89,106 @@
         </b:Row>
         
         <b:Row>
-            <b:Column size="8">
+            <b:Column size="4">
                 <g:HTMLPanel>
                     <h2>TabPanel</h2>
                     <b:TabPanel tabPosition="left">
-                        <b:TabPane heading="prost"><g:Label>Lalala</g:Label></b:TabPane>
-                        <b:TabPane heading="test" active="true"><g:Label>Huhu</g:Label></b:TabPane>
+                        <b:TabPane heading="prost">
+                            <g:Label>Lalala</g:Label>
+                        </b:TabPane>
+                        <b:TabPane heading="test" active="true">
+                            <g:Label>Huhu</g:Label>
+                        </b:TabPane>
+                        <b:TabLink>
+                            <g:HTMLPanel tag="span"><b:Strong>Custom tab</b:Strong>?</g:HTMLPanel>
+                        </b:TabLink>
+                        <b:Tab heading="Typically">
+                            <b:Heading size="3">Typically Tab</b:Heading>
+                            <b:Paragraph>
+                                huhuhu hahha
+                            </b:Paragraph>
+                        </b:Tab>
+                        <b:TabLink text="manually" dataTarget="testTab" createTabPane="false"/>
+                        <b:TabPane href="testTab" createTabLink="false">
+                            <g:Label>Huhu</g:Label>
+                        </b:TabPane>
                     </b:TabPanel>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="8">
+                <b:Heading size="2">TabPanel setting</b:Heading>
+                <g:HTMLPanel>
                     <ul>
+                        <li><h3>TabPanel can build 4 style on UiBinder.</h3>
+                            <ol>
+                                <li>
+                                <h4>Use TabPane</h4>
+                                <p>
+                                If add TabPane as a <code>TabPanel</code> child,
+                                TabPanel create Tabs automatically. <br/>
+                                In this case, Should set heading attribute at TabPane,
+                                But this case can't handle Tab Click Event.<br/>
+                                </p>
+                                </li>
+                                <li>
+                                <h4>Use TabLink</h4>
+                                <p>
+                                If add TabLink as a <code>TabPanel</code> child,
+                                TabPanel create TabPane automatically. <br/>
+                                In this case,Should add TabPane child yourown. Please use <code>TabLink#getTabPane()</code>
+                                Its usecase is supposed lasy loading and custom style tabs. include image,custom font and more.
+                                TabLinkcan be add any widgets.<br/>
+                                </p>
+                                </li>
+                                <li>
+                                <h4>Use Tab</h4>
+                                <p>
+                                Tab is typically syntax.
+                                If you need handle Tab click event,You can use <code>Tab#addClickHander</code>.<br/>
+                                Tab delegate to inner TabLink and inner TabPane on called Tab method.<br/>
+                                But it's style can not do customize tab.<br/>
+                                </p>
+                                </li>
+                                <li>
+                                <h4>Use both TabLink and TabPane and set TabLink.createTabPane = false and TabPane.createTabLink = false</h4>
+                                <p>
+                                Its style should set <code>TabLink#dataTarget</code> and <code>TabPane#href</code> same value.
+                                But it is most freedom style.
+                                You can custom tab style, handle event, add TabPane child on uibinder.
+                                </p>
+                                </li>
+                            </ol>
+                        </li>
                         <li><code>tabPosition</code> is optional and defaults to <code>above</code>. Options: <code>below</code>, <code>left</code>, <code>right</code>. </li>
                         <li><code>href</code> is optional. If none is provided, gwt-bootstrap will generate a random string.</li>
                     </ul>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="12">
+                <g:HTMLPanel>
                     <pre class="prettyprint linenums">
-&lt;b:TabPanel tabPosition=&quot;left&quot;&gt;
-    &lt;b:TabPane heading=&quot;prost&quot; href=&quot;1&quot;&gt;&lt;g:Label&gt;Lalala&lt;/g:Label&gt;&lt;/b:TabPane&gt;
-    &lt;b:TabPane heading=&quot;test&quot; active=&quot;true&quot;&gt;&lt;g:Label&gt;Huhu&lt;/g:Label&gt;&lt;/b:TabPane&gt;
+&lt;b:TabPanel tabPosition="left"&gt;
+  &lt;b:TabPane heading="prost"&gt;
+    &lt;g:Label&gt;Lalala&lt;/g:Label&gt;
+  &lt;/b:TabPane&gt;
+  &lt;b:TabPane heading="test" active="true"&gt;
+    &lt;g:Label&gt;Huhu&lt;/g:Label&gt;
+   &lt;/b:TabPane&gt;
+  &lt;b:TabLink&gt;
+    &lt;g:HTMLPanel tag="span"&gt;&lt;b:Strong&gt;Custom tab&lt;/b:Strong&gt;?&lt;/g:HTMLPanel&gt;
+  &lt;/b:TabLink&gt;
+  &lt;b:Tab heading="Typically"&gt;
+    &lt;b:Heading size="3"&gt;Typically Tab&lt;/b:Heading&gt;
+    &lt;b:Paragraph&gt;
+        huhuhu hahha
+    &lt;/b:Paragraph&gt;
+  &lt;/b:Tab&gt;
+  &lt;b:TabLink text="manually" dataTarget="testTab" createTabPane="false"/&gt;
+  &lt;b:TabPane href="testTab" createTabLink="false"&gt;
+    &lt;g:Label&gt;Huhu&lt;/g:Label&gt;
+  &lt;/b:TabPane&gt;
 &lt;/b:TabPanel&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
