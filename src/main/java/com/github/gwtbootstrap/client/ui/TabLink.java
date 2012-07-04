@@ -2,45 +2,85 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 
-public class TabLink extends NavLink {
+/**
+ * The TabLink for {@link TabPanel}
+ * @author ohashi keisuke
+ *
+ */
+public class TabLink extends NavWidget {
 
     private TabPane pane;
+    private boolean createTabPane = true;
 
+    /**
+     * Create widget with set Effective TabPane 
+     * @param pane effective tabPane
+     */
     public TabLink(TabPane pane) {
         this();
         setText(pane.getHeading());
         setTablePane(pane);
     }
 
-    public void setTablePane(TabPane pane) {
-        this.pane = pane;
-
+    /**
+     * Create empty widget
+     */
+    public TabLink() {
+        super();
         IconAnchor anchor = getAnchor();
         anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
-        anchor.getElement().setAttribute(Constants.DATA_TARGET,
-                "#" + pane.getId());
+    }
+    
+    public void setCreateTabPane(boolean createTabPane) {
+        this.createTabPane = createTabPane;
+    }
+    
+    public boolean isCreateTabPane() {
+        return this.createTabPane;
+    }
+
+    /**
+     * Set Effective TabPane
+     * @param pane
+     */
+    public void setTablePane(TabPane pane) {
+        this.pane = pane;
+        
+        if(pane.getId() == null || pane.getId().isEmpty()) {
+            pane.setHref(DOM.createUniqueId());
+        }
+
+        setDataTarget(pane.getId());
         if (pane.isActive() || this.isActive()) {
             show();
         }
     }
     
+    public void setDataTarget(String id) {
+        getAnchor().getElement().setAttribute(Constants.DATA_TARGET,"#" + id);
+    }
+    
+    /**
+     * Get Effective TabPane
+     * @return effective TabPane
+     */
     public TabPane getTabPane() {
         return pane;
     }
     
-    public TabLink() {
-        super();
-    }
-
+    /**
+     * show tab pane
+     */
     public void show() {
         setActive(true);
         show(getAnchor().getElement());
     }
 
     //@formatter:off
-    public native void show(Element e)/*-{
+    private native void show(Element e)/*-{
         $wnd.jQuery(e).tab('show');
     }-*/;
     //@formatter:on

@@ -18,8 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.uibinder.client.UiConstructor;
-import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.DOM;
 
 //@formatter:off
 /**
@@ -34,17 +33,29 @@ public class TabPane extends DivWidget {
 	private String heading;
 
 	private String href;
+
+    private boolean createTabLink = true;
 	
-	public @UiConstructor
-	TabPane(String heading) {
+	public TabPane() {
+	    this("");
+	}
+	
+	public TabPane(String heading) {
 		setStyleName(Bootstrap.tab_pane);
 		this.heading = heading;
 		createHref();
 	}
+	
+	public void setCreateTabLink(boolean createTabLink) {
+        this.createTabLink = createTabLink;
+	}
+	
+	public boolean isCreateTabLink() {
+	    return this.createTabLink;
+	}
 
 	private void createHref() {
-		String randomString = String.valueOf(Random.nextInt(2147483647));
-		setHref("bs-" + randomString);
+		setHref(DOM.createUniqueId());
 	}
 
 	public void setHref(String href) {
