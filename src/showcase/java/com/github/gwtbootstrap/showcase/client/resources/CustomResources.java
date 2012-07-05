@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.showcase.client.resources;
 
 import com.github.gwtbootstrap.client.ui.resources.Resources;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 
 public interface CustomResources extends Resources {
@@ -45,5 +46,7 @@ public interface CustomResources extends Resources {
 	TextResource inlineFormCode();
 
 	TextResource horizontalFormCode();
+
+    ImageResource logo();
 
 }

@@ -98,23 +98,4 @@ public class TabPanel extends DivWidget {
         }
         tabs.add(child);
     }
-
-    @Override
-    protected void onAttach() {
-        super.onAttach();
-
-        for (int i = 0; i < tabs.getWidgetCount(); i++) {
-
-            Widget widget = tabs.getWidget(i);
-
-            if (widget instanceof TabLink) {
-                TabLink tabLink = (TabLink) widget;
-
-                if (tabLink.isActive()) {
-                    tabLink.show();
-                    break;
-                }
-            }
-        }
-    }
 }

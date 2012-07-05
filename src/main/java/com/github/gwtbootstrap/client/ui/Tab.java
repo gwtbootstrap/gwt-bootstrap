@@ -21,15 +21,39 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The tab widget for {@link TabPanel}.
  * 
- * It's for only UiBinder.
+ * <p>
+ * It's for UiBinder.
+ * Tab class provide easy syntax on UiBinder.
+ * </p>
+ * Example:
+ * <pre>
+ * {@code
+ * <b:TabPanel>
+ *  <b:Tab heading="Typically">
+ *    <b:Heading size="3">Typically Tab</b:Heading>
+ *    <b:Paragraph>
+ *        huhuhu hahha
+ *    </b:Paragraph>
+ *  </b:Tab>
+ * </b:TabPanel>
+ * }
+ * </pre>
  * 
+ * 
+ * 
+ * }
+ * 
+ * </pre>
+ * @since 2.0.4.0
  * @author ohashi keisuke
- *
  */
 public class Tab implements IsWidget, HasWidgets, HasClickHandlers,HasStyle, IsResponsive,HasIcon {
     
     TabLink link = new TabLink();
 
+    /**
+     * Create tmpy tab
+     */
     public Tab() {
         TabPane tabPane = new TabPane();
         
@@ -38,36 +62,69 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers,HasStyle, IsR
         link.setTablePane(tabPane);
     }
     
+    /**
+     * Tab as a TabLink
+     */
     @Override
     public Widget asWidget() {
         return link;
     }
     
+    /**
+     * Get Container TabPane
+     * @return TabPane
+     */
     protected TabPane getTabPane() {
         return link.getTabPane();
     }
     
+    /**
+     * Return TabLink
+     * @return tabLink
+     */
     public TabLink asTabLink() {
         return link;
     }
     
+    /**
+     * Set tab active
+     * @param active
+     */
     public void setActive(boolean active) {
         link.setActive(active);
     }
     
+    public boolean isActive() {
+        return link.isActive();
+    }
+    
+    /**
+     * Set tab text
+     * @param text tab text
+     */
     public void setHeading(String text) {
         link.setText(text);
     }
     
+    /**
+     * Get Tab text
+     * @return tab text
+     */
     public String getHeading() {
         return link.getText();
     }
     
+    /**
+     * Add widget to tab pane.
+     */
     @Override
     public void add(Widget w) {
         link.getTabPane().add(w);
     }
 
+    /**
+     * Clear tab pane children
+     */
     @Override
     public void clear() {
         link.getTabPane().clear();

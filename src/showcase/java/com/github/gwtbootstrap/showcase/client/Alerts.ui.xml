@@ -28,8 +28,7 @@
                 <g:HTMLPanel>
                     <b:Alert type="SUCCESS" close="false" animation="true" ui:field="alert"><b:Icon type="GITHUB"/>TestAlert without close<b:Button ui:field="alertClose">close</b:Button></b:Alert>
                     <pre class="prettyprint linenums">
-                        &lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert
-                        without close&lt;/b:Alert&gt;</pre>
+&lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert without close&lt;/b:Alert&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
 
@@ -37,7 +36,7 @@
                 <g:HTMLPanel>
                     <b:AlertBlock type="INFO" heading="Heading" ui:field="alertBlock"><b:Icon type="GITHUB"/>AlertBlock<b:Button ui:field="alertBlockClose">close</b:Button></b:AlertBlock>
                     <pre class="prettyprint linenums">
-                        &lt;b:AlertBlock type=&quot;INFO&quot; heading=&quot;Heading&quot;&gt;AlertBlock&lt;/b:AlertBlock&gt;</pre>
+&lt;b:AlertBlock type=&quot;INFO&quot; heading=&quot;Heading&quot;&gt;AlertBlock&lt;/b:AlertBlock&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
@@ -46,8 +45,7 @@
                 <g:HTMLPanel>
                     <b:Alert type="DEFAULT" close="false" heading="Heading" animation="true"><b:Icon type="GITHUB"/>TestAlert without close</b:Alert>
                     <pre class="prettyprint linenums">
-                        &lt;b:Alert type=&quot;DEFAULT&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert
-                        without close&lt;/b:Alert&gt;</pre>
+&lt;b:Alert type=&quot;DEFAULT&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert without close&lt;/b:Alert&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
