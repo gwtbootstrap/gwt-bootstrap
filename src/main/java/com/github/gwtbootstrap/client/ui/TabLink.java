@@ -2,6 +2,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 
@@ -54,9 +55,8 @@ public class TabLink extends NavWidget {
         }
 
         setDataTarget(pane.getId());
-        if (pane.isActive() || this.isActive()) {
-            show();
-        }
+        
+        this.setActive(pane.isActive());
     }
     
     public void setDataTarget(String id) {
@@ -69,6 +69,26 @@ public class TabLink extends NavWidget {
      */
     public TabPane getTabPane() {
         return pane;
+    }
+    
+    @Override
+    protected void onAttach() {
+        super.onAttach();
+        
+        if(isActive()) {
+            GWT.log(this.toString());
+            show();
+        }
+    }
+    
+    @Override
+    public void setActive(boolean active) {
+        super.setActive(active);
+        
+        if(pane != null) {
+            pane.setActive(active);
+        }
+        
     }
     
     /**

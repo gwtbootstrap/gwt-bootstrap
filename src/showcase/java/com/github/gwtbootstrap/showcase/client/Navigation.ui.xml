@@ -18,8 +18,11 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
     xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:with type="com.github.gwtbootstrap.showcase.client.resources.CustomResources" field="res"/>
     <ui:style>
-        
+        .icon {
+            margin-right: 2px;
+        }
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Navigation">Navigation</b:PageHeader>
@@ -87,36 +90,38 @@
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
-        
+        <b:PageHeader>TabPanel</b:PageHeader>
         <b:Row>
-            <b:Column size="4">
+            <b:Column size="12">
                 <g:HTMLPanel>
-                    <h2>TabPanel</h2>
+                    <h3>TabPanel Demo</h3>
                     <b:TabPanel tabPosition="left">
-                        <b:TabPane heading="prost">
-                            <g:Label>Lalala</g:Label>
-                        </b:TabPane>
-                        <b:TabPane heading="test" active="true">
-                            <g:Label>Huhu</g:Label>
-                        </b:TabPane>
-                        <b:TabLink>
-                            <g:HTMLPanel tag="span"><b:Strong>Custom tab</b:Strong>?</g:HTMLPanel>
-                        </b:TabLink>
-                        <b:Tab heading="Typically">
+                        <b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true">
                             <b:Heading size="3">Typically Tab</b:Heading>
                             <b:Paragraph>
                                 huhuhu hahha
                             </b:Paragraph>
                         </b:Tab>
-                        <b:TabLink text="manually" dataTarget="testTab" createTabPane="false"/>
+                        <b:TabPane heading="prost">
+                            <g:Label>Lalala</g:Label>
+                        </b:TabPane>
+                        <b:TabLink ui:field="lazyLoadTab">
+                            <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                            <g:HTMLPanel tag="span"><b:Strong>Custom tab</b:Strong>?</g:HTMLPanel>
+                        </b:TabLink>
+                        <b:TabLink text="manually" icon="GITHUB" dataTarget="testTab" createTabPane="false">
+                            <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                        </b:TabLink>
                         <b:TabPane href="testTab" createTabLink="false">
                             <g:Label>Huhu</g:Label>
                         </b:TabPane>
                     </b:TabPanel>
                 </g:HTMLPanel>
             </b:Column>
-            <b:Column size="8">
-                <b:Heading size="2">TabPanel setting</b:Heading>
+        </b:Row>
+        <b:Row>
+            <b:Column size="6">
+                <b:Heading size="3">About TabPanel</b:Heading>
                 <g:HTMLPanel>
                     <ul>
                         <li><h3>TabPanel can build 4 style on UiBinder.</h3>
@@ -164,31 +169,30 @@
                     </ul>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
-        <b:Row>
-            <b:Column size="12">
+            <b:Column size="6">
+                <b:Heading size="3">Demo Code</b:Heading>
                 <g:HTMLPanel>
                     <pre class="prettyprint linenums">
 &lt;b:TabPanel tabPosition="left"&gt;
-  &lt;b:TabPane heading="prost"&gt;
-    &lt;g:Label&gt;Lalala&lt;/g:Label&gt;
-  &lt;/b:TabPane&gt;
-  &lt;b:TabPane heading="test" active="true"&gt;
-    &lt;g:Label&gt;Huhu&lt;/g:Label&gt;
-   &lt;/b:TabPane&gt;
-  &lt;b:TabLink&gt;
-    &lt;g:HTMLPanel tag="span"&gt;&lt;b:Strong&gt;Custom tab&lt;/b:Strong&gt;?&lt;/g:HTMLPanel&gt;
-  &lt;/b:TabLink&gt;
-  &lt;b:Tab heading="Typically"&gt;
-    &lt;b:Heading size="3"&gt;Typically Tab&lt;/b:Heading&gt;
-    &lt;b:Paragraph&gt;
-        huhuhu hahha
-    &lt;/b:Paragraph&gt;
-  &lt;/b:Tab&gt;
-  &lt;b:TabLink text="manually" dataTarget="testTab" createTabPane="false"/&gt;
-  &lt;b:TabPane href="testTab" createTabLink="false"&gt;
-    &lt;g:Label&gt;Huhu&lt;/g:Label&gt;
-  &lt;/b:TabPane&gt;
+    &lt;b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true"&gt;
+        &lt;b:Heading size="3"&gt;Typically Tab&lt;/b:Heading&gt;
+        &lt;b:Paragraph&gt;
+            huhuhu hahha
+        &lt;/b:Paragraph&gt;
+    &lt;/b:Tab&gt;
+    &lt;b:TabPane heading="prost"&gt;
+        &lt;g:Label&gt;Lalala&lt;/g:Label&gt;
+    &lt;/b:TabPane&gt;
+    &lt;b:TabLink ui:field="lazyLoadTab"&gt;
+        &lt;g:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+        &lt;g:HTMLPanel tag="span"&gt;&lt;b:Strong&gt;Custom tab&lt;/b:Strong&gt;?&lt;/g:HTMLPanel&gt;
+    &lt;/b:TabLink&gt;
+    &lt;b:TabLink text="manually" icon="GITHUB" dataTarget="testTab" createTabPane="false"&gt;
+        &lt;g:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+    &lt;/b:TabLink&gt;
+    &lt;b:TabPane href="testTab" createTabLink="false"&gt;
+        &lt;g:Label&gt;Huhu&lt;/g:Label&gt;
+    &lt;/b:TabPane&gt;
 &lt;/b:TabPanel&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>

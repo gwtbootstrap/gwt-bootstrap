@@ -16,13 +16,19 @@
 package com.github.gwtbootstrap.showcase.client;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
+import com.github.gwtbootstrap.client.ui.ProgressBar;
+import com.github.gwtbootstrap.client.ui.TabLink;
+import com.github.gwtbootstrap.client.ui.TabPane;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Navigation extends Composite {
@@ -32,6 +38,9 @@ public class Navigation extends Composite {
 
     @UiField
     NavLink navlink2;
+    
+    @UiField
+    TabLink lazyLoadTab;
 
     private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
@@ -49,5 +58,32 @@ public class Navigation extends Composite {
         navlink1.addClickHandler(handler);
         navlink2.addClickHandler(handler);
     }
+    
+    @UiHandler("lazyLoadTab")
+    public void onClickLazyLoadTab(ClickEvent e) {
+        final TabPane tabPane = lazyLoadTab.getTabPane();
+        tabPane.clear();
+        final ProgressBar progressBar = new ProgressBar();
+        progressBar.setPercent(0);
+        progressBar.setType(ProgressBar.Style.ANIMATED);
+        tabPane.add(progressBar);
+        
+        Scheduler.get().scheduleFixedDelay(new Scheduler.RepeatingCommand() {
+            
+            @Override
+            public boolean execute() {
+                
+                if(progressBar.getPercent() != 100) {
+                    progressBar.setPercent(progressBar.getPercent() + 1);
+                    return true;
+                }
+                tabPane.clear();
+                tabPane.add(new Label("loaded"));
+                return false;
+            }
+        }, 50);
+        
+    }
+    
 
 }
