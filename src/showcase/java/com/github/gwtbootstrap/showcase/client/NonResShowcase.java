@@ -20,6 +20,8 @@ import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
+import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
+import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;
 import com.github.gwtbootstrap.showcase.client.forms.Forms;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -41,95 +43,81 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class NonResShowcase extends Composite implements EntryPoint {
 
-	public void onModuleLoad() {
+    public void onModuleLoad() {
         initWidget(uiBinder.createAndBindUi(this));
-//      addSectionToContainer("Get Started", "setup", new Setup());
-//    addSectionToContainer("Get Support", "support", new Support());
-      addSectionToContainer("Buttons", "buttons", new Buttons());
-      addSectionToContainer("Grid System", "gridSystem", new GridSystem());
-      addSectionToContainer("Navigation", "navigation", new Navigation());
-      addSectionToContainer("Hero Unit", "hero", new HeroUnit());
-      addSectionToContainer("Forms", "forms", new Forms());
-      addSectionToContainer("Page Header", "pageheader", new PageHeader());
-      addSectionToContainer("Progress Bar", "progressbar", new ProgressBar());
-      addSectionToContainer("Alerts", "alerts", new Alerts());
-      addSectionToContainer("Pagination", "pagination", new Pagination());
-      addSectionToContainer("Dropdown", "dropdown", new Dropdown());
-      addSectionToContainer("Modal", "modal", new Modal());
-      addSectionToContainer("Datepicker", "datepicker", new Datepicker());
-      addSectionToContainer("Tooltip", "tooltip", new Tooltips());
-      addSectionToContainer("Popover", "popover", new Popovers());
-      addSectionToContainer("Icons", "icons", new Icons());
+        // addSectionToContainer("Get Started", "setup", new Setup());
+        // addSectionToContainer("Get Support", "support", new Support());
+        addSectionToContainer("Buttons", "buttons", new Buttons());
+        addSectionToContainer("Grid System", "gridSystem", new GridSystem());
+        addSectionToContainer("Navigation", "navigation", new Navigation());
+        addSectionToContainer("Hero Unit", "hero", new HeroUnit());
+        addSectionToContainer("Forms", "forms", new Forms());
+        addSectionToContainer("Page Header", "pageheader", new PageHeader());
+        addSectionToContainer("Progress Bar", "progressbar", new ProgressBar());
+        addSectionToContainer("Alerts", "alerts", new Alerts());
+        addSectionToContainer("Pagination", "pagination", new Pagination());
+        addSectionToContainer("Dropdown", "dropdown", new Dropdown());
+        addSectionToContainer("Modal", "modal", new Modal());
+        addSectionToContainer("Datepicker", "datepicker", new Datepicker());
+        addSectionToContainer("Tooltip", "tooltip", new Tooltips());
+        addSectionToContainer("Popover", "popover", new Popovers());
+        addSectionToContainer("Icons", "icons", new Icons());
 
-      RootPanel.get("content").add(this);
-      Document doc = Document.get();
-      ScriptElement script = doc.createScriptElement();
-      script.setSrc("https://apis.google.com/js/plusone.js");
-      script.setType("text/javascript");
-      script.setLang("javascript");
-      doc.getBody().appendChild(script);
+        RootPanel.get("content").add(this);
+        Document doc = Document.get();
+        ScriptElement script = doc.createScriptElement();
+        script.setSrc("https://apis.google.com/js/plusone.js");
+        script.setType("text/javascript");
+        script.setLang("javascript");
+        doc.getBody().appendChild(script);
 
-      github_buttons.getElement().setInnerHTML("<iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=watch&count=true\"\n" +
-              "                                allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"110px\" height=\"20px\"></iframe>" +
-              "<br /><iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=fork&count=true\"\n" +
-              "  allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"95px\" height=\"20px\"></iframe>");
+        github_buttons
+                .getElement()
+                .setInnerHTML(
+                        "<iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=watch&count=true\"\n"
+                                + "                                allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"110px\" height=\"20px\"></iframe>"
+                                + "<br /><iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=fork&count=true\"\n"
+                                + "  allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"95px\" height=\"20px\"></iframe>");
 
-      JavaScriptInjector
-              .inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
-      JavaScriptInjector
-              .inject("(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));");
-      
-      Scheduler.get().scheduleFinally(new ScheduledCommand() {
-          
-          @Override
-          public void execute() {
-              History.fireCurrentHistoryState();
-          }
-      });
-	}
+        JavaScriptInjector
+                .inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
+        JavaScriptInjector
+                .inject("(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));");
 
-	@UiField
-	FlowPanel sections;
-	@UiField
-	Nav nav;
+        Scheduler.get().scheduleFinally(new ScheduledCommand() {
+
+            @Override
+            public void execute() {
+                History.fireCurrentHistoryState();
+            }
+        });
+    }
+
+    @UiField
+    FlowPanel sections;
+    @UiField
+    Nav nav;
     @UiField
     HTMLPanel github_buttons;
 
-	private static ShowcaseUiBinder uiBinder = GWT
-			.create(ShowcaseUiBinder.class);
+    private static ShowcaseUiBinder uiBinder = GWT
+            .create(ShowcaseUiBinder.class);
 
-	@UiTemplate("Showcase.ui.xml")
-	interface ShowcaseUiBinder extends UiBinder<Widget, NonResShowcase> {
-	}
-
-	public NonResShowcase() {
-		
-	    Element item = Document.get().getElementsByTagName("head").getItem(0);
-	    
-	    item.appendChild(createCssLink("bootstrap.min.css"));
-        item.appendChild(createCssLink("gwt-bootstrap.css"));
-        item.appendChild(createCssLink("font-awesome.css"));
-        item.appendChild(createCssLink("datepicker.css"));
-	    new Bootstrap().onModuleLoad();
-	    new com.github.gwtbootstrap.datepicker.client.Datepicker().onModuleLoad();
-	    
-	    
-	    
-	}
-
-    private LinkElement createCssLink(String fileName) {
-        LinkElement link = Document.get().createLinkElement();
-	    link.setType("text/css");
-	    link.setRel("stylesheet");
-	    link.setHref(GWT.getModuleName() + "/css/" + fileName);
-        return link;
+    @UiTemplate("Showcase.ui.xml")
+    interface ShowcaseUiBinder extends UiBinder<Widget, NonResShowcase> {
     }
 
-	private void addSectionToContainer(String sectionName, String target,
-			Widget section) {
-		nav.add(new NavLink(sectionName, "#" + target));
-		Section sec = new Section(target);
-		sec.add(section);
-		sections.add(sec);
-	}
+    public NonResShowcase() {
+
+        ResourceInjector.configureWithCssFile();
+        DatepickerResourceInjector.configureWithCssFile();
+    }
+
+    private void addSectionToContainer(String sectionName, String target,
+            Widget section) {
+        nav.add(new NavLink(sectionName, "#" + target));
+        Section sec = new Section(target);
+        sec.add(section);
+        sections.add(sec);
+    }
 }

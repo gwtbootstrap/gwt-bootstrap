@@ -16,7 +16,7 @@
      limitations under the License.
 
 -->
-<module rename-to='showcase'>
+<module rename-to='nonresshowcase'>
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.github.gwtbootstrap.BootstrapNoResources' />
     <inherits name='com.github.gwtbootstrap.datepicker.DatepickerNoResources' />
