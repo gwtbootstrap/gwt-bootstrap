@@ -17,6 +17,10 @@ package com.github.gwtbootstrap.client.ui.resources;
 
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.HeadElement;
+import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.TextResource;
 
@@ -30,35 +34,73 @@ import com.google.gwt.resources.client.TextResource;
  */
 public class ResourceInjector {
 
-	private static final Configurator ADAPTER = GWT.create(Configurator.class);
+    private static final Configurator ADAPTER = GWT.create(Configurator.class);
 
-	/**
-	 * Injects the required CSS styles and JavaScript files into the document
-	 * header.
-	 */
-	public static void configure() {
+    private static HeadElement head;
 
-		Resources res = ADAPTER.getResources();
-//		injectCss(res.bootstrapCss());
-//		injectCss(res.gwtBootstrapCss());
-		if (ADAPTER.hasResponsiveDesign())
-			activateResponsiveDesign(res);
-		injectJs(res.jquery());
-		injectJs(res.bootstrapJs());
-	}
+    /**
+     * Injects the required CSS styles and JavaScript files into the document header.
+     * <pre>
+     * It's for NoStyle Module.
+     * </pre>
+     */
+    public static void configureWithCssFile() {
+        
+        injectResourceCssAsFile("bootstrap.min.css");
+        injectResourceCssAsFile("gwt-bootstrap.css");
+        injectResourceCssAsFile("font-awesome.css");
 
-	private static void injectCss(TextResource r) {
-		StyleInjector.inject(r.getText());
-	}
+        configure();
+        
+    }
+    
+    /**
+     * Injects the required CSS styles and JavaScript files into the document
+     * header.
+     */
+    public static void configure() {
 
-	private static void injectJs(TextResource r) {
-		JavaScriptInjector.inject(r.getText());
-	}
+        Resources res = ADAPTER.getResources();
+        if (ADAPTER.hasResponsiveDesign())
+            activateResponsiveDesign(res);
+        injectJs(res.jquery());
+        injectJs(res.bootstrapJs());
+    }
 
-	private static void activateResponsiveDesign(Resources res) {
-		injectCss(res.bootstrapResponsiveCss());
-		MetaInjector
-				.inject("viewport", "width=device-width, initial-scale=1.0");
-	}
+    private static void injectCss(TextResource r) {
+        StyleInjector.inject(r.getText());
+    }
+
+    /**
+     * Inject public resource css file as a file.
+     * @param filename inject file name
+     */
+    public static void injectResourceCssAsFile(String filename) {
+        LinkElement link = Document.get().createLinkElement();
+        link.setType("text/css");
+        link.setRel("stylesheet");
+        link.setHref(GWT.getModuleName() + "/css/" + filename);
+        getHead().appendChild(link);
+    }
+
+    private static HeadElement getHead() {
+        if (head == null) {
+            Element elt = Document.get().getElementsByTagName("head").getItem(0);
+            assert elt != null : "The host HTML page does not have a <head> element"
+                    + " which is required by StyleInjector";
+            head = HeadElement.as(elt);
+        }
+        return head;
+    }
+
+    private static void injectJs(TextResource r) {
+        JavaScriptInjector.inject(r.getText());
+    }
+
+    private static void activateResponsiveDesign(Resources res) {
+        injectCss(res.bootstrapResponsiveCss());
+        MetaInjector
+                .inject("viewport", "width=device-width, initial-scale=1.0");
+    }
 
 }

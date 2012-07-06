@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.datepicker.client.ui.resources;
 
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
+import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
 import com.github.gwtbootstrap.datepicker.client.ui.util.LocaleUtil;
 import com.google.gwt.resources.client.TextResource;
 
@@ -27,6 +28,19 @@ import com.google.gwt.resources.client.TextResource;
  * @since 2.0.4.0
  */
 public class DatepickerResourceInjector {
+
+    /**
+     * Injects the required CSS styles and JavaScript files into the document header.
+     * <pre>
+     * It's for NoStyle Module.
+     * </pre>
+     */
+    public static void configureWithCssFile() {
+        
+        ResourceInjector.injectResourceCssAsFile("datepicker.css");
+        configure();
+        
+    }
 
 
     /**
