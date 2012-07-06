@@ -76,7 +76,6 @@ public class TabLink extends NavWidget {
         super.onAttach();
         
         if(isActive()) {
-            GWT.log(this.toString());
             show();
         }
     }
