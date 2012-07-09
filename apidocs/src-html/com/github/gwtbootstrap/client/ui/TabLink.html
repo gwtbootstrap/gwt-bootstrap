@@ -84,36 +84,35 @@
 <span class="sourceLineNo">076</span>        super.onAttach();<a name="line.76"></a>
 <span class="sourceLineNo">077</span>        <a name="line.77"></a>
 <span class="sourceLineNo">078</span>        if(isActive()) {<a name="line.78"></a>
-<span class="sourceLineNo">079</span>            GWT.log(this.toString());<a name="line.79"></a>
-<span class="sourceLineNo">080</span>            show();<a name="line.80"></a>
-<span class="sourceLineNo">081</span>        }<a name="line.81"></a>
-<span class="sourceLineNo">082</span>    }<a name="line.82"></a>
-<span class="sourceLineNo">083</span>    <a name="line.83"></a>
-<span class="sourceLineNo">084</span>    @Override<a name="line.84"></a>
-<span class="sourceLineNo">085</span>    public void setActive(boolean active) {<a name="line.85"></a>
-<span class="sourceLineNo">086</span>        super.setActive(active);<a name="line.86"></a>
-<span class="sourceLineNo">087</span>        <a name="line.87"></a>
-<span class="sourceLineNo">088</span>        if(pane != null) {<a name="line.88"></a>
-<span class="sourceLineNo">089</span>            pane.setActive(active);<a name="line.89"></a>
-<span class="sourceLineNo">090</span>        }<a name="line.90"></a>
-<span class="sourceLineNo">091</span>        <a name="line.91"></a>
-<span class="sourceLineNo">092</span>    }<a name="line.92"></a>
-<span class="sourceLineNo">093</span>    <a name="line.93"></a>
-<span class="sourceLineNo">094</span>    /**<a name="line.94"></a>
-<span class="sourceLineNo">095</span>     * show tab pane<a name="line.95"></a>
-<span class="sourceLineNo">096</span>     */<a name="line.96"></a>
-<span class="sourceLineNo">097</span>    public void show() {<a name="line.97"></a>
-<span class="sourceLineNo">098</span>        setActive(true);<a name="line.98"></a>
-<span class="sourceLineNo">099</span>        show(getAnchor().getElement());<a name="line.99"></a>
-<span class="sourceLineNo">100</span>    }<a name="line.100"></a>
-<span class="sourceLineNo">101</span><a name="line.101"></a>
-<span class="sourceLineNo">102</span>    //@formatter:off<a name="line.102"></a>
-<span class="sourceLineNo">103</span>    private native void show(Element e)/*-{<a name="line.103"></a>
-<span class="sourceLineNo">104</span>        $wnd.jQuery(e).tab('show');<a name="line.104"></a>
-<span class="sourceLineNo">105</span>    }-*/;<a name="line.105"></a>
-<span class="sourceLineNo">106</span>    //@formatter:on<a name="line.106"></a>
-<span class="sourceLineNo">107</span><a name="line.107"></a>
-<span class="sourceLineNo">108</span>}<a name="line.108"></a>
+<span class="sourceLineNo">079</span>            show();<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        }<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    }<a name="line.81"></a>
+<span class="sourceLineNo">082</span>    <a name="line.82"></a>
+<span class="sourceLineNo">083</span>    @Override<a name="line.83"></a>
+<span class="sourceLineNo">084</span>    public void setActive(boolean active) {<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        super.setActive(active);<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        <a name="line.86"></a>
+<span class="sourceLineNo">087</span>        if(pane != null) {<a name="line.87"></a>
+<span class="sourceLineNo">088</span>            pane.setActive(active);<a name="line.88"></a>
+<span class="sourceLineNo">089</span>        }<a name="line.89"></a>
+<span class="sourceLineNo">090</span>        <a name="line.90"></a>
+<span class="sourceLineNo">091</span>    }<a name="line.91"></a>
+<span class="sourceLineNo">092</span>    <a name="line.92"></a>
+<span class="sourceLineNo">093</span>    /**<a name="line.93"></a>
+<span class="sourceLineNo">094</span>     * show tab pane<a name="line.94"></a>
+<span class="sourceLineNo">095</span>     */<a name="line.95"></a>
+<span class="sourceLineNo">096</span>    public void show() {<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        setActive(true);<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        show(getAnchor().getElement());<a name="line.98"></a>
+<span class="sourceLineNo">099</span>    }<a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span>    //@formatter:off<a name="line.101"></a>
+<span class="sourceLineNo">102</span>    private native void show(Element e)/*-{<a name="line.102"></a>
+<span class="sourceLineNo">103</span>        $wnd.jQuery(e).tab('show');<a name="line.103"></a>
+<span class="sourceLineNo">104</span>    }-*/;<a name="line.104"></a>
+<span class="sourceLineNo">105</span>    //@formatter:on<a name="line.105"></a>
+<span class="sourceLineNo">106</span><a name="line.106"></a>
+<span class="sourceLineNo">107</span>}<a name="line.107"></a>
 
 
 
