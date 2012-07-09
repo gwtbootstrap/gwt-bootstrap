@@ -124,9 +124,8 @@ public interface Bootstrap {
 		ABOVE(""),
 		BELOW("tabs-below"),
 		LEFT("tabs-left"),
-		RIGHT("tabs-right"),
-		INFO("badge-info");
-
+		RIGHT("tabs-right");
+		
 		private static final String tabbable = "tabbable ";
 
 		private String className;
