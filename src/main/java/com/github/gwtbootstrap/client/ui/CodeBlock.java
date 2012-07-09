@@ -53,8 +53,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  * @see Code
  */
 //@formatter:on
-public class CodeBlock extends HTMLPanel implements HasProgrammingLanguage,
-		HasHTML {
+public class CodeBlock extends HTMLPanel implements HasProgrammingLanguage, HasHTML {
 
 	private final PrettifyHelper helper;
 	private boolean linenums = false;
@@ -127,8 +126,13 @@ public class CodeBlock extends HTMLPanel implements HasProgrammingLanguage,
 			shb.appendEscaped(s);
 			shb.appendHtmlConstant("<br/>");
 		}
+		
+		if(getStyleName().contains("prettyprinted")) {
+		    removeStyleName("prettyprinted");
+		}
 
 		getElement().setInnerHTML(shb.toSafeHtml().asString());
+		
 	}
 
 	/**

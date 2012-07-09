@@ -97,7 +97,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	@Override
 	public void setIconSize(IconSize size) {
-		icon.setIconsSize(size);
+		icon.setIconSize(size);
 	}
 
 	/**

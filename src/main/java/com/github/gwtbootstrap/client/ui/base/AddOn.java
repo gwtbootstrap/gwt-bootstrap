@@ -103,7 +103,7 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
 
     @Override
     public void setIconSize(IconSize size) {
-        icon.setIconsSize(size);
+        icon.setIconSize(size);
     }
 
 }
