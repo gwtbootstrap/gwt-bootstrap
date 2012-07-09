@@ -95,8 +95,11 @@
             <b:Column size="12">
                 <g:HTMLPanel>
                     <h3>TabPanel Demo</h3>
-                    <b:TabPanel tabPosition="left">
+                    <b:TabPanel tabPosition="left" ui:field="tabPanel">
                         <b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true">
+                            <b:customTab>
+                                <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                            </b:customTab>
                             <b:Heading size="3">Typically Tab</b:Heading>
                             <b:Paragraph>
                                 huhuhu hahha
@@ -117,6 +120,10 @@
                         </b:TabPane>
                     </b:TabPanel>
                 </g:HTMLPanel>
+                <b:Well>
+                    <b:Label>Change Tab Position</b:Label>
+                    <b:ValueListBox ui:field="tabPosition"/>
+                </b:Well>
             </b:Column>
         </b:Row>
         <b:Row>
@@ -151,7 +158,7 @@
                                 Tab is typically syntax.
                                 If you need handle Tab click event,You can use <code>Tab#addClickHander</code>.<br/>
                                 Tab delegate to inner TabLink and inner TabPane on called Tab method.<br/>
-                                But it's style can not do customize tab.<br/>
+                                If you need Customize tab,you can use <code>b:customTab</code> tag.
                                 </p>
                                 </li>
                                 <li>
@@ -173,8 +180,11 @@
                 <b:Heading size="3">Demo Code</b:Heading>
                 <g:HTMLPanel>
                     <pre class="prettyprint linenums">
-&lt;b:TabPanel tabPosition="left"&gt;
+&lt;b:TabPanel tabPosition="left" ui:field="tabPanel"&gt;
     &lt;b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true"&gt;
+        &lt;b:customTab&gt;
+            &lt;g:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+        &lt;/b:customTab&gt;
         &lt;b:Heading size="3"&gt;Typically Tab&lt;/b:Heading&gt;
         &lt;b:Paragraph&gt;
             huhuhu hahha
