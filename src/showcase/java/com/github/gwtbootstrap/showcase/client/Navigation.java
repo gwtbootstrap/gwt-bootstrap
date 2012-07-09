@@ -15,20 +15,29 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import java.util.Arrays;
+
+import com.github.gwtbootstrap.client.ui.Label;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.ProgressBar;
 import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.TabPane;
+import com.github.gwtbootstrap.client.ui.TabPanel;
+import com.github.gwtbootstrap.client.ui.ValueListBox;
+import com.github.gwtbootstrap.client.ui.constants.LabelType;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Tabs;
+import com.github.gwtbootstrap.showcase.client.util.EnumRenderer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Navigation extends Composite {
@@ -41,6 +50,12 @@ public class Navigation extends Composite {
     
     @UiField
     TabLink lazyLoadTab;
+    
+    @UiField(provided=true)
+    ValueListBox<Bootstrap.Tabs> tabPosition = new ValueListBox<Bootstrap.Tabs>(new EnumRenderer<Bootstrap.Tabs>());
+    
+    @UiField
+    TabPanel tabPanel;
 
     private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
@@ -48,6 +63,11 @@ public class Navigation extends Composite {
     }
 
     public Navigation() {
+        
+        tabPosition.setValue(Tabs.LEFT);
+        
+        tabPosition.setAcceptableValues(Arrays.asList(Tabs.values()));
+        
         initWidget(uiBinder.createAndBindUi(this));
         ClickHandler handler = new ClickHandler() {
             @Override
@@ -77,13 +97,18 @@ public class Navigation extends Composite {
                     progressBar.setPercent(progressBar.getPercent() + 1);
                     return true;
                 }
+                
                 tabPane.clear();
-                tabPane.add(new Label("loaded"));
+                tabPane.add(new Label(LabelType.INFO,"loaded"));
                 return false;
             }
         }, 50);
         
     }
     
+    @UiHandler("tabPosition")
+    void onChangeTabPosition(ValueChangeEvent<Tabs> e) {
+        tabPanel.setTabPosition(e.getValue().name().toLowerCase());
+    }
 
 }
