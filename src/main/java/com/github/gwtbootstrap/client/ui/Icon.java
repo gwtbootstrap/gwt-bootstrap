@@ -87,7 +87,7 @@ public class Icon extends Widget {
      *
      * @param size the icon size
      */
-    public void setIconsSize(IconSize size) {
+    public void setIconSize(IconSize size) {
         StyleHelper.changeStyle(this, size, IconSize.class);
     }
     
