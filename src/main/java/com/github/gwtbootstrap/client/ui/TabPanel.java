@@ -47,19 +47,31 @@ public class TabPanel extends DivWidget {
 
     public TabPanel(Bootstrap.Tabs position) {
         setStyle(position);
-        super.add(tabs);
-        super.add(tabContent);
     }
 
     public void setTabPosition(String position) {
-        if (position.equalsIgnoreCase("below"))
+        if(tabs.getParent() != null) {
+            remove(tabs);
+            remove(tabContent);
+        }
+        
+        if (position.equalsIgnoreCase("below")) {
             setStyle(Bootstrap.Tabs.BELOW);
-        else if (position.equalsIgnoreCase("left"))
+            super.add(tabContent);
+            super.add(tabs);
+        } else if (position.equalsIgnoreCase("left")) {
             setStyle(Bootstrap.Tabs.LEFT);
-        else if (position.equalsIgnoreCase("right"))
+            super.add(tabs);
+            super.add(tabContent);
+        } else if (position.equalsIgnoreCase("right")) {
             setStyle(Bootstrap.Tabs.RIGHT);
-        else
+            super.add(tabs);
+            super.add(tabContent);
+        } else {
             setStyle(Bootstrap.Tabs.ABOVE);
+            super.add(tabs);
+            super.add(tabContent);
+        }
     }
 
     @Override
