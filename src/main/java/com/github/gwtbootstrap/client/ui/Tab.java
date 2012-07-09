@@ -13,6 +13,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -94,6 +95,10 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers,HasStyle, IsR
         link.setActive(active);
     }
     
+    /**
+     * has active style name
+     * @return true:active false:deactive
+     */
     public boolean isActive() {
         return link.isActive();
     }
@@ -130,60 +135,109 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers,HasStyle, IsR
         link.getTabPane().clear();
     }
 
+    /**
+     * call {@link TabPane#iterator()}
+     */
     @Override
     public Iterator<Widget> iterator() {
         return link.getTabPane().iterator();
     }
 
+    /**
+     * call {@link TabPane#remove(Widget)}
+     * 
+     * @return {@link TabPane#remove(Widget)} result
+     */
     @Override
     public boolean remove(Widget w) {
         return link.getTabPane().remove(w);
     }
 
+    /**
+     * add ClickEventHandler to TabLink
+     * {@inheritDoc}
+     */
     @Override
     public HandlerRegistration addClickHandler(ClickHandler handler) {
         return link.addClickHandler(handler);
     }
 
+    /**
+     * set TabLink icon type.
+     * {@inheritDoc}
+     */
     @Override
     public void setIcon(IconType type) {
         link.setIcon(type);
     }
 
+    /**
+     * Set TabLink icon size
+     * {@inheritDoc}
+     */
     @Override
     public void setIconSize(IconSize size) {
         link.setIconSize(size);
     }
 
+    /**
+     * Set TabLink and TabPane show on device.
+     * {@inheritDoc}
+     */
     @Override
     public void setShowOn(Device device) {
         link.setShowOn(device);
         link.getTabPane().setShowOn(device);
     }
 
+    /**
+     * Set TabLink and TabPane show on device.
+     * {@inheritDoc}
+     */
     @Override
     public void setHideOn(Device device) {
         link.setHideOn(device);
         link.getTabPane().setHideOn(device);
     }
 
+    /**
+     * set TabLink style
+     * {@inheritDoc}
+     */
     @Override
     public void setStyle(Style style) {
         link.setStyle(style);
     }
 
+    /**
+     * add TabLink style
+     * {@inheritDoc}
+     */
     @Override
     public void addStyle(Style style) {
         link.addStyle(style);
     }
 
+    /**
+     * remove TabLink style
+     * {@inheritDoc}
+     */
     @Override
     public void removeStyle(Style style) {
         link.removeStyle(style);
     }
 
+    /**
+     * fire TabLink event
+     * {@inheritDoc}
+     */
     @Override
     public void fireEvent(GwtEvent<?> event) {
         link.fireEvent(event);
+    }
+    
+    @UiChild(limit=1,tagname="customTab")
+    public void addDecorate(Widget w) {
+        link.add(w);
     }
 }
