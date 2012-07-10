@@ -96,7 +96,7 @@
                 <g:HTMLPanel>
                     <h3>TabPanel Demo</h3>
                     <b:TabPanel tabPosition="left" ui:field="tabPanel">
-                        <b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true">
+                        <b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true" ui:field="firstTab">
                             <b:customTab>
                                 <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                             </b:customTab>
@@ -105,6 +105,24 @@
                                 huhuhu hahha
                             </b:Paragraph>
                         </b:Tab>
+                        <b:DropdownTab text="dropdownTab">
+                            <b:Tab icon="GOOGLE_PLUS" heading="dropdown1">
+                                <b:customTab>
+                                    <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                                </b:customTab>
+                                <b:Heading size="3">Dropdown1</b:Heading>
+                                <b:Paragraph>
+                                    dropdown1
+                                </b:Paragraph>
+                            </b:Tab>
+                            <b:Divider/>
+                            <b:Tab icon="GITHUB" heading="dropdown2">
+                                <b:Heading size="3">Dropdown2</b:Heading>
+                                <b:Paragraph>
+                                    dropdown2
+                                </b:Paragraph>
+                            </b:Tab>
+                        </b:DropdownTab>
                         <b:TabPane heading="prost">
                             <g:Label>Lalala</g:Label>
                         </b:TabPane>

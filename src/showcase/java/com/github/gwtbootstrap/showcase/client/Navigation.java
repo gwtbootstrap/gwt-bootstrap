@@ -20,6 +20,7 @@ import java.util.Arrays;
 import com.github.gwtbootstrap.client.ui.Label;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.ProgressBar;
+import com.github.gwtbootstrap.client.ui.Tab;
 import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.TabPane;
 import com.github.gwtbootstrap.client.ui.TabPanel;
@@ -56,6 +57,9 @@ public class Navigation extends Composite {
     
     @UiField
     TabPanel tabPanel;
+    
+    @UiField
+    Tab firstTab;
 
     private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
