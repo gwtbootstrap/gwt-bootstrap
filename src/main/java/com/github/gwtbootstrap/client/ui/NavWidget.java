@@ -50,8 +50,6 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 
 	private final IconAnchor anchor = new IconAnchor();
 
-	private boolean active = false;
-
 	public NavWidget() {
 		super.add(anchor);
 	}
@@ -87,7 +85,6 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
     }
 
 	public void setActive(boolean active) {
-		this.active = active;
 
 		if (active)
 			addStyleName(Constants.ACTIVE);
@@ -96,7 +93,7 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	}
 	
 	public boolean isActive() {
-		return active;
+		return this.getStyleName().contains(Constants.ACTIVE);
 	}
 
 	public void setDisabled(boolean disabled) {

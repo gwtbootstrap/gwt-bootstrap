@@ -15,6 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.List;
+
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
@@ -87,7 +89,23 @@ public class TabPanel extends DivWidget {
             return;
         }
         
-        throw new IllegalArgumentException("TabPanel can add only TabPane or TabLink " + child);
+        if(child instanceof DropdownTab) {
+            add((DropdownTab) child);
+            return;
+        }
+        
+        throw new IllegalArgumentException("TabPanel can add only TabPane or TabLink or Tab or DorpdownTab");
+    }
+    
+    private void add(DropdownTab dropdownTab) {
+        
+        tabs.add(dropdownTab);
+        
+        List<Tab> tabList = dropdownTab.getTabList();
+        for (Tab tab : tabList) {
+            TabPane tabPane = tab.getTabPane();
+            tabContent.add(tabPane);
+        }
     }
 
     private void add(TabPane child) {
