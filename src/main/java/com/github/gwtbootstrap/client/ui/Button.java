@@ -159,6 +159,19 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	}
 
 	/**
+	 * Creates a Button with the given caption.
+	 * 
+	 * @param caption
+	 *            the caption of the Button
+	 * @param handler 
+	 *            the click handler
+	 */
+	public Button(String caption, ClickHandler handler) {
+		this(caption);
+		addClickHandler(handler);
+	}
+
+	/**
 	 * Creates a Button with the given caption and icon.
 	 * 
 	 * @param caption
