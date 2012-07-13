@@ -25,5 +25,5 @@
 	<set-property name="bootstrap.responsiveDesign" value="true"/>
 	<entry-point class='com.github.gwtbootstrap.showcase.client.Showcase' />
 	<source path='client' />
-
+    
 </module>

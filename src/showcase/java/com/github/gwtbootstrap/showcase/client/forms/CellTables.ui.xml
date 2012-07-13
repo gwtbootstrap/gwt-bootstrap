@@ -1,97 +1,102 @@
-<!--
-
-     Copyright 2012 GWT-Bootstrap
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-         http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
-
--->
+<!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version 
+    2.0 (the "License"); you may not use this file except in compliance with 
+    the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+    Unless required by applicable law or agreed to in writing, software distributed 
+    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+    OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+    the specific language governing permissions and limitations under the License. -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:b="urn:import:com.github.gwtbootstrap.client.ui" xmlns:d="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
-	<ui:style>
-		
-	</ui:style>
-	<g:HTMLPanel>
-		<b:Heading size="2">
-			Event Handle, CellTable, Pagination
-		</b:Heading>
-		<b:FluidRow>
-			<b:Column size="4">
-				<b:Paragraph>
-					The GWT-Bootstrap
-					<b:Code>Form</b:Code>
-					class has
-					<b:Code>addSubmitHandler</b:Code>
-					and
-					<b:Code>addSubmitCompleteHandler</b:Code>
-					.
-					They are same as native GWT `FormPanel`.If you need in
-					UiBinder,Use
-					<b:Code>@UiHandler</b:Code>
-					annotation.
-				</b:Paragraph>
-			</b:Column>
-			<b:Column size="8">
-				<b:Form type="HORIZONTAL" action="//gwtbootstrap.github.com"
-					ui:field="submitExampleForm">
-					<b:Fieldset>
-						<b:Legend>Register User Infomation<small>* is required</small></b:Legend>
-						<b:ControlGroup ui:field="userNameControlGroup">
-							<b:ControlLabel for="name"><font color="red">*</font> User Name</b:ControlLabel>
-							<b:Controls>
-								<b:TextBox b:id="name" ui:field="userName" placeholder="input user name" />
-								<b:HelpInline ui:field="userNameHelpInline"/>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup ui:field="ageControlGroup">
-							<b:ControlLabel for="age">Age</b:ControlLabel>
-							<b:Controls>
-								<b:IntegerBox b:id="age" ui:field="age" placeholder="input your age" />
-								<b:HelpInline ui:field="ageHelpInline"/>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup ui:field="birthDayControlGroup">
-							<b:ControlLabel for="birthDay">Birth Day</b:ControlLabel>
-							<b:Controls>
-								<d:DateBox ui:field="birthDay" format="dd/mm/yyyy" autoClose="true"/>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:ControlGroup ui:field="favoriteNameControlGroup">
-							<b:ControlLabel for="favorite">Select favorite</b:ControlLabel>
-							<b:Controls>
-								<b:ValueListBox b:id="favorite" ui:field="favorite"/>
-								<b:HelpInline>Woohoo!</b:HelpInline>
-							</b:Controls>
-						</b:ControlGroup>
-						<b:FormActions>
-							<b:SubmitButton type="PRIMARY" ui:field="saveButton">Save changes</b:SubmitButton>
-							<b:Button ui:field="cancelButton">Cancel</b:Button>
-							<b:Button ui:field="add5Entity">Add 5 entity</b:Button>
-						</b:FormActions>
-					</b:Fieldset>
-				</b:Form>
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+    xmlns:d="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:HTMLPanel>
+        <b:Heading size="2">
+            Event Handle, CellTable, Pagination
+        </b:Heading>
+        <b:FluidRow>
+            <b:Column size="4">
+                <b:Paragraph>
+                    The GWT-Bootstrap
+                    <b:Code>Form</b:Code>
+                    class has
+                    <b:Code>addSubmitHandler</b:Code>
+                    and
+                    <b:Code>addSubmitCompleteHandler</b:Code>
+                    .
+                    They are same as native GWT `FormPanel`.If you need in
+                    UiBinder,Use
+                    <b:Code>@UiHandler</b:Code>
+                    annotation.
+                </b:Paragraph>
+            </b:Column>
+            <b:Column size="8">
+                <b:Form type="HORIZONTAL" action="//gwtbootstrap.github.com"
+                    ui:field="submitExampleForm">
+                    <b:Fieldset>
+                        <b:Legend>
+                            Register User Infomation
+                            <small>* is required</small>
+                        </b:Legend>
+                        <b:ControlGroup ui:field="userNameControlGroup">
+                            <b:ControlLabel for="name">
+                                <font color="red">*</font>
+                                User Name
+                            </b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox b:id="name"
+                                    ui:field="userName" placeholder="input user name" />
+                                <b:HelpInline ui:field="userNameHelpInline" />
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup ui:field="ageControlGroup">
+                            <b:ControlLabel for="age">Age</b:ControlLabel>
+                            <b:Controls>
+                                <b:IntegerBox b:id="age"
+                                    ui:field="age" placeholder="input your age" />
+                                <b:HelpInline ui:field="ageHelpInline" />
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup ui:field="birthDayControlGroup">
+                            <b:ControlLabel for="birthDay">Birth Day</b:ControlLabel>
+                            <b:Controls>
+                                <d:DateBox ui:field="birthDay"
+                                    format="dd/mm/yyyy" autoClose="true" />
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup ui:field="favoriteNameControlGroup">
+                            <b:ControlLabel for="favorite">Select
+                                favorite</b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox b:id="favorite"
+                                    ui:field="favorite" />
+                                <b:HelpInline>Woohoo!</b:HelpInline>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:FormActions>
+                            <b:SubmitButton type="PRIMARY"
+                                ui:field="saveButton">Save changes</b:SubmitButton>
+                            <b:Button ui:field="cancelButton">Cancel</b:Button>
+                            <b:Button ui:field="add5Entity">Add 5 entity</b:Button>
+                        </b:FormActions>
+                    </b:Fieldset>
+                </b:Form>
                 <b:TabPanel>
                     <b:TabPane active="true" heading="CellTable">
-                        <b:Pagination ui:field="pagination"/>
-                        <b:CellTable ui:field="exampleTable" bordered="true" condensed="true" striped="true" />
+                        <b:Pagination ui:field="pagination" />
+                        <b:CellTable ui:field="exampleTable"
+                            bordered="true" condensed="true" striped="true" />
                     </b:TabPane>
                     <b:Tab ui:field="dataGridTab" heading="DataGrid">
-                        <b:Pagination ui:field="dataGridPagination"/>
-                        <b:DataGrid ui:field="exampleDataGrid" bordered="true" condensed="true" striped="true" height="200px" width="100%"/>
-                     </b:Tab>
+                        <b:Pagination ui:field="dataGridPagination" />
+                        <b:DataGrid ui:field="exampleDataGrid"
+                            bordered="true" condensed="true" striped="true"
+                            height="200px" width="100%" />
+                    </b:Tab>
                 </b:TabPanel>
-			</b:Column>
-		</b:FluidRow>
-	</g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+    </g:HTMLPanel>
 </ui:UiBinder> 

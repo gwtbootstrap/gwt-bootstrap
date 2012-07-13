@@ -36,19 +36,22 @@ import com.google.gwt.user.client.ui.Widget;
  *        huhuhu hahha
  *    </b:Paragraph>
  *  </b:Tab>
+ *  <b:Tab heading="Custom">
+ *    <b:customTab>
+ *      <b:Image resources="{res.logo}"/>
+ *    </b:customTab>
+ *    <b:Heading size="3">CustomTab Tab</b:Heading>
+ *  </b:Tab>
  * </b:TabPanel>
  * }
  * </pre>
- * 
- * 
- * 
  * }
  * 
  * </pre>
  * @since 2.0.4.0
  * @author ohashi keisuke
  */
-public class Tab implements IsWidget, HasWidgets, HasClickHandlers,HasStyle, IsResponsive,HasIcon {
+public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, IsResponsive,HasIcon {
     
     TabLink link = new TabLink();
 

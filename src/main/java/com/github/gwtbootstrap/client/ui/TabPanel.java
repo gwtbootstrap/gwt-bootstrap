@@ -19,6 +19,7 @@ import java.util.List;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -48,7 +49,7 @@ public class TabPanel extends DivWidget {
     }
 
     public TabPanel(Bootstrap.Tabs position) {
-        setStyle(position);
+        setTabPosition(position.get().toLowerCase());
     }
 
     public void setTabPosition(String position) {
@@ -94,7 +95,9 @@ public class TabPanel extends DivWidget {
             return;
         }
         
-        throw new IllegalArgumentException("TabPanel can add only TabPane or TabLink or Tab or DorpdownTab");
+        if(GWT.isProdMode()) {
+            throw new IllegalArgumentException("TabPanel can add only TabPane or TabLink or Tab or DorpdownTab. you added " + child);
+        }
     }
     
     private void add(DropdownTab dropdownTab) {
