@@ -34,8 +34,6 @@ import com.google.gwt.core.client.Scheduler.RepeatingCommand;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.safehtml.client.SafeHtmlTemplates;
-import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -43,17 +41,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ProgressBar extends Composite {
-
-    interface Templates extends SafeHtmlTemplates {
-        
-        public static Templates INSTANCE = GWT.create(Templates.class);
-        @Template("<b:ProgressBar percent='100' type='{0}' color='{1}'/>")
-        SafeHtml code(String type, String color);
-
-        @Template("<b:ProgressBar percent='100' color='{1}'/>")
-        SafeHtml code(String color);
-
-    }
 
     @UiField
     com.github.gwtbootstrap.client.ui.ProgressBar progressBar;
