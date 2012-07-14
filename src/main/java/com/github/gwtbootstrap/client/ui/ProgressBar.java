@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Style.Unit;
 
@@ -28,39 +29,55 @@ import com.google.gwt.dom.client.Style.Unit;
  */
 //@formatter:on
 public class ProgressBar extends DivWidget {
+    
+	public enum Style implements com.github.gwtbootstrap.client.ui.base.Style {
 
-	public enum Style {
+		DEFAULT(""),
 
-		DEFAULT {
+		STRIPED(Bootstrap.progress_striped),
+		
+		ANIMATED(Bootstrap.progress_animated);		
+		
+		private final String styleName;
 
-			@Override
-			public String get() {
-				return "";
-			}
-		},
-		STRIPED {
+        private Style(String styleName) {
+            this.styleName = styleName;
+		    
+		}
 
-			@Override
-			public String get() {
-				return Bootstrap.progress_striped;
-			}
-		},
-		ANIMATED {
+		public String get() {
+		    return this.styleName;
+		}
+	}
+	
+	public enum Color implements com.github.gwtbootstrap.client.ui.base.Style {
+        DEFAULT(""),
+	    INFO("progress-info"),
+        SUCCESS("progress-success"),
+        DANGER("progress-danger"),
+        WARNING("progress-warning")
+        ;
+        
+        private final String styleName;
 
-			@Override
-			public String get() {
-				return Bootstrap.progress_animated;
-			}
-		};
+        private Color(String styleName) {
+            this.styleName = styleName;
+        }
 
-		public abstract String get();
+        @Override
+        public String get() {
+            return this.styleName;
+        }
+	    
 	}
 
 	private DivWidget bar = new DivWidget();
 
 	public ProgressBar() {
+	    setStylePrimaryName(Bootstrap.progress);
 		addStyleName(Bootstrap.progress);
 		bar.addStyleName(Bootstrap.bar);
+		setColor(Color.DEFAULT);
 		add(bar);
 	}
 
@@ -70,8 +87,7 @@ public class ProgressBar extends DivWidget {
 	}
 
 	public void setType(Style style) {
-		setStyleName(Bootstrap.progress);
-		addStyleName(style.get());
+	    StyleHelper.changeStyle(this, style, Style.class);
 	}
 
 	public void setPercent(int percent) {
@@ -84,6 +100,10 @@ public class ProgressBar extends DivWidget {
 			return 0;
 		else
 			return Integer.valueOf(width.substring(0, width.indexOf("%")));
+	}
+	
+	public void setColor(Color color) {
+	    StyleHelper.changeStyle(this, color, Color.class);
 	}
 
 }

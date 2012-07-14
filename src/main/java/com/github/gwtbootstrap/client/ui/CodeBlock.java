@@ -133,6 +133,10 @@ public class CodeBlock extends HTMLPanel implements HasProgrammingLanguage, HasH
 
 		getElement().setInnerHTML(shb.toSafeHtml().asString());
 		
+		if(isAttached()) {
+		    helper.configure(linenums);
+		}
+		
 	}
 
 	/**

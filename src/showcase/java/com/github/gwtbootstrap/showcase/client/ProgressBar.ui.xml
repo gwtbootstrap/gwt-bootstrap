@@ -43,5 +43,55 @@
                 </g:HTMLPanel>
             </b:Column>
         </b:Row>
+        <b:Row>
+            <b:Column size="12">
+                <b:Heading size="3">Try it</b:Heading>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="6">
+                <b:ProgressBar percent="100" ui:field="progressBar"/>
+                <b:CodeBlock linenums="true" ui:field="code"/>
+            </b:Column>
+            <b:Column size="6">
+                <b:WellForm type="HORIZONTAL">
+                    <b:Fieldset>
+                        <b:Legend>
+                            Change the ProgressBar settings.
+                        </b:Legend>
+                        <b:ControlGroup>
+                            <b:ControlLabel for="type">
+                                Type
+                            </b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox b:id="type" ui:field="type"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel for="color">
+                                Color
+                            </b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox b:id="color" ui:field="color"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup ui:field="percentCG">
+                            <b:ControlLabel for="percent">
+                                Percent
+                            </b:ControlLabel>
+                            <b:Controls>
+                                <b:IntegerBox b:id="percent" ui:field="percent"/>
+                                <b:HelpInline ui:field="percentInline"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:FormActions>
+                            <b:Button ui:field="action">Action!</b:Button>
+                        </b:FormActions>
+                    </b:Fieldset>
+                </b:WellForm>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+        </b:Row>
     </g:HTMLPanel>
 </ui:UiBinder>

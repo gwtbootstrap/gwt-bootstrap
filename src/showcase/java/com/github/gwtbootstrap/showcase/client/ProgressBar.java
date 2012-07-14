@@ -15,17 +15,71 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.github.gwtbootstrap.client.ui.CodeBlock;
+import com.github.gwtbootstrap.client.ui.ControlGroup;
+import com.github.gwtbootstrap.client.ui.HelpInline;
+import com.github.gwtbootstrap.client.ui.IntegerBox;
+import com.github.gwtbootstrap.client.ui.ProgressBar.Color;
+import com.github.gwtbootstrap.client.ui.ProgressBar.Style;
+import com.github.gwtbootstrap.client.ui.ValueListBox;
+import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
+import com.github.gwtbootstrap.showcase.client.util.EnumRenderer;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.RepeatingCommand;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.safehtml.client.SafeHtmlTemplates;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ProgressBar extends Composite {
 
-    @UiField
-    com.github.gwtbootstrap.client.ui.ProgressBar progress1;
+    interface Templates extends SafeHtmlTemplates {
+        
+        public static Templates INSTANCE = GWT.create(Templates.class);
+        @Template("<b:ProgressBar percent='100' type='{0}' color='{1}'/>")
+        SafeHtml code(String type, String color);
 
+        @Template("<b:ProgressBar percent='100' color='{1}'/>")
+        SafeHtml code(String color);
+
+    }
+
+    @UiField
+    com.github.gwtbootstrap.client.ui.ProgressBar progressBar;
+    
+    @UiField(provided=true)
+    ValueListBox<Style> type = new ValueListBox<Style>(new EnumRenderer<Style>("Choose Type"));
+    
+    @UiField(provided=true)
+    ValueListBox<Color> color = new ValueListBox<Color>(new EnumRenderer<Color>("Choose Color"));
+    
+    @UiField
+    IntegerBox percent;
+    
+    @UiField
+    ControlGroup percentCG;
+    
+    @UiField
+    HelpInline percentInline;
+    
+    @UiField
+    CodeBlock code;
+    
+    
+    
+    
+    
     private static ProgressBarUiBinder uiBinder = GWT.create(ProgressBarUiBinder.class);
 
     interface ProgressBarUiBinder extends UiBinder<Widget, ProgressBar> {
@@ -33,7 +87,110 @@ public class ProgressBar extends Composite {
 
     public ProgressBar() {
         initWidget(uiBinder.createAndBindUi(this));
-        progress1.getPercent();
+        List<Color> colorList = new ArrayList<Color>();
+        colorList.add(null);
+        colorList.addAll(Arrays.asList(Color.values()));
+        type.setValue(Style.DEFAULT);
+        type.setAcceptableValues(Arrays.asList(Style.values()));
+        color.setAcceptableValues(colorList);
+        color.setValue(null);
+        code.setText("<b:ProgressBar percent=\"100\"/>");
     }
+    
+    @UiHandler("type")
+    void onChangeType(ValueChangeEvent<Style> e) {
+        changeStyle();
+    }
+    
+    @UiHandler("color")
+    void onChangeColor(ValueChangeEvent<Color> e) {
+        changeStyle();
+    }
+    
+    @UiHandler("percent")
+    public void onAgeUpdate(KeyPressEvent event) {
+
+        if (event.getCharCode() < '0' || event.getCharCode() > '9') {
+            percentCG.setType(ControlGroupType.ERROR);
+            percentInline.setText("Percent should be numeric.");
+
+            event.preventDefault();
+        } else {
+            percentCG.setType(ControlGroupType.NONE);
+            percentInline.setText("");
+        }
+    }
+
+    
+    @UiHandler("percent")
+    void onChangePercent(ValueChangeEvent<Integer> e) {
+        Integer p = e.getValue();
+        
+        if(p == null) {
+            percentCG.setType(ControlGroupType.ERROR);
+            percentInline.setText("Percent should be numeric.");
+            return;
+        }
+        
+        if(e.getValue() < 0 || e.getValue() > 100) {
+            percentCG.setType(ControlGroupType.ERROR);
+            percentInline.setText("Percent should be between 0 - 100.");
+            return;
+        }
+        
+        changeStyle();
+    }
+
+    @UiHandler("action")
+    void onClickAction(ClickEvent e) {
+        percent.setEnabled(false);
+        percent.setValue(0);
+        progressBar.setPercent(0);
+        Scheduler.get().scheduleFixedDelay(new RepeatingCommand() {
+            
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean execute() {
+                
+                if(progressBar.getPercent() >= 100) {
+                    percent.setEnabled(true);
+                    return false;
+                }
+                progressBar.setPercent(progressBar.getPercent() + 10);
+                percent.setValue(progressBar.getPercent());
+                changeStyle();
+                
+                return true;
+            }
+        }, 1000);
+    }
+    
+    
+    private void changeStyle() {
+        StringBuilder builder = new StringBuilder("<b:ProgressBar ");
+        if(type.getValue() != null) {
+            progressBar.setType(type.getValue());
+            builder.append("type=\"" + type.getValue().name() + "\" ");
+        }
+        
+        if(color.getValue() != null) {
+            progressBar.setColor(color.getValue());
+            builder.append("color=\"" + color.getValue().name() + "\" ");
+        }
+        
+        if(percent.getValue() != null && percent.getValue() >= 0 && percent.getValue() <= 100) {
+            progressBar.setPercent(percent.getValue());
+            builder.append("percent=\"" + percent.getValue() + "\" ");
+        }
+        
+        builder.append("/>");
+        
+        code.setText(builder.toString());
+    }
+    
+    
+
 
 }
