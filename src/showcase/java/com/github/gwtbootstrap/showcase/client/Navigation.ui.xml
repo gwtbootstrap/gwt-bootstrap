@@ -141,6 +141,10 @@
                 <b:Well>
                     <b:Label>Change Tab Position</b:Label>
                     <b:ValueListBox ui:field="tabPosition"/>
+                    <b:Divider/>
+                    <b:Label>Remove Tab</b:Label>
+                    <b:Button ui:field="removeTab">remove first Tab</b:Button>
+                    
                 </b:Well>
             </b:Column>
         </b:Row>

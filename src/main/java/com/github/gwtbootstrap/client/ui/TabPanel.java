@@ -20,6 +20,7 @@ import java.util.List;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -130,5 +131,87 @@ public class TabPanel extends DivWidget {
             tabContent.add(child.getTabPane());
         }
         tabs.add(child);
+    }
+    
+    @Override
+    public void clear() {
+        tabContent.clear();
+        tabs.clear();
+    }
+    
+    /**
+     * Remove tab or tabpane.
+     * <p>
+     * If Tablink has TabPane,romve TabPane with TabLink.
+     * </pre>
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean remove(int index) {
+        Widget widget = tabs.getWidget(index);
+        
+        if (widget instanceof TabLink) {
+            TabLink link = (TabLink) widget;
+            if(link.getTabPane() != null) {
+                link.getTabPane().removeFromParent();
+            }
+            return tabs.remove(index);
+        } else if(widget instanceof TabPane) {
+            return tabContent.remove(widget);
+        }
+        
+        return super.remove(widget);
+    }
+    
+    /**
+     * remove TabLink or TabPane.
+     * <p>
+     * </p>
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean remove(Widget w) {
+        
+        if (w instanceof TabLink) {
+            TabLink link = (TabLink) w;
+            
+            if(link.getTabPane() != null) {
+                link.getTabPane().removeFromParent();
+            }
+            return tabs.remove(w);
+        } else if(w instanceof TabPane) {
+            return tabContent.remove(w);
+        }
+        
+        return super.remove(w);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean remove(IsWidget child) {
+        
+        if (child instanceof Tab) {
+            Tab tab = (Tab) child;
+            
+            TabLink link = tab.asTabLink();
+            
+            if(link.getTabPane() != null) {
+                link.getTabPane().removeFromParent();
+            }
+            return tabs.remove(link);
+        } else if(child instanceof DropdownTab) {
+            DropdownTab tab = (DropdownTab)child;
+            
+            List<Tab> tabList = tab.getTabList();
+            
+            for (Tab tab2 : tabList) {
+                tabContent.remove(tab2.getTabPane());
+            }
+            return super.remove(child);
+        }
+        
+        return super.remove(child);
     }
 }

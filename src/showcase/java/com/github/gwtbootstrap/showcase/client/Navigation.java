@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.showcase.client;
 
 import java.util.Arrays;
 
+import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.Label;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.ProgressBar;
@@ -98,7 +99,7 @@ public class Navigation extends Composite {
             public boolean execute() {
                 
                 if(progressBar.getPercent() != 100) {
-                    progressBar.setPercent(progressBar.getPercent() + 1);
+                    progressBar.setPercent(progressBar.getPercent() + 10);
                     return true;
                 }
                 
@@ -106,13 +107,20 @@ public class Navigation extends Composite {
                 tabPane.add(new Label(LabelType.INFO,"loaded"));
                 return false;
             }
-        }, 50);
+        }, 1000);
         
     }
     
     @UiHandler("tabPosition")
     void onChangeTabPosition(ValueChangeEvent<Tabs> e) {
         tabPanel.setTabPosition(e.getValue().name().toLowerCase());
+    }
+    
+    @UiField Button removeTab;
+    @UiHandler("removeTab")
+    void onClickRemoveTab(ClickEvent e) {
+        if(firstTab.asTabLink().isActive()) tabPanel.remove(firstTab);
+        removeTab.setEnabled(false);
     }
 
 }
