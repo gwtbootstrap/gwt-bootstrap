@@ -133,6 +133,16 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		super();
 		addStyleName(Constants.BTN);
 	}
+	
+	/**
+	 * Creates an Button with ClickHandler
+	 * @param handler Butotn ClickHandler
+	 */
+	public Button(ClickHandler handler) {
+	    this();
+	    addClickHandler(handler);
+	    
+	}
 
 	/**
 	 * Creates a Button with the given caption.
@@ -143,6 +153,16 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	public Button(String caption) {
 		this();
 		setText(caption);
+	}
+	
+	/**
+	 * Create Button with click handler.
+	 * @param caption the caption of the Button
+	 * @param handler Button Click Handler
+	 */
+	public Button(String caption, ClickHandler handler) {
+	    this(caption);
+	    addClickHandler(handler);
 	}
 
 	/**
@@ -156,6 +176,21 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	public Button(String caption, IconType icon) {
 		this(caption);
 		setIcon(icon);
+	}
+	
+    /**
+     * Creates a Button with the given caption and icon and ClickHandler.
+     * 
+     * @param caption
+     *            the caption of the Button
+     * @param icon
+     *            the Icon on the caption's left
+     * @param handler
+     *            the ClickHandler of the Button.
+     */
+	public Button(String caption, IconType icon, ClickHandler handler) {
+	    this(caption, icon);
+	    addClickHandler(handler);
 	}
 
 	/**
