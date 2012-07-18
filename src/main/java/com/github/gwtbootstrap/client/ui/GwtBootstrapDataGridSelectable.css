@@ -88,13 +88,13 @@
 
 .dataGridSelectedRow, .dataGridSelectedRow td, .dataGridSelectedRow th{
   background: #D9EDF7 !important;
-  color: white !important;
   height: auto;
   overflow: auto;
 }
 
 .dataGridSelectedRowCell, .dataGridSelectedRow td.dataGridSelectedRowCell {
   background: #D9EDF7 !important;
+  color: white !important;
 }
 
 .dataGridKeyboardSelectedRowCell, .dataGridKeyboardSelectedRow td.dataGridKeyboardSelectedRowCell {
