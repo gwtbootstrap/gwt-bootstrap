@@ -90,15 +90,15 @@
 		</b:Row>
 		<b:Row>
 			<b:Column size="6">
-				<g:HTMLPanel tag="p">
+				<b:Paragraph>
 					The default grid system provided as part of GWT-Bootstrap is<br/>
 					 a 940px-wide, 12-column grid.
-				</g:HTMLPanel>
-				<g:HTMLPanel tag="p">
+				</b:Paragraph>
+				<b:Paragraph>
 					This is same as <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem" target="_blank">Twitter's Bootstrap Grid System.</a><br/>
 					If you need useing in uibinder,Use <b:Code>&lt;b:Row></b:Code> and <b:Code>&lt;b:Column></b:Code>.<br/>
 					Please see <a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/Row.html" target="_blank">Row</a> and <a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/Column.html" target="_blank">Column</a> Javadocs.
-				</g:HTMLPanel>
+				</b:Paragraph>
 			</b:Column>
 			<b:Column size="6">
 				<b:CodeBlock linenums="true" ui:field="gridCode" lang="xml"/>

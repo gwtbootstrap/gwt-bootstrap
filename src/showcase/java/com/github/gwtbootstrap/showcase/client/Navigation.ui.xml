@@ -26,7 +26,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Navigation">Navigation</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>NavWidget</h2>
@@ -57,9 +57,9 @@
 &lt;b:NavLink active=&quot;false&quot;&gt;3&lt;/b:NavLink&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
         
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>NavTabs</h2>
@@ -89,9 +89,9 @@
 &lt;/b:NavPills&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
         <b:PageHeader>TabPanel</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="12">
                 <g:HTMLPanel>
                     <h3>TabPanel Demo</h3>
@@ -147,8 +147,8 @@
                     
                 </b:Well>
             </b:Column>
-        </b:Row>
-        <b:Row>
+        </b:FluidRow>
+        <b:FluidRow>
             <b:Column size="6">
                 <b:Heading size="3">About TabPanel</b:Heading>
                 <g:HTMLPanel>
@@ -228,13 +228,13 @@
 &lt;/b:TabPanel&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
         
         <b:Row>
             <b:Column size="12">
                 <g:HTMLPanel>
                     <h2>Navbar</h2>
-                    <b:Navbar>
+                    <b:ResponsiveNavbar>
                         <b:Brand>Bootstrap</b:Brand>
                         <b:Nav>
                             <b:NavLink ui:field="navlink1">Test</b:NavLink>
@@ -254,7 +254,7 @@
                         </b:Nav>
                         <b:NavText alignment="RIGHT">Right</b:NavText>
                         <b:NavSearch size="2" placeholder="Search" alignment="RIGHT"/>
-                    </b:Navbar>
+                    </b:ResponsiveNavbar>
                     <p>You can also use a responsive version:</p>
                     <pre><code>&lt;b:ResponsiveNavbar /&gt;</code></pre><p>Make sure you enable the responsive design. It won't work otherwise.</p>
                     <pre class="prettyprint linenums">
@@ -275,7 +275,7 @@
             </b:Column>
         </b:Row>
         
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>Nav Lists</h2>
@@ -312,6 +312,6 @@
 &lt;/b:WellNavList&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

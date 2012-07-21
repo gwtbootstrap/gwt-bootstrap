@@ -18,9 +18,15 @@
 -->
 <module rename-to='showcase'>
 	<inherits name='com.google.gwt.user.User' />
+    <inherits name="com.google.gwt.activity.Activity" />
 	<inherits name='com.github.gwtbootstrap.Bootstrap' />
     <inherits name='com.github.gwtbootstrap.datepicker.Datepicker' />
 	
+    <replace-with
+        class="com.github.gwtbootstrap.showcase.client.ClientFactoryImpl">
+        <when-type-is
+            class="com.github.gwtbootstrap.showcase.client.ClientFactory" />
+    </replace-with>
 	<!-- set responsive design -->
 	<set-property name="bootstrap.responsiveDesign" value="true"/>
 	<entry-point class='com.github.gwtbootstrap.showcase.client.Showcase' />

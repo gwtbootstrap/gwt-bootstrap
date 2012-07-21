@@ -15,21 +15,17 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
-import com.github.gwtbootstrap.client.Bootstrap;
 import com.github.gwtbootstrap.client.ui.Nav;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
 import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
 import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;
-import com.github.gwtbootstrap.showcase.client.forms.Forms;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;

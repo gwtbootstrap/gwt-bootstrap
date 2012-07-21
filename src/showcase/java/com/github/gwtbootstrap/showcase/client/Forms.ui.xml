@@ -359,7 +359,5 @@
 				</b:Form>
 			</b:Column>
 		</b:FluidRow>
-		<br/>
-		<f:CellTables/>
 	</g:HTMLPanel>
 </ui:UiBinder>

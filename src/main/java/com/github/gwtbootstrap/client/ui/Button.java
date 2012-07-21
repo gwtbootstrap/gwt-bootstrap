@@ -125,6 +125,8 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		HasAllKeyHandlers, HasAllMouseHandlers, HasAllTouchHandlers {
 
 	private final LoadingStateBehavior state = new LoadingStateBehavior();
+    private ButtonType type;
+    private ButtonSize size;
 
 	/**
 	 * Creates an empty Button.
@@ -202,7 +204,8 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 *            the type of the Button.
 	 */
 	public void setType(ButtonType type) {
-		StyleHelper.changeStyle(this, type, ButtonType.class);
+		this.type = type;
+        StyleHelper.changeStyle(this, type, ButtonType.class);
 	}
 
 	/**
@@ -212,7 +215,8 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 *            the size of the Button.
 	 */
 	public void setSize(ButtonSize size) {
-		StyleHelper.changeStyle(this, size, ButtonSize.class);
+		this.size = size;
+        StyleHelper.changeStyle(this, size, ButtonSize.class);
 	}
 
 	/**
@@ -535,5 +539,13 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return addDomHandler(handler, TouchCancelEvent.getType());
 	}
+
+    public ButtonType getType() {
+        return type;
+    }
+
+    public ButtonSize getSize() {
+        return size;
+    }
 
 }

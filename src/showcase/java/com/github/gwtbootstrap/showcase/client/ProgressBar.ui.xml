@@ -23,7 +23,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Progress Bar">Progress Bar</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="4">
                 <g:HTMLPanel>
                     <b:ProgressBar percent="20" ui:field="progress1"/>
@@ -42,13 +42,13 @@
                     <pre class="prettyprint">&lt;b:ProgressBar type=&quot;ANIMATED&quot; percent=&quot;60&quot;/&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
-        <b:Row>
+        </b:FluidRow>
+        <b:FluidRow>
             <b:Column size="12">
                 <b:Heading size="3">Try it</b:Heading>
             </b:Column>
-        </b:Row>
-        <b:Row>
+        </b:FluidRow>
+        <b:FluidRow>
             <b:Column size="6">
                 <b:ProgressBar percent="100" ui:field="progressBar"/>
                 <b:CodeBlock linenums="true" ui:field="code"/>
@@ -90,8 +90,8 @@
                     </b:Fieldset>
                 </b:WellForm>
             </b:Column>
-        </b:Row>
-        <b:Row>
-        </b:Row>
+        </b:FluidRow>
+        <b:FluidRow>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

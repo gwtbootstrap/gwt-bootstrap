@@ -23,7 +23,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Pagination">Pagination</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <b:Pager left="Left" right="Right"/>
@@ -37,9 +37,9 @@
                     <pre class="prettyprint linenums">&lt;b:Pager left=&quot;&amp;larr; Older&quot; right=&quot;Newer &amp;rarr;&quot; aligned=&quot;true&quot;/&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
         
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="8">
                 <g:HTMLPanel>
                     <b:Pagination>
@@ -61,6 +61,6 @@
 &lt;/b:Pagination&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

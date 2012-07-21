@@ -63,7 +63,7 @@ public class HtmlWidget extends HTMLPanel implements HasStyle, IsResponsive {
 	 * @param html
 	 *            the panel's HTML
 	 */
-	protected HtmlWidget(String tag, String html) {
+	public HtmlWidget(String tag, String html) {
 		super(tag, html);
 	}
 

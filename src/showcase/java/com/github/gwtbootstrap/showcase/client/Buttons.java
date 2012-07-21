@@ -15,9 +15,17 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import java.util.Arrays;
+
 import com.github.gwtbootstrap.client.ui.Button;
+import com.github.gwtbootstrap.client.ui.ValueListBox;
+import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.showcase.client.util.EnumRenderer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -26,25 +34,93 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Buttons extends Composite {
 
-	private static ButtonsUiBinder uiBinder = GWT.create(ButtonsUiBinder.class);
-
     @UiField
-    Button defaultType;
+    Button effectiveButton;
 
-    @UiField
-    Button primary;
+    @UiField(provided = true)
+    ValueListBox<IconType> icons = new ValueListBox<IconType>(new EnumRenderer<IconType>("Choose icon"));
+    
+    @UiField(provided=true)
+    ValueListBox<IconSize> iconSize = new ValueListBox<IconSize>(new EnumRenderer<IconSize>("Choose icon size"));
 
-	interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
-	}
+    private static ButtonsUiBinder uiBinder = GWT.create(ButtonsUiBinder.class);
 
-	public Buttons() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+    interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
+    }
 
+    public Buttons() {
+        
+        icons.setValue(null);
+        icons.setAcceptableValues(Arrays.asList(IconType.values()));
+        
+        iconSize.setValue(null);
+        iconSize.setAcceptableValues(Arrays.asList(IconSize.values()));
+        
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
-    @UiHandler("defaultType")
-    void handleClick(ClickEvent e) {
-        primary.setFocus(true);
+    @UiHandler({ "defaultType", "primary", "info", "success", "warning",
+            "danger", "inverse" })
+    void onClickTypeButton(ClickEvent e) {
+        Button b = (Button) e.getSource();
+        if (b.getType() != null) {
+            effectiveButton.setType(b.getType());
+        } else {
+            effectiveButton.setType(ButtonType.DEFAULT);
+        }
+
+        effectiveButton.setText(b.getText());
+    }
+
+    @UiHandler({ "large", "small", "mini" })
+    void onClickSizeButton(ClickEvent e) {
+        Button b = (Button) e.getSource();
+        effectiveButton.setSize(b.getSize());
+    }
+
+    @UiHandler("enableButton")
+    void onClickEnabled(ClickEvent e) {
+        effectiveButton.setEnabled(true);
+    }
+
+    @UiHandler("disableButton")
+    void onClickDisabled(ClickEvent e) {
+        effectiveButton.setEnabled(false);
+    }
+    
+    @UiHandler("icons")
+    void onChangeIcons(ValueChangeEvent<IconType> e) {
+        effectiveButton.setIcon(e.getValue());
+    }
+    
+    @UiHandler("iconSize")
+    void onChangeIconSize(ValueChangeEvent<IconSize> e) {
+        effectiveButton.setIconSize(e.getValue());
+    }
+    
+    @UiHandler("toggle")
+    void onChangeToggle(ValueChangeEvent<Boolean> e) {
+        effectiveButton.setToggle(true);
+    }
+    
+    @UiHandler("loadingText")
+    void onChangeLoadingText(ValueChangeEvent<String> e) {
+        effectiveButton.setLoadingText(e.getValue());
+    }
+
+    @UiHandler("completeText")
+    void onChangeCompleteText(ValueChangeEvent<String> e) {
+        effectiveButton.setCompleteText(e.getValue());
+    }
+    
+    @UiHandler("loading")
+    void onClickLoading(ClickEvent e) {
+        effectiveButton.state().loading();
+    }
+
+    @UiHandler("complete")
+    void onClickComplete(ClickEvent e) {
+        effectiveButton.state().complete();
     }
 
 }

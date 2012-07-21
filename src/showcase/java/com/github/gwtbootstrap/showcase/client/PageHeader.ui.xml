@@ -24,7 +24,7 @@
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for PageHeader">Page Header</b:PageHeader>
         
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="12">
                 <g:HTMLPanel>
                     <b:PageHeader subtext="What this is all about">Title</b:PageHeader>
@@ -32,6 +32,6 @@
 &lt;b:PageHeader subtext=&quot;What this is all about&quot;&gt;Title&lt;/b:PageHeader&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

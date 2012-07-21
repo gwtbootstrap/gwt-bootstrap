@@ -7,7 +7,7 @@
 	the specific language governing permissions and limitations under the License. -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui" xmlns:s="urn:import:com.github.gwtbootstrap.showcase.client">
 	<ui:style>
 		.important {
 			font-weight: bold;
@@ -18,7 +18,7 @@
 		}
 	</ui:style>
 	<g:FlowPanel>
-		<b:ResponsiveNavbar position="TOP" scrollspy="true" ui:field="navbar">
+		<b:ResponsiveNavbar position="TOP" scrollspy="false">
 			<b:Brand href="#">GWT-Bootstrap</b:Brand>
 			<b:NavCollapse>
 				<b:Nav ui:field="nav" />
@@ -47,7 +47,9 @@
 
                     </g:HTMLPanel>
 				</g:VerticalPanel>
-				<b:Heading size="1">GWT-Bootstrap</b:Heading>
+				<b:Heading size="1" showOn="DESKTOP">GWT-Bootstrap</b:Heading>
+				<b:Heading size="2" showOn="TABLET">GWT-Bootstrap</b:Heading>
+				<b:Heading size="3" showOn="PHONE">GWT-Bootstrap</b:Heading>
 				<b:Paragraph>Using Twitter's interface library with Google Web
 					Toolkit.</b:Paragraph>
 			</b:Hero>
@@ -102,13 +104,14 @@
 					</g:HTMLPanel>
 				</b:Column>
 			</b:FluidRow>
-
+            <s:Subnav scrollspy="true" ui:field="subnav"/>
+			<g:SimplePanel ui:field="main"/>
 			<g:FlowPanel ui:field="sections" />
 
             <g:HTMLPanel><hr /></g:HTMLPanel>
 			<b:Footer>
 				<b:Paragraph addStyleNames="pull-right">
-					<a href="#">Back to top</a>
+					<g:Anchor ui:field="backToTopAnchor">Back to top</g:Anchor>
 				</b:Paragraph>
 				<b:Paragraph>
 					Distributed by

@@ -1,0 +1,214 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+    xmlns:s="urn:import:com.github.gwtbootstrap.showcase.client.base"
+    xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
+    <ui:style>
+        .isVisible {
+        	color: #468847;
+        	background-color: #DFF0D8 !important;
+        }
+        
+        .isHidden {
+        	color: #CCC;
+        	background-color: #F9F9F9 !important;
+        }
+        
+        .responsive-utilities-test {
+        	margin-top: 5px;
+        	margin-left: 0;
+        	list-style: none;
+        	overflow: hidden;
+        }
+        
+        .responsive-utilities-test li {
+        	position: relative;
+        	float: left;
+        	width: 25%;
+        	height: 43px;
+        	font-size: 14px;
+        	font-weight: bold;
+        	line-height: 43px;
+        	color: #999;
+        	text-align: center;
+        	border: 1px solid #ddd;
+        	-webkit-border-radius: 4px;
+        	-moz-border-radius: 4px;
+        	border-radius: 4px;
+        }
+        
+        .responsive-utilities-test span {
+        	position: absolute;
+        	top: -1px;
+        	left: -1px;
+        	right: -1px;
+        	bottom: -1px;
+        	-webkit-border-radius: 4px;
+        	-moz-border-radius: 4px;
+        	border-radius: 4px;
+        }
+        
+        .responsive-utilities-test span {
+        	color: #468847;
+        	background-color: #DFF0D8;
+        	border: 1px solid #D6E9C6;
+        }
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader>Responsive utility enum</b:PageHeader>
+        <b:Row>
+            <b:Column size="4">
+                <b:Heading size="3">What are they</b:Heading>
+                <b:Paragraph>
+                    For faster mobile-friendly development, use
+                    these basic utility enum
+                    class for showing and hiding
+                    content by device.
+                </b:Paragraph>
+                <b:Heading size="3">When to use</b:Heading>
+                <b:Paragraph>
+                    Use on a limited basis and avoid creating entirely
+                    different versions of the same site.
+                    Instead, use
+                    them to complement each device's presentation.
+                    For
+                    example, you might show a
+                    <b:Code>b:ListBox</b:Code>
+                    element for nav on mobile layouts, but not on
+                    tablets or desktops.
+                </b:Paragraph>
+            </b:Column>
+            <b:Column size="8">
+                <b:Heading size="3">Support mehod and enums</b:Heading>
+                <b:Paragraph>
+                    Shown here is a table of the method and
+                    enums we
+                    support and
+                    their effect on a given media
+                    query
+                    layout (labeled
+                    by device).
+                </b:Paragraph>
+                <g:HTMLPanel>
+                    <table
+                        class="table table-bordered table-striped responsive-utilities">
+                        <thead>
+                            <tr>
+                                <th>Enums</th>
+                                <th>
+                                    Device.PHONE
+                                    <small>480px and below</small>
+                                </th>
+                                <th>
+                                    Device.TABLET
+                                    <small>767px and below</small>
+                                </th>
+                                <th>
+                                    Device.DESKTOP
+                                    <small>768px and above</small>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <code>setShowOn(Device.PHONE)</code>
+                                </th>
+                                <td class="{style.isVisible}">Visible</td>
+                                <td class="{style.isHidden}">Hidden</td>
+                                <td class="{style.isHidden}">Hidden</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <code>setShowOn(Device.TABLET)</code>
+                                </th>
+                                <td class="{style.isHidden}">Hidden</td>
+                                <td class="{style.isVisible}">Visible</td>
+                                <td class="{style.isHidden}">Hidden</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <code>setShowOn(Device.DESKTOP)</code>
+                                </th>
+                                <td class="{style.isHidden}">Hidden</td>
+                                <td class="{style.isHidden}">Hidden</td>
+                                <td class="{style.isVisible}">Visible</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <code>setHideOn(Device.PHONE)</code>
+                                </th>
+                                <td class="{style.isHidden}">Hidden</td>
+                                <td class="{style.isVisible}">Visible</td>
+                                <td class="{style.isVisible}">Visible</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <code>setHideOn(Device.TABLET)</code>
+                                </th>
+                                <td class="{style.isVisible}">Visible</td>
+                                <td class="{style.isHidden}">Hidden</td>
+                                <td class="{style.isVisible}">Visible</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <code>setHideOn(Device.DESKTOP)</code>
+                                </th>
+                                <td class="{style.isVisible}">Visible</td>
+                                <td class="{style.isVisible}">Visible</td>
+                                <td class="{style.isHidden}">Hidden</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </g:HTMLPanel>
+                <b:Heading size="3">Test Case</b:Heading>
+                <b:Paragraph>
+                    Resize your browser or load on different
+                    devices to test the above method and enums.
+                </b:Paragraph>
+                <b:Heading size="4">Visible on...</b:Heading>
+                <b:Paragraph>Green checkmarks indicate that enum is
+                    visible in your current viewport.</b:Paragraph>
+                <g:HTMLPanel>
+                    <ul class="{style.responsive-utilities-test}">
+                        <li>
+                            Phone
+                            <bs:HtmlWidget tag="span"
+                                showOn="PHONE">&#10004; Phone</bs:HtmlWidget>
+                        </li>
+                        <li>
+                            Tablet
+                            <bs:HtmlWidget tag="span"
+                                showOn="TABLET">&#10004; Tablet</bs:HtmlWidget>
+                        </li>
+                        <li>
+                            Desktop
+                            <bs:HtmlWidget tag="span"
+                                showOn="DESKTOP">&#10004; DESKTOP</bs:HtmlWidget>
+                        </li>
+                    </ul>
+                    <h4>Hidden on...</h4>
+                    <p>Here, green checkmarks indicate that class is
+                        hidden in your current viewport.</p>
+                    <ul class="{style.responsive-utilities-test} hidden-on">
+                        <li>
+                            Phone
+                            <bs:HtmlWidget tag="span"
+                                hideOn="PHONE">&#10004; Phone</bs:HtmlWidget>
+                        </li>
+                        <li>
+                            Tablet
+                            <bs:HtmlWidget tag="span"
+                                hideOn="TABLET">&#10004; Tablet</bs:HtmlWidget>
+                        </li>
+                        <li>
+                            Desktop
+                            <bs:HtmlWidget tag="span"
+                                hideOn="DESKTOP">&#10004; DESKTOP</bs:HtmlWidget>
+                        </li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:Row>
+    </g:HTMLPanel>
+</ui:UiBinder> 

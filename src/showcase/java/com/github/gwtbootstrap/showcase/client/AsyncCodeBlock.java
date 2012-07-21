@@ -1,5 +1,6 @@
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.CodeBlock;
 import com.github.gwtbootstrap.client.ui.ProgressBar;
 
 import com.google.gwt.http.client.Request;
@@ -32,8 +33,11 @@ public class AsyncCodeBlock extends Composite {
 				
 				String text = response.getText();
 				
+				CodeBlock block = new CodeBlock(text);
 				
+				block.setLinenums(true);
 				
+				codePanel.setWidget(block);
 			}
 			
 			@Override

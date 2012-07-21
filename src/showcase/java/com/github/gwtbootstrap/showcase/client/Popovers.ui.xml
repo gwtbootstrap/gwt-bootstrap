@@ -10,7 +10,7 @@
 	xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
 	<g:HTMLPanel>
 		<b:PageHeader subtext="have fun with popovers">Popovers</b:PageHeader>
-		<b:Row>
+		<b:FluidRow>
 			<b:Column size="12">
 				<b:Heading size="2">Hover over the button to trigger the popover.</b:Heading>
 			</b:Column>
@@ -120,6 +120,6 @@ private void setupPopover(Widget w, String message, String heading) {
 }</pre>
 				</g:HTMLPanel>
 			</b:Column>
-		</b:Row>
+		</b:FluidRow>
 	</g:HTMLPanel>
 </ui:UiBinder>

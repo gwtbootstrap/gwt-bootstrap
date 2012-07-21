@@ -23,7 +23,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Alerts">Alerts</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <b:Alert type="SUCCESS" close="false" animation="true" ui:field="alert"><b:Icon type="GITHUB"/>TestAlert without close<b:Button ui:field="alertClose">close</b:Button></b:Alert>
@@ -39,8 +39,8 @@
 &lt;b:AlertBlock type=&quot;INFO&quot; heading=&quot;Heading&quot;&gt;AlertBlock&lt;/b:AlertBlock&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
-        <b:Row>
+        </b:FluidRow>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <b:Alert type="DEFAULT" close="false" heading="Heading" animation="true"><b:Icon type="GITHUB"/>TestAlert without close</b:Alert>
@@ -48,6 +48,6 @@
 &lt;b:Alert type=&quot;DEFAULT&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert without close&lt;/b:Alert&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

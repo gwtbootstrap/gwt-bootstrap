@@ -10,7 +10,7 @@
 	xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
 	<g:HTMLPanel>
 		<b:PageHeader subtext="have fun with tooltips.">Tooltips</b:PageHeader>
-		<b:Row>
+		<b:FluidRow>
 			<b:Column size="12">
 				<b:Well>
 					<g:HTMLPanel>
@@ -104,6 +104,6 @@ private void setupTooltip(Widget w, String message) {
 }</pre>
 				</g:HTMLPanel>
 			</b:Column>
-		</b:Row>
+		</b:FluidRow>
 	</g:HTMLPanel>
 </ui:UiBinder>

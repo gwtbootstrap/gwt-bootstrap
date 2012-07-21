@@ -24,7 +24,7 @@
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Modal">Modal</b:PageHeader>
         
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="12">
                 <g:HTMLPanel>
                     <b:Button ui:field="onShow" text="show the modal" />
@@ -47,6 +47,6 @@
                     <p>As you can see, we have several optional settings. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss. Also, Modal implements the <code>HasVisibleHandlers</code> interface, so, it has the <code>show</code>, hide and <code>toggle</code> methods. The footer is optional.</p>
                 </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

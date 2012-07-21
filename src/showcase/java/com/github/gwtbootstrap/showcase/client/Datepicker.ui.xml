@@ -24,7 +24,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="and DateBoxes">Datepickers</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <b:Heading size="4">DataBox markup</b:Heading>
                 <g:HTMLPanel>
@@ -142,8 +142,8 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                     <b2:DateBox format="dd/mm/yyyy" ui:field="datePicker"/>
                 </b:Well>
             </b:Column>
-        </b:Row>
-        <!--<b:Row>-->
+        </b:FluidRow>
+        <!--<b:FluidRow>-->
         <!--<b:Column size="6">-->
         <!--<g:HTMLPanel>-->
         <!--<b2:DateBoxAppended />-->
@@ -152,6 +152,6 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
         <!--without close&lt;/b:Alert&gt;</pre>-->
         <!--</g:HTMLPanel>-->
         <!--</b:Column>-->
-        <!--</b:Row>-->
+        <!--</b:FluidRow>-->
     </g:HTMLPanel>
 </ui:UiBinder>

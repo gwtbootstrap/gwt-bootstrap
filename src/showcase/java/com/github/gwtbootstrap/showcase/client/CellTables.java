@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.showcase.client.forms;
+package com.github.gwtbootstrap.showcase.client;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -34,7 +34,9 @@ import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
 import com.github.gwtbootstrap.datepicker.client.ui.DateBox;
-import com.github.gwtbootstrap.showcase.client.forms.Person.Favorite;
+import com.github.gwtbootstrap.showcase.client.util.DisplayLabelRenderer;
+import com.github.gwtbootstrap.showcase.client.util.Person;
+import com.github.gwtbootstrap.showcase.client.util.Person.Favorite;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;

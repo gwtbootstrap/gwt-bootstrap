@@ -27,7 +27,6 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.HasEnabled;
-import com.google.gwt.user.client.ui.HasFocus;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.impl.FocusImpl;
 

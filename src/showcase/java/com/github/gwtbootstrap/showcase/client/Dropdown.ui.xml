@@ -23,7 +23,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Dropdown">Dropdown</b:PageHeader>
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <p>You can use Dropdowns in Navs, NavTabs and NavPills.</p>
@@ -43,9 +43,9 @@
                     <p>All dropdowns can be converted into dropups by adding <code>dropup="true"</code>.</p>
                </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
             
-        <b:Row>
+        <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>DropdownButton</h2>
@@ -79,6 +79,6 @@
 &lt;/b:SplitDropdownButton&gt;</pre>
                </g:HTMLPanel>
             </b:Column>
-        </b:Row>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>
