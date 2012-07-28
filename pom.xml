@@ -127,6 +127,13 @@
 				<role>ci server</role>
 			</roles>
 		</contributor>
+        <contributor>
+            <name>lowsky</name>
+            <url>https://github.com/lowsky</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </contributor>
 	</contributors>
 	<licenses>
 		<license>
