@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 
@@ -33,6 +34,7 @@ public class ButtonCell extends com.google.gwt.cell.client.ButtonCell {
 
 	private IconType icon = null;
 	private ButtonType type = null;
+	private ButtonSize size = null;
 
 	public ButtonCell() {
 	}
@@ -46,17 +48,41 @@ public class ButtonCell extends com.google.gwt.cell.client.ButtonCell {
 		super();
 		this.icon = icon;
 	}
+	
+	public ButtonCell(ButtonSize size) {
+		super();
+		this.size = size;
+	}
 
     public ButtonCell(IconType icon, ButtonType type) {
 		super();
 		this.icon = icon;
 		this.type = type;
 	}
+    
+    public ButtonCell(IconType icon, ButtonSize size) {
+		super();
+		this.icon = icon;
+		this.size = size;
+	}
+    
+    public ButtonCell(ButtonType type, ButtonSize size) {
+		super();
+		this.type = type;
+		this.size = size;
+	}
+    
+    public ButtonCell(IconType icon, ButtonType type, ButtonSize size) {
+		super();
+		this.icon = icon;
+		this.type = type;
+		this.size = size;
+	}
 
 	@Override
 	public void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
 		sb.appendHtmlConstant("<button type=\"button\" class=\"btn "
-				+ (type != null ? type.get() : "") + "\" tabindex=\"-1\">");
+				+ (type != null ? type.get() : "") + (size != null ? " " + size.get() : "") + "\" tabindex=\"-1\">");
 		if (data != null) {
 			if (icon != null) {
                 sb.appendHtmlConstant("<i class=\"" + icon.get() + "\"></i> ");
@@ -81,6 +107,14 @@ public class ButtonCell extends com.google.gwt.cell.client.ButtonCell {
     public void setType(ButtonType type) {
         this.type = type;
     }
+
+	public ButtonSize getSize() {
+		return size;
+	}
+
+	public void setSize(ButtonSize size) {
+		this.size = size;
+	}
 
     // TODO add icon size support
 }
