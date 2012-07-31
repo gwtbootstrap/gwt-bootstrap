@@ -92,23 +92,23 @@ import com.google.gwt.user.client.ui.HasEnabled;
 //@formatter:off
 /**
  * Button with optional icon.
- * 
+ *
  * <p>
  * <h3>UiBinder Usage:</h3>
- * 
+ *
  * <pre>
  * {@code <b:Button icon="TRASH" type="ERROR" toggle="true" loadingText="I'm loading..." completeText="Oh hoh, I completed the action!">Delete</b:Button>}
  * </pre>
- * 
+ *
  * All arguments are optional.
  * </p>
- * 
+ *
  * @since 2.0.4.0
- * 
+ *
  * @author Carlos Alexandro Becker
- * 
+ *
  * @author Dominik Mayer
- * 
+ *
  * @see <a
  *      href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap
  *      documentation</a>
@@ -135,7 +135,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		super();
 		addStyleName(Constants.BTN);
 	}
-	
+
 	/**
 	 * Creates an Button with ClickHandler
 	 * @param handler Butotn ClickHandler
@@ -143,12 +143,12 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	public Button(ClickHandler handler) {
 	    this();
 	    addClickHandler(handler);
-	    
+
 	}
 
 	/**
 	 * Creates a Button with the given caption.
-	 * 
+	 *
 	 * @param caption
 	 *            the caption of the Button
 	 */
@@ -156,7 +156,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		this();
 		setText(caption);
 	}
-	
+
 	/**
 	 * Create Button with click handler.
 	 * @param caption the caption of the Button
@@ -169,7 +169,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 
 	/**
 	 * Creates a Button with the given caption and icon.
-	 * 
+	 *
 	 * @param caption
 	 *            the caption of the Button
 	 * @param icon
@@ -179,10 +179,10 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		this(caption);
 		setIcon(icon);
 	}
-	
+
     /**
      * Creates a Button with the given caption and icon and ClickHandler.
-     * 
+     *
      * @param caption
      *            the caption of the Button
      * @param icon
@@ -199,7 +199,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 * Sets the type of the Button.
 	 * <p>
 	 * Different types give the button a different look.
-	 * 
+	 *
 	 * @param type
 	 *            the type of the Button.
 	 */
@@ -210,7 +210,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 
 	/**
 	 * Sets the size of the Button.
-	 * 
+	 *
 	 * @param size
 	 *            the size of the Button.
 	 */
@@ -223,7 +223,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 * Whether the Button is enabled or disabled.
 	 * <p>
 	 * A disabled widget cannot be used.
-	 * 
+	 *
 	 * @return <code>false</code> if the Button is disabled.
 	 */
 	public boolean isEnabled() {
@@ -234,7 +234,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 * Sets whether the Button is enabled or disabled.
 	 * <p>
 	 * A disabled widget cannot be used.
-	 * 
+	 *
 	 * @param enabled
 	 *            <code>false</code> if the Button should be disabled. Default:
 	 *            <code>true</code>
@@ -248,7 +248,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 
 	/**
 	 * Enable ou disable the data-toggle behavior.
-	 * 
+	 *
 	 * @param toggle
 	 *            <code>true</code> will enable this behavior.
 	 *            <code>false</code> will disable it or do nothing if it never
@@ -267,13 +267,22 @@ public class Button extends IconAnchor implements HasClickHandlers,
      * @return  true: if the data-toggle is equal 'button'
      *          false: otherwise
      */
-    boolean isToggled() {
+    public boolean isToggle() {
         return getElement().getAttribute(Constants.DATA_TOGGLE).equals("button");
+    }
+
+    /**
+     * Verify if the button is toggled.
+     * @return true: if yes (it will contain the "active" styleclass
+     *          false: otherwise.
+     */
+    public boolean isToggled() {
+        return getStyleName().toLowerCase().contains("active");
     }
 
 	/**
 	 * Set a Loading Text to show when some action are in work with this button.
-	 * 
+	 *
 	 * @see LoadingStateBehavior
 	 * @param text
 	 */
@@ -289,7 +298,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	/**
 	 * Set a Loading Text to show when some action are completed with this
 	 * button.
-	 * 
+	 *
 	 * @see LoadingStateBehavior
 	 * @param text
 	 */
@@ -305,7 +314,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	/**
 	 * A simple DSL to change the button state to loading, complete, or reset
 	 * it.
-	 * 
+	 *
 	 * @return
 	 */
 	public LoadingStateBehavior state() {
@@ -314,7 +323,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 
 	/**
 	 * A simple class to encapsulate the button state managing from the user.
-	 * 
+	 *
 	 * @author Carlos Alexandro Becker
 	 */
 	public class LoadingStateBehavior {
