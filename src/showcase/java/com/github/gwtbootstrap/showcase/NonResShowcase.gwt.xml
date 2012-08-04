@@ -23,6 +23,7 @@
 	
 	<!-- set responsive design -->
 	<set-property name="bootstrap.responsiveDesign" value="true"/>
+    <script src="js/jquery-1.7.1.min.js"/>
 	<entry-point class='com.github.gwtbootstrap.showcase.client.NonResShowcase' />
 	<source path='client' />
 

@@ -63,9 +63,16 @@ public class ResourceInjector {
         Resources res = ADAPTER.getResources();
         if (ADAPTER.hasResponsiveDesign())
             activateResponsiveDesign(res);
-        injectJs(res.jquery());
+
+        if(isNotLoadedJquery()) 
+            injectJs(res.jquery());
+        
         injectJs(res.bootstrapJs());
     }
+
+    private native static boolean isNotLoadedJquery() /*-{
+        return !$wnd['jQuery'] || (typeof $wnd['jQuery'] !== 'function');
+    }-*/;
 
     private static void injectCss(TextResource r) {
         StyleInjector.inject(r.getText());
