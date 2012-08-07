@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <!-- POM file generated with GWT webAppCreator -->
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.gwtbootstrap</groupId>
     <artifactId>gwt-bootstrap</artifactId>
     <version>2.0.4.0-SNAPSHOT</version>
-    <name>GWT-Bootstrap</name>
-    <inceptionYear>2012</inceptionYear>
+    <packaging>jar</packaging>
 
-    <!-- project infomation -->
-    <url>http://gwtbootstrap.github.com/</url>
+    <name>GWT-Bootstrap</name>
     <description>A GWT Library that provides the widgets of Twitter Bootstrap.</description>
+    <url>http://gwtbootstrap.github.com/</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+            <comments>Same as Twitter Bootstrap</comments>
+        </license>
+    </licenses>
+
+    <inceptionYear>2012</inceptionYear>
+    <!-- project infomation -->
     <scm>
         <url>git@github.com:gwtbootstrap/gwt-bootstrap.git</url>
         <connection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</connection>
         <developerConnection>scm:git:git@github.com:gwtbootstrap/gwt-bootstrap.git</developerConnection>
     </scm>
-    <distributionManagement>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <uniqueVersion>false</uniqueVersion>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
     <issueManagement>
         <system>github</system>
         <url>https://github.com/gwtbootstrap/gwt-bootstrap/issues</url>
@@ -90,6 +92,7 @@
             <name>Keisuke Oohashi</name>
             <url>https://github.com/soundTricker</url>
             <roles>
+                <role>deployer</role>
                 <role>developer</role>
             </roles>
             <timezone>+9</timezone>
@@ -134,14 +137,6 @@
             </roles>
         </contributor>
     </contributors>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-            <distribution>repo</distribution>
-            <comments>Same as Twitter Bootstrap</comments>
-        </license>
-    </licenses>
     <ciManagement>
         <system>CloudBees Jenkins</system>
     </ciManagement>
@@ -162,13 +157,6 @@
         <github.sites.plugin.version>0.6</github.sites.plugin.version>
         <github.downloads.plugin.version>0.5</github.downloads.plugin.version>
     </properties>
-    <repositories>
-        <repository>
-            <id>forge.octo.com</id>
-            <url>http://forge.octo.com/nexus/content/repositories/releases/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>com.google.gwt</groupId>
@@ -177,9 +165,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.octo.gwt.test</groupId>
+            <groupId>com.googlecode.gwt-test-utils</groupId>
             <artifactId>gwt-test-utils</artifactId>
-            <version>0.35</version>
+            <version>0.39</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
