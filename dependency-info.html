@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Mailing Lists</title>
+    <title>Dependency Information</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -94,14 +94,14 @@
                           <a href="distribution-management.html" title="Distribution Management">Distribution Management</a>
             </li>
                       <li class="none">
-                          <a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
-            </li>
+            <strong>Dependency Information</strong>
+          </li>
                       <li class="none">
                           <a href="source-repository.html" title="Source Repository">Source Repository</a>
             </li>
                       <li class="none">
-            <strong>Mailing Lists</strong>
-          </li>
+                          <a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a>
+            </li>
                       <li class="none">
                           <a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>
             </li>
@@ -166,7 +166,16 @@
         
         <div id="bodyColumn"  class="span9" >
                                   
-            <div class="section"><h2>Project Mailing Lists<a name="Project_Mailing_Lists"></a></h2><a name="Project_Mailing_Lists"></a><p>These are the mailing lists that have been established for this project. For each list, there is a subscribe, unsubscribe, and an archive link.</p><table border="0" class="table table-striped"><tr class="a"><th>Name</th><th>Subscribe</th><th>Unsubscribe</th><th>Post</th><th>Archive</th></tr><tr class="b"><td>GWT-Bootstrap</td><td><a class="externalLink" href="mailto:gwt-bootstrap+subscribe@googlegroups.com">Subscribe</a></td><td><a class="externalLink" href="mailto:gwt-bootstrap+unsubscribe@googlegroups.com">Unsubscribe</a></td><td><a class="externalLink" href="https://groups.google.com/d/forum/gwt-bootstrap">Post</a></td><td><a class="externalLink" href="https://groups.google.com/d/forum/gwt-bootstrap">groups.google.com</a></td></tr></table></div>
+            <div class="section"><h2>Dependency Information<a name="Dependency_Information"></a></h2><a name="Dependency_Information"></a><div class="section"><h3>Apache Maven<a name="Apache_Maven"></a></h3><a name="Apache_Maven"></a><div class="source"><pre class="prettyprint linenums">&lt;dependency&gt;
+  &lt;groupId&gt;com.github.gwtbootstrap&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-bootstrap&lt;/artifactId&gt;
+  &lt;version&gt;2.0.4.0-SNAPSHOT&lt;/version&gt;
+  &lt;type&gt;${project.packaging&lt;/type&gt;
+&lt;/dependency&gt;</pre></div></div><div class="section"><h3>Apache Buildr<a name="Apache_Buildr"></a></h3><a name="Apache_Buildr"></a><div class="source"><pre class="prettyprint linenums">'com.github.gwtbootstrap:gwt-bootstrap:${project.packaging:2.0.4.0-SNAPSHOT'</pre></div></div><div class="section"><h3>Apache Ant<a name="Apache_Ant"></a></h3><a name="Apache_Ant"></a><div class="source"><pre class="prettyprint linenums">&lt;dependency org=&quot;com.github.gwtbootstrap&quot; name=&quot;gwt-bootstrap&quot; rev=&quot;2.0.4.0-SNAPSHOT&quot;&gt;
+  &lt;artifact name=&quot;gwt-bootstrap&quot; type=&quot;${project.packaging&quot; /&gt;
+&lt;/dependency&gt;</pre></div></div><div class="section"><h3>Groovy Grape<a name="Groovy_Grape"></a></h3><a name="Groovy_Grape"></a><div class="source"><pre class="prettyprint linenums">@Grapes(
+@Grab(group='com.github.gwtbootstrap', module='gwt-bootstrap', version='2.0.4.0-SNAPSHOT')
+)</pre></div></div><div class="section"><h3>Grails<a name="Grails"></a></h3><a name="Grails"></a><div class="source"><pre class="prettyprint linenums">compile 'com.github.gwtbootstrap:gwt-bootstrap:2.0.4.0-SNAPSHOT'</pre></div></div><div class="section"><h3>Leiningen<a name="Leiningen"></a></h3><a name="Leiningen"></a><div class="source"><pre class="prettyprint linenums">[com.github.gwtbootstrap/gwt-bootstrap &quot;2.0.4.0-SNAPSHOT&quot;]</pre></div></div><div class="section"><h3>SBT<a name="SBT"></a></h3><a name="SBT"></a><div class="source"><pre class="prettyprint linenums">libraryDependencies += &quot;com.github.gwtbootstrap&quot; %% &quot;gwt-bootstrap&quot; % &quot;2.0.4.0-SNAPSHOT&quot;</pre></div></div></div>
                   </div>
             </div>
       
