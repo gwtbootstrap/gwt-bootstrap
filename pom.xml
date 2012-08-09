@@ -487,7 +487,6 @@
                 <configuration>
                     <runTarget>Bootstrap.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
-                    <i18nMessagesBundle>com.github.gwtbootstrap.client.Messages</i18nMessagesBundle>
                     <localWorkers>2</localWorkers>
                 </configuration>
             </plugin>
@@ -586,8 +585,7 @@
                 <artifactId>downloads-maven-plugin</artifactId>
                 <version>${github.downloads.plugin.version}</version>
                 <configuration>
-                    <description>${project.version} release of
-                        ${project.name}</description>
+                    <description>${project.version} release of ${project.name}</description>
                     <override>true</override>
                     <includeAttached>true</includeAttached>
                 </configuration>

@@ -18,7 +18,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
-	xmlns:bb="urn:import:com.github.gwtbootstrap.client.ui.base" xmlns:c="urn:import:com.google.gwt.user.cellview.client" xmlns:f="urn:import:com.github.gwtbootstrap.showcase.client.forms">
+	xmlns:bb="urn:import:com.github.gwtbootstrap.client.ui.base" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:with
 		type="com.github.gwtbootstrap.showcase.client.resources.CustomResources"
 		field="res" />

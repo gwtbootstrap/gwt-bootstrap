@@ -49,5 +49,46 @@
                 </g:HTMLPanel>
             </b:Column>
         </b:FluidRow>
+        <b:Heading size="2">Try Alert setting</b:Heading>
+        <b:FluidRow>
+            <b:Column size="6" ui:field="alertColumn">
+                <b:Alert ui:field="setupAlert">Set up Alert</b:Alert>
+                <b:AlertBlock ui:field="setupAlertBlock">Set up Alert Block</b:AlertBlock>
+            </b:Column>
+            <b:Column size="6">
+                <b:WellForm type="HORIZONTAL">
+                    <b:Fieldset>
+                        <b:Legend>Setup Alert options</b:Legend>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Animation</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox ui:field="animation">is animated?</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Heading</b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox ui:field="heading" placeholder="input heading"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Show close anchor</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox ui:field="close" checked="true">Show close</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Alert Type</b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox ui:field="type"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:FormActions>
+                            <b:Button enabled="false" ui:field="showButton">Re-Show Alert</b:Button>
+                        </b:FormActions>
+                    </b:Fieldset>
+                </b:WellForm>
+            </b:Column>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

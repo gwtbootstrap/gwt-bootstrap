@@ -27,6 +27,8 @@ import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
  * Base class for Alert widgets.
@@ -40,259 +42,283 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  *      href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap
  *      documentation</a>
  */
-public abstract class AlertBase extends HtmlWidget implements IsAnimated, HasCloseHandlers, HasType<AlertType> {
+public abstract class AlertBase extends HtmlWidget implements IsAnimated,
+        HasCloseHandlers, HasType<AlertType> {
 
-	private Close close;
+    private Close close;
 
-	private String html = "";
+    private HTMLPanel closeReplacement = new HTMLPanel("span", "");
 
-	private String heading = "";
+    private HTMLPanel headingContainer = new HTMLPanel("span", "");
 
-	private boolean fade;
-	
-	/**
-	 * Initializes an Alert with a close icon.
-	 */
-	public AlertBase() {
-		this("", true);
-	}
-	
-	public AlertBase(String html) {
-		this(html , true);
-	}
+    private HTMLPanel container;
 
-	/**
-	 * Initializes an Alert with an optional close icon.
-	 * 
-	 * @param hasClose
-	 *            whether the Alert should have a close icon.
-	 */
-	public AlertBase(String html, boolean hasClose) {
-		super("div", html);
-		this.html = html;
-		super.setStyleName(Constants.ALERT);
-		setClose(hasClose);
-		setHandlerFunctions(getElement());
-	}
+    private boolean fade;
 
-	/**
-	 * Sets whether the Alert has a close icon or not.
-	 * 
-	 * @param hasClose
-	 *            <code>false</code> if you don't want to have a close icon.
-	 *            Default: <code>true</code>
-	 */
-	public void setClose(boolean hasClose) {
-		if (hasClose) {
-			close = new Close(DismissType.ALERT);
-			add(close);
-		} else {
-			clear();
-			close = null;
-		}
-		redraw();
-	}
+    private boolean hasClose;
 
-	/**
-	 * Adds the Java functions that fire the Events to document. It is a
-	 * convenience method to have a cleaner code later on.
-	 */
-	private native void setHandlerFunctions(Element e) /*-{
-		var that = this;
-		$wnd
-				.jQuery(e)
-				.bind(
-						'close',
-						function() {
-							that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
-						});
-		$wnd
-				.jQuery(e)
-				.bind(
-						'closed',
-						function() {
-							that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
-						});
-	}-*/;
+    /**
+     * Initializes an Alert with a close icon.
+     */
+    public AlertBase() {
+        this("", true);
+    }
 
-	/**
-	 * This method is called immediately when the widget's close method is
-	 * executed.
-	 */
-	protected void onClose() {
-		fireEvent(new CloseEvent());
-	}
+    /**
+     * Initializes an Alert with a inner HTML.
+     * @param html inner HTML
+     */
+    public AlertBase(String html) {
+        this(html, true);
+    }
 
-	/**
-	 * This method is called once the widget is completely closed.
-	 */
-	protected void onClosed() {
-		fireEvent(new ClosedEvent());
-	}
+    /**
+     * Initializes an Alert with an optional close icon.
+     * 
+     * @param html inner HTML
+     * @param hasClose
+     *            whether the Alert should have a close icon.
+     */
+    public AlertBase(String html, boolean hasClose) {
+        super("div", "");
 
-	/**
-	 * Initializes an Alert of given Type with a close icon.
-	 * 
-	 * @param type
-	 *            of the Alert
-	 */
-	public AlertBase(AlertType type) {
-		this();
-		setType(type);
-	}
+        super.add(closeReplacement);
+        super.add(headingContainer);
+        container = new HTMLPanel("span",html);
+        super.add(container);
+        super.setStyleName(Constants.ALERT);
+        setClose(hasClose);
+        setHandlerFunctions(getElement());
+    }
 
-	/**
-	 * Sets the type of the Alert.
-	 * 
-	 * @param type
-	 */
-	public void setType(AlertType type) {
-		StyleHelper.changeStyle(this, type, AlertType.class);
-		setFade();
-	}
+    /**
+     * Initializes an Alert of given Type with a close icon.
+     * 
+     * @param type
+     *            of the Alert
+     */
+    public AlertBase(AlertType type) {
+        this();
+        setType(type);
+    }
 
-	/**
-	 * Sets the text of an optional heading. The implementation depends on the
-	 * subclass.
-	 * 
-	 * @param text
-	 *            the new heading
-	 */
-	public void setHeading(String text) {
-		heading = text;
-		redraw();
-	}
+    /**
+     * Sets whether the Alert has a close icon or not.
+     * 
+     * @param hasClose
+     *            <code>false</code> if you don't want to have a close icon.
+     *            Default: <code>true</code>
+     */
+    public void setClose(boolean hasClose) {
+        
+        this.hasClose = hasClose;
+        
+        if(!isAttached()) {
+            return;
+        }
+        
+        if (hasClose) {
+            if(close == null) {
+                close = new Close(DismissType.ALERT);
+                getElement().replaceChild(close.getElement(), closeReplacement.getElement());
+            }
+        } else {
+            if (close != null) {
+                getElement().replaceChild(closeReplacement.getElement(), close.getElement());
+                close = null;
+            }
+        }
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onAttach() {
+        super.onAttach();
+        setClose(hasClose);
+    }
+    
+    /**
+     * has Close
+     * @return true:has close false:does not has close
+     */
+    public boolean hasClose() {
+        return hasClose;
+    }
 
-	/**
-	 * Sets whether the Alert should be animated.
-	 * 
-	 * @param animated
-	 *            <code>true</code> if the Alert should fade out. Default:
-	 *            <code>false</code>
-	 */
-	public void setAnimation(boolean animated) {
-		this.fade = animated;
-		setFade();
-	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean getAnimation() {
-		return fade;
-	}
+    /**
+     * Gets heading's container widget
+     * @return heading's container
+     */
+    protected HasWidgets getHeadingContainer() {
+        return headingContainer;
+    }
 
-	/**
-	 * Delete the whole content of the Alert. This includes text, heading and
-	 * close icon.
-	 */
-	@Override
-	public void clear() {
-		getElement().setInnerHTML("");
-	}
+    /**
+     * This method is called immediately when the widget's close method is
+     * executed.
+     */
+    protected void onClose() {
+        fireEvent(new CloseEvent());
+    }
 
-	/**
-	 * Redraws the Alert according to the specified settings.
-	 */
-	protected void redraw() {
-		setHTML(html);
-		configure(getElement());
-	}
+    /**
+     * This method is called once the widget is completely closed.
+     */
+    protected void onClosed() {
+        fireEvent(new ClosedEvent());
+    }
 
-	/**
-	 * Sets the classes that define whether the Alert fades or not.
-	 */
-	private void setFade() {
-		if (fade) {
-			addStyleName("fade");
-			addStyleName("in");
-		} else {
-			removeStyleName("fade");
-			removeStyleName("in");
-		}
-	}
+    /**
+     * Sets the type of the Alert.
+     * 
+     * @param type
+     */
+    public void setType(AlertType type) {
+        StyleHelper.changeStyle(this, type, AlertType.class);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getText() {
-		return getHTML(); // TODO
-	}
+    /**
+     * Sets the text of an optional heading. The implementation depends on the
+     * subclass.
+     * 
+     * @param text
+     *            the new heading
+     */
+    public void setHeading(String text) {
+        headingContainer.clear();
+        headingContainer.add(new HTMLPanel("span", text));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setText(String text) {
-		setHTML(SafeHtmlUtils.htmlEscape(text));
-	}
+    /**
+     * Sets whether the Alert should be animated.
+     * 
+     * @param animated
+     *            <code>true</code> if the Alert should fade out. Default:
+     *            <code>false</code>
+     */
+    public void setAnimation(boolean animated) {
+        this.fade = animated;
+        setFade();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getHTML() {
-		return html;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public boolean getAnimation() {
+        return fade;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setHTML(String html) {
-		String output = "";
-		if (close != null)
-			output = close.toString();
-		output = output + heading + html;
-		setHTMLOutput(html, output);
-	}
+    /**
+     * Delete the whole content of the Alert. This includes text, heading and
+     * close icon.
+     */
+    @Override
+    public void clear() {
+        container.clear();
+    }
 
-	/**
-	 * Sets the HTML of the Alert. Override this method to implement a custom
-	 * formatting.
-	 * 
-	 * @param html
-	 *            the html of the content without heading and close icon.
-	 * @param output
-	 *            the raw output to be put into the widget. Be careful!
-	 */
-	protected void setHTMLOutput(String html, String output) {
-		this.html = html;
-		getElement().setInnerHTML(output);
-	}
+    /**
+     * Sets the classes that define whether the Alert fades or not.
+     */
+    private void setFade() {
+        if (fade) {
+            addStyleName("fade");
+            addStyleName("in");
+        } else {
+            removeStyleName("fade");
+            removeStyleName("in");
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onLoad() {
-		super.onLoad();
-		configure(getElement());
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public String getText() {
+        return container.getElement().getInnerText();
+    }
 
-	private native void configure(Element e) /*-{
-		$wnd.jQuery(e).alert(e);
-	}-*/;
-	
-	/**
-	 * Close this alert.
-	 */
-	public void close() {
-		close(getElement());
-	}
-	
-	private native void close(Element e)/*-{
-		$wnd.jQuery(e).alert('close');
-	}-*/;
+    /**
+     * {@inheritDoc}
+     */
+    public void setText(String text) {
+        setHTML(SafeHtmlUtils.htmlEscape(text));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public HandlerRegistration addCloseHandler(CloseHandler handler) {
-		return addHandler(handler, CloseEvent.getType());
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public String getHTML() {
+        return container.getElement().getInnerHTML();
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public HandlerRegistration addClosedHandler(ClosedHandler handler) {
-		return addHandler(handler, ClosedEvent.getType());
-	}
+    public void setHTML(String html) {
+        container.clear();
+        container.add(new HTMLPanel("span" , html));
+    }
+
+    /**
+     * Close this alert.
+     */
+    public void close() {
+        close(getElement());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        configure(getElement());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public HandlerRegistration addCloseHandler(CloseHandler handler) {
+        return addHandler(handler, CloseEvent.getType());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public HandlerRegistration addClosedHandler(ClosedHandler handler) {
+        return addHandler(handler, ClosedEvent.getType());
+    }
+    
+    //@formatter:off
+    /**
+     * Adds the Java functions that fire the Events to document. It is a
+     * convenience method to have a cleaner code later on.
+     */
+    private native void setHandlerFunctions(Element e) /*-{
+        var that = this;
+        $wnd
+                .jQuery(e)
+                .bind(
+                        'close',
+                        function() {
+                            that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
+                        });
+        $wnd
+                .jQuery(e)
+                .bind(
+                        'closed',
+                        function() {
+                            that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
+                        });
+    }-*/;
+
+    private native void configure(Element e) /*-{
+        $wnd.jQuery(e).alert(e);
+    }-*/;
+
+    private native void close(Element e)/*-{
+        $wnd.jQuery(e).alert('close');
+    }-*/;
+    //@formatter:on
+
 }

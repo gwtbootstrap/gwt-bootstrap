@@ -59,7 +59,7 @@ public class AlertBlock extends AlertBase {
 	private void setUp() {
 		super.addStyleName(Constants.ALERT_BLOCK);
 		heading.setStyleName(Constants.ALERT_HEADING);
-		add(heading);
+		getHeadingContainer().add(heading);
 	}
 
 	/**
@@ -100,6 +100,5 @@ public class AlertBlock extends AlertBase {
 	@Override
 	public void setHeading(String text) {
 		heading.setText(text);
-		super.setHeading(heading.toString());
 	}
 }
