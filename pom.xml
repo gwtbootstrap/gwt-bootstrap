@@ -145,17 +145,10 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.4.0</gwtVersion>
-        <!-- GWT needs at least java 1.5 -->
         <webappDirectory>src/main/webapp</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Right now(2012/06/02),github site-maven-plugin is not supported 
-            encrypt password. But we need it for CI server. this property is for it. 
-            If you need encrypt password in settings.xml, Add option `-Dgithub.sites.plugin.version=0.7-SNAPSHOT` 
-            to `mvn site` goal. If you need encrypt password in settings.xml for donwloads 
-            plugin, Add option `-Dgithub.downloads.plugin.version=0.6-SNAPSHOT` to `mvn 
-            site` goal. -->
-        <github.sites.plugin.version>0.6</github.sites.plugin.version>
-        <github.downloads.plugin.version>0.5</github.downloads.plugin.version>
+        <github.sites.plugin.version>0.7</github.sites.plugin.version>
+        <github.downloads.plugin.version>0.6</github.downloads.plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -265,37 +258,7 @@
                 </plugins>
             </build>
         </profile>
-        <!-- for deploy to github maven repository. if you need deploy jars 
-            to maven repository in github pages, Run `mvn -PforGithubDeploy clean deploy 
-            site -Dgithub.global.userName={username} -Dgithub.global.password={passowrd}`. -->
-        <profile>
-            <id>forGithubDeploy</id>
-            <distributionManagement>
-                <repository>
-                    <id>repo</id>
-                    <url>file:maven/release</url>
-                    <layout>default</layout>
-                </repository>
-                <snapshotRepository>
-                    <id>snapshot-repo</id>
-                    <url>file:maven/snapshots</url>
-                    <layout>default</layout>
-                </snapshotRepository>
-            </distributionManagement>
-            <build>
-                <plugins>
-                    <!-- release process is only working on profile `forGithubDeploy` -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-release-plugin</artifactId>
-                        <version>2.2.2</version>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <!-- for developers build. this profile add src/demo/java to build 
-            path. -->
+        <!-- for developers build. this profile add src/demo/java to build path. -->
         <profile>
             <id>dev</id>
             <build>
@@ -322,9 +285,9 @@
                             </modules>
                             <localWorkers>2</localWorkers>
                             <runTarget>index.html</runTarget>
-                            <webappDirectory>src/main/webapp</webappDirectory>
-                            <hostedWebapp>src/main/webapp</hostedWebapp>
-                            <webXml>${baseDir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                            <webappDirectory>${webappDirectory}</webappDirectory>
+                            <hostedWebapp>${webappDirectory}</hostedWebapp>
+                            <webXml>${baseDir}/${webappDirectory}/WEB-INF/web.xml</webXml>
                         </configuration>
                     </plugin>
 
@@ -349,8 +312,6 @@
                 </plugins>
             </build>
         </profile>
-
-
 
         <!-- for showcase build -->
         <profile>
@@ -379,9 +340,9 @@
                             </modules>
                             <localWorkers>2</localWorkers>
                             <runTarget>index.html</runTarget>
-                            <webappDirectory>src/main/webapp</webappDirectory>
-                            <hostedWebapp>src/main/webapp</hostedWebapp>
-                            <webXml>${baseDir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                            <webappDirectory>${webappDirectory}</webappDirectory>
+                            <hostedWebapp>${webappDirectory}</hostedWebapp>
+                            <webXml>${baseDir}/${webappDirectory}/WEB-INF/web.xml</webXml>
                         </configuration>
                     </plugin>
 
@@ -416,8 +377,8 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <webappDirectory>src/main/webapp</webappDirectory>
-                            <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                            <webappDirectory>${webappDirectory}</webappDirectory>
+                            <warSourceDirectory>${webappDirectory}</warSourceDirectory>
                         </configuration>
                     </plugin>
 
