@@ -152,9 +152,9 @@ public class Showcase extends Composite implements EntryPoint {
         github_buttons
                 .getElement()
                 .setInnerHTML(
-                        "<iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=watch&count=true\"\n"
+                        "<iframe src=\"http://ghbtns.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=watch&count=true\"\n"
                                 + "                                allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"110px\" height=\"20px\"></iframe>"
-                                + "<br /><iframe src=\"http://markdotto.github.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=fork&count=true\"\n"
+                                + "<br /><iframe src=\"http://ghbtns.com/github-buttons/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=fork&count=true\"\n"
                                 + "  allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"95px\" height=\"20px\"></iframe>");
 
         JavaScriptInjector
