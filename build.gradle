@@ -33,7 +33,7 @@ dependencies {
 }
 
 outputDir = "gradle-output"
-modulename = 'com.github.gwtbootstrap.Bootstrap'
+moduleName = 'com.github.gwtbootstrap.Bootstrap'
 
 /**
 GWT-compilation and create gwt-js.
@@ -51,7 +51,7 @@ task compileGWT << {
 		arg(line: '-logLevel DEBUG')    
 		arg(line: '-style PRETTY')
 
-		arg(value: modulename)
+		arg(value: moduleName)
 
 		classpath {
 			pathElement(location: 'src/main/java')
@@ -61,6 +61,13 @@ task compileGWT << {
 }
 
 
+
+testOutputDir = "gradle-test-output"
+testModuleName = 'com.github.gwtbootstrap.Bootstrap'
+
+/**
+GWT-JUnitTests-compilation and create gwt-js.
+*/
 task compileGWTTests << {
-	
+	//not yet applied!
 }
