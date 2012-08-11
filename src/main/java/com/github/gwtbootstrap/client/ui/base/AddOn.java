@@ -20,8 +20,9 @@ import com.github.gwtbootstrap.client.ui.InputAddOn;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.HasText;
-
+import com.google.gwt.user.client.ui.IsWidget;
 
 /**
  * Input add-on.
@@ -39,8 +40,12 @@ import com.google.gwt.user.client.ui.HasText;
  * 
  * <!-- icon addon -->
  * <b:AddOn icon="STAR"/>
+ * 
+ * <!-- widget addon -->
+ * <b:Addon><b:widget><b:CheckBox/></b:widget></b:AddOn>
  * }
  * </pre>
+ * 
  * </p>
  * 
  * @since 2.0.4.0
@@ -48,62 +53,78 @@ import com.google.gwt.user.client.ui.HasText;
  * @author ohashi keisuke
  * @see InputAddOn
  * @see IconType
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap Docs</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap
+ *      Docs</a>
  */
 public class AddOn extends ComplexWidget implements HasText, HasIcon {
 
-	/** text */
-	private String text;
-	
-	/** icon */
-	private Icon icon = new Icon();
+    /** text */
+    private String text;
 
-	/**
-	 * Creates an empty widget.
-	 */
-	public AddOn() {
-		super("span");
-		setStyleName(Constants.ADD_ON);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getText() {
-		return getElement().getInnerText();
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setText(String text) {
-		this.text = text;
+    /** icon */
+    private Icon icon = new Icon();
 
-		if(icon.isAttached()) {
-			icon.removeFromParent();
-		}
-		getElement().setInnerText(text);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setIcon(IconType iconType) {
-		
-		if(text != null) {
-			getElement().setInnerHTML("");
-		}
+    /**
+     * Creates an empty widget.
+     */
+    public AddOn() {
+        super("span");
+        setStyleName(Constants.ADD_ON);
+    }
 
-		icon.setType(iconType);
-		
-		if(!icon.isAttached()) {
-			add(icon);
-		}
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public String getText() {
+        return getElement().getInnerText();
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    public void setText(String text) {
+        this.text = text;
+
+        if (icon.isAttached()) {
+            icon.removeFromParent();
+        }
+        getElement().setInnerText(text);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setIcon(IconType iconType) {
+
+        if (text != null) {
+            getElement().setInnerHTML("");
+        }
+
+        icon.setType(iconType);
+
+        if (!icon.isAttached()) {
+            add(icon);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setIconSize(IconSize size) {
         icon.setIconSize(size);
+    }
+
+    /**
+     * Add widget. Its method is for uibinder syntax.
+     * 
+     * @param w
+     *            added widget
+     */
+    @UiChild(tagname = "widget", limit = 1)
+    public void addWidget(IsWidget w) {
+        add(w);
     }
 
 }

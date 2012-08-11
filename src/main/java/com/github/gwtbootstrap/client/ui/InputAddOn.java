@@ -18,7 +18,8 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
-
+import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.user.client.ui.IsWidget;
 
 /**
  * append/prepend {@link AddOn} for input tags.
@@ -27,6 +28,7 @@ import com.github.gwtbootstrap.client.ui.constants.IconType;
  * Set appendText/prependText or appendIcon/prependIcon attribute.
  * 
  * <h3>UiBinder Usage:</h3>
+ * 
  * <pre>
  * {@code
  * <!-- append text -->
@@ -61,6 +63,7 @@ import com.github.gwtbootstrap.client.ui.constants.IconType;
  * </div>
  * }
  * </pre>
+ * 
  * </p>
  * 
  * @since 2.0.4.0
@@ -71,86 +74,119 @@ import com.github.gwtbootstrap.client.ui.constants.IconType;
  */
 public class InputAddOn extends DivWidget {
 
-	/** prepend add-on */
-	private AddOn prependAddOn = new AddOn();
-	
-	/** append-add-on */
-	private AddOn appendAddOn = new AddOn();
-	
-	/** set append add-on */
-	private boolean append = false;
-	
-	/**
-	 * Creates an empty widget.
-	 */
-	public InputAddOn() {
-		super();
-	}
-	
-	/**
-	 * set prepend text
-	 * @param prependText prepend text
-	 */
-	public void setPrependText(String prependText) {
-		setPrependStyle();
-		
-		prependAddOn.setText(prependText);
-	}
+    /** prepend add-on */
+    private AddOn prependAddOn = new AddOn();
 
-	/**
-	 * set prepend icon
-	 * @param prependIcon IconType
-	 */
-	public void setPrependIcon(IconType prependIcon) {
-		setPrependStyle();
-		
-		prependAddOn.setIcon(prependIcon);
-	}
+    /** append-add-on */
+    private AddOn appendAddOn = new AddOn();
 
-	private void setPrependStyle() {
-		this.setStyleName("input-prepend", true);
-		if(!prependAddOn.isAttached()) {
-			insert(prependAddOn, 0);
-		}
-	}
-	
-	/**
-	 * set append text
-	 * @param appendText append text
-	 */
-	public void setAppendText(String appendText) {
-		setAppendStyle();
-		
-		appendAddOn.setText(appendText);
-	}
-	
-	/**
-	 * set append icon
-	 * @param appendIcon append icon
-	 */
-	public void setAppendIcon(IconType appendIcon) {
-		setAppendStyle();
-		
-		appendAddOn.setIcon(appendIcon);
-	}
+    /** set append add-on */
+    private boolean append = false;
 
-	private void setAppendStyle() {
-		this.setStyleName("input-append" , true);
-		append = true;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onLoad() {
-		
-		//if setup append add-on and it is not attached,add as last child.
-		if(append && !appendAddOn.isAttached()) {
-			add(appendAddOn);
-		}
-		
-		super.onLoad();
-	}
-	
+    /**
+     * Creates an empty widget.
+     */
+    public InputAddOn() {
+        super();
+    }
+
+    /**
+     * set prepend text
+     * 
+     * @param prependText
+     *            prepend text
+     */
+    public void setPrependText(String prependText) {
+        setPrependStyle();
+
+        prependAddOn.setText(prependText);
+    }
+
+    /**
+     * set prepend icon
+     * 
+     * @param prependIcon
+     *            IconType
+     */
+    public void setPrependIcon(IconType prependIcon) {
+        setPrependStyle();
+
+        prependAddOn.setIcon(prependIcon);
+    }
+
+    private void setPrependStyle() {
+        this.setStyleName("input-prepend", true);
+        if (!prependAddOn.isAttached()) {
+            insert(prependAddOn, 0);
+        }
+    }
+
+    /**
+     * set append text
+     * 
+     * @param appendText
+     *            append text
+     */
+    public void setAppendText(String appendText) {
+        setAppendStyle();
+
+        appendAddOn.setText(appendText);
+    }
+
+    /**
+     * set append icon
+     * 
+     * @param appendIcon
+     *            append icon
+     */
+    public void setAppendIcon(IconType appendIcon) {
+        setAppendStyle();
+
+        appendAddOn.setIcon(appendIcon);
+    }
+
+    private void setAppendStyle() {
+        this.setStyleName("input-append", true);
+        append = true;
+
+        if (isAttached() && !appendAddOn.isAttached()) {
+            add(appendAddOn);
+        }
+
+    }
+
+    /**
+     * Add prepend widget. its method is for uibinder syntax.
+     * @param w Addred widget to prepend addon.
+     */
+    @UiChild(limit = 1, tagname = "prependWidget")
+    public void addPrependWidget(IsWidget w) {
+        setPrependStyle();
+        prependAddOn.addWidget(w);
+    }
+    
+    /**
+     * Add append widget. its method is for uibinder syntax.
+     * @param w Addred widget to append addon.
+     */
+    @UiChild(limit = 1, tagname = "appendWidget")
+    public void addAppendWidget(IsWidget w) {
+        setAppendStyle();
+        appendAddOn.addWidget(w);
+    }
+    
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onLoad() {
+
+        // if setup append add-on and it is not attached,add as last child.
+        if (append && !appendAddOn.isAttached()) {
+            add(appendAddOn);
+        }
+        super.onLoad();
+    }
+
 }

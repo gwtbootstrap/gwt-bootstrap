@@ -359,5 +359,108 @@
 				</b:Form>
 			</b:Column>
 		</b:FluidRow>
+                <b:Heading size="2">
+                    Prepend and append inputs
+                </b:Heading>
+        <b:FluidRow>
+            <b:Column size="4">
+                <b:Paragraph>
+                    Input groups—with appended or prepended text—provide an easy way to give more context for your inputs.
+                    Great examples include the @ sign for Twitter usernames or $ for finances.<br/>
+                    In GWT-Bootstrap, You can use <code>&lt;b:InputAddon&gt;</code> tag.
+                    The InputAddon is helper class for append and prepend input decoration.
+                    
+                    If you need text style apprend or prepend,
+                     you can use <code>appendText</code> and <code>prependText</code> attribute.<br/>
+                    If you need icon style apprend or prepend,
+                     you can use <code>appendIcon</code> and <code>prependIcon</code> attribute.<br/>
+                    If you need widget style apprend or prepend,
+                     you can use <code>&lt;b:appendWidget&gt;</code> and <code>&lt;b:prependWidget&gt;</code> tag.<br/>
+                </b:Paragraph>
+            </b:Column>
+            <b:Column size="8">
+                <b:Form type="HORIZONTAL">
+                    <b:Fieldset>
+                        <b:Legend>Append and Prepend</b:Legend>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Icon append and prepend</b:ControlLabel>
+                            <b:Controls>
+                                <b:InputAddOn prependIcon="GOOGLE_PLUS" appendIcon="GITHUB">
+                                    <b:TextBox/>
+                                </b:InputAddOn>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Text append and prepend</b:ControlLabel>
+                            <b:Controls>
+                                <b:InputAddOn prependText="$" appendText=".00">
+                                    <b:TextBox/>
+                                </b:InputAddOn>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Widget append and prepend</b:ControlLabel>
+                            <b:Controls>
+                                <b:InputAddOn>
+                                    <b:prependWidget>
+                                        <b:CheckBox/>
+                                    </b:prependWidget>
+                                    <b:Button>Help</b:Button>
+                                    <b:TextBox/>
+                                    <b:appendWidget>
+                                        <b:CheckBox/>
+                                    </b:appendWidget>
+                                    <b:Button>Send</b:Button>
+                                </b:InputAddOn>
+                            </b:Controls>
+                        </b:ControlGroup>
+                    </b:Fieldset>
+                </b:Form>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+            <b:Column size="12">
+            <b:Heading size="4">Exsample markup</b:Heading>
+<g:HTMLPanel>
+<pre class="prettyprint linenums">
+&lt;b:Form type="HORIZONTAL"&gt;
+    &lt;b:Fieldset&gt;
+        &lt;b:Legend&gt;Append and Prepend&lt;/b:Legend&gt;
+        &lt;b:ControlGroup&gt;
+            &lt;b:ControlLabel&gt;Icon append and prepend&lt;/b:ControlLabel&gt;
+            &lt;b:Controls&gt;
+                &lt;b:InputAddOn prependIcon="GOOGLE_PLUS" appendIcon="GITHUB"&gt;
+                    &lt;b:TextBox/&gt;
+                &lt;/b:InputAddOn&gt;
+            &lt;/b:Controls&gt;
+        &lt;/b:ControlGroup&gt;
+        &lt;b:ControlGroup&gt;
+            &lt;b:ControlLabel&gt;Text append and prepend&lt;/b:ControlLabel&gt;
+            &lt;b:Controls&gt;
+                &lt;b:InputAddOn prependText="$" appendText=".00"&gt;
+                    &lt;b:TextBox/&gt;
+                &lt;/b:InputAddOn&gt;
+            &lt;/b:Controls&gt;
+        &lt;/b:ControlGroup&gt;
+        &lt;b:ControlGroup&gt;
+            &lt;b:ControlLabel&gt;Widget append and prepend&lt;/b:ControlLabel&gt;
+            &lt;b:Controls&gt;
+                &lt;b:InputAddOn&gt;
+                    &lt;b:prependWidget&gt;
+                        &lt;b:CheckBox/&gt;
+                    &lt;/b:prependWidget&gt;
+                    &lt;b:Button&gt;Help&lt;/b:Button&gt;
+                    &lt;b:TextBox/&gt;
+                    &lt;b:appendWidget&gt;
+                        &lt;b:CheckBox/&gt;
+                    &lt;/b:appendWidget&gt;
+                    &lt;b:Button&gt;Send&lt;/b:Button&gt;
+                &lt;/b:InputAddOn&gt;
+            &lt;/b:Controls&gt;
+        &lt;/b:ControlGroup&gt;
+    &lt;/b:Fieldset&gt;
+&lt;/b:Form&gt;</pre></g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
 	</g:HTMLPanel>
 </ui:UiBinder>
