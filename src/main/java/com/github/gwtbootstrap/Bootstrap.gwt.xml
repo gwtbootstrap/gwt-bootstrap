@@ -18,6 +18,7 @@
 -->
 <module rename-to='bootstrap'>
   <inherits name='com.google.gwt.user.User' />
+  <inherits name='com.google.gwt.query.Query'/>
   <inherits name="com.github.gwtbootstrap.Configurator"/>
   <inherits name="com.github.gwtbootstrap.client.ui.Resources"/>
   <entry-point class='com.github.gwtbootstrap.client.Bootstrap' />

@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 package com.github.gwtbootstrap.client.ui;
+import static com.github.gwtbootstrap.client.ui.plugin.Button.*;
 
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
@@ -23,7 +24,6 @@ import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -108,6 +108,8 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * @author Carlos Alexandro Becker
  *
  * @author Dominik Mayer
+ * 
+ * @author ohashi keisuke
  *
  * @see <a
  *      href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap
@@ -127,6 +129,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	private final LoadingStateBehavior state = new LoadingStateBehavior();
     private ButtonType type;
     private ButtonSize size;
+    private com.github.gwtbootstrap.client.ui.plugin.Button.Option option = new com.github.gwtbootstrap.client.ui.plugin.Button.Option();
 
 	/**
 	 * Creates an empty Button.
@@ -134,6 +137,13 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	public Button() {
 		super();
 		addStyleName(Constants.BTN);
+		$().as(Button).initializeButton();
+	}
+	
+	@Override
+	protected void onLoad() {
+	    $(getElement()).as(Button).button(option);
+	    super.onLoad();
 	}
 
 	/**
@@ -287,12 +297,13 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 * @param text
 	 */
 	public void setLoadingText(String text) {
+	    
 		if (text == null || text.trim().isEmpty()) {
-			getElement().removeAttribute(Constants.DATA_LOADING_TEXT);
-			return;
+		    option.addStateText("loading", "loading...");
+		    return;
 		}
-
-		getElement().setAttribute(Constants.DATA_LOADING_TEXT, text);
+		
+		option.addStateText("loading", text);
 	}
 
 	/**
@@ -304,11 +315,16 @@ public class Button extends IconAnchor implements HasClickHandlers,
 	 */
 	public void setCompleteText(String text) {
 		if (text == null || text.trim().isEmpty()) {
-			getElement().removeAttribute(Constants.DATA_COMPLETE_TEXT);
+		    option.removeStateText("complete");
 			return;
 		}
 
-		getElement().setAttribute(Constants.DATA_COMPLETE_TEXT, text);
+		option.addStateText("complete", text);
+	}
+	
+	public Button addStateText(String state, String text) {
+	    option.addStateText(state, text);
+	    return this;
 	}
 
 	/**
@@ -332,30 +348,22 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		 * put the button in the loading state.
 		 */
 		public void loading() {
-			setLoadingBehavior("loading");
+			$(getElement()).as(Button).button("loading");
 		}
 
 		/**
 		 * reset the button state.
 		 */
 		public void reset() {
-			setLoadingBehavior("reset");
+            $(getElement()).as(Button).button("reset");
 		}
 
 		/**
 		 * put the button in the completed state.
 		 */
 		public void complete() {
-			setLoadingBehavior("complete");
+            $(getElement()).as(Button).button("complete");
 		}
-
-		private void setLoadingBehavior(String behavior) {
-			setLoadingBehavior(getElement(), behavior);
-		}
-
-		private native void setLoadingBehavior(Element e, String behavior) /*-{
-			$wnd.jQuery(e).button(behavior);
-		}-*/;
 	}
 
 	/**
