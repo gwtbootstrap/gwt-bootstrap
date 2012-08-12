@@ -47,3 +47,10 @@ maven
 
 .idea/
 *.iml
+.DS_Store
+
+.gradle/*
+
+build/*
+
+gradle-output/*
