@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.gargoylesoftware.htmlunit.javascript.host.Event;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.query.client.Function;
