@@ -1,6 +1,8 @@
 # [GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Build Status on Jenkins](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/) [![Build Status on Travis-CI](https://secure.travis-ci.org/caarlos0/gwt-bootstrap.png?branch=master)](http://travis-ci.org/caarlos0/gwt-bootstrap)
 
 =================
+# GWT-Bootstrap 2.0.4.0 was released.
+=================
 
 Based on [Bootstrap, from Twitter.](http://twitter.github.com/bootstrap/index.html), GWT-Bootstrap
 Bootstrap provides simple and flexible components representing Twitter's bootstrap components, styles,
