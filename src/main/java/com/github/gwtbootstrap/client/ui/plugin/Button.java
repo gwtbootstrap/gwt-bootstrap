@@ -3,7 +3,6 @@ package com.github.gwtbootstrap.client.ui.plugin;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Event;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
@@ -11,6 +10,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.GQuery;
 import com.google.gwt.query.client.plugins.Plugin;
+import com.google.gwt.user.client.Event;
 
 /**
  * The Button plugin
@@ -193,7 +193,7 @@ public class Button extends GQuery {
             return this;
         }
         
-        $("body").bind(Event.CLICK, "[data-toggle^=button]", new Function(){
+        $("body").bind(Event.ONCLICK, "[data-toggle^=button]", new Function(){
             @Override
             public boolean f(com.google.gwt.user.client.Event e) {
                 Button elem = $(e.getEventTarget()).as(Button);
