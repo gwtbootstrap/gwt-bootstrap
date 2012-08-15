@@ -31,6 +31,8 @@ public class CloseEvent extends GwtEvent<CloseHandler> {
 
 	private static final Type<CloseHandler> TYPE = new Type<CloseHandler>();
 
+	private boolean cansel;
+	
 	public static Type<CloseHandler> getType() {
 		return TYPE;
 	}
@@ -47,5 +49,15 @@ public class CloseEvent extends GwtEvent<CloseHandler> {
 	protected void dispatch(CloseHandler handler) {
 		handler.onClose(this);
 	}
+	
+	public void cancel() {
+	    cansel = true;
+	}
+	
+	public boolean isCanceled() {
+	    return cansel;
+	}
+	
+	
 
 }

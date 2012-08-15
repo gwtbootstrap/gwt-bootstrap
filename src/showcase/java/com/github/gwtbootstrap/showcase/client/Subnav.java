@@ -19,7 +19,6 @@ import com.github.gwtbootstrap.client.ui.NavPills;
 import com.github.gwtbootstrap.client.ui.Scrollspy;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasId;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
@@ -34,23 +33,21 @@ public class Subnav extends DivWidget implements HasId {
     private Scrollspy spy;
     private boolean isFixed;
     int navtop;
+
     public Subnav() {
         super("subnav");
         super.add(container);
         setId(DOM.createUniqueId());
-        
+
         Window.addWindowScrollHandler(new ScrollHandler() {
-            
+
             @Override
             public void onWindowScroll(ScrollEvent event) {
                 int scrollTop = Window.getScrollTop();
-                GWT.log(navtop + "");
-                GWT.log(scrollTop + "");
-                if(scrollTop >= navtop && !isFixed) {
-                    GWT.log("apply");
+                if (scrollTop >= navtop && !isFixed) {
                     isFixed = true;
                     Subnav.this.addStyleName("subnav-fixed");
-                } else if(scrollTop <= navtop && isFixed) {
+                } else if (scrollTop <= navtop && isFixed) {
                     isFixed = false;
                     Subnav.this.removeStyleName("subnav-fixed");
                 }
@@ -117,14 +114,15 @@ public class Subnav extends DivWidget implements HasId {
         if (scrollspy) {
             spy.configure();
         }
-        
+
         navtop = this.getOffsetTop(getElement()) - 88;
         // TODO make a unconfigure feature.
     }
-    
+
     private native int getOffsetTop(Element e) /*-{
-        return $wnd.jQuery(e).offset().top;
-    }-*/;
+                                               return $wnd.jQuery(e).offset().top;
+                                               }-*/;
+
     @Override
     public void add(Widget w) {
         container.add(w);

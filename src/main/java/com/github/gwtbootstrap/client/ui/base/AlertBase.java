@@ -15,6 +15,9 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import static com.github.gwtbootstrap.client.ui.plugin.Alert.*;
+import static com.google.gwt.query.client.GQuery.*;
+
 import com.github.gwtbootstrap.client.ui.Close;
 import com.github.gwtbootstrap.client.ui.constants.AlertType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
@@ -24,8 +27,8 @@ import com.github.gwtbootstrap.client.ui.event.CloseHandler;
 import com.github.gwtbootstrap.client.ui.event.ClosedEvent;
 import com.github.gwtbootstrap.client.ui.event.ClosedHandler;
 import com.github.gwtbootstrap.client.ui.event.HasCloseHandlers;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -57,6 +60,8 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
 
     private boolean hasClose;
 
+    private SimpleEventBus eventBus;
+
     /**
      * Initializes an Alert with a close icon.
      */
@@ -81,14 +86,15 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
      */
     public AlertBase(String html, boolean hasClose) {
         super("div", "");
-
+        $().as(Alert).initialize();
+        
         super.add(closeReplacement);
         super.add(headingContainer);
         container = new HTMLPanel("span",html);
         super.add(container);
         super.setStyleName(Constants.ALERT);
         setClose(hasClose);
-        setHandlerFunctions(getElement());
+        eventBus = new SimpleEventBus();
     }
 
     /**
@@ -157,21 +163,6 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     }
 
     /**
-     * This method is called immediately when the widget's close method is
-     * executed.
-     */
-    protected void onClose() {
-        fireEvent(new CloseEvent());
-    }
-
-    /**
-     * This method is called once the widget is completely closed.
-     */
-    protected void onClosed() {
-        fireEvent(new ClosedEvent());
-    }
-
-    /**
      * Sets the type of the Alert.
      * 
      * @param type
@@ -225,10 +216,10 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
      */
     private void setFade() {
         if (fade) {
-            addStyleName("fade");
+            addStyleName(Constants.FADE);
             addStyleName("in");
         } else {
-            removeStyleName("fade");
+            removeStyleName(Constants.FADE);
             removeStyleName("in");
         }
     }
@@ -263,7 +254,7 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
      * Close this alert.
      */
     public void close() {
-        close(getElement());
+        $(getElement()).as(Alert).close();
     }
 
     /**
@@ -272,53 +263,20 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     @Override
     protected void onLoad() {
         super.onLoad();
-        configure(getElement());
+        $(getElement()).as(Alert).alert(eventBus);
     }
 
     /**
      * {@inheritDoc}
      */
     public HandlerRegistration addCloseHandler(CloseHandler handler) {
-        return addHandler(handler, CloseEvent.getType());
+        return eventBus.addHandlerToSource(CloseEvent.getType(),getElement(), handler);
     }
 
     /**
      * {@inheritDoc}
      */
     public HandlerRegistration addClosedHandler(ClosedHandler handler) {
-        return addHandler(handler, ClosedEvent.getType());
+        return eventBus.addHandlerToSource(ClosedEvent.getType(),getElement(), handler);
     }
-    
-    //@formatter:off
-    /**
-     * Adds the Java functions that fire the Events to document. It is a
-     * convenience method to have a cleaner code later on.
-     */
-    private native void setHandlerFunctions(Element e) /*-{
-        var that = this;
-        $wnd
-                .jQuery(e)
-                .bind(
-                        'close',
-                        function() {
-                            that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
-                        });
-        $wnd
-                .jQuery(e)
-                .bind(
-                        'closed',
-                        function() {
-                            that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
-                        });
-    }-*/;
-
-    private native void configure(Element e) /*-{
-        $wnd.jQuery(e).alert(e);
-    }-*/;
-
-    private native void close(Element e)/*-{
-        $wnd.jQuery(e).alert('close');
-    }-*/;
-    //@formatter:on
-
 }
