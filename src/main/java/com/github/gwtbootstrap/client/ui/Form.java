@@ -29,6 +29,7 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.impl.FormPanelImpl;
 import com.google.gwt.user.client.ui.impl.FormPanelImplHost;
@@ -354,7 +355,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 
 	/**
 	 * Sets the encoding used for submitting this form. This should be either
-	 * {@link #ENCODING_MULTIPART} or {@link #ENCODING_URLENCODED}.
+	 * {@link FormPanel#ENCODING_MULTIPART} or {@link FormPanel#ENCODING_URLENCODED}.
 	 * 
 	 * @param encodingType
 	 *            the form's encoding
@@ -365,7 +366,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 
 	/**
 	 * Sets the HTTP method used for submitting this form. This should be either
-	 * {@link #METHOD_GET} or {@link #METHOD_POST}.
+	 * {@link FormPanel#METHOD_GET} or {@link FormPanel#METHOD_POST}.
 	 * 
 	 * @param method
 	 *            the form's method
