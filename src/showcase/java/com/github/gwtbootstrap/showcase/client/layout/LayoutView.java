@@ -47,7 +47,7 @@ public class LayoutView extends Composite {
         initWidget(uiBinder.createAndBindUi(this));
         clientFactory.getSubnav().clear();
         addWidget("Grid System", "gridSystem", new GridSystem());
-        addWidget("Responsicve Utilities", "responsiveUtilities", new ResponsiveUtilityView());
+        addWidget("Responsive Utilities", "responsiveUtilities", new ResponsiveUtilityView());
         clientFactory.getSubnav().getSpy().configure();
 	}
 

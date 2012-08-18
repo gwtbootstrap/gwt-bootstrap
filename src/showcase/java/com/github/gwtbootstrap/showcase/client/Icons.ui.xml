@@ -20,7 +20,7 @@
                     The sintax is pretty simple:
 
                     <pre class="prettyprint linenums">
-&lt;b:Icon type="ASTERISK" iconsSize="LARGE" /&gt;</pre>
+&lt;b:Icon type="ASTERISK" iconSize="LARGE" /&gt;</pre>
 
                     You can use any Font Awesome Icon (more than 200
                     icons avaliable). See the complete list bellow.

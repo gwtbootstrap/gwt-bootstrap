@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.Trigger;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -40,7 +40,7 @@ import com.google.gwt.user.client.ui.Widget;
 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap documentation</a>
 */
 //@formatter:on
-public abstract class HoverBase extends ComplexWidget implements HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
+public abstract class HoverBase implements IsWidget, HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
 
 	Widget widget;
 
@@ -73,19 +73,32 @@ public abstract class HoverBase extends ComplexWidget implements HasWidgets, Has
 	 * Creates a new widget based on the provided HTML tag.
 	 */
 	public HoverBase() {
-		super("span");
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onLoad() {
-		super.onLoad();
+	public Widget asWidget() {
 		
-		removeDataIfExists();
+	    if(getWidget() != null) {
+    		removeDataIfExists();
+    		
+    		reconfigure();
 		
-		reconfigure();
+		    getWidget().addAttachHandler(new AttachEvent.Handler() {
+		        
+		        @Override
+		        public void onAttachOrDetach(AttachEvent event) {
+		            if (!event.isAttached()) {
+		                changeVisibility(VisibilityChange.HIDE);
+		            }
+		        }
+		    });
+		}
+		
+		return getWidget();
+
 	}
 	
 	protected void removeDataIfExists() {
@@ -118,17 +131,6 @@ public abstract class HoverBase extends ComplexWidget implements HasWidgets, Has
 	 */
 	protected void setDataAttribute(Element e , String attribute, String value) {
 		e.setAttribute("data-" + attribute, value);
-	}
-
-	/**
-	 * Returns the data stored in one of the widget's HTML data attributes.
-	 * 
-	 * @param attribute
-	 *            the name of the attribute without leading <code>"data-"</code>
-	 * @return the value stored in the tag
-	 */
-	protected String getDataAttribute(String attribute) {
-		return getElement().getAttribute("data-" + attribute);
 	}
 
 	/**
@@ -297,21 +299,13 @@ public abstract class HoverBase extends ComplexWidget implements HasWidgets, Has
 			return false;
 		}
 
-		// Orphan.
-		try {
-			orphan(w);
-		} finally {
-			// Physical detach.
-			getContainerElement().removeChild(w.getElement());
-
-			// Logical detach.
-			widget = null;
-		}
+		// Logical detach.
+		widget = null;
 		return true;
 	}
 
 	public void setWidget(IsWidget w) {
-		setWidget(asWidgetOrNull(w));
+		setWidget(w == null ? null : w.asWidget());
 	}
 	
 	/**
@@ -327,50 +321,14 @@ public abstract class HoverBase extends ComplexWidget implements HasWidgets, Has
 			return;
 		}
 		
-		if(w.getParent() != null) {
-			if(widget != null) {
-				remove(widget);
-			}
-			widget = w;
-			return;
-		}
-
-		// Detach new child.
-		if (w != null) {
-			w.removeFromParent();
-		}
-
-		// Remove old child.
-		if (widget != null) {
-			remove(widget);
-		}
-
-		// Logical attach.
 		widget = w;
-
-		if (w != null) {
-			// Physical attach.
-			DOM.appendChild(getContainerElement(), widget.getElement());
-
-			adopt(widget);
-		}
-	}
-
-	/**
-	 * Override this method to specify that an element other than the root
-	 * element be the container for the panel's child widget. This can be useful
-	 * when you want to create a simple panel that decorates its contents.
-	 * 
-	 * Note that this method continues to return the
-	 * {@link com.google.gwt.user.client.Element} class defined in the
-	 * <code>User</code> module to maintain backwards compatibility.
-	 * 
-	 * @return the element to be used as the panel's container
-	 */
-	protected com.google.gwt.user.client.Element getContainerElement() {
-		return getElement();
 	}
 	
+	@Override
+	public void clear() {
+	    widget = null;
+	}
+
 	/**
 	 * Get data name of JS Data API.
 	 * @return data name

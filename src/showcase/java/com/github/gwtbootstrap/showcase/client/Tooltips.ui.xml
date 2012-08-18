@@ -1,109 +1,247 @@
 <!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version 
-	2.0 (the "License"); you may not use this file except in compliance with 
-	the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
-	Unless required by applicable law or agreed to in writing, software distributed 
-	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-	the specific language governing permissions and limitations under the License. -->
+    2.0 (the "License"); you may not use this file except in compliance with 
+    the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+    Unless required by applicable law or agreed to in writing, software distributed 
+    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+    OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+    the specific language governing permissions and limitations under the License. -->
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
-	xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
-	<g:HTMLPanel>
-		<b:PageHeader subtext="have fun with tooltips.">Tooltips</b:PageHeader>
-		<b:FluidRow>
-			<b:Column size="12">
-				<b:Well>
-					<g:HTMLPanel>
-						Tight pants next level keffiyeh
-						<b:Tooltip text='first tooltip'>
-							<bs:IconAnchor href="#">you probably</bs:IconAnchor>
-						</b:Tooltip>
-						haven't heard of them. Photo booth beard raw denim
-						letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's
-						fixie sustainable
-						quinoa 8-bit american apparel
-						<b:Tooltip text='another tooltip'>
-							<bs:IconAnchor href="#">have a</bs:IconAnchor>
-						</b:Tooltip>
-						terry richardson vinyl chambray. Beard stumptown, cardigans
-						banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko
-						mcsweeney's cleanse vegan
-						chambray. A really ironic artisan
-						<b:Tooltip text='Another one here too'>
-							<bs:IconAnchor href="#">whatever keytar</bs:IconAnchor>
-						</b:Tooltip>
-						, scenester
-						farm-to-table banksy Austin
-						<b:Tooltip text='The last tip'>
-							<bs:IconAnchor href="#">twitter handle</bs:IconAnchor>
-						</b:Tooltip>
-						freegan cred raw denim single-origin coffee viral.
-					</g:HTMLPanel>
-				</b:Well>
-				<g:HTMLPanel>
-					<pre class="prettyprint linenums">
+    xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+    xmlns:bs="urn:import:com.github.gwtbootstrap.client.ui.base">
+    <g:HTMLPanel>
+        <b:PageHeader subtext="have fun with tooltips.">Tooltips</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="2">Example</b:Heading>
+                <b:Well>
+                    <b:Paragraph>
+                        Tight pants next level keffiyeh
+                        <b:Tooltip text='first tooltip'>
+                            <bs:IconAnchor href="#">you probably</bs:IconAnchor>
+                        </b:Tooltip>
+                        haven't heard of them. Photo booth beard raw denim
+                        letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's
+                        fixie sustainable
+                        quinoa 8-bit american apparel
+                        <b:Tooltip text='another tooltip'>
+                            <bs:IconAnchor href="#">have a</bs:IconAnchor>
+                        </b:Tooltip>
+                        terry richardson vinyl chambray. Beard stumptown, cardigans
+                        banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko
+                        mcsweeney's cleanse vegan
+                        chambray. A really ironic artisan
+                        <b:Tooltip text='Another one here too'>
+                            <bs:IconAnchor href="#">whatever keytar</bs:IconAnchor>
+                        </b:Tooltip>
+                        , scenester
+                        farm-to-table banksy Austin
+                        <b:Tooltip text='The last tip'>
+                            <bs:IconAnchor href="#">twitter handle</bs:IconAnchor>
+                        </b:Tooltip>
+                        freegan cred raw denim single-origin coffee viral.
+                    </b:Paragraph>
+                </b:Well>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="2">Syntax</b:Heading>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
 &lt;b:Tooltip text='another tooltip'&gt;&lt;bs:IconAnchor href='#'&gt;&lt;have a&lt;/bs:IconAnchor&gt;</pre>
-			</g:HTMLPanel>
-			</b:Column>
-			<b:Column size="12">
-				<g:HTMLPanel>
-					You can also made tooltips look like
-					<br />
-					<b:Tooltip text="Show a tooltip on mouse over button. :)">
-						<b:Button type="INFO">Buttons</b:Button>
-					</b:Tooltip>
-					<br />
-					<b:Tooltip text="Show a tooltip on Textbox get focus :)"
-						trigger="FOCUS">
-						<b:TextBox />
-					</b:Tooltip>
-					<b:Tooltip text="Show a tooltip on clic button"
-						trigger="MANUAL">
-						<b:Button type="INFO" ui:field="button">Click me!</b:Button>
-					</b:Tooltip>
-					<pre class="prettyprint linenums">
-&lt;b:Tooltip text='another tooltip'&gt;&lt;b:Button type="INFO"&gt;Buttons&lt;/b:Button&gt;&lt;/b:Tooltip&gt;
-&lt;b:Tooltip text='another tooltip' trigger="FOCUS"&gt;&lt;b:TextBox/&gt;&lt;/b:Tooltip&gt;
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+            <b:Heading size="2">Tooltip Styles</b:Heading>
+            <b:Column size="12">
+                    <b:Paragraph>
+                    You can also made tooltips look like below.
+                    </b:Paragraph>
+                    <g:HTMLPanel tag="table" addStyleNames="table table-bordered table-striped table-condensed">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Button on Mouse Over
+                                </td>
+                                <td>
+                                    <b:Tooltip text="Show a tooltip on mouse over button. :)">
+                                        <b:Button type="INFO">Buttons</b:Button>
+                                    </b:Tooltip>
+                                </td>
+                                <td>
+                                    <pre class="prettyprint linenums">&lt;b:Tooltip text='another tooltip'&gt;&lt;b:Button type="INFO"&gt;Buttons&lt;/b:Button&gt;&lt;/b:Tooltip&gt;</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    TextBox on Focus
+                                </td>
+                                <td>
+                                    <b:Tooltip text="Show a tooltip on Textbox get focus :)"
+                                        trigger="FOCUS">
+                                        <b:TextBox />
+                                    </b:Tooltip>
+                                </td>
+                                <td>
+                                    <pre class="prettyprint linenums">
+&lt;b:Tooltip text='another tooltip' trigger="FOCUS"&gt;&lt;b:TextBox/&gt;&lt;/b:Tooltip&gt;</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Button on Click
+                                </td>
+                                <td>
+                                    <b:Tooltip text="Show a tooltip on clic button"
+                                        trigger="MANUAL">
+                                        <b:Button type="INFO" ui:field="button">Click me!</b:Button>
+                                    </b:Tooltip>
+                                </td>
+                                <td>
+                                    <pre class="prettyprint linenums">
 &lt;b:Tooltip text='another tooltip' trigger="MANUAL"&gt;&lt;b:Button type="INFO"&gt;Click me!&lt;/b:Button&gt;&lt;/b:Tooltip&gt;</pre>
-					<b:AlertBlock type="INFO" heading="Manual tooltip">
-					<p>
-					If you want to show tooltip on your need time,<br/>
-					You should set MANUAL to Tooltip's trigger attribute and call <code>Tooltip#changeVisibility</code> static method like below.</p>
-					<pre class="prettyprint linenums">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    With Dropdown menu
+                                </td>
+                                <td>
+                                    <b:Tooltip text="Show a tooltip on clic button"
+                                        trigger="MANUAL">
+                                        <b:DropdownButton text="Tooltip Button">
+                                            <b:Tooltip text="Say foo!" placement="RIGHT">
+                                                <b:NavLink>foo</b:NavLink>
+                                            </b:Tooltip>
+                                            <b:Tooltip text="Say bar!" placement="RIGHT">
+                                                <b:NavLink>bar</b:NavLink>
+                                            </b:Tooltip>
+                                            <b:Tooltip text="Say divider!" placement="RIGHT">
+                                                <b:Divider/>
+                                            </b:Tooltip>
+                                            <b:Tooltip text="Say text!" placement="RIGHT">
+                                                <b:NavText>text</b:NavText>
+                                            </b:Tooltip>
+                                        </b:DropdownButton>
+                                    </b:Tooltip>
+                                </td>
+                                <td>
+                                    <pre class="prettyprint linenums">
+&lt;b:DropdownButton text="Tooltip Button"&gt;
+    &lt;b:Tooltip text="Say foo!" placement="RIGHT"&gt;
+        &lt;b:NavLink&gt;foo&lt;/b:NavLink&gt;
+    &lt;/b:Tooltip&gt;
+    &lt;b:Tooltip text="Say bar!" placement="RIGHT"&gt;
+        &lt;b:NavLink&gt;bar&lt;/b:NavLink&gt;
+    &lt;/b:Tooltip&gt;
+    &lt;b:Tooltip text="Say divider!" placement="RIGHT"&gt;
+        &lt;b:Divider/&gt;
+    &lt;/b:Tooltip&gt;
+    &lt;b:Tooltip text="Say text!" placement="RIGHT"&gt;
+        &lt;b:NavText&gt;text&lt;/b:NavText&gt;
+    &lt;/b:Tooltip&gt;
+&lt;/b:DropdownButton&gt;</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    With ButtonToolBar Buttons
+                                </td>
+                                <td>
+                                    <b:ButtonToolbar>
+                                    <b:ButtonGroup>
+                                        <b:Tooltip text="one">
+                                            <b:Button>1</b:Button>
+                                        </b:Tooltip>
+                                        <b:Tooltip text="two">
+                                            <b:Button>2</b:Button>
+                                        </b:Tooltip>
+                                    </b:ButtonGroup>
+                                    </b:ButtonToolbar>
+                                </td>
+                                <td>
+                                    <pre class="prettyprint linenums">
+&lt;b:ButtonToolbar&gt;
+    &lt;b:ButtonGroup&gt;
+        &lt;b:Tooltip text="one"&gt;
+            &lt;b:Button&gt;1&lt;/b:Button&gt;
+        &lt;/b:Tooltip&gt;
+        &lt;b:Tooltip text="two"&gt;
+            &lt;b:Button&gt;2&lt;/b:Button&gt;
+        &lt;/b:Tooltip&gt;
+    &lt;/b:ButtonGroup&gt;
+&lt;/b:ButtonToolbar&gt;</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b:Label type="SUCCESS">Infomation</b:Label>
+                                </td>
+                                <td>
+                                    <b:Tooltip text="If Click me, I'm deleted!">
+                                        <b:Button ui:field="deletedButton">Try</b:Button>
+                                    </b:Tooltip>
+                                </td>
+                                <td>
+                                    <b:Paragraph>
+                                    We change <code>Tooltip</code> beheivior from Twitter Bootstrap.<br/>
+                                    If <code>Tooltip</code> target element is removed, <code>Tooltip</code> hide.
+                                    </b:Paragraph>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+        <b:Heading size="2">Other Informations</b:Heading>
+        <b:FluidRow>
+            <b:Column size="12">
+                <b:Heading size="3">Manual Tooltip</b:Heading>
+                <b:AlertBlock type="INFO" heading="Manual tooltip">
+                <b:Paragraph>
+                    If you want to show tooltip on your need time,<br/>
+                    You should set MANUAL to Tooltip's trigger attribute and call <code>Tooltip#changeVisibility</code> static method like below.
+                    </b:Paragraph>
+                    <pre class="prettyprint linenums">
 @UiHandler("button")
 public void onClickButton(ClickEvent e) {
     Tooltip.changeVisibility(e.getRelativeElement(), VisibilityChange.TOGGLE.get());
 }</pre>
-					</b:AlertBlock>
-					<p>
-					If you want to apply tooltip on your code,Create <code>Tooltip</code> instance ,Call <code>Tooltip#setWidget</code> ,Set setting by setters and Call <code>Tooltip#reconfigure</code>.<br/>
-					<strong>For example</strong>,<code>DropdownButton</code> can not add <code>Tooltip</code> as a child.If you need apply <code>Tooltip</code> to DropdownButton children,you should write like below.
-					</p>
-					<b:DropdownButton text="Tooltip Button">
-						<b:NavLink ui:field="fooNavlink">foo</b:NavLink>
-						<b:NavLink ui:field="barNavlink">bar</b:NavLink>
-						<b:Divider ui:field="divider"/>
-						<b:NavText ui:field="navText">text</b:NavText>
-					</b:DropdownButton>
-					<b:Label>*.ui.xml</b:Label>
-					<pre class="prettyprint linenums">
+                    </b:AlertBlock>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+            <b:Column size="12">
+                <b:Heading size="3">Tooltip on The Code</b:Heading>
+                <b:Paragraph>
+                If you want to apply tooltip on your code,Create <code>Tooltip</code> instance ,Call <code>Tooltip#setWidget</code> ,Set setting by setters and Call <code>Tooltip#reconfigure</code>.<br/>
+                </b:Paragraph>
+                <b:DropdownButton text="Tooltip Button">
+                      <b:NavLink ui:field="fooNavlink">Click me</b:NavLink>
+                      <b:NavLink ui:field="barNavlink">bar</b:NavLink>
+                      <b:Divider ui:field="divider"/>
+                      <b:NavText ui:field="navText">text</b:NavText>
+                </b:DropdownButton>
+                <b:Label>*.ui.xml</b:Label>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
 &lt;b:DropdownButton text="Tooltip Button"&gt;
-	&lt;b:NavLink ui:field="fooNavlink"&gt;foo&lt;/b:NavLink&gt;
-	&lt;b:NavLink ui:field="barNavlink"&gt;bar&lt;/b:NavLink&gt;
-	&lt;b:Divider ui:field="divider"/&gt;
-	&lt;b:NavText ui:field="navText"&gt;text&lt;/b:NavText&gt;
+    &lt;b:NavLink ui:field="fooNavlink"&gt;foo&lt;/b:NavLink&gt;
+    &lt;b:NavLink ui:field="barNavlink"&gt;bar&lt;/b:NavLink&gt;
+    &lt;b:Divider ui:field="divider"/&gt;
+    &lt;b:NavText ui:field="navText"&gt;text&lt;/b:NavText&gt;
 &lt;/b:DropdownButton&gt;</pre>
-					<b:Label>*.java</b:Label>
-					<pre class="prettyprint linenums">
+                </g:HTMLPanel>
+                <b:Label>*.java</b:Label>
+                <g:HTMLPanel>
+                <pre class="prettyprint linenums">
 private void setupTooltip(Widget w, String message) {
-	Tooltip tooltip = new Tooltip();
-	tooltip.setWidget(w);
-	tooltip.setText(message);
-	tooltip.setPlacement(Placement.RIGHT);
-	tooltip.reconfigure();
-}</pre>
-				</g:HTMLPanel>
-			</b:Column>
-		</b:FluidRow>
-	</g:HTMLPanel>
+    Tooltip tooltip = new Tooltip();
+    tooltip.setWidget(w);
+    tooltip.setText(message);
+    tooltip.setPlacement(Placement.RIGHT);
+    tooltip.reconfigure();
+}</pre></g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+    </g:HTMLPanel>
 </ui:UiBinder>
