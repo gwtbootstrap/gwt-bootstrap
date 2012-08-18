@@ -52,6 +52,8 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 
 	private NavLinkClickHandler handler = new NavLinkClickHandler();
 
+    private boolean dropup;
+
 	/**
 	 * Creates a new widget of the given type.
 	 * 
@@ -87,7 +89,23 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 	public String getText() {
 		return trigger.getText();
 	}
+	
+    /**
+     * Get trigger wiget
+     * @return trigger wiget
+     */
+    public IconAnchor getTriggerWidget() {
+        return trigger;
+    }
 
+    
+    /**
+     * Get menu unordered list widget
+     * @return menu
+     */
+    public UnorderedList getMenuWiget() {
+        return menu;
+    }
 	/**
 	 * Implement this method to create the trigger appropriate for your widget.
 	 * It has to be an {@link IconAnchor} or a subtype.
@@ -103,10 +121,21 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 	 *            true:Set Dropup false:Un-set Dropup
 	 */
 	public void setDropup(boolean dropup) {
+	    
+	    this.dropup = dropup;
+	    
 		if (dropup)
 			addStyleName(Constants.DROPUP);
 		else
 			removeStyleName(Constants.DROPUP);
+	}
+	
+	/**
+	 * Is widget dropup?
+	 * @return true:Dropup false:Dropdown
+	 */
+	public boolean isDropup() {
+	    return this.dropup;
 	}
 
 	/**
@@ -153,7 +182,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 	protected void addWidget(Widget widget) {
 		super.add(widget);
 	}
-
+	
 	private native void configure(Element e) /*-{
 		$wnd.jQuery(e).dropdown();
 	}-*/;

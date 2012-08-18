@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.ToggleType;
 import com.google.gwt.user.client.ui.Widget;
@@ -53,6 +54,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  * 
  * @author Carlos Alexandro Becker
+ * @author ohashi keisuke
  * 
  * @see <a
  *      href="http://twitter.github.com/bootstrap/components.html#buttonGroups">Bootstrap
@@ -63,66 +65,88 @@ import com.google.gwt.user.client.ui.Widget;
 // @formatter:on
 public class ButtonGroup extends DivWidget {
 
-	/**
-	 * Creates an empty ButtonGroup.
-	 */
-	public ButtonGroup() {
-		setStyleName(Constants.BTN_GROUP);
-	}
+    /**
+     * Creates an empty ButtonGroup.
+     */
+    public ButtonGroup() {
+        setStyleName(Constants.BTN_GROUP);
+    }
 
-	/**
-	 * Creates a ButtonGroup containing the provided Buttons.
-	 * 
-	 * @param buttons
-	 *            the widgets to be added to the ButtonGroup
-	 */
-	public ButtonGroup(Button... buttons) {
-		this();
-		for (Button btn : buttons) {
-			add(btn);
-		}
-	}
+    /**
+     * Creates a ButtonGroup containing the provided Buttons.
+     * 
+     * @param buttons
+     *            the widgets to be added to the ButtonGroup
+     */
+    public ButtonGroup(Button... buttons) {
+        this();
+        for (Button btn : buttons) {
+            add(btn);
+        }
+    }
 
-	/**
-	 * Adds a new {@link Button} to the group.
-	 * 
-	 * @param widget
-	 *            the Button to be added.
-	 */
-	@Override
-	public void add(Widget widget) {
-		if (!(widget instanceof Button))
-			throw new IllegalArgumentException(
-					"A ButtonGroup can only contain Buttons.");
+    /**
+     * Adds a new {@link Button} to the group.
+     * 
+     * @param widget
+     *            the Button to be added.
+     */
+    @Override
+    public void add(Widget widget) {
 
-		super.add(widget);
-		// super.add(widget);
-	}
+        if(widget instanceof Button) {
+            super.add(widget);
+            return;
+        }
+        
+        if(widget instanceof DropdownButton) {
+            this.add((DropdownButton)widget);
+            return;
+        }
+        
+        throw new IllegalArgumentException(
+                "A ButtonGroup can only contain Buttons or DropdownButton. You added " + widget);
+        
+        
+    }
+    
+    /**
+     * Add dropdown widget
+     * @param dropdown dropdown widget
+     */
+    private void add(DropdownBase dropdown) {
+        
+        super.add(dropdown.getTriggerWidget());
+        super.add(dropdown.getMenuWiget());
+        
+        this.setStyleName(Constants.DROPUP, dropdown.isDropup());
+        
+    }
 
-	/**
-	 * Set/unset the data-toggle behavior.
-	 * 
-	 * @param type
-	 */
-	public void setToggle(ToggleType type) {
-		if (type == null || type == ToggleType.NONE) {
-			getElement().removeAttribute(Constants.DATA_TOGGLE);
-			return;
-		}
-		getElement().setAttribute(Constants.DATA_TOGGLE, type.get());
+    /**
+     * Set/unset the data-toggle behavior.
+     * 
+     * @param type
+     */
+    public void setToggle(ToggleType type) {
+        if (type == null || type == ToggleType.NONE) {
+            getElement().removeAttribute(Constants.DATA_TOGGLE);
+            return;
+        }
+        getElement().setAttribute(Constants.DATA_TOGGLE, type.get());
 
-	}
+    }
 
-	/**
-	 * Set/unset the data-toggle behavior.
-	 * 
-	 * @param toggle
-	 */
-	public void setToggle(String toggle) {
-		try {
-			setToggle(ToggleType.valueOf(toggle.toUpperCase()));
-		} catch (Exception e) {
-			throw new IllegalArgumentException("Invalid toggle option.");
-		}
-	}
+    /**
+     * Set/unset the data-toggle behavior.
+     * 
+     * @param toggle
+     */
+    public void setToggle(String toggle) {
+        try {
+            setToggle(ToggleType.valueOf(toggle.toUpperCase()));
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid toggle option.");
+        }
+    }
 }
