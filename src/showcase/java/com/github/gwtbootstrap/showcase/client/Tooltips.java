@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.showcase.client;
 
+import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.Divider;
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavText;
@@ -76,5 +77,15 @@ public class Tooltips extends Composite {
 	@UiHandler("button")
 	public void onClickButton(ClickEvent e) {
 		Tooltip.changeVisibility(e.getRelativeElement(), VisibilityChange.TOGGLE.get());
+	}
+	
+	@UiHandler("deletedButton")
+	public void onClickDeletedButton(ClickEvent e) {
+	    ((Button)e.getSource()).removeFromParent();
+	}
+	
+	@UiHandler("fooNavlink")
+	public void onClick(ClickEvent e) {
+	    fooNavlink.removeFromParent();
 	}
 }
