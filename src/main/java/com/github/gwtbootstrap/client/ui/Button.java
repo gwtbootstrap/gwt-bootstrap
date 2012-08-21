@@ -549,12 +549,28 @@ public class Button extends IconAnchor implements HasClickHandlers,
 		return addDomHandler(handler, TouchCancelEvent.getType());
 	}
 
+    /**
+     * Get Button Type
+     * @return Current Button Type
+     */
     public ButtonType getType() {
         return type;
     }
 
+    /**
+     * Get Button Size
+     * @return Current Button Size
+     */
     public ButtonSize getSize() {
         return size;
+    }
+    
+    /**
+     * Set element as a Block Level Button
+     * @param block true:Block Level false:Default
+     */
+    public void setBlock(boolean block) {
+        setStyleName(Constants.BTN_BLOCK, block);
     }
 
 }

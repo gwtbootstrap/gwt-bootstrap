@@ -32,7 +32,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 public enum ButtonType implements Style {
 
 	DEFAULT(""), PRIMARY("primary"), INFO("info"), SUCCESS("success"), WARNING(
-			"warning"), DANGER("danger"), INVERSE("inverse");
+			"warning"), DANGER("danger"), INVERSE("inverse") , LINK("link");
 
 	private String className;
 

@@ -229,4 +229,12 @@ public class SubmitButton extends FocusWidget implements HasType<ButtonType>, Ha
 			ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
 		}
 	}
+	
+    /**
+     * Set element as a Block Level Button
+     * @param block true:Block Level false:Default
+     */
+    public void setBlock(boolean block) {
+        setStyleName(Constants.BTN_BLOCK, block);
+    }
 }
