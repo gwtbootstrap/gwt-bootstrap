@@ -61,4 +61,12 @@ public class Controls extends HtmlWidget {
 	public Controls() {
 		this("");
 	}
+	
+	/**
+	 * Set this as a controls-row
+	 * @param controlsRow
+	 */
+	public void setControlsRow(boolean controlsRow) {
+	    setStyleName(Constants.CONTROLS_ROW, controlsRow);
+	}
 }
