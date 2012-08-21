@@ -557,15 +557,31 @@
 <span class="sourceLineNo">549</span>                return addDomHandler(handler, TouchCancelEvent.getType());<a name="line.549"></a>
 <span class="sourceLineNo">550</span>        }<a name="line.550"></a>
 <span class="sourceLineNo">551</span><a name="line.551"></a>
-<span class="sourceLineNo">552</span>    public ButtonType getType() {<a name="line.552"></a>
-<span class="sourceLineNo">553</span>        return type;<a name="line.553"></a>
-<span class="sourceLineNo">554</span>    }<a name="line.554"></a>
-<span class="sourceLineNo">555</span><a name="line.555"></a>
-<span class="sourceLineNo">556</span>    public ButtonSize getSize() {<a name="line.556"></a>
-<span class="sourceLineNo">557</span>        return size;<a name="line.557"></a>
+<span class="sourceLineNo">552</span>    /**<a name="line.552"></a>
+<span class="sourceLineNo">553</span>     * Get Button Type<a name="line.553"></a>
+<span class="sourceLineNo">554</span>     * @return Current Button Type<a name="line.554"></a>
+<span class="sourceLineNo">555</span>     */<a name="line.555"></a>
+<span class="sourceLineNo">556</span>    public ButtonType getType() {<a name="line.556"></a>
+<span class="sourceLineNo">557</span>        return type;<a name="line.557"></a>
 <span class="sourceLineNo">558</span>    }<a name="line.558"></a>
 <span class="sourceLineNo">559</span><a name="line.559"></a>
-<span class="sourceLineNo">560</span>}<a name="line.560"></a>
+<span class="sourceLineNo">560</span>    /**<a name="line.560"></a>
+<span class="sourceLineNo">561</span>     * Get Button Size<a name="line.561"></a>
+<span class="sourceLineNo">562</span>     * @return Current Button Size<a name="line.562"></a>
+<span class="sourceLineNo">563</span>     */<a name="line.563"></a>
+<span class="sourceLineNo">564</span>    public ButtonSize getSize() {<a name="line.564"></a>
+<span class="sourceLineNo">565</span>        return size;<a name="line.565"></a>
+<span class="sourceLineNo">566</span>    }<a name="line.566"></a>
+<span class="sourceLineNo">567</span>    <a name="line.567"></a>
+<span class="sourceLineNo">568</span>    /**<a name="line.568"></a>
+<span class="sourceLineNo">569</span>     * Set element as a Block Level Button<a name="line.569"></a>
+<span class="sourceLineNo">570</span>     * @param block true:Block Level false:Default<a name="line.570"></a>
+<span class="sourceLineNo">571</span>     */<a name="line.571"></a>
+<span class="sourceLineNo">572</span>    public void setBlock(boolean block) {<a name="line.572"></a>
+<span class="sourceLineNo">573</span>        setStyleName(Constants.BTN_BLOCK, block);<a name="line.573"></a>
+<span class="sourceLineNo">574</span>    }<a name="line.574"></a>
+<span class="sourceLineNo">575</span><a name="line.575"></a>
+<span class="sourceLineNo">576</span>}<a name="line.576"></a>
 
 
 
