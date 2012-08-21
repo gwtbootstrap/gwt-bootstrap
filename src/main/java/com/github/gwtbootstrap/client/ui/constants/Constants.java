@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
+
 /**
  * Constants that do not belong to a group of similar values.
  * 
@@ -144,5 +145,13 @@ public interface Constants {
 	public static final String ADD_ON = "add-on";
 
 	public static final String DATA_TARGET = "data-target";
+
+    public static final String LEAD = "lead";
+
+    public static final String UNSTYLED = "unstyled";
+
+    public static final String CONTROLS_ROW = "controls-row";
+
+    public static final String BTN_BLOCK = "btn-block";
 
 }

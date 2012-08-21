@@ -15,6 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.Constants;
+
 
 /**
  * Simple wrapper for an HTML {@code <ul>} tag.
@@ -43,5 +45,9 @@ public class UnorderedList extends ComplexWidget {
 		for (ListItem li : widgets) {
 			add(li);
 		}
+	}
+	
+	public void setUnstyled(boolean unstyled) {
+	    setStyleName(Constants.UNSTYLED, unstyled);
 	}
 }
