@@ -154,4 +154,8 @@ public interface Constants {
 
     public static final String BTN_BLOCK = "btn-block";
 
+    public static final String DROPDOWN_SUBMENU = "dropdown-submenu";
+
+    public static final String BTN_GROUP_VERTICAL = "btn-group-vertical";
+
 }

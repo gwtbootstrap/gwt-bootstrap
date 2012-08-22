@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
+import com.github.gwtbootstrap.client.ui.constants.Alignment;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
@@ -235,5 +236,13 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 	@Override
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return trigger.addClickHandler(handler);
+	}
+	
+	/**
+	 * Set pull-right menu style
+	 * @param rightMenu true:Set false:Unset
+	 */
+	public void setRightMenu(boolean rightMenu) {
+	    menu.setStyleName(Alignment.RIGHT.get(), rightMenu);
 	}
 }
