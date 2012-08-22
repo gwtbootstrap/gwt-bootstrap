@@ -60,7 +60,7 @@ public class Buttons extends Composite {
     }
 
     @UiHandler({ "defaultType", "primary", "info", "success", "warning",
-            "danger", "inverse" })
+            "danger", "inverse","link" })
     void onClickTypeButton(ClickEvent e) {
         Button b = (Button) e.getSource();
         if (b.getType() != null) {
@@ -100,7 +100,12 @@ public class Buttons extends Composite {
     
     @UiHandler("toggle")
     void onChangeToggle(ValueChangeEvent<Boolean> e) {
-        effectiveButton.setToggle(true);
+        effectiveButton.setToggle(e.getValue());
+    }
+    
+    @UiHandler("block")
+    void onChangeBlock(ValueChangeEvent<Boolean> e) {
+        effectiveButton.setBlock(e.getValue());
     }
     
     @UiHandler("loadingText")
@@ -111,6 +116,7 @@ public class Buttons extends Composite {
     @UiHandler("completeText")
     void onChangeCompleteText(ValueChangeEvent<String> e) {
         effectiveButton.setCompleteText(e.getValue());
+        GWT.log(e.getValue());
     }
     
     @UiHandler("loading")
@@ -121,6 +127,11 @@ public class Buttons extends Composite {
     @UiHandler("complete")
     void onClickComplete(ClickEvent e) {
         effectiveButton.state().complete();
+    }
+
+    @UiHandler("reset")
+    void onClickReset(ClickEvent e) {
+        effectiveButton.state().reset();
     }
 
 }
