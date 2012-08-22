@@ -149,4 +149,12 @@ public class ButtonGroup extends DivWidget {
             throw new IllegalArgumentException("Invalid toggle option.");
         }
     }
+    
+    /**
+     * Set vertical style
+     * @param vertical true:Set , false:Unset
+     */
+    public void setVertical(boolean vertical) {
+        setStyleName(Constants.BTN_GROUP_VERTICAL, vertical);
+    }
 }
