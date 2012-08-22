@@ -274,6 +274,12 @@
 					success. To use, set the <b:Code>ControlGroupType</b:Code> to the surrounding
 					<b:Code>ControlGroup</b:Code>
 				</b:Paragraph>
+                
+                <b:Heading size="3">Control Size</b:Heading>
+                <b:Paragraph>
+                You can use <code>size=1</code> or <code>alternateSize=XLARGE</code> to any input widgets for Size control.<br/>
+                For multiple grid inputs per line, use <code>controlRow=true</code> to the <code>&lt;b:Controls&gt;</code>.
+                </b:Paragraph>
 			</b:Column>
 			<b:Column size="8">
 				<b:Heading size="3">Click below buttons then Change ControlGroupType.</b:Heading>

@@ -26,7 +26,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="defaultType"
+                                    <b:Button 
                                         text="Default" />
                                 </td>
                                 <td>
@@ -35,7 +35,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="primary"
+                                    <b:Button 
                                         type="PRIMARY" text="Primary" />
                                 </td>
                                 <td>
@@ -45,7 +45,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="info"
+                                    <b:Button 
                                         type="INFO" text="Info" />
                                 </td>
                                 <td>
@@ -55,7 +55,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="success"
+                                    <b:Button 
                                         type="SUCCESS" text="Success" />
                                 </td>
                                 <td>
@@ -65,7 +65,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="warning"
+                                    <b:Button 
                                         type="WARNING" text="Warning" />
                                 </td>
                                 <td>
@@ -75,7 +75,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="danger"
+                                    <b:Button 
                                         type="DANGER" text="Danger" />
                                 </td>
                                 <td>
@@ -85,12 +85,22 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="inverse"
+                                    <b:Button 
                                         type="INVERSE" text="Inverse" />
                                 </td>
                                 <td>
                                     <b:Code>&lt;b:Button
                                         type="INVERSE">Inverse&lt;/b:Button></b:Code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b:Button 
+                                        type="LINK" text="Link" />
+                                </td>
+                                <td>
+                                    <b:Code>&lt;b:Button
+                                        type="LINK">Link&lt;/b:Button></b:Code>
                                 </td>
                             </tr>
                         </tbody>
@@ -110,7 +120,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="large"
+                                    <b:Button 
                                         size="LARGE" text="Large"
                                         loadingText="Loading..."
                                         completeText="Done!" />
@@ -122,7 +132,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="small"
+                                    <b:Button 
                                         size="SMALL" text="Small" />
                                 </td>
                                 <td>
@@ -132,7 +142,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b:Button ui:field="mini"
+                                    <b:Button 
                                         size="MINI" text="Mini" />
                                 </td>
                                 <td>
@@ -178,6 +188,20 @@
         </b:FluidRow>
         <b:FluidRow>
             <b:Column size="12">
+                <b:Heading size="2">Block Level Button</b:Heading>
+                <b:Paragraph>
+                    You can create block level buttons , those that span the full width of a parent, by set <b:Code>block=true</b:Code>.
+                </b:Paragraph>
+                <b:Well>
+                    <b:Button block="true" type="PRIMARY">Block Level Button</b:Button>
+                    <b:Button block="true">Block Level Button</b:Button>
+                </b:Well>
+                <b:Label>Code</b:Label>
+                <g:HTMLPanel><pre class="prettyprint linenums">&lt;b:Button block="true" type="PRIMARY"&gt;Block Level Button&lt;/b:Button&gt;</pre></g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+            <b:Column size="12">
                 <b:Heading size="2">Try change Button state</b:Heading>
                 <b:Paragraph>
                     Please click adove buttons and below settings.
@@ -195,6 +219,48 @@
                     <b:Fieldset>
                         <b:Legend>Setup Button</b:Legend>
                         <b:ControlGroup>
+                            <b:ControlLabel>Type</b:ControlLabel>
+                            <b:Controls>
+                                <b:ButtonToolbar>
+                                    <b:ButtonGroup toggle="radio">
+                                    <b:Button ui:field="defaultType"
+                                        text="Default" />
+                                    <b:Button ui:field="primary"
+                                        type="PRIMARY" text="Primary" />
+                                    <b:Button ui:field="info"
+                                        type="INFO" text="Info" />
+                                    <b:Button ui:field="success"
+                                        type="SUCCESS" text="Success" />
+                                    <b:Button ui:field="warning"
+                                        type="WARNING" text="Warning" />
+                                    <b:Button ui:field="danger"
+                                        type="DANGER" text="Danger" />
+                                    <b:Button ui:field="inverse"
+                                        type="INVERSE" text="Inverse" />
+                                    <b:Button ui:field="link"
+                                        type="LINK" text="Link" />
+                                    </b:ButtonGroup>
+                                </b:ButtonToolbar>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Size</b:ControlLabel>
+                            <b:Controls>
+                                <b:ButtonToolbar>
+                                    <b:ButtonGroup toggle="radio">
+                                        <b:Button ui:field="large"
+                                            size="LARGE" text="Large"
+                                            loadingText="Loading..."
+                                            completeText="Done!" />
+                                        <b:Button ui:field="small"
+                                            size="SMALL" text="Small" />
+                                        <b:Button ui:field="mini"
+                                            size="MINI" text="Mini" />
+                                    </b:ButtonGroup>
+                                </b:ButtonToolbar>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
                             <b:ControlLabel>Enable</b:ControlLabel>
                             <b:Controls>
                                 <b:ButtonToolbar>
@@ -203,6 +269,12 @@
                                         <b:Button ui:field="enableButton">Set Enable</b:Button>
                                     </b:ButtonGroup>
                                 </b:ButtonToolbar>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Block</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox ui:field="block"/>
                             </b:Controls>
                         </b:ControlGroup>
                         <b:ControlGroup>
@@ -235,6 +307,7 @@
                         <b:ButtonGroup toggle="radio">
                             <b:Button ui:field="loading">Loading</b:Button>
                             <b:Button ui:field="complete">Complete</b:Button>
+                            <b:Button ui:field="reset">Reset</b:Button>
                         </b:ButtonGroup>
                         
                     </b:FormActions>
