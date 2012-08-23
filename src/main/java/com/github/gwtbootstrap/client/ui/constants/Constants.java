@@ -158,4 +158,6 @@ public interface Constants {
 
     public static final String BTN_GROUP_VERTICAL = "btn-group-vertical";
 
+    public static final String BREADCRUMB = "breadcrumb";
+
 }

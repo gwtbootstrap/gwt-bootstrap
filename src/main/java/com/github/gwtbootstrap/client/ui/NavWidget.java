@@ -25,6 +25,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -122,11 +123,21 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	}
 
 	/**
+	 * Add widget to inner anchor
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void add(Widget w) {
 		anchor.add(w);
+	}
+	
+	/**
+	 * Add widget to this widget
+	 * @param w
+	 */
+	@UiChild(tagname="widget")
+	public void addWidget(Widget w) {
+	    super.add(w);
 	}
 	
 	/**
