@@ -350,8 +350,11 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	}
 
 	private void hideShownModals() {
-		for (Modal m : currentlyShown)
-			m.hide();
+		for (Modal m : currentlyShown) {
+		    if(!m.equals(this)) {
+		        m.hide();
+		    }		    
+		}
 	}
 
 	/**
