@@ -26,25 +26,14 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  * @author ohashi keisuke
  */
 public enum AlternateSize implements Style {
-	MINI("input-mini"),
-	SMALL("input-small"),
-	MEDIUM("input-medium"),
-	LARGE("input-large"),
-	XLARGE("input-xlarge"),
-	XXLARGE("input-xxlarge");
+	MINI,SMALL,MEDIUM,LARGE,XLARGE,XXLARGE;
 
-	private AlternateSize(String styleName) {
-		this.styleName = styleName;
-	}
-	
-	private final String styleName;
-	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public String get() {
-		return styleName;
+		return "input-" + name().toLowerCase();
 	}
 
 }
