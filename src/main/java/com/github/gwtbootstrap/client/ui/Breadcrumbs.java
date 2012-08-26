@@ -15,14 +15,17 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.github.gwtbootstrap.client.ui.base.ComplexWidget;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
 import com.github.gwtbootstrap.client.ui.base.UnorderedList;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.WidgetCollection;
 
 /**
  * The Breadcrumbs container
@@ -32,8 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
  * <p/>
  * <pre>
  * {@code
- * <!-- Breadcrumbs always needs divider attribute -->
- * <b:Breadcrumbs divider="">
+ * <b:Breadcrumbs>
  *  <b:NavLink>Home</b:NavLink>
  *  <b:NavLink>Accoount</b:NavLink>
  * </b:Breadcrumbs>
@@ -49,17 +51,21 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Breadcrumbs extends UnorderedList {
 
-    private Widget lastWidget = null;
+    private WidgetCollection children = new WidgetCollection(this);
     
-    private String divider;
+    private List<Divider> dividerList = new ArrayList<Divider>();
     
-    private boolean change2Text;
-
+    private String divider = "/";
+    
     private static class Divider extends ComplexWidget {
 
         public Divider(String divider) {
             super("span");
             setStyleName(Constants.DIVIDER);
+            setDivider(divider);
+        }
+        
+        public void setDivider(String divider) {
             getElement().setInnerText(divider);
         }
     }
@@ -88,7 +94,7 @@ public class Breadcrumbs extends UnorderedList {
      * Create Breadcrumbs with setting divider character
      * @param divider separate char (ex : ">")
      */
-    public @UiConstructor Breadcrumbs(String divider) {
+    public Breadcrumbs(String divider) {
         this();
         this.setDivider(divider);
     }
@@ -100,57 +106,63 @@ public class Breadcrumbs extends UnorderedList {
     public void setDivider(String divider) {
         if(divider == null || divider.isEmpty()) {
             this.divider = "/";
-            
         } else {
             this.divider = divider;
         }
+        
+        for (Divider dividerWidget : dividerList) {
+            dividerWidget.setDivider(this.divider);
+        }
+        
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void onAttach() {
         
-        if(lastWidget != null && !change2Text) {
-            remove(lastWidget);
+        if(!isOrWasAttached() && children.size() > 0) {
             
-            super.add(change2TextListItem(lastWidget));
+            Widget lastWidget = children.get(children.size() -1);
             
-            change2Text = true;
+            for (Widget w : children) {
+                ListItem item = lastWidget.equals(w)
+                                ? change2TextListItem(w)
+                                : getOrCreateListItem(w);
+                super.add(item);
+            }
         }
         
         super.onAttach();
     }
+    
+    private void removeAsSuper(Widget w) {
+        super.remove(w);
+    }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void add(Widget w) {
         
         w.removeStyleName(Constants.ACTIVE);
         
-        if(!isAttached()) {
-            if(w instanceof NavWidget) {
-                ((NavWidget) w).addWidget(new Divider(divider));
-                super.add(w);
-            } else if(w instanceof ListItem) {
-                ((ListItem) w).add(new Divider(divider));
-                super.add(w);
-            } else {
-                super.add(new ListItem(w , new Divider(divider)));
-            }
+        if(!isOrWasAttached()) {
             
-            lastWidget = w;
+            children.add(w);
             
             return;
         }
         
-        // remove last widget and re-add last widget
-        if (lastWidget != null) {
-            remove(getWidgetCount() - 1);
+        if(children.size() > 0) {
+            //Change last widget 2 Link
             
-            ListItem item = null;
-            if(lastWidget instanceof ListItem) {
-                item = (ListItem)lastWidget;
-            } else {
-                item = new ListItem(lastWidget, new Divider(divider));
-            }
+            //pygical remove
+            removeAsSuper(getWidget(getWidgetCount() -1));
+            
+            ListItem item = getOrCreateListItem(children.get(children.size() -1));
             
             super.add(item);
         }
@@ -159,7 +171,26 @@ public class Breadcrumbs extends UnorderedList {
         
         super.add(newest);
         
-        lastWidget = newest;
+        children.add(w);
+    }
+
+    private ListItem getOrCreateListItem(Widget lastWidget) {
+        ListItem item = null;
+        Divider dividerWidget = new Divider(divider);
+        
+        dividerList.add(dividerWidget);
+        
+        if(lastWidget instanceof NavWidget) {
+            NavWidget navWidget = (NavWidget)lastWidget;
+            navWidget.addWidget(dividerWidget);
+            item = navWidget;
+        } else if(lastWidget instanceof ListItem) {
+            item = (NavWidget)lastWidget;
+            item.add(dividerWidget);
+        } else {
+            item = new ListItem(lastWidget, dividerWidget);
+        }
+        return item;
     }
 
     private ListItem change2TextListItem(Widget w) {
@@ -176,5 +207,52 @@ public class Breadcrumbs extends UnorderedList {
         newest.getElement().appendChild(Document.get().createTextNode(text));
         return newest;
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean remove(Widget w) {
+        
+        if(!isOrWasAttached() && children.contains(w)) {
+            children.remove(w);
+            return true;
+        }
 
+        if(getWidgetIndex(w) < 0 && !children.contains(w)) {
+            return false;
+        }
+        
+        boolean isLastWidget = (children.indexOf(w) == children.size() -1) || (getWidgetIndex(w) == getWidgetCount() -1);
+        
+        if(getWidgetIndex(w) >= 0 && children.contains(w)) {
+            children.remove(w);
+            super.remove(w);
+        } else if(getWidgetIndex(w) >= 0 && !children.contains(w)) {
+            children.remove(getWidgetIndex(w));
+            super.remove(w);
+        } else if(getWidgetIndex(w) < 0 && children.contains(w)) {
+            return remove(getWidget(children.indexOf(w)));
+        } else {
+            return false;
+        }
+        
+        if(isLastWidget && getWidgetCount() > 0) {
+            Widget l = getWidget(getWidgetCount() -1);
+            super.remove(l);
+            super.add(change2TextListItem(l));
+        }
+        
+        return true;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clear() {
+        super.clear();
+        children = new WidgetCollection(this);
+        dividerList.clear();
+    }
 }

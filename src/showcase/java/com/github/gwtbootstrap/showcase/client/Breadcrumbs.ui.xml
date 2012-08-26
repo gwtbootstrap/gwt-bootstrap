@@ -1,0 +1,81 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:FlowPanel>
+        <b:PageHeader>Breadcrumbs</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="2">About Breadcrumbs</b:Heading>
+                <b:Heading size="3">Auto creating style</b:Heading>
+                <b:Paragraph>
+                    GWT-Bootstrap's Breadcrumbs is auto creating style.<br/>
+                    You don't mind `it should be text or link?`.
+                </b:Paragraph>
+                <b:Heading size="3">Setting</b:Heading>
+                <b:Paragraph>
+                    You can set separator with <code>divider</code> attribute.
+                </b:Paragraph>
+                <b:Heading size="3">Example Markup</b:Heading>
+                <g:HTMLPanel>
+                <pre class="prettyprint linenums">
+&lt;b:Breadcrumbs ui:field="bread1"&gt;
+    &lt;b:NavLink&gt;Home&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Account&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Setting&lt;/b:NavLink&gt;
+&lt;/b:Breadcrumbs&gt;
+&lt;b:Breadcrumbs divider=">" ui:field="bread2"&gt;
+    &lt;b:NavLink&gt;Home&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Account&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Detail&lt;/b:NavLink&gt;
+&lt;/b:Breadcrumbs&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="2">Example</b:Heading>
+                <b:Breadcrumbs ui:field="bread1">
+                    <b:NavLink>Home</b:NavLink>
+                    <b:NavLink>Account</b:NavLink>
+                    <b:NavLink>Setting</b:NavLink>
+                </b:Breadcrumbs>
+                <b:Breadcrumbs divider=">" ui:field="bread2">
+                    <b:NavLink>Home</b:NavLink>
+                    <b:NavLink>Account</b:NavLink>
+                    <b:NavLink>Detail</b:NavLink>
+                </b:Breadcrumbs>
+                <b:Heading size="3">Change setting and add widget</b:Heading>
+                <b:Form type="HORIZONTAL">
+                    <b:Fieldset>
+                        <b:Legend>Setup Breadcrumbs</b:Legend>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Divider</b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox placeholder="Change divider" ui:field="divider"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup ui:field="addWidgetCG">
+                            <b:ControlLabel>Add widget</b:ControlLabel>
+                            <b:Controls>
+                                <b:AppendButton>
+                                    <b:TextBox placeholder="Adding widget text" ui:field="text"/>
+                                    <b:Button ui:field="add">Add Wiget</b:Button>
+                                </b:AppendButton>
+                                <b:HelpInline ui:field="addText"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Remove last widget</b:ControlLabel>
+                            <b:Controls>
+                                <b:Button ui:field="remove">Remove last</b:Button>
+                            </b:Controls>
+                        </b:ControlGroup>
+                    
+                    </b:Fieldset>
+                
+                </b:Form>
+            </b:Column>
+        </b:FluidRow>
+    </g:FlowPanel>
+</ui:UiBinder> 
