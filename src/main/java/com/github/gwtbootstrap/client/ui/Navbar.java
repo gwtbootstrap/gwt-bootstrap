@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.dom.client.Document;
@@ -195,5 +196,13 @@ public class Navbar extends DivWidget {
 	}
     public Scrollspy getSpy() {
         return spy;
+    }
+    
+    /**
+     * Set inverse style.
+     * @param inverse true:set false:unset
+     */
+    public void setInverse(boolean inverse) {
+        setStyleName(Constants.NAVBAR_INVERSE , inverse);
     }
 }

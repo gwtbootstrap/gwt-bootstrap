@@ -11,7 +11,7 @@
 		}
 	</ui:style>
 	<g:FlowPanel>
-		<b:ResponsiveNavbar position="TOP" scrollspy="false">
+		<b:ResponsiveNavbar position="TOP" scrollspy="false" inverse="true">
 			<b:Brand href="#">GWT-Bootstrap</b:Brand>
 			<b:NavCollapse>
 				<b:Nav ui:field="nav" />

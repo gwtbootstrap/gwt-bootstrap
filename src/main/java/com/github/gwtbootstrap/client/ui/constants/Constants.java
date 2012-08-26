@@ -160,4 +160,6 @@ public interface Constants {
 
     public static final String BREADCRUMB = "breadcrumb";
 
+    public static final String NAVBAR_INVERSE = "navbar-inverse";
+
 }
