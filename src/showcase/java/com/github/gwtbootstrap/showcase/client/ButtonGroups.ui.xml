@@ -74,14 +74,14 @@
                         <b:ButtonGroup toggle="radio">
                             <b:Button>Left</b:Button>
                             <b:Button>Center</b:Button>
-                            <b:Button>Right</b:Button>
+                            <b:Button active="true">Right</b:Button>
                         </b:ButtonGroup>
                     </b:Tooltip>
                     <b:Tooltip text="Checkbox style">
                         <b:ButtonGroup toggle="checkbox">
                             <b:Button>Left</b:Button>
                             <b:Button>Center</b:Button>
-                            <b:Button>Right</b:Button>
+                            <b:Button active="true">Right</b:Button>
                         </b:ButtonGroup>
                     </b:Tooltip>
                 </b:ButtonToolbar>
@@ -90,12 +90,12 @@
 &lt;b:ButtonGroup toggle="radio"&gt;
     &lt;b:Button&gt;Left&lt;/b:Button&gt;
     &lt;b:Button&gt;Center&lt;/b:Button&gt;
-    &lt;b:Button&gt;Right&lt;/b:Button&gt;
+    &lt;b:Button active="true"&gt;Right&lt;/b:Button&gt;
 &lt;/b:ButtonGroup&gt;
 &lt;b:ButtonGroup toggle="checkbox"&gt;
     &lt;b:Button&gt;Left&lt;/b:Button&gt;
     &lt;b:Button&gt;Center&lt;/b:Button&gt;
-    &lt;b:Button&gt;Right&lt;/b:Button&gt;
+    &lt;b:Button active="true"&gt;Right&lt;/b:Button&gt;
 &lt;/b:ButtonGroup&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>
