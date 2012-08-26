@@ -16,8 +16,10 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
+import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -26,7 +28,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 
 //@formatter:off
 /**
- * Dropdown button.
+ * Split Dropdown button.
  * 
  * @author Dominik Mayer
  * @since 2.0.4.0
@@ -37,22 +39,32 @@ import com.google.gwt.event.shared.HandlerRegistration;
  */
 //@formatter:on
 public class SplitDropdownButton extends DropdownBase implements
-		HasClickHandlers {
+		HasClickHandlers , HasType<ButtonType> {
 
 	private Button button;
 
 	private Button trigger;
 
+	/**
+	 * Create an Empty Split Dropdown Button
+	 */
 	public SplitDropdownButton() {
 		super("div");
 		addStyleName("btn-group");
 	}
 
+	/**
+	 * Create an Empty Split Dropdown Button with text.
+	 * @param text
+	 */
 	public SplitDropdownButton(String text) {
 		this();
 		setText(text);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setText(String text) {
 		button.setText(text);
@@ -67,19 +79,42 @@ public class SplitDropdownButton extends DropdownBase implements
 		return trigger;
 	}
 
+	/**
+	 * Set Button size
+	 * @param size button size
+	 */
 	public void setSize(ButtonSize size) {
 		trigger.setSize(size);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void setType(ButtonType type) {
 		trigger.setType(type);
 	}
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public void setIcon(IconType type) {
 		button.setIcon(type);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return button.addClickHandler(handler);
 	}
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconSize(IconSize size) {
+        button.setIconSize(size);
+    }
 }

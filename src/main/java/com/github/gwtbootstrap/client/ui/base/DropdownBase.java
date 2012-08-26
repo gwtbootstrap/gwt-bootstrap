@@ -43,11 +43,11 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText {
+public abstract class DropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText ,HasIcon {
 
 	private UnorderedList menu = new UnorderedList();
-
-	private IconAnchor trigger;
+	
+	protected IconAnchor trigger;
 
 	private NavLink link;
 
@@ -196,11 +196,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 	 *            <code>false</code>
 	 */
 	public void setRightDropdown(boolean rightDropdown) {
-		if (rightDropdown) {
-			menu.addStyleName("pull-right");
-		} else {
-			menu.removeStyleName("pull-right");
-		}
+        menu.setStyleName(Alignment.RIGHT.get(), rightDropdown);
 	}
 
 	private class NavLinkClickHandler implements ClickHandler {
@@ -238,11 +234,4 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 		return trigger.addClickHandler(handler);
 	}
 	
-	/**
-	 * Set pull-right menu style
-	 * @param rightMenu true:Set false:Unset
-	 */
-	public void setRightMenu(boolean rightMenu) {
-	    menu.setStyleName(Alignment.RIGHT.get(), rightMenu);
-	}
 }

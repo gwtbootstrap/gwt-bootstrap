@@ -32,6 +32,10 @@
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:Dropdown>
+                        <b:Dropdown text="Dropdown example with Icon" icon="GITHUB">
+                            <b:NavLink>Test 1</b:NavLink>
+                            <b:NavLink>Test 2</b:NavLink>
+                        </b:Dropdown>
                     </b:NavPills>
                     <pre class="prettyprint linenums">
 &lt;b:NavPills&gt;
@@ -39,7 +43,14 @@
         &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
         &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
   &lt;/b:Dropdown&gt;
-&lt;/b:NavPills&gt;</pre>
+&lt;/b:NavPills&gt;
+&lt;b:NavPills&gt;
+    &lt;b:Dropdown text=&quot;Dropdown example with Icon&quot; icon="GITHUB"&gt;
+        &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+        &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+  &lt;/b:Dropdown&gt;
+&lt;/b:NavPills&gt;
+</pre>
                     <p>All dropdowns can be converted into dropups by adding <code>dropup="true"</code>.</p>
                </g:HTMLPanel>
             </b:Column>
@@ -50,13 +61,13 @@
                 <g:HTMLPanel>
                     <h2>DropdownButton</h2>
                     <b:NavPills>
-                        <b:DropdownButton dropup="true" text="Dropup example">
+                        <b:DropdownButton dropup="true" text="Dropup example" icon="GITHUB">
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:DropdownButton>
                     </b:NavPills>
                     <pre class="prettyprint linenums">
-&lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot;&gt;
+&lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot; icon="GITHUB"&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
 &lt;/b:DropdownButton&gt;</pre>
@@ -67,13 +78,13 @@
                 <g:HTMLPanel>
                     <h2>SplitDropdownButton</h2>
                     <b:NavPills>
-                        <b:SplitDropdownButton text="Dropdown example">
+                        <b:SplitDropdownButton text="Dropdown example" icon="GITHUB">
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:SplitDropdownButton>
                     </b:NavPills>
                     <pre class="prettyprint linenums">
-&lt;b:SplitDropdownButton text=&quot;Dropdown example&quot;&gt;
+&lt;b:SplitDropdownButton text=&quot;Dropdown example&quot; icon="GITHUB"&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
 &lt;/b:SplitDropdownButton&gt;</pre>
