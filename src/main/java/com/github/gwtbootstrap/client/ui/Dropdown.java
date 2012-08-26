@@ -17,6 +17,8 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 
 //@formatter:off
 /**
@@ -76,4 +78,20 @@ public class Dropdown extends DropdownBase {
 		trigger.setCaret(true);
 		return trigger;
 	}
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIcon(IconType type) {
+        trigger.setIcon(type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconSize(IconSize size) {
+        trigger.setIconSize(size);
+    }
 }

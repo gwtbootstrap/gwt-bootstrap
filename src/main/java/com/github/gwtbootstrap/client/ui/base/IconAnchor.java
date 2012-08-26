@@ -244,4 +244,20 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
             setTabIndex(0);
         }
     }
+    
+    /**
+     * Set active style name.
+     * @param active <code>true</code> : set active <code>false</code> : unset active
+     */
+    public void setActive(boolean active) {
+        setStyleName(Constants.ACTIVE, active);
+    }
+    
+    /**
+     * Has the active css style name?
+     * @return <code>true</code>: has <code>false</code> : none.
+     */
+    public boolean isActive() {
+        return getStyleName().contains(Constants.ACTIVE);
+    }
 }

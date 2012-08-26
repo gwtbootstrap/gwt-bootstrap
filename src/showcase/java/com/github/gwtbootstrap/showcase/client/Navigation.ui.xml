@@ -241,7 +241,7 @@
                             <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                         </b:Nav>
                         <b:Nav>
-                            <b:Dropdown text="Icons?">
+                            <b:Dropdown text="Icons?" rightDropdown="true">
                                 <b:NavLink icon="ASTERISK" iconSize="LARGE">asterisk</b:NavLink>
                                 <b:NavLink icon="HOME" iconSize="LARGE">home</b:NavLink>
                                 <b:NavLink icon="TWITTER_SIGN" iconSize="LARGE">twitter</b:NavLink>
