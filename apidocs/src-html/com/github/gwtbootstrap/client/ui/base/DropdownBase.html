@@ -51,11 +51,11 @@
 <span class="sourceLineNo">043</span> * @since 2.0.4.0<a name="line.43"></a>
 <span class="sourceLineNo">044</span> */<a name="line.44"></a>
 <span class="sourceLineNo">045</span>//@formatter:on<a name="line.45"></a>
-<span class="sourceLineNo">046</span>public abstract class DropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText {<a name="line.46"></a>
+<span class="sourceLineNo">046</span>public abstract class DropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText ,HasIcon {<a name="line.46"></a>
 <span class="sourceLineNo">047</span><a name="line.47"></a>
 <span class="sourceLineNo">048</span>        private UnorderedList menu = new UnorderedList();<a name="line.48"></a>
-<span class="sourceLineNo">049</span><a name="line.49"></a>
-<span class="sourceLineNo">050</span>        private IconAnchor trigger;<a name="line.50"></a>
+<span class="sourceLineNo">049</span>        <a name="line.49"></a>
+<span class="sourceLineNo">050</span>        protected IconAnchor trigger;<a name="line.50"></a>
 <span class="sourceLineNo">051</span><a name="line.51"></a>
 <span class="sourceLineNo">052</span>        private NavLink link;<a name="line.52"></a>
 <span class="sourceLineNo">053</span><a name="line.53"></a>
@@ -204,56 +204,45 @@
 <span class="sourceLineNo">196</span>         *            &lt;code&gt;false&lt;/code&gt;<a name="line.196"></a>
 <span class="sourceLineNo">197</span>         */<a name="line.197"></a>
 <span class="sourceLineNo">198</span>        public void setRightDropdown(boolean rightDropdown) {<a name="line.198"></a>
-<span class="sourceLineNo">199</span>                if (rightDropdown) {<a name="line.199"></a>
-<span class="sourceLineNo">200</span>                        menu.addStyleName("pull-right");<a name="line.200"></a>
-<span class="sourceLineNo">201</span>                } else {<a name="line.201"></a>
-<span class="sourceLineNo">202</span>                        menu.removeStyleName("pull-right");<a name="line.202"></a>
-<span class="sourceLineNo">203</span>                }<a name="line.203"></a>
-<span class="sourceLineNo">204</span>        }<a name="line.204"></a>
-<span class="sourceLineNo">205</span><a name="line.205"></a>
-<span class="sourceLineNo">206</span>        private class NavLinkClickHandler implements ClickHandler {<a name="line.206"></a>
-<span class="sourceLineNo">207</span><a name="line.207"></a>
-<span class="sourceLineNo">208</span>                @Override<a name="line.208"></a>
-<span class="sourceLineNo">209</span>                public void onClick(ClickEvent event) {<a name="line.209"></a>
-<span class="sourceLineNo">210</span>                        try {<a name="line.210"></a>
-<span class="sourceLineNo">211</span>                                IconAnchor iconAnchor = (IconAnchor) event.getSource();<a name="line.211"></a>
-<span class="sourceLineNo">212</span>                                link = (NavLink) iconAnchor.getParent();<a name="line.212"></a>
-<span class="sourceLineNo">213</span>                        } catch (Exception e) {<a name="line.213"></a>
-<span class="sourceLineNo">214</span>                                GWT.log(e.getMessage() , e);<a name="line.214"></a>
-<span class="sourceLineNo">215</span>                        }<a name="line.215"></a>
-<span class="sourceLineNo">216</span>                        DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);<a name="line.216"></a>
-<span class="sourceLineNo">217</span>                }<a name="line.217"></a>
-<span class="sourceLineNo">218</span><a name="line.218"></a>
-<span class="sourceLineNo">219</span>        }<a name="line.219"></a>
-<span class="sourceLineNo">220</span><a name="line.220"></a>
-<span class="sourceLineNo">221</span>        /**<a name="line.221"></a>
-<span class="sourceLineNo">222</span>         * Method to get the {@link NavLink} that has been clicked most recently.<a name="line.222"></a>
-<span class="sourceLineNo">223</span>         * <a name="line.223"></a>
-<span class="sourceLineNo">224</span>         * @return Last clicked NavLink or &lt;code&gt;null&lt;/code&gt; if none have been<a name="line.224"></a>
-<span class="sourceLineNo">225</span>         *         clicked.<a name="line.225"></a>
-<span class="sourceLineNo">226</span>         */<a name="line.226"></a>
-<span class="sourceLineNo">227</span>        public NavLink getLastSelectedNavLink() {<a name="line.227"></a>
-<span class="sourceLineNo">228</span>                return link;<a name="line.228"></a>
-<span class="sourceLineNo">229</span>        }<a name="line.229"></a>
-<span class="sourceLineNo">230</span><a name="line.230"></a>
-<span class="sourceLineNo">231</span>        @Override<a name="line.231"></a>
-<span class="sourceLineNo">232</span>        public void clear() {<a name="line.232"></a>
-<span class="sourceLineNo">233</span>                menu.clear();<a name="line.233"></a>
-<span class="sourceLineNo">234</span>        }<a name="line.234"></a>
-<span class="sourceLineNo">235</span><a name="line.235"></a>
-<span class="sourceLineNo">236</span>        @Override<a name="line.236"></a>
-<span class="sourceLineNo">237</span>        public HandlerRegistration addClickHandler(ClickHandler handler) {<a name="line.237"></a>
-<span class="sourceLineNo">238</span>                return trigger.addClickHandler(handler);<a name="line.238"></a>
-<span class="sourceLineNo">239</span>        }<a name="line.239"></a>
-<span class="sourceLineNo">240</span>        <a name="line.240"></a>
-<span class="sourceLineNo">241</span>        /**<a name="line.241"></a>
-<span class="sourceLineNo">242</span>         * Set pull-right menu style<a name="line.242"></a>
-<span class="sourceLineNo">243</span>         * @param rightMenu true:Set false:Unset<a name="line.243"></a>
-<span class="sourceLineNo">244</span>         */<a name="line.244"></a>
-<span class="sourceLineNo">245</span>        public void setRightMenu(boolean rightMenu) {<a name="line.245"></a>
-<span class="sourceLineNo">246</span>            menu.setStyleName(Alignment.RIGHT.get(), rightMenu);<a name="line.246"></a>
-<span class="sourceLineNo">247</span>        }<a name="line.247"></a>
-<span class="sourceLineNo">248</span>}<a name="line.248"></a>
+<span class="sourceLineNo">199</span>        menu.setStyleName(Alignment.RIGHT.get(), rightDropdown);<a name="line.199"></a>
+<span class="sourceLineNo">200</span>        }<a name="line.200"></a>
+<span class="sourceLineNo">201</span><a name="line.201"></a>
+<span class="sourceLineNo">202</span>        private class NavLinkClickHandler implements ClickHandler {<a name="line.202"></a>
+<span class="sourceLineNo">203</span><a name="line.203"></a>
+<span class="sourceLineNo">204</span>                @Override<a name="line.204"></a>
+<span class="sourceLineNo">205</span>                public void onClick(ClickEvent event) {<a name="line.205"></a>
+<span class="sourceLineNo">206</span>                        try {<a name="line.206"></a>
+<span class="sourceLineNo">207</span>                                IconAnchor iconAnchor = (IconAnchor) event.getSource();<a name="line.207"></a>
+<span class="sourceLineNo">208</span>                                link = (NavLink) iconAnchor.getParent();<a name="line.208"></a>
+<span class="sourceLineNo">209</span>                        } catch (Exception e) {<a name="line.209"></a>
+<span class="sourceLineNo">210</span>                                GWT.log(e.getMessage() , e);<a name="line.210"></a>
+<span class="sourceLineNo">211</span>                        }<a name="line.211"></a>
+<span class="sourceLineNo">212</span>                        DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);<a name="line.212"></a>
+<span class="sourceLineNo">213</span>                }<a name="line.213"></a>
+<span class="sourceLineNo">214</span><a name="line.214"></a>
+<span class="sourceLineNo">215</span>        }<a name="line.215"></a>
+<span class="sourceLineNo">216</span><a name="line.216"></a>
+<span class="sourceLineNo">217</span>        /**<a name="line.217"></a>
+<span class="sourceLineNo">218</span>         * Method to get the {@link NavLink} that has been clicked most recently.<a name="line.218"></a>
+<span class="sourceLineNo">219</span>         * <a name="line.219"></a>
+<span class="sourceLineNo">220</span>         * @return Last clicked NavLink or &lt;code&gt;null&lt;/code&gt; if none have been<a name="line.220"></a>
+<span class="sourceLineNo">221</span>         *         clicked.<a name="line.221"></a>
+<span class="sourceLineNo">222</span>         */<a name="line.222"></a>
+<span class="sourceLineNo">223</span>        public NavLink getLastSelectedNavLink() {<a name="line.223"></a>
+<span class="sourceLineNo">224</span>                return link;<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        }<a name="line.225"></a>
+<span class="sourceLineNo">226</span><a name="line.226"></a>
+<span class="sourceLineNo">227</span>        @Override<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        public void clear() {<a name="line.228"></a>
+<span class="sourceLineNo">229</span>                menu.clear();<a name="line.229"></a>
+<span class="sourceLineNo">230</span>        }<a name="line.230"></a>
+<span class="sourceLineNo">231</span><a name="line.231"></a>
+<span class="sourceLineNo">232</span>        @Override<a name="line.232"></a>
+<span class="sourceLineNo">233</span>        public HandlerRegistration addClickHandler(ClickHandler handler) {<a name="line.233"></a>
+<span class="sourceLineNo">234</span>                return trigger.addClickHandler(handler);<a name="line.234"></a>
+<span class="sourceLineNo">235</span>        }<a name="line.235"></a>
+<span class="sourceLineNo">236</span>        <a name="line.236"></a>
+<span class="sourceLineNo">237</span>}<a name="line.237"></a>
 
 
 

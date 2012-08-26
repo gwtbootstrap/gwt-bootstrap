@@ -252,7 +252,23 @@
 <span class="sourceLineNo">244</span>            setTabIndex(0);<a name="line.244"></a>
 <span class="sourceLineNo">245</span>        }<a name="line.245"></a>
 <span class="sourceLineNo">246</span>    }<a name="line.246"></a>
-<span class="sourceLineNo">247</span>}<a name="line.247"></a>
+<span class="sourceLineNo">247</span>    <a name="line.247"></a>
+<span class="sourceLineNo">248</span>    /**<a name="line.248"></a>
+<span class="sourceLineNo">249</span>     * Set active style name.<a name="line.249"></a>
+<span class="sourceLineNo">250</span>     * @param active &lt;code&gt;true&lt;/code&gt; : set active &lt;code&gt;false&lt;/code&gt; : unset active<a name="line.250"></a>
+<span class="sourceLineNo">251</span>     */<a name="line.251"></a>
+<span class="sourceLineNo">252</span>    public void setActive(boolean active) {<a name="line.252"></a>
+<span class="sourceLineNo">253</span>        setStyleName(Constants.ACTIVE, active);<a name="line.253"></a>
+<span class="sourceLineNo">254</span>    }<a name="line.254"></a>
+<span class="sourceLineNo">255</span>    <a name="line.255"></a>
+<span class="sourceLineNo">256</span>    /**<a name="line.256"></a>
+<span class="sourceLineNo">257</span>     * Has the active css style name?<a name="line.257"></a>
+<span class="sourceLineNo">258</span>     * @return &lt;code&gt;true&lt;/code&gt;: has &lt;code&gt;false&lt;/code&gt; : none.<a name="line.258"></a>
+<span class="sourceLineNo">259</span>     */<a name="line.259"></a>
+<span class="sourceLineNo">260</span>    public boolean isActive() {<a name="line.260"></a>
+<span class="sourceLineNo">261</span>        return getStyleName().contains(Constants.ACTIVE);<a name="line.261"></a>
+<span class="sourceLineNo">262</span>    }<a name="line.262"></a>
+<span class="sourceLineNo">263</span>}<a name="line.263"></a>
 
 
 
