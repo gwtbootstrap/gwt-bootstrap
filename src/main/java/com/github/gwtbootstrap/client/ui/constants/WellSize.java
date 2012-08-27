@@ -13,36 +13,32 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui;
+package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.base.StyleHelper;
-import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.constants.WellSize;
+import com.github.gwtbootstrap.client.ui.Well;
+import com.github.gwtbootstrap.client.ui.base.Style;
 
 //@formatter:off
 /**
- * {@link Form} inside a {@link Well}.
- * 
- * @since 2.0.4.0
- * 
- * @author Dominik Mayer
- */
+* Size of a {@link Well}.
+* 
+* @since 2.1.0.0
+* 
+* @author ohashi keisuke
+* 
+* @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
+* 
+*/
 //@formatter:on
-public class WellForm extends Form {
+public enum WellSize implements Style {
+
+	DEFAULT, SMALL, LARGE;
 
 	/**
-	 * Creates an empty widget.
+	 * {@inheritDoc}
 	 */
-	public WellForm() {
-		addStyleName(Constants.WELL);
+	public String get() {
+		return DEFAULT == this ? "" : Constants.WELL + "-" + name();
 	}
-	   
-    /**
-     * Set well size
-     * @param size size
-     */
-    public void setSize(WellSize size) {
-        StyleHelper.changeStyle(this, size, WellSize.class);
-    }
 
 }

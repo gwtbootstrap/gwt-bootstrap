@@ -16,7 +16,9 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.WellSize;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Widget;
@@ -67,4 +69,14 @@ public class WellNavList extends DivWidget {
 	public void insert(Widget w, int beforeIndex) {
 		navList.insert(w, beforeIndex);
 	}
+	
+	   
+    /**
+     * Set well size
+     * @param size size
+     */
+    public void setSize(WellSize size) {
+        StyleHelper.changeStyle(this, size, WellSize.class);
+    }
+
 }

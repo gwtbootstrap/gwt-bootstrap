@@ -16,7 +16,9 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.WellSize;
 
 //@formatter:off
 /**
@@ -46,5 +48,13 @@ public class Well extends HtmlWidget {
 	public Well() {
 		super("div");
 		setStyleName(Constants.WELL);
+	}
+	
+	/**
+	 * Set well size
+	 * @param size size
+	 */
+	public void setSize(WellSize size) {
+	    StyleHelper.changeStyle(this, size, WellSize.class);
 	}
 }
