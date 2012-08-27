@@ -46,7 +46,10 @@ public enum NavbarPosition implements Style {
 	/**
 	 * The Navbar is fixed at the bottom.
 	 */
-	BOTTOM("navbar-fixed-bottom");
+	BOTTOM("navbar-fixed-bottom"),
+	
+	/** The Navbar is static at the top. */
+	STATIC_TOP("navbar-static-top");
 
 	private String className;
 
