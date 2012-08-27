@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.dom.client.Style.Unit;
 
@@ -36,7 +37,7 @@ public class ProgressBar extends DivWidget {
 
 		STRIPED(Bootstrap.progress_striped),
 		
-		ANIMATED(Bootstrap.progress_animated);		
+		ANIMATED(Bootstrap.progress_striped);		
 		
 		private final String styleName;
 
@@ -88,6 +89,7 @@ public class ProgressBar extends DivWidget {
 
 	public void setType(Style style) {
 	    StyleHelper.changeStyle(this, style, Style.class);
+	    setActive(Style.ANIMATED == style);
 	}
 
 	public void setPercent(int percent) {
@@ -102,8 +104,22 @@ public class ProgressBar extends DivWidget {
 			return Integer.valueOf(width.substring(0, width.indexOf("%")));
 	}
 	
+	/**
+	 * Set progress bar color
+	 * @param color color
+	 */
 	public void setColor(Color color) {
 	    StyleHelper.changeStyle(this, color, Color.class);
+	}
+	
+	/**
+	 * Set active style.
+	 * <p>
+	 * if set type {@link Style#STRIPED} and this set true, bar is animated
+	 * @param active true:active false:deactive
+	 */
+	public void setActive(boolean active) {
+	    setStyleName(Constants.ACTIVE , active);
 	}
 
 }
