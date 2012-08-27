@@ -137,10 +137,6 @@ public class Breadcrumbs extends UnorderedList {
         super.onAttach();
     }
     
-    private void removeAsSuper(Widget w) {
-        super.remove(w);
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -160,7 +156,7 @@ public class Breadcrumbs extends UnorderedList {
             //Change last widget 2 Link
             
             //pygical remove
-            removeAsSuper(getWidget(getWidgetCount() -1));
+            super.remove(getWidget(getWidgetCount() -1));
             
             ListItem item = getOrCreateListItem(children.get(children.size() -1));
             
@@ -176,21 +172,43 @@ public class Breadcrumbs extends UnorderedList {
 
     private ListItem getOrCreateListItem(Widget lastWidget) {
         ListItem item = null;
+
         Divider dividerWidget = new Divider(divider);
+        if(lastWidget instanceof NavWidget) {
+            NavWidget w = (NavWidget)lastWidget;
+            
+            if(hasDivier(w)) {
+                
+                return w;
+            } else {
+                dividerList.add(dividerWidget);
+                w.addWidget(dividerWidget);
+                return w;
+            }
+        } else if(lastWidget instanceof ListItem) {
+            item = (ListItem)lastWidget;
+        } else {
+            item = new ListItem(lastWidget);
+        }
         
+        if(hasDivier(item)) {
+            return item;
+        }
+        
+        item.add(dividerWidget);
         dividerList.add(dividerWidget);
         
-        if(lastWidget instanceof NavWidget) {
-            NavWidget navWidget = (NavWidget)lastWidget;
-            navWidget.addWidget(dividerWidget);
-            item = navWidget;
-        } else if(lastWidget instanceof ListItem) {
-            item = (NavWidget)lastWidget;
-            item.add(dividerWidget);
-        } else {
-            item = new ListItem(lastWidget, dividerWidget);
-        }
         return item;
+    }
+
+    private boolean hasDivier(ListItem item) {
+        
+        for(Widget w : item) {
+            if(w instanceof Divider) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private ListItem change2TextListItem(Widget w) {
