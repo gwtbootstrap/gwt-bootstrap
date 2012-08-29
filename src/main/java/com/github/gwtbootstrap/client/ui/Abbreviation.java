@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 
@@ -78,9 +78,9 @@ public class Abbreviation extends AbstractTypography {
 	 */
 	public void setInitalism(boolean initialism) {
 		if (initialism)
-			addStyleName(Bootstrap.initialism);
+			addStyleName(Constants.INITIALISM);
 		else
-			removeStyleName(Bootstrap.initialism);
+			removeStyleName(Constants.INITIALISM);
 	}
 
 }
