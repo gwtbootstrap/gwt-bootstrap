@@ -162,4 +162,16 @@ public interface Constants {
 
     public static final String NAVBAR_INVERSE = "navbar-inverse";
 
+    public static final String PREVIOUS = "previous";
+
+    public static final String INITIALISM = "initialism";
+
+    public static final String PRE_SCROLLABLE = "pre-scrollable";
+
+    public static final String ROW_FLUID = "row-fluid";
+
+    public static final String BAR = "bar";
+    
+    public static final String PROGRESS = "progress";
+
 }

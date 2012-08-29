@@ -26,6 +26,7 @@ import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.TabPane;
 import com.github.gwtbootstrap.client.ui.TabPanel;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
+import com.github.gwtbootstrap.client.ui.base.ProgressBarBase;
 import com.github.gwtbootstrap.client.ui.constants.LabelType;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Tabs;
@@ -90,7 +91,7 @@ public class Navigation extends Composite {
         tabPane.clear();
         final ProgressBar progressBar = new ProgressBar();
         progressBar.setPercent(0);
-        progressBar.setType(ProgressBar.Style.ANIMATED);
+        progressBar.setType(ProgressBarBase.Style.ANIMATED);
         tabPane.add(progressBar);
         
         Scheduler.get().scheduleFixedDelay(new Scheduler.RepeatingCommand() {

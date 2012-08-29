@@ -15,11 +15,8 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.base.ProgressBarBase;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.dom.client.Style.Unit;
 
 //@formatter:off
 /**
@@ -29,97 +26,60 @@ import com.google.gwt.dom.client.Style.Unit;
  * @author Dominik Mayer
  */
 //@formatter:on
-public class ProgressBar extends DivWidget {
+public class ProgressBar extends ProgressBarBase {
     
-	public enum Style implements com.github.gwtbootstrap.client.ui.base.Style {
+	private Bar bar = new Bar();
 
-		DEFAULT(""),
-
-		STRIPED(Bootstrap.progress_striped),
-		
-		ANIMATED(Bootstrap.progress_striped);		
-		
-		private final String styleName;
-
-        private Style(String styleName) {
-            this.styleName = styleName;
-		    
-		}
-
-		public String get() {
-		    return this.styleName;
-		}
-	}
-	
-	public enum Color implements com.github.gwtbootstrap.client.ui.base.Style {
-        DEFAULT(""),
-	    INFO("progress-info"),
-        SUCCESS("progress-success"),
-        DANGER("progress-danger"),
-        WARNING("progress-warning")
-        ;
-        
-        private final String styleName;
-
-        private Color(String styleName) {
-            this.styleName = styleName;
-        }
-
-        @Override
-        public String get() {
-            return this.styleName;
-        }
-	    
-	}
-
-	private DivWidget bar = new DivWidget();
-
+	/**
+	 * Create a progressbar.
+	 */
 	public ProgressBar() {
-	    setStylePrimaryName(Bootstrap.progress);
-		addStyleName(Bootstrap.progress);
-		bar.addStyleName(Bootstrap.bar);
+	    setStylePrimaryName(Constants.PROGRESS);
+		addStyleName(Constants.PROGRESS);
 		setColor(Color.DEFAULT);
 		add(bar);
 	}
 
+	/**
+	 * Create a progressbar with type
+	 * @param style ProgressBar type
+	 */
 	public ProgressBar(Style style) {
 		this();
 		setType(style);
 	}
 
-	public void setType(Style style) {
-	    StyleHelper.changeStyle(this, style, Style.class);
-	    setActive(Style.ANIMATED == style);
-	}
-
+    /**
+     * Set bar width as a percent unit
+     * @param percent percent
+     */
 	public void setPercent(int percent) {
-		bar.getElement().getStyle().setWidth(percent, Unit.PCT);
+		bar.setPercent(percent);
 	}
 
+    /**
+     * Get bar width as a percent unit
+     * @return percent
+     */
 	public int getPercent() {
-		String width = bar.getElement().getStyle().getWidth();
-		if (width == null)
-			return 0;
-		else
-			return Integer.valueOf(width.substring(0, width.indexOf("%")));
+	    return bar.getPercent();
 	}
 	
 	/**
-	 * Set progress bar color
-	 * @param color color
+	 * Clear bar.
 	 */
-	public void setColor(Color color) {
-	    StyleHelper.changeStyle(this, color, Color.class);
+	@Override
+	public void clear() {
+	    bar.clear();
+	    bar.setPercent(0);
 	}
 	
 	/**
-	 * Set active style.
-	 * <p>
-	 * if set type {@link Style#STRIPED} and this set true, bar is animated
-	 * @param active true:active false:deactive
+	 * Set bar label text
+	 * @param text bar label text
 	 */
-	public void setActive(boolean active) {
-	    setStyleName(Constants.ACTIVE , active);
+	public void setText(String text) {
+	    bar.setText(text);
 	}
 
 }
