@@ -29,6 +29,7 @@ import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -232,6 +233,15 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 	@Override
 	public HandlerRegistration addClickHandler(ClickHandler handler) {
 		return trigger.addClickHandler(handler);
+	}
+	
+	/**
+	 * Add widget to trigger anchodr
+	 * @param w added widget
+	 */
+	@UiChild(tagname="customTrigger" , limit=1)
+	public void addCustomTrigger(Widget w) {
+	    trigger.insert(w , 0);
 	}
 	
 }

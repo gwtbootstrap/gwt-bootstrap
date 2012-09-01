@@ -25,6 +25,8 @@ import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**
@@ -116,5 +118,11 @@ public class SplitDropdownButton extends DropdownBase implements
     @Override
     public void setIconSize(IconSize size) {
         button.setIconSize(size);
+    }
+    
+    @Override
+    @UiChild(tagname="customTrigger" , limit=1)
+    public void addCustomTrigger(Widget w) {
+        button.insert(w, 0);
     }
 }
