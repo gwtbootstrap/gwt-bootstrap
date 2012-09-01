@@ -88,7 +88,6 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
         super.add(container);
         super.setStyleName(Constants.ALERT);
         setClose(hasClose);
-        setHandlerFunctions(getElement());
     }
 
     /**
@@ -138,6 +137,7 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
         super.onAttach();
         setClose(hasClose);
         configure(getElement());
+        setHandlerFunctions(getElement());
     }
     
     /**
@@ -271,6 +271,7 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
      * {@inheritDoc}
      */
     public HandlerRegistration addCloseHandler(CloseHandler handler) {
+        
         return addHandler(handler, CloseEvent.getType());
     }
 
