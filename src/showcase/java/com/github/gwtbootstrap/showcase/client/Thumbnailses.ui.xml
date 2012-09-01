@@ -1,0 +1,151 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:FlowPanel>
+        <b:PageHeader subtext="Grids of images, videos, text, and more">Thumbnails</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="12">
+                <b:Heading size="2">Default Style</b:Heading>
+                <b:Paragraph>
+                    By default, GWT-Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.
+                </b:Paragraph>
+                <b:Thumbnails>
+                    <b:ThumbnailLink size="3">
+                        <b:Image url="http://placehold.it/260x180"/>
+                    </b:ThumbnailLink>
+                    <b:ThumbnailLink size="3">
+                        <b:Image url="http://placehold.it/260x180"/>
+                    </b:ThumbnailLink>
+                    <b:ThumbnailLink size="3">
+                        <b:Image url="http://placehold.it/260x180"/>
+                    </b:ThumbnailLink>
+                    <b:ThumbnailLink size="3">
+                        <b:Image url="http://placehold.it/260x180"/>
+                    </b:ThumbnailLink>
+                </b:Thumbnails>
+                <b:Heading size="3">Default Style Markup</b:Heading>
+                <g:HTMLPanel>
+                <pre class="prettyprint linenums">
+&lt;b:Thumbnails&gt;
+    &lt;b:ThumbnailLink href="#" size="3"&gt;
+        &lt;b:Image url="http://placehold.it/260x180"/&gt;
+    &lt;/b:ThumbnailLink&gt;
+    &lt;b:ThumbnailLink href="#" size="3"&gt;
+        &lt;b:Image url="http://placehold.it/260x180"/&gt;
+    &lt;/b:ThumbnailLink&gt;
+    &lt;b:ThumbnailLink href="#" size="3"&gt;
+        &lt;b:Image url="http://placehold.it/260x180"/&gt;
+    &lt;/b:ThumbnailLink&gt;
+    &lt;b:ThumbnailLink href="#" size="3"&gt;
+        &lt;b:Image url="http://placehold.it/260x180"/&gt;
+    &lt;/b:ThumbnailLink&gt;
+&lt;/b:Thumbnails&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+            <b:Column size="12">
+                <b:Heading size="2">Highly customizable</b:Heading>
+                <b:Paragraph>
+                    With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.
+                </b:Paragraph>
+                <b:Thumbnails>
+                    <b:Thumbnail size="4">
+                        <b:Image url="http://placehold.it/300x200"/>
+                        <!-- The Caption is optional -->
+                        <b:Caption>
+                            <b:Heading size="3">Thumbnail label</b:Heading>
+                            <b:Paragraph>
+                                Cras justo odio, dapibus ac facilisis in, 
+                                egestas eget quam. Donec id elit non mi porta gravida at eget metus. 
+                                Nullam id dolor id nibh ultricies vehicula ut id elit.                            
+                            </b:Paragraph>
+                            <b:Paragraph>
+                                <b:Button type="PRIMARY">Action</b:Button>
+                                <b:Button>Action</b:Button>
+                            </b:Paragraph>
+                        </b:Caption>
+                    </b:Thumbnail>
+                    <b:Thumbnail size="4">
+                        <b:Image url="http://placehold.it/300x200"/>
+                        <b:Heading size="3">Thumbnail label</b:Heading>
+                        <b:Paragraph>
+                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.                            
+                        </b:Paragraph>
+                        <b:Paragraph>
+                            <b:Button type="PRIMARY">Action</b:Button>
+                                <b:Button>Action</b:Button>
+                            </b:Paragraph>
+                    </b:Thumbnail>
+                    <b:Thumbnail size="4">
+                        <b:Image url="http://placehold.it/300x200"/>
+                        <!-- The Caption can be contained html tags -->
+                        <b:Caption>
+                            <h3>Thumbnail label</h3>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, 
+                                egestas eget quam. Donec id elit non mi porta gravida at eget metus. 
+                                Nullam id dolor id nibh ultricies vehicula ut id elit.                            
+                            </p>
+                            <p>
+                                <b:Button type="PRIMARY">Action</b:Button>
+                                <b:Button>Action</b:Button>
+                            </p>
+                        </b:Caption>
+                    </b:Thumbnail>
+                </b:Thumbnails>
+                <b:Heading size="3">Markup</b:Heading>
+                <g:HTMLPanel>
+                <pre class="prettyprint linenums">
+&lt;b:Thumbnails&gt;
+    &lt;b:Thumbnail size="4"&gt;
+        &lt;b:Image url="http://placehold.it/300x200"/&gt;
+        &lt;!-- The Caption is optional --&gt;
+        &lt;b:Caption&gt;
+            &lt;b:Heading size="3"&gt;Thumbnail label&lt;/b:Heading&gt;
+            &lt;b:Paragraph&gt;
+                Cras justo odio, dapibus ac facilisis in, 
+                egestas eget quam. Donec id elit non mi porta gravida at eget metus. 
+                Nullam id dolor id nibh ultricies vehicula ut id elit.                            
+            &lt;/b:Paragraph&gt;
+            &lt;b:Paragraph&gt;
+                &lt;b:Button type="PRIMARY"&gt;Action&lt;/b:Button&gt;
+                &lt;b:Button&gt;Action&lt;/b:Button&gt;
+            &lt;/b:Paragraph&gt;
+        &lt;/b:Caption&gt;
+    &lt;/b:Thumbnail&gt;
+    &lt;b:Thumbnail size="4"&gt;
+        &lt;b:Image url="http://placehold.it/300x200"/&gt;
+        &lt;b:Heading size="3"&gt;Thumbnail label&lt;/b:Heading&gt;
+        &lt;b:Paragraph&gt;
+            Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+            Nullam id dolor id nibh ultricies vehicula ut id elit.                            
+        &lt;/b:Paragraph&gt;
+        &lt;b:Paragraph&gt;
+            &lt;b:Button type="PRIMARY"&gt;Action&lt;/b:Button&gt;
+                &lt;b:Button&gt;Action&lt;/b:Button&gt;
+            &lt;/b:Paragraph&gt;
+    &lt;/b:Thumbnail&gt;
+    &lt;b:Thumbnail size="4"&gt;
+        &lt;b:Image url="http://placehold.it/300x200"/&gt;
+        &lt;!-- The Caption can be contained html tags --&gt;
+        &lt;b:Caption&gt;
+            &lt;h3&gt;Thumbnail label&lt;/h3&gt;
+            &lt;p&gt;
+                Cras justo odio, dapibus ac facilisis in, 
+                egestas eget quam. Donec id elit non mi porta gravida at eget metus. 
+                Nullam id dolor id nibh ultricies vehicula ut id elit.                            
+            &lt;/p&gt;
+            &lt;p&gt;
+                &lt;b:Button type="PRIMARY"&gt;Action&lt;/b:Button&gt;
+                &lt;b:Button&gt;Action&lt;/b:Button&gt;
+            &lt;/p&gt;
+        &lt;/b:Caption&gt;
+    &lt;/b:Thumbnail&gt;
+&lt;/b:Thumbnails&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+     </g:FlowPanel>
+</ui:UiBinder> 

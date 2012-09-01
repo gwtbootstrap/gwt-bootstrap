@@ -174,4 +174,10 @@ public interface Constants {
     
     public static final String PROGRESS = "progress";
 
+    public static final String THUMBNAILS = "thumbnails";
+
+    public static final String THUMBNAIL = "thumbnail";
+
+    public static final String CAPTION = "caption";
+
 }
