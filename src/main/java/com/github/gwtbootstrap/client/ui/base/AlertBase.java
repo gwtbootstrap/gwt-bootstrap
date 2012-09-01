@@ -137,6 +137,7 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     protected void onAttach() {
         super.onAttach();
         setClose(hasClose);
+        configure(getElement());
     }
     
     /**
@@ -264,15 +265,6 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
      */
     public void close() {
         close(getElement());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onLoad() {
-        super.onLoad();
-        configure(getElement());
     }
 
     /**
