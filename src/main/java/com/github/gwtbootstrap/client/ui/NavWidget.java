@@ -147,4 +147,36 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	public void clear() {
 		anchor.clear();
 	}
+	
+	/**
+	 * Set anchor target attribute.
+	 * @param target target name
+	 */
+	public void setTarget(String target) {
+	    anchor.setTarget(target);
+	}
+	
+	/**
+	 * Get anchor target attribute.
+	 * @return target name
+	 */
+	public String getTarget() {
+	    return anchor.getTarget();
+	}
+	
+	/**
+	 * Set anchor name
+	 * @param name anchor name
+	 */
+	public void setName(String name) {
+	    anchor.setName(name);
+	}
+	
+	/**
+	 * Get anchor name
+	 * @return anchor name
+	 */
+	public String getName() {
+	    return anchor.getName();
+	}
 }

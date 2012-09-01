@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Text;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -29,6 +30,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.HasEnabled;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.impl.FocusImpl;
 
@@ -62,7 +64,7 @@ import com.google.gwt.user.client.ui.impl.FocusImpl;
  * @author Dominik Mayer
  * @author ohashi keisuke
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable, HasName {
 
     private static final FocusImpl impl = FocusImpl.getFocusImplForWidget();
 
@@ -260,4 +262,41 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     public boolean isActive() {
         return getStyleName().contains(Constants.ACTIVE);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setName(String name) {
+        getAnchorElement().setName(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getName() {
+        return getAnchorElement().getName();
+    }
+    
+    /** 
+     * Set target attribute
+     * @param target target name
+     */
+    public void setTarget(String target) {
+        getAnchorElement().setTarget(target);
+    }
+    
+    /**
+     * Get target attribute value
+     * @return target attribute value
+     */
+    public String getTarget() {
+        return getAnchorElement().getTarget();
+    }
+    
+    protected AnchorElement getAnchorElement() {
+        return AnchorElement.as(getElement());
+    }
+    
 }

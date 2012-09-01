@@ -91,7 +91,7 @@ public class ButtonCell extends com.google.gwt.cell.client.ButtonCell {
 		}
 		sb.appendHtmlConstant("</button>");
 	}
-
+	
     public IconType getIcon() {
         return icon;
     }
@@ -115,6 +115,6 @@ public class ButtonCell extends com.google.gwt.cell.client.ButtonCell {
 	public void setSize(ButtonSize size) {
 		this.size = size;
 	}
-
+	
     // TODO add icon size support
 }
