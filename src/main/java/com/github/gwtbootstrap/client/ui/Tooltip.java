@@ -107,7 +107,7 @@ public class Tooltip extends HoverBase {
 		configure(e.getElement(), animated, placement.get(),trigger.get(), showDelay, hideDelay);
 	}
 
-	private static native void configure(Element element, boolean animated,
+	public static native void configure(Element element, boolean animated,
 			String placement, String trigger, int showDelay, int hideDelay) /*-{
 		$wnd.jQuery(element).tooltip({
 			animation : animated,
