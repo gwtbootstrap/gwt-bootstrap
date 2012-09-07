@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.showcase.client.components;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
+import com.github.gwtbootstrap.showcase.client.Accordions;
 import com.github.gwtbootstrap.showcase.client.Alerts;
 import com.github.gwtbootstrap.showcase.client.Breadcrumbs;
 import com.github.gwtbootstrap.showcase.client.ButtonGroups;
@@ -61,6 +62,7 @@ public class ComponentView extends Composite {
         addWidget("Breadcrumbs", "breadcrumbs", new Breadcrumbs());
         addWidget("Navigation", "navigation", new Navigation());
         addWidget("Pagination", "pagination", new Pagination());
+        addWidget("Accordion", "accordion", new Accordions());
         addWidget("Alert", "alert", new Alerts());
         addWidget("Tooltips", "tooltip", new Tooltips());
         addWidget("Popovers", "popovers", new Popovers());

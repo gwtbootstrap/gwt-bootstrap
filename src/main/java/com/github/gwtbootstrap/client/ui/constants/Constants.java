@@ -180,4 +180,20 @@ public interface Constants {
 
     public static final String CAPTION = "caption";
 
+    public static final String ACCORDION = "accordion";
+
+    public static final String ACCORDION_GROUP = "accordion-group";
+
+    public static final String ACCORDION_HEADING = "accordion-heading";
+
+    public static final String ACCORDION_BODY = "accordion-body";
+
+    public static final String ACCORDION_INNER = "accordion-inner";
+
+    public static final String COLLAPSE = "collapse";
+
+    public static final String IN = "in";
+
+    public static final String ACCORDION_TOGGLE = "accordion-toggle";
+
 }
