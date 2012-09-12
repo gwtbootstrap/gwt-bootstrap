@@ -22,6 +22,11 @@
 	<define-property name="bootstrap.responsiveDesign" values="true,false" />
 	<set-property name="bootstrap.responsiveDesign" value="false" />
 
+    <replace-with
+        class="com.github.gwtbootstrap.client.ui.config.DefaultColumnSizeConfigurator">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.config.ColumnSizeConfigurator" />
+    </replace-with>
+
 	<replace-with
 		class="com.github.gwtbootstrap.client.ui.config.DefaultConfigurator">
 		<when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />

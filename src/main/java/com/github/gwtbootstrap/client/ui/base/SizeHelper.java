@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.gwtbootstrap.client.ui.config.ColumnSizeConfigurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.UIObject;
 
 /**
@@ -32,13 +34,15 @@ import com.google.gwt.user.client.ui.UIObject;
 public class SizeHelper {
 
 	private static List<SizeSpan> SIZE_LIST;
+	
+	private static final ColumnSizeConfigurator CONFIGURATOR = GWT.create(ColumnSizeConfigurator.class);
 
 	// create SIZE_LIST
 	static {
 
 		List<SizeSpan> list = new ArrayList<SizeSpan>();
 
-		for (int i = Constants.MINIMUM_SPAN_SIZE; i <= Constants.MAXIMUM_SPAN_SIZE; i++) {
+		for (int i = CONFIGURATOR.getMinimumSpanSize(); i <= CONFIGURATOR.getMaximumSpanSize(); i++) {
 			list.add(new SizeSpan(i));
 		}
 
@@ -62,16 +66,18 @@ public class SizeHelper {
 
 	private static class SizeSpan implements Style {
 
-		private static final String SIZE_ERROR_MESSAGE = "The size of the Column has to be between " + Constants.MINIMUM_SPAN_SIZE + " and " + Constants.MAXIMUM_SPAN_SIZE + "!";
+	    private static final ColumnSizeConfigurator CONFIGURATOR = GWT.create(ColumnSizeConfigurator.class);
+		private static final String SIZE_ERROR_MESSAGE = "The size of the Column has to be between "
+		                                                    + CONFIGURATOR.getMinimumSpanSize() + " and " + CONFIGURATOR.getMaximumSpanSize()+ "!";
 
 		private final int size;
 
 		private SizeSpan(int size) {
 
-			if (size < Constants.MINIMUM_SPAN_SIZE)
+			if (size < CONFIGURATOR.getMinimumSpanSize())
 				throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
 
-			if (size > Constants.MAXIMUM_SPAN_SIZE)
+			if (size > CONFIGURATOR.getMaximumSpanSize())
 				throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
 
 			this.size = size;
