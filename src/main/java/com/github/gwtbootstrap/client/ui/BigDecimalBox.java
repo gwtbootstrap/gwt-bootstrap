@@ -16,6 +16,9 @@ import com.google.gwt.text.shared.Renderer;
  * @author Nick Lim
  */
 public class BigDecimalBox extends ValueBoxBase<BigDecimal> {
+    /**
+     * Create an empty widget.
+     */
     public BigDecimalBox() {
         super(Document.get().createTextInputElement(), BigDecimalRenderer.instance(),
                 BigDecimalParser.instance());
