@@ -104,7 +104,7 @@ public class DropdownContainer extends Dropdown {
 
         for (int i = 0; i < handlerManager.getHandlerCount(ShowEvent.getType()); i++) {
             ShowHandler sh = handlerManager.getHandler(ShowEvent.getType(), i);
-            sh.onShow(new ShowEvent());
+            sh.onShow(new ShowEvent(null));
         }
     }
 
@@ -114,7 +114,7 @@ public class DropdownContainer extends Dropdown {
 
         for (int i = 0; i < handlerManager.getHandlerCount(HideEvent.getType()); i++) {
             HideHandler hh = handlerManager.getHandler(HideEvent.getType(), i);
-            hh.onHide(new HideEvent());
+            hh.onHide(new HideEvent(null));
         }
     }
 

@@ -36,6 +36,7 @@ import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -327,15 +328,15 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 * This method is called immediately when the widget's {@link #hide()}
 	 * method is executed.
 	 */
-	protected void onHide() {
-		fireEvent(new HideEvent());
+	protected void onHide(Event e) {
+		fireEvent(new HideEvent(e));
 	}
 
 	/**
 	 * This method is called once the widget is completely hidden.
 	 */
-	protected void onHidden() {
-		fireEvent(new HiddenEvent());
+	protected void onHidden(Event e) {
+		fireEvent(new HiddenEvent(e));
 		currentlyShown.remove(this);
 	}
 
@@ -343,10 +344,10 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 * This method is called immediately when the widget's {@link #show()}
 	 * method is executed.
 	 */
-	protected void onShow() {
+	protected void onShow(Event e) {
 		if (hideOthers)
 			hideShownModals();
-		fireEvent(new ShowEvent());
+		fireEvent(new ShowEvent(e));
 	}
 
 	private void hideShownModals() {
@@ -360,8 +361,8 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * This method is called once the widget is completely shown.
 	 */
-	protected void onShown() {
-		fireEvent(new ShownEvent());
+	protected void onShown(Event e) {
+		fireEvent(new ShownEvent(e));
 		currentlyShown.add(this);
 	}
 
@@ -449,17 +450,17 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 */
 	private native void setHandlerFunctions(Element e) /*-{
 		var that = this;
-		$wnd.jQuery(e).on('hide', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onHide()();
+		$wnd.jQuery(e).on('hide', function(e) {
+			that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);
 		});
-		$wnd.jQuery(e).on('hidden', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onHidden()();
+		$wnd.jQuery(e).on('hidden', function(e) {
+			that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);
 		});
-		$wnd.jQuery(e).on('show', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onShow()();
+		$wnd.jQuery(e).on('show', function(e) {
+			that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);
 		});
-		$wnd.jQuery(e).on('shown', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();
+		$wnd.jQuery(e).on('shown', function(e) {
+			that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);
 		});
 	}-*/;
 

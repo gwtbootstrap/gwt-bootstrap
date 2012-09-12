@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.event;
 
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
@@ -31,23 +32,49 @@ import com.google.gwt.event.shared.GwtEvent;
  */
 public class HiddenEvent extends GwtEvent<HiddenHandler> {
 
-	private static final Type<HiddenHandler> TYPE = new Type<HiddenHandler>();
+    private static final Type<HiddenHandler> TYPE = new Type<HiddenHandler>();
+    private final NativeEvent nativeEvent;
 
-	public static Type<HiddenHandler> getType() {
-		return TYPE;
-	}
+    public static Type<HiddenHandler> getType() {
+        return TYPE;
+    }
 
-	public HiddenEvent() {
-	}
+    public HiddenEvent() {
+        this(null);
+    }
 
-	@Override
-	public final Type<HiddenHandler> getAssociatedType() {
-		return TYPE;
-	}
+    public HiddenEvent(NativeEvent nativeEvent) {
+        this.nativeEvent = nativeEvent;
+    }
 
-	@Override
-	protected void dispatch(HiddenHandler handler) {
-		handler.onHidden(this);
-	}
+    @Override
+    public final Type<HiddenHandler> getAssociatedType() {
+        return TYPE;
+    }
+
+    @Override
+    protected void dispatch(HiddenHandler handler) {
+        handler.onHidden(this);
+    }
+
+    /**
+     * Prevents the browser from taking its default action for the given event.
+     */
+    public final void preventDefault() {
+
+        if(nativeEvent == null) return;
+
+        nativeEvent.preventDefault();
+    }
+
+    /**
+     * Stops the event from being propagated to parent elements.
+     */
+    public final void stopPropagation() {
+
+        if(nativeEvent == null) return;
+
+        nativeEvent.stopPropagation();
+    }
 
 }
