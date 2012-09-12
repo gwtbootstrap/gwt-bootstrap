@@ -13,8 +13,11 @@ import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -112,8 +115,18 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
     @Override
     public Widget asWidget() {
         
-        if(widget != null && !isExistTrigger()) {
-            reconfigure();
+        if(widget != null) {
+            Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                
+                @Override
+                public void execute() {
+                    if(!isExistTrigger()){
+                        reconfigure();
+                    } else {
+                        setHandlerFunctions(widget.getElement());
+                    }
+                }
+            });
         }
         
         return getWidget();
@@ -226,9 +239,9 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
         
         removeDataIfExists(widget.getElement());
         
+        setHandlerFunctions(widget.getElement());
+        
         configure(widget.getElement(), parent, toggle);
-        
-        
     }
     
     //@fomatter:off
@@ -264,13 +277,9 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
      * @param e element
      */
     protected native void removeDataIfExists(Element e) /*-{
-        var $this = $wnd.jQuery(e)
+        var $this = $wnd.jQuery(e);
         if($this.data('collapse')) {
             $this.removeData('parent').removeData('toggle').removeData('collapse');
-            $this.off('show');
-            $this.off('shown');
-            $this.off('hide');
-            $this.off('hidden');
         }
     }-*/;
     
@@ -280,17 +289,23 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
     protected native void setHandlerFunctions(Element e) /*-{
         var that = this;
         var $this = $wnd.jQuery(e);
-        $this.on('hide', function() {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onHide()();
+
+        $this.off('show');
+        $this.off('shown');
+        $this.off('hide');
+        $this.off('hidden');
+
+        $this.on('hide', function(e) {
+            that.@com.github.gwtbootstrap.client.ui.Collapse::onHide(Lcom/google/gwt/user/client/Event;)(e);
         });
-        $this.jQuery(e).on('hidden', function() {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onHidden()();
+        $this.on('hidden', function(e) {
+            that.@com.github.gwtbootstrap.client.ui.Collapse::onHidden(Lcom/google/gwt/user/client/Event;)(e);
         });
-        $this.jQuery(e).on('show', function() {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onShow()();
+        $this.on('show', function(e) {
+            that.@com.github.gwtbootstrap.client.ui.Collapse::onShow(Lcom/google/gwt/user/client/Event;)(e);
         });
-        $this.jQuery(e).on('shown', function() {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onShown()();
+        $this.on('shown', function(e) {
+            that.@com.github.gwtbootstrap.client.ui.Collapse::onShown(Lcom/google/gwt/user/client/Event;)(e);
         });
     }-*/;
 
@@ -304,31 +319,29 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
      * This method is called immediately when the widget's {@link #hide()}
      * method is executed.
      */
-    protected void onHide() {
-        widget.fireEvent(new HideEvent());
+    protected void onHide(Event e) {
+        widget.fireEvent(new HideEvent(e));
     }
 
     /**
      * This method is called once the widget is completely hidden.
      */
-    protected void onHidden() {
-        widget.fireEvent(new HiddenEvent());
+    protected void onHidden(Event e) {
+        widget.fireEvent(new HiddenEvent(e));
     }
 
     /**
      * This method is called immediately when the widget's {@link #show()}
      * method is executed.
      */
-    protected void onShow() {
-        widget.fireEvent(new ShowEvent());
+    protected void onShow(Event e) {
+        widget.fireEvent(new ShowEvent(e));
     }
 
     /**
      * This method is called once the widget is completely shown.
      */
-    protected void onShown() {
-        widget.fireEvent(new ShownEvent());
+    protected void onShown(Event e) {
+        widget.fireEvent(new ShownEvent(e));
     }
-
-    
 }

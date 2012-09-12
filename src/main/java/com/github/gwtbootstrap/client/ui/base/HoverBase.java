@@ -18,6 +18,8 @@ package com.github.gwtbootstrap.client.ui.base;
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.Trigger;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.user.client.ui.HasOneWidget;
@@ -77,19 +79,25 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 	public Widget asWidget() {
 		
 	    if(getWidget() != null) {
-    		removeDataIfExists();
-    		
-    		reconfigure();
-		
-		    getWidget().addAttachHandler(new AttachEvent.Handler() {
-		        
-		        @Override
-		        public void onAttachOrDetach(AttachEvent event) {
-		            if (!event.isAttached()) {
-		                changeVisibility(VisibilityChange.HIDE);
-		            }
-		        }
-		    });
+	        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                
+                @Override
+                public void execute() {
+                    removeDataIfExists();
+                    
+                    reconfigure();
+                    
+                    getWidget().addAttachHandler(new AttachEvent.Handler() {
+                        
+                        @Override
+                        public void onAttachOrDetach(AttachEvent event) {
+                            if (!event.isAttached()) {
+                                changeVisibility(VisibilityChange.HIDE);
+                            }
+                        }
+                    });
+                }
+            });
 		}
 		
 		return getWidget();

@@ -37,6 +37,28 @@
                     </dl>
                     If you add some widgets to the <code>AccordionGroup</code>, they are added to collapsible panel.<br/>
                 </b:Paragraph>
+                <b:Heading size="2">Example Markup</b:Heading>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b:Accordion&gt;
+    &lt;b:AccordionGroup heading="One"&gt;
+        &lt;b:Paragraph&gt;one&lt;/b:Paragraph&gt;
+        &lt;b:Paragraph&gt;two&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+    &lt;b:AccordionGroup heading="Defalut Open" defaultOpen="true"&gt;
+        &lt;b:Paragraph&gt;The default opened Accordion&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+    &lt;b:AccordionGroup defaultOpen="true" heading="With Icon" icon="GITHUB"&gt;
+        &lt;b:Paragraph&gt;Icon style&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+    &lt;b:AccordionGroup heading="With Custom Icon"&gt;
+        &lt;b:customTrigger&gt;
+            &lt;b:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+        &lt;/b:customTrigger&gt;
+        &lt;b:Paragraph&gt;Custom Icon Style&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+&lt;/b:Accordion&gt;</pre>
+                </g:HTMLPanel>
             </b:Column>
             <b:Column size="6">
                 <b:Heading size="2">Example</b:Heading>
@@ -63,32 +85,6 @@
                 <b:AccordionGroup heading="without accordion">
                     <b:Paragraph>without accordion, but work well:)</b:Paragraph>
                 </b:AccordionGroup>
-            </b:Column>
-        </b:FluidRow>
-        <b:FluidRow>
-            <b:Column size="12">
-                <b:Heading size="2">Example Markup</b:Heading>
-                <g:HTMLPanel>
-                    <pre class="prettyprint linenums">
-&lt;b:Accordion&gt;
-    &lt;b:AccordionGroup heading="One"&gt;
-        &lt;b:Paragraph&gt;one&lt;/b:Paragraph&gt;
-        &lt;b:Paragraph&gt;two&lt;/b:Paragraph&gt;
-    &lt;/b:AccordionGroup&gt;
-    &lt;b:AccordionGroup heading="Defalut Open" defaultOpen="true"&gt;
-        &lt;b:Paragraph&gt;The default opened Accordion&lt;/b:Paragraph&gt;
-    &lt;/b:AccordionGroup&gt;
-    &lt;b:AccordionGroup defaultOpen="true" heading="With Icon" icon="GITHUB"&gt;
-        &lt;b:Paragraph&gt;Icon style&lt;/b:Paragraph&gt;
-    &lt;/b:AccordionGroup&gt;
-    &lt;b:AccordionGroup heading="With Custom Icon"&gt;
-        &lt;b:customTrigger&gt;
-            &lt;b:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
-        &lt;/b:customTrigger&gt;
-        &lt;b:Paragraph&gt;Custom Icon Style&lt;/b:Paragraph&gt;
-    &lt;/b:AccordionGroup&gt;
-&lt;/b:Accordion&gt;</pre>
-                </g:HTMLPanel>
             </b:Column>
         </b:FluidRow>
         <b:FluidRow>
@@ -133,11 +129,16 @@
             </b:Column>
             <b:Column b:id="parent" size="6">
                 <b:Heading size="3">Example Collapse with CollapseTrigger</b:Heading>
-                <b:Tooltip text="If click it,below widget is toggled. :)">
-                    <b:CollapseTrigger target="#toggle1">
-                        <b:Button>Collapse Trigger</b:Button>
-                    </b:CollapseTrigger>
-                </b:Tooltip>
+                <b:ButtonGroup>
+                    <b:Tooltip text="If click it,below widget is toggled. :)">
+                        <b:CollapseTrigger target="#toggle1">
+                            <b:Button>Collapse Trigger</b:Button>
+                        </b:CollapseTrigger>
+                    </b:Tooltip>
+                    <b:Tooltip text="If click it,below widget is toggled. :)">
+                        <b:Button ui:field="toggleButton">Toogle without CollpaseTrigger</b:Button>
+                    </b:Tooltip>
+                </b:ButtonGroup>
                 <b:Collapse existTrigger="true" b:id="toggle1" defaultOpen="true">
                     <b:FluidRow>
                         <b:Column size="12">
@@ -149,6 +150,23 @@
                         </b:Column>
                     </b:FluidRow>
                 </b:Collapse>
+                <b:Collapse existTrigger="true" b:id="toggle2" defaultOpen="true" ui:field="toggle1">
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:Alert close="false" animation="true" heading="collapsible1">
+                                <b:Paragraph>
+                                    Hello :D
+                                </b:Paragraph>
+                            </b:Alert>
+                        </b:Column>
+                    </b:FluidRow>
+                </b:Collapse>
+                <b:Heading size="4">Event Log</b:Heading>
+                <b:AlertBlock heading="event log">
+                    <g:ScrollPanel height="100px" >
+                        <g:FlowPanel ui:field="logPanel"/>
+                    </g:ScrollPanel>
+                </b:AlertBlock>
                 <b:Heading size="3">Markup</b:Heading>
                 <g:HTMLPanel>
                 <pre class="prettyprint linenums">
