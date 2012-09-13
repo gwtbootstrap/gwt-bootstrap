@@ -45,4 +45,15 @@ public interface HasIcon {
 	 *            the new size.
 	 */
 	public void setIconSize(IconSize size);
+	
+	/**
+	 * Set custom icon style.
+	 * <p>
+	 * It sets css class name to {@literal <i>} tag.
+	 * You can set any icons style.
+	 * </p>
+	 * 
+	 * @param customIconStyle
+	 */
+	public void setCustomIconStyle(String customIconStyle);
 }

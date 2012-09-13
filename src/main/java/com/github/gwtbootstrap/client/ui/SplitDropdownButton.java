@@ -125,4 +125,13 @@ public class SplitDropdownButton extends DropdownBase implements
     public void addCustomTrigger(Widget w) {
         button.insert(w, 0);
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        button.setCustomIconStyle(customIconStyle);
+    }
+
 }

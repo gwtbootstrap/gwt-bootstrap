@@ -258,4 +258,12 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, Is
     public void addDecorate(Widget w) {
         link.add(w);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        link.setCustomIconStyle(customIconStyle);
+    }
 }

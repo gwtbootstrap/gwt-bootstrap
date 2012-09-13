@@ -127,4 +127,12 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
         add(w);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        icon.addStyleName(customIconStyle);
+    }
+
 }

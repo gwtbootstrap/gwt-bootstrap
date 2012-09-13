@@ -119,8 +119,19 @@ public class DropdownButton extends DropdownBase {
         return trigger.addClickHandler(handler);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setIconSize(IconSize size) {
         trigger.setIconSize(size);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        trigger.setCustomIconStyle(customIconStyle);
     }
 }

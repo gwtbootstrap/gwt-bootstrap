@@ -94,4 +94,13 @@ public class Dropdown extends DropdownBase {
     public void setIconSize(IconSize size) {
         trigger.setIconSize(size);
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        trigger.setCustomIconStyle(customIconStyle);
+    }
+
 }

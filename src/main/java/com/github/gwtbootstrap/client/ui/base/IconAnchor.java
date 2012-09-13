@@ -298,5 +298,13 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     protected AnchorElement getAnchorElement() {
         return AnchorElement.as(getElement());
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        icon.addStyleName(customIconStyle);
+    }
     
 }

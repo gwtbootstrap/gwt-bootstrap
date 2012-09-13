@@ -202,5 +202,13 @@ public class AccordionGroup extends DivWidget implements HasIcon,HasVisibility, 
     public void setHeading(String heading) {
         trigger.setText(heading);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        trigger.setCustomIconStyle(customIconStyle);
+    }
     
 }

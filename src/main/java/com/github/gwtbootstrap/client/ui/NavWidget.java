@@ -179,4 +179,9 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	public String getName() {
 	    return anchor.getName();
 	}
+
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        anchor.setCustomIconStyle(customIconStyle);
+    }
 }
