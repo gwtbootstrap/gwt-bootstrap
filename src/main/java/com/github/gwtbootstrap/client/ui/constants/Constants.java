@@ -97,10 +97,6 @@ public interface Constants {
 
 	public static final int MAXIMUM_SPAN_SIZE = 12;
 
-	public static final int MINIMUM_OFFSET = MINIMUM_SPAN_SIZE - 1;
-
-	public static final int MAXIMUM_OFFSET = MAXIMUM_SPAN_SIZE - 1;
-
 	// Table
 
 	public static final String TABLE = "table";
