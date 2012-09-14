@@ -26,6 +26,7 @@ import com.github.gwtbootstrap.showcase.client.framework.AppActivityMapper;
 import com.github.gwtbootstrap.showcase.client.framework.HasMenuPlace;
 import com.github.gwtbootstrap.showcase.client.framework.Menus;
 import com.github.gwtbootstrap.showcase.client.overview.OverviewPlace;
+import com.github.gwtbootstrap.showcase.client.resources.CustomResources;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
@@ -72,6 +73,9 @@ public class Showcase extends Composite implements EntryPoint {
     }
 
     public void onModuleLoad() {
+        
+        CustomResources res = GWT.create(CustomResources.class);
+        res.showcase().ensureInjected();
         ClientFactory factory = GWT.create(ClientFactory.class);
         
         subnav = factory.getSubnav();

@@ -130,7 +130,7 @@
                             <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                             <g:HTMLPanel tag="span"><b:Strong>Custom tab</b:Strong>?</g:HTMLPanel>
                         </b:TabLink>
-                        <b:TabLink text="manually" icon="GITHUB" dataTarget="testTab" createTabPane="false">
+                        <b:TabLink text="manually" customIconStyle="{res.showcase.logo}" dataTarget="testTab" createTabPane="false">
                             <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                         </b:TabLink>
                         <b:TabPane href="testTab" createTabLink="false">

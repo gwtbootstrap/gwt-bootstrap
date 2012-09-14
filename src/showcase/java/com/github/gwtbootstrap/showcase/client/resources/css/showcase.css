@@ -1,0 +1,5 @@
+@external icon-logo;
+@CHARSET "UTF-8";
+@sprite .icon-logo {
+	gwt-image : "logo";
+}

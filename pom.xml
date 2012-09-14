@@ -316,6 +316,9 @@
         <!-- for showcase build -->
         <profile>
             <id>showcase</id>
+            <properties>
+                <webappDirectory>src/showcase/webapp</webappDirectory>
+            </properties>
             <build>
                 <plugins>
                     <!-- GWT Maven Plugin -->
