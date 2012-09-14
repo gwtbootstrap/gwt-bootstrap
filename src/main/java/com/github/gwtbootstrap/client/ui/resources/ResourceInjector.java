@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui.resources;
 
 import com.github.gwtbootstrap.client.ui.config.Configurator;
+import com.github.gwtbootstrap.client.ui.resources.internal.InternalResourceInjector;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -35,6 +36,8 @@ import com.google.gwt.resources.client.TextResource;
 public class ResourceInjector {
 
     private static final Configurator ADAPTER = GWT.create(Configurator.class);
+    
+    private static final InternalResourceInjector INJECTOR = GWT.create(InternalResourceInjector.class);
 
     private static HeadElement head;
 
@@ -68,6 +71,8 @@ public class ResourceInjector {
             injectJs(res.jquery());
         
         injectJs(res.bootstrapJs());
+        
+        INJECTOR.configure();
     }
 
     private native static boolean isNotLoadedJquery() /*-{
