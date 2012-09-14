@@ -6,6 +6,7 @@ com.github.gwtbootstrap.client.ui.constants
 com.github.gwtbootstrap.client.ui.event
 com.github.gwtbootstrap.client.ui.incubator
 com.github.gwtbootstrap.client.ui.resources
+com.github.gwtbootstrap.client.ui.resources.internal
 com.github.gwtbootstrap.client.ui.resources.prettify
 com.github.gwtbootstrap.datepicker.client
 com.github.gwtbootstrap.datepicker.client.ui
