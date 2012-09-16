@@ -15,9 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
@@ -33,12 +30,19 @@ import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.github.gwtbootstrap.client.ui.plugin.Modal.ModalHandler;
+import com.github.gwtbootstrap.client.ui.plugin.Modal.Option;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.query.client.Function;
+import com.google.gwt.query.client.GQuery;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import java.util.HashSet;
+import java.util.Set;
 
 //@formatter:off
 /**
@@ -97,7 +101,9 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	private Close close = new Close(DismissType.MODAL);
 
 	private String title;
-
+        
+        private ModalHandler modalHandler;
+        
 	/**
 	 * Creates an empty, hidden widget.
 	 */
@@ -188,6 +194,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void setAnimation(boolean animated) {
 		if (animated)
 			addStyleName(Constants.FADE);
@@ -198,6 +205,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public boolean getAnimation() {
 		return getStyleName().contains(Constants.FADE);
 	}
@@ -261,7 +269,14 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 */
 	protected void reconfigure() {
 		if (configured) {
-			reconfigure(keyboard, backdropType, show);
+                    modalHandler = null;
+                    Object data = GQuery.$(getElement()).data("modal");
+
+                    if (data != null) {
+                        GQuery.$(getElement()).removeData("data");
+                    }
+
+                    configure();            
 		}
 	}
 
@@ -287,6 +302,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void show() {
 
 		if (!this.isAttached()) {
@@ -294,13 +310,13 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 			RootPanel.get().add(this);
 		}
 
-		changeVisibility("show");
+                modalHandler.show();
 	}
 
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		configure(keyboard, backdropType, show);
+		configure();
 		setHandlerFunctions(getElement());
 		configured = true;
 	}
@@ -308,19 +324,17 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void hide() {
-		changeVisibility("hide");
+            modalHandler.hide();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void toggle() {
-		changeVisibility("toggle");
-	}
-
-	private void changeVisibility(String visibility) {
-		changeVisibility(getElement(), visibility);
+            modalHandler.toggle();
 	}
 
 	/**
@@ -365,118 +379,58 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		currentlyShown.add(this);
 	}
 
-	private void reconfigure(boolean keyboard, BackdropType backdropType, boolean show) {
-
-		if (backdropType == BackdropType.NORMAL) {
-			reconfigure(getElement(), keyboard, true, show);
-		} else if (backdropType == BackdropType.NONE) {
-			reconfigure(getElement(), keyboard, false, show);
-		} else if (backdropType == BackdropType.STATIC) {
-			reconfigure(getElement(), keyboard, BackdropType.STATIC.get(), show);
-		}
+	private void configure() {
+            Option options = new Option(keyboard, backdropType, show);
+            
+            modalHandler = GQuery.$().as(com.github.gwtbootstrap.client.ui.plugin.Modal.Modal).modal(
+                    getElement(), close.getElement(), options);
 	}
-
-	private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
-
-		if (backdropType == BackdropType.NORMAL) {
-			configure(getElement(), keyboard, true, show);
-		} else if (backdropType == BackdropType.NONE) {
-			configure(getElement(), keyboard, false, show);
-		} else if (backdropType == BackdropType.STATIC) {
-			configure(getElement(), keyboard, BackdropType.STATIC.get(), show);
-		}
-	}
-
-	//@formatter:off
-	
-	private native void reconfigure(Element e, boolean k, boolean b, boolean s) /*-{
-		var modal = null;
-		if($wnd.jQuery(e).data('modal')) {
-			modal = $wnd.jQuery(e).data('modal');
-			$wnd.jQuery(e).removeData('modal');
-		}
-		$wnd.jQuery(e).modal({
-						keyboard : k,
-						backdrop : b,
-						show : s
-					});
-					
-		if(modal) {
-			$wnd.jQuery(e).data('modal').isShown = modal.isShown;
-		}
-
-	}-*/;
-	private native void reconfigure(Element e, boolean k, String b, boolean s) /*-{
-		var modal = null;
-		if($wnd.jQuery(e).data('modal')) {
-			modal = $wnd.jQuery(e).data('modal');
-			$wnd.jQuery(e).removeData('modal');
-		}
-		$wnd.jQuery(e).modal({
-						keyboard : k,
-						backdrop : b,
-						show : s
-					});
-					
-		if(modal) {
-			$wnd.jQuery(e).data('modal').isShown = modal.isShown;
-		}
-	}-*/;
-	
-	
-	private native void configure(Element e, boolean k, boolean b, boolean s) /*-{
-		$wnd.jQuery(e).modal({
-							keyboard : k,
-							backdrop : b,
-							show : s
-						});
-
-	}-*/;
-	private native void configure(Element e, boolean k, String b, boolean s) /*-{
-		$wnd.jQuery(e).modal({
-							keyboard : k,
-							backdrop : b,
-							show : s
-						});
-	}-*/;
-
-	private native void changeVisibility(Element e, String visibility) /*-{
-		$wnd.jQuery(e).modal(visibility);
-	}-*/;
 
 	/**
 	 * Links the Java functions that fire the events.
 	 */
-	private native void setHandlerFunctions(Element e) /*-{
-		var that = this;
-		$wnd.jQuery(e).on('hide', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onHide()();
-		});
-		$wnd.jQuery(e).on('hidden', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onHidden()();
-		});
-		$wnd.jQuery(e).on('show', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onShow()();
-		});
-		$wnd.jQuery(e).on('shown', function() {
-			that.@com.github.gwtbootstrap.client.ui.Modal::onShown()();
-		});
-	}-*/;
+	private  void setHandlerFunctions(Element e) {
+            modalHandler.setOnHide(new Function() {
+                @Override
+                public void f() {
+                    onHide();
+                }
+            });
+            modalHandler.setOnHidden(new Function() {
+                @Override
+                public void f() {
+                    onHidden();
+                }
+            });
+            modalHandler.setOnShow(new Function() {
+                @Override
+                public void f() {
+                    onShow();
+                }
+            });
+            modalHandler.setOnShown(new Function() {
+                @Override
+                public void f() {
+                    onShown();
+                }
+            });
+        }
 
 	/**
 	 * Unlinks all the Java functions that fire the events.
 	 */
-	private native void unsetHandlerFunctions(Element e) /*-{
-		$wnd.jQuery(e).off('hide');
-		$wnd.jQuery(e).off('hidden');
-		$wnd.jQuery(e).off('show');
-		$wnd.jQuery(e).off('shown');
-	}-*/;
+	private void unsetHandlerFunctions(Element e) {
+            modalHandler.setOnHide(null);
+            modalHandler.setOnHidden(null);
+            modalHandler.setOnShow(null);
+            modalHandler.setOnShown(null);
+	}
 	//@formatter:on
 
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public HandlerRegistration addHideHandler(HideHandler handler) {
 		return addHandler(handler, HideEvent.getType());
 	}
@@ -484,6 +438,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public HandlerRegistration addHiddenHandler(HiddenHandler handler) {
 		return addHandler(handler, HiddenEvent.getType());
 	}
@@ -491,6 +446,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public HandlerRegistration addShowHandler(ShowHandler handler) {
 		return addHandler(handler, ShowEvent.getType());
 	}
@@ -498,6 +454,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public HandlerRegistration addShownHandler(ShownHandler handler) {
 		return addHandler(handler, ShownEvent.getType());
 	}
@@ -510,9 +467,9 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 *            <b>true</b>.
 	 */
 	public void setCloseVisible(boolean visible) {
-		close.getElement().getStyle().setVisibility(visible
-															? Style.Visibility.VISIBLE
-															: Style.Visibility.HIDDEN);
+            close.getElement().getStyle().setVisibility(visible
+                    ? Style.Visibility.VISIBLE
+                    : Style.Visibility.HIDDEN);
 	}
 	
 	/**
