@@ -42,6 +42,7 @@ public class Transition extends GQuery {
         for (String name : transEndEventNames.keySet()) {
             if (check(name)) {
                 end__ = transEndEventNames.get(name);
+                break;
             }
         }
         end = end__;
