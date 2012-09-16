@@ -15,9 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
@@ -33,12 +30,17 @@ import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.github.gwtbootstrap.client.ui.plugin.Modal.ModalHandler;
+import com.github.gwtbootstrap.client.ui.plugin.Modal.Option;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import java.util.HashSet;
+import java.util.Set;
+import com.google.gwt.query.client.GQuery;
 
 //@formatter:off
 /**
@@ -97,7 +99,9 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	private Close close = new Close(DismissType.MODAL);
 
 	private String title;
-
+        
+        private ModalHandler modalHandler;
+        
 	/**
 	 * Creates an empty, hidden widget.
 	 */
@@ -287,6 +291,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void show() {
 
 		if (!this.isAttached()) {
@@ -294,7 +299,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 			RootPanel.get().add(this);
 		}
 
-		changeVisibility("show");
+                modalHandler.show();
 	}
 
 	@Override
@@ -308,19 +313,17 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void hide() {
-		changeVisibility("hide");
+            modalHandler.hide();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+    @Override
 	public void toggle() {
-		changeVisibility("toggle");
-	}
-
-	private void changeVisibility(String visibility) {
-		changeVisibility(getElement(), visibility);
+            modalHandler.toggle();
 	}
 
 	/**
@@ -377,14 +380,9 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	}
 
 	private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
-
-		if (backdropType == BackdropType.NORMAL) {
-			configure(getElement(), keyboard, true, show);
-		} else if (backdropType == BackdropType.NONE) {
-			configure(getElement(), keyboard, false, show);
-		} else if (backdropType == BackdropType.STATIC) {
-			configure(getElement(), keyboard, BackdropType.STATIC.get(), show);
-		}
+            Option options = new Option(keyboard, backdropType, show);
+            
+            modalHandler = GQuery.$().as(com.github.gwtbootstrap.client.ui.plugin.Modal.Modal).modal(getElement(), options);
 	}
 
 	//@formatter:off
@@ -423,27 +421,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		}
 	}-*/;
 	
-	
-	private native void configure(Element e, boolean k, boolean b, boolean s) /*-{
-		$wnd.jQuery(e).modal({
-							keyboard : k,
-							backdrop : b,
-							show : s
-						});
-
-	}-*/;
-	private native void configure(Element e, boolean k, String b, boolean s) /*-{
-		$wnd.jQuery(e).modal({
-							keyboard : k,
-							backdrop : b,
-							show : s
-						});
-	}-*/;
-
-	private native void changeVisibility(Element e, String visibility) /*-{
-		$wnd.jQuery(e).modal(visibility);
-	}-*/;
-
 	/**
 	 * Links the Java functions that fire the events.
 	 */
