@@ -7,8 +7,6 @@ import com.google.gwt.query.client.GQuery;
 import com.google.gwt.query.client.plugins.Plugin;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The Modal plugin
@@ -17,9 +15,8 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Cássio de Freitas e Silva
  */
 public class Modal extends GQuery {
-    private static Transition trans = $().as(Transition.Transition);
-
     
+    private static Transition trans = $().as(Transition.Transition);
     // Register the plugin in GQuery plugin system and
     // set a shortcut to the class
     public static final Class<Modal> Modal = GQuery.registerPlugin(
@@ -34,10 +31,25 @@ public class Modal extends GQuery {
     protected Modal(GQuery gq) {
         super(gq);
     }
-    
-    public Modal.ModalHandler modal(Element element, Modal.Option option) {
-        Modal.ModalHandler modalHandler = new Modal.ModalHandler($(element), option);
-        return modalHandler;
+
+    /**
+     * @param element Modal element
+     * @param close Close button
+     * @param option Modal options
+     * @return Modal Handler
+     */
+    public Modal.ModalHandler modal(Element element, Element close, Modal.Option option) {
+        Modal.ModalHandler handler = null;
+
+        GQuery elem = $(element);
+
+        handler = elem.data(DATA_NAME, Modal.ModalHandler.class);
+
+        if (handler == null) {
+            handler = new Modal.ModalHandler(element, close, option);
+            elem.data(DATA_NAME, handler);
+        }
+        return handler;
     }
 
     public static class Option {
@@ -147,76 +159,26 @@ public class Modal extends GQuery {
 
         private boolean isShown;
         private final GQuery $element;
+        private GQuery $close;
         private final Modal.Option option;
-        private GQuery backdrop;
+        private GQuery $backdrop;
+        private Function onHide;
+        private Function onHidden;
+        private Function onShow;
+        private Function onShown;
 
         /**
          * Default Constructor
          *
-         * @param elem target element
+         * @param element target element
+         * @param close close button
          * @param option options
          */
-        public ModalHandler(GQuery elem, Modal.Option option) {
-            this.$element = elem;
+        public ModalHandler(Element element, Element close, Modal.Option option) {
+            this.$element = $(element);
+            this.$close = $(close);
             this.option = option;
-            $element.delegate("[data-dismiss=\"modal\"]", "click.dismiss.modal", new Function() {
-
-                @Override
-                public void f() {
-                    super.f();
-                }
-
-                @Override
-                public Object f(Element e, int i) {
-                    return super.f(e, i);
-                }
-
-                @Override
-                public Object f(com.google.gwt.user.client.Element e, int i) {
-                    return super.f(e, i);
-                }
-
-                @Override
-                public Object f(Widget w, int i) {
-                    return super.f(w, i);
-                }
-
-                @Override
-                public void f(Object... data) {
-                    super.f(data);
-                }
-
-                @Override
-                public void f(int i, Object... data) {
-                    super.f(i, data);
-                }
-
-                @Override
-                public boolean f(Event e, Object data) {
-                    return super.f(e, data);
-                }
-
-                @Override
-                public void f(Element e) {
-                    super.f(e);
-                }
-
-                @Override
-                public void f(com.google.gwt.user.client.Element e) {
-                    super.f(e);
-                }
-
-                @Override
-                public void f(Widget w) {
-                    super.f(w);
-                }
-                
-                @Override
-                public boolean f(Event e) {
-                    Modal.ModalHandler.this.hide();
-                    return false;
-                }
-            });
+            $close.click(hide);
         }
 
         /**
@@ -231,17 +193,20 @@ public class Modal extends GQuery {
         }
 
         public void show() {
-            //TODO: implement event
+            if (onShow != null) {
+                onShow.f();
+            }
+            
             if (isShown) {
                 return;
             }
-            
+
             $("body").addClass("modal-open");
 
             isShown = true;
 
             escape();
-            
+
             backdrop(new Function() {
                 @Override
                 public void f() {
@@ -251,131 +216,156 @@ public class Modal extends GQuery {
                 @Override
                 public boolean f(final Event e) {
                     boolean transition = trans.isSupported() && $element.hasClass("fade");
-                    
                     if ($element.parents().length() == 0) {
                         $element.appendTo(document.getBody());
                     }
-                    
+
                     $element.show();
-                    
+
                     if (transition) {
                         $element.elements()[0].getOffsetWidth(); // force reflow
                     }
-                    
+
                     $element.addClass("in").attr("aria-hidden", false).focus();
-                    
+
                     enforceFocus();
-                    
+
                     if (transition) {
                         $element.one(Event.getTypeInt(trans.end), null, new Function() {
                             @Override
                             public boolean f(Event e) {
-                                //TODO: implement event
+                                if (onShown != null) {
+                                    onShown.f();
+                                }
                                 return false;
                             }
                         });
                     } else {
-                        //TODO: implement event
+                        if (onShown != null) {
+                            onShown.f();
+                        }
                     }
-                return false;
-                    
+                    return false;
+
                 }
             });
         }
-        
-        public void hide() {
-            //TODO: implement event
-            
-            if (!isShown) {
-                return;
-            }
-            
-            isShown = false;
-            $("body").removeClass("modal-open");
-            
-            escape();
-            
-            $element.die("focusin.modal");
-            
-            $element.removeClass("in").attr("aria-hidden", true);
 
-            if (trans.isSupported() && $element.hasClass("fade")) {
-                hideWithTransition();
-            } else {
-                hideModal();
-            }
+        public void hide() {
+            hide.f((Event) null);
         }
         
+        private Function hide = new Function() {
+            @Override
+            public boolean f(Event e) {
+                if (e != null) {
+                    e.preventDefault();
+                }
+                if (onHide != null) {
+                    onHide.f();
+                }
+
+                if (!isShown) {
+                    return false;
+                }
+
+                isShown = false;
+                $("body").removeClass("modal-open");
+
+                escape();
+
+                $(document).die("focusin.modal");
+
+                $element.removeClass("in").attr("aria-hidden", true);
+
+                if (trans.isSupported() && $element.hasClass("fade")) {
+                    hideWithTransition();
+                } else {
+                    hideModal();
+                }
+                return false;
+            }
+        };
+
         private void backdrop(Function callback) {
             boolean animate = $element.hasClass("fade");
 
-            if (isShown && option.backdropType.ordinal() > BackdropType.NONE.ordinal()) {
+            if ($backdrop == null && isShown && option.backdropType.ordinal() > BackdropType.NONE.ordinal()) {
                 boolean doAnimate = trans.isSupported() && animate;
-                backdrop = $("<div class=\"modal-backdrop " + (animate ? "fade" : "") + "\"/>").appendTo(document.getBody());
+                $backdrop = $("<div class=\"modal-backdrop " + (animate ? "fade" : "") + "\"/>").appendTo(document.getBody());
 
                 if (option.backdropType != BackdropType.STATIC) {
-                    backdrop.click(new Function() {
-
+                    $backdrop.click(new Function() {
                         @Override
                         public boolean f(Event e) {
-                            Modal.ModalHandler.this.hide();
+                            Modal.ModalHandler.this.hide.f(e);
                             return false;
                         }
                     });
                 }
-                
+
                 if (doAnimate) {
-                    backdrop.get(0).getOffsetWidth(); // force reflow
+                    $backdrop.get(0).getOffsetWidth(); // force reflow
                 }
-                
-                backdrop.addClass("in");
-                
+
+                $backdrop.addClass("in");
+
                 if (doAnimate) {
-                    backdrop.one(Event.getTypeInt(trans.end), null, callback);
+                    $backdrop.one(Event.getTypeInt(trans.end), null, callback);
                 } else {
                     if (callback != null) {
                         callback.f();
                     }
                 }
-            } else if (!isShown && backdrop != null) {
-                    backdrop.removeClass("in");
-                    if (trans.isSupported() && $element.hasClass("fade")) {
-                        backdrop.one(Event.getTypeInt(trans.end), null, new Function() {
-                            public boolean f(Event e) {
-                                removeBackdrop();
-                                return false;
-                            }
-                        });
-                    } else {
-                        removeBackdrop();
-                    }
+            } else if (!isShown && $backdrop != null) {
+                $backdrop.removeClass("in");
+                if (trans.isSupported() && $element.hasClass("fade")) {
+                    $backdrop.one(Event.getTypeInt(trans.end), null, new Function() {
+                        @Override
+                        public boolean f(Event e) {
+                            removeBackdrop();
+                            return false;
+                        }
+                    });
+                } else {
+                    removeBackdrop();
+                }
             } else if (callback != null) {
                 callback.f();
             }
         }
-        
+
         private void removeBackdrop() {
-            backdrop.remove();
-            backdrop = null;
+            $backdrop.remove();
+            $backdrop = null;
         }
-        
-        public void enforceFocus(){
-            //TODO: implement
+
+        public void enforceFocus() {
+            $(document).live("focusin.modal", new Function() {
+                @Override
+                public boolean f(Event e) {
+                    Element target = e.getEventTarget().cast();
+                    
+                    if ($element.get(0) != target && $element.has(target).length() != 0) {
+                        $element.focus();
+                    }
+                    return false;
+                }
+                
+            });
         }
-        
+            
         private void hideWithTransition() {
             final Timer timer = new Timer() {
-
                 @Override
                 public void run() {
                     $element.die(trans.end);
-                    Modal.ModalHandler.this.hideModal();
+                    hideModal();
                 }
             };
             timer.schedule(500);
-            
-            $element.one(Event.getTypeInt(trans.end), null, new Function() {
-                
+
+            $element.live(Event.getTypeInt(trans.end), null, new Function() {
                 @Override
                 public boolean f(Event event) {
                     timer.cancel();
@@ -384,31 +374,50 @@ public class Modal extends GQuery {
                 }
             });
         }
-        
+
         private void hideModal() {
             $element.hide();
-            //TODO: implement event hide
             backdrop(null);
+            if (onHidden != null) {
+                onHidden.f();
+            }
         }
 
         /**
-         * Install/Remove the event that will close the window if option keyboard is
-         * setted <code>true</code> and ESC key is pressed
+         * Install/Remove the event that will close the window if option
+         * keyboard is setted
+         * <code>true</code> and ESC key is pressed
          */
         private void escape() {
             if (this.isShown && option.keyboard) {
-                $element.live("keyup.dismiss.modal", new Function() {
+                $(document).bind("keyup.dismiss.modal", new Function() {
                     @Override
                     public boolean f(com.google.gwt.user.client.Event e) {
                         if (e.getKeyCode() == 27) {
-                            hide();
+                            hide.f(e);
                         }
                         return false;
                     }
                 });
             } else if (!this.isShown) {
-                $element.die("keyup.dismiss.modal");
+                $(document).unbind("keyup.dismiss.modal");
             }
+        }
+        
+        public void setOnHide(Function f) {
+            onHide = f;
+        }
+        
+        public void setOnHidden(Function f) {
+            onHidden = f;
+        }
+        
+        public void setOnShow(Function f) {
+            onShow = f;
+        }
+        
+        public void setOnShown(Function f) {
+            onShown = f;
         }
     }
 }
