@@ -12,7 +12,7 @@ import com.google.gwt.text.shared.Renderer;
 /**
  * A ValueBox that uses {@link BigDecimalParser} and {@link BigDecimalRenderer}. for Bootstrap
  * 
- * @since 2.1.0.0
+ * @since 2.1.1.0
  * @author Nick Lim
  */
 public class BigDecimalBox extends ValueBoxBase<BigDecimal> {

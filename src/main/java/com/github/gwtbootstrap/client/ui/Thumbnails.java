@@ -33,7 +33,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * </pre>
  * </p>
  * 
- * @since 2.1.0.0
+ * @since 2.1.1.0
  * @author ohashi keisuke
  * @see Thumbnail
  * @see ThumbnailLink

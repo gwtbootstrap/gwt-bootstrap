@@ -147,14 +147,9 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
                     getHideDelay(context, value)
                 );
                 
-                //unwrap("#" + id);
            };
            
-           private native void unwrap(String selector)/*-{
-               $wnd.jQuery(selector + ">*").unwrap();
-           }-*/;
         });
-        
     }
     @Override
     public boolean resetFocus(com.google.gwt.cell.client.Cell.Context context,

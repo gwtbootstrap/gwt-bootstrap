@@ -9,7 +9,7 @@ import com.google.gwt.dom.client.Style.Unit;
 /**
  * The Bar of ProgressBar.
  * 
- * @since 2.1.0.0
+ * @since 2.1.1.0
  * @author ohashi keisuke
  * 
  * @see StackProgressBar
@@ -26,7 +26,7 @@ public class Bar extends DivWidget {
     /**
      * The Color of {@link Bar}
      * 
-     * @since 2.1.0.0
+     * @since 2.1.1.0
      * @author ohashi keisuke
      *
      */
