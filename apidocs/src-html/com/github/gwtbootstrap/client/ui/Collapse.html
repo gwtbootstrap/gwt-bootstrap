@@ -320,39 +320,43 @@
 <span class="sourceLineNo">312</span>    protected native void changeVisibility(Element e , String c) /*-{<a name="line.312"></a>
 <span class="sourceLineNo">313</span>        $wnd.jQuery(e).collapse(c);<a name="line.313"></a>
 <span class="sourceLineNo">314</span>    }-*/;<a name="line.314"></a>
-<span class="sourceLineNo">315</span>    //@fomatter:on<a name="line.315"></a>
-<span class="sourceLineNo">316</span><a name="line.316"></a>
-<span class="sourceLineNo">317</span><a name="line.317"></a>
-<span class="sourceLineNo">318</span>    /**<a name="line.318"></a>
-<span class="sourceLineNo">319</span>     * This method is called immediately when the widget's {@link #hide()}<a name="line.319"></a>
-<span class="sourceLineNo">320</span>     * method is executed.<a name="line.320"></a>
-<span class="sourceLineNo">321</span>     */<a name="line.321"></a>
-<span class="sourceLineNo">322</span>    protected void onHide(Event e) {<a name="line.322"></a>
-<span class="sourceLineNo">323</span>        widget.fireEvent(new HideEvent(e));<a name="line.323"></a>
-<span class="sourceLineNo">324</span>    }<a name="line.324"></a>
-<span class="sourceLineNo">325</span><a name="line.325"></a>
-<span class="sourceLineNo">326</span>    /**<a name="line.326"></a>
-<span class="sourceLineNo">327</span>     * This method is called once the widget is completely hidden.<a name="line.327"></a>
-<span class="sourceLineNo">328</span>     */<a name="line.328"></a>
-<span class="sourceLineNo">329</span>    protected void onHidden(Event e) {<a name="line.329"></a>
-<span class="sourceLineNo">330</span>        widget.fireEvent(new HiddenEvent(e));<a name="line.330"></a>
-<span class="sourceLineNo">331</span>    }<a name="line.331"></a>
-<span class="sourceLineNo">332</span><a name="line.332"></a>
-<span class="sourceLineNo">333</span>    /**<a name="line.333"></a>
-<span class="sourceLineNo">334</span>     * This method is called immediately when the widget's {@link #show()}<a name="line.334"></a>
-<span class="sourceLineNo">335</span>     * method is executed.<a name="line.335"></a>
-<span class="sourceLineNo">336</span>     */<a name="line.336"></a>
-<span class="sourceLineNo">337</span>    protected void onShow(Event e) {<a name="line.337"></a>
-<span class="sourceLineNo">338</span>        widget.fireEvent(new ShowEvent(e));<a name="line.338"></a>
-<span class="sourceLineNo">339</span>    }<a name="line.339"></a>
-<span class="sourceLineNo">340</span><a name="line.340"></a>
-<span class="sourceLineNo">341</span>    /**<a name="line.341"></a>
-<span class="sourceLineNo">342</span>     * This method is called once the widget is completely shown.<a name="line.342"></a>
-<span class="sourceLineNo">343</span>     */<a name="line.343"></a>
-<span class="sourceLineNo">344</span>    protected void onShown(Event e) {<a name="line.344"></a>
-<span class="sourceLineNo">345</span>        widget.fireEvent(new ShownEvent(e));<a name="line.345"></a>
-<span class="sourceLineNo">346</span>    }<a name="line.346"></a>
-<span class="sourceLineNo">347</span>}<a name="line.347"></a>
+<span class="sourceLineNo">315</span>    <a name="line.315"></a>
+<span class="sourceLineNo">316</span>    public static native void changeVisibility(String target , String c) /*-{<a name="line.316"></a>
+<span class="sourceLineNo">317</span>        $wnd.jQuery(target).collapse(c);<a name="line.317"></a>
+<span class="sourceLineNo">318</span>    }-*/;<a name="line.318"></a>
+<span class="sourceLineNo">319</span>    //@fomatter:on<a name="line.319"></a>
+<span class="sourceLineNo">320</span><a name="line.320"></a>
+<span class="sourceLineNo">321</span><a name="line.321"></a>
+<span class="sourceLineNo">322</span>    /**<a name="line.322"></a>
+<span class="sourceLineNo">323</span>     * This method is called immediately when the widget's {@link #hide()}<a name="line.323"></a>
+<span class="sourceLineNo">324</span>     * method is executed.<a name="line.324"></a>
+<span class="sourceLineNo">325</span>     */<a name="line.325"></a>
+<span class="sourceLineNo">326</span>    protected void onHide(Event e) {<a name="line.326"></a>
+<span class="sourceLineNo">327</span>        widget.fireEvent(new HideEvent(e));<a name="line.327"></a>
+<span class="sourceLineNo">328</span>    }<a name="line.328"></a>
+<span class="sourceLineNo">329</span><a name="line.329"></a>
+<span class="sourceLineNo">330</span>    /**<a name="line.330"></a>
+<span class="sourceLineNo">331</span>     * This method is called once the widget is completely hidden.<a name="line.331"></a>
+<span class="sourceLineNo">332</span>     */<a name="line.332"></a>
+<span class="sourceLineNo">333</span>    protected void onHidden(Event e) {<a name="line.333"></a>
+<span class="sourceLineNo">334</span>        widget.fireEvent(new HiddenEvent(e));<a name="line.334"></a>
+<span class="sourceLineNo">335</span>    }<a name="line.335"></a>
+<span class="sourceLineNo">336</span><a name="line.336"></a>
+<span class="sourceLineNo">337</span>    /**<a name="line.337"></a>
+<span class="sourceLineNo">338</span>     * This method is called immediately when the widget's {@link #show()}<a name="line.338"></a>
+<span class="sourceLineNo">339</span>     * method is executed.<a name="line.339"></a>
+<span class="sourceLineNo">340</span>     */<a name="line.340"></a>
+<span class="sourceLineNo">341</span>    protected void onShow(Event e) {<a name="line.341"></a>
+<span class="sourceLineNo">342</span>        widget.fireEvent(new ShowEvent(e));<a name="line.342"></a>
+<span class="sourceLineNo">343</span>    }<a name="line.343"></a>
+<span class="sourceLineNo">344</span><a name="line.344"></a>
+<span class="sourceLineNo">345</span>    /**<a name="line.345"></a>
+<span class="sourceLineNo">346</span>     * This method is called once the widget is completely shown.<a name="line.346"></a>
+<span class="sourceLineNo">347</span>     */<a name="line.347"></a>
+<span class="sourceLineNo">348</span>    protected void onShown(Event e) {<a name="line.348"></a>
+<span class="sourceLineNo">349</span>        widget.fireEvent(new ShownEvent(e));<a name="line.349"></a>
+<span class="sourceLineNo">350</span>    }<a name="line.350"></a>
+<span class="sourceLineNo">351</span>}<a name="line.351"></a>
 
 
 
