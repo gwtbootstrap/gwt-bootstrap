@@ -135,6 +135,9 @@
                             <b:Button>Collapse Trigger</b:Button>
                         </b:CollapseTrigger>
                     </b:Tooltip>
+                    <b:CollapseTrigger target="#toggle3">
+                        <b:Button toggle="true">Collapse Trigger with Toggle Button</b:Button>
+                    </b:CollapseTrigger>
                     <b:Tooltip text="If click it,below widget is toggled. :)">
                         <b:Button ui:field="toggleButton">Toogle without CollpaseTrigger</b:Button>
                     </b:Tooltip>
@@ -154,6 +157,17 @@
                     <b:FluidRow>
                         <b:Column size="12">
                             <b:Alert close="false" animation="true" heading="collapsible1">
+                                <b:Paragraph>
+                                    Hello :D
+                                </b:Paragraph>
+                            </b:Alert>
+                        </b:Column>
+                    </b:FluidRow>
+                </b:Collapse>
+                <b:Collapse existTrigger="true" b:id="toggle3">
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:Alert close="false" animation="true" heading="collapsible3">
                                 <b:Paragraph>
                                     Hello :D
                                 </b:Paragraph>

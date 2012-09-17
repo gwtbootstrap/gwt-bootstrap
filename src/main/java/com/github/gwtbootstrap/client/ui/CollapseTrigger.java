@@ -2,6 +2,11 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -71,6 +76,28 @@ public class CollapseTrigger extends MarkupWidget {
         
         if(widget != null) {
             Element element = widget.getElement();
+            
+            if(element.hasAttribute(Constants.DATA_TOGGLE) 
+                    && widget instanceof HasClickHandlers
+                    && !widget.isAttached()) {
+                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                    
+                    @Override
+                    public void execute() {
+                        Collapse.configure(target, parent, false);
+                        ((HasClickHandlers)widget).addClickHandler(new ClickHandler() {
+                            
+                            @Override
+                            public void onClick(ClickEvent event) {
+                                Collapse.changeVisibility(target, "toggle");
+                            }
+                        });
+                    }
+                });
+                return super.asWidget();
+            }
+            
+            
             element.setAttribute(Constants.DATA_TOGGLE, Constants.COLLAPSE);
             element.setAttribute(Constants.DATA_TARGET, target);
             

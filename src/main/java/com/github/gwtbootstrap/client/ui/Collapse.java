@@ -312,6 +312,10 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
     protected native void changeVisibility(Element e , String c) /*-{
         $wnd.jQuery(e).collapse(c);
     }-*/;
+    
+    public static native void changeVisibility(String target , String c) /*-{
+        $wnd.jQuery(target).collapse(c);
+    }-*/;
     //@fomatter:on
 
 
