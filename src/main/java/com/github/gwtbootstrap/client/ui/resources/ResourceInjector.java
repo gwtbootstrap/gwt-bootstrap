@@ -62,6 +62,7 @@ public class ResourceInjector {
      * header.
      */
     public static void configure() {
+        INJECTOR.preConfigure();
 
         Resources res = ADAPTER.getResources();
         if (ADAPTER.hasResponsiveDesign())
