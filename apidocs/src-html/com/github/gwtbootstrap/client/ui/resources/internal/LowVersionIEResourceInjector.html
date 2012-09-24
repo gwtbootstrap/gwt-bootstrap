@@ -8,17 +8,24 @@
 <div class="sourceContainer">
 <pre><span class="sourceLineNo">001</span>package com.github.gwtbootstrap.client.ui.resources.internal;<a name="line.1"></a>
 <span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span>import com.google.gwt.core.client.GWT;<a name="line.3"></a>
-<span class="sourceLineNo">004</span>import com.google.gwt.core.client.ScriptInjector;<a name="line.4"></a>
+<span class="sourceLineNo">003</span><a name="line.3"></a>
+<span class="sourceLineNo">004</span>public class LowVersionIEResourceInjector implements InternalResourceInjector {<a name="line.4"></a>
 <span class="sourceLineNo">005</span><a name="line.5"></a>
-<span class="sourceLineNo">006</span>public class LowVersionIEResourceInjector implements InternalResourceInjector {<a name="line.6"></a>
-<span class="sourceLineNo">007</span><a name="line.7"></a>
-<span class="sourceLineNo">008</span>    @Override<a name="line.8"></a>
-<span class="sourceLineNo">009</span>    public void configure() {<a name="line.9"></a>
-<span class="sourceLineNo">010</span>        ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "/js/html5.js").inject();<a name="line.10"></a>
-<span class="sourceLineNo">011</span>    }<a name="line.11"></a>
-<span class="sourceLineNo">012</span><a name="line.12"></a>
-<span class="sourceLineNo">013</span>}<a name="line.13"></a>
+<span class="sourceLineNo">006</span>    @Override<a name="line.6"></a>
+<span class="sourceLineNo">007</span>    public void configure() {<a name="line.7"></a>
+<span class="sourceLineNo">008</span>    }<a name="line.8"></a>
+<span class="sourceLineNo">009</span><a name="line.9"></a>
+<span class="sourceLineNo">010</span>    @Override<a name="line.10"></a>
+<span class="sourceLineNo">011</span>    public void preConfigure() {<a name="line.11"></a>
+<span class="sourceLineNo">012</span>        configureHtml5Js();<a name="line.12"></a>
+<span class="sourceLineNo">013</span>    }<a name="line.13"></a>
+<span class="sourceLineNo">014</span>    <a name="line.14"></a>
+<span class="sourceLineNo">015</span>    /*! HTML5 Shiv vpre3.6 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 LicensedUncompressed source: https://github.com/aFarkas/html5shiv  */<a name="line.15"></a>
+<span class="sourceLineNo">016</span>    private native void configureHtml5Js() /*-{<a name="line.16"></a>
+<span class="sourceLineNo">017</span>        (function(a,b){function h(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x&lt;style&gt;"+b+"&lt;/style&gt;",d.insertBefore(c.lastChild,d.firstChild)}function i(){var a=l.elements;return typeof a=="string"?a.split(" "):a}function j(a){var b={},c=a.createElement,f=a.createDocumentFragment,g=f();a.createElement=function(a){if(!l.shivMethods)return c(a);var f;return b[a]?f=b[a].cloneNode():e.test(a)?f=(b[a]=c(a)).cloneNode():f=c(a),f.canHaveChildren&amp;&amp;!d.test(a)?g.appendChild(f):f},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&amp;&amp;("+i().join().replace(/\w+/g,function(a){return c(a),g.createElement(a),'c("'+a+'")'})+");return n}")(l,g)}function k(a){var b;return a.documentShived?a:(l.shivCSS&amp;&amp;!f&amp;&amp;(b=!!h(a,"article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}audio{display:none}canvas,video{display:inline-block;*display:inline;*zoom:1}[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}mark{background:#FF0;color:#000}")),g||(b=!j(a)),b&amp;&amp;(a.documentShived=b),a)}var c=a.html5||{},d=/^&lt;|^(?:button|form|map|select|textarea|object|iframe|option|optgroup)$/i,e=/^&lt;|^(?:a|b|button|code|div|fieldset|form|h1|h2|h3|h4|h5|h6|i|iframe|img|input|label|li|link|ol|option|p|param|q|script|select|span|strong|style|table|tbody|td|textarea|tfoot|th|thead|tr|ul)$/i,f,g;(function(){var c=b.createElement("a");c.innerHTML="&lt;xyz&gt;&lt;/xyz&gt;",f="hidden"in c,f&amp;&amp;typeof injectElementWithStyles=="function"&amp;&amp;injectElementWithStyles("#modernizr{}",function(b){b.hidden=!0,f=(a.getComputedStyle?getComputedStyle(b,null):b.currentStyle).display=="none"}),g=c.childNodes.length==1||function(){try{b.createElement("a")}catch(a){return!0}var c=b.createDocumentFragment();return typeof c.cloneNode=="undefined"||typeof c.createDocumentFragment=="undefined"||typeof c.createElement=="undefined"}()})();var l={elements:c.elements||"abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video",shivCSS:c.shivCSS!==!1,shivMethods:c.shivMethods!==!1,type:"default",shivDocument:k};a.html5=l,k(b)})($wnd,$wnd.document)        <a name="line.17"></a>
+<span class="sourceLineNo">018</span>    }-*/;<a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19"></a>
+<span class="sourceLineNo">020</span>}<a name="line.20"></a>
 
 
 

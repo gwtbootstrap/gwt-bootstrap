@@ -70,60 +70,61 @@
 <span class="sourceLineNo">062</span>     * header.<a name="line.62"></a>
 <span class="sourceLineNo">063</span>     */<a name="line.63"></a>
 <span class="sourceLineNo">064</span>    public static void configure() {<a name="line.64"></a>
-<span class="sourceLineNo">065</span><a name="line.65"></a>
-<span class="sourceLineNo">066</span>        Resources res = ADAPTER.getResources();<a name="line.66"></a>
-<span class="sourceLineNo">067</span>        if (ADAPTER.hasResponsiveDesign())<a name="line.67"></a>
-<span class="sourceLineNo">068</span>            activateResponsiveDesign(res);<a name="line.68"></a>
-<span class="sourceLineNo">069</span><a name="line.69"></a>
-<span class="sourceLineNo">070</span>        if(isNotLoadedJquery()) <a name="line.70"></a>
-<span class="sourceLineNo">071</span>            injectJs(res.jquery());<a name="line.71"></a>
-<span class="sourceLineNo">072</span>        <a name="line.72"></a>
-<span class="sourceLineNo">073</span>        injectJs(res.bootstrapJs());<a name="line.73"></a>
-<span class="sourceLineNo">074</span>        <a name="line.74"></a>
-<span class="sourceLineNo">075</span>        INJECTOR.configure();<a name="line.75"></a>
-<span class="sourceLineNo">076</span>    }<a name="line.76"></a>
-<span class="sourceLineNo">077</span><a name="line.77"></a>
-<span class="sourceLineNo">078</span>    private native static boolean isNotLoadedJquery() /*-{<a name="line.78"></a>
-<span class="sourceLineNo">079</span>        return !$wnd['jQuery'] || (typeof $wnd['jQuery'] !== 'function');<a name="line.79"></a>
-<span class="sourceLineNo">080</span>    }-*/;<a name="line.80"></a>
-<span class="sourceLineNo">081</span><a name="line.81"></a>
-<span class="sourceLineNo">082</span>    private static void injectCss(TextResource r) {<a name="line.82"></a>
-<span class="sourceLineNo">083</span>        StyleInjector.inject(r.getText());<a name="line.83"></a>
-<span class="sourceLineNo">084</span>    }<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span>    /**<a name="line.86"></a>
-<span class="sourceLineNo">087</span>     * Inject public resource css file as a file.<a name="line.87"></a>
-<span class="sourceLineNo">088</span>     * @param filename inject file name<a name="line.88"></a>
-<span class="sourceLineNo">089</span>     */<a name="line.89"></a>
-<span class="sourceLineNo">090</span>    public static void injectResourceCssAsFile(String filename) {<a name="line.90"></a>
-<span class="sourceLineNo">091</span>        LinkElement link = Document.get().createLinkElement();<a name="line.91"></a>
-<span class="sourceLineNo">092</span>        link.setType("text/css");<a name="line.92"></a>
-<span class="sourceLineNo">093</span>        link.setRel("stylesheet");<a name="line.93"></a>
-<span class="sourceLineNo">094</span>        link.setHref(GWT.getModuleName() + "/css/" + filename);<a name="line.94"></a>
-<span class="sourceLineNo">095</span>        getHead().appendChild(link);<a name="line.95"></a>
-<span class="sourceLineNo">096</span>    }<a name="line.96"></a>
-<span class="sourceLineNo">097</span><a name="line.97"></a>
-<span class="sourceLineNo">098</span>    private static HeadElement getHead() {<a name="line.98"></a>
-<span class="sourceLineNo">099</span>        if (head == null) {<a name="line.99"></a>
-<span class="sourceLineNo">100</span>            Element elt = Document.get().getElementsByTagName("head").getItem(0);<a name="line.100"></a>
-<span class="sourceLineNo">101</span>            assert elt != null : "The host HTML page does not have a &lt;head&gt; element"<a name="line.101"></a>
-<span class="sourceLineNo">102</span>                    + " which is required by StyleInjector";<a name="line.102"></a>
-<span class="sourceLineNo">103</span>            head = HeadElement.as(elt);<a name="line.103"></a>
-<span class="sourceLineNo">104</span>        }<a name="line.104"></a>
-<span class="sourceLineNo">105</span>        return head;<a name="line.105"></a>
-<span class="sourceLineNo">106</span>    }<a name="line.106"></a>
-<span class="sourceLineNo">107</span><a name="line.107"></a>
-<span class="sourceLineNo">108</span>    private static void injectJs(TextResource r) {<a name="line.108"></a>
-<span class="sourceLineNo">109</span>        JavaScriptInjector.inject(r.getText());<a name="line.109"></a>
-<span class="sourceLineNo">110</span>    }<a name="line.110"></a>
-<span class="sourceLineNo">111</span><a name="line.111"></a>
-<span class="sourceLineNo">112</span>    private static void activateResponsiveDesign(Resources res) {<a name="line.112"></a>
-<span class="sourceLineNo">113</span>        injectCss(res.bootstrapResponsiveCss());<a name="line.113"></a>
-<span class="sourceLineNo">114</span>        MetaInjector<a name="line.114"></a>
-<span class="sourceLineNo">115</span>                .inject("viewport", "width=device-width, initial-scale=1.0");<a name="line.115"></a>
-<span class="sourceLineNo">116</span>    }<a name="line.116"></a>
-<span class="sourceLineNo">117</span><a name="line.117"></a>
-<span class="sourceLineNo">118</span>}<a name="line.118"></a>
+<span class="sourceLineNo">065</span>        INJECTOR.preConfigure();<a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span>        Resources res = ADAPTER.getResources();<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        if (ADAPTER.hasResponsiveDesign())<a name="line.68"></a>
+<span class="sourceLineNo">069</span>            activateResponsiveDesign(res);<a name="line.69"></a>
+<span class="sourceLineNo">070</span><a name="line.70"></a>
+<span class="sourceLineNo">071</span>        if(isNotLoadedJquery()) <a name="line.71"></a>
+<span class="sourceLineNo">072</span>            injectJs(res.jquery());<a name="line.72"></a>
+<span class="sourceLineNo">073</span>        <a name="line.73"></a>
+<span class="sourceLineNo">074</span>        injectJs(res.bootstrapJs());<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        <a name="line.75"></a>
+<span class="sourceLineNo">076</span>        INJECTOR.configure();<a name="line.76"></a>
+<span class="sourceLineNo">077</span>    }<a name="line.77"></a>
+<span class="sourceLineNo">078</span><a name="line.78"></a>
+<span class="sourceLineNo">079</span>    private native static boolean isNotLoadedJquery() /*-{<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        return !$wnd['jQuery'] || (typeof $wnd['jQuery'] !== 'function');<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    }-*/;<a name="line.81"></a>
+<span class="sourceLineNo">082</span><a name="line.82"></a>
+<span class="sourceLineNo">083</span>    private static void injectCss(TextResource r) {<a name="line.83"></a>
+<span class="sourceLineNo">084</span>        StyleInjector.inject(r.getText());<a name="line.84"></a>
+<span class="sourceLineNo">085</span>    }<a name="line.85"></a>
+<span class="sourceLineNo">086</span><a name="line.86"></a>
+<span class="sourceLineNo">087</span>    /**<a name="line.87"></a>
+<span class="sourceLineNo">088</span>     * Inject public resource css file as a file.<a name="line.88"></a>
+<span class="sourceLineNo">089</span>     * @param filename inject file name<a name="line.89"></a>
+<span class="sourceLineNo">090</span>     */<a name="line.90"></a>
+<span class="sourceLineNo">091</span>    public static void injectResourceCssAsFile(String filename) {<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        LinkElement link = Document.get().createLinkElement();<a name="line.92"></a>
+<span class="sourceLineNo">093</span>        link.setType("text/css");<a name="line.93"></a>
+<span class="sourceLineNo">094</span>        link.setRel("stylesheet");<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        link.setHref(GWT.getModuleName() + "/css/" + filename);<a name="line.95"></a>
+<span class="sourceLineNo">096</span>        getHead().appendChild(link);<a name="line.96"></a>
+<span class="sourceLineNo">097</span>    }<a name="line.97"></a>
+<span class="sourceLineNo">098</span><a name="line.98"></a>
+<span class="sourceLineNo">099</span>    private static HeadElement getHead() {<a name="line.99"></a>
+<span class="sourceLineNo">100</span>        if (head == null) {<a name="line.100"></a>
+<span class="sourceLineNo">101</span>            Element elt = Document.get().getElementsByTagName("head").getItem(0);<a name="line.101"></a>
+<span class="sourceLineNo">102</span>            assert elt != null : "The host HTML page does not have a &lt;head&gt; element"<a name="line.102"></a>
+<span class="sourceLineNo">103</span>                    + " which is required by StyleInjector";<a name="line.103"></a>
+<span class="sourceLineNo">104</span>            head = HeadElement.as(elt);<a name="line.104"></a>
+<span class="sourceLineNo">105</span>        }<a name="line.105"></a>
+<span class="sourceLineNo">106</span>        return head;<a name="line.106"></a>
+<span class="sourceLineNo">107</span>    }<a name="line.107"></a>
+<span class="sourceLineNo">108</span><a name="line.108"></a>
+<span class="sourceLineNo">109</span>    private static void injectJs(TextResource r) {<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        JavaScriptInjector.inject(r.getText());<a name="line.110"></a>
+<span class="sourceLineNo">111</span>    }<a name="line.111"></a>
+<span class="sourceLineNo">112</span><a name="line.112"></a>
+<span class="sourceLineNo">113</span>    private static void activateResponsiveDesign(Resources res) {<a name="line.113"></a>
+<span class="sourceLineNo">114</span>        injectCss(res.bootstrapResponsiveCss());<a name="line.114"></a>
+<span class="sourceLineNo">115</span>        MetaInjector<a name="line.115"></a>
+<span class="sourceLineNo">116</span>                .inject("viewport", "width=device-width, initial-scale=1.0");<a name="line.116"></a>
+<span class="sourceLineNo">117</span>    }<a name="line.117"></a>
+<span class="sourceLineNo">118</span><a name="line.118"></a>
+<span class="sourceLineNo">119</span>}<a name="line.119"></a>
 
 
 
