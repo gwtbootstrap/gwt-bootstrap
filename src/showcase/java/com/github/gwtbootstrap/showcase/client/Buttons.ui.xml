@@ -164,7 +164,7 @@
                             <tr>
                                 <td>
                                     <b:Button ui:field="enabled"
-                                        enabled="false" text="Enabled" />
+                                        enabled="true" text="Enabled" />
                                 </td>
                                 <td>
                                     <b:Code>&lt;b:Button
