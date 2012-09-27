@@ -25,6 +25,8 @@ import com.github.gwtbootstrap.client.ui.Tab;
 import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.TabPane;
 import com.github.gwtbootstrap.client.ui.TabPanel;
+import com.github.gwtbootstrap.client.ui.TabPanel.ShowEvent;
+import com.github.gwtbootstrap.client.ui.TabPanel.ShownEvent;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.base.ProgressBarBase;
 import com.github.gwtbootstrap.client.ui.constants.LabelType;
@@ -33,6 +35,7 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap.Tabs;
 import com.github.gwtbootstrap.showcase.client.util.EnumRenderer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -62,6 +65,12 @@ public class Navigation extends Composite {
     
     @UiField
     Tab firstTab;
+    
+    @UiField
+    TabPanel utilitiesTab;
+    
+    @UiField
+    Button cancelButton;
 
     private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
@@ -122,6 +131,32 @@ public class Navigation extends Composite {
     void onClickRemoveTab(ClickEvent e) {
         if(firstTab.asTabLink().isActive()) tabPanel.remove(firstTab);
         removeTab.setEnabled(false);
+    }
+    
+    @UiHandler({
+        "tabButton1",
+        "tabButton2",
+        "tabButton3",
+        "tabButton4",
+        "tabButton5",
+        "tabButton6",
+        "tabButton7"
+    })
+    void onClickTabButtons(ClickEvent e) {
+        AnchorElement anchor = e.getRelativeElement().cast();
+        utilitiesTab.selectTab(Integer.parseInt(anchor.getInnerText().trim()) -1);
+    }
+    
+    @UiHandler("utilitiesTab")
+    void onShow(ShowEvent e) {
+        if(cancelButton.isActive()) {
+            e.preventDefault();
+        }
+    }
+
+    @UiHandler("utilitiesTab")
+    void onShown(ShownEvent e) {
+        Window.alert("Change tab from " + e.getRelatedTarget().getText() + " to " + e.getTarget().getText() + ".");
     }
 
 }

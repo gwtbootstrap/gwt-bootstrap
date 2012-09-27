@@ -96,7 +96,7 @@
                 <g:HTMLPanel>
                     <h3>TabPanel Demo</h3>
                     <b:TabPanel tabPosition="left" ui:field="tabPanel">
-                        <b:Tab icon="GOOGLE_PLUS" heading="Typically" active="true" ui:field="firstTab">
+                        <b:Tab icon="GOOGLE_PLUS" heading="Typically" ui:field="firstTab">
                             <b:customTab>
                                 <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                             </b:customTab>
@@ -126,7 +126,7 @@
                         <b:TabPane heading="prost">
                             <g:Label>Lalala</g:Label>
                         </b:TabPane>
-                        <b:TabLink ui:field="lazyLoadTab">
+                        <b:TabLink ui:field="lazyLoadTab" active="true">
                             <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                             <g:HTMLPanel tag="span"><b:Strong>Custom tab</b:Strong>?</g:HTMLPanel>
                         </b:TabLink>
@@ -229,7 +229,63 @@
                 </g:HTMLPanel>
             </b:Column>
         </b:FluidRow>
-        
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="2">Utility Methods</b:Heading>
+                <b:Paragraph>
+                    TabPanel has some utility methods.<br/>
+                </b:Paragraph>
+                <g:HTMLPanel>
+                    <ul>
+                        <li>
+                            <strong><code>selectTab</code></strong>
+                            <p>
+                            <code>selectTab</code> method can show tab from code.
+                            </p>
+                        </li>
+                        <li>
+                            <strong><code>getSelectedTab</code></strong>
+                            <p>
+                            <code>getSelectedTab</code> method can get selected tab index.
+                            </p>
+                        </li>
+                        <li>
+                            <strong><code>Show(n)Event</code></strong>
+                            <p>
+                            <code>TabPanel</code> fire <code>ShowEvent</code>/<code>ShownEvent</code> on clicked tabs.<br/>
+                             You can add handler to <code>TabPanel</code>.<br/>
+                             If you need cancel showing tabs, Please call <code>ShowEvent#preventDefault</code> on handle <code>ShowEvent</code>.
+                            </p>
+                        </li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <b:ButtonToolbar>
+                    <b:ButtonGroup toggle="RADIO">
+                        <b:Button active="true" ui:field="tabButton1">1</b:Button>
+                        <b:Button ui:field="tabButton2">2</b:Button>
+                        <b:Button ui:field="tabButton3">3</b:Button>
+                        <b:Button ui:field="tabButton4">4</b:Button>
+                        <b:Button ui:field="tabButton5">5</b:Button>
+                        <b:Button ui:field="tabButton6">6</b:Button>
+                        <b:Button ui:field="tabButton7">7</b:Button>
+                    </b:ButtonGroup>
+                    <b:Button toggle="true" ui:field="cancelButton">On fire Show event,Cancel it.</b:Button>
+                </b:ButtonToolbar>
+                <b:TabPanel ui:field="utilitiesTab">
+                    <b:Tab active="true" heading="1"><b:Paragraph>1</b:Paragraph></b:Tab>
+                    <b:Tab heading="2"><b:Paragraph>2</b:Paragraph></b:Tab>
+                    <b:Tab heading="3"><b:Paragraph>3</b:Paragraph></b:Tab>
+                    <b:DropdownTab text="dropdown">
+                        <b:Tab heading="4"><b:Paragraph>4</b:Paragraph></b:Tab>
+                        <b:Tab heading="5"><b:Paragraph>5</b:Paragraph></b:Tab>
+                        <b:Tab heading="6"><b:Paragraph>6</b:Paragraph></b:Tab>
+                    </b:DropdownTab>
+                    <b:Tab heading="7"><b:Paragraph>7</b:Paragraph></b:Tab>
+                </b:TabPanel>
+            </b:Column>
+        </b:FluidRow>
         <b:Row>
             <b:Column size="12">
                 <g:HTMLPanel>
