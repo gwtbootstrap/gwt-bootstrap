@@ -17,8 +17,10 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
+import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.ToggleType;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -83,6 +85,22 @@ public class ButtonGroup extends DivWidget {
         for (Button btn : buttons) {
             add(btn);
         }
+    }
+    
+    @Override
+    public void add(IsWidget child) {
+        
+        Widget widget = asWidgetOrNull(child);
+        if(child instanceof MarkupWidget && widget instanceof DropdownButton) {
+            MarkupWidget markup = (MarkupWidget) child;
+            DropdownButton dropdownBase = (DropdownButton) widget;
+            
+            markup.setWidget(dropdownBase.getTriggerWidget());
+            markup.asWidget();
+        }
+        
+        
+        this.add(widget);
     }
 
     /**

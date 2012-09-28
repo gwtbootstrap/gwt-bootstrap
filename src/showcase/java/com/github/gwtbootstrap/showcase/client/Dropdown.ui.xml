@@ -75,19 +75,23 @@
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>DropdownButton</h2>
-                    <b:ButtonGroup>
-                        <b:DropdownButton dropup="true" text="Dropup example" icon="GITHUB">
-                            <b:NavLink>Test 1</b:NavLink>
-                            <b:NavLink>Test 2</b:NavLink>
-                        </b:DropdownButton>
-                        <b:DropdownButton dropup="true" text="Dropup example">
-                            <b:customTrigger>
-                                <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
-                            </b:customTrigger>
-                            <b:NavLink>Test 1</b:NavLink>
-                            <b:NavLink>Test 2</b:NavLink>
-                        </b:DropdownButton>
-                    </b:ButtonGroup>
+                    <b:ButtonToolbar>
+                        <b:Tooltip text="with icon">
+                            <b:DropdownButton dropup="true" text="Dropup example" icon="GITHUB">
+                                <b:NavLink>Test 1</b:NavLink>
+                                <b:NavLink>Test 2</b:NavLink>
+                            </b:DropdownButton>
+                        </b:Tooltip>
+                        <b:Tooltip text="with custom header">
+                            <b:DropdownButton dropup="true" text="Dropup example">
+                                <b:customTrigger>
+                                    <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                                </b:customTrigger>
+                                <b:NavLink>Test 1</b:NavLink>
+                                <b:NavLink>Test 2</b:NavLink>
+                            </b:DropdownButton>
+                        </b:Tooltip>
+                    </b:ButtonToolbar>
                     <pre class="prettyprint linenums">
 &lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot; icon="GITHUB"&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
