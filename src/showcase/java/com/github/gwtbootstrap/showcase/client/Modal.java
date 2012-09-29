@@ -21,19 +21,38 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
+import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.SuggestOracle.Callback;
+import com.google.gwt.user.client.ui.SuggestOracle.Request;
 
 public class Modal extends Composite {
 
 	private static ModalUiBinder uiBinder = GWT.create(ModalUiBinder.class);
+	
+	
 
 	interface ModalUiBinder extends UiBinder<Widget, Modal> {
 	}
 
 	@UiField
 	com.github.gwtbootstrap.client.ui.Modal m;
+	
+	@UiField(provided=true)
+	SuggestBox suggestBox;
+	
 
 	public Modal() {
+	    MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();
+	    
+	    oracle.add("aa");
+	    oracle.add("ab");
+	    oracle.add("ac");
+	    oracle.add("ad");
+	    
+	    suggestBox = new SuggestBox(oracle);
+	    
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 

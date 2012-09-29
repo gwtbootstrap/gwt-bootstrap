@@ -4,3 +4,7 @@ a.btn-primary, a.btn-warning, a.btn-danger, a.btn-success, a.btn-info, a.btn-inv
 div.input-prepend>input,textarea,select,.uneditable-input { margin-bottom: 0; }
 div.input-append>input,textarea,select,.uneditable-input { margin-bottom: 0; }
 .gwt-PopupPanel .gwt-DatePicker { width: 200px; }
+.gwt-SuggestBoxPopup { z-index: 2100; }
+.gwt-SuggestBoxPopup .suggestPopupTop { background-color: white; }
+.gwt-SuggestBoxPopup .suggestPopupMiddle { background-color: white; }
+.gwt-SuggestBoxPopup .suggestPopupBottomCenter { background-color: white; }
