@@ -17,7 +17,7 @@
             Event Handle, CellTable, Pagination
         </b:Heading>
         <b:FluidRow>
-            <b:Column size="4">
+            <b:Column size="12">
                 <b:Paragraph>
                     The GWT-Bootstrap
                     <b:Code>Form</b:Code>
@@ -25,14 +25,16 @@
                     <b:Code>addSubmitHandler</b:Code>
                     and
                     <b:Code>addSubmitCompleteHandler</b:Code>
-                    .
+                    .<br/>
                     They are same as native GWT `FormPanel`.If you need in
                     UiBinder,Use
                     <b:Code>@UiHandler</b:Code>
                     annotation.
                 </b:Paragraph>
             </b:Column>
-            <b:Column size="8">
+            </b:FluidRow>
+            <b:FluidRow>
+            <b:Column size="6">
                 <b:Form type="HORIZONTAL" action="//gwtbootstrap.github.com"
                     ui:field="submitExampleForm">
                     <b:Fieldset>
@@ -83,6 +85,8 @@
                         </b:FormActions>
                     </b:Fieldset>
                 </b:Form>
+                </b:Column>
+                <b:Column size="6">
                 <b:TabPanel>
                     <b:TabPane active="true" heading="CellTable">
                         <b:Pagination ui:field="pagination" />

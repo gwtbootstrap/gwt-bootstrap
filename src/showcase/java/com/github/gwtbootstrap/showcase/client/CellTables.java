@@ -56,6 +56,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.AbstractCellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
+import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Random;
@@ -341,8 +342,9 @@ public class CellTables extends Composite implements Editor<Person> {
             }
         });
         
-        exampleTable.setSelectionModel(selectionModel);
+        exampleTable.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION);
         
+        exampleTable.setSelectionModel(selectionModel);
         
 		pager.setDisplay(exampleTable);
 
