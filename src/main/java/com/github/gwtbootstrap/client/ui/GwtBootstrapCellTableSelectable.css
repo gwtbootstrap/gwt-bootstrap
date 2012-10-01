@@ -75,17 +75,19 @@
 
 .cellTableSelectedRow, .cellTableSelectedRow td, .cellTableSelectedRow th{
   background: #D9EDF7 !important;
-  color: white !important;
+  color : black;
   height: auto;
   overflow: auto;
 }
 
 .cellTableSelectedRowCell, .cellTableSelectedRow td.cellTableSelectedRowCell {
   background: #D9EDF7 !important;
+  color : black;
 }
 
 .cellTableKeyboardSelectedRowCell, .cellTableKeyboardSelectedRow td.cellTableKeyboardSelectedRowCell {
   background: #D9EDF7 !important;
+  color : black;
 }
 
 .cellTableKeyboardSelectedCell, .cellTableKeyboardSelectedRow td.cellTableKeyboardSelectedCell{

@@ -64,6 +64,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.RangeChangeEvent;
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SelectionChangeEvent.Handler;
+import com.google.gwt.view.client.SingleSelectionModel;
 
 public class CellTables extends Composite implements Editor<Person> {
 
@@ -326,6 +329,21 @@ public class CellTables extends Composite implements Editor<Person> {
         
         exampleTable.addColumn(buttonCol);
         
+        final SingleSelectionModel<Person> selectionModel = new SingleSelectionModel<Person>();
+        
+        selectionModel.addSelectionChangeHandler(new Handler() {
+            
+            @Override
+            public void onSelectionChange(SelectionChangeEvent event) {
+                Person person = selectionModel.getSelectedObject();
+                
+                CellTables.this.driver.edit(person);
+            }
+        });
+        
+        exampleTable.setSelectionModel(selectionModel);
+        
+        
 		pager.setDisplay(exampleTable);
 
 		pagination.clear();
@@ -386,6 +404,10 @@ public class CellTables extends Composite implements Editor<Person> {
 		if (person.getId() == null) {
 			person.setId(dataProvider.getList().size() + 1);
 			dataProvider.getList().add(person);
+		} else {
+		    exampleTable.getSelectionModel().setSelected(person, false);
+		    exampleDataGrid.getSelectionModel().setSelected(person, false);
+		    dataProvider.refresh();
 		}
 
 		dataProvider.flush();
