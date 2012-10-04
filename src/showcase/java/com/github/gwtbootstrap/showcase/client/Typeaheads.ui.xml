@@ -1,0 +1,43 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+        
+    </ui:style>
+    <g:FlowPanel>
+        <b:PageHeader>Typeahead a.k.a SuggestBox</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="3">About Typeadhead</b:Heading>
+                <b:Paragraph>
+                    The <code>Typeahead</code> is A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.<br/>
+                    you can use instead of <code>SuggestBox</code>.
+                </b:Paragraph>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="3">Example</b:Heading>
+                <b:Typeahead ui:field="typeahead">
+                    <b:TextBox placeholder="type any strings"/>
+                </b:Typeahead>
+                <b:Heading size="3">Code</b:Heading>
+                <b:Label>ui.xml</b:Label>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b:Typeahead ui:field="typeahead"&gt;
+    &lt;b:TextBox placeholder="type any strings"/&gt;
+&lt;/b:Typeahead&gt;</pre>
+                </g:HTMLPanel>
+                <b:Label>java</b:Label>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+@UiField
+Typeahead typeahead;
+
+MultiWordSuggestOracle oracle = (MultiWordSuggestOracle) typeahead.getSuggestOracle();
+oracle.add("any text");
+</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+    </g:FlowPanel>
+</ui:UiBinder> 
