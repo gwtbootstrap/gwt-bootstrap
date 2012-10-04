@@ -16,10 +16,13 @@
 package com.github.gwtbootstrap.showcase.client;
 
 import com.github.gwtbootstrap.client.ui.Affix;
+import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.NavPills;
 import com.github.gwtbootstrap.client.ui.Scrollspy;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasId;
+import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
@@ -27,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class Subnav extends DivWidget implements HasId {
 
     private NavPills container = new NavPills();
-    private boolean scrollspy;
+    private boolean scrollspy = true;
     private Scrollspy spy;
     private boolean isFixed;
     int navtop;
@@ -63,7 +66,7 @@ public class Subnav extends DivWidget implements HasId {
         this.scrollspy = scrollspy;
         if (scrollspy) {
             spy = new Scrollspy();
-            spy.setTarget(getId());
+            spy.setTarget("#" + getId());
         }
     }
 
@@ -79,10 +82,9 @@ public class Subnav extends DivWidget implements HasId {
 
         if (spy == null) {
             spy = new Scrollspy();
-            spy.setTarget(getId());
+            spy.setTarget("#" + getId());
         }
 
-        spy.setSpyElement(spyElement);
         this.scrollspy = true;
     }
 
@@ -91,10 +93,11 @@ public class Subnav extends DivWidget implements HasId {
         super.onAttach();
         if (spy == null) {
             spy = new Scrollspy();
-            spy.setTarget(getId());
+            spy.setTarget("#" + getId());
         }
 
         if (scrollspy) {
+            spy.setOffset(this.getOffsetTop(getElement()));
             spy.configure();
         }
 
@@ -117,6 +120,21 @@ public class Subnav extends DivWidget implements HasId {
     @Override
     public void add(Widget w) {
         container.add(w);
+        
+        
+        String id = spy.getSpyElement().getId();
+        
+        if(id == null || id.isEmpty()) {
+            id = DOM.createUniqueId();
+            spy.getSpyElement().setId(id);
+        }
+        
+        
+        if(w instanceof NavLink) {
+            NavLink link = (NavLink) w;
+            IconAnchor anchor = link.getAnchor();
+            anchor.getElement().setAttribute(Constants.DATA_TARGET, "#" + id + " [id='" + anchor.getTargetHistoryToken() + "']");
+        }
     }
 
     public Scrollspy getSpy() {
