@@ -55,7 +55,9 @@ public class TabPanel extends DivWidget {
 
         public ShowEvent(NativeEvent event) {
             setNativeEvent(event);
-            setRelativeElement(Element.as(event.getRelatedEventTarget()));
+            if(Element.is(event.getRelatedEventTarget())) {
+                setRelativeElement(Element.as(event.getRelatedEventTarget()));
+            }
         }
 
         public interface Handler extends EventHandler {
@@ -124,7 +126,9 @@ public class TabPanel extends DivWidget {
 
         public ShownEvent(NativeEvent event) {
             setNativeEvent(event);
-            setRelativeElement(Element.as(event.getRelatedEventTarget()));
+            if(Element.is(event.getRelatedEventTarget())) {
+                setRelativeElement(Element.as(event.getRelatedEventTarget()));
+            }
         }
 
         public interface Handler extends EventHandler {
@@ -194,15 +198,26 @@ public class TabPanel extends DivWidget {
 
     private TabContent tabContent = new TabContent();
 
+    /**
+     * Create an empty {@link Tabs#ABOVE} style TabPanel.
+     */
     public TabPanel() {
         this(Bootstrap.Tabs.ABOVE);
     }
 
+    /**
+     * Create an empty TabPanel.
+     * @param position tab position.
+     */
     public TabPanel(Bootstrap.Tabs position) {
         setTabPosition(position.get().toLowerCase());
         setHandlerFunctions(getElement());
     }
 
+    /**
+     * Set tab position
+     * @param position tab position.
+     */
     public void setTabPosition(String position) {
         if (tabs.getParent() != null) {
             remove(tabs);
