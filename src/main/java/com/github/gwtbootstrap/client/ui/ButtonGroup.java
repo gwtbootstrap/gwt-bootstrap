@@ -140,6 +140,19 @@ public class ButtonGroup extends DivWidget {
         this.setStyleName(Constants.DROPUP, dropdown.isDropup());
         
     }
+    
+    @Override
+    public boolean remove(Widget w) {
+        
+        if(!(w instanceof DropdownBase)) {
+            return super.remove(w);
+        }
+        
+        DropdownBase dropdown = (DropdownBase) w;
+        
+        super.remove(dropdown.getTriggerWidget());
+        return super.remove(dropdown.getMenuWiget());
+    }
 
     /**
      * Set/unset the data-toggle behavior.
