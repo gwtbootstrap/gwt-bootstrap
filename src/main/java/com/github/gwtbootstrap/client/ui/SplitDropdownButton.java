@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
@@ -132,6 +133,14 @@ public class SplitDropdownButton extends DropdownBase implements
     @Override
     public void setCustomIconStyle(String customIconStyle) {
         button.setCustomIconStyle(customIconStyle);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconPosition(IconPosition position) {
+        button.setIconPosition(position);
     }
 
 }

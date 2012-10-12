@@ -6,6 +6,7 @@ import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
@@ -209,6 +210,14 @@ public class AccordionGroup extends DivWidget implements HasIcon,HasVisibility, 
     @Override
     public void setCustomIconStyle(String customIconStyle) {
         trigger.setCustomIconStyle(customIconStyle);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconPosition(IconPosition position) {
+        trigger.setIconPosition(position);
     }
     
 }

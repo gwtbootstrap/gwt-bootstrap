@@ -20,6 +20,7 @@ import java.util.Arrays;
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.showcase.client.util.EnumRenderer;
@@ -43,6 +44,9 @@ public class Buttons extends Composite {
     @UiField(provided=true)
     ValueListBox<IconSize> iconSize = new ValueListBox<IconSize>(new EnumRenderer<IconSize>("Choose icon size"));
 
+    @UiField(provided=true)
+    ValueListBox<IconPosition> iconPosition = new ValueListBox<IconPosition>(new EnumRenderer<IconPosition>("Choose icon position"));
+
     private static ButtonsUiBinder uiBinder = GWT.create(ButtonsUiBinder.class);
 
     interface ButtonsUiBinder extends UiBinder<Widget, Buttons> {
@@ -55,6 +59,9 @@ public class Buttons extends Composite {
         
         iconSize.setValue(null);
         iconSize.setAcceptableValues(Arrays.asList(IconSize.values()));
+        
+        iconPosition.setValue(null);
+        iconPosition.setAcceptableValues(Arrays.asList(IconPosition.values()));
         
         initWidget(uiBinder.createAndBindUi(this));
     }
@@ -96,6 +103,11 @@ public class Buttons extends Composite {
     @UiHandler("iconSize")
     void onChangeIconSize(ValueChangeEvent<IconSize> e) {
         effectiveButton.setIconSize(e.getValue());
+    }
+    
+    @UiHandler("iconPosition")
+    void onChangeIconPosition(ValueChangeEvent<IconPosition> e) {
+        effectiveButton.setIconPosition(e.getValue());
     }
     
     @UiHandler("toggle")

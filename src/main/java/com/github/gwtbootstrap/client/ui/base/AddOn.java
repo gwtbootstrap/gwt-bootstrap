@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui.base;
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.InputAddOn;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.uibinder.client.UiChild;
@@ -133,6 +134,12 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
     @Override
     public void setCustomIconStyle(String customIconStyle) {
         icon.addStyleName(customIconStyle);
+    }
+
+    @Override
+    @Deprecated
+    public void setIconPosition(IconPosition position) {
+        throw new UnsupportedOperationException("Addon does not support this methods");
     }
 
 }

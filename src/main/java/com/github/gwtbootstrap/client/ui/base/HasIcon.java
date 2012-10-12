@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 
@@ -56,4 +57,10 @@ public interface HasIcon {
 	 * @param customIconStyle
 	 */
 	public void setCustomIconStyle(String customIconStyle);
+	
+	/**
+	 * Set icon position , left or right
+	 * @param position icon's position
+	 */
+	public void setIconPosition(IconPosition position);
 }

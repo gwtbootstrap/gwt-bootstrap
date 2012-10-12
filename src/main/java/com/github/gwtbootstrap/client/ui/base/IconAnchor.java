@@ -17,11 +17,10 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.dom.client.AnchorElement;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Text;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -70,7 +69,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 
 	private Icon icon = new Icon();
 
-	private Text text = Document.get().createTextNode("");
+	private TextNode text = new TextNode();
 
 	private Caret caret = new Caret();
 
@@ -81,8 +80,30 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	public IconAnchor() {
 		super("a");
 		super.add(icon);
-		super.getElement().appendChild(text);
+		super.add(text);
 		setEmptyHref();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setIconPosition(IconPosition position) {
+	    
+	    icon.removeFromParent();
+	    text.removeFromParent();
+	    
+        if(IconPosition.RIGHT == position) {
+            this.insert(text , 0);
+            this.add(icon);
+            return;
+            
+        } else if(IconPosition.LEFT == position){
+	        this.insert(icon, 0);
+	        this.insert(text, 1);
+	        return;
+	    }
+	    
 	}
 
 	/**
@@ -106,14 +127,14 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	public void setText(String text) {
 	    
-	    this.text.setData(" " + text + " ");
+	    this.text.setText(" " + text + " ");
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getText() {
-		return text.getData();
+		return text.getText();
 	}
 
 	/**

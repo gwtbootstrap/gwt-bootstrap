@@ -122,6 +122,12 @@
                                     dropdown2
                                 </b:Paragraph>
                             </b:Tab>
+                            <b:Tab icon="GITHUB" iconPosition="RIGHT" heading="Right icon Tab">
+                                <b:Heading size="3">Right icon tab</b:Heading>
+                                <b:Paragraph>
+                                    Right icon tab
+                                </b:Paragraph>
+                            </b:Tab>
                         </b:DropdownTab>
                         <b:TabPane heading="prost">
                             <g:Label>Lalala</g:Label>

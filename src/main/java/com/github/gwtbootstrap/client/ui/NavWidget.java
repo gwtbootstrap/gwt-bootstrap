@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -183,5 +184,10 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
     @Override
     public void setCustomIconStyle(String customIconStyle) {
         anchor.setCustomIconStyle(customIconStyle);
+    }
+
+    @Override
+    public void setIconPosition(IconPosition position) {
+        anchor.setIconPosition(position);
     }
 }
