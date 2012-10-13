@@ -91,7 +91,67 @@
                 </b:WellForm>
             </b:Column>
         </b:FluidRow>
+        <b:Heading size="2">StackProgressBar</b:Heading>
         <b:FluidRow>
+            <b:Column size="6">
+                <b:Paragraph>
+                    You can use <code>&lt;b:StackProgressBar&gt;</code> with <code>&lt;b:Bar&gt;</code> for stack style progress bar.<br/>
+                    The <code>Bar</code> can set any text with <code>text</code> attribute.
+                </b:Paragraph>
+                <b:Heading size="3">Default Style</b:Heading>
+                <b:StackProgressBar>
+                    <b:Bar color="DEFAULT" text="default" percent="20"/>
+                    <b:Bar color="INFO" text="info" percent="20"/>
+                    <b:Bar color="SUCCESS" text="success" percent="20"/>
+                    <b:Bar color="DANGER" text="danger" percent="20"/>
+                    <b:Bar color="WARNING" text="warning" percent="20"/>
+                </b:StackProgressBar>
+                <b:Heading size="3">Striped Style</b:Heading>
+                <b:StackProgressBar type="STRIPED">
+                    <b:Bar color="DEFAULT" text="default" percent="5"/>
+                    <b:Bar color="INFO" text="info" percent="10"/>
+                    <b:Bar color="SUCCESS" text="success" percent="15"/>
+                    <b:Bar color="DANGER" text="danger" percent="20"/>
+                    <b:Bar color="WARNING" text="warning" percent="25"/>
+                </b:StackProgressBar>
+                <b:Heading size="3">Animated Style</b:Heading>
+                <b:StackProgressBar type="ANIMATED">
+                    <b:Bar color="DEFAULT" text="default" percent="10"/>
+                    <b:Bar color="INFO" text="info" percent="10"/>
+                    <b:Bar color="SUCCESS" text="success" percent="10"/>
+                    <b:Bar color="DANGER" text="danger" percent="10"/>
+                    <b:Bar color="WARNING" text="warning" percent="10"/>
+                </b:StackProgressBar>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="2">Example Markup</b:Heading>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b:StackProgressBar&gt;
+    &lt;b:Bar color="DEFAULT" text="default" percent="20"/&gt;
+    &lt;b:Bar color="INFO" text="info" percent="20"/&gt;
+    &lt;b:Bar color="SUCCESS" text="success" percent="20"/&gt;
+    &lt;b:Bar color="DANGER" text="danger" percent="20"/&gt;
+    &lt;b:Bar color="WARNING" text="warning" percent="20"/&gt;
+&lt;/b:StackProgressBar&gt;
+&lt;b:StackProgressBar type="STRIPED"&gt;
+    &lt;b:Bar color="DEFAULT" text="default" percent="5"/&gt;
+    &lt;b:Bar color="INFO" text="info" percent="10"/&gt;
+    &lt;b:Bar color="SUCCESS" text="success" percent="15"/&gt;
+    &lt;b:Bar color="DANGER" text="danger" percent="20"/&gt;
+    &lt;b:Bar color="WARNING" text="warning" percent="25"/&gt;
+&lt;/b:StackProgressBar&gt;
+&lt;b:StackProgressBar type="ANIMATED"&gt;
+    &lt;b:Bar color="DEFAULT" text="default" percent="10"/&gt;
+    &lt;b:Bar color="INFO" text="info" percent="10"/&gt;
+    &lt;b:Bar color="SUCCESS" text="success" percent="10"/&gt;
+    &lt;b:Bar color="DANGER" text="danger" percent="10"/&gt;
+    &lt;b:Bar color="WARNING" text="warning" percent="10"/&gt;
+&lt;/b:StackProgressBar&gt;</pre>
+                
+                </g:HTMLPanel>
+            
+            </b:Column>
         </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

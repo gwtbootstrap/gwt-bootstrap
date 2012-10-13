@@ -17,10 +17,10 @@ package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Text;
+import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -29,6 +29,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.HasEnabled;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.impl.FocusImpl;
 
@@ -62,13 +63,13 @@ import com.google.gwt.user.client.ui.impl.FocusImpl;
  * @author Dominik Mayer
  * @author ohashi keisuke
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable, HasName {
 
     private static final FocusImpl impl = FocusImpl.getFocusImplForWidget();
 
 	private Icon icon = new Icon();
 
-	private Text text = Document.get().createTextNode("");
+	private TextNode text = new TextNode();
 
 	private Caret caret = new Caret();
 
@@ -79,8 +80,30 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	public IconAnchor() {
 		super("a");
 		super.add(icon);
-		super.getElement().appendChild(text);
+		super.add(text);
 		setEmptyHref();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setIconPosition(IconPosition position) {
+	    
+	    icon.removeFromParent();
+	    text.removeFromParent();
+	    
+        if(IconPosition.RIGHT == position) {
+            this.insert(text , 0);
+            this.add(icon);
+            return;
+            
+        } else if(IconPosition.LEFT == position){
+	        this.insert(icon, 0);
+	        this.insert(text, 1);
+	        return;
+	    }
+	    
 	}
 
 	/**
@@ -104,14 +127,14 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	public void setText(String text) {
 	    
-	    this.text.setData(" " + text + " ");
+	    this.text.setText(" " + text + " ");
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getText() {
-		return text.getData();
+		return text.getText();
 	}
 
 	/**
@@ -260,4 +283,49 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     public boolean isActive() {
         return getStyleName().contains(Constants.ACTIVE);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setName(String name) {
+        getAnchorElement().setName(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getName() {
+        return getAnchorElement().getName();
+    }
+    
+    /** 
+     * Set target attribute
+     * @param target target name
+     */
+    public void setTarget(String target) {
+        getAnchorElement().setTarget(target);
+    }
+    
+    /**
+     * Get target attribute value
+     * @return target attribute value
+     */
+    public String getTarget() {
+        return getAnchorElement().getTarget();
+    }
+    
+    protected AnchorElement getAnchorElement() {
+        return AnchorElement.as(getElement());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        icon.addStyleName(customIconStyle);
+    }
+    
 }

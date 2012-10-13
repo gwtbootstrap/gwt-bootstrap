@@ -22,6 +22,11 @@
 	<define-property name="bootstrap.responsiveDesign" values="true,false" />
 	<set-property name="bootstrap.responsiveDesign" value="false" />
 
+    <replace-with
+        class="com.github.gwtbootstrap.client.ui.config.DefaultColumnSizeConfigurator">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.config.ColumnSizeConfigurator" />
+    </replace-with>
+
 	<replace-with
 		class="com.github.gwtbootstrap.client.ui.config.DefaultConfigurator">
 		<when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
@@ -33,5 +38,21 @@
 		<when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator" />
 		<when-property-is name="bootstrap.responsiveDesign" value="true" />
 	</replace-with>
+    
+    <replace-with
+        class="com.github.gwtbootstrap.client.ui.resources.internal.DefaultInternalInjector">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.resources.internal.InternalResourceInjector"/>
+    </replace-with>
+    <replace-with
+        class="com.github.gwtbootstrap.client.ui.resources.internal.LowVersionIEResourceInjector">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.resources.internal.InternalResourceInjector"/>
+        <when-property-is name="user.agent" value="ie8"/>
+    </replace-with>
+    <replace-with
+        class="com.github.gwtbootstrap.client.ui.resources.internal.IE67ResourceInjector">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.resources.internal.InternalResourceInjector"/>
+        <when-property-is name="user.agent" value="ie6"/>
+    </replace-with>
+    
 	<source path="client/resources" />
 </module>

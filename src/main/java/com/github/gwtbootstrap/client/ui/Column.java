@@ -18,8 +18,10 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
 import com.github.gwtbootstrap.client.ui.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.config.ColumnSizeConfigurator;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -53,10 +55,13 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class Column extends DivWidget implements HasSize {
 
+    
+    private static final ColumnSizeConfigurator CONFIGURATOR = GWT.create(ColumnSizeConfigurator.class);
+
 	private static final String OFFSET_ERROR_MESSAGE =
 			"The offset of the Column has to be between "
-					+ Constants.MINIMUM_OFFSET + " and "
-					+ Constants.MAXIMUM_OFFSET + "!";
+					+ CONFIGURATOR.getMinimumOffsetSize()+ " and "
+					+ CONFIGURATOR.getMaximumOffsetSize() + "!";
 
 	/**
 	 * Creates a new Column of given size.
@@ -128,10 +133,10 @@ public class Column extends DivWidget implements HasSize {
 	 *            the offset in the Bootstrap grid system
 	 */
 	public void setOffset(int offset) {
-		if (offset < Constants.MINIMUM_OFFSET)
+		if (offset < CONFIGURATOR.getMinimumOffsetSize())
 			throw new IllegalArgumentException(OFFSET_ERROR_MESSAGE);
 
-		if (offset > Constants.MAXIMUM_OFFSET)
+		if (offset > CONFIGURATOR.getMaximumOffsetSize())
 			throw new IllegalArgumentException(OFFSET_ERROR_MESSAGE);
 
 		addStyleName(Constants.OFFSET + offset);

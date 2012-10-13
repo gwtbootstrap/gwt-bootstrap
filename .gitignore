@@ -38,11 +38,10 @@ src/showcase/webapp/com.geekvigarista.gwt.bootstrap.BootstrapJUnit
 src/showcase/webapp/customcss.showcase
 src/showcase/webapp/showcase/
 src/showcase/webapp/nonresshowcase/
-src/showcase/webapp/WEB-INF
 src/showcase/webapp/WEB-INF/classes
-src/showcase/webapp/WEB-INF/deploy/*
+src/showcase/webapp/WEB-INF/deploy
 src/showcase/webapp/WEB-INF/lib
-src/showcase/webapp/bootstrap*
+src/showcase/webapp/META-INF
 maven
 
 .idea/

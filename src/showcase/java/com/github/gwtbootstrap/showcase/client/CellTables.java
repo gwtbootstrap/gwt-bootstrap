@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
+import com.github.gwtbootstrap.client.ui.ButtonCell;
 import com.github.gwtbootstrap.client.ui.CellTable;
 import com.github.gwtbootstrap.client.ui.ControlGroup;
 import com.github.gwtbootstrap.client.ui.DataGrid;
@@ -31,12 +32,16 @@ import com.github.gwtbootstrap.client.ui.Pagination;
 import com.github.gwtbootstrap.client.ui.SubmitButton;
 import com.github.gwtbootstrap.client.ui.Tab;
 import com.github.gwtbootstrap.client.ui.TextBox;
+import com.github.gwtbootstrap.client.ui.TooltipCellDecorator;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
+import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.datepicker.client.ui.DateBox;
 import com.github.gwtbootstrap.showcase.client.util.DisplayLabelRenderer;
 import com.github.gwtbootstrap.showcase.client.util.Person;
 import com.github.gwtbootstrap.showcase.client.util.Person.Favorite;
+import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -49,7 +54,9 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.AbstractCellTable;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
+import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Random;
@@ -58,6 +65,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.RangeChangeEvent;
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SelectionChangeEvent.Handler;
+import com.google.gwt.view.client.SingleSelectionModel;
 
 public class CellTables extends Composite implements Editor<Person> {
 
@@ -267,7 +277,7 @@ public class CellTables extends Composite implements Editor<Person> {
 				return object.getFavorite().getDisplayLabel();
 			}
 		};
-
+		
 		favoriteCol.setSortable(true);
 		exampleTable.addColumn(favoriteCol, "Favorite");
 
@@ -290,7 +300,52 @@ public class CellTables extends Composite implements Editor<Person> {
 				rebuildPager(pagination, pager);
 			}
 		});
+		
+		ButtonCell buttonCell = new ButtonCell(IconType.REMOVE,ButtonType.DANGER);
+		
+		final TooltipCellDecorator<String> decorator = new TooltipCellDecorator<String>(buttonCell);
+		decorator.setText("delete row, if click");
+		
+		
+	    Column<Person, String> buttonCol = new Column<Person, String>(decorator) {
 
+            @Override
+            public String getValue(Person object) {
+                return "delete";
+            }
+        };
+        
+        buttonCol.setFieldUpdater(new FieldUpdater<Person, String>() {
+            
+            @Override
+            public void update(int index, Person object, String value) {
+                dataProvider.getList().remove(object);
+                dataProvider.flush();
+                dataProvider.refresh();
+                rebuildPager(pagination, pager);
+                rebuildPager(dataGridPagination, dataGridPager);
+                
+            }
+        });
+        
+        exampleTable.addColumn(buttonCol);
+        
+        final SingleSelectionModel<Person> selectionModel = new SingleSelectionModel<Person>();
+        
+        selectionModel.addSelectionChangeHandler(new Handler() {
+            
+            @Override
+            public void onSelectionChange(SelectionChangeEvent event) {
+                Person person = selectionModel.getSelectedObject();
+                
+                CellTables.this.driver.edit(person);
+            }
+        });
+        
+        exampleTable.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION);
+        
+        exampleTable.setSelectionModel(selectionModel);
+        
 		pager.setDisplay(exampleTable);
 
 		pagination.clear();
@@ -351,11 +406,15 @@ public class CellTables extends Composite implements Editor<Person> {
 		if (person.getId() == null) {
 			person.setId(dataProvider.getList().size() + 1);
 			dataProvider.getList().add(person);
+		} else {
+		    exampleTable.getSelectionModel().setSelected(person, false);
+		    exampleDataGrid.getSelectionModel().setSelected(person, false);
+		    dataProvider.refresh();
 		}
 
 		dataProvider.flush();
 
-		rebuildPager(pagination, pager);
+        rebuildPager(pagination, pager);
         rebuildPager(dataGridPagination, dataGridPager);
 		
 	}

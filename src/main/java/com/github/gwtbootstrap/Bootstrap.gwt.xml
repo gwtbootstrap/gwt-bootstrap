@@ -22,5 +22,7 @@
   <inherits name="com.github.gwtbootstrap.Configurator"/>
   <inherits name="com.github.gwtbootstrap.client.ui.Resources"/>
   <entry-point class='com.github.gwtbootstrap.client.Bootstrap' />
-  <source path='client' />
+  <source path='client'>
+    <exclude name="**/*Test.java"/>
+  </source>
 </module>

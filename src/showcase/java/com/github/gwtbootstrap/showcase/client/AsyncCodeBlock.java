@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.showcase.client;
 
 import com.github.gwtbootstrap.client.ui.CodeBlock;
 import com.github.gwtbootstrap.client.ui.ProgressBar;
+import com.github.gwtbootstrap.client.ui.base.ProgressBarBase;
 
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -35,7 +36,7 @@ public class AsyncCodeBlock extends Composite {
 	}
 	
 	public void setUrl(String url) {
-		ProgressBar progressBar = new ProgressBar(ProgressBar.Style.ANIMATED);
+		ProgressBar progressBar = new ProgressBar(ProgressBarBase.Style.ANIMATED);
 		progressBar.setPercent(100);
 		codePanel.setWidget(progressBar);
 		

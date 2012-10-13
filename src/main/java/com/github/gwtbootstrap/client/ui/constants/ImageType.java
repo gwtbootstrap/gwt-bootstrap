@@ -5,7 +5,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 /**
  * Style type for {@link com.github.gwtbootstrap.client.ui.Image}
  * 
- * @since 2.1.0.0
+ * @since 2.1.1.0
  * @author ohashi keisuke
  */
 public enum ImageType implements Style {

@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
 /**
@@ -67,6 +67,7 @@ public class FluidRow extends Row {
 	 *            the row's content
 	 */
 	public FluidRow(String html) {
-		setStyleName(Bootstrap.row_fluid);
+		setStyleName(Constants.ROW_FLUID);
+		getElement().setInnerHTML(html);
 	}
 }

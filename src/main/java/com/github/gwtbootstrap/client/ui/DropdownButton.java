@@ -18,6 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
@@ -119,8 +120,27 @@ public class DropdownButton extends DropdownBase {
         return trigger.addClickHandler(handler);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setIconSize(IconSize size) {
         trigger.setIconSize(size);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        trigger.setCustomIconStyle(customIconStyle);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconPosition(IconPosition position) {
+        trigger.setIconPosition(position);
     }
 }

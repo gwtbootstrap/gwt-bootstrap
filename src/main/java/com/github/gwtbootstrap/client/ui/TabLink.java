@@ -17,6 +17,8 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 
@@ -108,8 +110,18 @@ public class TabLink extends NavWidget {
      * show tab pane
      */
     public void show() {
-        setActive(true);
-        show(getAnchor().getElement());
+        if(isOrWasAttached()) {
+            show(getAnchor().getElement());
+            return;
+        }
+        
+        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+            
+            @Override
+            public void execute() {
+                show(getAnchor().getElement());
+            }
+        });
     }
 
     //@formatter:off

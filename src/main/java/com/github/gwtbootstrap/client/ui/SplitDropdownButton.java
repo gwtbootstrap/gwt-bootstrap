@@ -19,12 +19,15 @@ import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**
@@ -117,4 +120,27 @@ public class SplitDropdownButton extends DropdownBase implements
     public void setIconSize(IconSize size) {
         button.setIconSize(size);
     }
+    
+    @Override
+    @UiChild(tagname="customTrigger" , limit=1)
+    public void addCustomTrigger(Widget w) {
+        button.insert(w, 0);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        button.setCustomIconStyle(customIconStyle);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconPosition(IconPosition position) {
+        button.setIconPosition(position);
+    }
+
 }

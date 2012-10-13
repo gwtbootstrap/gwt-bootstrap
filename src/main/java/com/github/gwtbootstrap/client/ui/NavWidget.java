@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -147,4 +148,46 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 	public void clear() {
 		anchor.clear();
 	}
+	
+	/**
+	 * Set anchor target attribute.
+	 * @param target target name
+	 */
+	public void setTarget(String target) {
+	    anchor.setTarget(target);
+	}
+	
+	/**
+	 * Get anchor target attribute.
+	 * @return target name
+	 */
+	public String getTarget() {
+	    return anchor.getTarget();
+	}
+	
+	/**
+	 * Set anchor name
+	 * @param name anchor name
+	 */
+	public void setName(String name) {
+	    anchor.setName(name);
+	}
+	
+	/**
+	 * Get anchor name
+	 * @return anchor name
+	 */
+	public String getName() {
+	    return anchor.getName();
+	}
+
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        anchor.setCustomIconStyle(customIconStyle);
+    }
+
+    @Override
+    public void setIconPosition(IconPosition position) {
+        anchor.setIconPosition(position);
+    }
 }

@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.prettify.HasProgrammingLanguage;
 import com.github.gwtbootstrap.client.ui.resources.prettify.PrettifyHelper;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -87,9 +87,9 @@ public class CodeBlock extends HTMLPanel implements HasProgrammingLanguage, HasH
 	 */
 	public void setScrollable(boolean scrollable) {
 		if (scrollable)
-			addStyleName(Bootstrap.pre_scrollable);
+		    addStyleName(Constants.PRE_SCROLLABLE);
 		else
-			removeStyleName(Bootstrap.pre_scrollable);
+			removeStyleName(Constants.PRE_SCROLLABLE);
 	}
 
 	/**

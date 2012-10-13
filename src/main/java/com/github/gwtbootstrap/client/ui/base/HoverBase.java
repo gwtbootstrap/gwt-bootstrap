@@ -15,12 +15,11 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.Trigger;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.user.client.ui.HasOneWidget;
@@ -40,9 +39,7 @@ import com.google.gwt.user.client.ui.Widget;
 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap documentation</a>
 */
 //@formatter:on
-public abstract class HoverBase implements IsWidget, HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
-
-	Widget widget;
+public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
 
 	/**
 	 * Whether the widget is animated or not.
@@ -82,19 +79,25 @@ public abstract class HoverBase implements IsWidget, HasWidgets, HasOneWidget, I
 	public Widget asWidget() {
 		
 	    if(getWidget() != null) {
-    		removeDataIfExists();
-    		
-    		reconfigure();
-		
-		    getWidget().addAttachHandler(new AttachEvent.Handler() {
-		        
-		        @Override
-		        public void onAttachOrDetach(AttachEvent event) {
-		            if (!event.isAttached()) {
-		                changeVisibility(VisibilityChange.HIDE);
-		            }
-		        }
-		    });
+	        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                
+                @Override
+                public void execute() {
+                    removeDataIfExists();
+                    
+                    reconfigure();
+                    
+                    getWidget().addAttachHandler(new AttachEvent.Handler() {
+                        
+                        @Override
+                        public void onAttachOrDetach(AttachEvent event) {
+                            if (!event.isAttached()) {
+                                changeVisibility(VisibilityChange.HIDE);
+                            }
+                        }
+                    });
+                }
+            });
 		}
 		
 		return getWidget();
@@ -238,96 +241,6 @@ public abstract class HoverBase implements IsWidget, HasWidgets, HasOneWidget, I
 	 *            the action to be performed
 	 */
 	protected abstract void changeVisibility(VisibilityChange visibilityChange);
-
-	/**
-	 * Adds a widget to this panel.
-	 * 
-	 * @param w
-	 *            the child widget to be added
-	 */
-	@Override
-	public void add(Widget w) {
-		// Can't add() more than one widget to a SimplePanel.
-		if (getWidget() != null) {
-			throw new IllegalStateException("SimplePanel can only contain one child widget");
-		}
-		setWidget(w);
-	}
-
-	/**
-	 * Gets the panel's child widget.
-	 * 
-	 * @return the child widget, or <code>null</code> if none is present
-	 */
-	public Widget getWidget() {
-		return widget;
-	}
-
-	public Iterator<Widget> iterator() {
-		// Return a simple iterator that enumerates the 0 or 1 elements in this
-		// panel.
-		return new Iterator<Widget>() {
-
-			boolean hasElement = widget != null;
-
-			Widget returned = null;
-
-			public boolean hasNext() {
-				return hasElement;
-			}
-
-			public Widget next() {
-				if (!hasElement || (widget == null)) {
-					throw new NoSuchElementException();
-				}
-				hasElement = false;
-				return (returned = widget);
-			}
-
-			public void remove() {
-				if (returned != null) {
-					HoverBase.this.remove(returned);
-				}
-			}
-		};
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		// Validate.
-		if (widget != w) {
-			return false;
-		}
-
-		// Logical detach.
-		widget = null;
-		return true;
-	}
-
-	public void setWidget(IsWidget w) {
-		setWidget(w == null ? null : w.asWidget());
-	}
-	
-	/**
-	 * Sets this panel's widget. Any existing child widget will be removed.
-	 * 
-	 * @param w
-	 *            the panel's new widget, or <code>null</code> to clear the
-	 *            panel
-	 */
-	public void setWidget(Widget w) {
-		// Validate
-		if (w == widget) {
-			return;
-		}
-		
-		widget = w;
-	}
-	
-	@Override
-	public void clear() {
-	    widget = null;
-	}
 
 	/**
 	 * Get data name of JS Data API.

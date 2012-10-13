@@ -40,7 +40,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  */
-public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
+public class DivWidget extends FlowPanel implements HasStyle, IsResponsive, HasId {
 
 	/**
 	 * Creates an empty widget.
@@ -109,4 +109,20 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive {
 	public void setHideOn(Device device) {
 		ResponsiveHelper.setHideOn(this, device);
 	}
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getId() {
+        return getElement().getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setId(String id) {
+        getElement().setId(id);
+    }
 }

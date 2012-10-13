@@ -25,6 +25,7 @@ import com.github.gwtbootstrap.showcase.client.Icons;
 import com.github.gwtbootstrap.showcase.client.PageHeader;
 import com.github.gwtbootstrap.showcase.client.ProgressBar;
 import com.github.gwtbootstrap.showcase.client.Subnav;
+import com.github.gwtbootstrap.showcase.client.Thumbnailses;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -56,6 +57,7 @@ class BaseView extends Composite {
         addWidget("Hero Unit" , "heroUnit", new HeroUnit());
         addWidget("Progress Bar" , "progressBar",new ProgressBar());
         addWidget("Page Header" , "pageHeader", new PageHeader());
+        addWidget("Thumbnails" , "thumbnail", new Thumbnailses());
         addWidget("Forms" , "forms", new Forms());
         addWidget("Icons" , "icons", new Icons());
         

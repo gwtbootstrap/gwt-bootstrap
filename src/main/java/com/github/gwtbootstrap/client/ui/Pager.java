@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.UnorderedList;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.uibinder.client.UiConstructor;
 
@@ -45,7 +46,7 @@ public class Pager extends UnorderedList {
 	}
 
 	public void setAligned(boolean aligned) {
-		leftLink.setStyleName(Bootstrap.previous);
+        leftLink.setStyleName(Constants.PREVIOUS);
 		rightLink.setStyleName(Bootstrap.next);
 	}
 

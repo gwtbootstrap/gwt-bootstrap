@@ -17,8 +17,10 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
+import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.ToggleType;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -84,6 +86,22 @@ public class ButtonGroup extends DivWidget {
             add(btn);
         }
     }
+    
+    @Override
+    public void add(IsWidget child) {
+        
+        Widget widget = asWidgetOrNull(child);
+        if(child instanceof MarkupWidget && widget instanceof DropdownButton) {
+            MarkupWidget markup = (MarkupWidget) child;
+            DropdownButton dropdownBase = (DropdownButton) widget;
+            
+            markup.setWidget(dropdownBase.getTriggerWidget());
+            markup.asWidget();
+        }
+        
+        
+        this.add(widget);
+    }
 
     /**
      * Adds a new {@link Button} to the group.
@@ -121,6 +139,19 @@ public class ButtonGroup extends DivWidget {
         
         this.setStyleName(Constants.DROPUP, dropdown.isDropup());
         
+    }
+    
+    @Override
+    public boolean remove(Widget w) {
+        
+        if(!(w instanceof DropdownBase)) {
+            return super.remove(w);
+        }
+        
+        DropdownBase dropdown = (DropdownBase) w;
+        
+        super.remove(dropdown.getTriggerWidget());
+        return super.remove(dropdown.getMenuWiget());
     }
 
     /**

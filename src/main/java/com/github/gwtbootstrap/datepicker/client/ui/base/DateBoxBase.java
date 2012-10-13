@@ -75,6 +75,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
 
     /** placeholderHelper */
     private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+    private boolean autoclose = false;
 
     public DateBoxBase() {
         this.box = new TextBox();
@@ -185,7 +186,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     protected void configure(Widget w) {
         w.getElement().setAttribute("data-date-format", format);
         w.getElement().setAttribute("data-date-language", language);
-        configure(w.getElement());
+        configure(w.getElement(), autoclose);
     }
 
     /**
@@ -233,17 +234,18 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      * call jquery datepicker plugin in a element.
      *
      * @param e: Element that will be transformed in a datepicker.
+     * @param autoclose  is autoclose?
      */
-    protected native void configure(Element e) /*-{
+    protected native void configure(Element e, boolean autoclose) /*-{
         var that = this;
-        $wnd.jQuery(e).datepicker();
-        $wnd.jQuery(e).on('change' , function() {
+        $wnd.jQuery(e).datepicker({autoclose : autoclose})
+        .on('change' , function() {
             that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onChange()();
-        });
-        $wnd.jQuery(e).datepicker().on("show", function () {
+        })
+        .on("show", function () {
             that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onShow()();
-        });
-        $wnd.jQuery(e).datepicker().on("hide", function () {
+        })
+        .on("hide", function () {
             that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onHide()();
         });
     }-*/;
@@ -361,7 +363,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public void setAutoClose(boolean autoclose) {
-        getElement().setAttribute("data-date-autoclose", autoclose + "");
+        this.autoclose = autoclose;
     }
 
     /**

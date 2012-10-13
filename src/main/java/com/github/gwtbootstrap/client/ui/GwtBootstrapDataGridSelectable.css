@@ -84,17 +84,19 @@
 
 .dataGridKeyboardSelectedRow, .dataGridKeyboardSelectedRow td , .dataGridKeyboardSelectedRow th{
   background: #D9EDF7 !important;
+  color : black;
 }
 
 .dataGridSelectedRow, .dataGridSelectedRow td, .dataGridSelectedRow th{
   background: #D9EDF7 !important;
   height: auto;
   overflow: auto;
+  color : black;
 }
 
 .dataGridSelectedRowCell, .dataGridSelectedRow td.dataGridSelectedRowCell {
   background: #D9EDF7 !important;
-  color: white !important;
+  color : black;
 }
 
 .dataGridKeyboardSelectedRowCell, .dataGridKeyboardSelectedRow td.dataGridKeyboardSelectedRowCell {

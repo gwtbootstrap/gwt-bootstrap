@@ -30,11 +30,6 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  */
 public interface Bootstrap {
 
-	public static final String tabs = "tabs";
-
-	public static final String pills = "pills";
-
-	public static final String breadcrumb = "breadcrumb";
 
 	public static final String prev = "prev";
 
@@ -74,22 +69,12 @@ public interface Bootstrap {
 
 	public static final String hero_unit = "hero-unit";
 
-	public static final String progress = "progress";
-
 	public static final String progress_striped = "progress-striped";
 
 	public static final String progress_animated = "progress-striped "
 			+ Constants.ACTIVE;
 
-	public static final String bar = "bar";
-
-	public static final String row_fluid = "row-fluid";
-
 	public static final String pager = "pager";
-
-	public static final String previous = "previous";
-
-	public static final String pre_scrollable = "pre-scrollable";
 
 	public static final String linenums = "linenums";
 
@@ -116,8 +101,6 @@ public interface Bootstrap {
 	public static final String collapse = "collapse";
 
 	public static final String data_target = "data-target";
-
-	public static final String initialism = "initialism";
 
 	public enum Tabs implements Style {
 

@@ -107,7 +107,22 @@ public class Tooltip extends HoverBase {
 		configure(e.getElement(), animated, placement.get(),trigger.get(), showDelay, hideDelay);
 	}
 
-	private static native void configure(Element element, boolean animated,
+	//@formatter:off
+	public static native void configure(String selector,String text, boolean animated,
+            String placement, String trigger, int showDelay, int hideDelay) /*-{
+        $wnd.jQuery(selector).tooltip({
+            title : text,
+            animation : animated,
+            placement : placement,
+            trigger : trigger,
+            delay : {
+                show : showDelay,
+                hide : hideDelay
+            }
+        });
+    }-*/;
+	
+	public static native void configure(Element element, boolean animated,
 			String placement, String trigger, int showDelay, int hideDelay) /*-{
 		$wnd.jQuery(element).tooltip({
 			animation : animated,
@@ -122,7 +137,8 @@ public class Tooltip extends HoverBase {
 
 	public static native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).tooltip(visibility);
-	}-*/;
+	}-*/;	
+	//@formatter:on
 
 	/**
 	 * {@inheritDoc}

@@ -32,6 +32,7 @@
                         <g:Label>Modal Content!</g:Label>
                         <g:Label>Modal Content!</g:Label>
                         <g:Label>Modal Content!</g:Label>
+                        <g:SuggestBox ui:field="suggestBox"/>
                         
                         <b:ModalFooter>
                             <b:Button icon="FILE" type="PRIMARY" ui:field="saveButton">Save</b:Button>

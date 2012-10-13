@@ -1,0 +1,207 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:with
+        type="com.github.gwtbootstrap.showcase.client.resources.CustomResources"
+        field="res" />
+    <ui:style>
+        .icon {
+        	margin-right: 2px;
+        }
+    </ui:style>
+    <g:FlowPanel>
+        <b:PageHeader subtext="Get base styles and flexible support for collapsible components like accordions and navigation.">Collapse</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="2">Accordion</b:Heading>
+                <b:Heading size="3">About Accordion</b:Heading>
+                <b:Paragraph>
+                    The <code>Accordion</code> Widget is most simply collapsible widget.
+                </b:Paragraph>
+                <b:Heading size="3">How to use?</b:Heading>
+                <b:Paragraph>
+                    The <code>Accordion</code> widget is used with <code>AccordionGroup</code> widget.<br/>
+                    You can use <code>&lt;b:Accordion&gt;</code> as a container of <code>&lt;b:AccordionGroup&gt;</code>.
+                </b:Paragraph>
+                <b:Paragraph>
+                    The <code>AccordionGroup</code> has some attribute.<br/>
+                    <dl>AccordionGroup attributes.
+                        <dt><code>heading</code></dt>
+                        <dd>Set trigger anchor text</dd>
+
+                        <dt><code>icon</code> and <code>iconSize</code></dt>
+                        <dd>Set icon of trigger anchor</dd>
+
+                        <dt><code>defaultOpen</code></dt>
+                        <dd>if set <code>true</code>, it's opened on attached document.</dd>
+                    </dl>
+                    If you add some widgets to the <code>AccordionGroup</code>, they are added to collapsible panel.<br/>
+                </b:Paragraph>
+                <b:Heading size="2">Example Markup</b:Heading>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b:Accordion&gt;
+    &lt;b:AccordionGroup heading="One"&gt;
+        &lt;b:Paragraph&gt;one&lt;/b:Paragraph&gt;
+        &lt;b:Paragraph&gt;two&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+    &lt;b:AccordionGroup heading="Defalut Open" defaultOpen="true"&gt;
+        &lt;b:Paragraph&gt;The default opened Accordion&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+    &lt;b:AccordionGroup defaultOpen="true" heading="With Icon" icon="GITHUB"&gt;
+        &lt;b:Paragraph&gt;Icon style&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+    &lt;b:AccordionGroup heading="With Custom Icon"&gt;
+        &lt;b:customTrigger&gt;
+            &lt;b:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+        &lt;/b:customTrigger&gt;
+        &lt;b:Paragraph&gt;Custom Icon Style&lt;/b:Paragraph&gt;
+    &lt;/b:AccordionGroup&gt;
+&lt;/b:Accordion&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="2">Example</b:Heading>
+                <b:Accordion>
+                    <b:AccordionGroup heading="One">
+                        <b:Paragraph>one</b:Paragraph>
+                        <b:Paragraph>two</b:Paragraph>
+                    </b:AccordionGroup>
+                    <b:AccordionGroup heading="Defalut Open" defaultOpen="true">
+                        <b:Paragraph>The default opened Accordion</b:Paragraph>
+                    </b:AccordionGroup>
+                    <b:AccordionGroup heading="With Icon" icon="GITHUB">
+                        <b:Paragraph>Icon style</b:Paragraph>
+                    </b:AccordionGroup>
+                    <b:AccordionGroup heading="With Custom Icon">
+                        <b:customTrigger>
+                            <b:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                        </b:customTrigger>
+                        <b:Paragraph>Custom Icon Style</b:Paragraph>
+                    </b:AccordionGroup>
+                </b:Accordion>
+                <b:Heading size="3">Only AccordionGroup</b:Heading>
+                <b:Paragraph><code>AccordionGroup</code> can work without <code>Accordion</code></b:Paragraph>
+                <b:AccordionGroup heading="without accordion">
+                    <b:Paragraph>without accordion, but work well:)</b:Paragraph>
+                </b:AccordionGroup>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="2">Collapse component</b:Heading>
+                <b:Heading size="3">About Collapse component</b:Heading>
+                <b:Paragraph>
+                    If you don't need accordion style but want to collapsible widget,<br/>
+                    You can use the <code>Collapse</code> class.
+                    The <code>Collapse</code> class can do all widget become collapsible widget.
+                </b:Paragraph>
+                <b:Heading size="3">How to use?</b:Heading>
+                <b:Paragraph>
+                    You can use <code>&lt;b:Collapse&gt;</code> tag on uibinder.
+                    There is 2 ways to use <code>Collapse</code> class.
+                </b:Paragraph>
+                <g:HTMLPanel>
+                    <ul>
+                        <li>
+                            <h4>Using Collapse with CollapseTrigger</h4>
+                            <p>
+                            <code>&lt;CollapseTrigger&gt;</code> is a wrapper widget,<br/>
+                            This effect child widget to be as a collapse trigger.
+                            <code>target</code> tag of <code>CollapsaTrigger</code> can set selector of trigger target.<br/>
+                            
+                            For example <br/>
+                            <code>&lt;b:Collapse&gt;</code> tag is seted <code>b:id="collapse"</code>,<br/>
+                            then <code>&lt;CollapseTrigger&gt;</code> tag should be seted <code>target="#collapse"</code>.
+                            So if child widget of <code>&lt;CollapseTrigger&gt;</code> click,<br/>
+                            child widget of <code>&lt;b:Collapse&gt;</code> is collapsed.
+                            </p>
+                         </li>
+                        <li>
+                            <h4>Using Collapse and Collapse#toggle method</h4>
+                            <p>
+                            <code>Collapse</code> class has <code>toggle()</code> method,
+                            If you call it, child widget of Collapse is toggled.
+                            </p>
+                         </li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column b:id="parent" size="6">
+                <b:Heading size="3">Example Collapse with CollapseTrigger</b:Heading>
+                <b:ButtonGroup>
+                    <b:Tooltip text="If click it,below widget is toggled. :)">
+                        <b:CollapseTrigger target="#toggle1">
+                            <b:Button>Collapse Trigger</b:Button>
+                        </b:CollapseTrigger>
+                    </b:Tooltip>
+                    <b:CollapseTrigger target="#toggle3">
+                        <b:Button toggle="true">Collapse Trigger with Toggle Button</b:Button>
+                    </b:CollapseTrigger>
+                    <b:Tooltip text="If click it,below widget is toggled. :)">
+                        <b:Button ui:field="toggleButton">Toogle without CollpaseTrigger</b:Button>
+                    </b:Tooltip>
+                </b:ButtonGroup>
+                <b:Collapse existTrigger="true" b:id="toggle1" defaultOpen="true">
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:Alert close="false" animation="true" heading="collapsible1">
+                                <b:Paragraph>
+                                    Hello :D
+                                </b:Paragraph>
+                            </b:Alert>
+                        </b:Column>
+                    </b:FluidRow>
+                </b:Collapse>
+                <b:Collapse existTrigger="true" b:id="toggle2" defaultOpen="true" ui:field="toggle1">
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:Alert close="false" animation="true" heading="collapsible1">
+                                <b:Paragraph>
+                                    Hello :D
+                                </b:Paragraph>
+                            </b:Alert>
+                        </b:Column>
+                    </b:FluidRow>
+                </b:Collapse>
+                <b:Collapse existTrigger="true" b:id="toggle3">
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:Alert close="false" animation="true" heading="collapsible3">
+                                <b:Paragraph>
+                                    Hello :D
+                                </b:Paragraph>
+                            </b:Alert>
+                        </b:Column>
+                    </b:FluidRow>
+                </b:Collapse>
+                <b:Heading size="4">Event Log</b:Heading>
+                <b:AlertBlock heading="event log">
+                    <g:ScrollPanel height="100px" >
+                        <g:FlowPanel ui:field="logPanel"/>
+                    </g:ScrollPanel>
+                </b:AlertBlock>
+                <b:Heading size="3">Markup</b:Heading>
+                <g:HTMLPanel>
+                <pre class="prettyprint linenums">
+&lt;b:Tooltip text="If click it,below widget is toggled. :)"&gt;
+    &lt;b:CollapseTrigger target="#toggle1"&gt;
+        &lt;b:Button&gt;Collapse Trigger&lt;/b:Button&gt;
+    &lt;/b:CollapseTrigger&gt;
+&lt;/b:Tooltip&gt;
+&lt;b:Collapse existTrigger="true" b:id="toggle1" defaultOpen="true"&gt;
+    &lt;b:FluidRow&gt;
+        &lt;b:Column size="12"&gt;
+            &lt;b:Alert close="false" animation="true" heading="collapsible1"&gt;
+                &lt;b:Paragraph&gt;
+                    Hello :D
+                &lt;/b:Paragraph&gt;
+            &lt;/b:Alert&gt;
+        &lt;/b:Column&gt;
+    &lt;/b:FluidRow&gt;
+&lt;/b:Collapse&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+    </g:FlowPanel>
+</ui:UiBinder> 

@@ -97,10 +97,6 @@ public interface Constants {
 
 	public static final int MAXIMUM_SPAN_SIZE = 12;
 
-	public static final int MINIMUM_OFFSET = MINIMUM_SPAN_SIZE - 1;
-
-	public static final int MAXIMUM_OFFSET = MAXIMUM_SPAN_SIZE - 1;
-
 	// Table
 
 	public static final String TABLE = "table";
@@ -161,5 +157,39 @@ public interface Constants {
     public static final String BREADCRUMB = "breadcrumb";
 
     public static final String NAVBAR_INVERSE = "navbar-inverse";
+
+    public static final String PREVIOUS = "previous";
+
+    public static final String INITIALISM = "initialism";
+
+    public static final String PRE_SCROLLABLE = "pre-scrollable";
+
+    public static final String ROW_FLUID = "row-fluid";
+
+    public static final String BAR = "bar";
+    
+    public static final String PROGRESS = "progress";
+
+    public static final String THUMBNAILS = "thumbnails";
+
+    public static final String THUMBNAIL = "thumbnail";
+
+    public static final String CAPTION = "caption";
+
+    public static final String ACCORDION = "accordion";
+
+    public static final String ACCORDION_GROUP = "accordion-group";
+
+    public static final String ACCORDION_HEADING = "accordion-heading";
+
+    public static final String ACCORDION_BODY = "accordion-body";
+
+    public static final String ACCORDION_INNER = "accordion-inner";
+
+    public static final String COLLAPSE = "collapse";
+
+    public static final String IN = "in";
+
+    public static final String ACCORDION_TOGGLE = "accordion-toggle";
 
 }

@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.googlecode.gwt.test.GwtTest;
 
@@ -95,7 +96,7 @@ public class AbbreviationTest extends GwtTest {
 		//assert
 		assertNotNull(styleName);
 		
-		assertTrue("if set true,add stylename",styleName.contains(Bootstrap.initialism));
+		assertTrue("if set true,add stylename",styleName.contains(Constants.INITIALISM));
 		
 		//actual 2
 		abbreviation.setInitalism(false);
@@ -104,7 +105,7 @@ public class AbbreviationTest extends GwtTest {
 		
 		//assert
 		assertNotNull(styleName);
-		assertFalse("if set false,remove stylename",styleName.contains(Bootstrap.initialism));
+		assertFalse("if set false,remove stylename",styleName.contains(Constants.INITIALISM));
 		
 		
 	}

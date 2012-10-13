@@ -18,13 +18,16 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:with type="com.github.gwtbootstrap.showcase.client.resources.CustomResources" field="res"/>
     <ui:style>
-        
+        .icon {
+            margin-right: 2px;
+        }
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Dropdown">Dropdown</b:PageHeader>
         <b:FluidRow>
-            <b:Column size="6">
+            <b:Column size="12">
                 <g:HTMLPanel>
                     <p>You can use Dropdowns in Navs, NavTabs and NavPills.</p>
                     <b:NavPills>
@@ -36,6 +39,13 @@
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:Dropdown>
+                        <b:Dropdown text="Dropdown example with custom Icon">
+                            <b:customTrigger>
+                                <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                            </b:customTrigger>
+                            <b:NavLink>Test 1</b:NavLink>
+                            <b:NavLink>Test 2</b:NavLink>
+                        </b:Dropdown>
                     </b:NavPills>
                     <pre class="prettyprint linenums">
 &lt;b:NavPills&gt;
@@ -43,14 +53,19 @@
         &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
         &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
   &lt;/b:Dropdown&gt;
-&lt;/b:NavPills&gt;
-&lt;b:NavPills&gt;
     &lt;b:Dropdown text=&quot;Dropdown example with Icon&quot; icon="GITHUB"&gt;
         &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
         &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
   &lt;/b:Dropdown&gt;
-&lt;/b:NavPills&gt;
-</pre>
+    &lt;b:Dropdown text="Dropdown example with custom Icon"&gt;
+        &lt;!--  you can use customTrigger tag for custom dropdown trigger, but it can only use once.--&gt;
+        &lt;b:customTrigger&gt;
+            &lt;g:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+        &lt;/b:customTrigger&gt;
+        &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+        &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+    &lt;/b:Dropdown&gt;
+&lt;/b:NavPills&gt;</pre>
                     <p>All dropdowns can be converted into dropups by adding <code>dropup="true"</code>.</p>
                </g:HTMLPanel>
             </b:Column>
@@ -60,14 +75,32 @@
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>DropdownButton</h2>
-                    <b:NavPills>
-                        <b:DropdownButton dropup="true" text="Dropup example" icon="GITHUB">
-                            <b:NavLink>Test 1</b:NavLink>
-                            <b:NavLink>Test 2</b:NavLink>
-                        </b:DropdownButton>
-                    </b:NavPills>
+                    <b:ButtonToolbar>
+                        <b:Tooltip text="with icon">
+                            <b:DropdownButton dropup="true" text="Dropup example" icon="GITHUB">
+                                <b:NavLink>Test 1</b:NavLink>
+                                <b:NavLink>Test 2</b:NavLink>
+                            </b:DropdownButton>
+                        </b:Tooltip>
+                        <b:Tooltip text="with custom header">
+                            <b:DropdownButton dropup="true" text="Dropup example">
+                                <b:customTrigger>
+                                    <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                                </b:customTrigger>
+                                <b:NavLink>Test 1</b:NavLink>
+                                <b:NavLink>Test 2</b:NavLink>
+                            </b:DropdownButton>
+                        </b:Tooltip>
+                    </b:ButtonToolbar>
                     <pre class="prettyprint linenums">
 &lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot; icon="GITHUB"&gt;
+    &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+&lt;/b:DropdownButton&gt;
+&lt;b:DropdownButton dropup="true" text="Dropup example"&gt;
+    &lt;b:customTrigger&gt;
+        &lt;g:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+    &lt;/b:customTrigger&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
 &lt;/b:DropdownButton&gt;</pre>
@@ -77,14 +110,28 @@
             <b:Column size="6">
                 <g:HTMLPanel>
                     <h2>SplitDropdownButton</h2>
-                    <b:NavPills>
+                    <b:ButtonToolbar>
                         <b:SplitDropdownButton text="Dropdown example" icon="GITHUB">
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:SplitDropdownButton>
-                    </b:NavPills>
+                        <b:SplitDropdownButton text="Dropdown example">
+                            <b:customTrigger>
+                                <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
+                            </b:customTrigger>
+                            <b:NavLink>Test 1</b:NavLink>
+                            <b:NavLink>Test 2</b:NavLink>
+                        </b:SplitDropdownButton>
+                    </b:ButtonToolbar>
                     <pre class="prettyprint linenums">
 &lt;b:SplitDropdownButton text=&quot;Dropdown example&quot; icon="GITHUB"&gt;
+    &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
+    &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
+&lt;/b:SplitDropdownButton&gt;
+&lt;b:SplitDropdownButton text="Dropdown example"&gt;
+    &lt;b:customTrigger&gt;
+        &lt;g:Image addStyleNames="{style.icon}" resource="{res.logo}"/&gt;
+    &lt;/b:customTrigger&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
 &lt;/b:SplitDropdownButton&gt;</pre>

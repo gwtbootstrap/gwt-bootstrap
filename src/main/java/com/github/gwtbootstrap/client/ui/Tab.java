@@ -22,6 +22,7 @@ import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.constants.Device;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -257,5 +258,21 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, Is
     @UiChild(limit=1,tagname="customTab")
     public void addDecorate(Widget w) {
         link.add(w);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCustomIconStyle(String customIconStyle) {
+        link.setCustomIconStyle(customIconStyle);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIconPosition(IconPosition position) {
+        link.setIconPosition(position);
     }
 }

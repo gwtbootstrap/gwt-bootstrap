@@ -17,6 +17,7 @@ package com.github.gwtbootstrap.showcase.client.components;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
+import com.github.gwtbootstrap.showcase.client.Accordions;
 import com.github.gwtbootstrap.showcase.client.Alerts;
 import com.github.gwtbootstrap.showcase.client.Breadcrumbs;
 import com.github.gwtbootstrap.showcase.client.ButtonGroups;
@@ -29,6 +30,7 @@ import com.github.gwtbootstrap.showcase.client.Pagination;
 import com.github.gwtbootstrap.showcase.client.Popovers;
 import com.github.gwtbootstrap.showcase.client.Subnav;
 import com.github.gwtbootstrap.showcase.client.Tooltips;
+import com.github.gwtbootstrap.showcase.client.Typeaheads;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -50,7 +52,7 @@ public class ComponentView extends Composite {
     interface ComponentViewUiBinder extends UiBinder<Widget, ComponentView> {
     }
 
-    public ComponentView(ClientFactory clientFactory) {
+    public ComponentView(final ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
         
         initWidget(uiBinder.createAndBindUi(this));
@@ -61,13 +63,20 @@ public class ComponentView extends Composite {
         addWidget("Breadcrumbs", "breadcrumbs", new Breadcrumbs());
         addWidget("Navigation", "navigation", new Navigation());
         addWidget("Pagination", "pagination", new Pagination());
+        addWidget("Accordion", "accordion", new Accordions());
         addWidget("Alert", "alert", new Alerts());
+        addWidget("Typeahead", "typeahead", new Typeaheads());
         addWidget("Tooltips", "tooltip", new Tooltips());
         addWidget("Popovers", "popovers", new Popovers());
         addWidget("Datepicker", "datepicker", new Datepicker());
         addWidget("Modal", "modal", new Modal());
         
-        clientFactory.getSubnav().getSpy().configure();
+    }
+    
+    @Override
+    protected void onAttach() {
+        super.onAttach();
+        clientFactory.getSubnav().getSpy().refresh();
     }
     
     protected void addWidget(String header , String target, Widget widget) {

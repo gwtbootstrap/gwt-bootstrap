@@ -164,7 +164,7 @@
                             <tr>
                                 <td>
                                     <b:Button ui:field="enabled"
-                                        enabled="false" text="Enabled" />
+                                        enabled="true" text="Enabled" />
                                 </td>
                                 <td>
                                     <b:Code>&lt;b:Button
@@ -288,6 +288,7 @@
                             <b:Controls>
                                 <b:ValueListBox ui:field="icons"/>
                                 <b:ValueListBox ui:field="iconSize"/>
+                                <b:ValueListBox ui:field="iconPosition"/>
                             </b:Controls>
                         </b:ControlGroup>
                         <b:ControlGroup>

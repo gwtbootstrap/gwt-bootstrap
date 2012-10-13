@@ -105,7 +105,12 @@ public class Popover extends HoverBase {
 		});
 	}-*/;
 
-	private native void changeVisibility(Element e, String visibility) /*-{
+	/**
+	 * Change Visibility
+	 * @param e target
+	 * @param visibility please use VisibilityChange enum.
+	 */
+	public static native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).popover(visibility);
 	}-*/;
 
