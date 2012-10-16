@@ -144,7 +144,7 @@
     <!-- project settings -->
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.5.0-rc1</gwtVersion>
+        <gwtVersion>2.5.0-rc2</gwtVersion>
         <webappDirectory>src/main/webapp</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.sites.plugin.version>0.7</github.sites.plugin.version>
