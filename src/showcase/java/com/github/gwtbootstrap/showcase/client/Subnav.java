@@ -101,14 +101,14 @@ public class Subnav extends DivWidget implements HasId {
             spy.configure();
         }
 
-        navtop = this.getOffsetTop(getElement()) - 88;
-
-        Affix affix = new Affix();
-
-        affix.setOffsetTop(navtop);
-        affix.setWidget(this);
-
-        affix.asWidget();
+//        navtop = this.getOffsetTop(getElement()) - 88;
+//
+//        Affix affix = new Affix();
+//
+//        affix.setOffsetTop(navtop);
+//        affix.setWidget(this);
+//
+//        affix.asWidget();
 
         // TODO make a unconfigure feature.
     }
