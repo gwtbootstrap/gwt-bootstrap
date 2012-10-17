@@ -122,7 +122,7 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                         <b:ControlGroup>
                             <b:ControlLabel>Value</b:ControlLabel>
                             <b:Controls>
-                                <b2:DateBox format="dd/mm/yyyy" ui:field="valueDate"/>
+                                <b2:DateBox format="dd/mm/yyyy" ui:field="valueDate" startView="YEAR"/>
                                 <b:HelpBlock>If it's changed value,call below Datebox#setValue method</b:HelpBlock>
                             </b:Controls>
                         </b:ControlGroup>

@@ -224,9 +224,9 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
             $that.removeData('dateWeekstart');
             $that.removeData('dateStartdate');
             $that.removeData('dateEnddate');
+            $that.removeData('dateStartView');
             $that.removeData('datepicker');
             $that.off();
-            console.log($that.data());
         }
     }-*/;
 
@@ -379,7 +379,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
      */
     @Override
     public void setStartView(String mode) {
-        getElement().setAttribute("data-date-startview", mode.toLowerCase());
+        getElement().setAttribute("data-date-start-view", mode.toLowerCase());
     }
 
 	/**
