@@ -110,8 +110,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 * {@inheritDoc}
 	 */
 	public void setIcon(IconType type) {
-		if (type != null)
-			this.icon.setType(type);
+	    this.icon.setType(type);
 	}
 
 	/**

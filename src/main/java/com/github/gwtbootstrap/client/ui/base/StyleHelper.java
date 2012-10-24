@@ -39,9 +39,12 @@ public class StyleHelper {
 	 *            the style to be added to the Widget.
 	 */
 	public static <T extends UIObject> void addStyle(T widget, Style style) {
-        if (!style.get().isEmpty()) {
-            widget.addStyleName(style.get());
-        }
+	    
+	    if(style == null || style.get().isEmpty()) {
+	        return;
+	    }
+	    
+	    widget.addStyleName(style.get());
 	}
 
 	/**
@@ -92,7 +95,7 @@ public class StyleHelper {
 	 */
 	public static <S extends Style> void changeStyle(UIObject widget,S style,S[] otherStyles) {
 
-		assert widget != null && style != null && otherStyles != null : "any args should not be null.";
+		assert widget != null && otherStyles != null : "any args should not be null.";
 
 		for(S s : otherStyles) {
 			removeStyle(widget, s);
