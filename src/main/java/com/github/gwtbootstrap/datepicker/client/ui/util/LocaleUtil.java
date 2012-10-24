@@ -34,6 +34,17 @@ public class LocaleUtil {
     private static String LANGUAGE = null;
 
     private static List<String> loaded = new ArrayList<String>();
+    
+    private enum Locales {
+        ;
+        private final TextResource resource;
+
+        private Locales(TextResource resource) {
+            this.resource = resource;
+            
+        }
+        
+    }
 
     public static String getLanguage() {
         if (LANGUAGE == null) {
