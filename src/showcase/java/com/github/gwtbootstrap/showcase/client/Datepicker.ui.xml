@@ -61,11 +61,43 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                 </g:HTMLPanel>
             </b:Column>
             <b:Column size="6">
+                <b:Heading size="4">Append style DateBox</b:Heading>
+                <b:Well>
+                    <b2:DateBoxAppended/>
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateBoxAppended /&gt;</pre>
+                </g:HTMLPanel>
+                <b:Paragraph>
+                The DateBoxAppended has same attribute with DateBox.
+                </b:Paragraph>
+                <b:Well>
+                    <b2:DateBoxAppended format="yyyy/mm/dd" autoClose="true" />
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateBoxAppended format="yyyy/mm/dd" autoClose="true" /&gt;</pre>
+                </g:HTMLPanel>
+                <b:Paragraph>
+                And DateBoxAppended can set another icon by <code>icon</code> attribute.
+                </b:Paragraph>
+                <b:Well>
+                    <b2:DateBoxAppended format="yyyy/mm/dd" autoClose="true" icon="CALENDAR"/>
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateBoxAppended format="yyyy/mm/dd" autoClose="true" icon="CALENDAR"/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
                 <b:Heading size="4">DataBox methods and event</b:Heading>
                 <b:Paragraph>
                 <b:Code>DateBox</b:Code> has any methods and can handle show, hide and changeDate event.
                 Try below!
                 </b:Paragraph>
+        <b:FluidRow>
+            <b:Column size="6">
                 <b:Form type="HORIZONTAL">
                     <b:Fieldset>
                         <b:Legend>Setup popover options</b:Legend>
@@ -128,30 +160,24 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                         </b:ControlGroup>
                     </b:Fieldset>
                 </b:Form>
-                <b:ButtonGroup>
-                    <b:Button ui:field="showButton">show</b:Button>
-                    <b:Button ui:field="hideButton">hide</b:Button>
-                </b:ButtonGroup>
+            </b:Column>
+            <b:Column size="6">
+                <b:Well>
+                    <b:Label type="INFO">Effective Datebox</b:Label>
+                    <b2:DateBox format="dd/mm/yyyy" ui:field="datePicker"/>
+                    <b:ButtonGroup>
+                        <b:Button ui:field="showButton">show</b:Button>
+                        <b:Button ui:field="hideButton">hide</b:Button>
+                    </b:ButtonGroup>
+                </b:Well>
                 <b:Alert heading="Event log">
                     <g:ScrollPanel height="100px">
                         <g:FlowPanel ui:field="logViewer"/>
                     </g:ScrollPanel>
                 </b:Alert>
-                <b:Well>
-                    <b:Label type="INFO">Effective Datebox</b:Label>
-                    <b2:DateBox format="dd/mm/yyyy" ui:field="datePicker"/>
-                </b:Well>
             </b:Column>
         </b:FluidRow>
-        <!--<b:FluidRow>-->
-        <!--<b:Column size="6">-->
-        <!--<g:HTMLPanel>-->
-        <!--<b2:DateBoxAppended />-->
-        <!--<pre class="prettyprint linenums">-->
-        <!--&lt;b:Alert type=&quot;SUCCESS&quot; close=&quot;false&quot; animation=&quot;true&quot;&gt;TestAlert-->
-        <!--without close&lt;/b:Alert&gt;</pre>-->
-        <!--</g:HTMLPanel>-->
-        <!--</b:Column>-->
-        <!--</b:FluidRow>-->
+        <b:FluidRow>
+        </b:FluidRow>
     </g:HTMLPanel>
 </ui:UiBinder>

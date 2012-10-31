@@ -54,6 +54,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -196,12 +197,12 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
         ValueChangeEvent.fire(this, getValue());
     }
     
-    public void onShow() {
-        fireEvent(new ShowEvent());
+    public void onShow(Event e) {
+        fireEvent(new ShowEvent(e));
     }
     
-    public void onHide() {
-        fireEvent(new HideEvent());
+    public void onHide(Event e) {
+        fireEvent(new HideEvent(e));
     }
     public void reconfigure() {
         removeDataIfExists(getElement());
@@ -242,11 +243,11 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
         .on('change' , function() {
             that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onChange()();
         })
-        .on("show", function () {
-            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onShow()();
+        .on("show", function (e) {
+            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onShow(Lcom/google/gwt/user/client/Event;)(e);
         })
-        .on("hide", function () {
-            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onHide()();
+        .on("hide", function (e) {
+            that.@com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase::onHide(Lcom/google/gwt/user/client/Event;)(e);
         });
     }-*/;
 

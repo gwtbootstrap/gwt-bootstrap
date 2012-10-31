@@ -35,17 +35,6 @@ public class LocaleUtil {
 
     private static List<String> loaded = new ArrayList<String>();
     
-    private enum Locales {
-        ;
-        private final TextResource resource;
-
-        private Locales(TextResource resource) {
-            this.resource = resource;
-            
-        }
-        
-    }
-
     public static String getLanguage() {
         if (LANGUAGE == null) {
             setupLocale();
@@ -96,9 +85,15 @@ public class LocaleUtil {
         */
 
 
-        if (locale.equalsIgnoreCase("pt-br") || locale.contains("pt")) {
+        if (locale.equals("bg")){
+            tr = r.bg();
+            LANGUAGE = "bg";
+        } else if (locale.equals("br")) {
             tr = r.br();
             LANGUAGE = "br";
+        } else if (locale.equals("cs")) {
+            tr = r.cs();
+            LANGUAGE = "cs";
         } else if (locale.equals("da")) {
             tr = r.da();
             LANGUAGE = "da";
@@ -114,15 +109,30 @@ public class LocaleUtil {
         } else if (locale.equals("fr")) {
             tr = r.fr();
             LANGUAGE = "fr";
+        } else if (locale.equals("id")) {
+            tr = r.id();
+            LANGUAGE = "id";
         } else if (locale.equals("is")) {
             tr = r.is();
             LANGUAGE = "is";
         } else if (locale.equals("it")) {
             tr = r.it();
             LANGUAGE = "it";
+        } else if (locale.equals("ja")) {
+            tr = r.ja();
+            LANGUAGE = "ja";
+        } else if (locale.equals("kr")) {
+            tr = r.kr();
+            LANGUAGE = "kr";
+        } else if (locale.equals("lt")) {
+            tr = r.lt();
+            LANGUAGE = "lt";
         } else if (locale.equals("lv")) {
             tr = r.lv();
             LANGUAGE = "lv";
+        } else if (locale.equals("ms")) {
+            tr = r.ms();
+            LANGUAGE = "ms";
         } else if (locale.equals("nb")) {
             tr = r.nb();
             LANGUAGE = "nb";
@@ -132,9 +142,18 @@ public class LocaleUtil {
         } else if (locale.equals("pl")) {
             tr = r.pl();
             LANGUAGE = "pl";
+        } else if (locale.equals("pt-BR")) {
+            tr = r.pt_BR();
+            LANGUAGE = "pt-BR";
+        } else if (locale.equals("pt")) {
+            tr = r.pt();
+            LANGUAGE = "pt";
         } else if (locale.equals("ru")) {
             tr = r.ru();
             LANGUAGE = "ru";
+        } else if (locale.equals("sl")) {
+            tr = r.sl();
+            LANGUAGE = "sl";
         } else if (locale.equals("sv")) {
             tr = r.sv();
             LANGUAGE = "sv";
@@ -146,7 +165,10 @@ public class LocaleUtil {
             LANGUAGE = "tr";
         } else if (locale.equals("zh-CN")) {
             tr = r.zh_CN();
-            LANGUAGE = "zh-CN";
+            LANGUAGE = "zh-TW";
+        } else if (locale.equals("zh-TW")) {
+            tr = r.zh_TW();
+            LANGUAGE = "zh-TW";
         } else {
             tr = null;
             LANGUAGE = "en";
