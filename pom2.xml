@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <!-- POM file generated with GWT webAppCreator -->
+
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
@@ -144,7 +145,7 @@
     <!-- project settings -->
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.4.0</gwtVersion>
+        <gwtVersion>2.5.0</gwtVersion>
         <webappDirectory>src/main/webapp</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.sites.plugin.version>0.7</github.sites.plugin.version>
@@ -158,9 +159,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-codeserver</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.googlecode.gwt-test-utils</groupId>
             <artifactId>gwt-test-utils</artifactId>
-            <version>0.39</version>
+            <version>0.42</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -170,6 +177,10 @@
                 <exclusion>
                     <groupId>com.google.gwt</groupId>
                     <artifactId>gwt-dev</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-servlet</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -183,14 +194,12 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.sourceforge.nekohtml</groupId>
@@ -267,7 +276,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>gwt-maven-plugin</artifactId>
-                        <version>2.4.0</version>
+                        <version>2.5.0-rc1</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -316,16 +325,13 @@
         <!-- for showcase build -->
         <profile>
             <id>showcase</id>
-            <properties>
-                <webappDirectory>src/showcase/webapp</webappDirectory>
-            </properties>
             <build>
                 <plugins>
                     <!-- GWT Maven Plugin -->
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>gwt-maven-plugin</artifactId>
-                        <version>2.4.0</version>
+                        <version>2.5.0-rc1</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -384,7 +390,6 @@
                             <warSourceDirectory>${webappDirectory}</warSourceDirectory>
                         </configuration>
                     </plugin>
-
                 </plugins>
             </build>
         </profile>
@@ -436,7 +441,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.4.0</version>
+                <version>${gwtVersion}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -574,19 +579,13 @@
                         <exclude>javax.validation:validation-api</exclude>
                     </excludes>
                     <additionalProjectnatures>
-                        <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
-                        <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
                         <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
                         <projectnature>org.eclipse.jdt.core.javanature</projectnature>
-                        <projectnature>org.eclipse.wst.common.project.facet.core.natur</projectnature>
-                        <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
                         <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
                         <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
                     </additionalProjectnatures>
                     <additionalBuildcommands>
-                        <buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
                         <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
-                        <buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
                         <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
                         <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
                     </additionalBuildcommands>
@@ -665,7 +664,7 @@ warSrcDirIsOutput=false
                                             gwt-maven-plugin
                                         </artifactId>
                                         <versionRange>
-                                            [2.4.0,)
+                                            [${gwtVersion})
                                         </versionRange>
                                         <goals>
                                             <goal>resources</goal>
