@@ -146,6 +146,7 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.0</gwtVersion>
+        <gwtPluginVersion>2.5.0-rc1</gwtPluginVersion>
         <webappDirectory>src/main/webapp</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.sites.plugin.version>0.7</github.sites.plugin.version>
@@ -276,7 +277,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>gwt-maven-plugin</artifactId>
-                        <version>2.5.0-rc1</version>
+                        <version>${gwtPluginVersion}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -331,7 +332,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>gwt-maven-plugin</artifactId>
-                        <version>2.5.0-rc1</version>
+                        <version>${gwtPluginVersion}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -441,7 +442,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>${gwtVersion}</version>
+                <version>${gwtPluginVersion}</version>
                 <executions>
                     <execution>
                         <goals>
