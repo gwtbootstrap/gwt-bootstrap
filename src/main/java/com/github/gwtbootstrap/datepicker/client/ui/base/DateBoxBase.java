@@ -54,6 +54,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
@@ -80,9 +81,10 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
 
     public DateBoxBase() {
         this.box = new TextBox();
-        setElement(box.getElement());
-        setFormat("mm/dd/yyyy");
         this.language = LocaleUtil.getLanguage();
+        setElement(box.getElement());
+        setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_MEDIUM).getPattern());
+        setWeekStart(LocaleInfo.getCurrentLocale().getDateTimeFormatInfo().firstDayOfTheWeek());
         setValue(new Date());
     }
 
