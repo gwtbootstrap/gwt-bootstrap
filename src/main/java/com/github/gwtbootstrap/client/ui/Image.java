@@ -13,7 +13,7 @@ import com.google.gwt.safehtml.shared.SafeUri;
 
 /**
  * The Image class for Bootstrap style
- * @since 2.1.1.0
+ * @since 2.2.1.0
  * @author ohashi keisuke
  */
 public class Image extends com.google.gwt.user.client.ui.Image implements
