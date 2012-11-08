@@ -1,16 +1,18 @@
-<!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version 
-    2.0 (the "License"); you may not use this file except in compliance with 
-    the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
-    Unless required by applicable law or agreed to in writing, software distributed 
-    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-    OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+<!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version
+    2.0 (the "License"); you may not use this file except in compliance with
+    the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software distributed
+    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+    OR CONDITIONS OF ANY KIND, either express or implied. See the License for
     the specific language governing permissions and limitations under the License. -->
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
     xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
     xmlns:d="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
     <ui:style>
-        
+        .pager {
+            margin-bottom: 12px;
+        }
     </ui:style>
     <g:HTMLPanel>
         <b:Heading size="2">
@@ -89,7 +91,8 @@
                 <b:Column size="6">
                 <b:TabPanel>
                     <b:TabPane active="true" heading="CellTable">
-                        <b:Pagination ui:field="pagination" />
+                        <b:SimplePager display="{exampleTable}" location="RIGHT"
+                            fastForwardRows="15" styleName="{style.pager}"/>
                         <b:CellTable ui:field="exampleTable"
                             bordered="true" condensed="true" striped="true" />
                     </b:TabPane>
@@ -103,4 +106,4 @@
             </b:Column>
         </b:FluidRow>
     </g:HTMLPanel>
-</ui:UiBinder> 
+</ui:UiBinder>
