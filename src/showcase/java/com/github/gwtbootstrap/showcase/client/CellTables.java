@@ -104,19 +104,19 @@ public class CellTables extends Composite implements Editor<Person> {
 
 	@UiField
 	SubmitButton saveButton;
-	
+
 	@UiField
 	DateBox birthDay;
 
-	@UiField
-	Pagination pagination;
+	//@UiField
+	Pagination pagination = new Pagination();
 
     @UiField
     Pagination dataGridPagination;
-	
+
 	@UiField
 	Form submitExampleForm;
-	
+
 	@UiField
 	Tab dataGridTab;
 
@@ -140,7 +140,7 @@ public class CellTables extends Composite implements Editor<Person> {
 		favorite = new ValueListBox<Person.Favorite>(new DisplayLabelRenderer<Person.Favorite>());
 
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		driver.initialize(this);
 
 		setPerson(new Person());
@@ -213,7 +213,7 @@ public class CellTables extends Composite implements Editor<Person> {
 		};
 		ageCol.setSortable(true);
 		exampleTable.addColumn(ageCol, "Age");
-		
+
 		ListHandler<Person> ageColHandler = new ListHandler<Person>(dataProvider.getList());
 
 		ageColHandler.setComparator(ageCol, new Comparator<Person>() {
@@ -223,7 +223,7 @@ public class CellTables extends Composite implements Editor<Person> {
 				if(o2.getAge() == null) {
 					return 1;
 				}
-				
+
 				if(o1.getAge() == null) {
 					return -1;
 				}
@@ -234,7 +234,7 @@ public class CellTables extends Composite implements Editor<Person> {
 		exampleTable.addColumnSortHandler(ageColHandler);
 
 		TextColumn<Person> birthDayCol = new TextColumn<Person>() {
-			
+
 			@Override
 			public String getValue(Person object) {
 				if(object.getBirthDay() != null) {
@@ -244,13 +244,13 @@ public class CellTables extends Composite implements Editor<Person> {
 				}
 			}
 		};
-		
+
 		exampleTable.addColumn(birthDayCol, "Birth Day");
-		
+
 		birthDayCol.setSortable(true);
-		
-		
-		
+
+
+
 		ListHandler<Person> birthDayColHandler = new ListHandler<Person>(dataProvider.getList());
 		birthDayColHandler.setComparator(birthDayCol, new Comparator<Person>() {
 
@@ -259,17 +259,17 @@ public class CellTables extends Composite implements Editor<Person> {
 				if(o2.getBirthDay() == null) {
 					return 1;
 				}
-				
+
 				if(o1.getBirthDay() == null) {
 					return -1;
 				}
-				
+
 				return o1.getBirthDay().compareTo(o2.getBirthDay());
 			}
 		});
-		
+
 		exampleTable.addColumnSortHandler(birthDayColHandler);
-		
+
 		TextColumn<Person> favoriteCol = new TextColumn<Person>() {
 
 			@Override
@@ -277,7 +277,7 @@ public class CellTables extends Composite implements Editor<Person> {
 				return object.getFavorite().getDisplayLabel();
 			}
 		};
-		
+
 		favoriteCol.setSortable(true);
 		exampleTable.addColumn(favoriteCol, "Favorite");
 
@@ -292,21 +292,21 @@ public class CellTables extends Composite implements Editor<Person> {
 		});
 
 		exampleTable.addColumnSortHandler(favoriteColHandler);
-		
+
 		exampleTable.addRangeChangeHandler(new RangeChangeEvent.Handler() {
-			
+
 			@Override
 			public void onRangeChange(RangeChangeEvent event) {
 				rebuildPager(pagination, pager);
 			}
 		});
-		
+
 		ButtonCell buttonCell = new ButtonCell(IconType.REMOVE,ButtonType.DANGER);
-		
+
 		final TooltipCellDecorator<String> decorator = new TooltipCellDecorator<String>(buttonCell);
 		decorator.setText("delete row, if click");
-		
-		
+
+
 	    Column<Person, String> buttonCol = new Column<Person, String>(decorator) {
 
             @Override
@@ -314,9 +314,9 @@ public class CellTables extends Composite implements Editor<Person> {
                 return "delete";
             }
         };
-        
+
         buttonCol.setFieldUpdater(new FieldUpdater<Person, String>() {
-            
+
             @Override
             public void update(int index, Person object, String value) {
                 dataProvider.getList().remove(object);
@@ -324,28 +324,28 @@ public class CellTables extends Composite implements Editor<Person> {
                 dataProvider.refresh();
                 rebuildPager(pagination, pager);
                 rebuildPager(dataGridPagination, dataGridPager);
-                
+
             }
         });
-        
+
         exampleTable.addColumn(buttonCol);
-        
+
         final SingleSelectionModel<Person> selectionModel = new SingleSelectionModel<Person>();
-        
+
         selectionModel.addSelectionChangeHandler(new Handler() {
-            
+
             @Override
             public void onSelectionChange(SelectionChangeEvent event) {
                 Person person = selectionModel.getSelectedObject();
-                
+
                 CellTables.this.driver.edit(person);
             }
         });
-        
+
         exampleTable.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION);
-        
+
         exampleTable.setSelectionModel(selectionModel);
-        
+
 		pager.setDisplay(exampleTable);
 
 		pagination.clear();
@@ -399,8 +399,8 @@ public class CellTables extends Composite implements Editor<Person> {
 		setPerson(new Person());
 		e.cancel();
 	}
-	
-	
+
+
 
 	private void addPerson(Person person) {
 		if (person.getId() == null) {
@@ -416,7 +416,7 @@ public class CellTables extends Composite implements Editor<Person> {
 
         rebuildPager(pagination, pager);
         rebuildPager(dataGridPagination, dataGridPager);
-		
+
 	}
 
 	private void rebuildPager(final Pagination pagination,final SimplePager pager) {
@@ -443,7 +443,7 @@ public class CellTables extends Composite implements Editor<Person> {
 
 		int before = 2;
 		int after = 2;
-		
+
 		while (!pager.hasPreviousPages(before) && before > 0) {
 			before--;
 			if(pager.hasNextPages(after + 1)) {
@@ -495,12 +495,12 @@ public class CellTables extends Composite implements Editor<Person> {
 
 		pagination.add(next);
 	}
-	
+
 	@UiHandler("add5Entity")
 	public void onClickAdd5Entity(ClickEvent e) {
-	    
+
 	    Date date = new Date();
-	    
+
 		for (int i = 0; i < 5; i++) {
 
 			Person p = new Person();
@@ -523,16 +523,16 @@ public class CellTables extends Composite implements Editor<Person> {
 		userNameControlGroup.setType(ControlGroupType.NONE);
 		userNameHelpInline.setText("");
 	}
-	
+
 	@UiHandler("cancelButton")
 	public void onCancelClick(ClickEvent e) {
 		submitExampleForm.reset();
 
 	}
-	
+
 	@UiHandler("dataGridTab")
 	public void onClickDataGridTab(ClickEvent e) {
 	    exampleDataGrid.onResize();
 	}
-	
+
 }
