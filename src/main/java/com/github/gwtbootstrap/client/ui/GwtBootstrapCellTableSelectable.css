@@ -70,24 +70,24 @@
 }
 
 .cellTableKeyboardSelectedRow, .cellTableKeyboardSelectedRow td , .cellTableKeyboardSelectedRow th{
-  background: #D9EDF7 !important;
+  background: #3A87AD !important;
 }
 
 .cellTableSelectedRow, .cellTableSelectedRow td, .cellTableSelectedRow th{
-  background: #D9EDF7 !important;
-  color : black;
+  background: #3A87AD !important;
+  color : white;
   height: auto;
   overflow: auto;
 }
 
 .cellTableSelectedRowCell, .cellTableSelectedRow td.cellTableSelectedRowCell {
-  background: #D9EDF7 !important;
-  color : black;
+  background: #3A87AD !important;
+  color : white;
 }
 
 .cellTableKeyboardSelectedRowCell, .cellTableKeyboardSelectedRow td.cellTableKeyboardSelectedRowCell {
-  background: #D9EDF7 !important;
-  color : black;
+  background: #3A87AD !important;
+  color : white;
 }
 
 .cellTableKeyboardSelectedCell, .cellTableKeyboardSelectedRow td.cellTableKeyboardSelectedCell{
