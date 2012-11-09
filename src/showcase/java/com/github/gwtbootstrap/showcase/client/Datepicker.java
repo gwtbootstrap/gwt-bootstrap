@@ -43,6 +43,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Datepicker extends Composite {
     
+    
     @UiField
     DateBox datePicker;
     

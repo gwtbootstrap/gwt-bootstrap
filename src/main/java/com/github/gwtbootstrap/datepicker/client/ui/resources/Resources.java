@@ -40,13 +40,18 @@ public interface Resources extends ClientBundle {
 
         for a in `ls`; do  echo "@Source(\"js/locales/$a\")"; echo  "TextResource ` echo $a | cut -f2 -d.`();"; done
      */
-
+    @Source("js/locales/bootstrap-datepicker.bg.js")
+    TextResource bg();
+    
     @Source("js/locales/bootstrap-datepicker.br.js")
     TextResource br();
 
+    @Source("js/locales/bootstrap-datepicker.cs.js")
+    TextResource cs();
+
     @Source("js/locales/bootstrap-datepicker.da.js")
     TextResource da();
-
+    
     @Source("js/locales/bootstrap-datepicker.de.js")
     TextResource de();
 
@@ -59,14 +64,29 @@ public interface Resources extends ClientBundle {
     @Source("js/locales/bootstrap-datepicker.fr.js")
     TextResource fr();
 
+    @Source("js/locales/bootstrap-datepicker.id.js")
+    TextResource id();
+
     @Source("js/locales/bootstrap-datepicker.is.js")
     TextResource is();
 
     @Source("js/locales/bootstrap-datepicker.it.js")
     TextResource it();
 
+    @Source("js/locales/bootstrap-datepicker.ja.js")
+    TextResource ja();
+
+    @Source("js/locales/bootstrap-datepicker.kr.js")
+    TextResource kr();
+
+    @Source("js/locales/bootstrap-datepicker.lt.js")
+    TextResource lt();
+
     @Source("js/locales/bootstrap-datepicker.lv.js")
     TextResource lv();
+
+    @Source("js/locales/bootstrap-datepicker.ms.js")
+    TextResource ms();
 
     @Source("js/locales/bootstrap-datepicker.nb.js")
     TextResource nb();
@@ -77,8 +97,17 @@ public interface Resources extends ClientBundle {
     @Source("js/locales/bootstrap-datepicker.pl.js")
     TextResource pl();
 
+    @Source("js/locales/bootstrap-datepicker.pt.js")
+    TextResource pt();
+
+    @Source("js/locales/bootstrap-datepicker.pt-BR.js")
+    TextResource pt_BR();
+
     @Source("js/locales/bootstrap-datepicker.ru.js")
     TextResource ru();
+
+    @Source("js/locales/bootstrap-datepicker.sl.js")
+    TextResource sl();
 
     @Source("js/locales/bootstrap-datepicker.sv.js")
     TextResource sv();
@@ -91,5 +120,10 @@ public interface Resources extends ClientBundle {
 
     @Source("js/locales/bootstrap-datepicker.zh-CN.js")
     TextResource zh_CN();
+    
+    @Source("js/locales/bootstrap-datepicker.zh-TW.js")
+    TextResource zh_TW();
+
+    
 
 }

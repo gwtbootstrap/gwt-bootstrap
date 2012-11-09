@@ -105,12 +105,14 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 	}
 	
 	protected void removeDataIfExists() {
+	    hide();
 		removeDataIfExists(getWidget().getElement(), getDataName());
 	}
 	
 	protected native void removeDataIfExists(Element e, String dataName) /*-{
-		if($wnd.jQuery(e).data(dataName)) {
-			var data = $wnd.jQuery(e).data(dataName);
+	    var element = $wnd.jQuery(e);
+		if(element.data(dataName)) {
+			var data = element.data(dataName);
 			var eventIn, eventOut;
 			if (data.options.trigger != 'manual') {
 				eventIn  = data.options.trigger == 'hover' ? 'mouseenter' : 'focus'
@@ -118,7 +120,7 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 				data.$element.off(eventIn);
 				data.$element.off(eventOut);
 			}
-			$wnd.jQuery(e).removeData(dataName);
+			element.removeData(dataName);
 		}
 	}-*/;
 

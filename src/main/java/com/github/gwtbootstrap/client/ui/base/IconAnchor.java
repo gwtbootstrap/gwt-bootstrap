@@ -69,9 +69,11 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 
 	private Icon icon = new Icon();
 
-	private TextNode text = new TextNode();
+	private TextNode text = new TextNode("");
 
 	private Caret caret = new Caret();
+
+    private IconPosition iconPosition;
 
 	/**
 	 * Creates the widget and sets the {@code href} property to
@@ -79,8 +81,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	public IconAnchor() {
 		super("a");
-		super.add(icon);
-		super.add(text);
+		setIconPosition(IconPosition.LEFT);
 		setEmptyHref();
 	}
 	
@@ -90,12 +91,13 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	@Override
 	public void setIconPosition(IconPosition position) {
 	    
-	    icon.removeFromParent();
+	    this.iconPosition = position;
+        icon.removeFromParent();
 	    text.removeFromParent();
 	    
         if(IconPosition.RIGHT == position) {
             this.insert(text , 0);
-            this.add(icon);
+            this.insert(icon , 1);
             return;
             
         } else if(IconPosition.LEFT == position){
@@ -110,8 +112,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 * {@inheritDoc}
 	 */
 	public void setIcon(IconType type) {
-		if (type != null)
-			this.icon.setType(type);
+	    this.icon.setType(type);
 	}
 
 	/**
@@ -126,8 +127,9 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 * {@inheritDoc}
 	 */
 	public void setText(String text) {
-	    
-	    this.text.setText(" " + text + " ");
+	    this.text.removeFromParent();
+	    this.text = new TextNode(" " + text + " ");
+	    setIconPosition(iconPosition);
 	}
 
 	/**

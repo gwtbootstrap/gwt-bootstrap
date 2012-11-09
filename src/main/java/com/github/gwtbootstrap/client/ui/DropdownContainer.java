@@ -98,7 +98,7 @@ public class DropdownContainer extends Dropdown {
         handlerManager = createHandlerManager();
     }
 
-    protected void showContainer() {
+    public void showContainer() {
         menu.getElement().getStyle().setDisplay(Style.Display.BLOCK);
         menuVisible = true;
 
@@ -108,7 +108,7 @@ public class DropdownContainer extends Dropdown {
         }
     }
 
-    protected void hideContainer() {
+    public void hideContainer() {
         menu.getElement().getStyle().setDisplay(Style.Display.NONE);
         menuVisible = false;
 

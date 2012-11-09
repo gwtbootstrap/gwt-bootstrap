@@ -30,7 +30,6 @@ import com.googlecode.gwt.test.GwtTest;
  */
 public class AbbreviationTest extends GwtTest {
 
-	@Override
 	public String getModuleName() {
 		return "com.github.gwtbootstrap.Bootstrap";
 	}

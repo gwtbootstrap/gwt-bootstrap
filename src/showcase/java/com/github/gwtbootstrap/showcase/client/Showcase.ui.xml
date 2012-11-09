@@ -107,7 +107,9 @@
                     </b:NavPills>
                 </b:Column>
             </b:FluidRow>
-            <s:Subnav scrollspy="true" ui:field="subnav"/>
+            <b:Affix ui:field="affix" offsetTop="618">
+                <s:Subnav scrollspy="true" ui:field="subnav"/>
+            </b:Affix>
 			<g:SimplePanel ui:field="main"/>
 			<g:FlowPanel ui:field="sections" />
 

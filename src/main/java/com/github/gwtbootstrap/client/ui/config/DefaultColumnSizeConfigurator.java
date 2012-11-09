@@ -5,7 +5,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 /**
  * Default column size configurator
  * 
- * @since 2.1.1.0
+ * @since 2.2.1.0
  * @author ohashi keisuke
  * @see ColumnSizeConfigurator
  */

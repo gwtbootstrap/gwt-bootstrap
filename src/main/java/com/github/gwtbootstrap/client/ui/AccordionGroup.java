@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
  * <p>
  * Please see {@link Accordion}
  * </p>
- * @since 2.1.1.0
+ * @since 2.2.1.0
  * @author ohashi keisuke
  * @see Accordion
  * @see Collapse
