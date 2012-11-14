@@ -83,7 +83,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
         this.box = new TextBox();
         this.language = LocaleUtil.getLanguage();
         setElement(box.getElement());
-        setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_MEDIUM).getPattern());
+        setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_SHORT).getPattern().toLowerCase());
         setWeekStart(LocaleInfo.getCurrentLocale().getDateTimeFormatInfo().firstDayOfTheWeek());
         setValue(new Date());
     }
