@@ -36,6 +36,7 @@ import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -296,6 +297,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		}
 
 		changeVisibility("show");
+		centerVertically(getElement());
 	}
 
 	@Override
@@ -523,5 +525,30 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	public void setSize(String width, String height) {
 		throw new UnsupportedOperationException("modal do not support setSize method");
 	}
+	
+	/**
+	 * Sets the Modal's width.
+	 * @param width Modal's new width, in px
+	 */
+	public void setWidth(int width) {
+		DOM.setStyleAttribute(this.getElement(), "width", width + "px");
+		DOM.setStyleAttribute(this.getElement(), "marginLeft", (-width / 2) + "px");
+	}
+	
+	/**
+	 * Sets the Modal's body maxHeight.
+	 * @param maxHeight the Modal's body new maxHeight, in CSS units (e.g. "10px", "1em")
+	 */
+	public void setMaxHeigth(String maxHeight) {
+		DOM.setStyleAttribute(body.getElement(), "maxHeight", maxHeight);
+	}
+	
+	/**
+	 * Centers fixed positioned element vertically.
+	 * @param e Element to center vertically
+	 */
+	private native void centerVertically(Element e) /*-{
+		$wnd.jQuery(e).css("margin-top", (-1 * $wnd.jQuery(e).outerHeight() / 2) + "px");
+	}-*/;
 
 }
