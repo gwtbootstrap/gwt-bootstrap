@@ -91,7 +91,7 @@
 <span class="sourceLineNo">083</span>        this.box = new TextBox();<a name="line.83"></a>
 <span class="sourceLineNo">084</span>        this.language = LocaleUtil.getLanguage();<a name="line.84"></a>
 <span class="sourceLineNo">085</span>        setElement(box.getElement());<a name="line.85"></a>
-<span class="sourceLineNo">086</span>        setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_MEDIUM).getPattern());<a name="line.86"></a>
+<span class="sourceLineNo">086</span>        setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_SHORT).getPattern().toLowerCase());<a name="line.86"></a>
 <span class="sourceLineNo">087</span>        setWeekStart(LocaleInfo.getCurrentLocale().getDateTimeFormatInfo().firstDayOfTheWeek());<a name="line.87"></a>
 <span class="sourceLineNo">088</span>        setValue(new Date());<a name="line.88"></a>
 <span class="sourceLineNo">089</span>    }<a name="line.89"></a>
