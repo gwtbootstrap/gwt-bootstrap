@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Transition extends GQuery {
     
-    private HashMap<String, String> transEndEventNames = new HashMap();
+    private HashMap<String, String> transEndEventNames = new HashMap<String, String>();
     public final String end;
     private boolean supported;
     
