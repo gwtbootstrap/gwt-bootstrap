@@ -1,10 +1,10 @@
 package com.github.gwtbootstrap.client.ui.plugin;
 
+import static com.github.gwtbootstrap.client.ui.plugin.Transition.*;
+
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.event.CloseEvent;
 import com.github.gwtbootstrap.client.ui.event.ClosedEvent;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.RepeatingCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.query.client.Function;
@@ -125,18 +125,8 @@ public class Alert extends GQuery {
                 }
             };
 
-            // TODO keisuke.oohashi 2012/08/13 delay time should be setting from
-            // outer.
-            // TODO keisuke.oohashi 2012/08/13 if trasition style is not supported,it should not be called.
-            if (parent.hasClass(Constants.FADE)) {
-                Scheduler.get().scheduleFixedDelay(new RepeatingCommand() {
-
-                    @Override
-                    public boolean execute() {
-                        removeElement.f();
-                        return false;
-                    }
-                }, 150);
+            if ($().as(Transition).isSupported() && parent.hasClass(Constants.FADE)) {
+                parent.bind(Event.getTypeInt($().as(Transition).end), removeElement);
             } else {
                 removeElement.f();
             }
