@@ -192,7 +192,7 @@ public class Button extends GQuery {
             return this;
         }
         
-        $("body").bind(Event.ONCLICK, "[data-toggle^=button]", new Function(){
+        $("[data-toggle^=button]").bind(Event.ONCLICK, new Function(){
             @Override
             public boolean f(com.google.gwt.user.client.Event e) {
                 Button elem = $(e.getEventTarget()).as(Button);
@@ -227,7 +227,6 @@ public class Button extends GQuery {
      * @return this
      */
     public GQuery button() {
-
         return button(new Option());
     }
 
@@ -239,6 +238,7 @@ public class Button extends GQuery {
      * @return this
      */
     public GQuery button(Option option) {
+        initializeButton();
 
         for (Element e : elements()) {
 
