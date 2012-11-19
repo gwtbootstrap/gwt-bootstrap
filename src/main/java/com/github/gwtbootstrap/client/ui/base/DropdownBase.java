@@ -15,9 +15,12 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import static com.google.gwt.query.client.GQuery.*;
+
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.constants.Alignment;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.plugin.Dropdown;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -67,6 +70,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 		createAndAddTrigger();
 		menu.setStyleName("dropdown-menu");
 		super.add(menu);
+		if(trigger != null) configure(trigger.getElement());
 	}
 
 	private void createAndAddTrigger() {
@@ -185,9 +189,9 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 		super.add(widget);
 	}
 	
-	private native void configure(Element e) /*-{
-		$wnd.jQuery(e).dropdown();
-	}-*/;
+	private void configure(Element e) {
+		$(e).as(Dropdown.Dropdown).dropdown();
+	};
 
 	/**
 	 * Pull the dropdown menu to right
