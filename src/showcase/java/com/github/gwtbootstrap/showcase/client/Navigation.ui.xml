@@ -24,6 +24,7 @@
             margin-right: 2px;
         }
     </ui:style>
+    <ui:import field="com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType.*" />
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Navigation">Navigation</b:PageHeader>
         <b:FluidRow>
@@ -31,7 +32,7 @@
                 <g:HTMLPanel>
                     <h2>NavWidget</h2>
                     <p>Can contain several widgets. The most obvious example:</p>
-                    <b:NavWidget icon="STAR" text="Inbox">
+                    <b:NavWidget icon="{STAR}" text="Inbox">
                         <b:Badge>1</b:Badge>
                         <b:Badge>2</b:Badge>
                         <b:Badge>3</b:Badge>
@@ -96,7 +97,7 @@
                 <g:HTMLPanel>
                     <h3>TabPanel Demo</h3>
                     <b:TabPanel tabPosition="left" ui:field="tabPanel">
-                        <b:Tab icon="GOOGLE_PLUS" heading="Typically" ui:field="firstTab">
+                        <b:Tab icon="{GOOGLE_PLUS}" heading="Typically" ui:field="firstTab">
                             <b:customTab>
                                 <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                             </b:customTab>
@@ -106,7 +107,7 @@
                             </b:Paragraph>
                         </b:Tab>
                         <b:DropdownTab text="dropdownTab">
-                            <b:Tab icon="GOOGLE_PLUS" heading="dropdown1">
+                            <b:Tab icon="{GOOGLE_PLUS}" heading="dropdown1">
                                 <b:customTab>
                                     <g:Image addStyleNames="{style.icon}" resource="{res.logo}"/>
                                 </b:customTab>
@@ -116,13 +117,13 @@
                                 </b:Paragraph>
                             </b:Tab>
                             <b:Divider/>
-                            <b:Tab icon="GITHUB" heading="dropdown2">
+                            <b:Tab icon="{GITHUB}" heading="dropdown2">
                                 <b:Heading size="3">Dropdown2</b:Heading>
                                 <b:Paragraph>
                                     dropdown2
                                 </b:Paragraph>
                             </b:Tab>
-                            <b:Tab icon="GITHUB" iconPosition="RIGHT" heading="Right icon Tab">
+                            <b:Tab icon="{GITHUB}" iconPosition="RIGHT" heading="Right icon Tab">
                                 <b:Heading size="3">Right icon tab</b:Heading>
                                 <b:Paragraph>
                                     Right icon tab
@@ -304,10 +305,10 @@
                         </b:Nav>
                         <b:Nav>
                             <b:Dropdown text="Icons?" rightDropdown="true">
-                                <b:NavLink icon="ASTERISK" iconSize="LARGE">asterisk</b:NavLink>
-                                <b:NavLink icon="HOME" iconSize="LARGE">home</b:NavLink>
-                                <b:NavLink icon="TWITTER_SIGN" iconSize="LARGE">twitter</b:NavLink>
-                                <b:NavLink icon="ROAD" iconSize="LARGE" >road</b:NavLink>
+                                <b:NavLink icon="{ASTERISK}" iconSize="LARGE">asterisk</b:NavLink>
+                                <b:NavLink icon="{HOME}" iconSize="LARGE">home</b:NavLink>
+                                <b:NavLink icon="{TWITTER_SIGN}" iconSize="LARGE">twitter</b:NavLink>
+                                <b:NavLink icon="{ROAD}" iconSize="LARGE" >road</b:NavLink>
                             </b:Dropdown>
                         </b:Nav>
                         <b:NavForm size="1"/>
@@ -343,14 +344,14 @@
                     <h2>Nav Lists</h2>
                     <b:NavList>
                         <b:NavHeader>Header</b:NavHeader>
-                        <b:NavLink active="true" icon="PLANE" >Test</b:NavLink>
+                        <b:NavLink active="true" icon="{PLANE}" >Test</b:NavLink>
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:NavList>
                     <pre class="prettyprint linenums">
 &lt;b:NavList&gt;
     &lt;b:NavHeader&gt;Header&lt;/b:NavHeader&gt;
-    &lt;b:NavLink active=&quot;true&quot; icon=&quot;plane&quot;&gt;Test&lt;/b:NavLink&gt;
+    &lt;b:NavLink active=&quot;true&quot; icon=&quot;{plane}&quot;&gt;Test&lt;/b:NavLink&gt;
     &lt;b:Divider /&gt;
     &lt;b:NavLink href=&quot;http://www.google.com&quot;&gt;Another Test&lt;/b:NavLink&gt;
 &lt;/b:NavList&gt;</pre>
@@ -361,14 +362,14 @@
                 <g:HTMLPanel>
                     <b:WellNavList>
                         <b:NavHeader>Header</b:NavHeader>
-                        <b:NavLink active="true" icon="PLANE"  ui:field="navlink2">Test</b:NavLink>
+                        <b:NavLink active="true" icon="{PLANE}"  ui:field="navlink2">Test</b:NavLink>
                         <b:Divider />
                         <b:NavLink href="http://www.google.com">Another Test</b:NavLink>
                     </b:WellNavList>
                     <pre class="prettyprint linenums">
 &lt;b:WellNavList&gt;
     &lt;b:NavHeader&gt;Header&lt;/b:NavHeader&gt;
-    &lt;b:NavLink active=&quot;true&quot; icon=&quot;plane&quot;&gt;Test&lt;/b:NavLink&gt;
+    &lt;b:NavLink active=&quot;true&quot; icon=&quot;{plane}&quot;&gt;Test&lt;/b:NavLink&gt;
     &lt;b:Divider /&gt;
     &lt;b:NavLink href=&quot;http://www.google.com&quot;&gt;Another Test&lt;/b:NavLink&gt;
 &lt;/b:WellNavList&gt;</pre>

@@ -21,6 +21,7 @@
     <ui:style>
         
     </ui:style>
+    <ui:import field="com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType.*" />
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Modal">Modal</b:PageHeader>
         
@@ -35,14 +36,14 @@
                         <g:SuggestBox ui:field="suggestBox"/>
                         
                         <b:ModalFooter>
-                            <b:Button icon="FILE" type="PRIMARY" ui:field="saveButton">Save</b:Button>
+                            <b:Button icon="{FILE}" type="PRIMARY" ui:field="saveButton">Save</b:Button>
                         </b:ModalFooter>
                     </b:Modal>
                     <pre class="prettyprint linenums">
 &lt;b:Modal ui:field=&quot;m&quot; title=&quot;My Modal&quot; backdrop=&quot;STATIC&quot; keyboard=&quot;true&quot; animation=&quot;true&quot;&gt;
     &lt;g:Label&gt;Modal Content!&lt;/g:Label&gt;
     &lt;b:ModalFooter&gt;
-        &lt;b:Button icon=&quot;FILE&quot; type=&quot;PRIMARY&quot;&gt;Save&lt;/b:Button&gt;
+        &lt;b:Button icon=&quot;{FILE}&quot; type=&quot;PRIMARY&quot;&gt;Save&lt;/b:Button&gt;
     &lt;/b:ModalFooter&gt;
 &lt;/b:Modal&gt;</pre>
                     <p>As you can see, we have several optional settings. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss. Also, Modal implements the <code>HasVisibleHandlers</code> interface, so, it has the <code>show</code>, hide and <code>toggle</code> methods. The footer is optional.</p>

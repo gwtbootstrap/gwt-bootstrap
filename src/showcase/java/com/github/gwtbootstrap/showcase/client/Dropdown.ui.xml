@@ -24,6 +24,7 @@
             margin-right: 2px;
         }
     </ui:style>
+    <ui:import field="com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType.*" />
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Dropdown">Dropdown</b:PageHeader>
         <b:FluidRow>
@@ -35,7 +36,7 @@
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:Dropdown>
-                        <b:Dropdown text="Dropdown example with Icon" icon="GITHUB">
+                        <b:Dropdown text="Dropdown example with Icon" icon="{GITHUB}">
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:Dropdown>
@@ -53,7 +54,7 @@
         &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
         &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
   &lt;/b:Dropdown&gt;
-    &lt;b:Dropdown text=&quot;Dropdown example with Icon&quot; icon="GITHUB"&gt;
+    &lt;b:Dropdown text=&quot;Dropdown example with Icon&quot; icon="{GITHUB}"&gt;
         &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
         &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
   &lt;/b:Dropdown&gt;
@@ -77,7 +78,7 @@
                     <h2>DropdownButton</h2>
                     <b:ButtonToolbar>
                         <b:Tooltip text="with icon">
-                            <b:DropdownButton dropup="true" text="Dropup example" icon="GITHUB">
+                            <b:DropdownButton dropup="true" text="Dropup example" icon="{GITHUB}">
                                 <b:NavLink>Test 1</b:NavLink>
                                 <b:NavLink>Test 2</b:NavLink>
                             </b:DropdownButton>
@@ -93,7 +94,7 @@
                         </b:Tooltip>
                     </b:ButtonToolbar>
                     <pre class="prettyprint linenums">
-&lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot; icon="GITHUB"&gt;
+&lt;b:DropdownButton dropup=&quot;true&quot; text=&quot;Dropup example&quot; icon="{GITHUB}"&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
 &lt;/b:DropdownButton&gt;
@@ -111,7 +112,7 @@
                 <g:HTMLPanel>
                     <h2>SplitDropdownButton</h2>
                     <b:ButtonToolbar>
-                        <b:SplitDropdownButton text="Dropdown example" icon="GITHUB">
+                        <b:SplitDropdownButton text="Dropdown example" icon="{GITHUB}">
                             <b:NavLink>Test 1</b:NavLink>
                             <b:NavLink>Test 2</b:NavLink>
                         </b:SplitDropdownButton>
@@ -124,7 +125,7 @@
                         </b:SplitDropdownButton>
                     </b:ButtonToolbar>
                     <pre class="prettyprint linenums">
-&lt;b:SplitDropdownButton text=&quot;Dropdown example&quot; icon="GITHUB"&gt;
+&lt;b:SplitDropdownButton text=&quot;Dropdown example&quot; icon="{GITHUB}"&gt;
     &lt;b:NavLink&gt;Test 1&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;Test 2&lt;/b:NavLink&gt;
 &lt;/b:SplitDropdownButton&gt;
