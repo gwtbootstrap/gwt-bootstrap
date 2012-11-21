@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.NavbarButton;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
@@ -85,9 +86,9 @@ public class ResponsiveNavbar extends Navbar {
 				Bootstrap.collapse);
 		collapseButton.getElement().setAttribute(Bootstrap.data_target,
 				Bootstrap.nav_collapse_target);
-		collapseButton.add(new Icon(IconType.BAR));
-		collapseButton.add(new Icon(IconType.BAR));
-		collapseButton.add(new Icon(IconType.BAR));
+		collapseButton.add(new Icon(FontAwesomeIconType.BAR));
+		collapseButton.add(new Icon(FontAwesomeIconType.BAR));
+		collapseButton.add(new Icon(FontAwesomeIconType.BAR));
 		add(collapseButton);
 	}
 

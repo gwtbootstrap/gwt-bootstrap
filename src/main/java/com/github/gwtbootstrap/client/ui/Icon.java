@@ -79,7 +79,7 @@ public class Icon extends Widget {
      */
     public void setType(IconType type) {
         this.type = type;
-        StyleHelper.changeStyle(this, type, IconType.class);
+        StyleHelper.changeStyle(this, type, type.availableStyles());
     }
 
     /**

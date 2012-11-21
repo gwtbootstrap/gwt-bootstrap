@@ -301,7 +301,7 @@ public class CellTables extends Composite implements Editor<Person> {
 			}
 		});
 
-		ButtonCell buttonCell = new ButtonCell(IconType.REMOVE,ButtonType.DANGER);
+		ButtonCell buttonCell = new ButtonCell(FontAwesomeIconType.REMOVE,ButtonType.DANGER);
 
 		final TooltipCellDecorator<String> decorator = new TooltipCellDecorator<String>(buttonCell);
 		decorator.setText("delete row, if click");
