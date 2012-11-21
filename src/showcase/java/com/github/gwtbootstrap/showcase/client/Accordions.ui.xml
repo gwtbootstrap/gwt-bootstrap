@@ -9,6 +9,7 @@
         	margin-right: 2px;
         }
     </ui:style>
+    <ui:import field="com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType.*" />
     <g:FlowPanel>
         <b:PageHeader subtext="Get base styles and flexible support for collapsible components like accordions and navigation.">Collapse</b:PageHeader>
         <b:FluidRow>
@@ -70,7 +71,7 @@
                     <b:AccordionGroup heading="Defalut Open" defaultOpen="true">
                         <b:Paragraph>The default opened Accordion</b:Paragraph>
                     </b:AccordionGroup>
-                    <b:AccordionGroup heading="With Icon" icon="GITHUB">
+                    <b:AccordionGroup heading="With Icon" icon="{GITHUB}">
                         <b:Paragraph>Icon style</b:Paragraph>
                     </b:AccordionGroup>
                     <b:AccordionGroup heading="With Custom Icon">

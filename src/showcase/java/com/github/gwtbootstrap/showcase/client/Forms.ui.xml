@@ -22,6 +22,7 @@
 	<ui:with
 		type="com.github.gwtbootstrap.showcase.client.resources.CustomResources"
 		field="res" />
+    <ui:import field="com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType.*" />
 	<g:HTMLPanel>
 		<b:PageHeader>Forms</b:PageHeader>
 		<b:Heading size="2">Four types of forms</b:Heading>
@@ -391,7 +392,7 @@
                         <b:ControlGroup>
                             <b:ControlLabel>Icon append and prepend</b:ControlLabel>
                             <b:Controls>
-                                <b:InputAddOn prependIcon="GOOGLE_PLUS" appendIcon="GITHUB">
+                                <b:InputAddOn prependIcon="{GOOGLE_PLUS}" appendIcon="{GITHUB}">
                                     <b:TextBox/>
                                 </b:InputAddOn>
                             </b:Controls>
@@ -435,7 +436,7 @@
         &lt;b:ControlGroup&gt;
             &lt;b:ControlLabel&gt;Icon append and prepend&lt;/b:ControlLabel&gt;
             &lt;b:Controls&gt;
-                &lt;b:InputAddOn prependIcon="GOOGLE_PLUS" appendIcon="GITHUB"&gt;
+                &lt;b:InputAddOn prependIcon="{GOOGLE_PLUS}" appendIcon="{GITHUB}"&gt;
                     &lt;b:TextBox/&gt;
                 &lt;/b:InputAddOn&gt;
             &lt;/b:Controls&gt;

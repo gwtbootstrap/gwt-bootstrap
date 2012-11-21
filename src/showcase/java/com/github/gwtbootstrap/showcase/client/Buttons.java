@@ -19,10 +19,7 @@ import java.util.Arrays;
 
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
-import com.github.gwtbootstrap.client.ui.constants.ButtonType;
-import com.github.gwtbootstrap.client.ui.constants.IconPosition;
-import com.github.gwtbootstrap.client.ui.constants.IconSize;
-import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.constants.*;
 import com.github.gwtbootstrap.showcase.client.util.EnumRenderer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -39,7 +36,7 @@ public class Buttons extends Composite {
     Button effectiveButton;
 
     @UiField(provided = true)
-    ValueListBox<IconType> icons = new ValueListBox<IconType>(new EnumRenderer<IconType>("Choose icon"));
+    ValueListBox<FontAwesomeIconType> icons = new ValueListBox<FontAwesomeIconType>(new EnumRenderer<FontAwesomeIconType>("Choose icon"));
     
     @UiField(provided=true)
     ValueListBox<IconSize> iconSize = new ValueListBox<IconSize>(new EnumRenderer<IconSize>("Choose icon size"));
@@ -55,7 +52,7 @@ public class Buttons extends Composite {
     public Buttons() {
         
         icons.setValue(null);
-        icons.setAcceptableValues(Arrays.asList(IconType.values()));
+        icons.setAcceptableValues(Arrays.asList(FontAwesomeIconType.values()));
         
         iconSize.setValue(null);
         iconSize.setAcceptableValues(Arrays.asList(IconSize.values()));

@@ -36,6 +36,7 @@ import com.github.gwtbootstrap.client.ui.TooltipCellDecorator;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
+import com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.datepicker.client.ui.DateBox;
 import com.github.gwtbootstrap.showcase.client.util.DisplayLabelRenderer;
@@ -301,7 +302,7 @@ public class CellTables extends Composite implements Editor<Person> {
 			}
 		});
 
-		ButtonCell buttonCell = new ButtonCell(IconType.REMOVE,ButtonType.DANGER);
+		ButtonCell buttonCell = new ButtonCell(FontAwesomeIconType.REMOVE,ButtonType.DANGER);
 
 		final TooltipCellDecorator<String> decorator = new TooltipCellDecorator<String>(buttonCell);
 		decorator.setText("delete row, if click");

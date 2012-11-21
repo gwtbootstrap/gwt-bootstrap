@@ -22,6 +22,7 @@
     <ui:style>
 
     </ui:style>
+    <ui:import field="com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType.*" />
     <g:HTMLPanel>
         <b:PageHeader subtext="and DateBoxes">Datepickers</b:PageHeader>
         <b:FluidRow>
@@ -83,7 +84,7 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                 And DateBoxAppended can set another icon by <code>icon</code> attribute.
                 </b:Paragraph>
                 <b:Well>
-                    <b2:DateBoxAppended format="yyyy/mm/dd" autoClose="true" icon="CALENDAR"/>
+                    <b2:DateBoxAppended format="yyyy/mm/dd" autoClose="true" icon="{CALENDAR}"/>
                 </b:Well>
                 <g:HTMLPanel>
                     <pre class="prettyprint linenums">

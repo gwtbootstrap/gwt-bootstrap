@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
+import com.github.gwtbootstrap.client.ui.constants.FontAwesomeIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.google.gwt.core.client.GWT;
@@ -215,7 +216,7 @@ public class SimplePager extends AbstractPager {
         // Create the buttons.
         firstPage = new Button();
         firstPage.setType(ButtonType.LINK);
-        firstPage.setIcon(IconType.FAST_BACKWARD);
+        firstPage.setIcon(FontAwesomeIconType.FAST_BACKWARD);
         firstPage.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -229,7 +230,7 @@ public class SimplePager extends AbstractPager {
 
         nextPage = new Button();
         nextPage.setType(ButtonType.LINK);
-        nextPage.setIcon(IconType.STEP_FORWARD);
+        nextPage.setIcon(FontAwesomeIconType.STEP_FORWARD);
         nextPage.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -243,7 +244,7 @@ public class SimplePager extends AbstractPager {
 
         prevPage = new Button();
         prevPage.setType(ButtonType.LINK);
-        prevPage.setIcon(IconType.STEP_BACKWARD);
+        prevPage.setIcon(FontAwesomeIconType.STEP_BACKWARD);
         prevPage.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -258,7 +259,7 @@ public class SimplePager extends AbstractPager {
         if (showLastPageButton) {
             lastPage = new Button();
             lastPage.setType(ButtonType.LINK);
-            lastPage.setIcon(IconType.FAST_FORWARD);
+            lastPage.setIcon(FontAwesomeIconType.FAST_FORWARD);
             lastPage.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent event) {
@@ -276,7 +277,7 @@ public class SimplePager extends AbstractPager {
         if (showFastForwardButton) {
             fastForward = new Button();
             fastForward.setType(ButtonType.LINK);
-            fastForward.setIcon(IconType.FORWARD);
+            fastForward.setIcon(FontAwesomeIconType.FORWARD);
             fastForward.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent event) {
