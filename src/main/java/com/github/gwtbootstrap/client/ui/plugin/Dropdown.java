@@ -10,8 +10,8 @@ import com.google.gwt.user.client.Event;
 
 public class Dropdown extends GQuery {
 
-    protected static final String TOGGLE = "[data-toggle=\"dropdown\"]";
     
+    public static final String TOGGLE = "[data-toggle=\"dropdown\"]";
     
     
     /** is initialized */
@@ -30,12 +30,20 @@ public class Dropdown extends GQuery {
 
     public static class DropdownHandler {
         
-        public DropdownHandler(final GQuery e) {
+        public DropdownHandler(final GQuery element) {
             
-            e.bind(Event.ONCLICK , new Function() {
+            element.bind("click.dropdown.data-api" , new Function() {
                 @Override
                 public boolean f(Event e) {
                     return toggle(e);
+                }
+            });
+            
+            $("html").bind("click.dropdown.data-api", new Function() {
+                @Override
+                public boolean f(Event e) {
+                    element.parent().removeClass("open");
+                    return true;
                 }
             });
             
@@ -63,13 +71,17 @@ public class Dropdown extends GQuery {
             int keyCode = e.getKeyCode();
             
             if(!(keyCode == 38 || keyCode == 40 || keyCode == 27)) {
-                return false;
+                return true;
             }
             
             GQuery that = $(e);
+            try {
+                e.preventDefault();
+                e.stopPropagation();
+            } catch(Throwable t) {
+            }
             
-            e.preventDefault();
-            e.stopPropagation();
+            if(that.is(".disabled, :disabled")) return true;
             
             GQuery parent = getParent(that);
             
@@ -77,14 +89,15 @@ public class Dropdown extends GQuery {
             
             if(!isActive || (isActive && keyCode == 27)) {
                 that.click();
-                return false;
+                return true;
             }
             
-            GQuery items = parent.find("[role=menu] li:not(.divider) a");
+            GQuery items = $("[role=menu] li:not(.divider) a" , parent.get(0));
             
             if(items.length() == 0) {
-                return false;
+                return true;
             }
+            
             GQuery focusedItems = items.filter(":focus");
             
             int index = 0;
@@ -96,7 +109,7 @@ public class Dropdown extends GQuery {
             if(keyCode == 40 && index < items.length() -1) index++;
             
             items.eq(index).focus();
-            return false;
+            return true;
         }
         
         public static void cleanMenus() {
@@ -144,7 +157,7 @@ public class Dropdown extends GQuery {
                     DropdownHandler.cleanMenus();
                 }
             })
-            .delegate(".dropdown for", Event.ONCLICK | Event.ONTOUCHSTART, new Function() {
+            .delegate(".dropdown for", "", new Function() {
                 @Override
                 public boolean f(Event e) {
                     e.stopPropagation();
@@ -154,6 +167,7 @@ public class Dropdown extends GQuery {
             .delegate(TOGGLE, Event.ONCLICK | Event.ONTOUCHSTART , new Function() {
                 @Override
                 public boolean f(Event e) {
+                    
                     return DropdownHandler.toggle(e);
                 }
             })
