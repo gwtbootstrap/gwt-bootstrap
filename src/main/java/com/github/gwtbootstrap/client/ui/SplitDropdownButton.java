@@ -96,6 +96,7 @@ public class SplitDropdownButton extends DropdownBase implements
 	@Override
 	public void setType(ButtonType type) {
 		trigger.setType(type);
+        button.setType(type);
 	}
 
     /**
