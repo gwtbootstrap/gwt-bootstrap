@@ -85,6 +85,7 @@ public class SplitDropdownButton extends DropdownBase implements
 	 */
 	public void setSize(ButtonSize size) {
 		trigger.setSize(size);
+		button.setSize(size);
 	}
 
 	/**
