@@ -18,10 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.constants.ButtonType;
-import com.github.gwtbootstrap.client.ui.constants.IconPosition;
-import com.github.gwtbootstrap.client.ui.constants.IconSize;
-import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.constants.*;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -96,13 +93,14 @@ public class SplitDropdownButton extends DropdownBase implements
 	@Override
 	public void setType(ButtonType type) {
 		trigger.setType(type);
+        button.setType(type);
 	}
 
     /**
      * {@inheritDoc}
      */
     @Override
-	public void setIcon(IconType type) {
+	public void setIcon(IconBaseType type) {
 		button.setIcon(type);
 	}
 

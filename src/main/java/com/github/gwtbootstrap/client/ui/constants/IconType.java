@@ -30,7 +30,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  * @since 2.0.4.0
  */
 //@formatter:on
-public enum IconType implements Style {
+public enum IconType implements IconBaseType {
 
     // font awesome icons
     ADJUST("adjust"),
@@ -261,5 +261,13 @@ public enum IconType implements Style {
     @Override
     public String get() {
         return PREFIX + className;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public IconBaseType[] availableIcons() {
+        return values();
     }
 }

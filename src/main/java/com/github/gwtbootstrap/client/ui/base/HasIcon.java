@@ -15,6 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import com.github.gwtbootstrap.client.ui.constants.IconBaseType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
@@ -31,10 +32,17 @@ public interface HasIcon {
 
 	/**
 	 * Sets the Type of the Icon.
-	 * 
-	 * @param type
-	 */
-	public void setIcon(IconType type);
+	 *
+     * @param type
+     */
+	public void setIcon(IconBaseType type);
+
+    /**
+     * Sets the Type of the Icon as a custom Icon.
+     *
+     * @param customIconStyle
+     */
+//    public void setCustomIcon(IconBaseType customIconStyle);
 
 	/**
 	 * Sets the size of the icon.

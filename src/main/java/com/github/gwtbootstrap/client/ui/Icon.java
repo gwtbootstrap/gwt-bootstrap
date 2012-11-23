@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.constants.IconBaseType;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.uibinder.client.UiConstructor;
@@ -50,7 +51,7 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class Icon extends Widget {
 
-    private IconType type;
+    private IconBaseType type;
 
     /**
      * Creates a widget but doesn't set an icon yet.
@@ -67,7 +68,7 @@ public class Icon extends Widget {
      * @param type the icon type
      */
     @UiConstructor
-    public Icon(IconType type) {
+    public Icon(IconBaseType type) {
         this();
         setType(type);
     }
@@ -77,9 +78,12 @@ public class Icon extends Widget {
      *
      * @param type the icon type
      */
-    public void setType(IconType type) {
+    public void setType(IconBaseType type) {
+        if(this.type != null) {
+            StyleHelper.removeStyle(this, this.type);
+        }
         this.type = type;
-        StyleHelper.changeStyle(this, type, IconType.class);
+        StyleHelper.addStyle(this, type);
     }
 
     /**
@@ -96,7 +100,7 @@ public class Icon extends Widget {
      * 
      * @return icon type.
      */
-    public IconType getIconType() {
+    public IconBaseType getIconType() {
     	return type;
     }
 
