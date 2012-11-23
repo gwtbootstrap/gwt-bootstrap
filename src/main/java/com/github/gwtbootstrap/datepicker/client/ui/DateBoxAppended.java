@@ -20,6 +20,7 @@ import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
@@ -121,6 +122,14 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
      */
     @Override
     public void setIcon(IconType type) {
+        setIcon((BaseIconType) type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIcon(BaseIconType type) {
         icon.setIcon(type);
     }
 

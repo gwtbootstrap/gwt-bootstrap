@@ -17,10 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.constants.ButtonType;
-import com.github.gwtbootstrap.client.ui.constants.IconPosition;
-import com.github.gwtbootstrap.client.ui.constants.IconSize;
-import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.constants.*;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -111,9 +108,18 @@ public class DropdownButton extends DropdownBase {
 	 * @param type
 	 *            the icon's type
 	 */
-	public void setIcon(IconType type) {
-		trigger.setIcon(type);
-	}
+    @Override
+    public void setIcon(IconType type) {
+        setIcon((BaseIconType) type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIcon(BaseIconType type) {
+        trigger.setIcon(type);
+    }
 
     @Override
     public HandlerRegistration addClickHandler(ClickHandler handler) {
