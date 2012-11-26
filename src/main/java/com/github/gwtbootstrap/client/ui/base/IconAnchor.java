@@ -118,7 +118,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
      */
     @Override
     public void setBaseIcon(BaseIconType type) {
-        this.icon.setIcon(type);
+        this.icon.setBaseType(type);
     }
 
 	/**

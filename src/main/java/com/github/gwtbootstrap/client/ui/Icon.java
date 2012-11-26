@@ -70,7 +70,7 @@ public class Icon extends Widget {
     @UiConstructor
     public Icon(IconType type) {
         this();
-        setType(type);
+        setBaseType(type);
     }
 
     /**
@@ -130,7 +130,7 @@ public class Icon extends Widget {
      *
      * @param type the base icon type
      */
-    public void setIcon(BaseIconType type) {
-        this.type = type;
+    public void setIcon(IconType type) {
+        setBaseType(type);
     }
 }
