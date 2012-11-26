@@ -42,7 +42,7 @@ public interface HasIcon {
 	 *
 	 * @param type
 	 */
-	public void setIcon(BaseIconType type);
+	public void setBaseIcon(BaseIconType type);
 
 	/**
 	 * Sets the size of the icon.

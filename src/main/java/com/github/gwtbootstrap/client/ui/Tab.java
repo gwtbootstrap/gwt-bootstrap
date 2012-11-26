@@ -184,15 +184,15 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, Is
      */
     @Override
     public void setIcon(IconType type) {
-        setIcon((BaseIconType) type);
+        setBaseIcon(type);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setIcon(BaseIconType type) {
-        this.link.setIcon(type);
+    public void setBaseIcon(BaseIconType type) {
+        this.link.setBaseIcon(type);
     }
 
     /**

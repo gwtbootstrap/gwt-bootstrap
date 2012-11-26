@@ -102,15 +102,15 @@ public class SplitDropdownButton extends DropdownBase implements
      */
     @Override
     public void setIcon(IconType type) {
-        setIcon((BaseIconType) type);
+        setBaseIcon(type);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setIcon(BaseIconType type) {
-        this.button.setIcon(type);
+    public void setBaseIcon(BaseIconType type) {
+        this.button.setBaseIcon(type);
     }
 
 	/**

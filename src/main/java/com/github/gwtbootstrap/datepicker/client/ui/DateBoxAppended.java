@@ -122,15 +122,15 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
      */
     @Override
     public void setIcon(IconType type) {
-        setIcon((BaseIconType) type);
+        setBaseIcon(type);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setIcon(BaseIconType type) {
-        icon.setIcon(type);
+    public void setBaseIcon(BaseIconType type) {
+        icon.setBaseIcon(type);
     }
 
     /**

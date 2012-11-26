@@ -95,14 +95,14 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
      */
     @Override
     public void setIcon(IconType type) {
-        setIcon((BaseIconType) type);
+        setBaseIcon(type);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setIcon(BaseIconType type) {
+    public void setBaseIcon(BaseIconType type) {
         if (text != null) {
             getElement().setInnerHTML("");
         }

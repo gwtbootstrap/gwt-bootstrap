@@ -72,15 +72,15 @@ public class AccordionGroup extends DivWidget implements HasIcon,HasVisibility, 
      */
     @Override
     public void setIcon(IconType type) {
-        setIcon((BaseIconType) type);
+        setBaseIcon(type);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setIcon(BaseIconType type) {
-        trigger.setIcon(type);
+    public void setBaseIcon(BaseIconType type) {
+        trigger.setBaseIcon(type);
     }
 
     /**

@@ -79,15 +79,15 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
      */
     @Override
     public void setIcon(IconType type) {
-        setIcon((BaseIconType) type);
+        setBaseIcon(type);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setIcon(BaseIconType type) {
-        anchor.setIcon(type);
+    public void setBaseIcon(BaseIconType type) {
+        anchor.setBaseIcon(type);
     }
 
     @Override
