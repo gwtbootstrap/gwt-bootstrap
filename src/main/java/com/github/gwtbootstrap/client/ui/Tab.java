@@ -21,10 +21,7 @@ import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.Style;
-import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.github.gwtbootstrap.client.ui.constants.IconPosition;
-import com.github.gwtbootstrap.client.ui.constants.IconSize;
-import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.constants.*;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.GwtEvent;
@@ -187,7 +184,15 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, Is
      */
     @Override
     public void setIcon(IconType type) {
-        link.setIcon(type);
+        setBaseIcon(type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setBaseIcon(BaseIconType type) {
+        this.link.setBaseIcon(type);
     }
 
     /**

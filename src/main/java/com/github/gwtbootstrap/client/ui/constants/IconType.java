@@ -15,8 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.base.Style;
-
 //@formatter:off
 
 /**
@@ -30,7 +28,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  * @since 2.0.4.0
  */
 //@formatter:on
-public enum IconType implements Style {
+public enum IconType implements BaseIconType {
 
     // font awesome icons
     ADJUST("adjust"),

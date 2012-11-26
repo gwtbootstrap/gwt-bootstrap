@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.uibinder.client.UiConstructor;
@@ -50,7 +51,7 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class Icon extends Widget {
 
-    private IconType type;
+    private BaseIconType type;
 
     /**
      * Creates a widget but doesn't set an icon yet.
@@ -69,7 +70,7 @@ public class Icon extends Widget {
     @UiConstructor
     public Icon(IconType type) {
         this();
-        setType(type);
+        setBaseType(type);
     }
 
     /**
@@ -78,8 +79,20 @@ public class Icon extends Widget {
      * @param type the icon type
      */
     public void setType(IconType type) {
+        setBaseType(type);
+    }
+
+    /**
+     * Sets the base icon type.
+     *
+     * @param type the icon type
+     */
+    public void setBaseType(BaseIconType type) {
+        if(this.type != null) {
+            StyleHelper.removeStyle(this, this.type);
+        }
         this.type = type;
-        StyleHelper.changeStyle(this, type, IconType.class);
+        StyleHelper.addStyle(this, type);
     }
 
     /**
@@ -94,10 +107,30 @@ public class Icon extends Widget {
     /**
      * Get the icon type
      * 
-     * @return icon type.
+     * @return icon type, or null, if the Icon is no instance of {@link IconType}
      */
     public IconType getIconType() {
-    	return type;
+        if(type instanceof IconType) {
+            return (IconType) type;
+        }
+        return null;
     }
 
+    /**
+     * Get the base icon type
+     *
+     * @return base icon type
+     */
+    public BaseIconType getBaseIconType() {
+        return type;
+    }
+
+    /**
+     * Sets the base icon type.
+     *
+     * @param type the base icon type
+     */
+    public void setIcon(IconType type) {
+        setBaseType(type);
+    }
 }

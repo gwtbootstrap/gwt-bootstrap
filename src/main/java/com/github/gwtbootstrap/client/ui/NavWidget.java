@@ -18,10 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.base.ListItem;
-import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.constants.IconPosition;
-import com.github.gwtbootstrap.client.ui.constants.IconSize;
-import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.constants.*;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -77,9 +74,21 @@ public class NavWidget extends ListItem implements HasClickHandlers, HasIcon {
 		return anchor.getText();
 	}
 
-	public void setIcon(IconType type) {
-		anchor.setIcon(type);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIcon(IconType type) {
+        setBaseIcon(type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setBaseIcon(BaseIconType type) {
+        anchor.setBaseIcon(type);
+    }
 
     @Override
     public void setIconSize(IconSize size) {
