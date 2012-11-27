@@ -16,10 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
-import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.github.gwtbootstrap.client.ui.constants.IconPosition;
-import com.github.gwtbootstrap.client.ui.constants.IconSize;
-import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.constants.*;
 import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -108,12 +105,21 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	    
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setIcon(IconType type) {
-	    this.icon.setType(type);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setIcon(IconType type) {
+        setBaseIcon(type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setBaseIcon(BaseIconType type) {
+        this.icon.setBaseType(type);
+    }
 
 	/**
 	 * {@inheritDoc}
