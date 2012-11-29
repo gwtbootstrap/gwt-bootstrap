@@ -22,21 +22,24 @@ import com.google.gwt.dom.client.Element;
 
 //@formatter:off
 /**
- * Popover that 
+ * Popover that
  * 
  * @since 2.0.4.0
  * 
  * @author Dominik Mayer
  * @author ohashi keisuke
  * 
- * @see <a href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap documentation</a>
+ * @see <a
+ *      href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap
+ *      documentation</a>
  * @see Tooltip
  */
-//@formatter:on
+// @formatter:on
 public class Popover extends HoverBase {
 
 	private String content;
 	private String heading;
+	private boolean html = false;
 
 	/**
 	 * Creates an empty Popover.
@@ -63,7 +66,7 @@ public class Popover extends HoverBase {
 	public void setHeading(String heading) {
 		this.heading = heading;
 	}
-	
+
 	public String getHeading() {
 		return this.heading;
 	}
@@ -73,15 +76,15 @@ public class Popover extends HoverBase {
 	 */
 	@Override
 	public void reconfigure() {
-		
+
 		removeDataIfExists();
-		
+
 		setDataAttribute(getWidget().getElement(), "original-title", heading);
-		
+
 		setDataAttribute(getWidget().getElement(), "content", content);
-		
-		configure(getWidget().getElement(), getAnimation(), getPlacement().get(),
-				getTrigger().get(), getShowDelay(), getHideDelay());
+
+		configure(getWidget().getElement(), getAnimation(), getPlacement().get(), getTrigger().get(), getShowDelay(),
+				getHideDelay(), isHtml());
 	}
 
 	/**
@@ -92,11 +95,12 @@ public class Popover extends HoverBase {
 		changeVisibility(getWidget().getElement(), visibilityChange.get());
 	}
 
-	private native void configure(Element element, boolean animated,
-			String placement, String trigger, int showDelay, int hideDelay) /*-{
+	private native void configure(Element element, boolean animated, String placement, String trigger, int showDelay,
+			int hideDelay, boolean html) /*-{
 		$wnd.jQuery(element).popover({
 			animation : animated,
 			placement : placement,
+			html : html,
 			trigger : trigger,
 			delay : {
 				show : showDelay,
@@ -107,8 +111,11 @@ public class Popover extends HoverBase {
 
 	/**
 	 * Change Visibility
-	 * @param e target
-	 * @param visibility please use VisibilityChange enum.
+	 * 
+	 * @param e
+	 *            target
+	 * @param visibility
+	 *            please use VisibilityChange enum.
 	 */
 	public static native void changeVisibility(Element e, String visibility) /*-{
 		$wnd.jQuery(e).popover(visibility);
@@ -117,5 +124,13 @@ public class Popover extends HoverBase {
 	@Override
 	protected String getDataName() {
 		return "popover";
+	}
+
+	public boolean isHtml() {
+		return html;
+	}
+
+	public void setHtml(boolean html) {
+		this.html = html;
 	}
 }
