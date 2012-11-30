@@ -45,6 +45,12 @@ public interface CustomResources extends Resources {
 	@Source("inlineFormCode.txt")
 	TextResource inlineFormCode();
 
+    @Source("baseIconCode.txt")
+    TextResource baseIconCode();
+
+    @Source("css/baseIcons.css")
+    TextResource baseIconCss();
+
 	TextResource horizontalFormCode();
 
     ImageResource logo();

@@ -1,0 +1,13 @@
+/* Prevent our icons from css obfuscation */
+@external .myBaseIcon_*;
+
+/* Our sample icon */
+@sprite .myBaseIcon_logo {
+    gwt-image: "logo";
+    display: inline-block;
+}
+
+/* Do some css stuff */
+.myBaseIcon_logo:hover {
+    opacity: 0.5;
+}
