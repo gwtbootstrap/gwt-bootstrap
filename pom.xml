@@ -136,6 +136,14 @@
                 <role>developer</role>
             </roles>
         </contributor>
+        <contributor>
+            <name>schollD</name>
+            <url>https://github.com/schollD</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </contributor>
     </contributors>
     <ciManagement>
         <system>CloudBees Jenkins</system>
