@@ -8,7 +8,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  *
  * @see IconType
  *
- * @author Dominik Scholl (y9676)
+ * @author Dominik Scholl
  *         Date: 23.11.12
  *         Time: 16:38
  */

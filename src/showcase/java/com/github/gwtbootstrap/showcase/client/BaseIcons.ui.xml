@@ -1,0 +1,35 @@
+<!-- Copyright 2012 GWT-Bootstrap Licensed under the Apache License, Version 
+    2.0 (the "License"); you may not use this file except in compliance with 
+    the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+    Unless required by applicable law or agreed to in writing, software distributed 
+    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+    OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+    the specific language governing permissions and limitations under the License. -->
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+    xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b='urn:import:com.github.gwtbootstrap.client.ui'>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="Image Icons as background images using css generation">Base Icons</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="4">
+                <b:Heading size="3">Description</b:Heading>
+                <g:HTMLPanel>
+                    In GWT, we can bind images as <i>ImageResources</i>. They will be converted as BASE-64 string, which
+                    can be added as source in an image-element. With <i>CSS-sprites</i>, they an be used as background-images
+                    in css-files. As you can see in the example code, those css-images can be handled easily using the
+                    bootstrap IconType-Framework.
+                </g:HTMLPanel>
+                <g:HTML><p /></g:HTML>
+                <b:Heading size="3">Our example icons</b:Heading>
+                <g:HTMLPanel ui:field="panel" />
+            </b:Column>
+            <b:Column size="4">
+                <b:Heading size="3">Java Code</b:Heading>
+                <b:CodeBlock ui:field="javacode" />
+            </b:Column>
+            <b:Column size="4">
+                <b:Heading size="3">Css Code</b:Heading>
+                <b:CodeBlock ui:field="csscode" />
+            </b:Column>
+        </b:FluidRow>
+    </g:HTMLPanel>
+</ui:UiBinder>

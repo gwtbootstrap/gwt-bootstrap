@@ -1,0 +1,34 @@
+/** The resources we use */
+public interface IconResources extends ClientBundle {
+
+    /** Get access to the css resource during gwt compilation */
+    @CssResource.NotStrict
+    @Source("resources/css/baseIcons.css")
+    CssResource css();
+
+    /** Our sample image icon. Makes the image resource for the gwt-compiler's css composer accessible */
+    @Source("resources/logo.jpg")
+    ImageResource logo();
+}
+
+/** My custom base icon collection */
+private enum MyCustomIconType implements BaseIconType {
+
+    logo; // Our runtime access
+
+    /** Inject the icon's css once at first usage */
+    static {
+        IconResources icons = GWT.create(IconResources.class);
+        icons.css().ensureInjected();
+    }
+
+    private static final String PREFIX = "myBaseIcon_";
+    private String className;
+
+    private MyCustomIconType() {
+        this.className = this.name().toLowerCase();
+    }
+    @Override public String get() {
+        return PREFIX + className;
+    }
+}
