@@ -15,8 +15,13 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import static com.google.gwt.query.client.GQuery.*;
+import static com.github.gwtbootstrap.client.ui.plugin.Scrollspy.Scrollspy;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
+import com.github.gwtbootstrap.client.ui.plugin.Scrollspy.Option;
 
 //@formatter:off
 /**
@@ -41,6 +46,8 @@ public class Scrollspy {
 	private Integer offset;
 	
 	private boolean configured;
+	
+	private EventBus eventBus;
 
 	/**
 	 * 
@@ -50,7 +57,7 @@ public class Scrollspy {
 	public Scrollspy(Navbar navbar) {
 		super();
 		this.navbar = navbar;
-		
+		this.eventBus = new SimpleEventBus();
 		if(navbar.getId() != null && navbar.getId().length() > 0) {
 			setTarget("#" + navbar.getId());
 		}
@@ -133,7 +140,9 @@ public class Scrollspy {
 		
 		assert spyTargetElement != null : "houston, we need a spy element here!";
 		
-		jsConfigure(spyTargetElement , target, offset == null ? -1 : offset );
+		$(spyTargetElement).as(Scrollspy).scrollspy(new Option(target , offset == null ? 0 : offset), eventBus);
+		
+//		jsConfigure(spyTargetElement , target, offset == null ? -1 : offset );
 		
 		configured = true;
 	}
@@ -147,7 +156,8 @@ public class Scrollspy {
 	}
 	
 	public void refresh() {
-	    refresh(getSpyElement());
+	    $(getSpyElement()).as(Scrollspy).refresh();
+//	    refresh(getSpyElement());
 	}
 	
 	private native void refresh(Element e) /*-{
