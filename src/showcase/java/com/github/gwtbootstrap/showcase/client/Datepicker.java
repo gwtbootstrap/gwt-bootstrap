@@ -62,6 +62,7 @@ public class Datepicker extends Composite {
     @UiField
     DateBox valueDate;
     
+    
     @UiField(provided=true)
     ValueListBox<ViewMode> viewMode = new ValueListBox<HasStartView.ViewMode>(new EnumRenderer<ViewMode>("Choose it")); 
     
@@ -90,6 +91,11 @@ public class Datepicker extends Composite {
     public void onClickAutoClose(ValueChangeEvent<Boolean> e) {
         datePicker.setAutoClose(e.getValue());
         datePicker.reconfigure();
+    }
+    
+    @UiHandler("enabled")
+    public void onClickEnabed(ValueChangeEvent<Boolean> e) {
+        datePicker.setEnabled(e.getValue());
     }
     
     @UiHandler("format")

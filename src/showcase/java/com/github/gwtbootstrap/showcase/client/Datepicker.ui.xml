@@ -152,6 +152,12 @@ xmlns:b2="urn:import:com.github.gwtbootstrap.datepicker.client.ui"
                             </b:Controls>
                         </b:ControlGroup>
                         <b:ControlGroup>
+                            <b:ControlLabel>Enabled</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox checked="true" ui:field="enabled">Enabled</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
                             <b:ControlLabel>Value</b:ControlLabel>
                             <b:Controls>
                                 <b2:DateBox format="dd/mm/yyyy" ui:field="valueDate" startView="YEAR"/>

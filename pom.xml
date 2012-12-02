@@ -137,6 +137,14 @@
                 <role>developer</role>
             </roles>
         </contributor>
+        <contributor>
+            <name>schollD</name>
+            <url>https://github.com/schollD</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </contributor>
     </contributors>
     <ciManagement>
         <system>CloudBees Jenkins</system>
@@ -145,7 +153,7 @@
     <!-- project settings -->
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.4.0</gwtVersion>
+        <gwtVersion>2.5.0</gwtVersion>
         <gqeuryVersion>1.2.0</gqeuryVersion>
         <webappDirectory>src/main/webapp</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -286,7 +294,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>gwt-maven-plugin</artifactId>
-                        <version>2.4.0</version>
+                        <version>${gwtVersion}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -341,7 +349,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>gwt-maven-plugin</artifactId>
-                        <version>2.4.0</version>
+                        <version>${gwtVersion}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -452,7 +460,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.4.0</version>
+                <version>${gwtVersion}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -682,7 +690,7 @@ warSrcDirIsOutput=false
                                             gwt-maven-plugin
                                         </artifactId>
                                         <versionRange>
-                                            [2.4.0,)
+                                            [${gwtVersion},)
                                         </versionRange>
                                         <goals>
                                             <goal>resources</goal>
