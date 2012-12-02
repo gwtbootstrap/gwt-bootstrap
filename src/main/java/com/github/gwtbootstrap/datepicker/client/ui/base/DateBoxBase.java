@@ -56,6 +56,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -66,7 +67,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author ohashi keisuke
  * @since 2.0.4.0
  */
-public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChangeHandlers<Date>, HasVisibility,
+public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, HasValueChangeHandlers<Date>, HasVisibility,
         HasChangeHandlers, HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>>, HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle {
 
     private final TextBox box;
@@ -506,5 +507,21 @@ public class DateBoxBase extends Widget implements HasValue<Date>, HasValueChang
     public void removeStyle(Style style) {
         StyleHelper.removeStyle(this, style);
         
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        box.setEnabled(enabled);
     }
 }
