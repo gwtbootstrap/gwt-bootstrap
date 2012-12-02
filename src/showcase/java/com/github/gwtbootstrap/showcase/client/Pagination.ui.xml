@@ -23,6 +23,7 @@
     </ui:style>
     <g:HTMLPanel>
         <b:PageHeader subtext="Styles for Pagination">Pagination</b:PageHeader>
+        <h2>The Pager</h2>
         <b:FluidRow>
             <b:Column size="6">
                 <g:HTMLPanel>
@@ -39,8 +40,9 @@
             </b:Column>
         </b:FluidRow>
         
+        <h2>The Pagination</h2>
         <b:FluidRow>
-            <b:Column size="8">
+            <b:Column size="12">
                 <g:HTMLPanel>
                     <b:Pagination>
                         <b:NavLink href="http://www.google.com">1</b:NavLink>
@@ -58,6 +60,127 @@
     &lt;b:NavLink&gt;4&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;5&lt;/b:NavLink&gt;
     &lt;b:NavLink&gt;6&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+        <h3>Pagination settings</h3>
+        <p>Pagination has <code>alignment</code> and <code>size</code> attributes.</p>
+        <h4>Alignment</h4>
+        <b:FluidRow>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:Well>
+                        <b:Heading size="5">Left</b:Heading>
+                        <b:Pagination alignment="left">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                        <b:Heading size="5">Centered</b:Heading>
+                        <b:Pagination alignment="centered">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                        <b:Heading size="5">Right</b:Heading>
+                        <b:Pagination alignment="right">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                    </b:Well>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                        <pre class="prettyprint linenums">
+&lt;b:Pagination alignment="left"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;
+&lt;b:Pagination alignment="centered"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;
+&lt;b:Pagination alignment="right"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+        <h4>Size</h4>
+        <b:FluidRow>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                    <b:Well>
+                        <b:Heading size="5">Mini</b:Heading>
+                        <b:Pagination size="MINI">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                        <b:Heading size="5">SMALL</b:Heading>
+                        <b:Pagination size="SMALL">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                        <b:Heading size="5">NORMAL</b:Heading>
+                        <b:Pagination size="NORMAL">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                        <b:Heading size="5">LARGE</b:Heading>
+                        <b:Pagination size="LARGE">
+                            <b:NavLink href="http://www.google.com">1</b:NavLink>
+                            <b:NavLink active="true">2</b:NavLink>
+                            <b:NavLink>3</b:NavLink>
+                            <b:NavLink>4</b:NavLink>
+                            <b:NavLink>5</b:NavLink>
+                            <b:NavLink>6</b:NavLink>
+                        </b:Pagination>
+                    </b:Well>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <g:HTMLPanel>
+                        <pre class="prettyprint linenums">
+&lt;b:Pagination size="MINI"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;
+&lt;b:Pagination size="SMALL"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;
+&lt;b:Pagination size="NORMAL"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
+&lt;/b:Pagination&gt;
+&lt;b:Pagination size="LARGE"&gt;
+    &lt;b:NavLink href="http://www.google.com"&gt;1&lt;/b:NavLink&gt;
+    &lt;b:NavLink active="true"&gt;2&lt;/b:NavLink&gt;
 &lt;/b:Pagination&gt;</pre>
                 </g:HTMLPanel>
             </b:Column>

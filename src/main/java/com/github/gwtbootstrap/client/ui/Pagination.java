@@ -16,6 +16,8 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.base.UnorderedList;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
@@ -35,6 +37,22 @@ public class Pagination extends DivWidget {
 	public Pagination() {
 		setStyle(Bootstrap.Pagination.LEFT);
 		super.add(list);
+		setSize(PaginationSize.NORMAL);
+	}
+	
+	public static enum PaginationSize implements Style {
+	    MINI,
+	    SMALL,
+	    NORMAL,
+	    LARGE;
+
+        @Override
+        public String get() {
+            if(this != NORMAL) {
+                return "pagination-" + this.name().toLowerCase();
+            }
+            return "";
+        }
 	}
 
 	public void setAlignment(String alignment) {
@@ -44,6 +62,10 @@ public class Pagination extends DivWidget {
 			setStyle(Bootstrap.Pagination.CENTERED);
 		else
 			setStyle(Bootstrap.Pagination.LEFT);
+	}
+	
+	public void setSize(PaginationSize size) {
+	    StyleHelper.changeStyle(this, size, PaginationSize.class);
 	}
 
 	@Override
