@@ -70,6 +70,14 @@ public class SplitDropdownButton extends DropdownBase implements
 		button.setText(text);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getText() {
+		return button.getText();
+	}
+
 	@Override
 	protected IconAnchor createTrigger() {
 		button = new Button();
