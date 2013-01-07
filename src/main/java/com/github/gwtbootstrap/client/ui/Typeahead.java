@@ -18,28 +18,44 @@ import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Typeahead extends MarkupWidget {
+
+    public interface UpdaterCallback {
+        String onSelection(Suggestion selectedSuggestion);
+    }
     
     private int displayItems = 8;
-    
+
     private int minLength = 1;
 
     private final SuggestOracle oracle;
-    
+    private Collection<? extends Suggestion> suggestions;
+
+    private UpdaterCallback updaterCallback;
+
     /**
-     * Constructor for {@link Typeahead}. Creates a
-     * {@link MultiWordSuggestOracle} to use with this
+     * Constructor for {@link Typeahead}. Creates a {@link MultiWordSuggestOracle} to use with this
      */
     public Typeahead() {
         this(new MultiWordSuggestOracle());
     }
-    
+
     /**
      * Constructor for {@link Typeahead}.
-     * 
+     *
      * @param oracle the oracle for this <code>Typeahead</code>
      */
     public Typeahead(SuggestOracle oracle) {
         this.oracle = oracle;
+        this.updaterCallback = createDefaultUpdaterCallback();
+    }
+
+    private UpdaterCallback createDefaultUpdaterCallback() {
+        return new UpdaterCallback() {
+            @Override
+            public String onSelection(Suggestion selectedSuggestion) {
+                return selectedSuggestion.getReplacementString();
+            }
+        };
     }
 
     /**
@@ -47,46 +63,48 @@ public class Typeahead extends MarkupWidget {
      */
     @Override
     public void setWidget(Widget w) {
-        
-        if(!(w instanceof TextBoxBase || w instanceof com.google.gwt.user.client.ui.TextBoxBase)) {
+
+        if (!(w instanceof TextBoxBase || w instanceof com.google.gwt.user.client.ui.TextBoxBase)) {
             throw new IllegalArgumentException("Typeahead should be set TextBoxBase childs");
         }
-        
+
         super.setWidget(w);
     }
-    
+
     @Override
     public Widget asWidget() {
-        
-        if(widget != null) {
+
+        if (widget != null) {
             Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-                
                 @Override
                 public void execute() {
                     reconfigure();
                 }
             });
-            
+
         }
-        
+
         return super.asWidget();
     }
-    
+
     /**
      * reconfigure setting.
      */
     public void reconfigure() {
-        
-        if(widget == null) return;
-        
+
+        if (widget == null) {
+            return;
+        }
+
         removeDataIfExists(widget.getElement());
-        
-        configure(widget.getElement(), displayItems , minLength);
+
+        configure(widget.getElement(), displayItems, minLength);
     }
-    
+
     /**
      * Get the max number of items to display in the dropdown.
-     * @return  the max number of items to display in the dropdown
+     *
+     * @return the max number of items to display in the dropdown
      */
     public int getDisplayItemCount() {
         return displayItems;
@@ -94,6 +112,7 @@ public class Typeahead extends MarkupWidget {
 
     /**
      * Set max number of items to display in the dropdown.
+     *
      * @param displayItems the max number of items to display in the dropdown
      */
     public void setDisplayItemCount(int displayItems) {
@@ -102,6 +121,7 @@ public class Typeahead extends MarkupWidget {
 
     /**
      * Get the minimum character length needed before triggering autocomplete suggestions.
+     *
      * @return the minimum character length needed before triggering autocomplete suggestions
      */
     public int getMinLength() {
@@ -110,45 +130,60 @@ public class Typeahead extends MarkupWidget {
 
     /**
      * Set the minimum character length needed before triggering autocomplete suggestions.
+     *
      * @param minLength The minimum character length needed before triggering autocomplete suggestions.
      */
     public void setMinLength(int minLength) {
         this.minLength = minLength;
     }
 
+    public void setUpdaterCallback(UpdaterCallback updaterCallback) {
+        this.updaterCallback = updaterCallback;
+    }
+
     /**
      * Get suggest oracle
+     *
      * @return oracle
      */
     public SuggestOracle getSuggestOracle() {
         return oracle;
     }
 
-    private void query(String query ,final JavaScriptObject process) {
+    private void query(String query, final JavaScriptObject process) {
         Callback callback = new Callback() {
-            
             @Override
             public void onSuggestionsReady(Request request, Response response) {
                 callback(process, response);
             }
         };
-        
-        if(query != null && !query.isEmpty()) {
+
+        if (query != null && !query.isEmpty()) {
             oracle.requestSuggestions(new Request(query, displayItems), callback);
         } else {
             oracle.requestDefaultSuggestions(new Request(), callback);
         }
     }
-    
+
     private void callback(final JavaScriptObject process, Response response) {
-        Collection<? extends Suggestion> suggestions = response.getSuggestions();
-        
+        suggestions = response.getSuggestions();
+
         JsArrayString jsArrayString = JavaScriptObject.createArray().cast();
-        
+
         for (Suggestion suggestion : suggestions) {
-            jsArrayString.push(suggestion.getReplacementString());
+            jsArrayString.push(suggestion.getDisplayString());
         }
         callProcess(jsArrayString, process);
+    }
+
+    private String updater(String item) {
+        for (Suggestion suggestion : suggestions) {
+            if (suggestion.getDisplayString().equals(item)) {
+                return this.updaterCallback.onSelection(suggestion);
+            }
+        }
+
+        return item;
     }
     
     //@formatter:off
@@ -168,7 +203,13 @@ public class Typeahead extends MarkupWidget {
                 that.@com.github.gwtbootstrap.client.ui.Typeahead::query(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(query , process);
             },
             "items" : items,
-            "minLength" : minLength
+            "minLength" : minLength,
+            "updater" : function(item) {
+                return that.@com.github.gwtbootstrap.client.ui.Typeahead::updater(Ljava/lang/String;)(item);
+            },
+            "highlighter" : function(item) {
+                return item;
+            }
         });
     }-*/;
     //@formatter:on
