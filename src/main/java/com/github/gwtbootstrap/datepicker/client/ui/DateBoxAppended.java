@@ -47,7 +47,7 @@ import java.util.Date;
 
 /**
  * DateBoxAppended component.
- * 
+ *
  * @since 2.0.4.0
  * @author Carlos Alexandro Becker
  */
@@ -65,7 +65,6 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
             DateBoxAppended that = DateBoxAppended.this;
             that.addStyleName("date");
             super.configure(that);
-            getBox().getElement().setAttribute("readonly", null);
         }
     }
 
@@ -79,7 +78,7 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
         add(icon);
     }
 
-    
+
     /**
      * {@inheritDoc}
      */
@@ -167,7 +166,7 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @deprecated
      */
     @Override
