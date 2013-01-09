@@ -58,6 +58,7 @@ import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -87,6 +88,10 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
         setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_SHORT).getPattern().toLowerCase());
         setWeekStart(LocaleInfo.getCurrentLocale().getDateTimeFormatInfo().firstDayOfTheWeek());
         setValue(new Date());
+    }
+
+    public void setAlignment(TextAlignment align) {
+        box.setAlignment(align);
     }
 
     /**
