@@ -17,9 +17,11 @@ package com.github.gwtbootstrap.datepicker.client.ui;
 
 import com.github.gwtbootstrap.client.ui.AppendButton;
 import com.github.gwtbootstrap.client.ui.base.AddOn;
+import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
@@ -39,6 +41,7 @@ import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 
 import java.util.Date;
 
@@ -51,7 +54,8 @@ import java.util.Date;
 public class DateBoxAppended extends AppendButton implements HasValue<Date>,
         HasDateFormat, HasIcon, HasValueChangeHandlers<Date>, HasVisibility,
         HasChangeHandlers, HasVisibleHandlers, HasAllDatePickerHandlers,
-        IsEditor<TakesValueEditor<Date>> {
+        HasAlternateSize, IsEditor<TakesValueEditor<Date>> {
+
     /**
      * An 'adapter' to change some aspects of the behavior of datepickerbase.
      */
@@ -98,6 +102,18 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
     @Override
     public void setValue(Date value, boolean fireEvents) {
         box.setValue(value, fireEvents);
+    }
+
+     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setAlternateSize(AlternateSize size) {
+        box.setAlternateSize(size);
+    }
+
+    public void setAlignment(TextAlignment align) {
+        box.setAlignment(align);
     }
 
     /**
