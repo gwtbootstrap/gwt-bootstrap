@@ -95,6 +95,20 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     }
 
     /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#isReadOnly() 
+     */
+    public boolean isReadOnly() {
+        return box.isReadOnly();
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#setReadOnly(boolean)
+     */
+    public void setReadOnly(boolean readonly) {
+        box.setReadOnly(readonly);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
