@@ -82,4 +82,21 @@ public class NavLink extends NavWidget implements HasText {
 		setText(text);
 		setHref(href);
 	}
+	
+	/**
+	 * Creates an empty widget of given text and href.
+	 * 
+	 * @param text
+	 *            text of the widget
+	 * @param href
+	 *            URL the link should point to
+	 * @param
+	 *            target the target attribute
+	 */
+	public NavLink(String text, String href, String target) {
+		super();
+		setText(text);
+		setHref(href);
+		setTarget(target);
+	}
 }
