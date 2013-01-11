@@ -65,7 +65,6 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
             DateBoxAppended that = DateBoxAppended.this;
             that.addStyleName("date");
             super.configure(that);
-            getBox().getElement().setAttribute("readonly", null);
         }
     }
 
@@ -317,5 +316,19 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
     @Override
     public void toggle() {
         box.toggle();
+    }
+
+    /**
+    * @see com.google.gwt.user.client.ui.ValueBoxBase#isReadOnly()
+    */
+    public boolean isReadOnly() {
+        return box.isReadOnly();
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#setReadOnly(boolean) 
+     */
+    public void setReadOnly(boolean readonly) {
+        box.setReadOnly(readonly);
     }
 }
