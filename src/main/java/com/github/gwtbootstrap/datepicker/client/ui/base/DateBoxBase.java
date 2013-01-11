@@ -95,6 +95,20 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     }
 
     /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#isReadOnly()
+     */
+    public boolean isReadOnly() {
+        return box.isReadOnly();
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#setReadOnly(boolean)
+     */
+    public void setReadOnly(boolean readonly) {
+        box.setReadOnly(readonly);
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -132,7 +146,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
             return null;
         }
     }
-    
+
     /**
      * Get un-tranceform text
      * @return text box value
@@ -155,14 +169,14 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     @Override
     public void setValue(Date value, boolean fireEvents) {
         box.setValue(value != null ? dtf.format(value) : null);
-        
+
         updateValue(box.getElement());
-        
+
         if (fireEvents) {
             ValueChangeEvent.fire(this, value);
         }
     }
-    
+
     protected native void updateValue(Element e)/*-{
         if($wnd.jQuery(e).data('datepicker')) {
             $wnd.jQuery(e).data('datepicker').update();
@@ -204,11 +218,11 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     public void onChange() {
         ValueChangeEvent.fire(this, getValue());
     }
-    
+
     public void onShow(Event e) {
         fireEvent(new ShowEvent(e));
     }
-    
+
     public void onHide(Event e) {
         fireEvent(new HideEvent(e));
     }
@@ -223,7 +237,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     protected void configure() {
         configure(this);
     }
-    
+
     protected native void removeDataIfExists(Element e) /*-{
         var $that = $wnd.jQuery(e);
         if($that.data('datepicker')) {
@@ -486,7 +500,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     @Override
     public void setHideOn(Device device) {
         ResponsiveHelper.setHideOn(this, device);
-        
+
     }
 
     /**
@@ -511,7 +525,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     @Override
     public void removeStyle(Style style) {
         StyleHelper.removeStyle(this, style);
-        
+
     }
 
     /**
