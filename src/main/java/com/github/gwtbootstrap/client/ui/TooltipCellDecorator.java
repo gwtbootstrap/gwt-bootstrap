@@ -57,7 +57,7 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
 
     
     interface Template extends SafeHtmlTemplates {
-        @Template("<span clss='gb-tooltip-cell' id='{0}'>{1}</span>")
+        @Template("<span class='gb-tooltip-cell' id='{0}'>{1}</span>")
         SafeHtml span(String id , SafeHtml content);
         
     }
