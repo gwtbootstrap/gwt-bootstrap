@@ -75,8 +75,16 @@
                             icon-beaker
                         </li>
                         <li>
+                            <i class="icon-beer"></i>
+                            icon-beer
+                        </li>
+                        <li>
                             <i class="icon-bell"></i>
                             icon-bell
+                        </li>
+                        <li>
+                            <i class="icon-bell-alt"></i>
+                            icon-bell-alt
                         </li>
                         <li>
                             <i class="icon-bolt"></i>
@@ -97,6 +105,10 @@
                         <li>
                             <i class="icon-briefcase"></i>
                             icon-briefcase
+                        </li>
+                        <li>
+                            <i class="icon-building"></i>
+                            icon-building
                         </li>
                         <li>
                             <i class="icon-bullhorn"></i>
@@ -127,8 +139,28 @@
                             icon-check-empty
                         </li>
                         <li>
+                            <i class="icon-circle"></i>
+                            icon-circle
+                        </li>
+                        <li>
+                            <i class="icon-circle-blank"></i>
+                            icon-circle-blank
+                        </li>
+                        <li>
                             <i class="icon-cloud"></i>
                             icon-cloud
+                        </li>
+                        <li>
+                            <i class="icon-cloud-download"></i>
+                            icon-cloud-download
+                        </li>
+                        <li>
+                            <i class="icon-cloud-upload"></i>
+                            icon-cloud-upload
+                        </li>
+                        <li>
+                            <i class="icon-coffee"></i>
+                            icon-coffee
                         </li>
                         <li>
                             <i class="icon-cog"></i>
@@ -163,6 +195,10 @@
                             icon-dashboard
                         </li>
                         <li>
+                            <i class="icon-desktop"></i>
+                            icon-desktop
+                        </li>
+                        <li>
                             <i class="icon-download"></i>
                             icon-download
                         </li>
@@ -170,6 +206,12 @@
                             <i class="icon-download-alt"></i>
                             icon-download-alt
                         </li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="3">
+                <g:HTMLPanel>
+                    <ul class="the-icons">
                         <li>
                             <i class="icon-edit"></i>
                             icon-edit
@@ -182,12 +224,10 @@
                             <i class="icon-envelope-alt"></i>
                             icon-envelope-alt
                         </li>
-                    </ul>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="3">
-                <g:HTMLPanel>
-                    <ul class="the-icons">
+                        <li>
+                            <i class="icon-exchange"></i>
+                            icon-exchange
+                        </li>
                         <li>
                             <i class="icon-exclamation-sign"></i>
                             icon-exclamation-sign
@@ -207,6 +247,10 @@
                         <li>
                             <i class="icon-facetime-video"></i>
                             icon-facetime-video
+                        </li>
+                        <li>
+                            <i class="icon-fighter-jet"></i>
+                            icon-fighter-jet
                         </li>
                         <li>
                             <i class="icon-film"></i>
@@ -231,6 +275,18 @@
                         <li>
                             <i class="icon-folder-open"></i>
                             icon-folder-open
+                        </li>
+                        <li>
+                            <i class="icon-folder-close-alt"></i>
+                            icon-folder-close-alt
+                        </li>
+                        <li>
+                            <i class="icon-folder-open-alt"></i>
+                            icon-folder-open-alt
+                        </li>
+                        <li>
+                            <i class="icon-food"></i>
+                            icon-food
                         </li>
                         <li>
                             <i class="icon-gift"></i>
@@ -281,6 +337,10 @@
                             icon-key
                         </li>
                         <li>
+                            <i class="icon-laptop"></i>
+                            icon-laptop
+                        </li>
+                        <li>
                             <i class="icon-leaf"></i>
                             icon-leaf
                         </li>
@@ -293,6 +353,10 @@
                             icon-lemon
                         </li>
                         <li>
+                            <i class="icon-lightbulb"></i>
+                            icon-lightbulb
+                        </li>
+                        <li>
                             <i class="icon-lock"></i>
                             icon-lock
                         </li>
@@ -300,7 +364,13 @@
                             <i class="icon-unlock"></i>
                             icon-unlock
                         </li>
-                        <li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="3">
+                <g:HTMLPanel>
+                    <ul class="the-icons">
+                    	<li>
                             <i class="icon-magic"></i>
                             icon-magic
                         </li>
@@ -320,12 +390,10 @@
                             <i class="icon-minus-sign"></i>
                             icon-minus-sign
                         </li>
-                    </ul>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="3">
-                <g:HTMLPanel>
-                    <ul class="the-icons">
+                        <li>
+                            <i class="icon-mobile-phone"></i>
+                            icon-mobile-phone
+                        </li>
                         <li>
                             <i class="icon-money"></i>
                             icon-money
@@ -391,6 +459,14 @@
                             icon-question-sign
                         </li>
                         <li>
+                            <i class="icon-quote-left"></i>
+                            icon-quote-left
+                        </li>
+                        <li>
+                            <i class="icon-quote-right"></i>
+                            icon-quote-right
+                        </li>
+                        <li>
                             <i class="icon-random"></i>
                             icon-random
                         </li>
@@ -413,6 +489,10 @@
                         <li>
                             <i class="icon-reorder"></i>
                             icon-reorder
+                        </li>
+                         <li>
+                            <i class="icon-reply"></i>
+                            icon-reply
                         </li>
                         <li>
                             <i class="icon-resize-horizontal"></i>
@@ -442,7 +522,13 @@
                             <i class="icon-search"></i>
                             icon-search
                         </li>
-                        <li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="3">
+                <g:HTMLPanel>
+                    <ul class="the-icons">
+                    	<li>
                             <i class="icon-share"></i>
                             icon-share
                         </li>
@@ -454,12 +540,6 @@
                             <i class="icon-shopping-cart"></i>
                             icon-shopping-cart
                         </li>
-                    </ul>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="3">
-                <g:HTMLPanel>
-                    <ul class="the-icons">
                         <li>
                             <i class="icon-signal"></i>
                             icon-signal
@@ -489,6 +569,10 @@
                             icon-sort-up
                         </li>
                         <li>
+                            <i class="icon-spinner"></i>
+                            icon-spinner
+                        </li>
+                        <li>
                             <i class="icon-star"></i>
                             icon-star
                         </li>
@@ -499,6 +583,14 @@
                         <li>
                             <i class="icon-star-half"></i>
                             icon-star-half
+                        </li>
+                        <li>
+                            <i class="icon-suitcase"></i>
+                            icon-suitcase
+                        </li>
+                        <li>
+                            <i class="icon-tablet"></i>
+                            icon-tablet
                         </li>
                         <li>
                             <i class="icon-tag"></i>
@@ -606,6 +698,10 @@
                             icon-file
                         </li>
                         <li>
+                            <i class="icon-file-alt"></i>
+                            icon-file-alt
+                        </li>
+                        <li>
                             <i class="icon-cut"></i>
                             icon-cut
                         </li>
@@ -628,10 +724,6 @@
                         <li>
                             <i class="icon-repeat"></i>
                             icon-repeat
-                        </li>
-                        <li>
-                            <i class="icon-paper-clip"></i>
-                            icon-paper-clip
                         </li>
                     </ul>
                 </g:HTMLPanel>
@@ -703,12 +795,12 @@
                             icon-link
                         </li>
                         <li>
-                            <i class="icon-columns"></i>
-                            icon-columns
+                            <i class="icon-paper-clip"></i>
+                            icon-paper-clip
                         </li>
                         <li>
-                            <i class="icon-table"></i>
-                            icon-table
+                            <i class="icon-columns"></i>
+                            icon-columns
                         </li>
                     </ul>
                 </g:HTMLPanel>
@@ -716,6 +808,10 @@
             <b:Column size="3">
                 <g:HTMLPanel>
                     <ul class="the-icons">
+                    	<li>
+                            <i class="icon-table"></i>
+                            icon-table
+                        </li>
                         <li>
                             <i class="icon-th-large"></i>
                             icon-th-large
@@ -757,6 +853,22 @@
             <b:Column size="3">
                 <g:HTMLPanel>
                     <ul class="the-icons">
+                    	<li>
+                            <i class="icon-angle-down"></i>
+                            icon-angle-down
+                        </li>
+                        <li>
+                            <i class="icon-angle-right"></i>
+                            icon-angle-right
+                        </li>
+                        <li>
+                            <i class="icon-angle-up"></i>
+                            icon-angle-up
+                        </li>
+                        <li>
+                            <i class="icon-angle-left"></i>
+                            icon-angle-left
+                        </li>
                         <li>
                             <i class="icon-arrow-down"></i>
                             icon-arrow-down
@@ -773,43 +885,13 @@
                             <i class="icon-arrow-up"></i>
                             icon-arrow-up
                         </li>
-                        <li>
-                            <i class="icon-chevron-down"></i>
-                            icon-chevron-down
-                        </li>
                     </ul>
                 </g:HTMLPanel>
             </b:Column>
             <b:Column size="3">
                 <g:HTMLPanel>
                     <ul class="the-icons">
-                        <li>
-                            <i class="icon-circle-arrow-down"></i>
-                            icon-circle-arrow-down
-                        </li>
-                        <li>
-                            <i class="icon-circle-arrow-left"></i>
-                            icon-circle-arrow-left
-                        </li>
-                        <li>
-                            <i class="icon-circle-arrow-right"></i>
-                            icon-circle-arrow-right
-                        </li>
-                        <li>
-                            <i class="icon-circle-arrow-up"></i>
-                            icon-circle-arrow-up
-                        </li>
-                        <li>
-                            <i class="icon-chevron-left"></i>
-                            icon-chevron-left
-                        </li>
-                    </ul>
-                </g:HTMLPanel>
-            </b:Column>
-            <b:Column size="3">
-                <g:HTMLPanel>
-                    <ul class="the-icons">
-                        <li>
+                    	<li>
                             <i class="icon-caret-down"></i>
                             icon-caret-down
                         </li>
@@ -826,8 +908,58 @@
                             icon-caret-up
                         </li>
                         <li>
+                            <i class="icon-chevron-down"></i>
+                            icon-chevron-down
+                        </li>
+                        <li>
+                            <i class="icon-chevron-left"></i>
+                            icon-chevron-left
+                        </li>
+                        <li>
                             <i class="icon-chevron-right"></i>
                             icon-chevron-right
+                        </li>
+                        <li>
+                            <i class="icon-chevron-up"></i>
+                            icon-chevron-up
+                        </li>
+                    </ul>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="3">
+                <g:HTMLPanel>
+                    <ul class="the-icons">
+                    	<li>
+                            <i class="icon-circle-arrow-down"></i>
+                            icon-circle-arrow-down
+                        </li>
+                        <li>
+                            <i class="icon-circle-arrow-left"></i>
+                            icon-circle-arrow-left
+                        </li>
+                        <li>
+                            <i class="icon-circle-arrow-right"></i>
+                            icon-circle-arrow-right
+                        </li>
+                        <li>
+                            <i class="icon-circle-arrow-up"></i>
+                            icon-circle-arrow-up
+                        </li>
+                        <li>
+                            <i class="icon-double-angle-left"></i>
+                            icon-double-angle-left
+                        </li>
+                        <li>
+                            <i class="icon-double-angle-right"></i>
+                            icon-double-angle-right
+                        </li>
+                        <li>
+                            <i class="icon-double-angle-up"></i>
+                            icon-double-angle-up
+                        </li>
+                        <li>
+                            <i class="icon-double-angle-down"></i>
+                            icon-double-angle-down
                         </li>
                     </ul>
                 </g:HTMLPanel>
@@ -852,8 +984,12 @@
                             icon-hand-up
                         </li>
                         <li>
-                            <i class="icon-chevron-up"></i>
-                            icon-chevron-up
+                            <i class="icon-circle"></i>
+                            icon-circle
+                        </li>
+                        <li>
+                            <i class="icon-circle-blank"></i>
+                            icon-circle-blank
                         </li>
                     </ul>
                 </g:HTMLPanel>
@@ -990,8 +1126,8 @@
                             icon-github
                         </li>
                         <li>
-                            <i class="icon-github-sign"></i>
-                            icon-github-sign
+                            <i class="icon-github-alt"></i>
+                            icon-github-alt
                         </li>
                     </ul>
                 </g:HTMLPanel>
@@ -999,6 +1135,10 @@
             <b:Column size="3">
                 <g:HTMLPanel>
                     <ul class="the-icons">
+                     	<li>
+                            <i class="icon-github-sign"></i>
+                            icon-github-sign
+                        </li>
                         <li>
                             <i class="icon-linkedin"></i>
                             icon-linkedin
@@ -1011,16 +1151,16 @@
                             <i class="icon-pinterest"></i>
                             icon-pinterest
                         </li>
-                        <li>
-                            <i class="icon-pinterest-sign"></i>
-                            icon-pinterest-sign
-                        </li>
                     </ul>
                 </g:HTMLPanel>
             </b:Column>
             <b:Column size="3">
                 <g:HTMLPanel>
                     <ul class="the-icons">
+                    	<li>
+                            <i class="icon-pinterest-sign"></i>
+                            icon-pinterest-sign
+                        </li>
                         <li>
                             <i class="icon-google-plus"></i>
                             icon-google-plus
@@ -1037,5 +1177,69 @@
                 </g:HTMLPanel>
             </b:Column>
         </b:FluidRow>
+        <b:FluidRow>
+            <b:Column size="12">
+                <b:Heading size="3">Medical Icons</b:Heading>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+	        <b:Column size="3">
+	        	<g:HTMLPanel>
+					<ul class="the-icons">
+						<li>
+							<i class="icon-ambulance"></i>
+							icon-linkedin
+						</li>
+						<li>
+							<i class="icon-beaker"></i>
+	                        icon-beaker
+	                    </li>
+					</ul>
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="3">
+	        	<g:HTMLPanel>
+					<ul class="the-icons">
+						<li>
+							<i class="icon-h-sign"></i>
+							icon-h-sign
+						</li>
+						<li>
+							<i class="icon-hospital"></i>
+	                        icon-hospital
+	                    </li>
+					</ul>
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="3">
+	        	<g:HTMLPanel>
+					<ul class="the-icons">
+						<li>
+							<i class="icon-medkit"></i>
+							icon-medkit
+						</li>
+						<li>
+							<i class="icon-plus-sign-alt"></i>
+	                        icon-plus-sign-alt
+	                    </li>
+					</ul>
+				</g:HTMLPanel>
+			</b:Column>
+			<b:Column size="3">
+	        	<g:HTMLPanel>
+					<ul class="the-icons">
+						<li>
+							<i class="icon-stethoscope"></i>
+							icon-stethoscope
+						</li>
+						<li>
+							<i class="icon-user-md"></i>
+	                        icon-user-md
+	                    </li>
+					</ul>
+				</g:HTMLPanel>
+			</b:Column>
+		</b:FluidRow>
+        
     </g:HTMLPanel>
 </ui:UiBinder>
