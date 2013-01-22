@@ -395,6 +395,23 @@
 
                 </plugins>
             </build>
+			<dependencies>
+				<dependency>
+				    <groupId>javax.validation</groupId>
+				    <artifactId>validation-api</artifactId>
+				    <version>1.0.0.GA</version>
+				    <scope>compile</scope>
+					<optional>true</optional>
+				</dependency>
+				<dependency>
+				    <groupId>javax.validation</groupId>
+				    <artifactId>validation-api</artifactId>
+				    <version>1.0.0.GA</version>
+				    <classifier>sources</classifier>
+				    <scope>compile</scope>
+					<optional>true</optional>
+				</dependency>
+			</dependencies>
         </profile>
     </profiles>
     <build>
