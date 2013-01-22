@@ -363,7 +363,11 @@
 						</b:FormActions>
 					</b:Fieldset>
 				</b:Form>
+
+				<g:SimplePanel ui:field="validationErrorsFormPanel" />
+
 			</b:Column>
+			
 		</b:FluidRow>
                 <b:Heading size="2">
                     Prepend and append inputs
