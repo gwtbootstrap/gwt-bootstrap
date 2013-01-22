@@ -15,13 +15,20 @@
  */
 package com.github.gwtbootstrap.client.ui.base;
 
+import java.util.List;
+
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
 import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.editor.client.EditorError;
+import com.google.gwt.editor.client.HasEditorErrors;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.text.shared.Parser;
 import com.google.gwt.text.shared.Renderer;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * A ValueBoxBase extending for Bootstarp style.
@@ -35,10 +42,15 @@ import com.google.gwt.text.shared.Renderer;
  * @see com.google.gwt.user.client.ui.ValueBoxBase
  * @param <T> the value type
  */
-public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<T> implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle{
+public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<T> implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle, HasEditorErrors<T>{
 
 	/** placeholderHelper */
 	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+
+	/** Widget for control decoration on <code>EditorError</code>s */
+	private Widget controlGroup;// could be a ControlGroup widget
+	/** Widget where <code>EditorError</code>s messages will be placed */
+	private Widget errorLabel;// could be a HelpInline widget
 
 	/**
 	 * Creates a value box that wraps the given browser element handle. This is
@@ -52,6 +64,58 @@ public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<
 		Parser<T> parser) {
 		super(elem, renderer, parser);
 	}
+
+	/**
+	 * 
+	 * @see com.google.gwt.editor.client.HasEditorErrors#showErrors(java.util.List)
+	 */
+	@Override
+	public void showErrors(List<EditorError> errors) {
+		Widget decoratedWidget = controlGroup != null? controlGroup : this;
+		if(errors != null && !errors.isEmpty()) {
+			StyleHelper.addStyle(decoratedWidget, ControlGroupType.ERROR);
+			SafeHtmlBuilder sb = new SafeHtmlBuilder();
+			for (EditorError error : errors) {
+				if(error.getEditor() == this) {
+					sb.appendEscaped(error.getMessage());
+					sb.appendHtmlConstant("<br />");
+				}
+			}
+			setErrorLabelText(sb.toSafeHtml().asString());
+		} else {
+			StyleHelper.removeStyle(decoratedWidget, ControlGroupType.ERROR);
+			setErrorLabelText("");
+		}
+	}
+	
+	/**
+	 * The widget that will be decorated on <code>EditorError</code>s will be added de <code>ControlGroupType.ERROR</code> style.
+	 * It can be a ControlGroup or any widget.
+	 * @param controlGroup
+	 */
+	public void setControlGroup(Widget controlGroup) {
+		this.controlGroup = controlGroup;
+	}
+	/**
+	 * Widget where <code>EditorError</code>s messages will be placed.
+	 * It can be a HelpBlock or any other widget.
+	 * @param errorLabel
+	 */
+	public void setErrorLabel(Widget errorLabel) {
+		this.errorLabel = errorLabel;
+	}
+
+	/**
+	 * Sets the content of the <code>EditorError</code>s messages inside de <code>errorLabel</code>.
+	 * This implementation uses {@link Element#setInnerHTML(String)} to set the content.
+	 * @param errorMessage
+	 */
+	protected void setErrorLabelText(String errorMessage) {
+		if(errorLabel != null) {
+			errorLabel.getElement().setInnerHTML(errorMessage);
+		}
+	}
+
 
 	/**
 	 * {@inheritDoc}

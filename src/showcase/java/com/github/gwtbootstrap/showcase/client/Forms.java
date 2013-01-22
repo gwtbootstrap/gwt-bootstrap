@@ -31,6 +31,7 @@ import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.ControlGroupType;
 import com.github.gwtbootstrap.showcase.client.resources.CustomResources;
+import com.github.gwtbootstrap.showcase.client.validation.ValidationErrorsActivity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -38,6 +39,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 
@@ -61,6 +63,8 @@ public class Forms extends Composite {
 	@UiField Controls controlRadioControls;
 	@UiField ListBox controlList;
 	
+	@UiField SimplePanel validationErrorsFormPanel;
+	
 	interface FormsUiBinder extends UiBinder<Widget, Forms> {
 	}
 
@@ -73,6 +77,8 @@ public class Forms extends Composite {
 		horizontalFormCode.setHTML(CustomResources.RESOURCES.horizontalFormCode().getText());
 		
 		initControlButtonGroups();
+		
+		new ValidationErrorsActivity().start(validationErrorsFormPanel, null);
 	}
 
 	private void initControlButtonGroups() {

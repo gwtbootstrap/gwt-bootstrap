@@ -1,0 +1,34 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
+			 xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+
+
+<b:Form type="HORIZONTAL">
+	<b:Fieldset ui:field="controlFieldset">
+		<b:Legend>Form Validation with Control Decoration</b:Legend>
+		
+		<b:ControlGroup ui:field="usernameGroup">
+	        <b:ControlLabel for="username">Username: </b:ControlLabel>
+	       	<b:Controls>
+	       		<b:TextBox ui:field="username" placeholder="Username" 
+	       			controlGroup="{usernameGroup}" errorLabel="{usernameErrors}" />
+	       		<b:HelpInline ui:field="usernameErrors"></b:HelpInline>
+	       	</b:Controls>
+	    </b:ControlGroup>
+		<b:ControlGroup ui:field="passwordGroup">
+	        <b:ControlLabel for="password">Password: </b:ControlLabel>
+	       	<b:Controls>
+	       		<b:PasswordTextBox ui:field="password" placeholder="Password" 
+	       			controlGroup="{passwordGroup}" errorLabel="{passwordErrors}" />
+	       		<b:HelpInline ui:field="passwordErrors"></b:HelpInline>
+	       	</b:Controls>
+	    </b:ControlGroup>    	
+
+		<b:FormActions>
+			<b:Button ui:field="loginButton" type="PRIMARY" text="Validate Login" />
+		</b:FormActions>
+	</b:Fieldset>
+</b:Form>
+
+</ui:UiBinder>
