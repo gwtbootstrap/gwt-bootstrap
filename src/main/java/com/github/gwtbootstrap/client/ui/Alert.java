@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AlertBase;
+import com.github.gwtbootstrap.client.ui.constants.AlertType;
 
 /**
  * Simple Alert widget that uses bold text as a heading.
@@ -45,6 +46,24 @@ public class Alert extends AlertBase {
 	
 	public Alert(String html) {
 		super(html);
+	}
+
+	/**
+	 * @param html
+	 * @param type
+	 */
+	public Alert(String html, AlertType type) {
+		super(html);
+		setType(type);
+	}
+
+	/**
+	 * @param html
+	 * @param hasClose
+	 */
+	public Alert(String html, AlertType type, boolean hasClose) {
+		super(html, hasClose);
+		setType(type);
 	}
 	
 	/**
