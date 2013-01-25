@@ -77,6 +77,7 @@ public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<
 			SafeHtmlBuilder sb = new SafeHtmlBuilder();
 			for (EditorError error : errors) {
 				if(error.getEditor() == this) {
+					error.setConsumed(true);
 					sb.appendEscaped(error.getMessage());
 					sb.appendHtmlConstant("<br />");
 				}
