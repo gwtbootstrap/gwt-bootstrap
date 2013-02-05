@@ -21,6 +21,9 @@ import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.dom.client.HasMouseDownHandlers;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
@@ -32,35 +35,35 @@ import com.google.gwt.user.client.ui.impl.FocusImpl;
 
 /**
  * An Anchor with optional image and caret.
- * 
+ *
  * <p>
  * It uses a HTML {@code <a>} tag and can contain text and child widgets. But
  * not both at the same time.
  * </p>
- * 
+ *
  * <p>
  * <h3>UiBinder Usage:</h3>
  * {@code <b:IconAnchor icon="plane" href="www.twitter.com">Some Text</b:IconAnchor>}
  * </p>
- * 
+ *
  * <p>
  * Here we add a second Icon:
- * 
+ *
  * <pre>
  * {@code <b:IconAnchor icon="STAR" text="There is a widget so the text goes here">
  *     <b:Icon type="STAR" />
  * </b:IconAnchor>}
  * </pre>
- * 
+ *
  * All parameter are optional. All setters can be used as parameters.
  * </p>
- * 
+ *
  * @since 2.0.4.0
- * 
+ *
  * @author Dominik Mayer
  * @author ohashi keisuke
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable, HasName {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable, HasName, HasMouseDownHandlers {
 
     private static final FocusImpl impl = FocusImpl.getFocusImplForWidget();
 
@@ -81,28 +84,28 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 		setIconPosition(IconPosition.LEFT);
 		setEmptyHref();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void setIconPosition(IconPosition position) {
-	    
+
 	    this.iconPosition = position;
         icon.removeFromParent();
 	    text.removeFromParent();
-	    
+
         if(IconPosition.RIGHT == position) {
             this.insert(text , 0);
             this.insert(icon , 1);
             return;
-            
+
         } else if(IconPosition.LEFT == position){
 	        this.insert(icon, 0);
 	        this.insert(text, 1);
 	        return;
 	    }
-	    
+
 	}
 
     /**
@@ -161,7 +164,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 
 	/**
 	 * Shows or hides the caret.
-	 * 
+	 *
 	 * @param visible
 	 *            <code>true</code> if the caret should be shown.
 	 */
@@ -203,7 +206,15 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 		return addDomHandler(handler, ClickEvent.getType());
 	}
 
-	/**
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
+        return addDomHandler(handler, MouseDownEvent.getType());
+    }
+
+    /**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -275,7 +286,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
             setTabIndex(0);
         }
     }
-    
+
     /**
      * Set active style name.
      * @param active <code>true</code> : set active <code>false</code> : unset active
@@ -283,7 +294,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     public void setActive(boolean active) {
         setStyleName(Constants.ACTIVE, active);
     }
-    
+
     /**
      * Has the active css style name?
      * @return <code>true</code>: has <code>false</code> : none.
@@ -307,15 +318,15 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     public String getName() {
         return getAnchorElement().getName();
     }
-    
-    /** 
+
+    /**
      * Set target attribute
      * @param target target name
      */
     public void setTarget(String target) {
         getAnchorElement().setTarget(target);
     }
-    
+
     /**
      * Get target attribute value
      * @return target attribute value
@@ -323,7 +334,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     public String getTarget() {
         return getAnchorElement().getTarget();
     }
-    
+
     protected AnchorElement getAnchorElement() {
         return AnchorElement.as(getElement());
     }
@@ -335,5 +346,5 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
     public void setCustomIconStyle(String customIconStyle) {
         icon.addStyleName(customIconStyle);
     }
-    
+
 }
