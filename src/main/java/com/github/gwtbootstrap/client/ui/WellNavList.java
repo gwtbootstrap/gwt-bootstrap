@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  * @author Dominik Mayer
  */
-//@formatter:on
+// @formatter:on
 public class WellNavList extends DivWidget {
 
 	private NavList navList = new NavList();
@@ -53,7 +53,7 @@ public class WellNavList extends DivWidget {
 		style.setPaddingRight(0, Unit.PX);
 	}
 
-	//TODO: Restrict type of widgets that can be added?
+	// TODO: Restrict type of widgets that can be added?
 	/**
 	 * {@inheritDoc}
 	 */
@@ -70,13 +70,22 @@ public class WellNavList extends DivWidget {
 		navList.insert(w, beforeIndex);
 	}
 	
-	   
-    /**
-     * Set well size
-     * @param size size
-     */
-    public void setSize(WellSize size) {
-        StyleHelper.changeStyle(this, size, WellSize.class);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void clear() {
+		navList.clear();
+	}
+
+	/**
+	 * Set well size
+	 * 
+	 * @param size
+	 *            size
+	 */
+	public void setSize(WellSize size) {
+		StyleHelper.changeStyle(this, size, WellSize.class);
+	}
 
 }
