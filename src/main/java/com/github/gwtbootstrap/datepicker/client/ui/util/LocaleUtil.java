@@ -84,6 +84,7 @@ public class LocaleUtil {
            for a in `ls`; do echo "else if(locale.equals(\"`echo $a | cut -f2 -d.`\")) { tr = r.`echo $a | cut -f2 -d.`(); LANGUAGE = \"`echo $a | cut -f2 -d.`\"; }"; done
         */
 
+        String locale = getLocale();
 
         if (locale.equals("bg")){
             tr = r.bg();
