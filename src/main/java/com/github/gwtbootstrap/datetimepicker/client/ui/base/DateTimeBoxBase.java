@@ -82,10 +82,13 @@ public class DateTimeBoxBase
 
     /** placeholderHelper */
     private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
-    private boolean autoclose = false;
-	private int minuteStep = 5;
-	private boolean todayButton = false;
-    private boolean highlightToday = false;
+    private boolean autoclose;
+    private int minuteStep = 5;
+    private boolean todayButton;
+    private boolean highlightToday;
+    private String minViewMode = ViewMode.HOUR.name().toLowerCase();
+    private String startViewMode = ViewMode.MONTH.name().toLowerCase();
+    private String maxViewMode = ViewMode.DECADE.name().toLowerCase();
 
     public DateTimeBoxBase() {
         this.box = new TextBox();
@@ -228,7 +231,8 @@ public class DateTimeBoxBase
     protected void configure(Widget w) {
         w.getElement().setAttribute("data-date-format", format);
         w.getElement().setAttribute("data-date-language", language);
-        configure(w.getElement(), autoclose, minuteStep, todayButton, highlightToday);
+        configure(w.getElement(), autoclose, minuteStep, todayButton, highlightToday,
+                minViewMode, startViewMode, maxViewMode);
     }
 
     /**
@@ -283,9 +287,20 @@ public class DateTimeBoxBase
 	                                 boolean autoclose,
 	                                 int minuteStep,
 	                                 boolean todayButton,
-	                                 boolean highlightToday) /*-{
+	                                 boolean highlightToday,
+                                    String minViewMode,
+                                    String startViewMode,
+                                    String maxViewMode) /*-{
         var that = this;
-        $wnd.jQuery(e).datetimepicker({autoclose : autoclose, minuteStep : minuteStep, todayBtn: todayButton, todayHighlight: highlightToday})
+        $wnd.jQuery(e).datetimepicker({
+            autoclose : autoclose,
+            minuteStep : minuteStep,
+            todayBtn : todayButton,
+            todayHighlight : highlightToday,
+            minView : minViewMode,
+            startView : startViewMode,
+            maxView : maxViewMode
+        })
         .on('change' , function() {
             that.@com.github.gwtbootstrap.datetimepicker.client.ui.base.DateTimeBoxBase::onChange()();
         })
@@ -429,7 +444,7 @@ public class DateTimeBoxBase
      */
     @Override
     public void setMinView(String mode) {
-        getElement().setAttribute("data-min-view", mode.toLowerCase());
+        this.minViewMode = mode.toLowerCase();
     }
 
 
@@ -446,7 +461,7 @@ public class DateTimeBoxBase
      */
     @Override
     public void setStartView(String mode) {
-        getElement().setAttribute("data-start-view", mode.toLowerCase());
+        this.startViewMode = mode.toLowerCase();
     }
 
     /**
@@ -462,7 +477,7 @@ public class DateTimeBoxBase
      */
     @Override
     public void setMaxView(String mode) {
-        getElement().setAttribute("data-max-view", mode.toLowerCase());
+        this.maxViewMode = mode.toLowerCase();
     }
 
 
@@ -694,8 +709,9 @@ public class DateTimeBoxBase
             out += token;
 
         return out;
-    }
 
+        // TODO: Support PHP format so we can do more complex formatting
+    }
 
     /*
     DateTimeFormat

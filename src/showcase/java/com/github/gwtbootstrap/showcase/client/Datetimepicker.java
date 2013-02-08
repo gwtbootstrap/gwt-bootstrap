@@ -85,7 +85,7 @@ public class Datetimepicker extends Composite {
     public Datetimepicker() {
         initWidget(uiBinder.createAndBindUi(this));
         
-        startViewMode.setValue(ViewMode.YEAR);
+        startViewMode.setValue(ViewMode.MONTH);
         startViewMode.setAcceptableValues(Arrays.asList(ViewMode.values()));
 
         minViewMode.setValue(ViewMode.HOUR);
