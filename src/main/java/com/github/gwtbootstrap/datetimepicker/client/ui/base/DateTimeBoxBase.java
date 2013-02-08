@@ -91,7 +91,7 @@ public class DateTimeBoxBase
         this.box = new TextBox();
         this.language = LocaleUtil.getLanguage();
         setElement(box.getElement());
-        setFormat(DateTimeFormat.getFormat(DateTimeFormat.PredefinedFormat.DATE_TIME_SHORT).getPattern().toLowerCase());
+        setFormat("yyyy/mm/dd hh:ii");
         setWeekStart(LocaleInfo.getCurrentLocale().getDateTimeFormatInfo().firstDayOfTheWeek());
         setValue(new Date());
     }
@@ -121,11 +121,24 @@ public class DateTimeBoxBase
     public void setFormat(String format) {
         this.format = format;
         Date oldValue = getValue();
-        this.dtf = DateTimeFormat.getFormat(format.replaceAll("mm", "MM"));
+        this.dtf = DateTimeFormat.getFormat(dpGlobalFormatToDateTimeFormat(format));
         if (oldValue != null) {
             setValue(oldValue);
         }
     }
+
+//    /**
+//     * {@inheritDoc}
+//     */
+//    @Override
+//    public void setDateTimeFormat(DateTimeFormat format) {
+//        Date oldValue = getValue();
+//        this.dtf = format;
+//        this.format = dateTimeFormatToDPGlobal(format.getPattern());
+//        if (oldValue != null) {
+//            setValue(oldValue);
+//        }
+//    }
 
     public void setLanguage(String language) {
         this.language = language;
@@ -154,7 +167,7 @@ public class DateTimeBoxBase
     }
 
     /**
-     * Get un-tranceform text
+     * Get un-transformed text
      * @return text box value
      */
     public String getOriginalValue() {
@@ -272,7 +285,7 @@ public class DateTimeBoxBase
 	                                 boolean todayButton,
 	                                 boolean highlightToday) /*-{
         var that = this;
-        $wnd.jQuery(e).datetimepicker({autoclose : autoclose, minuteStep : minuteStep})
+        $wnd.jQuery(e).datetimepicker({autoclose : autoclose, minuteStep : minuteStep, todayBtn: todayButton, todayHighlight: highlightToday})
         .on('change' , function() {
             that.@com.github.gwtbootstrap.datetimepicker.client.ui.base.DateTimeBoxBase::onChange()();
         })
@@ -407,7 +420,24 @@ public class DateTimeBoxBase
      * {@inheritDoc}
      */
     @Override
-    public void setStartView(HasStartView.ViewMode mode) {
+    public void setMinView(ViewMode mode) {
+        setMinView(mode.name());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setMinView(String mode) {
+        getElement().setAttribute("data-min-view", mode.toLowerCase());
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setStartView(HasViewMode.ViewMode mode) {
         setStartView(mode.name());
     }
 
@@ -416,11 +446,29 @@ public class DateTimeBoxBase
      */
     @Override
     public void setStartView(String mode) {
-        getElement().setAttribute("data-date-start-view", mode.toLowerCase());
+        getElement().setAttribute("data-start-view", mode.toLowerCase());
     }
 
-	/**
-	 * Retuen Editor
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setMaxView(ViewMode mode) {
+        setMaxView(mode.name());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setMaxView(String mode) {
+        getElement().setAttribute("data-max-view", mode.toLowerCase());
+    }
+
+
+    /**
+	 * Return Editor
+     *
 	 * @return editor
 	 */
 	@Override
@@ -573,13 +621,102 @@ public class DateTimeBoxBase
 
 
 	@Override
-	public void showTodayButton(boolean show) {
+	public void setShowTodayButton(boolean show) {
 		this.todayButton = show;
 	}
 
 
 	@Override
-	public void highlightToday(boolean highlight) {
+	public void setHighlightToday(boolean highlight) {
 		this.highlightToday = highlight;
 	}
+
+    private String dpGlobalFormatToDateTimeFormat(String dpGlobalFormat)
+    {
+        if(dpGlobalFormat == null || dpGlobalFormat.length() == 0)
+            return "";
+
+        char current;
+        char last = dpGlobalFormat.charAt(0);
+        int count = 1;
+        String out = "";
+
+        for(int index = 1; index < dpGlobalFormat.length(); index++)
+        {
+            current = dpGlobalFormat.charAt(index);
+
+            if(current == last)
+            {
+                count++;
+                continue;
+            }
+
+            out += processToken(last, count);
+
+            last = current;
+            count = 1;
+        }
+
+        out += processToken(last, count);
+
+        return out;
+    }
+
+    private String processToken(char token, int count)
+    {
+        if (token == 'y') {
+            if (count == 2)
+                return "yy";
+            if(count == 4)
+                return "yyyy";
+        }
+        else if(token == 'm') {
+            if(count == 1)
+                return "M";
+            if(count == 2)
+                return "MM";
+        }
+        else if(token == 'M') {
+            if(count == 1)
+                return "MMM";
+            if(count == 2)
+                return "MMMM";
+        }
+        else if(token == 'h') {
+            token = 'H';
+        }
+        else if(token == 'i') {
+            token = 'm';
+        }
+
+        String out = "";
+        for(int i=0; i<count; i++)
+            out += token;
+
+        return out;
+    }
+
+
+    /*
+    DateTimeFormat
+
+    G	era designator	Text	AD
+    y	year	Number	1996
+    M	month in year	Text or Number	July (or) 07
+    d	day in month	Number	10
+    h	hour in am/pm (1-12)	Number	12
+    H	hour in day (0-23)	Number	0
+    m	minute in hour	Number	30
+    s	second in minute	Number	55
+    S	fractional second	Number	978
+    E	day of week	Text	Tuesday
+    a	am/pm marker	Text	PM
+    k	hour in day (1-24)	Number	24
+    K	hour in am/pm (0-11)	Number	0
+    z	time zone	Text	Pacific Standard Time
+    Z	time zone (RFC 822)	Number	-0800
+    v	time zone (generic)	Text	Pacific Time
+    '	escape for text	Delimiter	'Date='
+    ''	single quote	Literal	'o''clock'
+     */
 }

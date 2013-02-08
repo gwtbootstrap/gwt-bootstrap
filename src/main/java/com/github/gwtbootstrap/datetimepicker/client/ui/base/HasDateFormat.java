@@ -15,6 +15,9 @@
  */
 package com.github.gwtbootstrap.datetimepicker.client.ui.base;
 
+//import com.google.gwt.i18n.client.DateTimeFormat;
+
+
 /**
  * Define a element to have the getter and setter of format (string).
  *
@@ -25,8 +28,16 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
 public interface HasDateFormat {
 
     /**
-     * Set the format in the component.
-     * @param format: the date format (dd/mm/yyyy, e.g.)
+     * Set the format in the component.  (In DPGlobal format!)
+     *
+     * @param format: the date format (e.g.: dd/mm/yyyy hh:ii)
      */
     void setFormat(String format);
+//
+//    /**
+//     * Set the format in the component (as a GWT DateTimeFormat)
+//     *
+//     * @param format DateTimeFormat to use.
+//     */
+//    void setDateTimeFormat(DateTimeFormat format);
 }

@@ -23,7 +23,7 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
  */
 public interface HasToday {
 
-	void showTodayButton(boolean show);
+	void setShowTodayButton(boolean show);
 
-	void highlightToday(boolean highlight);
+	void setHighlightToday(boolean highlight);
 }

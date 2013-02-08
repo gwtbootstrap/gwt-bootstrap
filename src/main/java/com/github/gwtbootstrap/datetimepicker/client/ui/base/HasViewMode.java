@@ -22,26 +22,49 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
  * @author Alain Penders
  * @since 2.1.1.0
  */
-public interface HasStartView {
+public interface HasViewMode {
 
     public static enum ViewMode {HOUR, DAY, MONTH, YEAR, DECADE}
 
     /**
-     * Set the view mode of the datepicker.
+     * Set the Min ViewMode
      *
-     * @param mode: ViewMode.{HOUR,DAY,MONTH,YEAR,DECADE}
+     * @param mode ViewMode.{HOUR,DAY,MONTH,YEAR,DECADE}
+     */
+    void setMinView(ViewMode mode);
+
+    /**
+     * Set the Min ViewMode
+     *
+     * @param mode One of (HOUR,DAY,MONTH,YEAR,DECADE), case-insensitive
+     */
+    void setMinView(String mode);
+
+    /**
+     * Set the Start ViewMode
+     *
+     * @param mode ViewMode.{HOUR,DAY,MONTH,YEAR,DECADE}
      */
     void setStartView(ViewMode mode);
 
     /**
-     * Set the view mode of the datepicker.
+     * Set the Start ViewMode
      *
-     * @param mode: HOUR
-     *              DAY
-     *              MONTH
-     *              YEAR
-     *              DECADE
-     *              dont matter if lower or upper case.
+     * @param mode One of (HOUR,DAY,MONTH,YEAR,DECADE), case-insensitive
      */
     void setStartView(String mode);
+
+    /**
+     * Set the Max ViewMode
+     *
+     * @param mode ViewMode.{HOUR,DAY,MONTH,YEAR,DECADE}
+     */
+    void setMaxView(ViewMode mode);
+
+    /**
+     * Set the Max ViewMode
+     *
+     * @param mode One of (HOUR,DAY,MONTH,YEAR,DECADE), case-insensitive
+     */
+    void setMaxView(String mode);
 }

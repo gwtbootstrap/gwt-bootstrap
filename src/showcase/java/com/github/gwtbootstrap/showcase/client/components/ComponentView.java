@@ -17,20 +17,7 @@ package com.github.gwtbootstrap.showcase.client.components;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
-import com.github.gwtbootstrap.showcase.client.Accordions;
-import com.github.gwtbootstrap.showcase.client.Alerts;
-import com.github.gwtbootstrap.showcase.client.Breadcrumbs;
-import com.github.gwtbootstrap.showcase.client.ButtonGroups;
-import com.github.gwtbootstrap.showcase.client.ClientFactory;
-import com.github.gwtbootstrap.showcase.client.Datepicker;
-import com.github.gwtbootstrap.showcase.client.Dropdown;
-import com.github.gwtbootstrap.showcase.client.Modal;
-import com.github.gwtbootstrap.showcase.client.Navigation;
-import com.github.gwtbootstrap.showcase.client.Pagination;
-import com.github.gwtbootstrap.showcase.client.Popovers;
-import com.github.gwtbootstrap.showcase.client.Subnav;
-import com.github.gwtbootstrap.showcase.client.Tooltips;
-import com.github.gwtbootstrap.showcase.client.Typeaheads;
+import com.github.gwtbootstrap.showcase.client.*;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -69,6 +56,7 @@ public class ComponentView extends Composite {
         addWidget("Tooltips", "tooltip", new Tooltips());
         addWidget("Popovers", "popovers", new Popovers());
         addWidget("Datepicker", "datepicker", new Datepicker());
+        addWidget("Datetimepicker", "datetimepicker", new Datetimepicker());
         addWidget("Modal", "modal", new Modal());
         
     }

@@ -24,5 +24,5 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
  */
 public interface HasAllDateTimePickerHandlers
         extends HasAutoclose, HasDateFormat, HasEndDate, HasToday, HasMinutes,
-                HasLanguage, HasStartDate, HasStartView, HasWeekStart, HasDaysOfWeek {
+                HasLanguage, HasStartDate, HasViewMode, HasWeekStart, HasDaysOfWeek {
 }
