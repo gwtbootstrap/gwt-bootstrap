@@ -20,7 +20,8 @@
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.github.gwtbootstrap.BootstrapNoResources' />
     <inherits name='com.github.gwtbootstrap.datepicker.DatepickerNoResources' />
-	
+	<inherits name='com.github.gwtbootstrap.datetimepicker.DatetimepickerNoResources' />
+
 	<!-- set responsive design -->
 	<set-property name="bootstrap.responsiveDesign" value="true"/>
     <script src="js/jquery-1.7.1.min.js"/>

@@ -21,6 +21,7 @@ import com.github.gwtbootstrap.client.ui.Section;
 import com.github.gwtbootstrap.client.ui.resources.JavaScriptInjector;
 import com.github.gwtbootstrap.client.ui.resources.ResourceInjector;
 import com.github.gwtbootstrap.datepicker.client.ui.resources.DatepickerResourceInjector;
+import com.github.gwtbootstrap.datetimepicker.client.ui.resources.DatetimepickerResourceInjector;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
@@ -55,6 +56,7 @@ public class NonResShowcase extends Composite implements EntryPoint {
         addSectionToContainer("Dropdown", "dropdown", new Dropdown());
         addSectionToContainer("Modal", "modal", new Modal());
         addSectionToContainer("Datepicker", "datepicker", new Datepicker());
+        addSectionToContainer("Datetimepicker", "datetimepicker", new Datetimepicker());
         addSectionToContainer("Tooltip", "tooltip", new Tooltips());
         addSectionToContainer("Popover", "popover", new Popovers());
         addSectionToContainer("Icons", "icons", new Icons());
@@ -107,6 +109,7 @@ public class NonResShowcase extends Composite implements EntryPoint {
 
         ResourceInjector.configureWithCssFile();
         DatepickerResourceInjector.configureWithCssFile();
+        DatetimepickerResourceInjector.configureWithCssFile();
     }
 
     private void addSectionToContainer(String sectionName, String target,

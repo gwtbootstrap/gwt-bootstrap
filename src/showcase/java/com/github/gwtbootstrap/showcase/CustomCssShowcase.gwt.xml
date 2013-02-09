@@ -21,7 +21,8 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.github.gwtbootstrap.Bootstrap" />
     <inherits name='com.github.gwtbootstrap.datepicker.Datepicker' />
-	
+	<inherits name='com.github.gwtbootstrap.datetimepicker.Datetimepicker' />
+
 	<replace-with
 		class="com.github.gwtbootstrap.showcase.client.resources.CustomConfigurator">
 		<when-type-is

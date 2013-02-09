@@ -1,0 +1,214 @@
+<!--
+
+     Copyright 2012 GWT-Bootstrap
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+             xmlns:b2="urn:import:com.github.gwtbootstrap.datetimepicker.client.ui"
+				 xmlns:b3="urn:import:com.github.gwtbootstrap.datepicker.client.ui">
+    <ui:style>
+
+    </ui:style>
+    <g:HTMLPanel>
+        <b:PageHeader subtext="and DateTimeBoxes">Datetimepickers</b:PageHeader>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Heading size="4">DataTimeBox markup</b:Heading>
+                <g:HTMLPanel>
+                    <b2:DateTimeBox format="dd/mm/yyyy hh:ii" autoClose="true" />
+
+                    <p>You will need to add a new xmlns to use this.</p>
+
+                    <p>
+                        <pre class="prettyprint linenums">
+xmlns:b2="urn:import:com.github.gwtbootstrap.datetimepicker.client.ui"
+                        </pre>
+                    </p>
+
+                    <p>Also, don't forget to add the</p>
+
+                    <p>
+                        <pre class="prettyprint linenums">
+&lt;inherits name='com.github.gwtbootstrap.datetimepicker.Datetimepicker' /&gt;
+                        </pre>
+                    </p>
+                    <p>to your GWT Module.</p>
+
+                    <p>
+                        Then, you can use it in the "b2" namespace.
+                    </p>
+                    <p>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateTimeBox format="dd/mm/yyyy hh:ii" autoClose="true" />
+                    </pre>
+                    </p>
+                    <p>
+                        Note that all the parameters are optional. Also, the datetimepicker will always try to get the user's browser language, so, usually you will not need to set a language by hand.
+                    </p>
+                </g:HTMLPanel>
+            </b:Column>
+            <b:Column size="6">
+                <b:Heading size="4">Append style DateTimeBox</b:Heading>
+                <b:Well>
+                    <b2:DateTimeBoxAppended/>
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateTimeBoxAppended /&gt;</pre>
+                </g:HTMLPanel>
+                <b:Paragraph>
+                The DateTimeBoxAppended has the same attributes as DateTimeBox.
+                </b:Paragraph>
+                <b:Well>
+                    <b2:DateTimeBoxAppended format="dd/mm/yyyy hh:ii" autoClose="true" />
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateTimeBoxAppended format="yyyy/mm/dd hh:ii" autoClose="true" /&gt;</pre>
+                </g:HTMLPanel>
+                <b:Paragraph>
+                And DateTimeBoxAppended can set another icon by <code>icon</code> attribute.
+                </b:Paragraph>
+                <b:Well>
+                    <b2:DateTimeBoxAppended format="dd/mm/yyyy hh:ii" autoClose="true" icon="CALENDAR"/>
+                </b:Well>
+                <g:HTMLPanel>
+                    <pre class="prettyprint linenums">
+&lt;b2:DateTimeBoxAppended format="yyyy/mm/dd hh:ii" autoClose="true" icon="CALENDAR"/&gt;</pre>
+                </g:HTMLPanel>
+            </b:Column>
+        </b:FluidRow>
+                <b:Heading size="4">DataTimeBox methods and event</b:Heading>
+                <b:Paragraph>
+                <b:Code>DateTimeBox</b:Code> has any methods and can handle show, hide and changeDate event.
+                Try below!
+                </b:Paragraph>
+        <b:FluidRow>
+            <b:Column size="6">
+                <b:Form type="HORIZONTAL">
+                    <b:Fieldset>
+                        <b:Legend>Setup popover options</b:Legend>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Auto Close</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox ui:field="autoClose">is closed auto?</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Format</b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox value="dd/mm/yyyy hh:ii" ui:field="format" placeholder="input format ex:yyyy/mm/dd hh:ii"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Language</b:ControlLabel>
+                            <b:Controls>
+                                <b:TextBox value="en" ui:field="language" placeholder="input anguage ex:en"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Week Start</b:ControlLabel>
+                            <b:Controls>
+                                <b:ListBox ui:field="weekStart">
+                                    <g:item>0</g:item>
+                                    <g:item>1</g:item>
+                                    <g:item>2</g:item>
+                                    <g:item>3</g:item>
+                                    <g:item>4</g:item>
+                                    <g:item>5</g:item>
+                                    <g:item>6</g:item>
+                                </b:ListBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Start Date</b:ControlLabel>
+                            <b:Controls>
+                                <b3:DateBox  format="dd/mm/yyyy" ui:field="startDate"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>End Date</b:ControlLabel>
+                            <b:Controls>
+                                <b3:DateBox  format="dd/mm/yyyy" ui:field="endDate"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Min View Mode</b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox ui:field="minViewMode"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Start View Mode</b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox ui:field="startViewMode"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Max View Mode</b:ControlLabel>
+                            <b:Controls>
+                                <b:ValueListBox ui:field="maxViewMode"/>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Enabled</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox checked="true" ui:field="enabled">Enabled</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Show Today Button</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox checked="false" ui:field="showTodayButton">Enabled</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Highlight Today</b:ControlLabel>
+                            <b:Controls>
+                                <b:CheckBox checked="false" ui:field="highlightToday">Enabled</b:CheckBox>
+                            </b:Controls>
+                        </b:ControlGroup>
+                        <b:ControlGroup>
+                            <b:ControlLabel>Value</b:ControlLabel>
+                            <b:Controls>
+                                <b2:DateTimeBox format="dd/mm/yyyy hh:ii" ui:field="valueDate" startView="YEAR"/>
+                                <b:HelpBlock>If it's changed value,call below DateTimeBox#setValue method</b:HelpBlock>
+                            </b:Controls>
+                        </b:ControlGroup>
+                    </b:Fieldset>
+                </b:Form>
+            </b:Column>
+            <b:Column size="6">
+                <b:Well>
+                    <b:Label type="INFO">Effective DateTimeBox</b:Label>
+                    <b2:DateTimeBox format="dd/mm/yyyy hh:ii" ui:field="dateTimePicker"/>
+                    <b:ButtonGroup>
+                        <b:Button ui:field="showButton">show</b:Button>
+                        <b:Button ui:field="hideButton">hide</b:Button>
+                    </b:ButtonGroup>
+                </b:Well>
+                <b:Alert heading="Event log">
+                    <g:ScrollPanel height="100px">
+                        <g:FlowPanel ui:field="logViewer"/>
+                    </g:ScrollPanel>
+                </b:Alert>
+            </b:Column>
+        </b:FluidRow>
+        <b:FluidRow>
+        </b:FluidRow>
+    </g:HTMLPanel>
+</ui:UiBinder>

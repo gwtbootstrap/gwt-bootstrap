@@ -146,6 +146,10 @@
 					licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
 				</b:Paragraph>
 				<b:Paragraph>
+					Datetimepicker component from <a href="http://www.malot.fr/bootstrap-datetimepicker/">DateTime Picker for Bootstrap</a>,
+					licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+				</b:Paragraph>
+				<b:Paragraph>
 					About licenses of other Java libraries, please see our <a href="http://gwtbootstrap.github.com/gwt-bootstrap/dependencies.html">Maven Site</a>.
 				</b:Paragraph>
 			</b:Footer>
