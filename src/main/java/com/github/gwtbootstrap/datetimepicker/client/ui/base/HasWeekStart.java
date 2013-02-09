@@ -19,7 +19,8 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
  * Define a element that have a day of week to start.
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.4.0
+ * @author Alain Penders
+ * @since 2.1.1.0
  */
 public interface HasWeekStart {
 

@@ -19,7 +19,8 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
  * Define the element to have language support.
  *
  * @author Carlos Alexandro Becker
- * @since 2.0.4.0
+ * @author Alain Penders
+ * @since 2.1.1.0
  */
 public interface HasLanguage {
 
