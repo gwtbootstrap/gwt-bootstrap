@@ -130,19 +130,6 @@ public class DateTimeBoxBase
         }
     }
 
-//    /**
-//     * {@inheritDoc}
-//     */
-//    @Override
-//    public void setDateTimeFormat(DateTimeFormat format) {
-//        Date oldValue = getValue();
-//        this.dtf = format;
-//        this.format = dateTimeFormatToDPGlobal(format.getPattern());
-//        if (oldValue != null) {
-//            setValue(oldValue);
-//        }
-//    }
-
     public void setLanguage(String language) {
         this.language = language;
         LocaleUtil.forceLocale(language);
