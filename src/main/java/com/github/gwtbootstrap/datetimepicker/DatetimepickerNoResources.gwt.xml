@@ -16,16 +16,9 @@
      limitations under the License.
 
 -->
-<module rename-to='nonresshowcase'>
+<module rename-to='datetimepicker'>
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.github.gwtbootstrap.BootstrapNoResources' />
-    <inherits name='com.github.gwtbootstrap.datepicker.DatepickerNoResources' />
-	<inherits name='com.github.gwtbootstrap.datetimepicker.DatetimepickerNoResources' />
-
-	<!-- set responsive design -->
-	<set-property name="bootstrap.responsiveDesign" value="true"/>
-    <script src="js/jquery-1.7.1.min.js"/>
-	<entry-point class='com.github.gwtbootstrap.showcase.client.NonResShowcase' />
-	<source path='client' />
-
+    <inherits name="com.github.gwtbootstrap.datetimepicker.client.ui.ResourcesNonBind"/>
+    <source path='client' />
 </module>

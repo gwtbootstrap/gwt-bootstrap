@@ -16,22 +16,11 @@
      limitations under the License.
 
 -->
-<module rename-to='showcase'>
+<module rename-to='datetimepicker'>
 	<inherits name='com.google.gwt.user.User' />
-    <inherits name='com.google.gwt.user.theme.clean.Clean' />
-    <inherits name="com.google.gwt.activity.Activity" />
 	<inherits name='com.github.gwtbootstrap.Bootstrap' />
-    <inherits name='com.github.gwtbootstrap.datepicker.Datepicker' />
-    <inherits name='com.github.gwtbootstrap.datetimepicker.Datetimepicker' />
+    <inherits name="com.github.gwtbootstrap.datetimepicker.client.ui.Resources"/>
 
-    <replace-with
-        class="com.github.gwtbootstrap.showcase.client.ClientFactoryImpl">
-        <when-type-is
-            class="com.github.gwtbootstrap.showcase.client.ClientFactory" />
-    </replace-with>
-	<!-- set responsive design -->
-	<set-property name="bootstrap.responsiveDesign" value="true"/>
-	<entry-point class='com.github.gwtbootstrap.showcase.client.Showcase' />
-	<source path='client' />
-    
+    <entry-point class='com.github.gwtbootstrap.datetimepicker.client.Datetimepicker' />
+    <source path='client' />
 </module>
