@@ -13,3 +13,8 @@ com.github.gwtbootstrap.datepicker.client.ui
 com.github.gwtbootstrap.datepicker.client.ui.base
 com.github.gwtbootstrap.datepicker.client.ui.resources
 com.github.gwtbootstrap.datepicker.client.ui.util
+com.github.gwtbootstrap.datetimepicker.client
+com.github.gwtbootstrap.datetimepicker.client.ui
+com.github.gwtbootstrap.datetimepicker.client.ui.base
+com.github.gwtbootstrap.datetimepicker.client.ui.resources
+com.github.gwtbootstrap.datetimepicker.client.ui.util
