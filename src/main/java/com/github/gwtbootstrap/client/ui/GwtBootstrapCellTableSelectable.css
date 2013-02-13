@@ -67,6 +67,7 @@
 }
 
 .cellTableHoveredRowCell {
+  background: #EEEEEE !important;
 }
 
 .cellTableKeyboardSelectedRow, .cellTableKeyboardSelectedRow td , .cellTableKeyboardSelectedRow th{
