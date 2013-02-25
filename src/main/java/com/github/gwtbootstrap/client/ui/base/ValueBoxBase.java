@@ -89,6 +89,18 @@ public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<
 		}
 	}
 	
+	@Override
+	public void setValue(T value) {
+		showErrors(null);//clear errors on value change
+		super.setValue(value);
+	}
+	
+	@Override
+	public void setValue(T value, boolean fireEvents) {
+		showErrors(null);//clear errors on value change
+		super.setValue(value, fireEvents);
+	}
+	
 	/**
 	 * The widget that will be decorated on <code>EditorError</code>s will be added de <code>ControlGroupType.ERROR</code> style.
 	 * It can be a ControlGroup or any widget.
