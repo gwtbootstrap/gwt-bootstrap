@@ -210,7 +210,9 @@ public class TabPanel extends DivWidget {
      * @param position tab position.
      */
     public TabPanel(Bootstrap.Tabs position) {
-        setTabPosition(position.get().toLowerCase());
+        setStyle(position);
+        super.add(tabs);
+        super.add(tabContent);
         setHandlerFunctions(getElement());
     }
 
@@ -226,21 +228,15 @@ public class TabPanel extends DivWidget {
 
         if (position.equalsIgnoreCase("below")) {
             setStyle(Bootstrap.Tabs.BELOW);
-            super.add(tabContent);
-            super.add(tabs);
         } else if (position.equalsIgnoreCase("left")) {
             setStyle(Bootstrap.Tabs.LEFT);
-            super.add(tabs);
-            super.add(tabContent);
         } else if (position.equalsIgnoreCase("right")) {
             setStyle(Bootstrap.Tabs.RIGHT);
-            super.add(tabs);
-            super.add(tabContent);
         } else {
             setStyle(Bootstrap.Tabs.ABOVE);
-            super.add(tabs);
-            super.add(tabContent);
         }
+        super.add(tabs);
+        super.add(tabContent);
     }
 
     @Override
