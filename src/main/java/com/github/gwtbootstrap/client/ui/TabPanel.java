@@ -199,7 +199,7 @@ public class TabPanel extends DivWidget {
     private TabContent tabContent = new TabContent();
 
     /**
-     * Create an empty {@link Tabs#ABOVE} style TabPanel.
+     * Create an empty {@link Bootstrap.Tabs#ABOVE} style TabPanel.
      */
     public TabPanel() {
         this(Bootstrap.Tabs.ABOVE);
@@ -210,7 +210,16 @@ public class TabPanel extends DivWidget {
      * @param position tab position.
      */
     public TabPanel(Bootstrap.Tabs position) {
-        setTabPosition(position.get().toLowerCase());
+        setStyle(position);
+        if(Bootstrap.Tabs.BELOW == position) {
+            //tabs should be added after content to display it below content in this case
+            super.add(tabContent);
+            super.add(tabs);
+        } else {
+            super.add(tabs);
+            super.add(tabContent);
+        }
+
         setHandlerFunctions(getElement());
     }
 
@@ -225,6 +234,7 @@ public class TabPanel extends DivWidget {
         }
 
         if (position.equalsIgnoreCase("below")) {
+            //tabs should be added after content to display it below content in this case
             setStyle(Bootstrap.Tabs.BELOW);
             super.add(tabContent);
             super.add(tabs);
