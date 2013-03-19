@@ -100,8 +100,10 @@
 			</b:FluidRow>
             <b:FluidRow>
                 <b:Column size="12">
-                    <b:Label>Information</b:Label>
-                    <b:Paragraph>If you need see the stable version site,Please access blow.</b:Paragraph>
+                    <b:Paragraph>
+                    	<b:Label>Information:</b:Label>
+                    	Looking for an older release? Look at the links bellow:
+                    </b:Paragraph>
                     <b:NavPills>
                         <b:NavLink href="2.0.4.0/">Version 2.0.4.0</b:NavLink>
                     </b:NavPills>
