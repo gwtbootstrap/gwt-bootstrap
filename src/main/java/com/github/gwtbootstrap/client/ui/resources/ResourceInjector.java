@@ -65,14 +65,15 @@ public class ResourceInjector {
         INJECTOR.preConfigure();
 
         Resources res = ADAPTER.getResources();
+        if(isNotLoadedJquery()) 
+            injectJs(res.jquery());
+
+        injectCss(res.bootstrapCss());
+        injectJs(res.bootstrapJs());
+
         if (ADAPTER.hasResponsiveDesign())
             activateResponsiveDesign(res);
 
-        if(isNotLoadedJquery()) 
-            injectJs(res.jquery());
-        
-        injectJs(res.bootstrapJs());
-        
         INJECTOR.configure();
     }
 
