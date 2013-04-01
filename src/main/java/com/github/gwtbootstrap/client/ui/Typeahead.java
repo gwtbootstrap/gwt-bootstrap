@@ -22,7 +22,11 @@ public class Typeahead extends MarkupWidget {
     public interface UpdaterCallback {
         String onSelection(Suggestion selectedSuggestion);
     }
-    
+
+    public interface HighlighterCallback {
+        String highlight(String item);
+    }
+
     private int displayItems = 8;
 
     private int minLength = 1;
@@ -31,6 +35,7 @@ public class Typeahead extends MarkupWidget {
     private Collection<? extends Suggestion> suggestions;
 
     private UpdaterCallback updaterCallback;
+    private HighlighterCallback highlighterCallback;
 
     /**
      * Constructor for {@link Typeahead}. Creates a {@link MultiWordSuggestOracle} to use with this
@@ -47,6 +52,7 @@ public class Typeahead extends MarkupWidget {
     public Typeahead(SuggestOracle oracle) {
         this.oracle = oracle;
         this.updaterCallback = createDefaultUpdaterCallback();
+        this.highlighterCallback = createDefaultHighlighterCallback();
     }
 
     private UpdaterCallback createDefaultUpdaterCallback() {
@@ -54,6 +60,15 @@ public class Typeahead extends MarkupWidget {
             @Override
             public String onSelection(Suggestion selectedSuggestion) {
                 return selectedSuggestion.getReplacementString();
+            }
+        };
+    }
+
+    private HighlighterCallback createDefaultHighlighterCallback() {
+        return new HighlighterCallback() {
+            @Override
+            public String highlight(String item) {
+                return item;
             }
         };
     }
@@ -141,6 +156,11 @@ public class Typeahead extends MarkupWidget {
         this.updaterCallback = updaterCallback;
     }
 
+    public void setHighlighterCallback(
+            HighlighterCallback highlighterCallback) {
+        this.highlighterCallback = highlighterCallback;
+    }
+
     /**
      * Get suggest oracle
      *
@@ -185,7 +205,11 @@ public class Typeahead extends MarkupWidget {
 
         return item;
     }
-    
+
+    private String highlighter(String item) {
+        return this.highlighterCallback.highlight(item);
+    }
+
     //@formatter:off
     private native void callProcess(JsArrayString items ,JavaScriptObject process) /*-{
         process(items);
@@ -208,7 +232,7 @@ public class Typeahead extends MarkupWidget {
                 return that.@com.github.gwtbootstrap.client.ui.Typeahead::updater(Ljava/lang/String;)(item);
             },
             "highlighter" : function(item) {
-                return item;
+                return that.@com.github.gwtbootstrap.client.ui.Typeahead::highlighter(Ljava/lang/String;)(item);
             }
         });
     }-*/;
