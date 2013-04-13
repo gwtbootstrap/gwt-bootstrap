@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.HasText;
  * 
  * <pre>
  * {@code 
- * <b:Heading size="2" text="And I'm the subtext">I'm the heading</b:Heading>}
+ * <b:Heading size="2" subtext="And I'm the subtext">I'm the heading</b:Heading>}
  * </pre>
  * Specifying the <code>size</code> is mandatory.
  * </p>
