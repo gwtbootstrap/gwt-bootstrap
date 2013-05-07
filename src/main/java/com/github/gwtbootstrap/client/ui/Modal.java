@@ -550,6 +550,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 */
 	private native void centerVertically(Element e) /*-{
 		$wnd.jQuery(e).css("margin-top", (-1 * $wnd.jQuery(e).outerHeight() / 2) + "px");
+		$wnd.jQuery(e).css("top", "50%");
 	}-*/;
 
 }
