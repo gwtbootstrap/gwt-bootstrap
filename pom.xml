@@ -275,8 +275,6 @@
         <webappDirectory>src/main/webapp</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.sites.plugin.version>0.8</github.sites.plugin.version>
-        <!-- FIXME - downloads doesn't exist anymore, this should be removed soon -->
-        <github.downloads.plugin.version>0.6</github.downloads.plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -515,23 +513,23 @@
 
                 </plugins>
             </build>
-			<dependencies>
-				<dependency>
-				    <groupId>javax.validation</groupId>
-				    <artifactId>validation-api</artifactId>
-				    <version>1.0.0.GA</version>
-				    <scope>compile</scope>
-					<optional>true</optional>
-				</dependency>
-				<dependency>
-				    <groupId>javax.validation</groupId>
-				    <artifactId>validation-api</artifactId>
-				    <version>1.0.0.GA</version>
-				    <classifier>sources</classifier>
-				    <scope>compile</scope>
-					<optional>true</optional>
-				</dependency>
-			</dependencies>
+      <dependencies>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+            <scope>compile</scope>
+          <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+            <classifier>sources</classifier>
+            <scope>compile</scope>
+          <optional>true</optional>
+        </dependency>
+      </dependencies>
         </profile>
     </profiles>
     <build>
@@ -688,18 +686,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>downloads-maven-plugin</artifactId>
-                <version>${github.downloads.plugin.version}</version>
-                <configuration>
-                    <description>${project.version} release of ${project.name}</description>
-                    <override>true</override>
-                    <includeAttached>true</includeAttached>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -742,21 +728,21 @@
                         <file>
                             <name>.settings/com.google.gwt.eclipse.core.prefs</name>
                             <content>
-								<![CDATA[
+                <![CDATA[
 eclipse.preferences.version=1
 filesCopiedToWebInfLib=
-							 ]]>
+               ]]>
                             </content>
                         </file>
                         <file>
                             <name>.settings/com.google.gdt.eclipse.core.prefs</name>
                             <content>
-								<![CDATA[
+                <![CDATA[
 eclipse.preferences.version=1
 jarsExcludedFromWebInfLib=
 warSrcDir=${webappDirectory}
 warSrcDirIsOutput=false
-							 ]]>
+               ]]>
                             </content>
                         </file>
                     </additionalConfig>
