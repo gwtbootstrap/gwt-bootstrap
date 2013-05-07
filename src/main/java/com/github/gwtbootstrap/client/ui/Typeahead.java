@@ -1,7 +1,5 @@
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.Collection;
-
 import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
 import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -16,6 +14,7 @@ import com.google.gwt.user.client.ui.SuggestOracle.Request;
 import com.google.gwt.user.client.ui.SuggestOracle.Response;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.Widget;
+import java.util.Collection;
 
 public class Typeahead extends MarkupWidget {
 
@@ -27,6 +26,10 @@ public class Typeahead extends MarkupWidget {
         String highlight(String item);
     }
 
+    public interface MatcherCallback {
+        boolean compareQueryToItem(String query, String item);
+    }
+
     private int displayItems = 8;
 
     private int minLength = 1;
@@ -36,6 +39,7 @@ public class Typeahead extends MarkupWidget {
 
     private UpdaterCallback updaterCallback;
     private HighlighterCallback highlighterCallback;
+    private MatcherCallback matcherCallback;
 
     /**
      * Constructor for {@link Typeahead}. Creates a {@link MultiWordSuggestOracle} to use with this
@@ -53,6 +57,7 @@ public class Typeahead extends MarkupWidget {
         this.oracle = oracle;
         this.updaterCallback = createDefaultUpdaterCallback();
         this.highlighterCallback = createDefaultHighlighterCallback();
+        this.matcherCallback = createDefaultMatcherCallback();
     }
 
     private UpdaterCallback createDefaultUpdaterCallback() {
@@ -69,6 +74,15 @@ public class Typeahead extends MarkupWidget {
             @Override
             public String highlight(String item) {
                 return item;
+            }
+        };
+    }
+
+    private MatcherCallback createDefaultMatcherCallback() {
+        return new MatcherCallback() {
+            @Override
+            public boolean compareQueryToItem(String query, String item) {
+                return item.toLowerCase().contains(query.toLowerCase());
             }
         };
     }
@@ -161,6 +175,10 @@ public class Typeahead extends MarkupWidget {
         this.highlighterCallback = highlighterCallback;
     }
 
+    public void setMatcherCallback(MatcherCallback matcherCallback) {
+        this.matcherCallback = matcherCallback;
+    }
+
     /**
      * Get suggest oracle
      *
@@ -210,6 +228,10 @@ public class Typeahead extends MarkupWidget {
         return this.highlighterCallback.highlight(item);
     }
 
+    private boolean selectionMatcher(String query, String item) {
+        return this.matcherCallback.compareQueryToItem(query, item);
+    }
+    
     //@formatter:off
     private native void callProcess(JsArrayString items ,JavaScriptObject process) /*-{
         process(items);
@@ -233,6 +255,10 @@ public class Typeahead extends MarkupWidget {
             },
             "highlighter" : function(item) {
                 return that.@com.github.gwtbootstrap.client.ui.Typeahead::highlighter(Ljava/lang/String;)(item);
+            },
+            "matcher" : function(item) {
+                query = this.query;
+                return that.@com.github.gwtbootstrap.client.ui.Typeahead::selectionMatcher(Ljava/lang/String;Ljava/lang/String;)(query, item);
             }
         });
     }-*/;
