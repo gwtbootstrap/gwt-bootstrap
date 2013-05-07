@@ -105,6 +105,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 */
 	public Modal() {
 		super("modal");
+		getElement().setAttribute("tabindex", "-1");
 		super.add(header);
 		super.add(body);
 		setVisible(false);
