@@ -68,7 +68,6 @@ public class ResourceInjector {
         if(isNotLoadedJquery()) 
             injectJs(res.jquery());
 
-        injectCss(res.bootstrapCss());
         injectJs(res.bootstrapJs());
 
         if (ADAPTER.hasResponsiveDesign())
