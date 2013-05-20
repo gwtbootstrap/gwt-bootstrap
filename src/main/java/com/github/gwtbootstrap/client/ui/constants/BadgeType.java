@@ -32,7 +32,8 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 public enum BadgeType implements Style {
 
 	DEFAULT(""), SUCCESS("badge-success"), WARNING("badge-warning"), ERROR(
-			"badge-error"), INFO("badge-info"), INVERSE("badge-inverse");
+			"badge-error"), INFO("badge-info"), INVERSE("badge-inverse"),
+			IMPORTANT("badge-important");
 
 	private static final String badge = "badge ";
 
