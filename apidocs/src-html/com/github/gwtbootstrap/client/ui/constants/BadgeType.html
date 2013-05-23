@@ -40,20 +40,21 @@
 <span class="sourceLineNo">032</span>public enum BadgeType implements Style {<a name="line.32"></a>
 <span class="sourceLineNo">033</span><a name="line.33"></a>
 <span class="sourceLineNo">034</span>        DEFAULT(""), SUCCESS("badge-success"), WARNING("badge-warning"), ERROR(<a name="line.34"></a>
-<span class="sourceLineNo">035</span>                        "badge-error"), INFO("badge-info"), INVERSE("badge-inverse");<a name="line.35"></a>
-<span class="sourceLineNo">036</span><a name="line.36"></a>
-<span class="sourceLineNo">037</span>        private static final String badge = "badge ";<a name="line.37"></a>
-<span class="sourceLineNo">038</span><a name="line.38"></a>
-<span class="sourceLineNo">039</span>        private String className;<a name="line.39"></a>
-<span class="sourceLineNo">040</span><a name="line.40"></a>
-<span class="sourceLineNo">041</span>        private BadgeType(String className) {<a name="line.41"></a>
-<span class="sourceLineNo">042</span>                this.className = badge + className;<a name="line.42"></a>
-<span class="sourceLineNo">043</span>        }<a name="line.43"></a>
-<span class="sourceLineNo">044</span><a name="line.44"></a>
-<span class="sourceLineNo">045</span>        public String get() {<a name="line.45"></a>
-<span class="sourceLineNo">046</span>                return className;<a name="line.46"></a>
-<span class="sourceLineNo">047</span>        }<a name="line.47"></a>
-<span class="sourceLineNo">048</span>}<a name="line.48"></a>
+<span class="sourceLineNo">035</span>                        "badge-error"), INFO("badge-info"), INVERSE("badge-inverse"),<a name="line.35"></a>
+<span class="sourceLineNo">036</span>                        IMPORTANT("badge-important");<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>        private static final String badge = "badge ";<a name="line.38"></a>
+<span class="sourceLineNo">039</span><a name="line.39"></a>
+<span class="sourceLineNo">040</span>        private String className;<a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span>        private BadgeType(String className) {<a name="line.42"></a>
+<span class="sourceLineNo">043</span>                this.className = badge + className;<a name="line.43"></a>
+<span class="sourceLineNo">044</span>        }<a name="line.44"></a>
+<span class="sourceLineNo">045</span><a name="line.45"></a>
+<span class="sourceLineNo">046</span>        public String get() {<a name="line.46"></a>
+<span class="sourceLineNo">047</span>                return className;<a name="line.47"></a>
+<span class="sourceLineNo">048</span>        }<a name="line.48"></a>
+<span class="sourceLineNo">049</span>}<a name="line.49"></a>
 
 
 
