@@ -90,6 +90,7 @@ public class DateTimeBoxBase
     private String startViewMode = ViewMode.MONTH.name().toLowerCase();
     private String maxViewMode = ViewMode.DECADE.name().toLowerCase();
     private PickerPosition pickerPosition = PickerPosition.BOTTOM_RIGHT;
+    private Element decoratedElement;
 
     public DateTimeBoxBase() {
         this.box = new TextBox();
@@ -180,7 +181,7 @@ public class DateTimeBoxBase
     public void setValue(Date value, boolean fireEvents) {
         box.setValue(value != null ? dtf.format(value) : null);
 
-        updateValue(box.getElement());
+        updateValue(decoratedElement);
 
         if (fireEvents) {
             ValueChangeEvent.fire(this, value);
@@ -217,6 +218,7 @@ public class DateTimeBoxBase
      * @param w: the widget to configure.
      */
     protected void configure(Widget w) {
+        this.decoratedElement = w.getElement();
         w.getElement().setAttribute("data-date-format", format);
         w.getElement().setAttribute("data-date-language", language);
         configure(w.getElement(), autoclose, minuteStep, todayButton, highlightToday,
