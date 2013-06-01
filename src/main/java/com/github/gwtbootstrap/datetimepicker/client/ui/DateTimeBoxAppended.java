@@ -15,8 +15,6 @@
  */
 package com.github.gwtbootstrap.datetimepicker.client.ui;
 
-import java.util.Date;
-
 import com.github.gwtbootstrap.client.ui.AppendButton;
 import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
@@ -35,7 +33,7 @@ import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.gwtbootstrap.datetimepicker.client.ui.base.DateTimeBoxBase;
 import com.github.gwtbootstrap.datetimepicker.client.ui.base.HasAllDateTimePickerHandlers;
 import com.github.gwtbootstrap.datetimepicker.client.ui.base.HasDateFormat;
-import com.github.gwtbootstrap.datetimepicker.client.ui.base.HasViewMode;
+import com.github.gwtbootstrap.datetimepicker.client.ui.base.PickerPosition;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -43,9 +41,10 @@ import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
+
+import java.util.Date;
 
 /**
  * DateTimeBoxAppended component.
@@ -391,5 +390,13 @@ public class DateTimeBoxAppended
     @Override
     public void setHighlightToday(boolean highlight) {
         box.setHighlightToday(highlight);
+    }
+
+    public void setPickerPosition(PickerPosition pickerPosition) {
+        box.setPickerPosition(pickerPosition);
+    }
+
+    public PickerPosition getPickerPosition() {
+        return box.getPickerPosition();
     }
 }

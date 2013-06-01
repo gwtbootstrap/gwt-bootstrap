@@ -15,8 +15,6 @@
  */
 package com.github.gwtbootstrap.datetimepicker.client.ui.base;
 
-import java.util.Date;
-
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasId;
@@ -61,6 +59,8 @@ import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Widget;
 
+import java.util.Date;
+
 /**
  * Base DateTimePicker component.
  *
@@ -89,6 +89,7 @@ public class DateTimeBoxBase
     private String minViewMode = ViewMode.HOUR.name().toLowerCase();
     private String startViewMode = ViewMode.MONTH.name().toLowerCase();
     private String maxViewMode = ViewMode.DECADE.name().toLowerCase();
+    private PickerPosition pickerPosition = PickerPosition.BOTTOM_RIGHT;
 
     public DateTimeBoxBase() {
         this.box = new TextBox();
@@ -219,7 +220,7 @@ public class DateTimeBoxBase
         w.getElement().setAttribute("data-date-format", format);
         w.getElement().setAttribute("data-date-language", language);
         configure(w.getElement(), autoclose, minuteStep, todayButton, highlightToday,
-                minViewMode, startViewMode, maxViewMode);
+                minViewMode, startViewMode, maxViewMode, pickerPosition.getValue());
     }
 
     /**
@@ -277,7 +278,8 @@ public class DateTimeBoxBase
 	                                 boolean highlightToday,
                                     String minViewMode,
                                     String startViewMode,
-                                    String maxViewMode) /*-{
+                                    String maxViewMode,
+                                    String pickerPosition) /*-{
         var that = this;
         $wnd.jQuery(e).datetimepicker({
             autoclose : autoclose,
@@ -286,7 +288,8 @@ public class DateTimeBoxBase
             todayHighlight : highlightToday,
             minView : minViewMode,
             startView : startViewMode,
-            maxView : maxViewMode
+            maxView : maxViewMode,
+            pickerPosition: pickerPosition
         })
         .on('change' , function() {
             that.@com.github.gwtbootstrap.datetimepicker.client.ui.base.DateTimeBoxBase::onChange()();
@@ -632,6 +635,14 @@ public class DateTimeBoxBase
 	public void setHighlightToday(boolean highlight) {
 		this.highlightToday = highlight;
 	}
+
+    public PickerPosition getPickerPosition() {
+        return pickerPosition;
+    }
+
+    public void setPickerPosition(PickerPosition pickerPosition) {
+        this.pickerPosition = pickerPosition;
+    }
 
     private String dpGlobalFormatToDateTimeFormat(String dpGlobalFormat)
     {
