@@ -1,7 +1,5 @@
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.Set;
-
 import com.github.gwtbootstrap.client.ui.base.HasPlacement;
 import com.github.gwtbootstrap.client.ui.base.HasShowDelay;
 import com.github.gwtbootstrap.client.ui.base.HasTrigger;
@@ -16,11 +14,12 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
-import com.google.gwt.safehtml.client.SafeHtmlTemplates.Template;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
+
+import java.util.Set;
 
 /**
  * Cell decorator as a Tooltip.
@@ -55,7 +54,11 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
      */
     protected int hideDelayInMilliseconds = 0;
 
-    
+    /**
+     * Appends the popover to a specific element.
+     */
+    protected String container;
+
     interface Template extends SafeHtmlTemplates {
         @Template("<span class='gb-tooltip-cell' id='{0}'>{1}</span>")
         SafeHtml span(String id , SafeHtml content);
@@ -144,7 +147,8 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
                     getPlacement(context, value).get(),
                     getTrigger(context, value).get(),
                     getShowDelay(context, value),
-                    getHideDelay(context, value)
+                    getHideDelay(context, value),
+                    getContainer()
                 );
                 
            };
@@ -288,4 +292,18 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
       return parent.getFirstChildElement().cast();
     }
 
+    /**
+     * @return Specific element the Popover/Tooltip is appended to
+     */
+    public String getContainer() {
+        return container;
+    }
+
+    /**
+     * Set specific element the Popover/Tooltip is appended to
+     * @param container  Specific element the Popover/Tooltip is appended to. E.g. 'body' or null.
+     */
+    public void setContainer(String container) {
+        this.container = container;
+    }
 }
