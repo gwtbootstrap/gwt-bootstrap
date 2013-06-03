@@ -15,9 +15,6 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
@@ -41,6 +38,9 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+
+import java.util.HashSet;
+import java.util.Set;
 
 //@formatter:off
 /**
@@ -298,7 +298,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		}
 
 		changeVisibility("show");
-		centerVertically(getElement());
+        //	centerVertically(getElement());  Note: Doesn't work with Bootstrap 2.3.2
 	}
 
 	@Override
@@ -544,12 +544,4 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		DOM.setStyleAttribute(body.getElement(), "maxHeight", maxHeight);
 	}
 	
-	/**
-	 * Centers fixed positioned element vertically.
-	 * @param e Element to center vertically
-	 */
-	private native void centerVertically(Element e) /*-{
-		$wnd.jQuery(e).css("margin-top", (-1 * $wnd.jQuery(e).outerHeight() / 2) + "px");
-	}-*/;
-
 }

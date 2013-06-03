@@ -66,6 +66,11 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 	 */
 	protected int hideDelayInMilliseconds = 0;
 
+    /**
+     * Appends the popover to a specific element.
+     */
+    protected String container;
+
 	/**
 	 * Creates a new widget based on the provided HTML tag.
 	 */
@@ -249,4 +254,19 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 	 * @return data name
 	 */
 	protected abstract String getDataName();
+
+    /**
+     * @return Specific element the Popover/Tooltip is appended to
+     */
+    public String getContainer() {
+        return container;
+    }
+
+    /**
+     * Set specific element the Popover/Tooltip is appended to
+     * @param container  Specific element the Popover/Tooltip is appended to. E.g. 'body' or null.
+     */
+    public void setContainer(String container) {
+        this.container = container;
+    }
 }

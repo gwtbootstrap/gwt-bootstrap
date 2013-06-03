@@ -83,7 +83,7 @@ public class Tooltip extends HoverBase {
 		setDataAttribute(getWidget().getElement(), "original-title", tooltip);
 		
 		configure(getWidget().getElement(), getAnimation(), getPlacement().get(),
-				getTrigger().get(), getShowDelay(), getHideDelay());
+				getTrigger().get(), getShowDelay(), getHideDelay(), getContainer());
 	}
 
 	/**
@@ -103,13 +103,13 @@ public class Tooltip extends HoverBase {
 	 * @param showDelay
 	 * @param hideDelay
 	 */
-	public static void configure(Widget e,boolean animated,Placement placement,Trigger trigger,int showDelay,int hideDelay) {
-		configure(e.getElement(), animated, placement.get(),trigger.get(), showDelay, hideDelay);
+	public static void configure(Widget e,boolean animated,Placement placement,Trigger trigger,int showDelay,int hideDelay, String container) {
+		configure(e.getElement(), animated, placement.get(),trigger.get(), showDelay, hideDelay, container);
 	}
 
 	//@formatter:off
 	public static native void configure(String selector,String text, boolean animated,
-            String placement, String trigger, int showDelay, int hideDelay) /*-{
+            String placement, String trigger, int showDelay, int hideDelay, String container) /*-{
         $wnd.jQuery(selector).tooltip({
             title : text,
             animation : animated,
@@ -118,12 +118,13 @@ public class Tooltip extends HoverBase {
             delay : {
                 show : showDelay,
                 hide : hideDelay
-            }
+            },
+            container: container
         });
     }-*/;
 	
 	public static native void configure(Element element, boolean animated,
-			String placement, String trigger, int showDelay, int hideDelay) /*-{
+			String placement, String trigger, int showDelay, int hideDelay, String container) /*-{
 		$wnd.jQuery(element).tooltip({
 			animation : animated,
 			placement : placement,
@@ -131,7 +132,8 @@ public class Tooltip extends HoverBase {
 			delay : {
 				show : showDelay,
 				hide : hideDelay
-			}
+			},
+            container: container
 		});
 	}-*/;
 
