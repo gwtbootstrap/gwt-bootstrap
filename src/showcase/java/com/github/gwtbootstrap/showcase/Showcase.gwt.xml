@@ -18,7 +18,6 @@
 -->
 <module rename-to='showcase'>
 	<inherits name='com.google.gwt.user.User' />
-    <inherits name='com.google.gwt.user.theme.clean.Clean' />
     <inherits name="com.google.gwt.activity.Activity" />
 	<inherits name='com.github.gwtbootstrap.Bootstrap' />
     <inherits name='com.github.gwtbootstrap.datepicker.Datepicker' />
