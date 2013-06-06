@@ -19,7 +19,7 @@
 		</b:ResponsiveNavbar>
 
 		<b:FluidContainer ui:field="container">
-            <b:Heading size="1">GWT-Bootsrap site for 2.2.1.0-SNAPSHOT</b:Heading>
+            <b:Heading size="1">GWT-Bootsrap site for 2.3.2.0-SNAPSHOT</b:Heading>
 			<b:Hero>
 				<g:VerticalPanel styleName="pull-right">
 					<g:HTMLPanel>
