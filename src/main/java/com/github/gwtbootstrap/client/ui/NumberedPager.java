@@ -33,8 +33,10 @@ import com.google.gwt.view.client.HasRows;
  * <h3>Example</h3>
  *
  * <pre>
- *   <b:NumberedPager display="{table}"/>
- *   <b:CellTable pageSize="10" ui:field="table" width="100%" />
+ *   <code>
+ *     <b:NumberedPager display="{table}"/>
+ *     <b:CellTable pageSize="10" ui:field="table" width="100%" />
+ *   </code>
  * </pre>
  *
  * </p>
@@ -200,22 +202,24 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     protected void onRangeOrRowCountChanged() {
         int pageCount = super.getPageCount();
         if (pageCount > 0) {
-
             if (pagination.getWidgetCount() == 0) {
+                // Lazy init for not displaying back and forward buttons unnecessarily
                 initPagination();
             }
-
             int widgetCount = pagination.getWidgetCount();
             if (pageCount + 2 > widgetCount) {
+                // If has there are *more* pages then links, then add the remaining links
                 for (int i = widgetCount-1; i <= pageCount; i++) {
                     NavLink page = pagination.addPageLink(i);
                     page.addClickHandler(createPageClickHandler(i - 1));
                 }
             } else if (pageCount + 2 < widgetCount) {
+                // If has there are *less* pages then links, then remove the exceeding links
                 for (int i = widgetCount - 2; i > pageCount; i--) {
                     pagination.remove(i);
                 }
             }
+            // Set the actual page link as disabled
             updateButtonsState();
         } else {
             if (pagination.getWidgetCount() > 0) {
@@ -234,7 +238,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     }
 
     private void updateButtonsState() {
-        // Set all numbered butons as enabled
+        // Set all numbered buttons as enabled
         for (int i = 1; i < pagination.getWidgetCount()-1; i++) {
             NavLink navLink = (NavLink) pagination.getWidget(i);
             navLink.setDisabled(false);
