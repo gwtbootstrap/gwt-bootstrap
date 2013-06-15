@@ -30,6 +30,7 @@ import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -291,17 +292,27 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 * {@inheritDoc}
 	 */
 	public void show() {
-
-		if (!this.isAttached()) {
-
-			RootPanel.get().add(this);
-		}
-
-		changeVisibility("show");
+        checkAttachedOnShow();
+        changeVisibility("show");
         //	centerVertically(getElement());  Note: Doesn't work with Bootstrap 2.3.2
 	}
 
-	@Override
+    /**
+     * {@inheritDoc}
+     */
+    public void show(boolean autoShow) {
+        checkAttachedOnShow();
+        changeVisibility("show", autoShow);
+        //	centerVertically(getElement());  Note: Doesn't work with Bootstrap 2.3.2
+    }
+
+    private void checkAttachedOnShow() {
+        if (!this.isAttached()) {
+            RootPanel.get().add(this);
+        }
+    }
+
+    @Override
 	protected void onAttach() {
 		super.onAttach();
 		configure(keyboard, backdropType, show);
@@ -316,6 +327,13 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		changeVisibility("hide");
 	}
 
+    /**
+     * {@inheritDoc}
+     */
+    public void hide(boolean autoHide) {
+        changeVisibility("hide", autoHide);
+    }
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -323,23 +341,34 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		changeVisibility("toggle");
 	}
 
+    /**
+     * {@inheritDoc}
+     */
+    public void toggle(boolean autoToggle) {
+        changeVisibility("toggle", autoToggle);
+    }
+
 	private void changeVisibility(String visibility) {
 		changeVisibility(getElement(), visibility);
 	}
+
+    private void changeVisibility(String visibility, boolean autoTriggered) {
+        changeVisibility(getElement(), visibility, autoTriggered);
+    }
 
 	/**
 	 * This method is called immediately when the widget's {@link #hide()}
 	 * method is executed.
 	 */
 	protected void onHide(Event e) {
-		fireEvent(new HideEvent(e));
+		fireEvent(new HideEvent(e, getAutoTriggered(e)));
 	}
 
 	/**
 	 * This method is called once the widget is completely hidden.
 	 */
 	protected void onHidden(Event e) {
-		fireEvent(new HiddenEvent(e));
+		fireEvent(new HiddenEvent(e, getAutoTriggered(e)));
 		currentlyShown.remove(this);
 	}
 
@@ -350,13 +379,13 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	protected void onShow(Event e) {
 		if (hideOthers)
 			hideShownModals();
-		fireEvent(new ShowEvent(e));
+		fireEvent(new ShowEvent(e, getAutoTriggered(e)));
 	}
 
 	private void hideShownModals() {
 		for (Modal m : currentlyShown) {
 		    if(!m.equals(this)) {
-		        m.hide();
+		        m.hide(true);
 		    }		    
 		}
 	}
@@ -365,7 +394,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 	 * This method is called once the widget is completely shown.
 	 */
 	protected void onShown(Event e) {
-		fireEvent(new ShownEvent(e));
+		fireEvent(new ShownEvent(e, getAutoTriggered(e)));
 		currentlyShown.add(this);
 	}
 
@@ -448,21 +477,42 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 		$wnd.jQuery(e).modal(visibility);
 	}-*/;
 
+    private native void changeVisibility(Element e, String visibility, boolean autoTriggered) /*-{
+        $wnd.jQuery(e).data('modal').autoTriggered = autoTriggered;
+        $wnd.jQuery(e).modal(visibility);
+    }-*/;
+
+    private native boolean getAutoTriggered(JavaScriptObject jso) /*-{
+        if (jso.autoTriggered) return true;
+        return false;
+    }-*/;
+
 	/**
 	 * Links the Java functions that fire the events.
 	 */
-	private native void setHandlerFunctions(Element e) /*-{
+	private native void setHandlerFunctions(Element element) /*-{
 		var that = this;
-		$wnd.jQuery(e).on('hide', function(e) {
+        var autoTriggeredCheck = function(event, removeProperty) {
+            if ($wnd.jQuery(event.target).data('modal').autoTriggered) {
+                event.autoTriggered = true;
+                if (removeProperty)
+                    $wnd.jQuery(event.target).data('modal').autoTriggered = false;
+            }
+        };
+		$wnd.jQuery(element).on('hide', function(e) {
+            autoTriggeredCheck(e);
 			that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);
 		});
-		$wnd.jQuery(e).on('hidden', function(e) {
+		$wnd.jQuery(element).on('hidden', function(e) {
+            autoTriggeredCheck(e, true);
 			that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);
 		});
-		$wnd.jQuery(e).on('show', function(e) {
+		$wnd.jQuery(element).on('show', function(e) {
+            autoTriggeredCheck(e);
 			that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);
 		});
-		$wnd.jQuery(e).on('shown', function(e) {
+		$wnd.jQuery(element).on('shown', function(e) {
+            autoTriggeredCheck(e, true);
 			that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);
 		});
 	}-*/;

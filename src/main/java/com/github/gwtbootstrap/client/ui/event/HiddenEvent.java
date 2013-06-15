@@ -34,17 +34,27 @@ public class HiddenEvent extends GwtEvent<HiddenHandler> {
 
     private static final Type<HiddenHandler> TYPE = new Type<HiddenHandler>();
     private final NativeEvent nativeEvent;
+    private final boolean autoHidden;
 
     public static Type<HiddenHandler> getType() {
         return TYPE;
     }
 
     public HiddenEvent() {
-        this(null);
+        this(null, false);
+    }
+
+    public HiddenEvent(boolean autoHidden) {
+        this(null, autoHidden);
     }
 
     public HiddenEvent(NativeEvent nativeEvent) {
+        this(nativeEvent, false);
+    }
+
+    public HiddenEvent(NativeEvent nativeEvent, boolean autoHidden) {
         this.nativeEvent = nativeEvent;
+        this.autoHidden = autoHidden;
     }
 
     @Override
@@ -77,4 +87,7 @@ public class HiddenEvent extends GwtEvent<HiddenHandler> {
         nativeEvent.stopPropagation();
     }
 
+    public boolean isAutoHidden() {
+        return autoHidden;
+    }
 }

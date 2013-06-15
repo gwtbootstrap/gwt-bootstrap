@@ -35,6 +35,7 @@ public class ShownEvent extends GwtEvent<ShownHandler> {
 
     private static final Type<ShownHandler> TYPE = new Type<ShownHandler>();
     private final NativeEvent nativeEvent;
+    private final boolean autoShown;
 
     public static Type<ShownHandler> getType() {
         return TYPE;
@@ -45,7 +46,16 @@ public class ShownEvent extends GwtEvent<ShownHandler> {
     }
 
     public ShownEvent(NativeEvent nativeEvent) {
+        this(nativeEvent, false);
+    }
+
+    public ShownEvent(boolean autoShown) {
+        this(null, autoShown);
+    }
+
+    public ShownEvent(NativeEvent nativeEvent, boolean autoShown) {
         this.nativeEvent = nativeEvent;
+        this.autoShown = autoShown;
     }
 
     @Override
@@ -78,4 +88,7 @@ public class ShownEvent extends GwtEvent<ShownHandler> {
         nativeEvent.stopPropagation();
     }
 
+    public boolean isAutoShown() {
+        return autoShown;
+    }
 }
