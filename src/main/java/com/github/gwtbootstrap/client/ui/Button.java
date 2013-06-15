@@ -23,11 +23,14 @@ import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.DoubleClickEvent;
 import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.event.dom.client.DragEndEvent;
@@ -571,6 +574,14 @@ public class Button extends IconAnchor implements HasClickHandlers,
      */
     public void setBlock(boolean block) {
         setStyleName(Constants.BTN_BLOCK, block);
+    }
+
+    /**
+     * Programmatic equivalent of the user clicking the button.
+     */
+    public void click() {
+        NativeEvent event = Document.get().createClickEvent(0, 0, 0, 0, 0, false, false, false, false);
+        DomEvent.fireNativeEvent(event, this);
     }
 
 }
