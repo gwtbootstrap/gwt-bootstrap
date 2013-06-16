@@ -43,8 +43,8 @@ public class CellTable<T> extends
 
     public static enum TableType implements
             com.github.gwtbootstrap.client.ui.base.Style {
-        BORDERED("table-bordered"), STRIPED("table-striped"), CONDENSED(
-                "table-condensed");
+        BORDERED("table-bordered"), STRIPED("table-striped"), CONDENSED("table-condensed"),
+        HOVER("table-hover");
 
         private final String styleName;
 
@@ -158,6 +158,14 @@ public class CellTable<T> extends
             StyleHelper.addStyle(this, TableType.CONDENSED);
         } else {
             StyleHelper.removeStyle(this, TableType.CONDENSED);
+        }
+    }
+
+    public void setHover(boolean hover) {
+        if (hover) {
+            StyleHelper.addStyle(this, TableType.HOVER);
+        } else {
+            StyleHelper.removeStyle(this, TableType.HOVER);
         }
     }
 
