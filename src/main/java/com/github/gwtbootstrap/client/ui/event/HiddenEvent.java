@@ -20,15 +20,15 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * Represents an event that is fired when a widget is completely hidden.
- * 
- * @since 2.0.4.0
- * 
+ *
  * @author Dominik Mayer
- * 
+ * @author Danilo Reinert
+ *
  * @see HideEvent
  * @see ShowEvent
  * @see ShownEvent
- * 
+ *
+ * @since 2.0.4.0
  */
 public class HiddenEvent extends GwtEvent<HiddenHandler> {
 
@@ -72,7 +72,7 @@ public class HiddenEvent extends GwtEvent<HiddenHandler> {
      */
     public final void preventDefault() {
 
-        if(nativeEvent == null) return;
+        if (nativeEvent == null) return;
 
         nativeEvent.preventDefault();
     }
@@ -82,7 +82,7 @@ public class HiddenEvent extends GwtEvent<HiddenHandler> {
      */
     public final void stopPropagation() {
 
-        if(nativeEvent == null) return;
+        if (nativeEvent == null) return;
 
         nativeEvent.stopPropagation();
     }

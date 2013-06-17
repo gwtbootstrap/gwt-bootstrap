@@ -21,41 +21,41 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * Represents an event that is fired immediately when a widget's
  * <code>hide()</code> method is called.
- * 
- * @since 2.0.4.0
- * 
+ *
  * @author Dominik Mayer
- * 
+ * @author Danilo Reinert
+ *
  * @see HiddenEvent
  * @see ShowEvent
  * @see ShownEvent
- * 
+ *
+ * @since 2.0.4.0
  */
 public class HideEvent extends GwtEvent<HideHandler> {
 
     private static final Type<HideHandler> TYPE = new Type<HideHandler>();
     private final NativeEvent nativeEvent;
-    private final boolean autoHide;
+    private final boolean autoHidden;
 
     public static Type<HideHandler> getType() {
         return TYPE;
     }
-    
+
     public HideEvent() {
         this(null);
     }
 
-    public HideEvent(boolean autoHide) {
-        this(null, autoHide);
+    public HideEvent(boolean autoHidden) {
+        this(null, autoHidden);
     }
 
     public HideEvent(NativeEvent nativeEvent) {
         this(nativeEvent, false);
     }
 
-    public HideEvent(NativeEvent nativeEvent, boolean autoHide) {
+    public HideEvent(NativeEvent nativeEvent, boolean autoHidden) {
         this.nativeEvent = nativeEvent;
-        this.autoHide = autoHide;
+        this.autoHidden = autoHidden;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class HideEvent extends GwtEvent<HideHandler> {
      */
     public final void preventDefault() {
 
-        if(nativeEvent == null) return;
+        if (nativeEvent == null) return;
 
         nativeEvent.preventDefault();
     }
@@ -83,12 +83,12 @@ public class HideEvent extends GwtEvent<HideHandler> {
      */
     public final void stopPropagation() {
 
-        if(nativeEvent == null) return;
+        if (nativeEvent == null) return;
 
         nativeEvent.stopPropagation();
     }
 
-    public boolean isAutoHide() {
-        return autoHide;
+    public boolean isAutoHidden() {
+        return autoHidden;
     }
 }

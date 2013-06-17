@@ -19,18 +19,18 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * Handler interface for {@link ClosedEvent} events.
- * 
- * @since 2.0.4.0
- * 
+ *
  * @author Dominik Mayer
- * 
+ * @author Danilo Reinert
+ *
+ * @since 2.0.4.0
  */
-public interface ClosedHandler extends EventHandler {
+public interface ClosedHandler<T> extends EventHandler {
 
-	/**
-	 * This method is called when the has been closed.
-	 * 
-	 * @param closedEvent
-	 */
-	void onClosed(ClosedEvent closedEvent);
+    /**
+     * This method is called when the has been closed.
+     *
+     * @param closedEvent
+     */
+    void onClosed(ClosedEvent<T> closedEvent);
 }
