@@ -71,9 +71,11 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 
 	private void createAndAddTrigger() {
 		trigger = createTrigger();
-		trigger.addStyleName("dropdown-toggle");
-		trigger.getElement().setAttribute(Constants.DATA_TOGGLE, "dropdown");
-		super.add(trigger);
+        if (trigger != null) {
+            trigger.addStyleName("dropdown-toggle");
+            trigger.getElement().setAttribute(Constants.DATA_TOGGLE, "dropdown");
+            super.add(trigger);
+        }
 	}
 
 	/**
