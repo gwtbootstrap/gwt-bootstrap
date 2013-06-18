@@ -59,8 +59,8 @@ public class Pagination extends Composite implements HasStyle, IsResponsive, Has
     public Pagination() {
         paginationDiv.setStyle(Bootstrap.Pagination.LEFT);
         paginationDiv.add(list);
-        setSize(PaginationSize.NORMAL);
         initWidget(paginationDiv);
+        setSize(PaginationSize.NORMAL);
     }
 
     public void setAlignment(String alignment) {
