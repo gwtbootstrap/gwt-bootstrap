@@ -21,31 +21,41 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * Represents an event that is fired immediately when a widget's
  * <code>show()</code> method is called.
- * 
- * @since 2.0.4.0
- * 
+ *
  * @author Dominik Mayer
- * 
+ * @author Danilo Reinert
+ *
  * @see ShownEvent
  * @see HideEvent
  * @see HiddenEvent
- * 
+ *
+ * @since 2.0.4.0
  */
 public class ShownEvent extends GwtEvent<ShownHandler> {
 
     private static final Type<ShownHandler> TYPE = new Type<ShownHandler>();
     private final NativeEvent nativeEvent;
+    private final boolean autoShown;
 
     public static Type<ShownHandler> getType() {
         return TYPE;
     }
-    
+
     public ShownEvent() {
         this(null);
     }
 
     public ShownEvent(NativeEvent nativeEvent) {
+        this(nativeEvent, false);
+    }
+
+    public ShownEvent(boolean autoShown) {
+        this(null, autoShown);
+    }
+
+    public ShownEvent(NativeEvent nativeEvent, boolean autoShown) {
         this.nativeEvent = nativeEvent;
+        this.autoShown = autoShown;
     }
 
     @Override
@@ -63,7 +73,7 @@ public class ShownEvent extends GwtEvent<ShownHandler> {
      */
     public final void preventDefault() {
 
-        if(nativeEvent == null) return;
+        if (nativeEvent == null) return;
 
         nativeEvent.preventDefault();
     }
@@ -73,9 +83,12 @@ public class ShownEvent extends GwtEvent<ShownHandler> {
      */
     public final void stopPropagation() {
 
-        if(nativeEvent == null) return;
+        if (nativeEvent == null) return;
 
         nativeEvent.stopPropagation();
     }
 
+    public boolean isAutoShown() {
+        return autoShown;
+    }
 }
