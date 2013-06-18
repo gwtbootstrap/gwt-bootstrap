@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT-Bootstrap
+ *  Copyright 2013 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -28,9 +28,9 @@ import com.google.gwt.event.shared.EventHandler;
 public interface ClosedHandler<T> extends EventHandler {
 
     /**
-     * This method is called when the has been closed.
+     * Called when {@link ClosedEvent} is fired.
      *
-     * @param closedEvent
+     * @param event the {@link ClosedEvent} that was fired
      */
-    void onClosed(ClosedEvent<T> closedEvent);
+    void onClosed(ClosedEvent<T> event);
 }

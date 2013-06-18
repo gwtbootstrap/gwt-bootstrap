@@ -33,6 +33,6 @@ public interface HasCloseHandlers<T> extends com.google.gwt.event.logical.shared
      * @param handler the handler
      * @return {@link HandlerRegistration} used to remove this handler
      */
-    HandlerRegistration addClosedHandler(ClosedHandler handler);
+    HandlerRegistration addClosedHandler(ClosedHandler<T> handler);
 
 }
