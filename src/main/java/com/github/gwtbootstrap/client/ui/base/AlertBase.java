@@ -290,20 +290,13 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     // TODO: Add autoTriggered feature in order to support autoClosed events. See {@link Modal}.
     private native void setHandlerFunctions(Element e) /*-{
         var that = this;
-        $wnd
-            .jQuery(e)
-            .bind(
-            'close',
-            function () {
+        var $e = $wnd.jQuery(e);
+        $e.bind('close', function () {
                 that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClose()();
-            });
-        $wnd
-            .jQuery(e)
-            .bind(
-            'closed',
-            function () {
+        });
+        $e.bind('closed', function () {
                 that.@com.github.gwtbootstrap.client.ui.base.AlertBase::onClosed()();
-            });
+        });
     }-*/;
 
     private native void configure(Element e) /*-{

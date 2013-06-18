@@ -2,14 +2,13 @@
  *  Copyright 2012 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *  you may not use this file except in compliance $ese.
+ *  You may obtain a$e
+ *      http://www.$e$e2.0
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
+ *  Unless required$e law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  WITHOUT WARR$eITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
@@ -393,7 +392,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
     }
 
     private void reconfigure(boolean keyboard, BackdropType backdropType, boolean show) {
-
         if (backdropType == BackdropType.NORMAL) {
             reconfigure(getElement(), keyboard, true, show);
         } else if (backdropType == BackdropType.NONE) {
@@ -404,7 +402,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
     }
 
     private void configure(boolean keyboard, BackdropType backdropType, boolean show) {
-
         if (backdropType == BackdropType.NORMAL) {
             configure(getElement(), keyboard, true, show);
         } else if (backdropType == BackdropType.NONE) {
@@ -417,37 +414,52 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
     //@formatter:off
 
     private native void reconfigure(Element e, boolean k, boolean b, boolean s) /*-{
-        var modal = null;
-        if ($wnd.jQuery(e).data('modal')) {
-            modal = $wnd.jQuery(e).data('modal');
-            $wnd.jQuery(e).removeData('modal');
+        // Init vars
+        var $e = $wnd.jQuery(e);
+        var modal = $e.data('modal');
+        var wasShown = null;
+
+        // If element is modal, then unset it
+        if (modal) {
+            $e.removeData('modal');
+            wasShown = modal.isShown;
         }
-        $wnd.jQuery(e).modal({
+
+        // Apply modal again to the element
+        $e.modal({
             keyboard: k,
             backdrop: b,
             show: s
         });
 
-        if (modal) {
-            $wnd.jQuery(e).data('modal').isShown = modal.isShown;
+        // If previous modal was shown, then reset it to current modal
+        if (wasShown) {
+            $e.data('modal').isShown = wasShown;
         }
-
     }-*/;
 
     private native void reconfigure(Element e, boolean k, String b, boolean s) /*-{
-        var modal = null;
-        if ($wnd.jQuery(e).data('modal')) {
-            modal = $wnd.jQuery(e).data('modal');
-            $wnd.jQuery(e).removeData('modal');
+        // Init vars
+        var $e = $wnd.jQuery(e);
+        var modal = $e.data('modal');
+        var wasShown = null;
+
+        // If element is modal, then unset it
+        if (modal) {
+            $e.removeData('modal');
+            wasShown = modal.isShown;
         }
-        $wnd.jQuery(e).modal({
+
+        // Apply modal again to the element
+        $e.modal({
             keyboard: k,
             backdrop: b,
             show: s
         });
 
-        if (modal) {
-            $wnd.jQuery(e).data('modal').isShown = modal.isShown;
+        // If previous modal was shown, then reset it to current modal
+        if (wasShown) {
+            $e.data('modal').isShown = wasShown;
         }
     }-*/;
 
@@ -458,7 +470,6 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
             backdrop: b,
             show: s
         });
-
     }-*/;
 
     private native void configure(Element e, boolean k, String b, boolean s) /*-{
@@ -474,11 +485,13 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
     }-*/;
 
     private native void changeVisibility(Element e, String visibility, boolean autoTriggered) /*-{
-        $wnd.jQuery(e).data('modal').autoTriggered = autoTriggered;
-        $wnd.jQuery(e).modal(visibility);
+        var $e = $wnd.jQuery(e);
+        $e.data('modal').autoTriggered = autoTriggered;
+        $e.modal(visibility);
     }-*/;
 
     private native boolean getAutoTriggered(JavaScriptObject jso) /*-{
+        // Prevent null result
         if (jso.autoTriggered) return true;
         return false;
     }-*/;
@@ -488,26 +501,29 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
      */
     private native void setHandlerFunctions(Element element) /*-{
         var that = this;
+        var $el = $wnd.jQuery(element);
         var autoTriggeredCheck = function (event, removeProperty) {
-            if ($wnd.jQuery(event.target).data('modal').autoTriggered) {
+            var modal = $wnd.jQuery(event.target).data('modal');
+            if (modal.autoTriggered) {
                 event.autoTriggered = true;
                 if (removeProperty)
-                    $wnd.jQuery(event.target).data('modal').autoTriggered = false;
+                    modal.autoTriggered = false;
             }
         };
-        $wnd.jQuery(element).on('hide', function (e) {
+
+        $el.on('hide', function (e) {
             autoTriggeredCheck(e);
             that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);
         });
-        $wnd.jQuery(element).on('hidden', function (e) {
+        $el.on('hidden', function (e) {
             autoTriggeredCheck(e, true);
             that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);
         });
-        $wnd.jQuery(element).on('show', function (e) {
+        $el.on('show', function (e) {
             autoTriggeredCheck(e);
             that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);
         });
-        $wnd.jQuery(element).on('shown', function (e) {
+        $el.on('shown', function (e) {
             autoTriggeredCheck(e, true);
             that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);
         });
@@ -517,10 +533,11 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
      * Unlinks all the Java functions that fire the events.
      */
     private native void unsetHandlerFunctions(Element e) /*-{
-        $wnd.jQuery(e).off('hide');
-        $wnd.jQuery(e).off('hidden');
-        $wnd.jQuery(e).off('show');
-        $wnd.jQuery(e).off('shown');
+        var $e = $wnd.jQuery(e);
+        $e.off('hide');
+        $e.off('hidden');
+        $e.off('show');
+        $e.off('shown');
     }-*/;
     //@formatter:on
 
