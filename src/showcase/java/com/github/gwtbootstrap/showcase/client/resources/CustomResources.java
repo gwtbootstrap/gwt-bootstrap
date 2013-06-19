@@ -55,7 +55,7 @@ public interface CustomResources extends Resources {
 
     ImageResource logo();
 
-    @Source("com/github/gwtbootstrap/showcase/client/resources/css/showcase.css")
+    @Source("css/showcase.css")
     Showcase showcase();
 
 }

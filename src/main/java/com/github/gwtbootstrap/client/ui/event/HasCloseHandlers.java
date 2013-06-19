@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012 GWT-Bootstrap
+ *  Copyright 2013 GWT-Bootstrap
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -33,6 +33,6 @@ public interface HasCloseHandlers<T> extends com.google.gwt.event.logical.shared
      * @param handler the handler
      * @return {@link HandlerRegistration} used to remove this handler
      */
-    HandlerRegistration addClosedHandler(ClosedHandler handler);
+    HandlerRegistration addClosedHandler(ClosedHandler<T> handler);
 
 }

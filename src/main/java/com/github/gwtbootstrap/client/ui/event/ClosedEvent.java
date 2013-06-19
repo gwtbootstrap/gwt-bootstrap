@@ -71,6 +71,9 @@ public class ClosedEvent<T> extends GwtEvent<ClosedHandler<T>> {
         this.autoClosed = autoClosed;
     }
 
+    // The instance knows its of type T, but the TYPE
+    // field itself does not, so we have to do an unsafe cast here.
+    @SuppressWarnings("unchecked")
     @Override
     public final Type<ClosedHandler<T>> getAssociatedType() {
         return (Type) TYPE;
