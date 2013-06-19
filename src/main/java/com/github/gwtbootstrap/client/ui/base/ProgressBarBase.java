@@ -11,7 +11,7 @@ public class ProgressBarBase extends DivWidget {
 
         STRIPED(Bootstrap.progress_striped),
         
-        ANIMATED(Bootstrap.progress_striped);       
+        ANIMATED(Bootstrap.progress_animated);
         
         private final String styleName;
 
