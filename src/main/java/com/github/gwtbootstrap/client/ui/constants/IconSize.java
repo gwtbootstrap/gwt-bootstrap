@@ -24,10 +24,9 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  */
 public enum IconSize implements Style {
 
-    LARGE("large"), SMALL("small"), DEFAULT("");
+    DEFAULT(""), LARGE("large"), TWO_TIMES("2x"), THREE_TIMES("3x"), FOUR_TIMES("4x"), FIVE_TIMES("5x");
 
     private String style;
-
 
     private IconSize(String style) {
         this.style = style;
@@ -38,6 +37,6 @@ public enum IconSize implements Style {
      */
     @Override
     public String get() {
-        return "icon-" + style;
+        return style == null || style.length() == 0 ? "" : "icon-" + style;
     }
 }
