@@ -16,13 +16,14 @@
      limitations under the License.
 
 -->
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN"
+        "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
 <module>
-	<stylesheet src="css/bootstrap.min.css"/>
-	<stylesheet src="css/gwt-bootstrap.css"/>
-    <stylesheet src="css/font-awesome.css" />
-	<public path="resources">
-		<exclude name="**/*.java"/>
-		<exclude name="**/*.class"/>
-	</public>
+    <stylesheet src="css/bootstrap.min.css"/>
+    <stylesheet src="css/gwt-bootstrap.css"/>
+    <stylesheet src="css/font-awesome.min.css"/>
+    <public path="resources">
+        <exclude name="**/*.java"/>
+        <exclude name="**/*.class"/>
+    </public>
 </module>
