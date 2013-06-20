@@ -269,7 +269,8 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     /**
      * {@inheritDoc}
      */
-    public HandlerRegistration addCloseHandler(CloseHandler handler) {
+    @Override
+    public HandlerRegistration addCloseHandler(CloseHandler<AlertBase> handler) {
 
         return addHandler(handler, CloseEvent.getType());
     }
@@ -277,7 +278,8 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     /**
      * {@inheritDoc}
      */
-    public HandlerRegistration addClosedHandler(ClosedHandler handler) {
+    @Override
+    public HandlerRegistration addClosedHandler(ClosedHandler<AlertBase> handler) {
         return addHandler(handler, ClosedEvent.getType());
     }
 
