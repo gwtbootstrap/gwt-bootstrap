@@ -51,7 +51,7 @@ public class ResourceInjector {
         
         injectResourceCssAsFile("bootstrap.min.css");
         injectResourceCssAsFile("gwt-bootstrap.css");
-        injectResourceCssAsFile("font-awesome.css");
+        injectResourceCssAsFile("font-awesome.min.css");
 
         configure();
         
