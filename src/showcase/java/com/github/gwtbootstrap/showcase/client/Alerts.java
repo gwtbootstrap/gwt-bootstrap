@@ -112,7 +112,7 @@ public class Alerts extends Composite {
     }
     
     @UiHandler({"setupAlert","setupAlertBlock"})
-    public void onHiddenAlert(ClosedEvent e) {
+    public void onHiddenAlert(ClosedEvent<AlertBase> e) {
         showButton.setEnabled(true);
     }
     
