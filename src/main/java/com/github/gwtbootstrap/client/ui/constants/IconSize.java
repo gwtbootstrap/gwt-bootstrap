@@ -37,6 +37,6 @@ public enum IconSize implements Style {
      */
     @Override
     public String get() {
-        return style == null || style.length() == 0 ? "" : "icon-" + style;
+        return style == null || style.isEmpty() ? "" : "icon-" + style;
     }
 }
