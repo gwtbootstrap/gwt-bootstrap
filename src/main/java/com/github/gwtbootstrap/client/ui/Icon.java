@@ -105,6 +105,15 @@ public class Icon extends Widget {
     }
     
     /**
+     * Sets the icon size.
+     *
+     * @param size the icon size
+     */
+    public void setSize(IconSize size) {
+        setIconSize(size);
+    }
+    
+    /**
      * Get the icon type
      * 
      * @return icon type, or null, if the Icon is no instance of {@link IconType}
