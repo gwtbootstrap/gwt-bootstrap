@@ -16,7 +16,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
@@ -486,7 +486,11 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 
     private native void changeVisibility(Element e, String visibility, boolean autoTriggered) /*-{
         var $e = $wnd.jQuery(e);
-        $e.data('modal').autoTriggered = autoTriggered;
+
+        var modal = $e.data('modal');
+        if (modal)
+            modal.autoTriggered = autoTriggered;
+
         $e.modal(visibility);
     }-*/;
 
@@ -504,7 +508,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
         var $el = $wnd.jQuery(element);
         var autoTriggeredCheck = function (event, removeProperty) {
             var modal = $wnd.jQuery(event.target).data('modal');
-            if (modal.autoTriggered) {
+            if (modal && modal.autoTriggered) {
                 event.autoTriggered = true;
                 if (removeProperty)
                     modal.autoTriggered = false;
@@ -512,20 +516,32 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
         };
 
         $el.on('hide', function (e) {
-            autoTriggeredCheck(e);
-            that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e);
+                that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
         $el.on('hidden', function (e) {
-            autoTriggeredCheck(e, true);
-            that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e, true);
+                that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
         $el.on('show', function (e) {
-            autoTriggeredCheck(e);
-            that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e);
+                that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
         $el.on('shown', function (e) {
-            autoTriggeredCheck(e, true);
-            that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e, true);
+                that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
     }-*/;
 
