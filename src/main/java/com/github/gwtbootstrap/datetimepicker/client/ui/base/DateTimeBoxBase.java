@@ -22,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
 import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
 import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
