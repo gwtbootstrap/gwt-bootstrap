@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;

@@ -3,7 +3,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.*;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @see <a href="http://twitter.github.com/bootstrap/javascript.html#collapse">Twitter Bootstrap document</a>
  *
  */
-public class AccordionGroup extends DivWidget implements HasIcon,HasVisibility, HasVisibleHandlers  {
+public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility, HasVisibleHandlers  {
 
     private DivWidget innerBody = new DivWidget(Constants.ACCORDION_INNER);
     
@@ -55,7 +55,9 @@ public class AccordionGroup extends DivWidget implements HasIcon,HasVisibility, 
         trigger.addStyleName(Constants.ACCORDION_TOGGLE);
         
         collapseTrigger = new CollapseTrigger("#" + collapse.getId());
-        
+
+        collapseTrigger.setAccordionTrigger(true);
+
         collapseTrigger.setWidget(trigger);
 
         DivWidget heading = new DivWidget(Constants.ACCORDION_HEADING);

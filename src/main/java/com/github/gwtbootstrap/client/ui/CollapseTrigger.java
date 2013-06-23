@@ -53,7 +53,9 @@ public class CollapseTrigger extends MarkupWidget {
     private String target;
     
     private String parent;
-    
+
+    private boolean isAccordionTrigger = false;
+
     /**
      * Create an empty widget with target selector
      * @param target selector (eg: #myCollapse)
@@ -76,17 +78,27 @@ public class CollapseTrigger extends MarkupWidget {
         
         if(widget != null) {
             Element element = widget.getElement();
-            
-            if(element.hasAttribute(Constants.DATA_TOGGLE) 
+
+            if (isAccordionTrigger) {
+                element.setAttribute(Constants.DATA_TOGGLE, Constants.COLLAPSE);
+                element.removeAttribute(Constants.DATA_TARGET);
+                element.setAttribute("href", target);
+                if(parent != null && !parent.isEmpty()) {
+                    setParent(parent);
+                }
+                return super.asWidget();
+            }
+
+            if(element.hasAttribute(Constants.DATA_TOGGLE)
                     && widget instanceof HasClickHandlers
                     && !widget.isAttached()) {
                 Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-                    
+
                     @Override
                     public void execute() {
                         Collapse.configure(target, parent, false);
                         ((HasClickHandlers)widget).addClickHandler(new ClickHandler() {
-                            
+
                             @Override
                             public void onClick(ClickEvent event) {
                                 Collapse.changeVisibility(target, "toggle");
@@ -96,11 +108,10 @@ public class CollapseTrigger extends MarkupWidget {
                 });
                 return super.asWidget();
             }
-            
-            
-            element.setAttribute(Constants.DATA_TOGGLE, Constants.COLLAPSE);
+
             element.setAttribute(Constants.DATA_TARGET, target);
-            
+            element.setAttribute(Constants.DATA_TOGGLE, Constants.COLLAPSE);
+
             if(parent != null && !parent.isEmpty()) {
                 setParent(parent);
             }
@@ -148,5 +159,12 @@ public class CollapseTrigger extends MarkupWidget {
         }
         
     }
-    
+
+    protected boolean isAccordionTrigger() {
+        return isAccordionTrigger;
+    }
+
+    protected void setAccordionTrigger(boolean accordionTrigger) {
+        isAccordionTrigger = accordionTrigger;
+    }
 }

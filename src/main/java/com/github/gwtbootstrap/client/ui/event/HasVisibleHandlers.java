@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.gwtbootstrap.client.ui.base;
+package com.github.gwtbootstrap.client.ui.event;
 
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
