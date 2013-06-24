@@ -15,10 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.HasType;
-import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.base.NavbarButton;
-import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.base.*;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.DismissType;
@@ -291,9 +288,16 @@ public class Button extends IconAnchor implements HasClickHandlers,
 			setLoadingBehavior("complete");
 		}
 
-		private void setLoadingBehavior(String behavior) {
-			setLoadingBehavior(getElement(), behavior);
-		}
+        private void setLoadingBehavior(String behavior) {
+            // Remove icon because it will be removed by Bootstrap's "$(element).button(behavior)" anyway
+            icon.removeFromParent();
+
+            setLoadingBehavior(getElement(), behavior);
+
+            // Recreate icon and add it to inner content with setText()
+            icon = new Icon(icon.getIconType());
+            setText(getElement().getInnerText());
+        }
 
 		private native void setLoadingBehavior(Element e, String behavior) /*-{
 			$wnd.jQuery(e).button(behavior);

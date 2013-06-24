@@ -63,11 +63,12 @@ import com.google.gwt.user.client.ui.impl.FocusImpl;
  * @author Dominik Mayer
  * @author ohashi keisuke
  */
-public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled, Focusable, HasName, HasMouseDownHandlers {
+public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHref, HasClickHandlers, HasEnabled,
+        Focusable, HasName, HasMouseDownHandlers {
 
     private static final FocusImpl impl = FocusImpl.getFocusImplForWidget();
 
-	private Icon icon = new Icon();
+	protected Icon icon = new Icon();
 
 	private TextNode text = new TextNode("");
 
