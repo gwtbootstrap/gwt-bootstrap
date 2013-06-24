@@ -24,7 +24,7 @@
 <span class="sourceLineNo">016</span><a name="line.16"></a>
 <span class="sourceLineNo">017</span>import com.github.gwtbootstrap.client.ui.base.DivWidget;<a name="line.17"></a>
 <span class="sourceLineNo">018</span>import com.github.gwtbootstrap.client.ui.base.HasVisibility;<a name="line.18"></a>
-<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;<a name="line.19"></a>
+<span class="sourceLineNo">019</span>import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;<a name="line.19"></a>
 <span class="sourceLineNo">020</span>import com.github.gwtbootstrap.client.ui.base.IsAnimated;<a name="line.20"></a>
 <span class="sourceLineNo">021</span>import com.github.gwtbootstrap.client.ui.constants.BackdropType;<a name="line.21"></a>
 <span class="sourceLineNo">022</span>import com.github.gwtbootstrap.client.ui.constants.Constants;<a name="line.22"></a>
@@ -494,129 +494,145 @@
 <span class="sourceLineNo">486</span><a name="line.486"></a>
 <span class="sourceLineNo">487</span>    private native void changeVisibility(Element e, String visibility, boolean autoTriggered) /*-{<a name="line.487"></a>
 <span class="sourceLineNo">488</span>        var $e = $wnd.jQuery(e);<a name="line.488"></a>
-<span class="sourceLineNo">489</span>        $e.data('modal').autoTriggered = autoTriggered;<a name="line.489"></a>
-<span class="sourceLineNo">490</span>        $e.modal(visibility);<a name="line.490"></a>
-<span class="sourceLineNo">491</span>    }-*/;<a name="line.491"></a>
-<span class="sourceLineNo">492</span><a name="line.492"></a>
-<span class="sourceLineNo">493</span>    private native boolean getAutoTriggered(JavaScriptObject jso) /*-{<a name="line.493"></a>
-<span class="sourceLineNo">494</span>        // Prevent null result<a name="line.494"></a>
-<span class="sourceLineNo">495</span>        if (jso.autoTriggered) return true;<a name="line.495"></a>
-<span class="sourceLineNo">496</span>        return false;<a name="line.496"></a>
-<span class="sourceLineNo">497</span>    }-*/;<a name="line.497"></a>
-<span class="sourceLineNo">498</span><a name="line.498"></a>
-<span class="sourceLineNo">499</span>    /**<a name="line.499"></a>
-<span class="sourceLineNo">500</span>     * Links the Java functions that fire the events.<a name="line.500"></a>
-<span class="sourceLineNo">501</span>     */<a name="line.501"></a>
-<span class="sourceLineNo">502</span>    private native void setHandlerFunctions(Element element) /*-{<a name="line.502"></a>
-<span class="sourceLineNo">503</span>        var that = this;<a name="line.503"></a>
-<span class="sourceLineNo">504</span>        var $el = $wnd.jQuery(element);<a name="line.504"></a>
-<span class="sourceLineNo">505</span>        var autoTriggeredCheck = function (event, removeProperty) {<a name="line.505"></a>
-<span class="sourceLineNo">506</span>            var modal = $wnd.jQuery(event.target).data('modal');<a name="line.506"></a>
-<span class="sourceLineNo">507</span>            if (modal.autoTriggered) {<a name="line.507"></a>
-<span class="sourceLineNo">508</span>                event.autoTriggered = true;<a name="line.508"></a>
-<span class="sourceLineNo">509</span>                if (removeProperty)<a name="line.509"></a>
-<span class="sourceLineNo">510</span>                    modal.autoTriggered = false;<a name="line.510"></a>
-<span class="sourceLineNo">511</span>            }<a name="line.511"></a>
-<span class="sourceLineNo">512</span>        };<a name="line.512"></a>
-<span class="sourceLineNo">513</span><a name="line.513"></a>
-<span class="sourceLineNo">514</span>        $el.on('hide', function (e) {<a name="line.514"></a>
-<span class="sourceLineNo">515</span>            autoTriggeredCheck(e);<a name="line.515"></a>
-<span class="sourceLineNo">516</span>            that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);<a name="line.516"></a>
-<span class="sourceLineNo">517</span>        });<a name="line.517"></a>
-<span class="sourceLineNo">518</span>        $el.on('hidden', function (e) {<a name="line.518"></a>
-<span class="sourceLineNo">519</span>            autoTriggeredCheck(e, true);<a name="line.519"></a>
-<span class="sourceLineNo">520</span>            that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);<a name="line.520"></a>
-<span class="sourceLineNo">521</span>        });<a name="line.521"></a>
-<span class="sourceLineNo">522</span>        $el.on('show', function (e) {<a name="line.522"></a>
-<span class="sourceLineNo">523</span>            autoTriggeredCheck(e);<a name="line.523"></a>
-<span class="sourceLineNo">524</span>            that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);<a name="line.524"></a>
-<span class="sourceLineNo">525</span>        });<a name="line.525"></a>
-<span class="sourceLineNo">526</span>        $el.on('shown', function (e) {<a name="line.526"></a>
-<span class="sourceLineNo">527</span>            autoTriggeredCheck(e, true);<a name="line.527"></a>
-<span class="sourceLineNo">528</span>            that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);<a name="line.528"></a>
-<span class="sourceLineNo">529</span>        });<a name="line.529"></a>
-<span class="sourceLineNo">530</span>    }-*/;<a name="line.530"></a>
-<span class="sourceLineNo">531</span><a name="line.531"></a>
-<span class="sourceLineNo">532</span>    /**<a name="line.532"></a>
-<span class="sourceLineNo">533</span>     * Unlinks all the Java functions that fire the events.<a name="line.533"></a>
-<span class="sourceLineNo">534</span>     */<a name="line.534"></a>
-<span class="sourceLineNo">535</span>    private native void unsetHandlerFunctions(Element e) /*-{<a name="line.535"></a>
-<span class="sourceLineNo">536</span>        var $e = $wnd.jQuery(e);<a name="line.536"></a>
-<span class="sourceLineNo">537</span>        $e.off('hide');<a name="line.537"></a>
-<span class="sourceLineNo">538</span>        $e.off('hidden');<a name="line.538"></a>
-<span class="sourceLineNo">539</span>        $e.off('show');<a name="line.539"></a>
-<span class="sourceLineNo">540</span>        $e.off('shown');<a name="line.540"></a>
-<span class="sourceLineNo">541</span>    }-*/;<a name="line.541"></a>
-<span class="sourceLineNo">542</span>    //@formatter:on<a name="line.542"></a>
-<span class="sourceLineNo">543</span><a name="line.543"></a>
-<span class="sourceLineNo">544</span>    /**<a name="line.544"></a>
-<span class="sourceLineNo">545</span>     * {@inheritDoc}<a name="line.545"></a>
-<span class="sourceLineNo">546</span>     */<a name="line.546"></a>
-<span class="sourceLineNo">547</span>    public HandlerRegistration addHideHandler(HideHandler handler) {<a name="line.547"></a>
-<span class="sourceLineNo">548</span>        return addHandler(handler, HideEvent.getType());<a name="line.548"></a>
-<span class="sourceLineNo">549</span>    }<a name="line.549"></a>
-<span class="sourceLineNo">550</span><a name="line.550"></a>
-<span class="sourceLineNo">551</span>    /**<a name="line.551"></a>
-<span class="sourceLineNo">552</span>     * {@inheritDoc}<a name="line.552"></a>
-<span class="sourceLineNo">553</span>     */<a name="line.553"></a>
-<span class="sourceLineNo">554</span>    public HandlerRegistration addHiddenHandler(HiddenHandler handler) {<a name="line.554"></a>
-<span class="sourceLineNo">555</span>        return addHandler(handler, HiddenEvent.getType());<a name="line.555"></a>
-<span class="sourceLineNo">556</span>    }<a name="line.556"></a>
-<span class="sourceLineNo">557</span><a name="line.557"></a>
-<span class="sourceLineNo">558</span>    /**<a name="line.558"></a>
-<span class="sourceLineNo">559</span>     * {@inheritDoc}<a name="line.559"></a>
-<span class="sourceLineNo">560</span>     */<a name="line.560"></a>
-<span class="sourceLineNo">561</span>    public HandlerRegistration addShowHandler(ShowHandler handler) {<a name="line.561"></a>
-<span class="sourceLineNo">562</span>        return addHandler(handler, ShowEvent.getType());<a name="line.562"></a>
-<span class="sourceLineNo">563</span>    }<a name="line.563"></a>
-<span class="sourceLineNo">564</span><a name="line.564"></a>
-<span class="sourceLineNo">565</span>    /**<a name="line.565"></a>
-<span class="sourceLineNo">566</span>     * {@inheritDoc}<a name="line.566"></a>
-<span class="sourceLineNo">567</span>     */<a name="line.567"></a>
-<span class="sourceLineNo">568</span>    public HandlerRegistration addShownHandler(ShownHandler handler) {<a name="line.568"></a>
-<span class="sourceLineNo">569</span>        return addHandler(handler, ShownEvent.getType());<a name="line.569"></a>
-<span class="sourceLineNo">570</span>    }<a name="line.570"></a>
-<span class="sourceLineNo">571</span><a name="line.571"></a>
-<span class="sourceLineNo">572</span>    /**<a name="line.572"></a>
-<span class="sourceLineNo">573</span>     * Show/Hide close button. The Modal must have a title.<a name="line.573"></a>
-<span class="sourceLineNo">574</span>     *<a name="line.574"></a>
-<span class="sourceLineNo">575</span>     * @param visible &lt;b&gt;true&lt;/b&gt; for show and &lt;b&gt;false&lt;/b&gt; to hide. Defaults is<a name="line.575"></a>
-<span class="sourceLineNo">576</span>     *                &lt;b&gt;true&lt;/b&gt;.<a name="line.576"></a>
-<span class="sourceLineNo">577</span>     */<a name="line.577"></a>
-<span class="sourceLineNo">578</span>    public void setCloseVisible(boolean visible) {<a name="line.578"></a>
-<span class="sourceLineNo">579</span>        close.getElement().getStyle().setVisibility(visible<a name="line.579"></a>
-<span class="sourceLineNo">580</span>                ? Style.Visibility.VISIBLE<a name="line.580"></a>
-<span class="sourceLineNo">581</span>                : Style.Visibility.HIDDEN);<a name="line.581"></a>
-<span class="sourceLineNo">582</span>    }<a name="line.582"></a>
-<span class="sourceLineNo">583</span><a name="line.583"></a>
-<span class="sourceLineNo">584</span>    /**<a name="line.584"></a>
-<span class="sourceLineNo">585</span>     * @deprecated modal do not support setSize method<a name="line.585"></a>
-<span class="sourceLineNo">586</span>     */<a name="line.586"></a>
-<span class="sourceLineNo">587</span>    @Override<a name="line.587"></a>
-<span class="sourceLineNo">588</span>    public void setSize(String width, String height) {<a name="line.588"></a>
-<span class="sourceLineNo">589</span>        throw new UnsupportedOperationException("modal do not support setSize method");<a name="line.589"></a>
-<span class="sourceLineNo">590</span>    }<a name="line.590"></a>
-<span class="sourceLineNo">591</span><a name="line.591"></a>
-<span class="sourceLineNo">592</span>    /**<a name="line.592"></a>
-<span class="sourceLineNo">593</span>     * Sets the Modal's width.<a name="line.593"></a>
-<span class="sourceLineNo">594</span>     *<a name="line.594"></a>
-<span class="sourceLineNo">595</span>     * @param width Modal's new width, in px<a name="line.595"></a>
-<span class="sourceLineNo">596</span>     */<a name="line.596"></a>
-<span class="sourceLineNo">597</span>    public void setWidth(int width) {<a name="line.597"></a>
-<span class="sourceLineNo">598</span>        DOM.setStyleAttribute(this.getElement(), "width", width + "px");<a name="line.598"></a>
-<span class="sourceLineNo">599</span>        DOM.setStyleAttribute(this.getElement(), "marginLeft", (-width / 2) + "px");<a name="line.599"></a>
-<span class="sourceLineNo">600</span>    }<a name="line.600"></a>
-<span class="sourceLineNo">601</span><a name="line.601"></a>
-<span class="sourceLineNo">602</span>    /**<a name="line.602"></a>
-<span class="sourceLineNo">603</span>     * Sets the Modal's body maxHeight.<a name="line.603"></a>
-<span class="sourceLineNo">604</span>     *<a name="line.604"></a>
-<span class="sourceLineNo">605</span>     * @param maxHeight the Modal's body new maxHeight, in CSS units (e.g. "10px", "1em")<a name="line.605"></a>
-<span class="sourceLineNo">606</span>     */<a name="line.606"></a>
-<span class="sourceLineNo">607</span>    public void setMaxHeigth(String maxHeight) {<a name="line.607"></a>
-<span class="sourceLineNo">608</span>        DOM.setStyleAttribute(body.getElement(), "maxHeight", maxHeight);<a name="line.608"></a>
-<span class="sourceLineNo">609</span>    }<a name="line.609"></a>
-<span class="sourceLineNo">610</span><a name="line.610"></a>
-<span class="sourceLineNo">611</span>}<a name="line.611"></a>
+<span class="sourceLineNo">489</span><a name="line.489"></a>
+<span class="sourceLineNo">490</span>        var modal = $e.data('modal');<a name="line.490"></a>
+<span class="sourceLineNo">491</span>        if (modal)<a name="line.491"></a>
+<span class="sourceLineNo">492</span>            modal.autoTriggered = autoTriggered;<a name="line.492"></a>
+<span class="sourceLineNo">493</span><a name="line.493"></a>
+<span class="sourceLineNo">494</span>        $e.modal(visibility);<a name="line.494"></a>
+<span class="sourceLineNo">495</span>    }-*/;<a name="line.495"></a>
+<span class="sourceLineNo">496</span><a name="line.496"></a>
+<span class="sourceLineNo">497</span>    private native boolean getAutoTriggered(JavaScriptObject jso) /*-{<a name="line.497"></a>
+<span class="sourceLineNo">498</span>        // Prevent null result<a name="line.498"></a>
+<span class="sourceLineNo">499</span>        if (jso.autoTriggered) return true;<a name="line.499"></a>
+<span class="sourceLineNo">500</span>        return false;<a name="line.500"></a>
+<span class="sourceLineNo">501</span>    }-*/;<a name="line.501"></a>
+<span class="sourceLineNo">502</span><a name="line.502"></a>
+<span class="sourceLineNo">503</span>    /**<a name="line.503"></a>
+<span class="sourceLineNo">504</span>     * Links the Java functions that fire the events.<a name="line.504"></a>
+<span class="sourceLineNo">505</span>     */<a name="line.505"></a>
+<span class="sourceLineNo">506</span>    private native void setHandlerFunctions(Element element) /*-{<a name="line.506"></a>
+<span class="sourceLineNo">507</span>        var that = this;<a name="line.507"></a>
+<span class="sourceLineNo">508</span>        var $el = $wnd.jQuery(element);<a name="line.508"></a>
+<span class="sourceLineNo">509</span>        var autoTriggeredCheck = function (event, removeProperty) {<a name="line.509"></a>
+<span class="sourceLineNo">510</span>            var modal = $wnd.jQuery(event.target).data('modal');<a name="line.510"></a>
+<span class="sourceLineNo">511</span>            if (modal &amp;&amp; modal.autoTriggered) {<a name="line.511"></a>
+<span class="sourceLineNo">512</span>                event.autoTriggered = true;<a name="line.512"></a>
+<span class="sourceLineNo">513</span>                if (removeProperty)<a name="line.513"></a>
+<span class="sourceLineNo">514</span>                    modal.autoTriggered = false;<a name="line.514"></a>
+<span class="sourceLineNo">515</span>            }<a name="line.515"></a>
+<span class="sourceLineNo">516</span>        };<a name="line.516"></a>
+<span class="sourceLineNo">517</span><a name="line.517"></a>
+<span class="sourceLineNo">518</span>        $el.on('hide', function (e) {<a name="line.518"></a>
+<span class="sourceLineNo">519</span>            if (e.target === this) {<a name="line.519"></a>
+<span class="sourceLineNo">520</span>                autoTriggeredCheck(e);<a name="line.520"></a>
+<span class="sourceLineNo">521</span>                that.@com.github.gwtbootstrap.client.ui.Modal::onHide(Lcom/google/gwt/user/client/Event;)(e);<a name="line.521"></a>
+<span class="sourceLineNo">522</span>                e.stopPropagation();<a name="line.522"></a>
+<span class="sourceLineNo">523</span>            }<a name="line.523"></a>
+<span class="sourceLineNo">524</span>        });<a name="line.524"></a>
+<span class="sourceLineNo">525</span>        $el.on('hidden', function (e) {<a name="line.525"></a>
+<span class="sourceLineNo">526</span>            if (e.target === this) {<a name="line.526"></a>
+<span class="sourceLineNo">527</span>                autoTriggeredCheck(e, true);<a name="line.527"></a>
+<span class="sourceLineNo">528</span>                that.@com.github.gwtbootstrap.client.ui.Modal::onHidden(Lcom/google/gwt/user/client/Event;)(e);<a name="line.528"></a>
+<span class="sourceLineNo">529</span>                e.stopPropagation();<a name="line.529"></a>
+<span class="sourceLineNo">530</span>            }<a name="line.530"></a>
+<span class="sourceLineNo">531</span>        });<a name="line.531"></a>
+<span class="sourceLineNo">532</span>        $el.on('show', function (e) {<a name="line.532"></a>
+<span class="sourceLineNo">533</span>            if (e.target === this) {<a name="line.533"></a>
+<span class="sourceLineNo">534</span>                autoTriggeredCheck(e);<a name="line.534"></a>
+<span class="sourceLineNo">535</span>                that.@com.github.gwtbootstrap.client.ui.Modal::onShow(Lcom/google/gwt/user/client/Event;)(e);<a name="line.535"></a>
+<span class="sourceLineNo">536</span>                e.stopPropagation();<a name="line.536"></a>
+<span class="sourceLineNo">537</span>            }<a name="line.537"></a>
+<span class="sourceLineNo">538</span>        });<a name="line.538"></a>
+<span class="sourceLineNo">539</span>        $el.on('shown', function (e) {<a name="line.539"></a>
+<span class="sourceLineNo">540</span>            if (e.target === this) {<a name="line.540"></a>
+<span class="sourceLineNo">541</span>                autoTriggeredCheck(e, true);<a name="line.541"></a>
+<span class="sourceLineNo">542</span>                that.@com.github.gwtbootstrap.client.ui.Modal::onShown(Lcom/google/gwt/user/client/Event;)(e);<a name="line.542"></a>
+<span class="sourceLineNo">543</span>                e.stopPropagation();<a name="line.543"></a>
+<span class="sourceLineNo">544</span>            }<a name="line.544"></a>
+<span class="sourceLineNo">545</span>        });<a name="line.545"></a>
+<span class="sourceLineNo">546</span>    }-*/;<a name="line.546"></a>
+<span class="sourceLineNo">547</span><a name="line.547"></a>
+<span class="sourceLineNo">548</span>    /**<a name="line.548"></a>
+<span class="sourceLineNo">549</span>     * Unlinks all the Java functions that fire the events.<a name="line.549"></a>
+<span class="sourceLineNo">550</span>     */<a name="line.550"></a>
+<span class="sourceLineNo">551</span>    private native void unsetHandlerFunctions(Element e) /*-{<a name="line.551"></a>
+<span class="sourceLineNo">552</span>        var $e = $wnd.jQuery(e);<a name="line.552"></a>
+<span class="sourceLineNo">553</span>        $e.off('hide');<a name="line.553"></a>
+<span class="sourceLineNo">554</span>        $e.off('hidden');<a name="line.554"></a>
+<span class="sourceLineNo">555</span>        $e.off('show');<a name="line.555"></a>
+<span class="sourceLineNo">556</span>        $e.off('shown');<a name="line.556"></a>
+<span class="sourceLineNo">557</span>    }-*/;<a name="line.557"></a>
+<span class="sourceLineNo">558</span>    //@formatter:on<a name="line.558"></a>
+<span class="sourceLineNo">559</span><a name="line.559"></a>
+<span class="sourceLineNo">560</span>    /**<a name="line.560"></a>
+<span class="sourceLineNo">561</span>     * {@inheritDoc}<a name="line.561"></a>
+<span class="sourceLineNo">562</span>     */<a name="line.562"></a>
+<span class="sourceLineNo">563</span>    public HandlerRegistration addHideHandler(HideHandler handler) {<a name="line.563"></a>
+<span class="sourceLineNo">564</span>        return addHandler(handler, HideEvent.getType());<a name="line.564"></a>
+<span class="sourceLineNo">565</span>    }<a name="line.565"></a>
+<span class="sourceLineNo">566</span><a name="line.566"></a>
+<span class="sourceLineNo">567</span>    /**<a name="line.567"></a>
+<span class="sourceLineNo">568</span>     * {@inheritDoc}<a name="line.568"></a>
+<span class="sourceLineNo">569</span>     */<a name="line.569"></a>
+<span class="sourceLineNo">570</span>    public HandlerRegistration addHiddenHandler(HiddenHandler handler) {<a name="line.570"></a>
+<span class="sourceLineNo">571</span>        return addHandler(handler, HiddenEvent.getType());<a name="line.571"></a>
+<span class="sourceLineNo">572</span>    }<a name="line.572"></a>
+<span class="sourceLineNo">573</span><a name="line.573"></a>
+<span class="sourceLineNo">574</span>    /**<a name="line.574"></a>
+<span class="sourceLineNo">575</span>     * {@inheritDoc}<a name="line.575"></a>
+<span class="sourceLineNo">576</span>     */<a name="line.576"></a>
+<span class="sourceLineNo">577</span>    public HandlerRegistration addShowHandler(ShowHandler handler) {<a name="line.577"></a>
+<span class="sourceLineNo">578</span>        return addHandler(handler, ShowEvent.getType());<a name="line.578"></a>
+<span class="sourceLineNo">579</span>    }<a name="line.579"></a>
+<span class="sourceLineNo">580</span><a name="line.580"></a>
+<span class="sourceLineNo">581</span>    /**<a name="line.581"></a>
+<span class="sourceLineNo">582</span>     * {@inheritDoc}<a name="line.582"></a>
+<span class="sourceLineNo">583</span>     */<a name="line.583"></a>
+<span class="sourceLineNo">584</span>    public HandlerRegistration addShownHandler(ShownHandler handler) {<a name="line.584"></a>
+<span class="sourceLineNo">585</span>        return addHandler(handler, ShownEvent.getType());<a name="line.585"></a>
+<span class="sourceLineNo">586</span>    }<a name="line.586"></a>
+<span class="sourceLineNo">587</span><a name="line.587"></a>
+<span class="sourceLineNo">588</span>    /**<a name="line.588"></a>
+<span class="sourceLineNo">589</span>     * Show/Hide close button. The Modal must have a title.<a name="line.589"></a>
+<span class="sourceLineNo">590</span>     *<a name="line.590"></a>
+<span class="sourceLineNo">591</span>     * @param visible &lt;b&gt;true&lt;/b&gt; for show and &lt;b&gt;false&lt;/b&gt; to hide. Defaults is<a name="line.591"></a>
+<span class="sourceLineNo">592</span>     *                &lt;b&gt;true&lt;/b&gt;.<a name="line.592"></a>
+<span class="sourceLineNo">593</span>     */<a name="line.593"></a>
+<span class="sourceLineNo">594</span>    public void setCloseVisible(boolean visible) {<a name="line.594"></a>
+<span class="sourceLineNo">595</span>        close.getElement().getStyle().setVisibility(visible<a name="line.595"></a>
+<span class="sourceLineNo">596</span>                ? Style.Visibility.VISIBLE<a name="line.596"></a>
+<span class="sourceLineNo">597</span>                : Style.Visibility.HIDDEN);<a name="line.597"></a>
+<span class="sourceLineNo">598</span>    }<a name="line.598"></a>
+<span class="sourceLineNo">599</span><a name="line.599"></a>
+<span class="sourceLineNo">600</span>    /**<a name="line.600"></a>
+<span class="sourceLineNo">601</span>     * @deprecated modal do not support setSize method<a name="line.601"></a>
+<span class="sourceLineNo">602</span>     */<a name="line.602"></a>
+<span class="sourceLineNo">603</span>    @Override<a name="line.603"></a>
+<span class="sourceLineNo">604</span>    public void setSize(String width, String height) {<a name="line.604"></a>
+<span class="sourceLineNo">605</span>        throw new UnsupportedOperationException("modal do not support setSize method");<a name="line.605"></a>
+<span class="sourceLineNo">606</span>    }<a name="line.606"></a>
+<span class="sourceLineNo">607</span><a name="line.607"></a>
+<span class="sourceLineNo">608</span>    /**<a name="line.608"></a>
+<span class="sourceLineNo">609</span>     * Sets the Modal's width.<a name="line.609"></a>
+<span class="sourceLineNo">610</span>     *<a name="line.610"></a>
+<span class="sourceLineNo">611</span>     * @param width Modal's new width, in px<a name="line.611"></a>
+<span class="sourceLineNo">612</span>     */<a name="line.612"></a>
+<span class="sourceLineNo">613</span>    public void setWidth(int width) {<a name="line.613"></a>
+<span class="sourceLineNo">614</span>        DOM.setStyleAttribute(this.getElement(), "width", width + "px");<a name="line.614"></a>
+<span class="sourceLineNo">615</span>        DOM.setStyleAttribute(this.getElement(), "marginLeft", (-width / 2) + "px");<a name="line.615"></a>
+<span class="sourceLineNo">616</span>    }<a name="line.616"></a>
+<span class="sourceLineNo">617</span><a name="line.617"></a>
+<span class="sourceLineNo">618</span>    /**<a name="line.618"></a>
+<span class="sourceLineNo">619</span>     * Sets the Modal's body maxHeight.<a name="line.619"></a>
+<span class="sourceLineNo">620</span>     *<a name="line.620"></a>
+<span class="sourceLineNo">621</span>     * @param maxHeight the Modal's body new maxHeight, in CSS units (e.g. "10px", "1em")<a name="line.621"></a>
+<span class="sourceLineNo">622</span>     */<a name="line.622"></a>
+<span class="sourceLineNo">623</span>    public void setMaxHeigth(String maxHeight) {<a name="line.623"></a>
+<span class="sourceLineNo">624</span>        DOM.setStyleAttribute(body.getElement(), "maxHeight", maxHeight);<a name="line.624"></a>
+<span class="sourceLineNo">625</span>    }<a name="line.625"></a>
+<span class="sourceLineNo">626</span><a name="line.626"></a>
+<span class="sourceLineNo">627</span>}<a name="line.627"></a>
 
 
 
