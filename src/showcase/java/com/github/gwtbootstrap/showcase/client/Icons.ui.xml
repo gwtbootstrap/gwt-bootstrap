@@ -24,7 +24,7 @@
             <b:Column size="6">
                 <b:Paragraph>
                     GWT-Bootstrap has a lot of Icons managed by <a href="http://fontawesome.io/">Font Awesome</a>.
-                    The sintax is pretty simple:
+                    The syntax is pretty simple:
                 </b:Paragraph>
 
                 <g:HTML>
