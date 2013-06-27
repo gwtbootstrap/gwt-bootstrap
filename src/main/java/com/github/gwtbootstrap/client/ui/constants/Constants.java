@@ -57,8 +57,6 @@ public interface Constants {
 
 	public static final String WELL = "well";
 
-    public static final String WELL_TRANSPARENT = "well-transparent";
-
 	public static final String LABEL = "label";
 
 	public static final String MODAL_HEADER = "modal-header";
