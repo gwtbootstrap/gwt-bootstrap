@@ -124,7 +124,7 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
                     if(!isExistTrigger()){
                         reconfigure();
                     } else {
-			configure(widget.getElement(), parent, toggle);
+                        configure(widget.getElement(), parent, toggle);
                         setHandlerFunctions(widget.getElement());
                     }
                 }
