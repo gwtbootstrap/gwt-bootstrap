@@ -211,6 +211,12 @@ public class DateTimeBoxBase
         configure();
     }
 
+    @Override
+    protected void onUnload() {
+        super.onUnload();
+        execute("remove");
+    }
+
     /**
      * Configure the elements for a specific widget.
      * Use only if you know what you are doing.
