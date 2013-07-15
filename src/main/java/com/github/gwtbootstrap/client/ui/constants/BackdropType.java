@@ -34,7 +34,7 @@ public enum BackdropType implements Style {
 	/**
 	 * No backdrop behind the Modal.
 	 */
-	NONE(""),
+	NONE("none"),
 
 	/**
 	 * Default backdrop. The modal is closed on mouse click.
