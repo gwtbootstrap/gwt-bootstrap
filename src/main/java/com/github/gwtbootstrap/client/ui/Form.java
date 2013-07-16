@@ -299,7 +299,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 			// We use the module name as part of the unique ID to ensure that
 			// ids are
 			// unique across modules.
-			frameName = "FormPanel_" + GWT.getModuleName() + "_" + (++formId);
+			frameName = "BSFormPanel_" + GWT.getModuleName() + "_" + (++formId);
 			setTarget(frameName);
 
 			sinkEvents(Event.ONLOAD);
