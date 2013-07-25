@@ -95,7 +95,7 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * 
  * </p>
  *
- * <p>A more detailed tutorial and a full working example can be found <a href="http://caarlos0.github.com/code/2012/06/27/using-a-custom-bootstrap-theme-in-gwt-bootstrap">here</a>.</p>
+ * <p>A more detailed tutorial and a full working example can be found <a href="http://carlosbecker.com/posts/using-a-custom-bootstrap-theme-in-gwt-bootstrap">here</a>.</p>
  * @since 2.0.4.0
  * 
  * @author Dominik Mayer
