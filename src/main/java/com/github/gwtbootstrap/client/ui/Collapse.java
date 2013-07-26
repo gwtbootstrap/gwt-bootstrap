@@ -1,7 +1,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
@@ -13,6 +13,7 @@ import com.github.gwtbootstrap.client.ui.event.ShowEvent;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownEvent;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
@@ -123,6 +124,7 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
                     if(!isExistTrigger()){
                         reconfigure();
                     } else {
+                        configure(widget.getElement(), parent, toggle);
                         setHandlerFunctions(widget.getElement());
                     }
                 }
@@ -180,6 +182,14 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
     /**
      * {@inheritDoc}
      */
+    //@Override
+    public void show(boolean autoShown) {
+        changeVisibility(VisibilityChange.SHOW, autoShown);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void show() {
         changeVisibility(VisibilityChange.SHOW);
@@ -191,6 +201,14 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
     @Override
     public void hide() {
         changeVisibility(VisibilityChange.HIDE);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    //@Override
+    public void hide(boolean autoHidden) {
+        changeVisibility(VisibilityChange.HIDE, autoHidden);
     }
 
     /**
@@ -210,6 +228,13 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
         if(widget == null) return;
         
         changeVisibility(widget.getElement() , visibilityChange.get());
+    }
+
+    protected void changeVisibility(VisibilityChange visibilityChange, boolean autoTriggered) {
+
+        if(widget == null) return;
+
+        changeVisibility(widget.getElement() , visibilityChange.get(), autoTriggered);
     }
     
     /**
@@ -290,48 +315,99 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
         var that = this;
         var $this = $wnd.jQuery(e);
 
+        var autoTriggeredCheck = function (event, removeProperty) {
+            var collapse = $wnd.jQuery(event.target).data('collapse');
+            if (collapse && collapse.autoTriggered) {
+                event.autoTriggered = true;
+                if (removeProperty)
+                    collapse.autoTriggered = false;
+            }
+        };
+
         $this.off('show');
         $this.off('shown');
         $this.off('hide');
         $this.off('hidden');
 
         $this.on('hide', function(e) {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onHide(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e);
+                that.@com.github.gwtbootstrap.client.ui.Collapse::onHide(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
         $this.on('hidden', function(e) {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onHidden(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e, true);
+                that.@com.github.gwtbootstrap.client.ui.Collapse::onHidden(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
         $this.on('show', function(e) {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onShow(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e);
+                that.@com.github.gwtbootstrap.client.ui.Collapse::onShow(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
         $this.on('shown', function(e) {
-            that.@com.github.gwtbootstrap.client.ui.Collapse::onShown(Lcom/google/gwt/user/client/Event;)(e);
+            if (e.target === this) {
+                autoTriggeredCheck(e, true);
+                that.@com.github.gwtbootstrap.client.ui.Collapse::onShown(Lcom/google/gwt/user/client/Event;)(e);
+                e.stopPropagation();
+            }
         });
     }-*/;
 
     protected native void changeVisibility(Element e , String c) /*-{
         $wnd.jQuery(e).collapse(c);
     }-*/;
+
+    protected native void changeVisibility(Element e, String visibility, boolean autoTriggered) /*-{
+        var $e = $wnd.jQuery(e);
+
+        var collapse = $e.data('collapse');
+        if (collapse)
+            collapse.autoTriggered = autoTriggered;
+
+        $e.collapse(c);
+
+    }-*/;
     
     public static native void changeVisibility(String target , String c) /*-{
         $wnd.jQuery(target).collapse(c);
     }-*/;
+
+    public static native void changeVisibility(String target , String c, boolean autoTriggered) /*-{
+        var $e = $wnd.jQuery(e);
+
+        var collapse = $e.data('collapse');
+        if (collapse)
+            collapse.autoTriggered = autoTriggered;
+
+        $e.collapse(c);
+    }-*/;
     //@fomatter:on
 
+    private native boolean getAutoTriggered(JavaScriptObject jso) /*-{
+        // Prevent null result
+        if (jso.autoTriggered) return true;
+        return false;
+    }-*/;
 
     /**
      * This method is called immediately when the widget's {@link #hide()}
      * method is executed.
      */
     protected void onHide(Event e) {
-        widget.fireEvent(new HideEvent(e));
+        widget.fireEvent(new HideEvent(e, getAutoTriggered(e)));
     }
 
     /**
      * This method is called once the widget is completely hidden.
      */
     protected void onHidden(Event e) {
-        widget.fireEvent(new HiddenEvent(e));
+        widget.fireEvent(new HiddenEvent(e, getAutoTriggered(e)));
     }
 
     /**
@@ -339,13 +415,13 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
      * method is executed.
      */
     protected void onShow(Event e) {
-        widget.fireEvent(new ShowEvent(e));
+        widget.fireEvent(new ShowEvent(e, getAutoTriggered(e)));
     }
 
     /**
      * This method is called once the widget is completely shown.
      */
     protected void onShown(Event e) {
-        widget.fireEvent(new ShownEvent(e));
+        widget.fireEvent(new ShownEvent(e, getAutoTriggered(e)));
     }
 }

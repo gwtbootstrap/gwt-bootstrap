@@ -192,4 +192,16 @@ public interface Constants {
 
     public static final String ACCORDION_TOGGLE = "accordion-toggle";
 
+    // Icons
+    public static final String ICON_LIGHT = "icon-light";
+
+    public static final String ICON_MUTED = "icon-muted";
+
+    public static final String ICON_BORDER = "icon-border";
+
+    public static final String ICON_STACK = "icon-stack";
+
+    public static final String ICON_SPIN = "icon-spin";
+
+    public static final String ICON_STACK_BASE = "icon-stack-base";
 }

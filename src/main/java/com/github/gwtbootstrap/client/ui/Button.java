@@ -15,80 +15,16 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.HasType;
-import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.base.NavbarButton;
-import com.github.gwtbootstrap.client.ui.base.StyleHelper;
+import com.github.gwtbootstrap.client.ui.base.*;
 import com.github.gwtbootstrap.client.ui.constants.ButtonType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.DismissType;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.DomEvent;
-import com.google.gwt.event.dom.client.DoubleClickEvent;
-import com.google.gwt.event.dom.client.DoubleClickHandler;
-import com.google.gwt.event.dom.client.DragEndEvent;
-import com.google.gwt.event.dom.client.DragEndHandler;
-import com.google.gwt.event.dom.client.DragEnterEvent;
-import com.google.gwt.event.dom.client.DragEnterHandler;
-import com.google.gwt.event.dom.client.DragEvent;
-import com.google.gwt.event.dom.client.DragHandler;
-import com.google.gwt.event.dom.client.DragLeaveEvent;
-import com.google.gwt.event.dom.client.DragLeaveHandler;
-import com.google.gwt.event.dom.client.DragOverEvent;
-import com.google.gwt.event.dom.client.DragOverHandler;
-import com.google.gwt.event.dom.client.DragStartEvent;
-import com.google.gwt.event.dom.client.DragStartHandler;
-import com.google.gwt.event.dom.client.DropEvent;
-import com.google.gwt.event.dom.client.DropHandler;
-import com.google.gwt.event.dom.client.FocusEvent;
-import com.google.gwt.event.dom.client.FocusHandler;
-import com.google.gwt.event.dom.client.GestureChangeEvent;
-import com.google.gwt.event.dom.client.GestureChangeHandler;
-import com.google.gwt.event.dom.client.GestureEndEvent;
-import com.google.gwt.event.dom.client.GestureEndHandler;
-import com.google.gwt.event.dom.client.GestureStartEvent;
-import com.google.gwt.event.dom.client.GestureStartHandler;
-import com.google.gwt.event.dom.client.HasAllDragAndDropHandlers;
-import com.google.gwt.event.dom.client.HasAllFocusHandlers;
-import com.google.gwt.event.dom.client.HasAllGestureHandlers;
-import com.google.gwt.event.dom.client.HasAllKeyHandlers;
-import com.google.gwt.event.dom.client.HasAllMouseHandlers;
-import com.google.gwt.event.dom.client.HasAllTouchHandlers;
-import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.event.dom.client.HasDoubleClickHandlers;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
-import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyPressHandler;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.event.dom.client.MouseDownEvent;
-import com.google.gwt.event.dom.client.MouseDownHandler;
-import com.google.gwt.event.dom.client.MouseMoveEvent;
-import com.google.gwt.event.dom.client.MouseMoveHandler;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOutHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.event.dom.client.MouseUpEvent;
-import com.google.gwt.event.dom.client.MouseUpHandler;
-import com.google.gwt.event.dom.client.MouseWheelEvent;
-import com.google.gwt.event.dom.client.MouseWheelHandler;
-import com.google.gwt.event.dom.client.TouchCancelEvent;
-import com.google.gwt.event.dom.client.TouchCancelHandler;
-import com.google.gwt.event.dom.client.TouchEndEvent;
-import com.google.gwt.event.dom.client.TouchEndHandler;
-import com.google.gwt.event.dom.client.TouchMoveEvent;
-import com.google.gwt.event.dom.client.TouchMoveHandler;
-import com.google.gwt.event.dom.client.TouchStartEvent;
-import com.google.gwt.event.dom.client.TouchStartHandler;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasEnabled;
 
@@ -109,8 +45,8 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * @since 2.0.4.0
  *
  * @author Carlos Alexandro Becker
- *
  * @author Dominik Mayer
+ * @author Sven Jacobs
  *
  * @see <a
  *      href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap
@@ -352,9 +288,16 @@ public class Button extends IconAnchor implements HasClickHandlers,
 			setLoadingBehavior("complete");
 		}
 
-		private void setLoadingBehavior(String behavior) {
-			setLoadingBehavior(getElement(), behavior);
-		}
+        private void setLoadingBehavior(String behavior) {
+            // Remove icon because it will be removed by Bootstrap's "$(element).button(behavior)" anyway
+            icon.removeFromParent();
+
+            setLoadingBehavior(getElement(), behavior);
+
+            // Recreate icon and add it to inner content with setText()
+            icon = new Icon(icon.getIconType());
+            setText(getElement().getInnerText());
+        }
 
 		private native void setLoadingBehavior(Element e, String behavior) /*-{
 			$wnd.jQuery(e).button(behavior);
@@ -584,4 +527,24 @@ public class Button extends IconAnchor implements HasClickHandlers,
         DomEvent.fireNativeEvent(event, this);
     }
 
+    /**
+     * Buttons can act as a dismiss button when inside a {@link Modal} or {@link Alert}.
+     * <p/>
+     * UiBinder example:
+     * <code><pre>
+     * &lt;b:Modal&gt;
+     *     &lt;b:ModalFooter&gt;
+     *         &lt;b:Button text="Close" dismiss="MODAL"/&gt;
+     *     &lt;/b:ModalFooter&gt;
+     * &lt;/b:Modal&gt;
+     * </pre></code>
+     * <p/>
+     * See <a href="http://twitter.github.io/bootstrap/javascript.html#modals">Bootstrap</a> documentation.
+     *
+     * @param type Type of dismiss ("modal" or "alert")
+     * @since 2.3.2.0
+     */
+    public void setDismiss(final DismissType type) {
+        getElement().setAttribute(Constants.DATA_DISMISS, type.get());
+    }
 }

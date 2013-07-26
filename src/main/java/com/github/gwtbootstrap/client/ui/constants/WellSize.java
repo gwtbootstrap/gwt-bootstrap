@@ -38,7 +38,7 @@ public enum WellSize implements Style {
 	 * {@inheritDoc}
 	 */
 	public String get() {
-		return DEFAULT == this ? "" : Constants.WELL + "-" + name();
+		return DEFAULT == this ? "" : Constants.WELL + "-" + name().toLowerCase();
 	}
 
 }

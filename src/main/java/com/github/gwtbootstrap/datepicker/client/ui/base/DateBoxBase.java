@@ -15,8 +15,6 @@
  */
 package com.github.gwtbootstrap.datepicker.client.ui.base;
 
-import java.util.Date;
-
 import com.github.gwtbootstrap.client.ui.TextBox;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasId;
@@ -24,7 +22,7 @@ import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
 import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.base.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
 import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
@@ -60,6 +58,8 @@ import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Widget;
+
+import java.util.Date;
 
 /**
  * Base DatePicker component.
@@ -198,6 +198,12 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     protected void onLoad() {
         super.onLoad();
         configure();
+    }
+
+    @Override
+    protected void onUnload() {
+        super.onUnload();
+        execute("remove");
     }
 
     /**
