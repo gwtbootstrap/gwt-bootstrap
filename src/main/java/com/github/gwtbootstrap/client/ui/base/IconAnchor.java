@@ -18,6 +18,8 @@ package com.github.gwtbootstrap.client.ui.base;
 import com.github.gwtbootstrap.client.ui.Icon;
 import com.github.gwtbootstrap.client.ui.constants.*;
 import com.google.gwt.dom.client.AnchorElement;
+import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Text;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -137,6 +139,22 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 * {@inheritDoc}
 	 */
 	public void setText(String text) {
+		if ( !this.getElement().isOrHasChild( this.text.getElement() ) ) {
+			Node toRemove = null;
+			for ( int i = 0; i < this.getElement().getChildCount(); i++) {
+				Node n = this.getElement().getChildNodes().getItem( i );
+				if ( n.getNodeType() == 3 /*TEXT_NODE*/ ) {
+					Text t = n.<Text>cast();
+					if ( t.getNodeValue().equals( this.text.getText() ) || t.getNodeValue().equals( text ) ) {
+						toRemove = t;
+					}
+				}
+			}
+			if ( toRemove != null ) {
+				this.getElement().removeChild(toRemove);
+			}
+			this.getElement().appendChild( this.text.getElement() );
+		}		
 	    this.text.removeFromParent();
 	    this.text = new TextNode(" " + text + " ");
 	    setIconPosition(iconPosition);
