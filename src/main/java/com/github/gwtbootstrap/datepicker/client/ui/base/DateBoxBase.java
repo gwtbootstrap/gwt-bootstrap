@@ -55,6 +55,7 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HasEnabled;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
 import com.google.gwt.user.client.ui.Widget;
@@ -69,7 +70,7 @@ import java.util.Date;
  * @since 2.0.4.0
  */
 public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, HasValueChangeHandlers<Date>, HasVisibility,
-        HasChangeHandlers, HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>>, HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle {
+        HasChangeHandlers, HasVisibleHandlers, HasAllDatePickerHandlers, IsEditor<TakesValueEditor<Date>>, HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle, HasName {
 
     private final TextBox box;
     private String format;
@@ -549,4 +550,20 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     public void setEnabled(boolean enabled) {
         box.setEnabled(enabled);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+	@Override
+	public void setName(String name) {
+		box.setName(name);
+	}
+
+	 /**
+     * {@inheritDoc} 
+     */
+	@Override
+	public String getName() {
+		return box.getName();
+	}
 }
