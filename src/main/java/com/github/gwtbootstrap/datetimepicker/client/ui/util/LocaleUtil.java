@@ -75,7 +75,7 @@ public class LocaleUtil {
 	public static final void forceLocale(String locale_) {
 		locale = locale_;
 		TextResource t = setupLocale();
-		if (!loaded.contains(locale) && t != null) {
+		if (loaded.contains(locale) && t != null) {
 			JavaScriptInjector.inject(t.getText());
 		}
 	}
