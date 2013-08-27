@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
+import com.github.gwtbootstrap.client.ui.constants.ResizeType;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.TextAreaElement;
@@ -123,6 +124,15 @@ public class TextArea extends TextBoxBase {
 	public void setVisibleLines(int lines) {
 		getTextAreaElement().setRows(lines);
 	}
+
+    /**
+     * Sets type of resizing policy
+     *
+     * @param resize type of resizing policy
+     */
+    public void setResize(ResizeType resize) {
+        getTextAreaElement().getStyle().setProperty("resize", resize.get());
+    }
 
 	private TextAreaElement getTextAreaElement() {
 		return getElement().cast();
