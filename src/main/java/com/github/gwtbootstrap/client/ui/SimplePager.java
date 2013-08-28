@@ -300,25 +300,20 @@ public class SimplePager extends AbstractPager {
             layout.add(label);
         }
         layout.add(firstPage);
+        layout.add(firstPageTooltip);
         layout.add(prevPage);
+        layout.add(prevPageTooltip);
         if (location == TextLocation.CENTER) {
             layout.add(label);
         }
         layout.add(nextPage);
-        if (showFastForwardButton) {
-            layout.add(fastForward);
-        }
-        if (showLastPageButton) {
-            layout.add(lastPage);
-        }
-
-        layout.add(firstPageTooltip);
-        layout.add(prevPageTooltip);
         layout.add(nextPageTooltip);
         if (showFastForwardButton) {
+            layout.add(fastForward);
             layout.add(fastForwardTooltip);
         }
         if (showLastPageButton) {
+            layout.add(lastPage);
             layout.add(lastPageTooltip);
         }
 
