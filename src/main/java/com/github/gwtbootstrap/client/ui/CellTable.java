@@ -84,7 +84,7 @@ public class CellTable<T> extends
 
         @Override
         @Source(SelectableStyle.DEFAULT_CSS)
-        public Style cellTableStyle();
+        public SelectableStyle cellTableStyle();
     }
 
     @ImportedWithPrefix("gwt-bootstrap-cellTable")
@@ -95,8 +95,7 @@ public class CellTable<T> extends
     }
 
     @ImportedWithPrefix("gwt-bootstrap-cellTable")
-    public interface SelectableStyle extends
-            com.google.gwt.user.cellview.client.CellTable.Style {
+    public interface SelectableStyle extends Style {
 
         String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapCellTableSelectable.css";
     }
