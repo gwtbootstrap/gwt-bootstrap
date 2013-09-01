@@ -107,6 +107,8 @@ public interface Constants {
 
 	public static final String CONDENSED = "condensed";
 
+    public static final String HOVER = "hover";
+
 	// Form controls
 	public static final String CONTROL_GROUP = "control-group";
 
@@ -204,4 +206,7 @@ public interface Constants {
     public static final String ICON_SPIN = "icon-spin";
 
     public static final String ICON_STACK_BASE = "icon-stack-base";
+
+    // Input
+    public static final String BLOCK_LEVEL = "input-block-level";
 }
