@@ -107,6 +107,8 @@ public interface Constants {
 
 	public static final String CONDENSED = "condensed";
 
+    public static final String HOVER = "hover";
+
 	// Form controls
 	public static final String CONTROL_GROUP = "control-group";
 
