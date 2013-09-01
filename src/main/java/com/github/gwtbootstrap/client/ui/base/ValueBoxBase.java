@@ -250,4 +250,14 @@ public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<
 		StyleHelper.removeStyle(this, style);
 		
 	}
+
+    /**
+     * Make any <input> or <textarea> element behave like a block level element.
+     *
+     * @param blockLevel
+     */
+    public void setBlockLevel(boolean blockLevel) {
+        //setStyleDependentName cannot be used, because stylePrimaryName is gwt default name, e.g: "gwt-TextBox"
+        setStyleName(Constants.BLOCK_LEVEL, blockLevel);
+    }
 }
