@@ -22,7 +22,21 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:off
 /**
  * Wrapper for an HTML Table.
- * 
+ *
+ * <p>Table Usage:</p>
+ * <pre>
+ * {@code
+ * <b:Table>
+ *     <b:TableHeader>Name</b:TableHeader>
+ *     <b:TableHeader>Surname</b:TableHeader>
+ *     <tr>
+ *         <td>John</td>
+ *         <td>Smith</td>
+ *     </tr>
+ * </b:Table>
+ * }
+ * </pre>
+ *
  * @since 2.0.4.0
  * 
  * @author Dominik Mayer
@@ -48,6 +62,18 @@ public class Table extends ComplexWidget {
 	public void setStriped(boolean striped) {
 		setStyleDependentName(Constants.STRIPED, striped);
 	}
+
+    public void setBordered(boolean bordered) {
+        setStyleDependentName(Constants.BORDERED, bordered);
+    }
+
+    public void setCondensed(boolean condensed) {
+        setStyleDependentName(Constants.CONDENSED, condensed);
+    }
+
+    public void setHover(boolean hover) {
+        setStyleDependentName(Constants.HOVER, hover);
+    }
 
 	@Override
 	public void add(Widget w) {
