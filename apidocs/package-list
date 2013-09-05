@@ -18,3 +18,7 @@ com.github.gwtbootstrap.datetimepicker.client.ui
 com.github.gwtbootstrap.datetimepicker.client.ui.base
 com.github.gwtbootstrap.datetimepicker.client.ui.resources
 com.github.gwtbootstrap.datetimepicker.client.ui.util
+com.github.gwtbootstrap.timepicker.client
+com.github.gwtbootstrap.timepicker.client.ui
+com.github.gwtbootstrap.timepicker.client.ui.base
+com.github.gwtbootstrap.timepicker.client.ui.resources
