@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='timepicker'>
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.github.gwtbootstrap.BootstrapNoResources'/>
+    <inherits name="com.github.gwtbootstrap.timepicker.client.ui.ResourcesNonBind"/>
+    <source path='client'/>
+</module>
