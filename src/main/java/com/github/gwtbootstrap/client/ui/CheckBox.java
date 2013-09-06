@@ -56,6 +56,9 @@ import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
 
+import static com.github.gwtbootstrap.client.ui.constants.Constants.CHECKBOX;
+import static com.github.gwtbootstrap.client.ui.constants.Constants.RADIO;
+
 /**
  * CheckBox widgets.
  * <p>
@@ -208,16 +211,15 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 		
 		assert elem.hasAttribute("type") : "The elem should has type attributes";
 
-		//TODO 2012/05/06 ohashi keisuke. ugly code......
-		if(Constants.CHECKBOX.toLowerCase().equals(elem.getAttribute("type").toLowerCase())) {
-			this.setStyleName(Constants.CHECKBOX);
-		} else if(Constants.RADIO.toLowerCase().equals(elem.getAttribute("type").toLowerCase())){
-			this.setStyleName(Constants.RADIO);
+        String elementType = elem.getAttribute("type");
+        if(CHECKBOX.equalsIgnoreCase(elementType)) {
+			this.setStyleName(CHECKBOX);
+		} else if(RADIO.equalsIgnoreCase(elementType)){
+			this.setStyleName(RADIO);
 		}
 
 		inputElem = InputElement.as(elem);
 		spanElem = Document.get().createSpanElement();
-		
 		getElement().appendChild(inputElem);
 		getElement().appendChild(spanElem);
 
