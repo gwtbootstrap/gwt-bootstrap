@@ -61,7 +61,7 @@ public class DataGrid<T> extends
      *
      */
     public interface SelectableResources extends Resources {
-        
+
         @Override
         @Source(SelectableStyle.DEFAULT_CSS)
         Style dataGridStyle();
@@ -194,6 +194,14 @@ public class DataGrid<T> extends
      */
     public void setCondensed(boolean condensed) {
         applyTableStyle(condensed, TableType.CONDENSED);
+    }
+
+    /**
+     * set Hover style
+     * @param hover true:set false:remove
+     */
+    public void setHover(boolean hover) {
+        applyTableStyle(hover, TableType.HOVER);
     }
 
     private void applyTableStyle(boolean striped, TableType type) {
