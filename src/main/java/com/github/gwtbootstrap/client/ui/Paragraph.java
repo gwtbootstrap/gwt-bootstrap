@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
+import com.google.gwt.user.client.ui.HasText;
 
 
 //@formatter:off
@@ -28,7 +29,7 @@ import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
  * @author Dominik Mayer
  */
 //@formatter:on
-public class Paragraph extends HtmlWidget {
+public class Paragraph extends HtmlWidget implements HasText {
 
 	/**
 	 * Creates an empty paragraph.
@@ -49,6 +50,7 @@ public class Paragraph extends HtmlWidget {
 	 * get Inner Text
 	 * @return innter Text
 	 */
+    @Override
 	public String getText() {
 		return getElement().getInnerText();
 	}
@@ -57,6 +59,7 @@ public class Paragraph extends HtmlWidget {
 	 * set Inner Text
 	 * @param text set Text
 	 */
+    @Override
 	public void setText(String text) {
 		getElement().setInnerText(text);
 	}
