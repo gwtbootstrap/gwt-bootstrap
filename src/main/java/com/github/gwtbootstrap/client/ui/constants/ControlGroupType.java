@@ -29,6 +29,7 @@ public enum ControlGroupType implements Style {
 	WARNING("warning"),
 	ERROR("error"),
 	SUCCESS("success"),
+    INFO("info"),
     NONE("");
 
 	private String className;
