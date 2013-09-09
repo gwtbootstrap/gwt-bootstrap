@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.user.client.ui.HasText;
 
 
 /**
@@ -43,7 +44,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * @see HelpInline
  * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
  */
-public class HelpBlock extends Paragraph {
+public class HelpBlock extends Paragraph implements HasText {
 
 	/**
 	 * Creates an empty widget.
