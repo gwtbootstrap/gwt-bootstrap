@@ -16,6 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 
 
@@ -44,7 +45,7 @@ import com.google.gwt.user.client.ui.HasText;
  * @see HelpInline
  * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
  */
-public class HelpBlock extends Paragraph implements HasText {
+public class HelpBlock extends Paragraph implements HasHTML, HasText {
 
 	/**
 	 * Creates an empty widget.
@@ -61,4 +62,26 @@ public class HelpBlock extends Paragraph implements HasText {
 		super(html);
 		setStyleName(Constants.HELP_BLOCK);
 	}
+
+    /**
+     * Gets this object's contents as HTML.
+     *
+     * @return the object's HTML
+     */
+    @Override
+    public String getHTML() {
+        return getElement().getInnerHTML();
+    }
+
+    /**
+     * Sets this object's contents via HTML. Use care when setting an object's
+     * HTML; it is an easy way to expose script-based security problems. Consider
+     * using {@link #setText(String)} whenever possible.
+     *
+     * @param html the object's new HTML
+     */
+    @Override
+    public void setHTML(String html) {
+        getElement().setInnerHTML(html);
+    }
 }
