@@ -20,6 +20,11 @@ import com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase;
 /**
  * DateBox component.
  *
+ * <p>To use DateBox widget, you have to inherit DatePicker module, by adding following line to .gwt.xml file: <br/>
+ * {@code
+ * <inherits name="com.github.gwtbootstrap.datepicker.Datepicker" />}
+ * </p>
+ *
  * @since 2.0.4.0
  * @author Carlos Alexandro Becker
  */
