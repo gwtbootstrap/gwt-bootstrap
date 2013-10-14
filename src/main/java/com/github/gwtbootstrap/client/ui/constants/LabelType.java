@@ -25,7 +25,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 * 
 * @author Dominik Mayer
 * 
-* @see <a href="http://twitter.github.com/bootstrap/components.html#labels">Bootstrap documentation</a>
+* @see <a href="http://getbootstrap.com/2.3.2/components.html#labels-badges">Bootstrap documentation</a>
 * 
 */
 //@formatter:on
