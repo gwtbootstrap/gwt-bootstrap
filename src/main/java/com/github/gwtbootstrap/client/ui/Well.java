@@ -28,7 +28,7 @@ import com.github.gwtbootstrap.client.ui.constants.WellSize;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#misc">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#misc">Bootstrap documentation</a>
  */
 //@formatter:on
 public class Well extends HtmlWidget {
