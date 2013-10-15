@@ -40,8 +40,8 @@ import com.google.gwt.user.client.ui.HasText;
  * @author Dominik Mayer
  * @author ohashi keisuke
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#navbar">Bootstrap documentation (Navbar)</a>
- * @see <a href="http://twitter.github.com/bootstrap/components.html#navs">Bootstrap documentation (Navs)</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#navbar">Bootstrap documentation (Navbar)</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#navs">Bootstrap documentation (Navs)</a>
  * @see NavList
  * @see WellNavList
  * @see Dropdown
