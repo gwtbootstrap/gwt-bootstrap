@@ -44,7 +44,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#buttonDropdowns">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#buttonDropdowns">Bootstrap documentation</a>
  * @see Dropdown
  * @see SplitDropdownButton
  */
