@@ -37,7 +37,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * @author ohashi keisuke
  * @see Thumbnail
  * @see ThumbnailLink
- * @see <a href="http://twitter.github.com/bootstrap/components.html#thumbnails">Twitter Bootstrap Documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#thumbnails">Twitter Bootstrap Documentation</a>
  */
 public class Thumbnails extends UnorderedList {
 

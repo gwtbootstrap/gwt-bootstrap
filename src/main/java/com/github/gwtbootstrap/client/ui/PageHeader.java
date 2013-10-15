@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.HasText;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/components.html#typography">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#typography">Bootstrap documentation</a>
  */
 //@formatter:on
 public class PageHeader extends DivWidget implements HasText {

@@ -37,7 +37,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * 
  * @see Alert
  * @see <a
- *      href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/components.html#alerts">Bootstrap
  *      documentation</a>
  */
 public class AlertBlock extends AlertBase {

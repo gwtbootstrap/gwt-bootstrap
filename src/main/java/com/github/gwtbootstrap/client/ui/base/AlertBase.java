@@ -37,7 +37,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
  * @author Carlos Alexandro Becker
  *
  * @see <a
- *      href="http://twitter.github.com/bootstrap/components.html#alerts">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/components.html#alerts">Bootstrap
  *      documentation</a>
  *
  * @since 2.0.4.0
