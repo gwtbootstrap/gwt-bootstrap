@@ -1,0 +1,15 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
+			 xmlns:b='urn:import:com.github.gwtbootstrap.client.ui'
+		>
+		<g:HorizontalPanel spacing="5">
+			<b:ListBox ui:field="leftList" name="leftList" height="10" visibleItemCount="10" size="2" />
+
+			<g:VerticalPanel spacing="5">
+				<b:Button ui:field="toRightButton" name="toRight" text=">" />
+				<b:Button ui:field="toLeftButton" name="toLeft" text="&lt;" />
+			</g:VerticalPanel>
+
+			<b:ListBox ui:field="rightList" name="leftList" height="10" visibleItemCount="10" size="2" />
+		</g:HorizontalPanel>
+</ui:UiBinder>
