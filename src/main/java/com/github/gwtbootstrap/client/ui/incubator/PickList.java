@@ -9,7 +9,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 
 import java.util.List;
@@ -24,12 +23,12 @@ import java.util.List;
  * </code><br/><br/>
  *
  * </li><li>
- * Populate your picklist using {@link com.github.gwtbootstrap.client.ui.incubator.NameValuePair}:<br/>
+ * Populate your picklist using {@link NameValuePairImpl}:<br/>
  * <code>
- *     List<INameValuePair> nameValuePairs = new ArrayList<INameValuePair>();<br/>
- *     nameValuePairs.add(new NameValuePair("item 1", "item_1"));<br/>
- *     nameValuePairs.add(new NameValuePair("item 2", "item_2"));<br/>
- *     nameValuePairs.add(new NameValuePair("item 3", "item_3"));<br/>
+ *     List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();<br/>
+ *     nameValuePairs.add(new NameValuePairImpl("item 1", "item_1"));<br/>
+ *     nameValuePairs.add(new NameValuePairImpl("item 2", "item_2"));<br/>
+ *     nameValuePairs.add(new NameValuePairImpl("item 3", "item_3"));<br/>
  *     pickList.setLeftListElements(nameValuePairs);
  *     pickList.setRightListElements(nameValuePairs);
  * </code><br/>
@@ -44,7 +43,7 @@ import java.util.List;
  * Date: 10/18/13
  * Time: 3:53 PM
  *
- * @see NameValuePair
+ * @see NameValuePairImpl
  */
 public class PickList extends Composite {
     @UiField
@@ -56,16 +55,16 @@ public class PickList extends Composite {
     @UiField
     ListBox rightList;
 
-    public void setLeftListElements(List<? extends INameValuePair> elements) {
+    public void setLeftListElements(List<NameValuePair> elements) {
         populate(elements, leftList);
     }
 
-    public void setRightListElements(List<? extends INameValuePair> elements) {
+    public void setRightListElements(List<NameValuePair> elements) {
         populate(elements, rightList);
     }
 
-    private void populate(List<? extends INameValuePair> leftListElements, ListBox listBox) {
-        for (INameValuePair element : leftListElements) {
+    private void populate(List<NameValuePair> leftListElements, ListBox listBox) {
+        for (NameValuePair element : leftListElements) {
             listBox.addItem(element.name(), element.value());
         }
     }
