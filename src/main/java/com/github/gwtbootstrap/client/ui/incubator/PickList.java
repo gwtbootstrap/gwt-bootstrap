@@ -55,6 +55,18 @@ public class PickList extends Composite {
     @UiField
     ListBox rightList;
 
+    public void addElementToLeftList(NameValuePair element) {
+        addElement(leftList, element);
+    }
+
+    public void addElementToRightList(NameValuePair element) {
+        addElement(rightList, element);
+    }
+
+    private void addElement(ListBox listBox, NameValuePair element) {
+        listBox.addItem(element.name(), element.value());
+    }
+
     public void setLeftListElements(List<NameValuePair> elements) {
         populate(elements, leftList);
     }
