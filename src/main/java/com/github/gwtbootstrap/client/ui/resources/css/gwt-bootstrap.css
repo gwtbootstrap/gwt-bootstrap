@@ -1,6 +1,6 @@
 body { padding-top: 50px; }
-div.input-prepend>input,textarea,select,.uneditable-input { margin-bottom: 0; }
-div.input-append>input,textarea,select,.uneditable-input { margin-bottom: 0; }
+div.input-prepend>input,div.input-prepend>textarea,div.input-prepend>select,div.input-prepend>*.uneditable-input { margin-bottom: 0; }
+div.input-append>input,div.input-append>textarea,div.input-append>select,div.input-append>*.uneditable-input { margin-bottom: 0; }
 .gwt-PopupPanel .gwt-DatePicker { width: 200px; }
 .gwt-SuggestBoxPopup { z-index: 2100; }
 .gwt-SuggestBoxPopup .suggestPopupTop { background-color: white; }
