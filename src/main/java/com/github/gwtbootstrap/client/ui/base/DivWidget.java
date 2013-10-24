@@ -62,18 +62,23 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive, HasI
 		setStyleName(styleName);
 	}
 
-	/**
-	 * Pulls the widget to the right side.
-	 * 
-	 * @param pullRight
-	 *            <code>true</code> if the widget should be aligned right.
-	 */
+	@Deprecated
 	public void pullRight(boolean pullRight) {
-		if (pullRight)
-			addStyle(Alignment.RIGHT);
-		else
-			removeStyle(Alignment.RIGHT);
+		setPullRight(pullRight);
 	}
+
+    /**
+     * Pulls the widget to the right side.
+     *
+     * @param pullRight
+     *            <code>true</code> if the widget should be aligned right.
+     */
+    public void setPullRight(boolean pullRight) {
+        if (pullRight)
+            addStyle(Alignment.RIGHT);
+        else
+            removeStyle(Alignment.RIGHT);
+    }
 
 	/**
 	 * {@inheritDoc}
