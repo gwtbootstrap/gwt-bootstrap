@@ -11,6 +11,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +56,18 @@ public class PickList extends Composite {
     @UiField
     ListBox rightList;
 
+    public void clearLeftList() {
+        clear(leftList);
+    }
+
+    public void clearRightList() {
+        clear(rightList);
+    }
+
+    private void clear(ListBox listBox) {
+        listBox.clear();
+    }
+
     public void addElementToLeftList(NameValuePair element) {
         addElement(leftList, element);
     }
@@ -67,12 +80,29 @@ public class PickList extends Composite {
         listBox.addItem(element.name(), element.value());
     }
 
+    public List<NameValuePair> getLeftListElements() {
+        return getListBoxElements(leftList);
+    }
+
     public void setLeftListElements(List<NameValuePair> elements) {
         populate(elements, leftList);
     }
 
+    public List<NameValuePair> getRightListElements() {
+        return getListBoxElements(rightList);
+    }
+
     public void setRightListElements(List<NameValuePair> elements) {
         populate(elements, rightList);
+    }
+
+    private List<NameValuePair> getListBoxElements(ListBox listBox) {
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        for (int i = 0; i < this.leftList.getItemCount(); i++) {
+            NameValuePairImpl nameValuePair = new NameValuePairImpl(this.leftList.getItemText(i), this.leftList.getValue(i));
+            nameValuePairs.add(nameValuePair);
+        }
+        return nameValuePairs;
     }
 
     private void populate(List<NameValuePair> leftListElements, ListBox listBox) {
@@ -134,6 +164,7 @@ public class PickList extends Composite {
 
     public PickList() {
         initWidget(ourUiBinder.createAndBindUi(this));
-
+        setLeftListElements(new ArrayList<NameValuePair>());
+        setRightListElements(new ArrayList<NameValuePair>());
     }
 }
