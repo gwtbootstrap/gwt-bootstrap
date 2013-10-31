@@ -159,99 +159,111 @@
 <span class="sourceLineNo">151</span>        }<a name="line.151"></a>
 <span class="sourceLineNo">152</span>    }<a name="line.152"></a>
 <span class="sourceLineNo">153</span><a name="line.153"></a>
-<span class="sourceLineNo">154</span>    /**<a name="line.154"></a>
-<span class="sourceLineNo">155</span>     * Adds a widget to the dropdown menu.<a name="line.155"></a>
-<span class="sourceLineNo">156</span>     *<a name="line.156"></a>
-<span class="sourceLineNo">157</span>     * @param widget the widget that will be added to the menu<a name="line.157"></a>
-<span class="sourceLineNo">158</span>     * @see #addWidget(Widget)<a name="line.158"></a>
-<span class="sourceLineNo">159</span>     */<a name="line.159"></a>
-<span class="sourceLineNo">160</span>    @Override<a name="line.160"></a>
-<span class="sourceLineNo">161</span>    public void add(Widget widget) {<a name="line.161"></a>
-<span class="sourceLineNo">162</span>        menu.add(widget);<a name="line.162"></a>
-<span class="sourceLineNo">163</span>        if (widget instanceof NavLink) {<a name="line.163"></a>
-<span class="sourceLineNo">164</span>            ((NavLink) widget).addClickHandler(handler);<a name="line.164"></a>
-<span class="sourceLineNo">165</span>        }<a name="line.165"></a>
-<span class="sourceLineNo">166</span>    }<a name="line.166"></a>
-<span class="sourceLineNo">167</span><a name="line.167"></a>
+<span class="sourceLineNo">154</span>    @Override<a name="line.154"></a>
+<span class="sourceLineNo">155</span>    protected void onUnload() {<a name="line.155"></a>
+<span class="sourceLineNo">156</span>        super.onUnload();<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        if (trigger != null) {<a name="line.157"></a>
+<span class="sourceLineNo">158</span>            remove(trigger.getElement());<a name="line.158"></a>
+<span class="sourceLineNo">159</span>        }<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    }<a name="line.160"></a>
+<span class="sourceLineNo">161</span><a name="line.161"></a>
+<span class="sourceLineNo">162</span>    /**<a name="line.162"></a>
+<span class="sourceLineNo">163</span>     * Adds a widget to the dropdown menu.<a name="line.163"></a>
+<span class="sourceLineNo">164</span>     *<a name="line.164"></a>
+<span class="sourceLineNo">165</span>     * @param widget the widget that will be added to the menu<a name="line.165"></a>
+<span class="sourceLineNo">166</span>     * @see #addWidget(Widget)<a name="line.166"></a>
+<span class="sourceLineNo">167</span>     */<a name="line.167"></a>
 <span class="sourceLineNo">168</span>    @Override<a name="line.168"></a>
-<span class="sourceLineNo">169</span>    public HandlerRegistration addChangeHandler(ChangeHandler handler) {<a name="line.169"></a>
-<span class="sourceLineNo">170</span>        return addDomHandler(handler, ChangeEvent.getType());<a name="line.170"></a>
-<span class="sourceLineNo">171</span>    }<a name="line.171"></a>
-<span class="sourceLineNo">172</span><a name="line.172"></a>
-<span class="sourceLineNo">173</span>    /**<a name="line.173"></a>
-<span class="sourceLineNo">174</span>     * Adds a widget to the the dropdown widget, &lt;b&gt;not&lt;/b&gt; to the dropdown<a name="line.174"></a>
-<span class="sourceLineNo">175</span>     * menu.<a name="line.175"></a>
-<span class="sourceLineNo">176</span>     * &lt;p/&gt;<a name="line.176"></a>
-<span class="sourceLineNo">177</span>     * &lt;p/&gt;<a name="line.177"></a>
-<span class="sourceLineNo">178</span>     * Use {@link #add(Widget)} if you want to add a widget to the dropdown<a name="line.178"></a>
-<span class="sourceLineNo">179</span>     * menu.<a name="line.179"></a>
-<span class="sourceLineNo">180</span>     *<a name="line.180"></a>
-<span class="sourceLineNo">181</span>     * @param widget the widget to be added.<a name="line.181"></a>
-<span class="sourceLineNo">182</span>     */<a name="line.182"></a>
-<span class="sourceLineNo">183</span>    protected void addWidget(Widget widget) {<a name="line.183"></a>
-<span class="sourceLineNo">184</span>        super.add(widget);<a name="line.184"></a>
-<span class="sourceLineNo">185</span>    }<a name="line.185"></a>
-<span class="sourceLineNo">186</span><a name="line.186"></a>
-<span class="sourceLineNo">187</span>    private native void configure(Element e) /*-{<a name="line.187"></a>
-<span class="sourceLineNo">188</span>        $wnd.jQuery(e).dropdown();<a name="line.188"></a>
-<span class="sourceLineNo">189</span>    }-*/;<a name="line.189"></a>
-<span class="sourceLineNo">190</span><a name="line.190"></a>
-<span class="sourceLineNo">191</span>    /**<a name="line.191"></a>
-<span class="sourceLineNo">192</span>     * Pull the dropdown menu to right<a name="line.192"></a>
-<span class="sourceLineNo">193</span>     *<a name="line.193"></a>
-<span class="sourceLineNo">194</span>     * @param rightDropdown &lt;code&gt;true&lt;/code&gt; pull to right, otherwise to left. Default is<a name="line.194"></a>
-<span class="sourceLineNo">195</span>     *                      &lt;code&gt;false&lt;/code&gt;<a name="line.195"></a>
-<span class="sourceLineNo">196</span>     */<a name="line.196"></a>
-<span class="sourceLineNo">197</span>    public void setRightDropdown(boolean rightDropdown) {<a name="line.197"></a>
-<span class="sourceLineNo">198</span>        menu.setStyleName(Alignment.RIGHT.get(), rightDropdown);<a name="line.198"></a>
-<span class="sourceLineNo">199</span>    }<a name="line.199"></a>
-<span class="sourceLineNo">200</span><a name="line.200"></a>
-<span class="sourceLineNo">201</span>    private class NavLinkClickHandler implements ClickHandler {<a name="line.201"></a>
+<span class="sourceLineNo">169</span>    public void add(Widget widget) {<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        menu.add(widget);<a name="line.170"></a>
+<span class="sourceLineNo">171</span>        if (widget instanceof NavLink) {<a name="line.171"></a>
+<span class="sourceLineNo">172</span>            ((NavLink) widget).addClickHandler(handler);<a name="line.172"></a>
+<span class="sourceLineNo">173</span>        }<a name="line.173"></a>
+<span class="sourceLineNo">174</span>    }<a name="line.174"></a>
+<span class="sourceLineNo">175</span><a name="line.175"></a>
+<span class="sourceLineNo">176</span>    @Override<a name="line.176"></a>
+<span class="sourceLineNo">177</span>    public HandlerRegistration addChangeHandler(ChangeHandler handler) {<a name="line.177"></a>
+<span class="sourceLineNo">178</span>        return addDomHandler(handler, ChangeEvent.getType());<a name="line.178"></a>
+<span class="sourceLineNo">179</span>    }<a name="line.179"></a>
+<span class="sourceLineNo">180</span><a name="line.180"></a>
+<span class="sourceLineNo">181</span>    /**<a name="line.181"></a>
+<span class="sourceLineNo">182</span>     * Adds a widget to the the dropdown widget, &lt;b&gt;not&lt;/b&gt; to the dropdown<a name="line.182"></a>
+<span class="sourceLineNo">183</span>     * menu.<a name="line.183"></a>
+<span class="sourceLineNo">184</span>     * &lt;p/&gt;<a name="line.184"></a>
+<span class="sourceLineNo">185</span>     * &lt;p/&gt;<a name="line.185"></a>
+<span class="sourceLineNo">186</span>     * Use {@link #add(Widget)} if you want to add a widget to the dropdown<a name="line.186"></a>
+<span class="sourceLineNo">187</span>     * menu.<a name="line.187"></a>
+<span class="sourceLineNo">188</span>     *<a name="line.188"></a>
+<span class="sourceLineNo">189</span>     * @param widget the widget to be added.<a name="line.189"></a>
+<span class="sourceLineNo">190</span>     */<a name="line.190"></a>
+<span class="sourceLineNo">191</span>    protected void addWidget(Widget widget) {<a name="line.191"></a>
+<span class="sourceLineNo">192</span>        super.add(widget);<a name="line.192"></a>
+<span class="sourceLineNo">193</span>    }<a name="line.193"></a>
+<span class="sourceLineNo">194</span><a name="line.194"></a>
+<span class="sourceLineNo">195</span>    private native void configure(Element e) /*-{<a name="line.195"></a>
+<span class="sourceLineNo">196</span>        $wnd.jQuery(e).dropdown();<a name="line.196"></a>
+<span class="sourceLineNo">197</span>    }-*/;<a name="line.197"></a>
+<span class="sourceLineNo">198</span><a name="line.198"></a>
+<span class="sourceLineNo">199</span>    private native void remove(Element e) /*-{<a name="line.199"></a>
+<span class="sourceLineNo">200</span>        $wnd.jQuery(e).remove();<a name="line.200"></a>
+<span class="sourceLineNo">201</span>    }-*/;<a name="line.201"></a>
 <span class="sourceLineNo">202</span><a name="line.202"></a>
-<span class="sourceLineNo">203</span>        @Override<a name="line.203"></a>
-<span class="sourceLineNo">204</span>        public void onClick(ClickEvent event) {<a name="line.204"></a>
-<span class="sourceLineNo">205</span>            try {<a name="line.205"></a>
-<span class="sourceLineNo">206</span>                IconAnchor iconAnchor = (IconAnchor) event.getSource();<a name="line.206"></a>
-<span class="sourceLineNo">207</span>                link = (NavLink) iconAnchor.getParent();<a name="line.207"></a>
-<span class="sourceLineNo">208</span>            } catch (Exception e) {<a name="line.208"></a>
-<span class="sourceLineNo">209</span>                GWT.log(e.getMessage(), e);<a name="line.209"></a>
-<span class="sourceLineNo">210</span>            }<a name="line.210"></a>
-<span class="sourceLineNo">211</span>            DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);<a name="line.211"></a>
-<span class="sourceLineNo">212</span>        }<a name="line.212"></a>
-<span class="sourceLineNo">213</span><a name="line.213"></a>
-<span class="sourceLineNo">214</span>    }<a name="line.214"></a>
-<span class="sourceLineNo">215</span><a name="line.215"></a>
-<span class="sourceLineNo">216</span>    /**<a name="line.216"></a>
-<span class="sourceLineNo">217</span>     * Method to get the {@link NavLink} that has been clicked most recently.<a name="line.217"></a>
-<span class="sourceLineNo">218</span>     *<a name="line.218"></a>
-<span class="sourceLineNo">219</span>     * @return Last clicked NavLink or &lt;code&gt;null&lt;/code&gt; if none have been<a name="line.219"></a>
-<span class="sourceLineNo">220</span>     *         clicked.<a name="line.220"></a>
-<span class="sourceLineNo">221</span>     */<a name="line.221"></a>
-<span class="sourceLineNo">222</span>    public NavLink getLastSelectedNavLink() {<a name="line.222"></a>
-<span class="sourceLineNo">223</span>        return link;<a name="line.223"></a>
-<span class="sourceLineNo">224</span>    }<a name="line.224"></a>
+<span class="sourceLineNo">203</span>    /**<a name="line.203"></a>
+<span class="sourceLineNo">204</span>     * Pull the dropdown menu to right<a name="line.204"></a>
+<span class="sourceLineNo">205</span>     *<a name="line.205"></a>
+<span class="sourceLineNo">206</span>     * @param rightDropdown &lt;code&gt;true&lt;/code&gt; pull to right, otherwise to left. Default is<a name="line.206"></a>
+<span class="sourceLineNo">207</span>     *                      &lt;code&gt;false&lt;/code&gt;<a name="line.207"></a>
+<span class="sourceLineNo">208</span>     */<a name="line.208"></a>
+<span class="sourceLineNo">209</span>    public void setRightDropdown(boolean rightDropdown) {<a name="line.209"></a>
+<span class="sourceLineNo">210</span>        menu.setStyleName(Alignment.RIGHT.get(), rightDropdown);<a name="line.210"></a>
+<span class="sourceLineNo">211</span>    }<a name="line.211"></a>
+<span class="sourceLineNo">212</span><a name="line.212"></a>
+<span class="sourceLineNo">213</span>    private class NavLinkClickHandler implements ClickHandler {<a name="line.213"></a>
+<span class="sourceLineNo">214</span><a name="line.214"></a>
+<span class="sourceLineNo">215</span>        @Override<a name="line.215"></a>
+<span class="sourceLineNo">216</span>        public void onClick(ClickEvent event) {<a name="line.216"></a>
+<span class="sourceLineNo">217</span>            try {<a name="line.217"></a>
+<span class="sourceLineNo">218</span>                IconAnchor iconAnchor = (IconAnchor) event.getSource();<a name="line.218"></a>
+<span class="sourceLineNo">219</span>                link = (NavLink) iconAnchor.getParent();<a name="line.219"></a>
+<span class="sourceLineNo">220</span>            } catch (Exception e) {<a name="line.220"></a>
+<span class="sourceLineNo">221</span>                GWT.log(e.getMessage(), e);<a name="line.221"></a>
+<span class="sourceLineNo">222</span>            }<a name="line.222"></a>
+<span class="sourceLineNo">223</span>            DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);<a name="line.223"></a>
+<span class="sourceLineNo">224</span>        }<a name="line.224"></a>
 <span class="sourceLineNo">225</span><a name="line.225"></a>
-<span class="sourceLineNo">226</span>    @Override<a name="line.226"></a>
-<span class="sourceLineNo">227</span>    public void clear() {<a name="line.227"></a>
-<span class="sourceLineNo">228</span>        menu.clear();<a name="line.228"></a>
-<span class="sourceLineNo">229</span>    }<a name="line.229"></a>
-<span class="sourceLineNo">230</span><a name="line.230"></a>
-<span class="sourceLineNo">231</span>    @Override<a name="line.231"></a>
-<span class="sourceLineNo">232</span>    public HandlerRegistration addClickHandler(ClickHandler handler) {<a name="line.232"></a>
-<span class="sourceLineNo">233</span>        return trigger.addClickHandler(handler);<a name="line.233"></a>
-<span class="sourceLineNo">234</span>    }<a name="line.234"></a>
-<span class="sourceLineNo">235</span><a name="line.235"></a>
-<span class="sourceLineNo">236</span>    /**<a name="line.236"></a>
-<span class="sourceLineNo">237</span>     * Add widget to trigger anchodr<a name="line.237"></a>
-<span class="sourceLineNo">238</span>     *<a name="line.238"></a>
-<span class="sourceLineNo">239</span>     * @param w added widget<a name="line.239"></a>
-<span class="sourceLineNo">240</span>     */<a name="line.240"></a>
-<span class="sourceLineNo">241</span>    @UiChild(tagname = "customTrigger", limit = 1)<a name="line.241"></a>
-<span class="sourceLineNo">242</span>    public void addCustomTrigger(Widget w) {<a name="line.242"></a>
-<span class="sourceLineNo">243</span>        trigger.insert(w, 0);<a name="line.243"></a>
-<span class="sourceLineNo">244</span>    }<a name="line.244"></a>
-<span class="sourceLineNo">245</span><a name="line.245"></a>
-<span class="sourceLineNo">246</span>}<a name="line.246"></a>
+<span class="sourceLineNo">226</span>    }<a name="line.226"></a>
+<span class="sourceLineNo">227</span><a name="line.227"></a>
+<span class="sourceLineNo">228</span>    /**<a name="line.228"></a>
+<span class="sourceLineNo">229</span>     * Method to get the {@link NavLink} that has been clicked most recently.<a name="line.229"></a>
+<span class="sourceLineNo">230</span>     *<a name="line.230"></a>
+<span class="sourceLineNo">231</span>     * @return Last clicked NavLink or &lt;code&gt;null&lt;/code&gt; if none have been<a name="line.231"></a>
+<span class="sourceLineNo">232</span>     *         clicked.<a name="line.232"></a>
+<span class="sourceLineNo">233</span>     */<a name="line.233"></a>
+<span class="sourceLineNo">234</span>    public NavLink getLastSelectedNavLink() {<a name="line.234"></a>
+<span class="sourceLineNo">235</span>        return link;<a name="line.235"></a>
+<span class="sourceLineNo">236</span>    }<a name="line.236"></a>
+<span class="sourceLineNo">237</span><a name="line.237"></a>
+<span class="sourceLineNo">238</span>    @Override<a name="line.238"></a>
+<span class="sourceLineNo">239</span>    public void clear() {<a name="line.239"></a>
+<span class="sourceLineNo">240</span>        menu.clear();<a name="line.240"></a>
+<span class="sourceLineNo">241</span>    }<a name="line.241"></a>
+<span class="sourceLineNo">242</span><a name="line.242"></a>
+<span class="sourceLineNo">243</span>    @Override<a name="line.243"></a>
+<span class="sourceLineNo">244</span>    public HandlerRegistration addClickHandler(ClickHandler handler) {<a name="line.244"></a>
+<span class="sourceLineNo">245</span>        return trigger.addClickHandler(handler);<a name="line.245"></a>
+<span class="sourceLineNo">246</span>    }<a name="line.246"></a>
+<span class="sourceLineNo">247</span><a name="line.247"></a>
+<span class="sourceLineNo">248</span>    /**<a name="line.248"></a>
+<span class="sourceLineNo">249</span>     * Add widget to trigger anchodr<a name="line.249"></a>
+<span class="sourceLineNo">250</span>     *<a name="line.250"></a>
+<span class="sourceLineNo">251</span>     * @param w added widget<a name="line.251"></a>
+<span class="sourceLineNo">252</span>     */<a name="line.252"></a>
+<span class="sourceLineNo">253</span>    @UiChild(tagname = "customTrigger", limit = 1)<a name="line.253"></a>
+<span class="sourceLineNo">254</span>    public void addCustomTrigger(Widget w) {<a name="line.254"></a>
+<span class="sourceLineNo">255</span>        trigger.insert(w, 0);<a name="line.255"></a>
+<span class="sourceLineNo">256</span>    }<a name="line.256"></a>
+<span class="sourceLineNo">257</span><a name="line.257"></a>
+<span class="sourceLineNo">258</span>}<a name="line.258"></a>
 
 
 
