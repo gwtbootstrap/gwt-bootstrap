@@ -181,8 +181,10 @@ public class PickList extends Composite {
         to.addItem(item, value);
         from.removeItem(itemIndex);
 
-        if (from.getItemCount() > 0) {
+        if (from.getItemCount() > itemIndex) {
             from.setSelectedIndex(itemIndex);
+        } else if (from.getItemCount() > 0) {
+            from.setSelectedIndex(itemIndex-1); //enters here when last item in the list is removed
         }
     }
 
