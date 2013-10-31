@@ -4,6 +4,7 @@
 			 xmlns:i='urn:import:com.github.gwtbootstrap.client.ui.incubator'
 		>
 	<g:HTMLPanel>
+		<b:PageHeader subtext="PickList Example">PickList</b:PageHeader>
 		<i:PickList ui:field="pickList" selectedLabelText="Selected:" candidateLabelText="Candidates:"/>
 	</g:HTMLPanel>
 </ui:UiBinder>
