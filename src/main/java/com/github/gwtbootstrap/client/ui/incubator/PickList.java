@@ -1,6 +1,7 @@
 package com.github.gwtbootstrap.client.ui.incubator;
 
 import com.github.gwtbootstrap.client.ui.Button;
+import com.github.gwtbootstrap.client.ui.Label;
 import com.github.gwtbootstrap.client.ui.ListBox;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -10,6 +11,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,13 @@ import java.util.List;
  */
 public class PickList extends Composite {
     @UiField
+    VerticalPanel leftPanel;
+    @UiField
+    VerticalPanel rightPanel;
+    @UiField
+    VerticalPanel buttonPanel;
+
+    @UiField
     Button toRightButton;
     @UiField
     Button toLeftButton;
@@ -55,6 +64,10 @@ public class PickList extends Composite {
     ListBox leftList;
     @UiField
     ListBox rightList;
+    @UiField
+    Label rightPanelLabel;
+    @UiField
+    Label leftPanelLabel;
 
     public void clearLeftList() {
         clear(leftList);
@@ -94,6 +107,22 @@ public class PickList extends Composite {
 
     public void setRightListElements(List<NameValuePair> elements) {
         populate(elements, rightList);
+    }
+
+    public String getSelectedLabelText() {
+        return rightPanelLabel.getText();
+    }
+
+    public void setSelectedLabelText(String selectedLabelText) {
+        rightPanelLabel.setText(selectedLabelText);
+    }
+
+    public String getCandidateLabelText() {
+        return leftPanelLabel.getText();
+    }
+
+    public void setCandidateLabelText(String selectedLabelText) {
+        leftPanelLabel.setText(selectedLabelText);
     }
 
     private List<NameValuePair> getListBoxElements(ListBox listBox) {
@@ -164,6 +193,13 @@ public class PickList extends Composite {
 
     public PickList() {
         initWidget(ourUiBinder.createAndBindUi(this));
+
+        //set padding between cells to make the component look better
+        this.getElement().setAttribute("cellpadding", "1");
+        leftPanel.getElement().setAttribute("cellpadding", "1");
+        buttonPanel.getElement().setAttribute("cellpadding", "1");
+        rightPanel.getElement().setAttribute("cellpadding", "1");
+
         setLeftListElements(new ArrayList<NameValuePair>());
         setRightListElements(new ArrayList<NameValuePair>());
     }
