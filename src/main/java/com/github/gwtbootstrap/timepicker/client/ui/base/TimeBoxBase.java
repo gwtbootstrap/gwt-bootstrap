@@ -27,10 +27,11 @@ import java.util.Date;
  */
 public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceholder, HasTemplate, HasShowInputs, HasSecondStep,
         HasModalBackdrop, HasMinuteStep, HasDisableFocus, HasDefaultTime, HasShowSeconds, HasMeridian, HasAlternateSize,
-        IsSearchQuery, HasSize, HasId, IsResponsive, HasStyle, HasValue<Date>, HasEnabled, HasValueChangeHandlers<Date>, HasVisibility {
+        IsSearchQuery, HasSize, HasId, IsResponsive, HasStyle, HasValue<Date>, HasEnabled, HasValueChangeHandlers<Date>, HasVisibility, HasTimeFormat {
 
     private final TextBox box;
-    private final DateTimeFormat dtf = DateTimeFormat.getFormat("HH:mm:ss");
+    private String format;
+    private DateTimeFormat dtf;
 
     // Defaults
     private Template template = Template.DROPDOWN;
@@ -49,9 +50,25 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
     private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
 
     public TimeBoxBase() {
-        this.box = new TextBox();
+        box = new TextBox();
         box.setStyleName("input-mini");
         setElement(box.getElement());
+        setFormat("HH:mm:ss a");
+        setValue(new Date());
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#isReadOnly()
+     */
+    public boolean isReadOnly() {
+        return box.isReadOnly();
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.ValueBoxBase#setReadOnly(boolean)
+     */
+    public void setReadOnly(boolean readonly) {
+        box.setReadOnly(readonly);
     }
 
     /**
@@ -96,8 +113,8 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
      * {@inheritDoc}
      */
     protected native void updateValue(Element e)/*-{
-        if ($wnd.jQuery(e).data('timepicker')) {
-            $wnd.jQuery(e).data('timepicker').update();
+        if ($wnd.jQuery(e).data('changeTime.timepicker')) {
+            $wnd.jQuery(e).data('changeTime.timepicker').update();
         }
     }-*/;
 
@@ -129,6 +146,7 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
      * @param w: the widget to configure.
      */
     protected void configure(Widget w) {
+        w.getElement().setAttribute("data-date-format", format);
         configure(w.getElement(), template.name().toLowerCase(), defaultTime.name().toLowerCase(), minuteStep, showSeconds, secondStep, showMeridian,
                 showInputs, disableFocus, modalBackdrop);
     }
@@ -466,5 +484,15 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
     @Override
     public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Date> handler) {
         return addHandler(handler, ValueChangeEvent.getType());
+    }
+
+    @Override
+    public void setFormat(String format) {
+        this.format = format;
+        Date oldValue = getValue();
+        this.dtf = DateTimeFormat.getFormat(format);
+        if (oldValue != null) {
+            setValue(oldValue);
+        }
     }
 }
