@@ -151,14 +151,6 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
         }
     }
 
-    @Override
-    protected void onUnload() {
-        super.onUnload();
-        if (trigger != null) {
-            remove(trigger.getElement());
-        }
-    }
-
     /**
      * Adds a widget to the dropdown menu.
      *
@@ -194,10 +186,6 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
 
     private native void configure(Element e) /*-{
         $wnd.jQuery(e).dropdown();
-    }-*/;
-
-    private native void remove(Element e) /*-{
-        $wnd.jQuery(e).remove();
     }-*/;
 
     /**
