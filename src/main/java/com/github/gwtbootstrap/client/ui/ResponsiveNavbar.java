@@ -20,7 +20,6 @@ import com.github.gwtbootstrap.client.ui.base.NavbarButton;
 import com.github.gwtbootstrap.client.ui.config.Configurator;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -70,7 +69,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class ResponsiveNavbar extends Navbar {
 
 	private final NavbarButton collapseButton = new NavbarButton();
-	private final DivWidget navCollapse = new DivWidget("nav-collapse");
+	private final DivWidget navCollapse = new DivWidget(Constants.NAV_COLLAPSE);
 
 	/**
 	 * Creates an empty widget.
@@ -82,9 +81,9 @@ public class ResponsiveNavbar extends Navbar {
 
     private void addCollapseButton() {
 		collapseButton.getElement().setAttribute(Constants.DATA_TOGGLE,
-				Bootstrap.collapse);
-		collapseButton.getElement().setAttribute(Bootstrap.data_target,
-				Bootstrap.nav_collapse_target);
+				Constants.COLLAPSE);
+		collapseButton.getElement().setAttribute(Constants.DATA_TARGET,
+				Constants.NAV_COLLAPSE_TARGET);
 		collapseButton.add(new Icon(IconType.BAR));
 		collapseButton.add(new Icon(IconType.BAR));
 		collapseButton.add(new Icon(IconType.BAR));
