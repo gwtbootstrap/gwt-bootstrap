@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 //@formatter:off
 /**
@@ -58,7 +58,7 @@ public class NavCollapse extends DivWidget {
 	 * Creates an empty widget.
 	 */
 	public NavCollapse() {
-		super(Bootstrap.nav_collapse);
+		super(Constants.NAV_COLLAPSE);
 	}
 
 }
