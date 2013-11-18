@@ -190,7 +190,7 @@ public interface Constants {
 
     public static final String COLLAPSE = "collapse";
     
-    public static final String NAV_COLLAPSE = "nav_collapse " + COLLAPSE;
+    public static final String NAV_COLLAPSE = "nav-collapse " + COLLAPSE;
     
 	public static final String NAV_COLLAPSE_TARGET = ".nav-collapse";
 
