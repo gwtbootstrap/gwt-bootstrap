@@ -28,6 +28,7 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -64,7 +65,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  * @author ohashi keisuke
  */
-public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, IsResponsive,HasIcon {
+public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, IsResponsive, HasIcon, HasEnabled {
     
     TabLink link = new TabLink();
 
@@ -76,7 +77,7 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, Is
         
         tabPane.setHref(DOM.createUniqueId());
         
-        link.setTablePane(tabPane);
+        link.setTabPane(tabPane);
     }
     
     /**
@@ -86,7 +87,26 @@ public class Tab implements IsWidget, HasWidgets, HasClickHandlers, HasStyle, Is
     public Widget asWidget() {
         return link;
     }
-    
+
+    /**
+     * Returns true if the widget is enabled, false if not.
+     */
+    @Override
+    public boolean isEnabled() {
+        return link.isEnabled();
+    }
+
+    /**
+     * Sets whether this widget is enabled.
+     *
+     * @param enabled <code>true</code> to enable the widget, <code>false</code>
+     *                to disable it
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        link.setEnabled(enabled);
+    }
+
     /**
      * Get Container TabPane
      * @return TabPane

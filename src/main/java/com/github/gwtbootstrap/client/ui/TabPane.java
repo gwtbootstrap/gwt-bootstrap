@@ -18,7 +18,9 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.github.gwtbootstrap.datepicker.client.ui.base.HasEndDate;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.HasEnabled;
 
 //@formatter:off
 /**
@@ -35,7 +37,7 @@ public class TabPane extends DivWidget {
 	private String href;
 
     private boolean createTabLink = true;
-	
+
 	public TabPane() {
 	    this("");
 	}
@@ -45,8 +47,8 @@ public class TabPane extends DivWidget {
 		this.heading = heading;
 		createHref();
 	}
-	
-	public void setCreateTabLink(boolean createTabLink) {
+
+    public void setCreateTabLink(boolean createTabLink) {
         this.createTabLink = createTabLink;
 	}
 	
@@ -64,7 +66,6 @@ public class TabPane extends DivWidget {
 	}
 
 	public void setActive(boolean active) {
-		
 		if (active) {
 			addStyleName(Constants.ACTIVE);
 		} else {

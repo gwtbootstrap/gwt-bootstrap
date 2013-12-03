@@ -255,7 +255,6 @@ public class TabPanel extends DivWidget {
 
     @Override
     public void add(Widget child) {
-
         if (child instanceof TabPane) {
             add((TabPane) child);
             return;
@@ -279,7 +278,6 @@ public class TabPanel extends DivWidget {
     }
 
     private void add(DropdownTab dropdownTab) {
-
         tabs.add(dropdownTab);
 
         List<Tab> tabList = dropdownTab.getTabList();
@@ -291,7 +289,6 @@ public class TabPanel extends DivWidget {
     }
 
     private void add(TabPane child) {
-
         if (child.isCreateTabLink()) {
             TabLink tabLink = new TabLink(child);
             tabs.add(tabLink);
@@ -301,10 +298,9 @@ public class TabPanel extends DivWidget {
     }
 
     private void add(final TabLink child) {
-
         if (child.isCreateTabPane() && child.getTabPane() == null) {
             TabPane pane = new TabPane(child.getText());
-            child.setTablePane(pane);
+            child.setTabPane(pane);
             tabContent.add(pane);
         } else if (child.getTabPane() != null) {
             tabContent.add(child.getTabPane());
