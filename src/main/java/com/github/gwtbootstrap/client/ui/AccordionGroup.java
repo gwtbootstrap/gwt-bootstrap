@@ -29,6 +29,8 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility, HasVisibleHandlers  {
 
+    private final DivWidget heading;
+
     private DivWidget innerBody = new DivWidget(Constants.ACCORDION_INNER);
     
     private IconAnchor trigger = new IconAnchor();
@@ -60,13 +62,21 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
 
         collapseTrigger.setWidget(trigger);
 
-        DivWidget heading = new DivWidget(Constants.ACCORDION_HEADING);
+        heading = new DivWidget(Constants.ACCORDION_HEADING);
         
         heading.add(collapseTrigger);
 
         super.add(heading);
         
         super.add(collapse.asWidget());
+    }
+
+    public DivWidget getHeading() {
+        return heading;
+    }
+
+    public IconAnchor getTrigger() {
+        return trigger;
     }
     
     /**
@@ -168,7 +178,7 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
     public void clear() {
         innerBody.clear();
     }
-    
+
     /**
      * {@inheritDoc}
      */

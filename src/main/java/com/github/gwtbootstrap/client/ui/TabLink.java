@@ -15,22 +15,24 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.IconAnchor;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.HasEnabled;
 
 /**
  * The TabLink for {@link TabPanel}
  * @author ohashi keisuke
  *
  */
-public class TabLink extends NavWidget {
+public class TabLink extends NavWidget implements HasEnabled {
 
     private TabPane pane;
     private boolean createTabPane = true;
+    private boolean enabled;
 
     /**
      * Create widget with set Effective TabPane 
@@ -39,7 +41,7 @@ public class TabLink extends NavWidget {
     public TabLink(TabPane pane) {
         this();
         setText(pane.getHeading());
-        setTablePane(pane);
+        setTabPane(pane);
     }
 
     /**
@@ -47,10 +49,37 @@ public class TabLink extends NavWidget {
      */
     public TabLink() {
         super();
-        IconAnchor anchor = getAnchor();
-        anchor.getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
+        enabled = true;
+        getAnchor().getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
     }
-    
+
+    /**
+     * Returns true if the widget is enabled, false if not.
+     */
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    /**
+     * Sets whether this widget is enabled.
+     *
+     * @param enabled <code>true</code> to enable the widget, <code>false</code>
+     *                to disable it
+     */
+    @Override
+    public void setEnabled(boolean enabled) {
+        if (enabled && !this.enabled) {
+            this.enabled = true;
+            getAnchor().getElement().setAttribute(Constants.DATA_TOGGLE, "tab");
+            removeStyleName(Constants.DISABLED);
+        } else if (!enabled && this.enabled) {
+            this.enabled = false;
+            getAnchor().getElement().removeAttribute(Constants.DATA_TOGGLE);
+            addStyleName(Constants.DISABLED);
+        }
+    }
+
     public void setCreateTabPane(boolean createTabPane) {
         this.createTabPane = createTabPane;
     }
@@ -63,7 +92,7 @@ public class TabLink extends NavWidget {
      * Set Effective TabPane
      * @param pane
      */
-    public void setTablePane(TabPane pane) {
+    public void setTabPane(TabPane pane) {
         this.pane = pane;
         
         if(pane.getId() == null || pane.getId().isEmpty()) {
