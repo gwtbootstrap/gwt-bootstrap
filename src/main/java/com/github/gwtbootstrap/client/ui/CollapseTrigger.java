@@ -86,6 +86,12 @@ public class CollapseTrigger extends MarkupWidget {
                 if(parent != null && !parent.isEmpty()) {
                     setParent(parent);
                 }
+                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                        Collapse.configure(target, parent, false);
+                    }
+                });
                 return super.asWidget();
             }
 

@@ -3,9 +3,13 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
-import com.github.gwtbootstrap.client.ui.constants.*;
+import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideHandler;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
@@ -38,7 +42,7 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
     private Collapse collapse;
 
     private CollapseTrigger collapseTrigger;
-    
+
     private boolean defaultOpen;
     
     public AccordionGroup() {
@@ -55,7 +59,7 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
         collapse.setExistTrigger(true);
         
         trigger.addStyleName(Constants.ACCORDION_TOGGLE);
-        
+
         collapseTrigger = new CollapseTrigger("#" + collapse.getId());
 
         collapseTrigger.setAccordionTrigger(true);
@@ -102,7 +106,7 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
     public void setIconSize(IconSize size) {
         trigger.setIconSize(size);
     }
-    
+
     public void setParent(String parent) {
         collapseTrigger.setParent(parent);
     }
@@ -162,7 +166,7 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
     public void toggle() {
         collapse.toggle();
     }
-    
+
     /**
      * {@inheritDoc}
      */
