@@ -92,7 +92,7 @@ public class ResourceInjector {
         LinkElement link = Document.get().createLinkElement();
         link.setType("text/css");
         link.setRel("stylesheet");
-        link.setHref(GWT.getModuleName() + "/css/" + filename);
+        link.setHref(GWT.getModuleBaseURL() + "css/" + filename);
         getHead().appendChild(link);
     }
 
