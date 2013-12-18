@@ -22,14 +22,22 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * <h3>Using custom CSS/JS resources.</h3>
  * 
  * <p>
- * If you need to adapt resources, create your resource package, add your files and implement this interface, then add a
- * <code>replace-with</code> tag and <code>public</code> tag to your module xml. Example:
+ * GWT-Bootstrap uses embedded copies of bootstrap.css and bootstrap.js by default. If you need to use your own copies
+ * or include other resources, you'll need to create a custom {@link Configurator} and a custom {@link Resources}.
+ * </p>
+ * <p>
+ * A suggested layout is below. First, create your resource package at the same level as client/server/shared. Next, create
+ * css and js directories beneath the resources directory, and add your custom css and js files into those. Next, create your custom
+ * {@link Configurator} and a custom {@link Resources}. Finally, add
+ * a <code>replace-with</code> tag and a <code>public</code> tag to your module xml.
+ * </p>
+ * <p>
+ * Full example below:
  * </p>
  * 
  * <p>
- *
- * 1. Create your Resources package and add css,js directory to that (under your module xml package) and add your resources to adove css,
- * js directory. (Bootstarp's css filename should be <code>bootstrap.min.css</code> and Bootstrap's js filename should be <code>bootstrap.min.js</code>)
+ * 1. Create your resources package directory and add css and js directories beneath that. Add your custom css and js files to the css and js
+ * directories, respectively.
  * <pre>
  * src/main/java/com/example
  * |-- client
@@ -47,7 +55,7 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </pre>
  * 
  * 
- * 2. Create a Resources Interface (extending {@link Resources}) override the
+ * 2. Create a Resources interface (extending {@link Resources}) that overrides the
  * getters of the files you want to replace.
  * 
  * <pre>
@@ -63,7 +71,7 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * 
  * <p>
- * 3. Create a <code>Configurator</code>.
+ * 3. Create a <code>Configurator</code> that returns your new {@link Resources}.
  * 
  * <pre>
  * 	public MyConfigurator implements Configurator {
@@ -76,8 +84,8 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  * </p>
  * 
  * <p>
- * 4. Add a <code>replace-with</code> tag, <code>source</code> and <code>public<tag> to your module xml (
- * <code>*.gwt.xml</code>):
+ * 4. Add a <code>replace-with</code> tag, a <code>source</code> tag, and a <code>public</code> tag to your module xml
+ * (<code>*.gwt.xml</code>):
  * 
  * <pre>
  * {@literal
