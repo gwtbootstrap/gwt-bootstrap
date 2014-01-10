@@ -28,119 +28,132 @@
 <span class="sourceLineNo">020</span><a name="line.20"></a>
 <span class="sourceLineNo">021</span>/**<a name="line.21"></a>
 <span class="sourceLineNo">022</span> * &lt;h3&gt;Using custom CSS/JS resources.&lt;/h3&gt;<a name="line.22"></a>
-<span class="sourceLineNo">023</span> * <a name="line.23"></a>
+<span class="sourceLineNo">023</span> *<a name="line.23"></a>
 <span class="sourceLineNo">024</span> * &lt;p&gt;<a name="line.24"></a>
-<span class="sourceLineNo">025</span> * If you need to adapt resources, create your resource package, add your files and implement this interface, then add a<a name="line.25"></a>
-<span class="sourceLineNo">026</span> * &lt;code&gt;replace-with&lt;/code&gt; tag and &lt;code&gt;public&lt;/code&gt; tag to your module xml. Example:<a name="line.26"></a>
+<span class="sourceLineNo">025</span> * GWT-Bootstrap uses embedded copies of bootstrap.css and bootstrap.js by default. If you need to use your own custom copies,<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * you'll need to create a custom {@link Configurator} and a custom {@link Resources}.<a name="line.26"></a>
 <span class="sourceLineNo">027</span> * &lt;/p&gt;<a name="line.27"></a>
-<span class="sourceLineNo">028</span> * <a name="line.28"></a>
-<span class="sourceLineNo">029</span> * &lt;p&gt;<a name="line.29"></a>
-<span class="sourceLineNo">030</span> *<a name="line.30"></a>
-<span class="sourceLineNo">031</span> * 1. Create your Resources package and add css,js directory to that (under your module xml package) and add your resources to adove css,<a name="line.31"></a>
-<span class="sourceLineNo">032</span> * js directory. (Bootstarp's css filename should be &lt;code&gt;bootstrap.min.css&lt;/code&gt; and Bootstrap's js filename should be &lt;code&gt;bootstrap.min.js&lt;/code&gt;)<a name="line.32"></a>
-<span class="sourceLineNo">033</span> * &lt;pre&gt;<a name="line.33"></a>
-<span class="sourceLineNo">034</span> * src/main/java/com/example<a name="line.34"></a>
-<span class="sourceLineNo">035</span> * |-- client<a name="line.35"></a>
-<span class="sourceLineNo">036</span> * |-- resources<a name="line.36"></a>
-<span class="sourceLineNo">037</span> * |   |-- css<a name="line.37"></a>
-<span class="sourceLineNo">038</span> * |   |   `-- bootstrap.min.css &lt; your custom css<a name="line.38"></a>
-<span class="sourceLineNo">039</span> * |   |   `-- bootstrap-responsive.min.css &lt; your custom css<a name="line.39"></a>
-<span class="sourceLineNo">040</span> * |   |-- js<a name="line.40"></a>
-<span class="sourceLineNo">041</span> * |   |   `-- bootstrap.min.js &lt; your custom js<a name="line.41"></a>
-<span class="sourceLineNo">042</span> * |   |-- ExampleConfigurator.java &lt; your custom Configurator class<a name="line.42"></a>
-<span class="sourceLineNo">043</span> * |   `-- ExampleResources.java &lt; your custom Resources interface<a name="line.43"></a>
-<span class="sourceLineNo">044</span> * |-- server<a name="line.44"></a>
-<span class="sourceLineNo">045</span> * |-- shared<a name="line.45"></a>
-<span class="sourceLineNo">046</span> * `-- Example.gwt.xml &lt; your module xml file<a name="line.46"></a>
-<span class="sourceLineNo">047</span> * &lt;/pre&gt;<a name="line.47"></a>
-<span class="sourceLineNo">048</span> * <a name="line.48"></a>
-<span class="sourceLineNo">049</span> * <a name="line.49"></a>
-<span class="sourceLineNo">050</span> * 2. Create a Resources Interface (extending {@link Resources}) override the<a name="line.50"></a>
-<span class="sourceLineNo">051</span> * getters of the files you want to replace.<a name="line.51"></a>
-<span class="sourceLineNo">052</span> * <a name="line.52"></a>
-<span class="sourceLineNo">053</span> * &lt;pre&gt;<a name="line.53"></a>
-<span class="sourceLineNo">054</span> *      public interface MyResources extends Resources {<a name="line.54"></a>
-<span class="sourceLineNo">055</span> *              {@literal @Source("css/bootstrap.min.css")}<a name="line.55"></a>
-<span class="sourceLineNo">056</span> *              TextResource bootstrapCss();<a name="line.56"></a>
-<span class="sourceLineNo">057</span> *<a name="line.57"></a>
-<span class="sourceLineNo">058</span> *              {@literal @Source("css/bootstrap-responsive.min.css")}<a name="line.58"></a>
-<span class="sourceLineNo">059</span> *              TextResource bootstrapResponsiveCss();<a name="line.59"></a>
-<span class="sourceLineNo">060</span> *      }<a name="line.60"></a>
-<span class="sourceLineNo">061</span> * &lt;/pre&gt;<a name="line.61"></a>
-<span class="sourceLineNo">062</span> * <a name="line.62"></a>
-<span class="sourceLineNo">063</span> * &lt;/p&gt;<a name="line.63"></a>
-<span class="sourceLineNo">064</span> * <a name="line.64"></a>
-<span class="sourceLineNo">065</span> * &lt;p&gt;<a name="line.65"></a>
-<span class="sourceLineNo">066</span> * 3. Create a &lt;code&gt;Configurator&lt;/code&gt;.<a name="line.66"></a>
-<span class="sourceLineNo">067</span> * <a name="line.67"></a>
-<span class="sourceLineNo">068</span> * &lt;pre&gt;<a name="line.68"></a>
-<span class="sourceLineNo">069</span> *      public MyConfigurator implements Configurator {<a name="line.69"></a>
-<span class="sourceLineNo">070</span> *              public Resources getResources() {<a name="line.70"></a>
-<span class="sourceLineNo">071</span> *                      return GWT.create(MyResources.class);<a name="line.71"></a>
-<span class="sourceLineNo">072</span> *              }<a name="line.72"></a>
-<span class="sourceLineNo">073</span> *      }<a name="line.73"></a>
-<span class="sourceLineNo">074</span> * &lt;/pre&gt;<a name="line.74"></a>
-<span class="sourceLineNo">075</span> * <a name="line.75"></a>
-<span class="sourceLineNo">076</span> * &lt;/p&gt;<a name="line.76"></a>
-<span class="sourceLineNo">077</span> * <a name="line.77"></a>
-<span class="sourceLineNo">078</span> * &lt;p&gt;<a name="line.78"></a>
-<span class="sourceLineNo">079</span> * 4. Add a &lt;code&gt;replace-with&lt;/code&gt; tag, &lt;code&gt;source&lt;/code&gt; and &lt;code&gt;public&lt;tag&gt; to your module xml (<a name="line.79"></a>
-<span class="sourceLineNo">080</span> * &lt;code&gt;*.gwt.xml&lt;/code&gt;):<a name="line.80"></a>
-<span class="sourceLineNo">081</span> * <a name="line.81"></a>
-<span class="sourceLineNo">082</span> * &lt;pre&gt;<a name="line.82"></a>
-<span class="sourceLineNo">083</span> * {@literal<a name="line.83"></a>
-<span class="sourceLineNo">084</span> * &lt;source path='resources'/&gt;<a name="line.84"></a>
-<span class="sourceLineNo">085</span> * &lt;replace-with class="com.example.resources.ExampleConfigurator"&gt;<a name="line.85"></a>
-<span class="sourceLineNo">086</span> *     &lt;when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/&gt;<a name="line.86"></a>
-<span class="sourceLineNo">087</span> * &lt;/replace-with&gt;<a name="line.87"></a>
-<span class="sourceLineNo">088</span> * &lt;public path="resources"&gt;<a name="line.88"></a>
-<span class="sourceLineNo">089</span> *     &lt;exclude name="** /*.java"/&gt;<a name="line.89"></a>
-<span class="sourceLineNo">090</span> *     &lt;exclude name="** /*.class"/&gt;<a name="line.90"></a>
-<span class="sourceLineNo">091</span> * &lt;/public&gt;<a name="line.91"></a>
-<span class="sourceLineNo">092</span> *<a name="line.92"></a>
-<span class="sourceLineNo">093</span> * }<a name="line.93"></a>
-<span class="sourceLineNo">094</span> * &lt;/pre&gt;<a name="line.94"></a>
-<span class="sourceLineNo">095</span> * <a name="line.95"></a>
-<span class="sourceLineNo">096</span> * &lt;/p&gt;<a name="line.96"></a>
-<span class="sourceLineNo">097</span> *<a name="line.97"></a>
-<span class="sourceLineNo">098</span> * &lt;p&gt;A more detailed tutorial and a full working example can be found &lt;a href="http://carlosbecker.com/posts/using-a-custom-bootstrap-theme-in-gwt-bootstrap"&gt;here&lt;/a&gt;.&lt;/p&gt;<a name="line.98"></a>
-<span class="sourceLineNo">099</span> * @since 2.0.4.0<a name="line.99"></a>
-<span class="sourceLineNo">100</span> * <a name="line.100"></a>
-<span class="sourceLineNo">101</span> * @author Dominik Mayer<a name="line.101"></a>
-<span class="sourceLineNo">102</span> * @author ohashi keisuke<a name="line.102"></a>
-<span class="sourceLineNo">103</span> * @author Carlos A Becker<a name="line.103"></a>
-<span class="sourceLineNo">104</span> * <a name="line.104"></a>
-<span class="sourceLineNo">105</span> * @see Resources<a name="line.105"></a>
-<span class="sourceLineNo">106</span> * @see DefaultConfigurator<a name="line.106"></a>
-<span class="sourceLineNo">107</span> */<a name="line.107"></a>
-<span class="sourceLineNo">108</span>public interface Configurator {<a name="line.108"></a>
-<span class="sourceLineNo">109</span><a name="line.109"></a>
-<span class="sourceLineNo">110</span>        /**<a name="line.110"></a>
-<span class="sourceLineNo">111</span>         * Get the Bootstrap Resources that should be used for this project.<a name="line.111"></a>
-<span class="sourceLineNo">112</span>         * <a name="line.112"></a>
-<span class="sourceLineNo">113</span>         * @return the Bootstrap Resources<a name="line.113"></a>
-<span class="sourceLineNo">114</span>         */<a name="line.114"></a>
-<span class="sourceLineNo">115</span>        Resources getResources();<a name="line.115"></a>
-<span class="sourceLineNo">116</span><a name="line.116"></a>
-<span class="sourceLineNo">117</span>        //@formatter:off<a name="line.117"></a>
-<span class="sourceLineNo">118</span>        /**<a name="line.118"></a>
-<span class="sourceLineNo">119</span>         * Determines whether the project uses a responsive design.<a name="line.119"></a>
-<span class="sourceLineNo">120</span>         * <a name="line.120"></a>
-<span class="sourceLineNo">121</span>         * &lt;p&gt;<a name="line.121"></a>
-<span class="sourceLineNo">122</span>         * If the responsive<a name="line.122"></a>
-<span class="sourceLineNo">123</span>         * design is enabled, the interface can adapt to the screen size and show<a name="line.123"></a>
-<span class="sourceLineNo">124</span>         * different content on smartphones, tablets and desktop computers.<a name="line.124"></a>
-<span class="sourceLineNo">125</span>         * &lt;/p&gt;<a name="line.125"></a>
-<span class="sourceLineNo">126</span>         * <a name="line.126"></a>
-<span class="sourceLineNo">127</span>         * @return &lt;code&gt;true&lt;/code&gt; if the responsive features should be enabled.<a name="line.127"></a>
-<span class="sourceLineNo">128</span>         * Default: &lt;code&gt;false&lt;/code&gt;<a name="line.128"></a>
-<span class="sourceLineNo">129</span>         * <a name="line.129"></a>
-<span class="sourceLineNo">130</span>         * @see IsResponsive<a name="line.130"></a>
-<span class="sourceLineNo">131</span>         * <a name="line.131"></a>
-<span class="sourceLineNo">132</span>         * @see &lt;a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.132"></a>
-<span class="sourceLineNo">133</span>         */<a name="line.133"></a>
-<span class="sourceLineNo">134</span>        boolean hasResponsiveDesign();<a name="line.134"></a>
-<span class="sourceLineNo">135</span>}<a name="line.135"></a>
+<span class="sourceLineNo">028</span> * &lt;p&gt;<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * Full example below:<a name="line.29"></a>
+<span class="sourceLineNo">030</span> * &lt;/p&gt;<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * &lt;p&gt;<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * 1. First, in the src/main/java tree, create a resources package at the same level as client/server/shared.<a name="line.32"></a>
+<span class="sourceLineNo">033</span> * Your custom {@link Configurator} and custom {@link Resources} will be placed in this resources package.<a name="line.33"></a>
+<span class="sourceLineNo">034</span> * &lt;pre&gt;<a name="line.34"></a>
+<span class="sourceLineNo">035</span> * src/main/java/com/example<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * |-- client<a name="line.36"></a>
+<span class="sourceLineNo">037</span> * |-- resources<a name="line.37"></a>
+<span class="sourceLineNo">038</span> * |   |-- ExampleResources.java &lt; your custom Resources interface, see step 3<a name="line.38"></a>
+<span class="sourceLineNo">039</span> * |   |-- ExampleConfigurator.java &lt; your custom Configurator class, see step 4<a name="line.39"></a>
+<span class="sourceLineNo">040</span> * |-- server<a name="line.40"></a>
+<span class="sourceLineNo">041</span> * |-- shared<a name="line.41"></a>
+<span class="sourceLineNo">042</span> * |-- Example.gwt.xml &lt; your module xml file<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * &lt;/pre&gt;<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * &lt;/p&gt;<a name="line.44"></a>
+<span class="sourceLineNo">045</span> *<a name="line.45"></a>
+<span class="sourceLineNo">046</span> * &lt;p&gt;<a name="line.46"></a>
+<span class="sourceLineNo">047</span> * 2. In the src/main/resources tree, create a directory structure that matches the one in src/main/java, so<a name="line.47"></a>
+<span class="sourceLineNo">048</span> * src/main/resources/com/example/resources/. Beneath there, create css and js directories, and add your custom css and js files<a name="line.48"></a>
+<span class="sourceLineNo">049</span> * into those.<a name="line.49"></a>
+<span class="sourceLineNo">050</span> * &lt;pre&gt;<a name="line.50"></a>
+<span class="sourceLineNo">051</span> * src/main/resources/com/example<a name="line.51"></a>
+<span class="sourceLineNo">052</span> * |-- resources<a name="line.52"></a>
+<span class="sourceLineNo">053</span> * |   |-- css<a name="line.53"></a>
+<span class="sourceLineNo">054</span> * |   |   |-- bootstrap-custom.css &lt; your custom css<a name="line.54"></a>
+<span class="sourceLineNo">055</span> * |   |   |-- bootstrap-responsive-custom.css &lt; your custom css<a name="line.55"></a>
+<span class="sourceLineNo">056</span> * |   |-- js<a name="line.56"></a>
+<span class="sourceLineNo">057</span> * |   |   |-- bootstrap-custom.js &lt; your custom js<a name="line.57"></a>
+<span class="sourceLineNo">058</span> * &lt;/pre&gt;<a name="line.58"></a>
+<span class="sourceLineNo">059</span> *<a name="line.59"></a>
+<span class="sourceLineNo">060</span> * 3. Create a Resources interface (extending {@link Resources}) that overrides the<a name="line.60"></a>
+<span class="sourceLineNo">061</span> * getters of the files you want to replace. Place in src/main/java/com/example.<a name="line.61"></a>
+<span class="sourceLineNo">062</span> *<a name="line.62"></a>
+<span class="sourceLineNo">063</span> * &lt;pre&gt;<a name="line.63"></a>
+<span class="sourceLineNo">064</span> *  package com.example.resources;<a name="line.64"></a>
+<span class="sourceLineNo">065</span> *      public interface ExampleResources extends Resources {<a name="line.65"></a>
+<span class="sourceLineNo">066</span> *              {@literal @Source("com/example/resources/css/bootstrap-custom.css")}  &lt; name anything you like, path must match the layout above<a name="line.66"></a>
+<span class="sourceLineNo">067</span> *              TextResource bootstrapCss();<a name="line.67"></a>
+<span class="sourceLineNo">068</span> *<a name="line.68"></a>
+<span class="sourceLineNo">069</span> *              {@literal @Source("com/example/resources/css/bootstrap-responsive-custom.css")} &lt; name anything you like, path must match the layout above<a name="line.69"></a>
+<span class="sourceLineNo">070</span> *              TextResource bootstrapResponsiveCss();<a name="line.70"></a>
+<span class="sourceLineNo">071</span> *      }<a name="line.71"></a>
+<span class="sourceLineNo">072</span> * &lt;/pre&gt;<a name="line.72"></a>
+<span class="sourceLineNo">073</span> *<a name="line.73"></a>
+<span class="sourceLineNo">074</span> * &lt;/p&gt;<a name="line.74"></a>
+<span class="sourceLineNo">075</span> *<a name="line.75"></a>
+<span class="sourceLineNo">076</span> * &lt;p&gt;<a name="line.76"></a>
+<span class="sourceLineNo">077</span> * 4. Create a &lt;code&gt;Configurator&lt;/code&gt; that returns your new {@link Resources}. Place in src/main/java/com/example.<a name="line.77"></a>
+<span class="sourceLineNo">078</span> *<a name="line.78"></a>
+<span class="sourceLineNo">079</span> * &lt;pre&gt;<a name="line.79"></a>
+<span class="sourceLineNo">080</span> *  package com.example.resources;<a name="line.80"></a>
+<span class="sourceLineNo">081</span> *      public ExampleConfigurator implements Configurator {<a name="line.81"></a>
+<span class="sourceLineNo">082</span> *              public Resources getResources() {<a name="line.82"></a>
+<span class="sourceLineNo">083</span> *                      return GWT.create(ExampleResources.class);<a name="line.83"></a>
+<span class="sourceLineNo">084</span> *              }<a name="line.84"></a>
+<span class="sourceLineNo">085</span> *      }<a name="line.85"></a>
+<span class="sourceLineNo">086</span> * &lt;/pre&gt;<a name="line.86"></a>
+<span class="sourceLineNo">087</span> *<a name="line.87"></a>
+<span class="sourceLineNo">088</span> * &lt;/p&gt;<a name="line.88"></a>
+<span class="sourceLineNo">089</span> *<a name="line.89"></a>
+<span class="sourceLineNo">090</span> * &lt;p&gt;<a name="line.90"></a>
+<span class="sourceLineNo">091</span> * 5. Add a &lt;code&gt;replace-with&lt;/code&gt; tag, a &lt;code&gt;source&lt;/code&gt; tag, and a &lt;code&gt;public&lt;/code&gt; tag to your module xml<a name="line.91"></a>
+<span class="sourceLineNo">092</span> * (&lt;code&gt;*.gwt.xml&lt;/code&gt;):<a name="line.92"></a>
+<span class="sourceLineNo">093</span> *<a name="line.93"></a>
+<span class="sourceLineNo">094</span> * &lt;pre&gt;<a name="line.94"></a>
+<span class="sourceLineNo">095</span> * {@literal<a name="line.95"></a>
+<span class="sourceLineNo">096</span> * &lt;source path='resources'/&gt;<a name="line.96"></a>
+<span class="sourceLineNo">097</span> * &lt;replace-with class="com.example.resources.ExampleConfigurator"&gt;<a name="line.97"></a>
+<span class="sourceLineNo">098</span> *     &lt;when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/&gt;<a name="line.98"></a>
+<span class="sourceLineNo">099</span> * &lt;/replace-with&gt;<a name="line.99"></a>
+<span class="sourceLineNo">100</span> * &lt;public path="resources"&gt;<a name="line.100"></a>
+<span class="sourceLineNo">101</span> *     &lt;exclude name="** /*.java"/&gt;<a name="line.101"></a>
+<span class="sourceLineNo">102</span> *     &lt;exclude name="** /*.class"/&gt;<a name="line.102"></a>
+<span class="sourceLineNo">103</span> * &lt;/public&gt;<a name="line.103"></a>
+<span class="sourceLineNo">104</span> *<a name="line.104"></a>
+<span class="sourceLineNo">105</span> * }<a name="line.105"></a>
+<span class="sourceLineNo">106</span> * &lt;/pre&gt;<a name="line.106"></a>
+<span class="sourceLineNo">107</span> *<a name="line.107"></a>
+<span class="sourceLineNo">108</span> * &lt;/p&gt;<a name="line.108"></a>
+<span class="sourceLineNo">109</span> *<a name="line.109"></a>
+<span class="sourceLineNo">110</span> * &lt;p&gt;A more detailed tutorial and a full working example can be found &lt;a href="http://carlosbecker.com/posts/using-a-custom-bootstrap-theme-in-gwt-bootstrap"&gt;here&lt;/a&gt;.&lt;/p&gt;<a name="line.110"></a>
+<span class="sourceLineNo">111</span> * @since 2.0.4.0<a name="line.111"></a>
+<span class="sourceLineNo">112</span> *<a name="line.112"></a>
+<span class="sourceLineNo">113</span> * @author Dominik Mayer<a name="line.113"></a>
+<span class="sourceLineNo">114</span> * @author ohashi keisuke<a name="line.114"></a>
+<span class="sourceLineNo">115</span> * @author Carlos A Becker<a name="line.115"></a>
+<span class="sourceLineNo">116</span> * @author Greg Sheremeta<a name="line.116"></a>
+<span class="sourceLineNo">117</span> *<a name="line.117"></a>
+<span class="sourceLineNo">118</span> * @see Resources<a name="line.118"></a>
+<span class="sourceLineNo">119</span> * @see DefaultConfigurator<a name="line.119"></a>
+<span class="sourceLineNo">120</span> */<a name="line.120"></a>
+<span class="sourceLineNo">121</span>public interface Configurator {<a name="line.121"></a>
+<span class="sourceLineNo">122</span><a name="line.122"></a>
+<span class="sourceLineNo">123</span>        /**<a name="line.123"></a>
+<span class="sourceLineNo">124</span>         * Get the Bootstrap Resources that should be used for this project.<a name="line.124"></a>
+<span class="sourceLineNo">125</span>         *<a name="line.125"></a>
+<span class="sourceLineNo">126</span>         * @return the Bootstrap Resources<a name="line.126"></a>
+<span class="sourceLineNo">127</span>         */<a name="line.127"></a>
+<span class="sourceLineNo">128</span>        Resources getResources();<a name="line.128"></a>
+<span class="sourceLineNo">129</span><a name="line.129"></a>
+<span class="sourceLineNo">130</span>        //@formatter:off<a name="line.130"></a>
+<span class="sourceLineNo">131</span>        /**<a name="line.131"></a>
+<span class="sourceLineNo">132</span>         * Determines whether the project uses a responsive design.<a name="line.132"></a>
+<span class="sourceLineNo">133</span>         *<a name="line.133"></a>
+<span class="sourceLineNo">134</span>         * &lt;p&gt;<a name="line.134"></a>
+<span class="sourceLineNo">135</span>         * If the responsive<a name="line.135"></a>
+<span class="sourceLineNo">136</span>         * design is enabled, the interface can adapt to the screen size and show<a name="line.136"></a>
+<span class="sourceLineNo">137</span>         * different content on smartphones, tablets and desktop computers.<a name="line.137"></a>
+<span class="sourceLineNo">138</span>         * &lt;/p&gt;<a name="line.138"></a>
+<span class="sourceLineNo">139</span>         *<a name="line.139"></a>
+<span class="sourceLineNo">140</span>         * @return &lt;code&gt;true&lt;/code&gt; if the responsive features should be enabled.<a name="line.140"></a>
+<span class="sourceLineNo">141</span>         * Default: &lt;code&gt;false&lt;/code&gt;<a name="line.141"></a>
+<span class="sourceLineNo">142</span>         *<a name="line.142"></a>
+<span class="sourceLineNo">143</span>         * @see IsResponsive<a name="line.143"></a>
+<span class="sourceLineNo">144</span>         *<a name="line.144"></a>
+<span class="sourceLineNo">145</span>         * @see &lt;a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive"&gt;Bootstrap documentation&lt;/a&gt;<a name="line.145"></a>
+<span class="sourceLineNo">146</span>         */<a name="line.146"></a>
+<span class="sourceLineNo">147</span>        boolean hasResponsiveDesign();<a name="line.147"></a>
+<span class="sourceLineNo">148</span>}<a name="line.148"></a>
 
 
 
