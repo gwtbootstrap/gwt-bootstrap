@@ -220,30 +220,27 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
 
     @Override
     protected void onRangeOrRowCountChanged() {
-    	System.out.println("onRangeOrRowCountChanged");
-        Range range1 = getDisplay().getVisibleRange();
-        System.out.println("start-1100: " + range1.getStart());
         int pageCount = super.getPageCount();
         if (pageCount > 0) {
         	
         	// shows all pages and rebuilt incrementally
             if (maxPages < 0) {
-                if (pagination.getWidgetCount() == 0) {
-                    // Lazy init for not displaying back and forward buttons unnecessarily
-                    initPagination();
-                }
-                int widgetCount = pagination.getWidgetCount();
+            	if (pagination.getWidgetCount() == 0) {
+            		// Lazy init for not displaying back and forward buttons unnecessarily
+            		initPagination();
+            	}
+            	int widgetCount = pagination.getWidgetCount();
 	            if (pageCount + 2 > widgetCount) {
-	                // If has there are *more* pages then links, then add the remaining links
-	                for (int i = widgetCount-1; i <= pageCount; i++) {
-	                    NavLink page = pagination.addPageLink(i);
-	                    page.addClickHandler(createPageClickHandler(i - 1));
-	                }
+	            	// If has there are *more* pages then links, then add the remaining links
+	            	for (int i = widgetCount-1; i <= pageCount; i++) {
+	            		NavLink page = pagination.addPageLink(i);
+	            		page.addClickHandler(createPageClickHandler(i - 1));
+	            	}
 	            } else if (pageCount + 2 < widgetCount) {
-	                // If has there are *less* pages then links, then remove the exceeding links
-	                for (int i = widgetCount - 2; i > pageCount; i--) {
-	                    pagination.remove(i);
-	                }
+	            	// If has there are *less* pages then links, then remove the exceeding links
+	            	for (int i = widgetCount - 2; i > pageCount; i--) {
+	            		pagination.remove(i);
+	            	}
 	            }
 	            
 	        // shows a rotated fixed number of pages (determined by 'maxpages') and rebuilt from scratch
