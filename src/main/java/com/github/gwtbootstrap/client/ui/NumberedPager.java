@@ -23,7 +23,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.cellview.client.AbstractPager;
 import com.google.gwt.view.client.HasRows;
-import com.google.gwt.view.client.Range;
 
 /**
  * A pager for controlling a {@link HasRows} using {@link Pagination}.
@@ -220,85 +219,85 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
 
     @Override
     protected void onRangeOrRowCountChanged() {
-        int pageCount = super.getPageCount();
-        if (pageCount > 0) {
-        	
-        	// shows all pages and rebuilt incrementally
-            if (maxPages < 0) {
-            	if (pagination.getWidgetCount() == 0) {
-            		// Lazy init for not displaying back and forward buttons unnecessarily
-            		initPagination();
-            	}
-            	int widgetCount = pagination.getWidgetCount();
-	            if (pageCount + 2 > widgetCount) {
-	            	// If has there are *more* pages then links, then add the remaining links
-	            	for (int i = widgetCount-1; i <= pageCount; i++) {
-	            		NavLink page = pagination.addPageLink(i);
-	            		page.addClickHandler(createPageClickHandler(i - 1));
-	            	}
-	            } else if (pageCount + 2 < widgetCount) {
-	            	// If has there are *less* pages then links, then remove the exceeding links
-	            	for (int i = widgetCount - 2; i > pageCount; i--) {
-	            		pagination.remove(i);
-	            	}
-	            }
-	            
-	        // shows a rotated fixed number of pages (determined by 'maxpages') and rebuilt from scratch
-            } else {
-            	// built it from scratch
-            	pagination.clear();
-            	
-            	// calculate offsets
-            	int currentPage = getPage();
-            	int pagesToShow = Math.min(getPageCount(), maxPages);
-            	int firstPageToShow = 1;
+    	int pageCount = super.getPageCount();
+    	if (pageCount > 0) {
 
-            	if (maxPages > getPageCount())
-            		firstPageToShow = 1;
-            	else if (currentPage > getPageCount() - (maxPages / 2))
-            		firstPageToShow = getPageCount() - maxPages + 1;  
-            	else if(currentPage > maxPages / 2)
-            		firstPageToShow = currentPage - (maxPages / 2) + 1;          		
+    		// shows all pages and rebuilt incrementally
+    		if (maxPages < 0) {
+    			if (pagination.getWidgetCount() == 0) {
+    				// Lazy init for not displaying back and forward buttons unnecessarily
+    				initPagination();
+    			}
+    			int widgetCount = pagination.getWidgetCount();
+    			if (pageCount + 2 > widgetCount) {
+    				// If has there are *more* pages then links, then add the remaining links
+    				for (int i = widgetCount-1; i <= pageCount; i++) {
+    					NavLink page = pagination.addPageLink(i);
+    					page.addClickHandler(createPageClickHandler(i - 1));
+    				}
+    			} else if (pageCount + 2 < widgetCount) {
+    				// If has there are *less* pages then links, then remove the exceeding links
+    				for (int i = widgetCount - 2; i > pageCount; i--) {
+    					pagination.remove(i);
+    				}
+    			}
 
-            	// add prev
-                final NavLink prev1 = new NavLink(prevText);
-                prev1.addClickHandler(new ClickHandler() {
-                    @Override
-                    public void onClick(ClickEvent event) {
-                        NumberedPager.this.previousPage();
-                    }
-                });
-                pagination.add(prev1);
-                
-                // add pages
-                for(int i = 1; i < firstPageToShow; i++)			// workaround. base component need all previous children, create fake (not visible)
-                	pagination.addPageLink(i).setVisible(false);
-                for (int i = firstPageToShow; i < pagesToShow + firstPageToShow; i++) {
-                    NavLink page = pagination.addPageLink(i);
-                    page.addClickHandler(createPageClickHandler(i - 1));
-                }
-                
-                // add next
-                final NavLink next1 = new NavLink(nextText);
-                next1.addClickHandler(new ClickHandler() {
-                    @Override
-                    public void onClick(ClickEvent event) {
-                        NumberedPager.this.nextPage();
-                    }
-                });
-                pagination.add(next1);
-                
-                prev1.setDisabled(!super.hasPreviousPage());
-                next1.setDisabled(!super.hasNextPage());
-            }
-            
-            // Set the actual page link as disabled
-            updateButtonsState();
-        } else {
-            if (pagination.getWidgetCount() > 0) {
-                pagination.clear();
-            }
-        }
+    			// shows a rotated fixed number of pages (determined by 'maxpages') and rebuilt from scratch
+    		} else {
+    			// built it from scratch
+    			pagination.clear();
+
+    			// calculate offsets
+    			int currentPage = getPage();
+    			int pagesToShow = Math.min(getPageCount(), maxPages);
+    			int firstPageToShow = 1;
+
+    			if (maxPages > getPageCount())
+    				firstPageToShow = 1;
+    			else if (currentPage > getPageCount() - (maxPages / 2))
+    				firstPageToShow = getPageCount() - maxPages + 1;  
+    			else if(currentPage > maxPages / 2)
+    				firstPageToShow = currentPage - (maxPages / 2) + 1;          		
+
+    			// add prev
+    			final NavLink prev1 = new NavLink(prevText);
+    			prev1.addClickHandler(new ClickHandler() {
+    				@Override
+    				public void onClick(ClickEvent event) {
+    					NumberedPager.this.previousPage();
+    				}
+    			});
+    			pagination.add(prev1);
+
+    			// add pages
+    			for(int i = 1; i < firstPageToShow; i++)			// workaround. base component need all previous children, create fake (not visible)
+    				pagination.addPageLink(i).setVisible(false);
+    			for (int i = firstPageToShow; i < pagesToShow + firstPageToShow; i++) {
+    				NavLink page = pagination.addPageLink(i);
+    				page.addClickHandler(createPageClickHandler(i - 1));
+    			}
+
+    			// add next
+    			final NavLink next1 = new NavLink(nextText);
+    			next1.addClickHandler(new ClickHandler() {
+    				@Override
+    				public void onClick(ClickEvent event) {
+    					NumberedPager.this.nextPage();
+    				}
+    			});
+    			pagination.add(next1);
+
+    			prev1.setDisabled(!super.hasPreviousPage());
+    			next1.setDisabled(!super.hasNextPage());
+    		}
+
+    		// Set the actual page link as disabled
+    		updateButtonsState();
+    	} else {
+    		if (pagination.getWidgetCount() > 0) {
+    			pagination.clear();
+    		}
+    	}
     }
 
     private ClickHandler createPageClickHandler(final int page) {
