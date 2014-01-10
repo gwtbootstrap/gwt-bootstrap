@@ -28,35 +28,35 @@ import com.google.gwt.resources.client.TextResource;
 /**
  * Utility class to inject our resources into modules page. Use it to inject
  * JavaScript and CSS files.
- *
+ * 
  * @since 2.0.4.0
- *
+ * 
  * @author Carlos Alexandro Becker
  */
 public class ResourceInjector {
 
     private static final Configurator ADAPTER = GWT.create(Configurator.class);
-
+    
     private static final InternalResourceInjector INJECTOR = GWT.create(InternalResourceInjector.class);
 
     private static HeadElement head;
 
     /**
-     * Injects the required CSS files into the document header.
+     * Injects the required CSS styles and JavaScript files into the document header.
      * <pre>
      * It's for NoStyle Module.
      * </pre>
      */
     public static void configureWithCssFile() {
-
+        
         injectResourceCssAsFile("bootstrap.min.css");
         injectResourceCssAsFile("gwt-bootstrap.css");
         injectResourceCssAsFile("font-awesome.min.css");
 
         configure();
-
+        
     }
-
+    
     /**
      * Injects the required CSS styles and JavaScript files into the document
      * header.
@@ -65,13 +65,10 @@ public class ResourceInjector {
         INJECTOR.preConfigure();
 
         Resources res = ADAPTER.getResources();
-        if(isNotLoadedJquery())
+        if(isNotLoadedJquery()) 
             injectJs(res.jquery());
 
         injectJs(res.bootstrapJs());
-        injectCss(res.bootstrapCss());
-        injectCss(res.gwtBootstrapCss());
-        injectCss(res.fontAwesomeCss());
 
         if (ADAPTER.hasResponsiveDesign())
             activateResponsiveDesign(res);

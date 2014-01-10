@@ -20,77 +20,73 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
 
 /**
  * <h3>Using custom CSS/JS resources.</h3>
- *
+ * 
  * <p>
- * GWT-Bootstrap uses embedded copies of bootstrap.css and bootstrap.js by default. If you need to use your own custom copies,
- * you'll need to create a custom {@link Configurator} and a custom {@link Resources}.
+ * GWT-Bootstrap uses embedded copies of bootstrap.css and bootstrap.js by default. If you need to use your own copies
+ * or include other resources, you'll need to create a custom {@link Configurator} and a custom {@link Resources}.
+ * </p>
+ * <p>
+ * A suggested layout is below. First, create your resource package at the same level as client/server/shared. Next, create
+ * css and js directories beneath the resources directory, and add your custom css and js files into those. Next, create your custom
+ * {@link Configurator} and a custom {@link Resources}. Finally, add
+ * a <code>replace-with</code> tag and a <code>public</code> tag to your module xml.
  * </p>
  * <p>
  * Full example below:
  * </p>
+ * 
  * <p>
- * 1. First, in the src/main/java tree, create a resources package at the same level as client/server/shared.
- * Your custom {@link Configurator} and custom {@link Resources} will be placed in this resources package.
+ * 1. Create your resources package directory and add css and js directories beneath that. Add your custom css and js files to the css and js
+ * directories, respectively.
  * <pre>
  * src/main/java/com/example
  * |-- client
  * |-- resources
- * |   |-- ExampleResources.java < your custom Resources interface, see step 3
- * |   |-- ExampleConfigurator.java < your custom Configurator class, see step 4
+ * |   |-- css
+ * |   |   `-- bootstrap.min.css < your custom css
+ * |   |   `-- bootstrap-responsive.min.css < your custom css
+ * |   |-- js
+ * |   |   `-- bootstrap.min.js < your custom js
+ * |   |-- ExampleConfigurator.java < your custom Configurator class
+ * |   `-- ExampleResources.java < your custom Resources interface
  * |-- server
  * |-- shared
- * |-- Example.gwt.xml < your module xml file
+ * `-- Example.gwt.xml < your module xml file
  * </pre>
- * </p>
- *
- * <p>
- * 2. In the src/main/resources tree, create a directory structure that matches the one in src/main/java, so
- * src/main/resources/com/example/resources/. Beneath there, create css and js directories, and add your custom css and js files
- * into those.
+ * 
+ * 
+ * 2. Create a Resources interface (extending {@link Resources}) that overrides the
+ * getters of the files you want to replace.
+ * 
  * <pre>
- * src/main/resources/com/example
- * |-- resources
- * |   |-- css
- * |   |   |-- bootstrap-custom.css < your custom css
- * |   |   |-- bootstrap-responsive-custom.css < your custom css
- * |   |-- js
- * |   |   |-- bootstrap-custom.js < your custom js
- * </pre>
- *
- * 3. Create a Resources interface (extending {@link Resources}) that overrides the
- * getters of the files you want to replace. Place in src/main/java/com/example.
- *
- * <pre>
- *  package com.example.resources;
- * 	public interface ExampleResources extends Resources {
- * 		{@literal @Source("com/example/resources/css/bootstrap-custom.css")}  < name anything you like, path must match the layout above
+ * 	public interface MyResources extends Resources {
+ * 		{@literal @Source("css/bootstrap.min.css")}
  * 		TextResource bootstrapCss();
  *
- * 		{@literal @Source("com/example/resources/css/bootstrap-responsive-custom.css")} < name anything you like, path must match the layout above
+ * 		{@literal @Source("css/bootstrap-responsive.min.css")}
  * 		TextResource bootstrapResponsiveCss();
  * 	}
  * </pre>
- *
+ * 
  * </p>
- *
+ * 
  * <p>
- * 4. Create a <code>Configurator</code> that returns your new {@link Resources}. Place in src/main/java/com/example.
- *
+ * 3. Create a <code>Configurator</code> that returns your new {@link Resources}.
+ * 
  * <pre>
- *  package com.example.resources;
- * 	public ExampleConfigurator implements Configurator {
+ * 	public MyConfigurator implements Configurator {
  * 		public Resources getResources() {
- * 			return GWT.create(ExampleResources.class);
+ * 			return GWT.create(MyResources.class);
  * 		}
  * 	}
  * </pre>
- *
+ * 
  * </p>
- *
+ * 
  * <p>
- * 5. Add a <code>replace-with</code> tag, a <code>source</code> tag, and a <code>public</code> tag to your module xml
+ * 4. Add a <code>replace-with</code> tag, a <code>source</code> tag, and a <code>public</code> tag to your module xml
  * (<code>*.gwt.xml</code>):
- *
+ * 
  * <pre>
  * {@literal
  * <source path='resources'/>
@@ -104,17 +100,16 @@ import com.github.gwtbootstrap.client.ui.resources.Resources;
  *
  * }
  * </pre>
- *
+ * 
  * </p>
  *
  * <p>A more detailed tutorial and a full working example can be found <a href="http://carlosbecker.com/posts/using-a-custom-bootstrap-theme-in-gwt-bootstrap">here</a>.</p>
  * @since 2.0.4.0
- *
+ * 
  * @author Dominik Mayer
  * @author ohashi keisuke
  * @author Carlos A Becker
- * @author Greg Sheremeta
- *
+ * 
  * @see Resources
  * @see DefaultConfigurator
  */
@@ -122,7 +117,7 @@ public interface Configurator {
 
 	/**
 	 * Get the Bootstrap Resources that should be used for this project.
-	 *
+	 * 
 	 * @return the Bootstrap Resources
 	 */
 	Resources getResources();
@@ -130,18 +125,18 @@ public interface Configurator {
 	//@formatter:off
 	/**
 	 * Determines whether the project uses a responsive design.
-	 *
+	 * 
 	 * <p>
 	 * If the responsive
 	 * design is enabled, the interface can adapt to the screen size and show
 	 * different content on smartphones, tablets and desktop computers.
 	 * </p>
-	 *
+	 * 
 	 * @return <code>true</code> if the responsive features should be enabled.
 	 * Default: <code>false</code>
-	 *
+	 * 
 	 * @see IsResponsive
-	 *
+	 * 
 	 * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap documentation</a>
 	 */
 	boolean hasResponsiveDesign();
