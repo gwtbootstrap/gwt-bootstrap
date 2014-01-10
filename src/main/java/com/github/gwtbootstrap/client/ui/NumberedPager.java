@@ -198,10 +198,10 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     }
 
     private void updateButtonsState() {
-        if (visiblePages > 0) {
+        final int pageCount = getPageCount();
+        if (visiblePages > 0 && visiblePages < pageCount) {
             // calculate offsets
             final int currentPage = getPage();
-            final int pageCount = getPageCount();
             final int pagesToShow = Math.min(pageCount, visiblePages);
             int firstVisibleIndex = 1;
 
