@@ -70,16 +70,6 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     }
 
     /**
-     * Use setPullRight instead.
-     *
-     * @param pullRight <code>true</code> if the widget should be aligned right.
-     */
-    @Deprecated
-    public void pullRight(boolean pullRight) {
-        pagination.pullRight(pullRight);
-    }
-
-    /**
      * Pulls the widget to the right side.
      *
      * @param pullRight <code>true</code> if the widget should be aligned right.
@@ -92,6 +82,60 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         pagination.setAlignment(alignment);
     }
 
+    // limit number of pages shown
+    public void setVisiblePages(int visiblePages) {
+        this.visiblePages = visiblePages;
+    }
+
+    // set text of next button
+    public void setNextText(String nextText) {
+        this.nextText = nextText;
+    }
+
+    // set text of previous button
+    public void setPreviousText(String previousText) {
+        this.previousText = previousText;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setShowOn(Device device) {
+        pagination.setShowOn(device);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setHideOn(Device device) {
+        pagination.setHideOn(device);
+    }
+
+    public void setSize(Pagination.PaginationSize size) {
+        pagination.setSize(size);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+        pagination.setStyle(style);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void addStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+        pagination.addStyle(style);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void removeStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
+        pagination.removeStyle(style);
+    }
+
     @Override
     protected void onRangeOrRowCountChanged() {
         int pageCount = super.getPageCount();
@@ -100,6 +144,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
                 // Lazy init for not displaying back and forward buttons unnecessarily
                 initPagination();
             }
+
             int widgetCount = pagination.getWidgetCount();
             if (pageCount + 2 > widgetCount) {
                 // If there are *more* pages then links, then add the remaining links
@@ -175,6 +220,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
             for (int i = lastVisibleIndex; i < pagination.getWidgetCount() - 1; i++) {
                 pagination.getWidget(i).setVisible(false);
             }
+
             // set in range pages as visible
             for (int i = firstVisibleIndex; i < lastVisibleIndex; i++) {
                 pagination.getWidget(i).setVisible(true);
@@ -187,10 +233,12 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
             navLink.setDisabled(false);
             navLink.setActive(false);
         }
+
         // Set the button of the current page as disable
         NavLink navLink = (NavLink) pagination.getWidget(super.getPage() + 1);
         navLink.setDisabled(true);
         navLink.setActive(true);
+
         // Update the state of previous and next buttons
         updatePreviousAndNextButtons();
     }
@@ -207,64 +255,5 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
                 NumberedPager.this.setPage(page);
             }
         };
-    }
-
-    @Override
-    public void previousPage() {
-        super.previousPage();
-    }
-
-    // limit number of pages shown
-    public void setVisiblePages(int visiblePages) {
-        this.visiblePages = visiblePages;
-    }
-
-    // set text of next button
-    public void setNextText(String nextText) {
-        this.nextText = nextText;
-    }
-
-    // set text of prev button
-    public void setPreviousText(String previousText) {
-        this.previousText = previousText;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void setShowOn(Device device) {
-        pagination.setShowOn(device);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void setHideOn(Device device) {
-        pagination.setHideOn(device);
-    }
-
-    public void setSize(Pagination.PaginationSize size) {
-        pagination.setSize(size);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void setStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
-        pagination.setStyle(style);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
-        pagination.addStyle(style);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void removeStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
-        pagination.removeStyle(style);
     }
 }
