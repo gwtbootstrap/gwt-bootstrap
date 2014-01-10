@@ -28,64 +28,205 @@ import com.google.gwt.view.client.HasRows;
  * A pager for controlling a {@link HasRows} using {@link Pagination}.
  * Just bind the NumberedPager using {@code NumberedPager.setDisplay} to some {@link HasRows} implementation like
  * {@link CellTable} or {@link DataGrid}, and the pager is automatically generated fully working.
- *
+ * <p/>
  * <p>
  * <h3>Example</h3>
- *
+ * <p/>
  * <pre>
  *   <code>
  *     <b:NumberedPager display="{table}"/>
  *     <b:CellTable pageSize="10" ui:field="table" width="100%" />
  *   </code>
  * </pre>
- *
+ * <p/>
  * </p>
  */
 public class NumberedPager extends AbstractPager implements HasStyle, IsResponsive, HasId {
-	
-	String prevText = "<";
-	String nextText = ">";
 
-    final Pagination pagination = new Pagination();
-    final NavLink prev = new NavLink(prevText);
-    final NavLink next = new NavLink(nextText);
-    int maxPages = -1;
+    private int visiblePages = -1;
+    private String nextText = ">";
+    private String previousText = "<";
+    private NavLink nextLink;
+    private NavLink previousLink;
+
+    private final Pagination pagination = new Pagination();
 
     public NumberedPager() {
         initWidget(pagination);
     }
 
-    public void setAlignment(String alignment) {
-        pagination.setAlignment(alignment);
-    }
-    
-    // limit number of pages shown
-    public void setMaxPages(int maxPages) {
-        this.maxPages = maxPages;
-    }
-    // set text of prev button
-    public void setPrevText(String prevText) {
-        this.prevText = prevText;
-    }
-    // set text of next button
-    public void setNextText(String nextText) {
-        this.nextText = nextText;
+    /**
+     * {@inheritDoc}
+     */
+    public String getId() {
+        return pagination.getId();
     }
 
-    
+    /**
+     * {@inheritDoc}
+     */
+    public void setId(String id) {
+        pagination.setId(id);
+    }
 
-    public void setSize(Pagination.PaginationSize size) {
-        pagination.setSize(size);
+    /**
+     * Use setPullRight instead.
+     *
+     * @param pullRight <code>true</code> if the widget should be aligned right.
+     */
+    @Deprecated
+    public void pullRight(boolean pullRight) {
+        pagination.pullRight(pullRight);
     }
 
     /**
      * Pulls the widget to the right side.
      *
-     * @param pullRight
-     *            <code>true</code> if the widget should be aligned right.
+     * @param pullRight <code>true</code> if the widget should be aligned right.
      */
-    public void pullRight(boolean pullRight) {
-        pagination.pullRight(pullRight);
+    public void setPullRight(boolean pullRight) {
+        pagination.setPullRight(pullRight);
+    }
+
+    public void setAlignment(String alignment) {
+        pagination.setAlignment(alignment);
+    }
+
+    @Override
+    protected void onRangeOrRowCountChanged() {
+        int pageCount = super.getPageCount();
+        if (pageCount > 0) {
+            if (pagination.getWidgetCount() == 0) {
+                // Lazy init for not displaying back and forward buttons unnecessarily
+                initPagination();
+            }
+            int widgetCount = pagination.getWidgetCount();
+            if (pageCount + 2 > widgetCount) {
+                // If there are *more* pages then links, then add the remaining links
+                for (int i = widgetCount - 1; i <= pageCount; i++) {
+                    NavLink page = pagination.addPageLink(i);
+                    page.addClickHandler(createPageClickHandler(i - 1));
+                }
+            } else if (pageCount + 2 < widgetCount) {
+                // If there are *less* pages then links, then remove the exceeding links
+                for (int i = widgetCount - 2; i > pageCount; i--) {
+                    pagination.remove(i);
+                }
+            }
+
+            // Set the actual page link as disabled
+            updateButtonsState();
+        } else {
+            if (pagination.getWidgetCount() > 0) {
+                pagination.clear();
+            }
+        }
+    }
+
+    private void initPagination() {
+        previousLink = new NavLink(previousText);
+        previousLink.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                NumberedPager.this.previousPage();
+            }
+        });
+        pagination.add(previousLink);
+
+        NavLink page = pagination.addPageLink(1);
+        page.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                NumberedPager.this.setPage(0);
+            }
+        });
+        page.setDisabled(true);
+
+        nextLink = new NavLink(nextText);
+        nextLink.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                NumberedPager.this.nextPage();
+            }
+        });
+        pagination.add(nextLink);
+    }
+
+    private void updateButtonsState() {
+        if (visiblePages > 0) {
+            // calculate offsets
+            final int currentPage = getPage();
+            final int pageCount = getPageCount();
+            final int pagesToShow = Math.min(pageCount, visiblePages);
+            int firstVisibleIndex = 1;
+
+            if (currentPage >= pageCount - (visiblePages / 2)) {
+                firstVisibleIndex = pageCount - visiblePages + 1;
+            } else if (currentPage > visiblePages / 2) {
+                firstVisibleIndex = currentPage - (visiblePages / 2) + 1;
+            }
+
+            final int lastVisibleIndex = pagesToShow + firstVisibleIndex;
+
+            // set out of range pages as invisible (before initial threshold)
+            for (int i = 1; i < firstVisibleIndex; i++) {
+                pagination.getWidget(i).setVisible(false);
+            } // (after final threshold)
+            for (int i = lastVisibleIndex; i < pagination.getWidgetCount() - 1; i++) {
+                pagination.getWidget(i).setVisible(false);
+            }
+            // set in range pages as visible
+            for (int i = firstVisibleIndex; i < lastVisibleIndex; i++) {
+                pagination.getWidget(i).setVisible(true);
+            }
+        }
+
+        // Set all numbered buttons as enabled
+        for (int i = 1; i < pagination.getWidgetCount() - 1; i++) {
+            NavLink navLink = (NavLink) pagination.getWidget(i);
+            navLink.setDisabled(false);
+            navLink.setActive(false);
+        }
+        // Set the button of the current page as disable
+        NavLink navLink = (NavLink) pagination.getWidget(super.getPage() + 1);
+        navLink.setDisabled(true);
+        navLink.setActive(true);
+        // Update the state of previous and next buttons
+        updatePreviousAndNextButtons();
+    }
+
+    private void updatePreviousAndNextButtons() {
+        previousLink.setDisabled(!super.hasPreviousPage());
+        nextLink.setDisabled(!super.hasNextPage());
+    }
+
+    private ClickHandler createPageClickHandler(final int page) {
+        return new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                NumberedPager.this.setPage(page);
+            }
+        };
+    }
+
+    @Override
+    public void previousPage() {
+        super.previousPage();
+    }
+
+    // limit number of pages shown
+    public void setVisiblePages(int visiblePages) {
+        this.visiblePages = visiblePages;
+    }
+
+    // set text of next button
+    public void setNextText(String nextText) {
+        this.nextText = nextText;
+    }
+
+    // set text of prev button
+    public void setPreviousText(String previousText) {
+        this.previousText = previousText;
     }
 
     /**
@@ -102,18 +243,8 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         pagination.setHideOn(device);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public String getId() {
-        return pagination.getId();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void setId(String id) {
-        pagination.setId(id);
+    public void setSize(Pagination.PaginationSize size) {
+        pagination.setSize(size);
     }
 
     /**
@@ -135,224 +266,5 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
      */
     public void removeStyle(com.github.gwtbootstrap.client.ui.base.Style style) {
         pagination.removeStyle(style);
-    }
-
-    @Override
-    public void firstPage() {
-        super.firstPage();
-    }
-
-    @Override
-    public int getPage() {
-        return super.getPage();
-    }
-
-    @Override
-    public int getPageCount() {
-        return super.getPageCount();
-    }
-
-    @Override
-    public boolean hasNextPage() {
-        return super.hasNextPage();
-    }
-
-    @Override
-    public boolean hasNextPages(int pages) {
-        return super.hasNextPages(pages);
-    }
-
-    @Override
-    public boolean hasPage(int index) {
-        return super.hasPage(index);
-    }
-
-    @Override
-    public boolean hasPreviousPage() {
-        return super.hasPreviousPage();
-    }
-
-    @Override
-    public boolean hasPreviousPages(int pages) {
-        return super.hasPreviousPages(pages);
-    }
-
-    @Override
-    public void lastPage() {
-        super.lastPage();
-    }
-
-    @Override
-    public void lastPageStart() {
-        super.lastPageStart();
-    }
-
-    @Override
-    public void nextPage() {
-        super.nextPage();
-    }
-
-    @Override
-    public void previousPage() {
-        super.previousPage();
-    }
-
-    @Override
-    public void setDisplay(HasRows display) {
-        super.setDisplay(display);
-    }
-
-    @Override
-    public void setPage(int index) {
-        super.setPage(index);
-    }
-
-    @Override
-    public void setPageSize(int pageSize) {
-        super.setPageSize(pageSize);
-    }
-
-    @Override
-    public void setPageStart(int index) {
-        super.setPageStart(index);
-    }
-
-    @Override
-    protected void onRangeOrRowCountChanged() {
-    	int pageCount = super.getPageCount();
-    	if (pageCount > 0) {
-
-    		// shows all pages and rebuilt incrementally
-    		if (maxPages < 0) {
-    			if (pagination.getWidgetCount() == 0) {
-    				// Lazy init for not displaying back and forward buttons unnecessarily
-    				initPagination();
-    			}
-    			int widgetCount = pagination.getWidgetCount();
-    			if (pageCount + 2 > widgetCount) {
-    				// If has there are *more* pages then links, then add the remaining links
-    				for (int i = widgetCount-1; i <= pageCount; i++) {
-    					NavLink page = pagination.addPageLink(i);
-    					page.addClickHandler(createPageClickHandler(i - 1));
-    				}
-    			} else if (pageCount + 2 < widgetCount) {
-    				// If has there are *less* pages then links, then remove the exceeding links
-    				for (int i = widgetCount - 2; i > pageCount; i--) {
-    					pagination.remove(i);
-    				}
-    			}
-
-    			// shows a rotated fixed number of pages (determined by 'maxpages') and rebuilt from scratch
-    		} else {
-    			// built it from scratch
-    			pagination.clear();
-
-    			// calculate offsets
-    			int currentPage = getPage();
-    			int pagesToShow = Math.min(getPageCount(), maxPages);
-    			int firstPageToShow = 1;
-
-    			if (maxPages > getPageCount())
-    				firstPageToShow = 1;
-    			else if (currentPage > getPageCount() - (maxPages / 2))
-    				firstPageToShow = getPageCount() - maxPages + 1;  
-    			else if(currentPage > maxPages / 2)
-    				firstPageToShow = currentPage - (maxPages / 2) + 1;          		
-
-    			// add prev
-    			final NavLink prev1 = new NavLink(prevText);
-    			prev1.addClickHandler(new ClickHandler() {
-    				@Override
-    				public void onClick(ClickEvent event) {
-    					NumberedPager.this.previousPage();
-    				}
-    			});
-    			pagination.add(prev1);
-
-    			// add pages
-    			for(int i = 1; i < firstPageToShow; i++)			// workaround. base component need all previous children, create fake (not visible)
-    				pagination.addPageLink(i).setVisible(false);
-    			for (int i = firstPageToShow; i < pagesToShow + firstPageToShow; i++) {
-    				NavLink page = pagination.addPageLink(i);
-    				page.addClickHandler(createPageClickHandler(i - 1));
-    			}
-
-    			// add next
-    			final NavLink next1 = new NavLink(nextText);
-    			next1.addClickHandler(new ClickHandler() {
-    				@Override
-    				public void onClick(ClickEvent event) {
-    					NumberedPager.this.nextPage();
-    				}
-    			});
-    			pagination.add(next1);
-
-    			prev1.setDisabled(!super.hasPreviousPage());
-    			next1.setDisabled(!super.hasNextPage());
-    		}
-
-    		// Set the actual page link as disabled
-    		updateButtonsState();
-    	} else {
-    		if (pagination.getWidgetCount() > 0) {
-    			pagination.clear();
-    		}
-    	}
-    }
-
-    private ClickHandler createPageClickHandler(final int page) {
-        return new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                NumberedPager.this.setPage(page);
-            }
-        };
-    }
-
-    private void updateButtonsState() {
-        // Set all numbered buttons as enabled
-        for (int i = 1; i < pagination.getWidgetCount()-1; i++) {
-            NavLink navLink = (NavLink) pagination.getWidget(i);
-            navLink.setDisabled(false);
-            navLink.setActive(false);
-        }
-        // Set the button of the current page as disable
-        NavLink navLink = (NavLink) pagination.getWidget(super.getPage() + 1);
-        navLink.setDisabled(true);
-        navLink.setActive(true);
-        // Update the state of previous and next buttons
-        updatePreviousAndNextButtons();
-    }
-
-    private void initPagination() {
-        prev.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                NumberedPager.this.previousPage();
-            }
-        });
-        pagination.add(prev);
-
-        NavLink page = pagination.addPageLink(1);
-        page.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                NumberedPager.this.setPage(0);
-            }
-        });
-        page.setDisabled(true);
-
-        next.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                NumberedPager.this.nextPage();
-            }
-        });
-        pagination.add(next);
-    }
-
-    private void updatePreviousAndNextButtons() {
-        prev.setDisabled(!super.hasPreviousPage());
-        next.setDisabled(!super.hasNextPage());
     }
 }

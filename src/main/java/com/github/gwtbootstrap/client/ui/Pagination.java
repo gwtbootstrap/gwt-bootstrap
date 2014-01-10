@@ -166,13 +166,24 @@ public class Pagination extends Composite implements HasStyle, IsResponsive, Has
     }
 
     /**
+     * Use setPullRight instead.
+     *
+     * @param pullRight
+     *            <code>true</code> if the widget should be aligned right.
+     */
+    @Deprecated
+    public void pullRight(boolean pullRight) {
+        paginationDiv.pullRight(pullRight);
+    }
+
+    /**
      * Pulls the widget to the right side.
      *
      * @param pullRight
      *            <code>true</code> if the widget should be aligned right.
      */
-    public void pullRight(boolean pullRight) {
-        paginationDiv.pullRight(pullRight);
+    public void setPullRight(boolean pullRight) {
+        paginationDiv.setPullRight(pullRight);
     }
 
     /**
