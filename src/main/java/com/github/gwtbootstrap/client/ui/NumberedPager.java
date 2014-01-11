@@ -26,6 +26,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.cellview.client.AbstractPager;
 import com.google.gwt.view.client.HasRows;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A pager for controlling a {@link HasRows} using {@link Pagination}.
@@ -46,6 +50,7 @@ import com.google.gwt.view.client.HasRows;
  */
 public class NumberedPager extends AbstractPager implements HasStyle, IsResponsive, HasId {
 
+    private final List<HandlerRegistration> handlerRegistrationList = new ArrayList<HandlerRegistration>();
     private String nextCustomStyleName;
     private String previousCustomStyleName;
 
@@ -209,19 +214,19 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
             updateButtonsState();
         } else {
             if (pagination.getWidgetCount() > 0) {
-                pagination.clear();
+                resetPagination();
             }
         }
     }
 
     private void initPagination() {
         if (previousCustomStyleName != null) previousLink.addStyleName(previousCustomStyleName);
-        previousLink.addClickHandler(new ClickHandler() {
+        handlerRegistrationList.add(previousLink.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 NumberedPager.this.previousPage();
             }
-        });
+        }));
         pagination.add(previousLink);
 
         NavLink page = pagination.addPageLink(1);
@@ -234,12 +239,12 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         page.setDisabled(true);
 
         if (nextCustomStyleName != null) nextLink.addStyleName(nextCustomStyleName);
-        nextLink.addClickHandler(new ClickHandler() {
+        handlerRegistrationList.add(nextLink.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 NumberedPager.this.nextPage();
             }
-        });
+        }));
         pagination.add(nextLink);
     }
 
@@ -301,5 +306,15 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
                 NumberedPager.this.setPage(page);
             }
         };
+    }
+
+    private void resetPagination() {
+        // Deregister click handlers
+        for (HandlerRegistration handlerRegistration : handlerRegistrationList) {
+            handlerRegistration.removeHandler();
+        }
+        pagination.clear();
+        if (previousCustomStyleName != null) previousLink.removeStyleName(previousCustomStyleName);
+        if (nextCustomStyleName != null) nextLink.removeStyleName(nextCustomStyleName);
     }
 }
