@@ -19,6 +19,9 @@ import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.constants.Device;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.cellview.client.AbstractPager;
@@ -43,11 +46,12 @@ import com.google.gwt.view.client.HasRows;
  */
 public class NumberedPager extends AbstractPager implements HasStyle, IsResponsive, HasId {
 
+    private String nextCustomStyleName;
+    private String previousCustomStyleName;
+
     private int visiblePages = -1;
-    private String nextText = ">";
-    private String previousText = "<";
-    private NavLink nextLink;
-    private NavLink previousLink;
+    private NavLink nextLink = new NavLink(">");
+    private NavLink previousLink = new NavLink("<");
 
     private final Pagination pagination = new Pagination();
 
@@ -82,19 +86,13 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         pagination.setAlignment(alignment);
     }
 
-    // limit number of pages shown
+    /**
+     * Limit the number of visible pages in the Pagination widget.
+     *
+     * @param visiblePages number of visible pages
+     */
     public void setVisiblePages(int visiblePages) {
         this.visiblePages = visiblePages;
-    }
-
-    // set text of next button
-    public void setNextText(String nextText) {
-        this.nextText = nextText;
-    }
-
-    // set text of previous button
-    public void setPreviousText(String previousText) {
-        this.previousText = previousText;
     }
 
     /**
@@ -136,6 +134,54 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         pagination.removeStyle(style);
     }
 
+    public void setNextCustomStyleName(String nextCustomStyleName) {
+        this.nextCustomStyleName = nextCustomStyleName;
+    }
+
+    public void setNextText(String nextText) {
+        this.nextLink.setText(nextText);
+    }
+
+    public void setNextIcon(IconType type) {
+        nextLink.setIcon(type);
+    }
+
+    public void setNextCustomIconStyle(String customIconStyle) {
+        nextLink.setCustomIconStyle(customIconStyle);
+    }
+
+    public void setNextIconPosition(IconPosition position) {
+        nextLink.setIconPosition(position);
+    }
+
+    public void setNextIconSize(IconSize size) {
+        nextLink.setIconSize(size);
+    }
+
+    public void setPreviousCustomStyleName(String previousCustomStyleName) {
+        this.previousCustomStyleName = previousCustomStyleName;
+    }
+
+    public void setPreviousText(String previousText) {
+        this.previousLink.setText(previousText);
+    }
+
+    public void setPreviousIcon(IconType type) {
+        previousLink.setIcon(type);
+    }
+
+    public void setPreviousCustomIconStyle(String customIconStyle) {
+        previousLink.setCustomIconStyle(customIconStyle);
+    }
+
+    public void setPreviousIconPosition(IconPosition position) {
+        previousLink.setIconPosition(position);
+    }
+
+    public void setPreviousIconSize(IconSize size) {
+        previousLink.setIconSize(size);
+    }
+
     @Override
     protected void onRangeOrRowCountChanged() {
         int pageCount = super.getPageCount();
@@ -169,7 +215,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     }
 
     private void initPagination() {
-        previousLink = new NavLink(previousText);
+        if (previousCustomStyleName != null) previousLink.addStyleName(previousCustomStyleName);
         previousLink.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -187,7 +233,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         });
         page.setDisabled(true);
 
-        nextLink = new NavLink(nextText);
+        if (nextCustomStyleName != null) nextLink.addStyleName(nextCustomStyleName);
         nextLink.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
