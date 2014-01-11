@@ -50,15 +50,14 @@ import java.util.List;
  */
 public class NumberedPager extends AbstractPager implements HasStyle, IsResponsive, HasId {
 
+    private final Pagination pagination = new Pagination();
     private final List<HandlerRegistration> handlerRegistrationList = new ArrayList<HandlerRegistration>();
-    private String nextCustomStyleName;
-    private String previousCustomStyleName;
 
     private int visiblePages = -1;
+    private String nextCustomStyleName;
+    private String previousCustomStyleName;
     private NavLink nextLink = new NavLink(">");
     private NavLink previousLink = new NavLink("<");
-
-    private final Pagination pagination = new Pagination();
 
     public NumberedPager() {
         initWidget(pagination);
@@ -189,32 +188,44 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
 
     @Override
     protected void onRangeOrRowCountChanged() {
-        int pageCount = super.getPageCount();
-        if (pageCount > 0) {
-            if (pagination.getWidgetCount() == 0) {
-                // Lazy init for not displaying back and forward buttons unnecessarily
-                initPagination();
-            }
+        final HasRows display = super.getDisplay();
+        final int pageSize = super.getPageSize();
+        final int calculatedPage = display.getVisibleRange().getStart() / pageSize;
+        final int pageCount = super.getPageCount();
 
-            int widgetCount = pagination.getWidgetCount();
-            if (pageCount + 2 > widgetCount) {
-                // If there are *more* pages then links, then add the remaining links
-                for (int i = widgetCount - 1; i <= pageCount; i++) {
-                    NavLink page = pagination.addPageLink(i);
-                    page.addClickHandler(createPageClickHandler(i - 1));
-                }
-            } else if (pageCount + 2 < widgetCount) {
-                // If there are *less* pages then links, then remove the exceeding links
-                for (int i = widgetCount - 2; i > pageCount; i--) {
-                    pagination.remove(i);
-                }
-            }
-
-            // Set the actual page link as disabled
-            updateButtonsState();
+        // Workaround GWT misbehavior:
+        // Calculating wrong page when dynamically changing pageSize to a lower value and start index is between two pages.
+        // This logic aims to correct the start index.
+        if (pageCount > 0 && (calculatedPage != super.getPage())) {
+            display.setVisibleRange(pageSize * calculatedPage, pageSize);
         } else {
-            if (pagination.getWidgetCount() > 0) {
-                resetPagination();
+            // Proceed with normal paging logic
+            if (pageCount > 0) {
+                if (pagination.getWidgetCount() == 0) {
+                    // Lazy init for not displaying back and forward buttons unnecessarily
+                    initPagination();
+                }
+
+                int widgetCount = pagination.getWidgetCount();
+                if (pageCount + 2 > widgetCount) {
+                    // If there are *more* pages then links, then add the remaining links
+                    for (int i = widgetCount - 1; i <= pageCount; i++) {
+                        NavLink page = pagination.addPageLink(i);
+                        page.addClickHandler(createPageClickHandler(i - 1));
+                    }
+                } else if (pageCount + 2 < widgetCount) {
+                    // If there are *less* pages then links, then remove the exceeding links
+                    for (int i = widgetCount - 2; i > pageCount; i--) {
+                        pagination.remove(i);
+                    }
+                }
+
+                // Set the actual page link as disabled
+                updateButtonsState();
+            } else {
+                if (pagination.getWidgetCount() > 0) {
+                    resetPagination();
+                }
             }
         }
     }
@@ -250,30 +261,33 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
 
     private void updateButtonsState() {
         final int pageCount = getPageCount();
-        if (visiblePages > 0 && visiblePages < pageCount) {
+        final int currentPage = getPage();
+
+        // If visiblePages is set, then treat circular exhibition
+        if (visiblePages > 0) {
             // Calculate offsets
-            final int currentPage = getPage();
-            final int pagesToShow = Math.min(pageCount, visiblePages);
+            final int maxPages = visiblePages < pageCount ? visiblePages : pageCount;
+            final int pagesToShow = Math.min(pageCount, maxPages);
             int firstVisibleIndex = 1;
 
-            if (currentPage >= pageCount - (visiblePages / 2)) {
-                firstVisibleIndex = pageCount - visiblePages + 1;
-            } else if (currentPage > visiblePages / 2) {
-                firstVisibleIndex = currentPage - (visiblePages / 2) + 1;
+            if (currentPage >= pageCount - (maxPages / 2)) {
+                firstVisibleIndex = pageCount - maxPages + 1;
+            } else if (currentPage > maxPages / 2) {
+                firstVisibleIndex = currentPage - (maxPages / 2) + 1;
             }
 
-            final int lastVisibleIndex = pagesToShow + firstVisibleIndex;
+            final int firstNotVisibleIndex = pagesToShow + firstVisibleIndex;
 
             // Set out of range pages as invisible (before initial threshold)
             for (int i = 1; i < firstVisibleIndex; i++) {
                 pagination.getWidget(i).setVisible(false);
             } // (after final threshold)
-            for (int i = lastVisibleIndex; i < pagination.getWidgetCount() - 1; i++) {
+            for (int i = firstNotVisibleIndex; i < pagination.getWidgetCount() - 1; i++) {
                 pagination.getWidget(i).setVisible(false);
             }
 
             // Set in range pages as visible
-            for (int i = firstVisibleIndex; i < lastVisibleIndex; i++) {
+            for (int i = firstVisibleIndex; i < firstNotVisibleIndex; i++) {
                 pagination.getWidget(i).setVisible(true);
             }
         }
@@ -286,7 +300,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
         }
 
         // Set the button of the current page as disable
-        NavLink navLink = (NavLink) pagination.getWidget(super.getPage() + 1);
+        NavLink navLink = (NavLink) pagination.getWidget(currentPage + 1);
         navLink.setDisabled(true);
         navLink.setActive(true);
 
