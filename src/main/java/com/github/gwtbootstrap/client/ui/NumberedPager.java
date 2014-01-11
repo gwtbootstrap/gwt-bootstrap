@@ -139,7 +139,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     }
 
     public void setNextText(String nextText) {
-        this.nextLink.setText(nextText);
+        nextLink.setText(nextText);
     }
 
     public void setNextIcon(IconType type) {
@@ -163,7 +163,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     }
 
     public void setPreviousText(String previousText) {
-        this.previousLink.setText(previousText);
+        previousLink.setText(previousText);
     }
 
     public void setPreviousIcon(IconType type) {
@@ -246,7 +246,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     private void updateButtonsState() {
         final int pageCount = getPageCount();
         if (visiblePages > 0 && visiblePages < pageCount) {
-            // calculate offsets
+            // Calculate offsets
             final int currentPage = getPage();
             final int pagesToShow = Math.min(pageCount, visiblePages);
             int firstVisibleIndex = 1;
@@ -259,7 +259,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
 
             final int lastVisibleIndex = pagesToShow + firstVisibleIndex;
 
-            // set out of range pages as invisible (before initial threshold)
+            // Set out of range pages as invisible (before initial threshold)
             for (int i = 1; i < firstVisibleIndex; i++) {
                 pagination.getWidget(i).setVisible(false);
             } // (after final threshold)
@@ -267,7 +267,7 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
                 pagination.getWidget(i).setVisible(false);
             }
 
-            // set in range pages as visible
+            // Set in range pages as visible
             for (int i = firstVisibleIndex; i < lastVisibleIndex; i++) {
                 pagination.getWidget(i).setVisible(true);
             }
