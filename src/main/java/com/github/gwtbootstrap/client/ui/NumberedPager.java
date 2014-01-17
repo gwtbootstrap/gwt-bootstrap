@@ -97,6 +97,11 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
      */
     public void setVisiblePages(int visiblePages) {
         this.visiblePages = visiblePages;
+        if (visiblePages > 0) {
+            setRangeLimited(false);
+        }/* else {
+            setRangeLimited(true);
+        }*/
     }
 
     /**
