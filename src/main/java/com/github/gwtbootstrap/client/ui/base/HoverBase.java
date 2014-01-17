@@ -117,15 +117,7 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 	protected native void removeDataIfExists(Element e, String dataName) /*-{
 	    var element = $wnd.jQuery(e);
 		if(element.data(dataName)) {
-			var data = element.data(dataName);
-			var eventIn, eventOut;
-			if (data.options.trigger != 'manual') {
-				eventIn  = data.options.trigger == 'hover' ? 'mouseenter' : 'focus'
-				eventOut = data.options.trigger == 'hover' ? 'mouseleave' : 'blur'
-				data.$element.off(eventIn);
-				data.$element.off(eventOut);
-			}
-			element.removeData(dataName);
+			element.tooltip('destroy');
 		}
 	}-*/;
 
