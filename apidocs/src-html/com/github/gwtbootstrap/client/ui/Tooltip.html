@@ -56,7 +56,7 @@
 <span class="sourceLineNo">048</span>                super();<a name="line.48"></a>
 <span class="sourceLineNo">049</span>        }<a name="line.49"></a>
 <span class="sourceLineNo">050</span><a name="line.50"></a>
-<span class="sourceLineNo">051</span>        /**<a name="line.51"></a>
+<span class="sourceLineNo">051</span>    /**<a name="line.51"></a>
 <span class="sourceLineNo">052</span>         * Creates a link with the<a name="line.52"></a>
 <span class="sourceLineNo">053</span>         * <a name="line.53"></a>
 <span class="sourceLineNo">054</span>         * @param tooltip get<a name="line.54"></a>
@@ -158,7 +158,18 @@
 <span class="sourceLineNo">150</span>                return "tooltip";<a name="line.150"></a>
 <span class="sourceLineNo">151</span>        }<a name="line.151"></a>
 <span class="sourceLineNo">152</span><a name="line.152"></a>
-<span class="sourceLineNo">153</span>}<a name="line.153"></a>
+<span class="sourceLineNo">153</span>    @Override<a name="line.153"></a>
+<span class="sourceLineNo">154</span>    protected void removeDataIfExists(Element e, String dataName) {<a name="line.154"></a>
+<span class="sourceLineNo">155</span>        doRemoveDataIfExists(e, dataName);<a name="line.155"></a>
+<span class="sourceLineNo">156</span>    }<a name="line.156"></a>
+<span class="sourceLineNo">157</span><a name="line.157"></a>
+<span class="sourceLineNo">158</span>    private native void doRemoveDataIfExists(Element e, String dataName) /*-{<a name="line.158"></a>
+<span class="sourceLineNo">159</span>        var element = $wnd.jQuery(e);<a name="line.159"></a>
+<span class="sourceLineNo">160</span>        if(element.data(dataName)) {<a name="line.160"></a>
+<span class="sourceLineNo">161</span>            element.tooltip('destroy');<a name="line.161"></a>
+<span class="sourceLineNo">162</span>        }<a name="line.162"></a>
+<span class="sourceLineNo">163</span>    }-*/;<a name="line.163"></a>
+<span class="sourceLineNo">164</span>}<a name="line.164"></a>
 
 
 
