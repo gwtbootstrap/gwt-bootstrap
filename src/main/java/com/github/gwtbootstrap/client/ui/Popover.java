@@ -133,4 +133,16 @@ public class Popover extends HoverBase {
 	public void setHtml(boolean html) {
 		this.html = html;
 	}
+
+    @Override
+    protected void removeDataIfExists(Element e, String dataName) {
+        doRemoveDataIfExists(e, dataName);
+    }
+
+    private native void doRemoveDataIfExists(Element e, String dataName) /*-{
+        var element = $wnd.jQuery(e);
+        if(element.data(dataName)) {
+            element.popover('destroy');
+        }
+    }-*/;
 }

@@ -114,12 +114,7 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 		removeDataIfExists(getWidget().getElement(), getDataName());
 	}
 	
-	protected native void removeDataIfExists(Element e, String dataName) /*-{
-	    var element = $wnd.jQuery(e);
-		if(element.data(dataName)) {
-			element.tooltip('destroy');
-		}
-	}-*/;
+	protected abstract void removeDataIfExists(Element e, String dataName);
 
 	/**
 	 * Adds an HTML data attribute to the widget's tag.

@@ -48,7 +48,7 @@ public class Tooltip extends HoverBase {
 		super();
 	}
 
-	/**
+    /**
 	 * Creates a link with the
 	 * 
 	 * @param tooltip get
@@ -150,4 +150,15 @@ public class Tooltip extends HoverBase {
 		return "tooltip";
 	}
 
+    @Override
+    protected void removeDataIfExists(Element e, String dataName) {
+        doRemoveDataIfExists(e, dataName);
+    }
+
+    private native void doRemoveDataIfExists(Element e, String dataName) /*-{
+        var element = $wnd.jQuery(e);
+        if(element.data(dataName)) {
+            element.tooltip('destroy');
+        }
+    }-*/;
 }
