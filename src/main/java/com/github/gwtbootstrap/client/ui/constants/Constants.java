@@ -37,6 +37,8 @@ public interface Constants {
 
 	// Single use
 
+    public static final String BADGE = "badge";
+
 	public static final String BRAND = "brand";
 
 	public static final String CARET = "caret";

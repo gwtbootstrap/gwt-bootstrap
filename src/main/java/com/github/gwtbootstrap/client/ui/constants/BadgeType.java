@@ -31,16 +31,22 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 //@formatter:on
 public enum BadgeType implements Style {
 
-	DEFAULT(""), SUCCESS("badge-success"), WARNING("badge-warning"), ERROR(
-			"badge-error"), INFO("badge-info"), INVERSE("badge-inverse"),
-			IMPORTANT("badge-important");
+	DEFAULT(""),
 
-	private static final String badge = "badge ";
+    SUCCESS("badge-success"),
+
+    WARNING("badge-warning"),
+
+    IMPORTANT("badge-important"),
+
+    INFO("badge-info"),
+
+    INVERSE("badge-inverse");
 
 	private String className;
 
 	private BadgeType(String className) {
-		this.className = badge + className;
+		this.className = className;
 	}
 
 	public String get() {
