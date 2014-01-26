@@ -1,7 +1,7 @@
 # [GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Build Status on Jenkins](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/badge/icon)](https://buildhive.cloudbees.com/job/gwtbootstrap/job/gwt-bootstrap/)[![Travis-CI Build Status](https://travis-ci.org/gwtbootstrap/gwt-bootstrap.png?branch=master)](https://travis-ci.org/gwtbootstrap/gwt-bootstrap)
 
 =================
-# GWT-Bootstrap [2.2.1.0](http://search.maven.org/#artifactdetails%7Ccom.github.gwtbootstrap%7Cgwt-bootstrap%7C2.2.1.0%7Cjar) was released.
+# GWT-Bootstrap [2.3.2.0](http://search.maven.org/#artifactdetails%7Ccom.github.gwtbootstrap%7Cgwt-bootstrap%7C2.3.2.0%7Cjar) was released.
 =================
 
 Based on [Bootstrap, from Twitter.](http://twitter.github.com/bootstrap/index.html), GWT-Bootstrap
