@@ -53,7 +53,7 @@ public class ProgressBar extends ProgressBarBase {
      * Set bar width as a percent unit
      * @param percent percent
      */
-	public void setPercent(int percent) {
+	public void setPercent(double percent) {
 		bar.setPercent(percent);
 	}
 
@@ -61,7 +61,7 @@ public class ProgressBar extends ProgressBarBase {
      * Get bar width as a percent unit
      * @return percent
      */
-	public int getPercent() {
+	public double getPercent() {
 	    return bar.getPercent();
 	}
 	

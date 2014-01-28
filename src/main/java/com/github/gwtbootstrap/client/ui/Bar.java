@@ -56,7 +56,7 @@ public class Bar extends DivWidget {
      * Set bar width as a percent unit
      * @param percent percent
      */
-    public void setPercent(int percent) {
+    public void setPercent(double percent) {
         this.getElement().getStyle().setWidth(percent, Unit.PCT);
     }
     
@@ -64,12 +64,12 @@ public class Bar extends DivWidget {
      * Get bar width as a percent unit
      * @return percent
      */
-    public int getPercent() {
+    public double getPercent() {
         String width = this.getElement().getStyle().getWidth();
         if (width == null)
             return 0;
         else
-            return Integer.valueOf(width.substring(0, width.indexOf("%")));
+            return Double.valueOf(width.substring(0, width.indexOf("%")));
     }
     
     /**
