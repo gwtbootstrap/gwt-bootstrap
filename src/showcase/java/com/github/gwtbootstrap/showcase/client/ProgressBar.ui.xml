@@ -80,7 +80,7 @@
                                 Percent
                             </b:ControlLabel>
                             <b:Controls>
-                                <b:IntegerBox b:id="percent" ui:field="percent"/>
+                                <b:DoubleBox b:id="percent" ui:field="percent"/>
                                 <b:HelpInline ui:field="percentInline"/>
                             </b:Controls>
                         </b:ControlGroup>
