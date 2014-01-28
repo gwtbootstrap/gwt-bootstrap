@@ -22,7 +22,7 @@ import java.util.List;
 import com.github.gwtbootstrap.client.ui.CodeBlock;
 import com.github.gwtbootstrap.client.ui.ControlGroup;
 import com.github.gwtbootstrap.client.ui.HelpInline;
-import com.github.gwtbootstrap.client.ui.IntegerBox;
+import com.github.gwtbootstrap.client.ui.DoubleBox;
 import com.github.gwtbootstrap.client.ui.ValueListBox;
 import com.github.gwtbootstrap.client.ui.base.ProgressBarBase.Color;
 import com.github.gwtbootstrap.client.ui.base.ProgressBarBase.Style;
@@ -52,7 +52,7 @@ public class ProgressBar extends Composite {
     ValueListBox<Color> color = new ValueListBox<Color>(new EnumRenderer<Color>("Choose Color"));
     
     @UiField
-    IntegerBox percent;
+    DoubleBox percent;
     
     @UiField
     ControlGroup percentCG;
@@ -110,8 +110,8 @@ public class ProgressBar extends Composite {
 
     
     @UiHandler("percent")
-    void onChangePercent(ValueChangeEvent<Integer> e) {
-        Integer p = e.getValue();
+    void onChangePercent(ValueChangeEvent<Double> e) {
+        Double p = e.getValue();
         
         if(p == null) {
             percentCG.setType(ControlGroupType.ERROR);
@@ -119,7 +119,7 @@ public class ProgressBar extends Composite {
             return;
         }
         
-        if(e.getValue() < 0 || e.getValue() > 100) {
+        if(e.getValue() < 0.0 || e.getValue() > 100.0) {
             percentCG.setType(ControlGroupType.ERROR);
             percentInline.setText("Percent should be between 0 - 100.");
             return;
@@ -131,8 +131,8 @@ public class ProgressBar extends Composite {
     @UiHandler("action")
     void onClickAction(ClickEvent e) {
         percent.setEnabled(false);
-        percent.setValue(0);
-        progressBar.setPercent(0);
+        percent.setValue(0.0);
+        progressBar.setPercent(0.0);
         Scheduler.get().scheduleFixedDelay(new RepeatingCommand() {
             
             /**
@@ -141,11 +141,11 @@ public class ProgressBar extends Composite {
             @Override
             public boolean execute() {
                 
-                if(progressBar.getPercent() >= 100) {
+                if(progressBar.getPercent() >= 100.0) {
                     percent.setEnabled(true);
                     return false;
                 }
-                progressBar.setPercent(progressBar.getPercent() + 10);
+                progressBar.setPercent(progressBar.getPercent() + 10.0);
                 percent.setValue(progressBar.getPercent());
                 changeStyle();
                 
