@@ -171,6 +171,7 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
     // TODO: Get the source element from javascript
     protected void onClosed() {
         ClosedEvent.fire(this, this);
+		this.onDetach();
     }
 
     /**
