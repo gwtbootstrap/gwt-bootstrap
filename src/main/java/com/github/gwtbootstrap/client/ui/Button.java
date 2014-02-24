@@ -296,7 +296,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
 
             // Recreate icon and add it to inner content with setText()
             icon = new Icon(icon.getIconType());
-            setText(getElement().getInnerText());
+            setText(getText());
         }
 
 		private native void setLoadingBehavior(Element e, String behavior) /*-{
