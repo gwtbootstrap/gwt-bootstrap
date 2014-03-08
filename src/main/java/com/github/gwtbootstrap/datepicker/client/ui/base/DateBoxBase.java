@@ -248,7 +248,6 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     protected native void removeDataIfExists(Element e) /*-{
         var $that = $wnd.jQuery(e);
         if($that.data('datepicker')) {
-            console.log($that.data());
             $that.removeData('dateFormat');
             $that.removeData('dateLanguage');
             $that.removeData('dateWeekstart');

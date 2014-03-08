@@ -260,7 +260,6 @@ public class DateTimeBoxBase
     protected native void removeDataIfExists(Element e) /*-{
         var $that = $wnd.jQuery(e);
         if($that.data('datetimepicker')) {
-            console.log($that.data());
             $that.removeData('dateFormat');
             $that.removeData('dateLanguage');
             $that.removeData('dateWeekstart');

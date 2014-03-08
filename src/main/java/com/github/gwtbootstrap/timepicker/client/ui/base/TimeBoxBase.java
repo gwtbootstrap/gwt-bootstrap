@@ -211,7 +211,6 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
     protected native void removeDataIfExists(Element e) /*-{
         var $that = $wnd.jQuery(e);
         if ($that.data('timepicker')) {
-            console.log($that.data());
             $that.removeData('timepicker');
             $that.off();
         }
