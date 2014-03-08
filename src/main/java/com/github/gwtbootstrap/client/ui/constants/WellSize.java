@@ -32,13 +32,22 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 //@formatter:on
 public enum WellSize implements Style {
 
-	DEFAULT, SMALL, LARGE;
+	DEFAULT("default"),
+	SMALL("small"),
+	LARGE("large");
+	
+	private final String name;
+
+	private WellSize(final String name) {
+		this.name = name;
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public String get() {
-		return DEFAULT == this ? "" : Constants.WELL + "-" + name().toLowerCase();
+		return DEFAULT == this ? "" : Constants.WELL + "-" + name;
 	}
 
 }
+

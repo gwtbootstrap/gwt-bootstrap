@@ -9,13 +9,21 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  * @author ohashi keisuke
  */
 public enum ImageType implements Style {
-    ROUNDED,CIRCLE,POLAROID;
+    ROUNDED("rounded"),
+    CIRCLE("circle"),
+    POLAROID("polaroid");
+
+	private final String name;
+
+	private ImageType(final String name) {
+		this.name = name;
+	}
 
     /**
      * {@inheritDoc}
      */
     @Override
     public String get() {
-        return "img-" + this.name().toLowerCase();
+        return "img-" + name;
     }
 }
