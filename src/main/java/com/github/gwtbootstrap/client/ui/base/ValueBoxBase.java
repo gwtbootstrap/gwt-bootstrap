@@ -202,10 +202,8 @@ public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<
 		super.setEnabled(enabled);
 		if (enabled) {
 			removeStyleName(Constants.DISABLED);
-            getElement().removeAttribute("disabled");
-		} else {
+ 		} else {
 			addStyleName(Constants.DISABLED);
-			getElement().setAttribute("disabled", "");
 		}
 	}
 
