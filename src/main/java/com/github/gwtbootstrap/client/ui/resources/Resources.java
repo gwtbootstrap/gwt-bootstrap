@@ -47,12 +47,12 @@ public interface Resources extends ClientBundle {
 	/**
 	 * Returns the required jQuery version.
 	 * <p>
-	 * By default, GWT Bootstrap uses jQuery 1.10.1. Override this method to
+	 * By default, GWT Bootstrap uses jQuery 1.x. Override this method to
 	 * provide a different version of jQuery.
 	 * 
 	 * @return the jQuery JavaScript Library
 	 */
-	@Source("js/jquery-1.10.1.min.js")
+	@Source("js/jquery-1.11.0.min.js")
 	TextResource jquery();
 
 	/**
