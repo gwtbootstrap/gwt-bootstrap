@@ -16,6 +16,9 @@ In other words, it's a front-end API for faster, more beautiful GWT web developm
 * [Google Group](https://groups.google.com/d/forum/gwt-bootstrap)
 * [Maven project site](http://gwtbootstrap.github.com/gwt-bootstrap/)
 * [Maven Repository](https://github.com/gwtbootstrap/gwt-bootstrap/wiki/Using-GWT-Bootstrap-Maven-Repository)
+ 
+## Thanks to
+[![IntelliJ](https://lh6.googleusercontent.com/--QIIJfKrjSk/UJJ6X-UohII/AAAAAAAAAVM/cOW7EjnH778/s800/banner_IDEA.png)](http://www.jetbrains.com/idea/index.html)
 
 ## Donate
 
