@@ -1,0 +1,10 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
+			 xmlns:b='urn:import:com.github.gwtbootstrap.client.ui'
+			 xmlns:i='urn:import:com.github.gwtbootstrap.client.ui.incubator'
+		>
+	<g:HTMLPanel>
+		<b:PageHeader subtext="PickList Example">PickList</b:PageHeader>
+		<i:PickList ui:field="pickList" selectedLabelText="Selected:" candidateLabelText="Candidates:"/>
+	</g:HTMLPanel>
+</ui:UiBinder>

@@ -57,6 +57,7 @@ public class ComponentView extends Composite {
         addWidget("Popovers", "popovers", new Popovers());
         addWidget("Datepicker", "datepicker", new Datepicker());
         addWidget("Datetimepicker", "datetimepicker", new Datetimepicker());
+        addWidget("PickList", "picklist", new PickLists());
         addWidget("Modal", "modal", new Modal());
         
     }

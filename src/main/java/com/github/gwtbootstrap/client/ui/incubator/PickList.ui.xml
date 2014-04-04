@@ -1,0 +1,23 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+			 xmlns:g='urn:import:com.google.gwt.user.client.ui'
+			 xmlns:b='urn:import:com.github.gwtbootstrap.client.ui'
+		>
+		<g:HorizontalPanel>
+			<g:VerticalPanel ui:field="leftPanel">
+				<b:Label ui:field="leftPanelLabel" />
+				<b:ListBox ui:field="leftList" name="leftList" height="10" visibleItemCount="10" size="2" />
+			</g:VerticalPanel>
+
+			<g:cell verticalAlignment="ALIGN_MIDDLE">
+				<g:VerticalPanel ui:field="buttonPanel">
+					<b:Button ui:field="toRightButton" name="toRight" text=">" />
+					<b:Button ui:field="toLeftButton" name="toLeft" text="&lt;" />
+				</g:VerticalPanel>
+			</g:cell>
+
+			<g:VerticalPanel ui:field="rightPanel">
+				<b:Label ui:field="rightPanelLabel" />
+				<b:ListBox ui:field="rightList" name="leftList" height="10" visibleItemCount="10" size="2" />
+			</g:VerticalPanel>
+		</g:HorizontalPanel>
+</ui:UiBinder>
