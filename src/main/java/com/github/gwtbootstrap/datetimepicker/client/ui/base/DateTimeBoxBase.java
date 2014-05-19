@@ -22,7 +22,6 @@ import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
 import com.github.gwtbootstrap.client.ui.base.HasSize;
 import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
 import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
@@ -33,6 +32,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Device;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideEvent;
 import com.github.gwtbootstrap.client.ui.event.HideHandler;
@@ -215,6 +215,7 @@ public class DateTimeBoxBase
     protected void onUnload() {
         super.onUnload();
         execute("remove");
+        removeDataIfExists(getElement());
     }
 
     /**
@@ -245,6 +246,7 @@ public class DateTimeBoxBase
     public void onHide(Event e) {
         fireEvent(new HideEvent(e));
     }
+
     public void reconfigure() {
         removeDataIfExists(getElement());
         configure();
@@ -259,7 +261,9 @@ public class DateTimeBoxBase
 
     protected native void removeDataIfExists(Element e) /*-{
         var $that = $wnd.jQuery(e);
-        if($that.data('datetimepicker')) {
+        dtpData = $that.data('datetimepicker');
+        if(dtpData) {
+            picker = dtpData.picker;
             $that.removeData('dateFormat');
             $that.removeData('dateLanguage');
             $that.removeData('dateWeekstart');
@@ -267,6 +271,7 @@ public class DateTimeBoxBase
             $that.removeData('dateEnddate');
             $that.removeData('dateStartView');
             $that.removeData('datetimepicker');
+            picker.remove();
             $that.off();
         }
     }-*/;

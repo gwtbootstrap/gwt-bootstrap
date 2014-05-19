@@ -1,10 +1,31 @@
 package com.github.gwtbootstrap.timepicker.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.TextBox;
-import com.github.gwtbootstrap.client.ui.base.*;
+import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
+import com.github.gwtbootstrap.client.ui.base.HasId;
+import com.github.gwtbootstrap.client.ui.base.HasPlaceholder;
+import com.github.gwtbootstrap.client.ui.base.HasSize;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
+import com.github.gwtbootstrap.client.ui.base.HasVisibility;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
+import com.github.gwtbootstrap.client.ui.base.IsSearchQuery;
+import com.github.gwtbootstrap.client.ui.base.PlaceholderHelper;
+import com.github.gwtbootstrap.client.ui.base.ResponsiveHelper;
+import com.github.gwtbootstrap.client.ui.base.SearchQueryStyleHelper;
+import com.github.gwtbootstrap.client.ui.base.SizeHelper;
+import com.github.gwtbootstrap.client.ui.base.Style;
+import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.github.gwtbootstrap.client.ui.event.*;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
+import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
+import com.github.gwtbootstrap.client.ui.event.HideEvent;
+import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowEvent;
+import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownEvent;
+import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
@@ -158,7 +179,6 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
      */
     protected native void configure(Element e, String template, String defaultTime, int minuteStep, boolean showSeconds, int secondStep,
                                     boolean showMeridian, boolean showInputs, boolean disableFocus, boolean modalBackdrop) /*-{
-        var that = this;
         $wnd.jQuery(e).timepicker(
             {
                 template: template,
@@ -210,8 +230,11 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
      */
     protected native void removeDataIfExists(Element e) /*-{
         var $that = $wnd.jQuery(e);
-        if ($that.data('timepicker')) {
+        data = $that.data('timepicker');
+        if (data) {
+            picker = data.picker;
             $that.removeData('timepicker');
+            picker.remove();
             $that.off();
         }
     }-*/;
@@ -233,6 +256,16 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
         super.onLoad();
         configure(getElement(), template.name().toLowerCase(), defaultTime.name().toLowerCase(), minuteStep, showSeconds, secondStep, showMeridian,
                 showInputs, disableFocus, modalBackdrop);
+    }
+
+    /**
+     * This method is called immediately before a widget will be detached from the browser's document.
+     */
+    @Override
+    protected void onUnload() {
+        super.onUnload();
+        execute("remove");
+        removeDataIfExists(getElement());
     }
 
     /**

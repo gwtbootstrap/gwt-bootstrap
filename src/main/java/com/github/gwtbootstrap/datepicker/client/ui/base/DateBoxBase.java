@@ -259,7 +259,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
             $that.removeData('dateEnddate');
             $that.removeData('dateStartView');
             $that.removeData('datepicker');
-            picker.remove(); // Explicit remove the picker element
+            picker.remove(); // Explicitly remove the picker element
             $that.off();
         }
     }-*/;
