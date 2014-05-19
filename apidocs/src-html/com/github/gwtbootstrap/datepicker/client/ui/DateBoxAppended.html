@@ -70,9 +70,9 @@
 <span class="sourceLineNo">062</span>    private class DateBoxAppendedAdapter extends DateBoxBase {<a name="line.62"></a>
 <span class="sourceLineNo">063</span>        @Override<a name="line.63"></a>
 <span class="sourceLineNo">064</span>        protected void configure() {<a name="line.64"></a>
-<span class="sourceLineNo">065</span>            DateBoxAppended that = DateBoxAppended.this;<a name="line.65"></a>
-<span class="sourceLineNo">066</span>            that.addStyleName("date");<a name="line.66"></a>
-<span class="sourceLineNo">067</span>            super.configure(that);<a name="line.67"></a>
+<span class="sourceLineNo">065</span>            DateBoxAppended.this.addStyleName("date");<a name="line.65"></a>
+<span class="sourceLineNo">066</span>            super.removeDataIfExists(getElement());<a name="line.66"></a>
+<span class="sourceLineNo">067</span>            super.configure(this);<a name="line.67"></a>
 <span class="sourceLineNo">068</span>        }<a name="line.68"></a>
 <span class="sourceLineNo">069</span>    }<a name="line.69"></a>
 <span class="sourceLineNo">070</span><a name="line.70"></a>
