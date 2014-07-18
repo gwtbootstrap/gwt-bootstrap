@@ -127,8 +127,8 @@ public class PickList extends Composite {
 
     private List<NameValuePair> getListBoxElements(ListBox listBox) {
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        for (int i = 0; i < this.leftList.getItemCount(); i++) {
-            NameValuePairImpl nameValuePair = new NameValuePairImpl(this.leftList.getItemText(i), this.leftList.getValue(i));
+        for (int i = 0; i < listBox.getItemCount(); i++) {
+            NameValuePairImpl nameValuePair = new NameValuePairImpl(listBox.getItemText(i), listBox.getValue(i));
             nameValuePairs.add(nameValuePair);
         }
         return nameValuePairs;
