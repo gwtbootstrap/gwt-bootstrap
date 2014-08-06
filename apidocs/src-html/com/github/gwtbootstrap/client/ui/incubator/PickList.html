@@ -135,8 +135,8 @@
 <span class="sourceLineNo">127</span><a name="line.127"></a>
 <span class="sourceLineNo">128</span>    private List&lt;NameValuePair&gt; getListBoxElements(ListBox listBox) {<a name="line.128"></a>
 <span class="sourceLineNo">129</span>        ArrayList&lt;NameValuePair&gt; nameValuePairs = new ArrayList&lt;NameValuePair&gt;();<a name="line.129"></a>
-<span class="sourceLineNo">130</span>        for (int i = 0; i &lt; this.leftList.getItemCount(); i++) {<a name="line.130"></a>
-<span class="sourceLineNo">131</span>            NameValuePairImpl nameValuePair = new NameValuePairImpl(this.leftList.getItemText(i), this.leftList.getValue(i));<a name="line.131"></a>
+<span class="sourceLineNo">130</span>        for (int i = 0; i &lt; listBox.getItemCount(); i++) {<a name="line.130"></a>
+<span class="sourceLineNo">131</span>            NameValuePairImpl nameValuePair = new NameValuePairImpl(listBox.getItemText(i), listBox.getValue(i));<a name="line.131"></a>
 <span class="sourceLineNo">132</span>            nameValuePairs.add(nameValuePair);<a name="line.132"></a>
 <span class="sourceLineNo">133</span>        }<a name="line.133"></a>
 <span class="sourceLineNo">134</span>        return nameValuePairs;<a name="line.134"></a>
