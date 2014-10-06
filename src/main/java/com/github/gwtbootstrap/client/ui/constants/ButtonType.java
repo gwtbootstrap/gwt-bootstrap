@@ -25,7 +25,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 * 
 * @author Dominik Mayer
 * 
-* @see <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap documentation</a>
+* @see <a href="http://getbootstrap.com/2.3.2/base-css.html#buttons">Bootstrap documentation</a>
 * 
 */
 //@formatter:on

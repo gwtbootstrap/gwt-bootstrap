@@ -39,7 +39,7 @@ import com.google.gwt.user.client.ui.HasText;
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/base-css.html#typography">Bootstrap documentation</a>
  */
 //@formatter:on
 public class Heading extends ComplexWidget implements HasText {
@@ -117,7 +117,7 @@ public class Heading extends ComplexWidget implements HasText {
 	public void setText(String text) {
 		this.text = text;
 
-	    // Add a space after the main heading text to get the same effect as Twitter Bootstrap.
+	    // Add a space after the main heading text to get the same effect as Bootstrap.
         // <h1>Some text <small>Some subtext</small></h1>
         //              ^- Note the space
 		getElement().setInnerHTML(text + " " + small.toString());

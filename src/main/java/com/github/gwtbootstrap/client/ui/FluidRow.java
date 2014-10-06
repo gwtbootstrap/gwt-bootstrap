@@ -46,7 +46,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * 
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#fluidGridSystem">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem">Bootstrap documentation</a>
  * @see FluidContainer
  * @see Container
  */

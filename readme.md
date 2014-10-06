@@ -4,8 +4,8 @@
 # GWT-Bootstrap [2.3.2.0](http://search.maven.org/#artifactdetails%7Ccom.github.gwtbootstrap%7Cgwt-bootstrap%7C2.3.2.0%7Cjar) was released.
 =================
 
-Based on [Bootstrap, from Twitter.](http://twitter.github.com/bootstrap/index.html), GWT-Bootstrap
-Bootstrap provides simple and flexible components representing Twitter's bootstrap components, styles,
+Based on [Bootstrap.](http://getbootstrap.com/2.3.2/), GWT-Bootstrap
+Bootstrap provides simple and flexible components representing Bootstrap components, styles,
 and plugins.
 In other words, it's a front-end API for faster, more beautiful GWT web development.
 

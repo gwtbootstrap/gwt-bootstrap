@@ -70,7 +70,7 @@ import com.google.gwt.user.client.ui.IsWidget;
  * 
  * @author ohashi keisuke
  * @see AddOn
- * @see http://twitter.github.com/bootstrap/base-css.html#forms
+ * @see http://getbootstrap.com/2.3.2/base-css.html#forms
  */
 public class InputAddOn extends DivWidget {
 

@@ -20,7 +20,7 @@ import com.google.gwt.text.shared.testing.PassthroughParser;
 import com.google.gwt.text.shared.testing.PassthroughRenderer;
 
 /**
- * Abstract base class for most text entry widgets. and Support boostrap style.
+ * Abstract base class for most text entry widgets. and Support Bootstrap style.
  * 
  * @since 2.0.4.0
  * @author ohashi keisuke

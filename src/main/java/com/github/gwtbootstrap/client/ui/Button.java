@@ -49,7 +49,7 @@ import com.google.gwt.user.client.ui.HasEnabled;
  * @author Sven Jacobs
  *
  * @see <a
- *      href="http://twitter.github.com/bootstrap/base-css.html#buttons">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/base-css.html#buttons">Bootstrap
  *      documentation</a>
  * @see ButtonGroup
  * @see ButtonToolbar
@@ -539,7 +539,7 @@ public class Button extends IconAnchor implements HasClickHandlers,
      * &lt;/b:Modal&gt;
      * </pre></code>
      * <p/>
-     * See <a href="http://twitter.github.io/bootstrap/javascript.html#modals">Bootstrap</a> documentation.
+     * See <a href="http://getbootstrap/2.3.2/javascript.html#modals">Bootstrap</a> documentation.
      *
      * @param type Type of dismiss ("modal" or "alert")
      * @since 2.3.2.0

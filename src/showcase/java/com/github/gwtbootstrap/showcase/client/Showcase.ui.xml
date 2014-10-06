@@ -29,7 +29,7 @@
 					</g:HTMLPanel>
 					<g:HTMLPanel>
 						<a href="https://twitter.com/share" class="twitter-share-button"
-							data-text="GWT-Bootstrap -Using Twitter's interface library with Google Web Toolkit.-"
+							data-text="GWT-Bootstrap -Using the Bootstrap interface library with Google Web Toolkit.-"
 							data-url="http://gwtbootstrap.github.com/" data-via="soundTricker318"
 							data-hashtags="gwt">Tweet</a>
 					</g:HTMLPanel>
@@ -44,17 +44,16 @@
 				<b:Heading size="1" showOn="DESKTOP">GWT-Bootstrap</b:Heading>
 				<b:Heading size="2" showOn="TABLET">GWT-Bootstrap</b:Heading>
 				<b:Heading size="3" showOn="PHONE">GWT-Bootstrap</b:Heading>
-				<b:Paragraph>Using Twitter's interface library with Google Web
+				<b:Paragraph>Using the Bootstrap interface library with Google Web
 					Toolkit.</b:Paragraph>
 			</b:Hero>
 			<b:FluidRow>
 				<b:Column size="3">
-					<b:Heading size="6">Bootstrap, from Twitter</b:Heading>
+					<b:Heading size="6">Bootstrap</b:Heading>
 					<b:Paragraph>Bootstrap is a toolkit from Twitter designed to
 						kickstart development of
 						webapps and sites.</b:Paragraph>
-					<b:Button href="http://twitter.github.com/bootstrap/">Bootstrap,
-						from Twitter »</b:Button>
+					<b:Button href="http://getbootstrap.com/2.3.2/">Bootstrap »</b:Button>
 				</b:Column>
 				<b:Column size="3">
 					<b:Heading size="6">Google Web Toolkit</b:Heading>
@@ -133,10 +132,10 @@
 						License v2.0</a>.
 				</b:Paragraph>
 				<b:Paragraph>
-					"Bootstrap, from Twitter" Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+					"Bootstrap" Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
 				</b:Paragraph>
 				<b:Paragraph>
-					<a href="http://twitter.github.com/bootstrap" target="_blank">Documentation of Bootstrap,from Twitter</a> is used in our showcase as a reference,
+					<a href="http://getbootstrap.com/2.3.2/" target="_blank">Documentation of Bootstrap</a> is used in our showcase as a reference,
 					licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
 				</b:Paragraph>
 				<b:Paragraph>

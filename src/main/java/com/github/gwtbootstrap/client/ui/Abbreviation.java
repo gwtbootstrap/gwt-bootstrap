@@ -38,7 +38,7 @@ import com.google.gwt.user.client.DOM;
  * @since 2.0.4.0
  * 
  * @see <a
- *      href="http://twitter.github.com/bootstrap/base-css.html#typography">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/base-css.html#typography">Bootstrap
  *      documentation</a>
  */
 public class Abbreviation extends AbstractTypography {

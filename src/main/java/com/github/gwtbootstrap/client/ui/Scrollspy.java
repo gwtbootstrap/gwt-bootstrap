@@ -24,7 +24,7 @@ import com.google.gwt.dom.client.Element;
  * 
  * @since 2.0.4.0
  * @author Carlos Alexandro Becker
- * @see <a href="http://twitter.github.com/bootstrap/javascript.html#scrollspy">Twitter Bootstrap ScrollSpy</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#scrollspy">Bootstrap ScrollSpy</a>
  */
 //@formatter:on
 public class Scrollspy {
@@ -87,7 +87,7 @@ public class Scrollspy {
 	 * @param target
 	 * 				 data-target value.like this,{@code #some-id} {@code .some-classes}
 	 * 
-	 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#scrollspy">Twitter Bootstrap ScrollSpy Options</a>
+	 * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#scrollspy">Bootstrap ScrollSpy Options</a>
 	 */
 	public void setTarget(String target) {
 		this.target = target;
@@ -105,7 +105,7 @@ public class Scrollspy {
 	 * 
 	 * @param element
 	 * 				 spy target element.
-	 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#scrollspy">Twitter Bootstrap ScrollSpy Options</a>
+	 * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#scrollspy">Bootstrap ScrollSpy Options</a>
 	 */
 	public void setSpyElement(Element element) {
 		this.spyElement = element;
@@ -118,7 +118,7 @@ public class Scrollspy {
 	 * </p>
 	 * @param target
 	 * 				 data-offset value.
-	 * @see <a href="http://twitter.github.com/bootstrap/javascript.html#scrollspy">Twitter Bootstrap ScrollSpy Options</a>
+	 * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#scrollspy">Bootstrap ScrollSpy Options</a>
 	 */
 	public void setOffset(Integer offset) {
 		this.offset = offset;

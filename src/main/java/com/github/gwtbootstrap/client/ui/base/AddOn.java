@@ -52,7 +52,7 @@ import com.google.gwt.user.client.ui.IsWidget;
  * @see InputAddOn
  * @see IconType
  * @see <a
- *      href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/base-css.html#forms">Bootstrap
  *      Docs</a>
  */
 public class AddOn extends ComplexWidget implements HasText, HasIcon {

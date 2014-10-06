@@ -45,7 +45,7 @@ import com.github.gwtbootstrap.client.ui.constants.IconType;
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/javascript.html#dropdowns">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#dropdowns">Bootstrap documentation</a>
  * @see DropdownButton
  * @see SplitDropdownButton
  */

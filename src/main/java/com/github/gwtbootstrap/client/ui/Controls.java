@@ -42,7 +42,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * 
  * @see ControlGroup
  * @see ControlLabel
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#forms">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/base-css.html#forms">Bootstrap documentation</a>
  */
 public class Controls extends HtmlWidget {
 

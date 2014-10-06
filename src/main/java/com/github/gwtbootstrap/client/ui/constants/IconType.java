@@ -23,7 +23,7 @@ package com.github.gwtbootstrap.client.ui.constants;
  *
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/base-css.html#icons">Bootstrap documentation</a>
  * @see <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome docs</a>
  * @since 2.0.4.0
  */

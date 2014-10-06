@@ -30,7 +30,7 @@ import com.google.gwt.dom.client.Element;
  * @author ohashi keisuke
  * 
  * @see <a
- *      href="http://twitter.github.com/bootstrap/javascript.html#popovers">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/javascript.html#popovers">Bootstrap
  *      documentation</a>
  * @see Tooltip
  */

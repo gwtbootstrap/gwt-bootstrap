@@ -17,7 +17,7 @@ package com.github.gwtbootstrap.client.ui.base;
 
 //@formatter:off
 /**
- * Interface for widgets that have size according to the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system.</a>
+ * Interface for widgets that have size according to the <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap grid system.</a>
  * 
  * @since 2.0.4.0
  * 
@@ -29,7 +29,7 @@ public interface HasSize {
 	/**
 	 * Sets the widget's size.
 	 * 
-	 * @param size the size of the widget in the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system</a>
+	 * @param size the size of the widget in the <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap grid system</a>
 	 */
 	void setSize(int size);
 
