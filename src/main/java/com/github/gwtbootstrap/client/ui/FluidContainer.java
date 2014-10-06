@@ -46,7 +46,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * 
  * @author Carlos Alexandro Becker
  * 
- * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#layouts">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/scaffolding.html#layouts">Bootstrap documentation</a>
  * @see Row
  */
 //@formatter:on

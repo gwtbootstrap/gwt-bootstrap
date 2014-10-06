@@ -45,7 +45,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Dominik Mayer
  * @author Sven Jacobs
  * @see IconStack
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/base-css.html#icons">Bootstrap documentation</a>
  * @see <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome page</a>
  * @since 2.0.4.0
  */

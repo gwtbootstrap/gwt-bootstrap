@@ -183,7 +183,7 @@
                                 </td>
                                 <td>
                                     <b:Paragraph>
-                                    We change <code>Tooltip</code> beheivior from Twitter Bootstrap.<br/>
+                                    We change <code>Tooltip</code> behavior from Bootstrap.<br/>
                                     If <code>Tooltip</code> target element is removed, <code>Tooltip</code> hide.
                                     </b:Paragraph>
                                 </td>

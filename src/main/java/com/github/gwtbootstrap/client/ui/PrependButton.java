@@ -32,7 +32,7 @@ import com.github.gwtbootstrap.client.ui.base.DivWidget;
  * 
  * @since 2.0.4.0
  * @author Carlos Alexandro Becker
- * @see http://twitter.github.com/bootstrap/base-css.html#forms
+ * @see http://getbootstrap.com/2.3.2/base-css.html#forms
  */
 public class PrependButton extends DivWidget {
 	{

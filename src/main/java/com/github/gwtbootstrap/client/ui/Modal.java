@@ -65,7 +65,7 @@ import java.util.Set;
  * @author Danilo Reinert
  *
  * @see <a
- *      href="http://twitter.github.com/bootstrap/javascript.html#modals">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/javascript.html#modals">Bootstrap
  *      documentation</a>
  * @see PopupPanel
  *

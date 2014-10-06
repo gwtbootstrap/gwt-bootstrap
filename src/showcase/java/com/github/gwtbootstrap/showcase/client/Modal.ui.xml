@@ -45,7 +45,7 @@
         &lt;b:Button icon=&quot;FILE&quot; type=&quot;PRIMARY&quot;&gt;Save&lt;/b:Button&gt;
     &lt;/b:ModalFooter&gt;
 &lt;/b:Modal&gt;</pre>
-                    <p>As you can see, we have several optional settings. These options are exactly equals the Modal JS plugin from twitter bootstrap. So, you can use it like a boss. Also, Modal implements the <code>HasVisibleHandlers</code> interface, so, it has the <code>show</code>, hide and <code>toggle</code> methods. The footer is optional.</p>
+                    <p>As you can see, we have several optional settings. These options are exactly equals the Modal JS plugin from bootstrap. So, you can use it like a boss. Also, Modal implements the <code>HasVisibleHandlers</code> interface, so, it has the <code>show</code>, hide and <code>toggle</code> methods. The footer is optional.</p>
                 </g:HTMLPanel>
             </b:Column>
         </b:FluidRow>

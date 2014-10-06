@@ -47,7 +47,7 @@ public class NavFormBase extends Form implements HasAlignment, HasSize {
 	/**
 	 * Creates a new, left aligned form of the given size.
 	 * 
-	 * @param size the size of the form in the <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap grid system</a>
+	 * @param size the size of the form in the <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap grid system</a>
 	 */
 	//@formatter:on
 	public NavFormBase(int size) {

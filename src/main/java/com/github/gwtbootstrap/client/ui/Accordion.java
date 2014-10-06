@@ -44,7 +44,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @see Accordion
  * @see Collapse
  * @see CollapseTrigger
- * @see <a href="http://twitter.github.com/bootstrap/javascript.html#collapse">Twitter Bootstrap document</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#collapse">Bootstrap document</a>
  *
  */
 public class Accordion extends DivWidget {

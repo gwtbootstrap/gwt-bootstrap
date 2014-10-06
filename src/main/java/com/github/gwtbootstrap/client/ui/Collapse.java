@@ -51,7 +51,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @see Accordion
  * @see Collapse
  * @see CollapseTrigger
- * @see <a href="http://twitter.github.com/bootstrap/javascript.html#collapse">Twitter Bootstrap document</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#collapse">Bootstrap document</a>
  * 
  *
  */
@@ -77,7 +77,7 @@ public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleH
      * Set parent selector.
      * 
      * it only work with {@link AccordionGroup},
-     * Please see <a href="https://github.com/twitter/bootstrap/issues/4988">this issue</a>.
+     * Please see <a href="https://github.com/twbs/bootstrap/issues/4988">this issue</a>.
      * 
      * @param parent parent selector
      */

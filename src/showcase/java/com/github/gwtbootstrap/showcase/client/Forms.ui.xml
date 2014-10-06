@@ -29,7 +29,7 @@
 			GWT-Bootstrap provides simple markup and styles for four styles of
 			common web forms.
 			<br />
-			It's same as Twitter Bootstrap.
+			It's same as Bootstrap.
 			<br />
 			If you want to apply form's styles,Use
 			<b:Code>&lt;b:Form&gt;</b:Code>

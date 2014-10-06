@@ -49,7 +49,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Carlos Alexandro Becker
  * @author Dominik Mayer
  * 
- * @see <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap documentation</a>
  * @see Configurator#hasResponsiveDesign()
  */
 //@formatter:on

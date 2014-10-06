@@ -49,7 +49,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  * 
  * @author Carlos Alexandro Becker
  * 
- * @see <a href="http://twitter.github.com/bootstrap/base-css.html#code">Bootstrap documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/base-css.html#code">Bootstrap documentation</a>
  * @see Code
  */
 //@formatter:on

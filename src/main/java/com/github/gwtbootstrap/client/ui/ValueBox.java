@@ -26,10 +26,10 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * A text box cant parse its displayed value.Support Bootstarp style.
+ * A text box cant parse its displayed value.Support Bootstrap style.
  * 
  * It's a same as GWT's {@link com.google.gwt.user.client.ui.ValueBox}.
- * But support Bootstarp styles.
+ * But support Bootstrap styles.
  * 
  * @param <T> the value type
  * @see com.google.gwt.user.client.ui.ValueBox

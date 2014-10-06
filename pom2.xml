@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>GWT-Bootstrap</name>
-    <description>A GWT Library that provides the widgets of Twitter Bootstrap.</description>
+    <description>A GWT Library that provides the widgets of Bootstrap.</description>
     <url>http://gwtbootstrap.github.com/</url>
 
     <licenses>
@@ -22,7 +22,7 @@
             <name>Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
             <distribution>repo</distribution>
-            <comments>Same as Twitter Bootstrap</comments>
+            <comments>Same as Bootstrap</comments>
         </license>
     </licenses>
 

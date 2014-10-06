@@ -95,8 +95,8 @@
 					 a 940px-wide, 12-column grid.
 				</b:Paragraph>
 				<b:Paragraph>
-					This is same as <a href="http://twitter.github.com/bootstrap/scaffolding.html#gridSystem" target="_blank">Twitter's Bootstrap Grid System.</a><br/>
-					If you need useing in uibinder,Use <b:Code>&lt;b:Row></b:Code> and <b:Code>&lt;b:Column></b:Code>.<br/>
+					This is same as <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem" target="_blank">Bootstrap's Grid System.</a><br/>
+					If you need using in uibinder,Use <b:Code>&lt;b:Row></b:Code> and <b:Code>&lt;b:Column></b:Code>.<br/>
 					Please see <a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/Row.html" target="_blank">Row</a> and <a href="http://gwtbootstrap.github.com/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/Column.html" target="_blank">Column</a> Javadocs.
 				</b:Paragraph>
 			</b:Column>

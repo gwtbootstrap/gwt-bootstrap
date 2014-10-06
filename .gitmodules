@@ -1,6 +1,6 @@
 [submodule "bootstrap"]
 	path = bootstrap
-	url = https://github.com/twitter/bootstrap.git
+	url = https://github.com/twbs/bootstrap.git
 
 [submodule "bootstrap-datepicker"]
 	path = bootstrap-datepicker

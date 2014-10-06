@@ -19,7 +19,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 
 /**
- * Constants interface with all CSS class names from Twitter Bootstrap. Will be
+ * Constants interface with all CSS class names from Bootstrap. Will be
  * removed once the migration to {@link Constants} is finished.
  * 
  * @since 2.0.4.0

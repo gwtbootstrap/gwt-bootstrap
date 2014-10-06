@@ -31,7 +31,7 @@ import com.google.gwt.text.shared.Renderer;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * A ValueBoxBase extending for Bootstarp style.
+ * A ValueBoxBase extending for Bootstrap style.
  * 
  * <pre>
  * It is GWT's {@link com.google.gwt.user.client.ui.ValueBoxBase} extending for Bootstrap style.

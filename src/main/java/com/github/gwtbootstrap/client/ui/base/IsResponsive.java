@@ -30,7 +30,7 @@ import com.github.gwtbootstrap.client.ui.constants.Device;
  * 
  * @see Configurator#hasResponsiveDesign()
  * @see <a
- *      href="http://twitter.github.com/bootstrap/scaffolding.html#responsive">Bootstrap
+ *      href="http://getbootstrap.com/2.3.2/scaffolding.html#responsive">Bootstrap
  *      documentation</a>
  * 
  */

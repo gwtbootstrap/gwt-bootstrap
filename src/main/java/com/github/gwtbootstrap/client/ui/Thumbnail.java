@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author ohashi keisuke
  * @see Thumbnails
  * @see ThumbnailLink
- * @see <a href="http://getbootstrap.com/2.3.2/components.html#thumbnails">Twitter Bootstrap Documentation</a>
+ * @see <a href="http://getbootstrap.com/2.3.2/components.html#thumbnails">Bootstrap Documentation</a>
  */
 public class Thumbnail extends ListItem implements HasSize {
 
