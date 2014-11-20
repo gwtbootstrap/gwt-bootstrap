@@ -229,7 +229,7 @@ public class Typeahead extends MarkupWidget {
     }
 
     private boolean selectionMatcher(String query, String item) {
-        return this.matcherCallback.compareQueryToItem(query, item);
+        return this.matcherCallback.compareQueryToItem(query, item.replaceAll("</?strong>", ""));
     }
     
     //@formatter:off
