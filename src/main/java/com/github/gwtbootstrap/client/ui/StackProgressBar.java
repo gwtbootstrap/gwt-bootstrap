@@ -13,8 +13,8 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  * {@code
  * <b:StackProgressBar type="ANIMATED">
  *  <b:Bar parcent="10"/>
- *  <b:Bar color="SUCCESS" parcent="20"/>
- *  <b:Bar color="INFO" parcent="30"/>
+ *  <b:Bar color="SUCCESS" percent="20"/>
+ *  <b:Bar color="INFO" percent="30"/>
  * </b:StackProgressBar>
  * }
  * 
