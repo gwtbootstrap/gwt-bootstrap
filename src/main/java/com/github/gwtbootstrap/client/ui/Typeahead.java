@@ -7,6 +7,7 @@ import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.SuggestOracle;
 import com.google.gwt.user.client.ui.SuggestOracle.Callback;
@@ -40,6 +41,7 @@ public class Typeahead extends MarkupWidget {
     private UpdaterCallback updaterCallback;
     private HighlighterCallback highlighterCallback;
     private MatcherCallback matcherCallback;
+    private HTML entityUnescaper = new HTML();
 
     /**
      * Constructor for {@link Typeahead}. Creates a {@link MultiWordSuggestOracle} to use with this
@@ -229,7 +231,8 @@ public class Typeahead extends MarkupWidget {
     }
 
     private boolean selectionMatcher(String query, String item) {
-        return this.matcherCallback.compareQueryToItem(query, item.replaceAll("</?strong>", ""));
+        entityUnescaper.setHTML(item);
+        return this.matcherCallback.compareQueryToItem(query, entityUnescaper.getText());
     }
     
     //@formatter:off
