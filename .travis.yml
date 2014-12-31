@@ -1,6 +1,10 @@
 language: java
-script: mvn clean install
+script:
+  - mvn clean compile gwt:compile
+  - mvn clean compile gwt:compile -Pshowcase
 jdk:
   - oraclejdk7
   - openjdk7
   - openjdk6
+notifications:
+  email: false
