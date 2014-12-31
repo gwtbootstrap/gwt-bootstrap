@@ -1,7 +1,7 @@
 # [GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Travis-CI Build Status](https://travis-ci.org/gwtbootstrap/gwt-bootstrap.png?branch=master)](https://travis-ci.org/gwtbootstrap/gwt-bootstrap)
 
 =================
-# GWT-Bootstrap [2.3.2.0](http://search.maven.org/#artifactdetails%7Ccom.github.gwtbootstrap%7Cgwt-bootstrap%7C2.3.2.0%7Cjar) was released.
+# GWT-Bootstrap [2.3.2.1](http://search.maven.org/#artifactdetails%7Ccom.github.gwtbootstrap%7Cgwt-bootstrap%7C2.3.2.1%7Cjar) was released.
 =================
 
 Based on [Bootstrap.](http://getbootstrap.com/2.3.2/), GWT-Bootstrap
