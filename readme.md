@@ -1,8 +1,4 @@
-# [GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Travis-CI Build Status](https://travis-ci.org/gwtbootstrap/gwt-bootstrap.png?branch=master)](https://travis-ci.org/gwtbootstrap/gwt-bootstrap)
-
-=================
-# GWT-Bootstrap [2.3.2.1](http://search.maven.org/#artifactdetails%7Ccom.github.gwtbootstrap%7Cgwt-bootstrap%7C2.3.2.1%7Cjar) was released.
-=================
+# [GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Travis-CI Build Status](https://travis-ci.org/gwtbootstrap/gwt-bootstrap.png?branch=master)](https://travis-ci.org/gwtbootstrap/gwt-bootstrap) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gwtbootstrap/gwt-bootstrap/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.gwtbootstrap/gwt-bootstrap)
 
 Based on [Bootstrap.](http://getbootstrap.com/2.3.2/), GWT-Bootstrap
 Bootstrap provides simple and flexible components representing Bootstrap components, styles,
