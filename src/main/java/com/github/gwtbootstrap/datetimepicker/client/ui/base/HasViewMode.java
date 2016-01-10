@@ -24,7 +24,7 @@ package com.github.gwtbootstrap.datetimepicker.client.ui.base;
  */
 public interface HasViewMode {
 
-    public static enum ViewMode {HOUR, DAY, MONTH, YEAR, DECADE}
+    public enum ViewMode {HOUR, DAY, MONTH, YEAR, DECADE}
 
     /**
      * Set the Min ViewMode

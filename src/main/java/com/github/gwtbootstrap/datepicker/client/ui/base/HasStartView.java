@@ -23,7 +23,7 @@ package com.github.gwtbootstrap.datepicker.client.ui.base;
  */
 public interface HasStartView {
 
-    public static enum ViewMode {MONTH, YEAR, DECADE}
+    public enum ViewMode {MONTH, YEAR, DECADE}
 
     /**
      * Set the view mode of the datepicker.

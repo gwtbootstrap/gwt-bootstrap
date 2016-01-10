@@ -41,7 +41,7 @@ public class Pagination extends Composite implements HasStyle, IsResponsive, Has
     private final DivWidget paginationDiv = new DivWidget();
     private UnorderedList list = new UnorderedList();
 
-    public static enum PaginationSize implements Style {
+    public enum PaginationSize implements Style {
         MINI,
         SMALL,
         NORMAL,
