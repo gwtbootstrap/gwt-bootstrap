@@ -9,9 +9,9 @@ public class ProgressBarBase extends DivWidget {
 
         DEFAULT(""),
 
-        STRIPED(Bootstrap.progress_striped),
+        STRIPED(Bootstrap.PROGRESS_STRIPED),
         
-        ANIMATED(Bootstrap.progress_animated);
+        ANIMATED(Bootstrap.PROGRESS_ANIMATED);
         
         private final String styleName;
 

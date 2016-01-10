@@ -29,6 +29,6 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 public class NavTabs extends StackedNav {
 
 	public NavTabs() {
-		addStyleName(Bootstrap.nav_tabs);
+		addStyleName(Bootstrap.NAV_TABS);
 	}
 }

@@ -35,7 +35,7 @@ public class NavSearch extends NavFormBase {
 	public NavSearch() {
 		super();
 		addStyleName(NavbarConstants.NAVBAR_SEARCH);
-		getTextBox().addStyleName(Bootstrap.search_query);
+		getTextBox().addStyleName(Bootstrap.SEARCH_QUERY);
 	}
 
 	public NavSearch(int size) {

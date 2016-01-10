@@ -35,7 +35,7 @@ public class PageHeader extends DivWidget implements HasText {
 	private final Heading heading = new Heading(1);
 
 	public PageHeader() {
-		setStyleName(Bootstrap.page_header);
+		setStyleName(Bootstrap.PAGE_HEADER);
 		add(heading);
 	}
 

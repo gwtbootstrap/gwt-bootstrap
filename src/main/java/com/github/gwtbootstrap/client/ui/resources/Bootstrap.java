@@ -31,68 +31,68 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 public interface Bootstrap {
 
 
-	public static final String prev = "prev";
+	public static final String PREV = "prev";
 
-	public static final String next = "next";
+	public static final String NEXT = "next";
 
-	public static final String block_message = "block-message";
+	public static final String BLOCK_MESSAGE = "block-message";
 
-	public static final String large = "large";
+	public static final String LARGE = "large";
 
-	public static final String small = "small";
+	public static final String SMALL = "small";
 
-	public static final String container = "container";
+	public static final String CONTAINER = "container";
 
-	public static final String sidebar = "sidebar";
+	public static final String SIDEBAR = "sidebar";
 
-	public static final String nav = "nav";
+	public static final String NAV = "nav";
 
-	public static final String nav_list = "nav-list";
+	public static final String NAV_LIST = "nav-list";
 
-	public static final String nav_header = "nav-header";
+	public static final String NAV_HEADER = "nav-header";
 
-	public static final String menu = "menu";
+	public static final String MENU = "menu";
 
-	public static final String menu_dropdown = "menu-dropdown";
+	public static final String MENU_DROPDOWN = "menu-dropdown";
 
-	public static final String clearfix = "clearfix";
+	public static final String CLEARFIX = "clearfix";
 
-	public static final String input = "input";
+	public static final String INPUT = "input";
 
-	public static final String uneditable_input = "uneditable-input";
+	public static final String UNEDITABLE_INPUT = "uneditable-input";
 
-	public static final String search_query = "search-query";
+	public static final String SEARCH_QUERY = "search-query";
 
-	public static final String inverse = "inverse";
+	public static final String INVERSE = "inverse";
 
-	public static final String page_header = "page-header";
+	public static final String PAGE_HEADER = "page-header";
 
-	public static final String hero_unit = "hero-unit";
+	public static final String HERO_UNIT = "hero-unit";
 
-	public static final String progress_striped = "progress-striped";
+	public static final String PROGRESS_STRIPED = "progress-striped";
 
-	public static final String progress_animated = "progress-striped "
+	public static final String PROGRESS_ANIMATED = "progress-striped "
 			+ Constants.ACTIVE;
 
-	public static final String pager = "pager";
+	public static final String PAGER = "pager";
 
-	public static final String linenums = "linenums";
+	public static final String LINENUMS = "linenums";
 
-	public static final String prettyprint = "prettyprint";
+	public static final String PRETTYPRINT = "prettyprint";
 
-	public static final String nav_tabs = "nav-tabs";
+	public static final String NAV_TABS = "nav-tabs";
 
-	public static final String nav_pills = "nav-pills";
+	public static final String NAV_PILLS = "nav-pills";
 
-	public static final String nav_stacked = "nav-stacked";
+	public static final String NAV_STACKED = "nav-stacked";
 
-	public static final String tabbable = "tabbable";
+	public static final String TABBABLE = "tabbable";
 
-	public static final String tab_pane = "tab-pane";
+	public static final String TAB_PANE = "tab-pane";
 
-	public static final String tab_content = "tab-content";
+	public static final String TAB_CONTENT = "tab-content";
 
-	public static final String footer = "footer";
+	public static final String FOOTER = "footer";
 
 	public enum Tabs implements Style {
 
@@ -101,12 +101,12 @@ public interface Bootstrap {
 		LEFT("tabs-left"),
 		RIGHT("tabs-right");
 		
-		private static final String tabbable = "tabbable ";
+		private static final String TABBABLE = "tabbable ";
 
 		private String className;
 
 		private Tabs(String className) {
-			this.className = tabbable + className;
+			this.className = TABBABLE + className;
 		}
 
 		public String get() {
@@ -118,12 +118,12 @@ public interface Bootstrap {
 
 		LEFT(""), CENTERED("pagination-centered"), RIGHT("pagination-right");
 
-		private static final String pagination = "pagination ";
+		private static final String PAGINATION = "pagination ";
 
 		private String className;
 
 		private Pagination(String className) {
-			this.className = pagination + className;
+			this.className = PAGINATION + className;
 		}
 
 		public String get() {
