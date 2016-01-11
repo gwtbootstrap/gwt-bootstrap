@@ -58,7 +58,7 @@ public class Footer extends HtmlWidget {
 	 */
 	public Footer(String html) {
 		super("footer" , html);
-		setStyleName(Bootstrap.footer);
+		setStyleName(Bootstrap.FOOTER);
 	}
 
 }

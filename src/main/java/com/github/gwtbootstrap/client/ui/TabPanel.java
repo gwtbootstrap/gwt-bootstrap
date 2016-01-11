@@ -188,7 +188,7 @@ public class TabPanel extends DivWidget {
     private static class TabContent extends DivWidget {
 
         public TabContent() {
-            setStyleName(Bootstrap.tab_content);
+            setStyleName(Bootstrap.TAB_CONTENT);
         }
     }
 

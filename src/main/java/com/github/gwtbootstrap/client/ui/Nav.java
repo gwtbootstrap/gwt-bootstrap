@@ -56,7 +56,7 @@ public class Nav extends UnorderedList implements HasAlignment {
 	 * Creates an empty widget.
 	 */
 	public Nav() {
-		addStyleName(Bootstrap.nav);
+		addStyleName(Bootstrap.NAV);
 	}
 
 	/**

@@ -52,7 +52,7 @@ public class NavHeader extends ListItem implements HasText {
 	 * Creates an empty widget.
 	 */
 	public NavHeader() {
-		setStyleName(Bootstrap.nav_header);
+		setStyleName(Bootstrap.NAV_HEADER);
 	}
 
 	/**
