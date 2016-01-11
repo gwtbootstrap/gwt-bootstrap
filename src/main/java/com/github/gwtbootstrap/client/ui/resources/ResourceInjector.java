@@ -33,13 +33,17 @@ import com.google.gwt.resources.client.TextResource;
  * 
  * @author Carlos Alexandro Becker
  */
-public class ResourceInjector {
+public final class ResourceInjector {
 
     private static final Configurator ADAPTER = GWT.create(Configurator.class);
     
     private static final InternalResourceInjector INJECTOR = GWT.create(InternalResourceInjector.class);
 
     private static HeadElement head;
+
+	private ResourceInjector(){
+
+	}
 
     /**
      * Injects the required CSS styles and JavaScript files into the document header.

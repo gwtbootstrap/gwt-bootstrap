@@ -28,9 +28,12 @@ import com.google.gwt.resources.client.TextResource;
  * @author Alain Penders
  * @since 2.1.1.0
  */
-public class DatetimepickerResourceInjector
+public final class DatetimepickerResourceInjector
 {
 
+	private DatetimepickerResourceInjector(){
+
+	}
     /**
      * Injects the required CSS styles and JavaScript files into the document header.
      * <pre>

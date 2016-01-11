@@ -31,11 +31,13 @@ import com.google.gwt.user.client.ui.UIObject;
  * @author ohashi keisuke
  * 
  */
-public class SizeHelper {
+public final class SizeHelper {
 
 	private static List<SizeSpan> SIZE_LIST;
 	
 	private static final ColumnSizeConfigurator CONFIGURATOR = GWT.create(ColumnSizeConfigurator.class);
+
+	private SizeHelper(){ }
 
 	// create SIZE_LIST
 	static {

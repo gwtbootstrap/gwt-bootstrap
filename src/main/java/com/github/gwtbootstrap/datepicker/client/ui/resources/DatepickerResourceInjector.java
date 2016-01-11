@@ -27,8 +27,11 @@ import com.google.gwt.resources.client.TextResource;
  * @author Carlos Alexandro Becker
  * @since 2.0.4.0
  */
-public class DatepickerResourceInjector {
+public final class DatepickerResourceInjector {
 
+	private DatepickerResourceInjector(){
+
+	}
     /**
      * Injects the required CSS styles and JavaScript files into the document header.
      * <pre>

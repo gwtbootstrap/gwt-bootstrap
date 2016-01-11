@@ -28,13 +28,17 @@ import com.google.gwt.resources.client.TextResource;
  * @author Carlos A Becker
  * @since 2.0.4.0
  */
-public class LocaleUtil {
+public final class LocaleUtil {
 
     private static String locale = null;
     private static String LANGUAGE = null;
 
     private static List<String> loaded = new ArrayList<String>();
-    
+
+	private LocaleUtil(){
+
+	}
+	
     public static String getLanguage() {
         if (LANGUAGE == null) {
             setupLocale();

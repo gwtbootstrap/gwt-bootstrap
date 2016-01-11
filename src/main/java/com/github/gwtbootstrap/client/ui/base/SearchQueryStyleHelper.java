@@ -26,8 +26,9 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  * @author ohashi keisuke
  */
-public class SearchQueryStyleHelper {
+public final class SearchQueryStyleHelper {
 
+	private SearchQueryStyleHelper() { }
 	/**
 	 * Set search-query style to the element.
 	 * @param widget applied style widget
