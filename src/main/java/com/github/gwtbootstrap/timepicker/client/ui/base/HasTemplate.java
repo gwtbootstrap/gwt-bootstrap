@@ -9,7 +9,7 @@ package com.github.gwtbootstrap.timepicker.client.ui.base;
  */
 public interface HasTemplate {
 
-    public static enum Template {DROPDOWN, MODAL, FALSE}
+    public enum Template {DROPDOWN, MODAL, FALSE}
 
     /**
      * Set the template of the timepicker.

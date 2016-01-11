@@ -9,7 +9,7 @@ package com.github.gwtbootstrap.timepicker.client.ui.base;
  */
 public interface HasDefaultTime {
 
-    public static enum DefaultTime {CURRENT, VALUE, FALSE}
+    public enum DefaultTime {CURRENT, VALUE, FALSE}
 
     /**
      * Set the defaultTime of the component.

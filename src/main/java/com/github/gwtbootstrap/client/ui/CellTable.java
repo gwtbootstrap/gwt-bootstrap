@@ -41,7 +41,7 @@ public class CellTable<T> extends
         com.google.gwt.user.cellview.client.CellTable<T> implements HasStyle,
         IsResponsive {
 
-    public static enum TableType implements
+    public enum TableType implements
             com.github.gwtbootstrap.client.ui.base.Style {
         BORDERED("table-bordered"), STRIPED("table-striped"), CONDENSED("table-condensed"),
         HOVER("table-hover");
