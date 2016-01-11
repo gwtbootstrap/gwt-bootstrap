@@ -632,7 +632,6 @@ public class DateTimeBoxBase
 
 	@Override
 	public void setMinuteStep(int minutes) {
-//		getElement().setAttribute("date-days-of-week-disabled", value);
 		this.minuteStep = minutes;
 	}
 

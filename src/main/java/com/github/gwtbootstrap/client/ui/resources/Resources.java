@@ -106,40 +106,4 @@ public interface Resources extends ClientBundle {
 
     @Source("css/font-awesome.min.css")
     TextResource fontAwesomeCss();
-
-//	@Source("js/bootstrap-collapse.js")
-//	TextResource bootstrapCollapseJs();
-
-//	@Source("css/prettify.css")
-//	TextResource prettify_css();
-
-//	@Source("js/prettify/prettify.js")
-//	TextResource prettify_js();
-
-//	@Source("js/prettify.js")
-//	TextResource prettify_js();
-
-//	@Source("js/bootstrap-alerts.js")
-//	TextResource alerts();
-//
-//	@Source("js/bootstrap-buttons.js")
-//	TextResource buttons();
-//
-//	@Source("js/bootstrap-dropdown.js")
-//	TextResource dropdown();
-//
-//	@Source("js/bootstrap-modal.js")
-//	TextResource modal();
-//
-//	@Source("js/bootstrap-popover.js")
-//	TextResource popover();
-//
-//	@Source("js/bootstrap-scrollspy.js")
-//	TextResource scrollspy();
-//
-//	@Source("js/bootstrap-tabs.js")
-//	TextResource tabs();
-//
-//	@Source("js/bootstrap-twipsy.js")
-//	TextResource twipsy();
 }

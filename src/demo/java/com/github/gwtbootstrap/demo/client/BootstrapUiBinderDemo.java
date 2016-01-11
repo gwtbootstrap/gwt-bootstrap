@@ -95,14 +95,11 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 		Modal testModal = new Modal();
 		testModal.setTitle("Lalala");
 		testModal.show();
-//		modal.hide();
-//		Window.alert("Hello!");
 	}
 
 	@UiHandler("saveButton")
 	void onClickSave(ClickEvent e) {
 		modal.hide();
-//		Window.alert("Hello!");
 	}
 
 }
