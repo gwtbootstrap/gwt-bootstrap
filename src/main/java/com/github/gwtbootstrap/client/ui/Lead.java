@@ -18,6 +18,7 @@ public class Lead extends Paragraph {
     public Lead(String html) {
         super();
         addStyleName(Constants.LEAD);
+        setText(html);
     }
     
 }
