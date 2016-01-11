@@ -15,17 +15,22 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.Iterator;
+
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
+import com.github.gwtbootstrap.client.ui.base.HasId;
+import com.github.gwtbootstrap.client.ui.base.HasStyle;
+import com.github.gwtbootstrap.client.ui.base.IsResponsive;
 import com.github.gwtbootstrap.client.ui.base.Style;
 import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.base.UnorderedList;
-import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.google.gwt.user.client.ui.Widget;
-import com.github.gwtbootstrap.client.ui.base.*;
 import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.google.gwt.user.client.ui.*;
-
-import java.util.Iterator;
+import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.InsertPanel;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
 /**

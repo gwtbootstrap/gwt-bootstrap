@@ -1,5 +1,7 @@
 package com.github.gwtbootstrap.timepicker.client.ui;
 
+import java.util.Date;
+
 import com.github.gwtbootstrap.client.ui.AppendButton;
 import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
@@ -9,13 +11,24 @@ import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
-import com.github.gwtbootstrap.client.ui.event.*;
-import com.github.gwtbootstrap.timepicker.client.ui.base.*;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
+import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownHandler;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasDefaultTime;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasDisableFocus;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasMeridian;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasMinuteStep;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasModalBackdrop;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasSecondStep;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasShowInputs;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasShowSeconds;
+import com.github.gwtbootstrap.timepicker.client.ui.base.HasTemplate;
+import com.github.gwtbootstrap.timepicker.client.ui.base.TimeBoxBase;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
-
-import java.util.Date;
 
 /**
  * TimeBoxAppended component
