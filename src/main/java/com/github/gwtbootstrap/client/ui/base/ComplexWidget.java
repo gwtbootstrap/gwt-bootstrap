@@ -49,13 +49,6 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets,
 	@Override
 	public void add(Widget w) {
 		add(w, getElement());
-		
-//		// logical add
-//		getChildren().add(w);
-//
-//		// physical add
-//		getElement().appendChild(w.getElement());
-
 	}
 
 	/**

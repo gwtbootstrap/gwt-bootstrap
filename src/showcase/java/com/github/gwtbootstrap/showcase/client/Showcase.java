@@ -125,25 +125,6 @@ public class Showcase extends Composite implements EntryPoint {
                 }
             }
         });
-        
-        // addSectionToContainer("Get Started", "setup", new Setup());
-        // addSectionToContainer("Get Support", "support", new Support());
-        // addSectionToContainer("Buttons", "buttons", new Buttons());
-        // addSectionToContainer("Grid System", "gridSystem", new GridSystem());
-        // addSectionToContainer("Navigation", "navigation", new Navigation());
-        // addSectionToContainer("Hero Unit", "hero", new HeroUnit());
-        // addSectionToContainer("Forms", "forms", new Forms());
-        // addSectionToContainer("Page Header", "pageheader", new PageHeader());
-        // addSectionToContainer("Progress Bar", "progressbar", new
-        // ProgressBar());
-        // addSectionToContainer("Alerts", "alerts", new Alerts());
-        // addSectionToContainer("Pagination", "pagination", new Pagination());
-        // addSectionToContainer("Dropdown", "dropdown", new Dropdown());
-        // addSectionToContainer("Modal", "modal", new Modal());
-        // addSectionToContainer("Datepicker", "datepicker", new Datepicker());
-        // addSectionToContainer("Tooltip", "tooltip", new Tooltips());
-        // addSectionToContainer("Popover", "popover", new Popovers());
-        // addSectionToContainer("Icons", "icons", new Icons());
 
         RootPanel.get("content").add(this);
         Document doc = Document.get();
@@ -152,14 +133,6 @@ public class Showcase extends Composite implements EntryPoint {
         script.setType("text/javascript");
         script.setLang("javascript");
         doc.getBody().appendChild(script);
-
-//        github_buttons
-//                .getElement()
-//                .setInnerHTML(
-//                        "<iframe src=\"http://ghbtns.com/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=watch&count=true\"\n"
-//                                + "                                allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"110px\" height=\"20px\"></iframe>"
-//                                + "<br /><iframe src=\"http://ghbtns.com/github-btn.html?user=gwtbootstrap&repo=gwt-bootstrap&type=fork&count=true\"\n"
-//                                + "  allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"95px\" height=\"20px\"></iframe>");
 
         JavaScriptInjector
                 .inject("!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");");
@@ -172,14 +145,6 @@ public class Showcase extends Composite implements EntryPoint {
             History.newItem(token);
         }
     }
-
-//    private void addSectionToContainer(String sectionName, String target,
-//            Widget section) {
-//        nav.add(new NavLink(sectionName, "#" + target));
-//        Section sec = new Section(target);
-//        sec.add(section);
-//        sections.add(sec);
-//    }
     
     @UiHandler("backToTopAnchor")
     void onClickBackToTop(ClickEvent e) {

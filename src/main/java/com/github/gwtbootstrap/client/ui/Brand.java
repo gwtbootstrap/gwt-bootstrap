@@ -50,7 +50,6 @@ public class Brand extends Anchor {
 	public Brand() {
 		setStyleName(Constants.BRAND);
 		addStyleName(Constants.ACTIVE);
-//		setHref(Constants.EMPTY_HREF);
 	}
 	
 	/**

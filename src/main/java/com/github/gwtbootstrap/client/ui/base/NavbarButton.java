@@ -39,8 +39,6 @@ public class NavbarButton extends Button {
 	 */
 	public NavbarButton() {
 		addStyleName(NavbarConstants.NAVBAR_BUTTON);
-//		getElement().getStyle().setDisplay(Display.INLINE_BLOCK);
-//		addStyleName(ButtonType.PRIMARY.get());
 	}
 
 	/**
@@ -52,6 +50,5 @@ public class NavbarButton extends Button {
 	public NavbarButton(String caption) {
 		super(caption);
 		addStyleName(NavbarConstants.NAVBAR_BUTTON);
-//		getElement().getStyle().setDisplay(Display.INLINE_BLOCK);
 	}
 }
