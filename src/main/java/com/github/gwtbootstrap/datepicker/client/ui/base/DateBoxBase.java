@@ -356,7 +356,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
      */
     @Override
     public void setWeekStart(int start) {
-        getElement().setAttribute("data-date-weekstart", start + "");
+        getElement().setAttribute("data-date-weekstart", Integer.toString(start));
     }
 
     /**

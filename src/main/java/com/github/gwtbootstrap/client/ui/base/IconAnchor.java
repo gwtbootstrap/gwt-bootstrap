@@ -274,7 +274,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 
     @Override
     public void setAccessKey(char key) {
-        DOM.setElementProperty(getElement(), "accessKey", "" + key);
+    	DOM.setElementProperty(getElement(), "accessKey", Character.toString(key));
     }
 
     @Override

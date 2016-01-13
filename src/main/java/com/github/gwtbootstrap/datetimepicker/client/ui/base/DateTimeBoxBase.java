@@ -389,7 +389,7 @@ public class DateTimeBoxBase
      */
     @Override
     public void setWeekStart(int start) {
-        getElement().setAttribute("data-date-weekstart", start + "");
+        getElement().setAttribute("data-date-weekstart", Integer.toString(start));
     }
 
     /**
@@ -714,11 +714,13 @@ public class DateTimeBoxBase
             token = 'm';
         }
 
-        String out = "";
-        for(int i=0; i<count; i++)
-            out += token;
+        final StringBuilder out = new StringBuilder();
+        for(int i=0; i<count; i++) 
+        {
+            out.append(Character.toString(token));
+        }
 
-        return out;
+        return out.toString();
 
         // TODO: Support PHP format so we can do more complex formatting
     }
