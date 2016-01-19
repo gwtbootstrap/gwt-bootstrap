@@ -32,7 +32,7 @@ import com.google.gwt.user.client.DOM;
  * 
  * @author Dominik Mayer
  * 
- * @see DropdownBase
+ * @see AbstractDropdownBase
  * @see Dropdown
  * @see DropdownButton
  * 

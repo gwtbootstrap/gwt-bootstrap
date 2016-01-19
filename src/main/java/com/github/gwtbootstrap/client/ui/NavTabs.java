@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.StackedNav;
+import com.github.gwtbootstrap.client.ui.base.AbstractStackedNav;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 
 //@formatter:off
@@ -26,7 +26,7 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
  * @author Dominik Mayer
  */
 //@formatter:on
-public class NavTabs extends StackedNav {
+public class NavTabs extends AbstractStackedNav {
 
 	public NavTabs() {
 		addStyleName(Bootstrap.nav_tabs);

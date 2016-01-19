@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
+import com.github.gwtbootstrap.client.ui.base.AbstractMarkupWidget;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author k-ohashi
  *
  */
-public class Affix extends MarkupWidget {
+public class Affix extends AbstractMarkupWidget {
     
     private int offsetBottom;
     private int offsetTop;

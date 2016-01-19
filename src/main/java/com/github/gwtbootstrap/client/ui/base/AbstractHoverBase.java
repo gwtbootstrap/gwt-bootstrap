@@ -39,7 +39,7 @@ import com.google.gwt.user.client.ui.Widget;
 * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#popovers">Bootstrap documentation</a>
 */
 //@formatter:on
-public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
+public abstract class AbstractHoverBase extends AbstractMarkupWidget implements IsWidget, HasWidgets, HasOneWidget, IsAnimated, HasTrigger, HasPlacement, HasText, HasShowDelay, HasVisibility {
 
 	/**
 	 * Whether the widget is animated or not.
@@ -74,7 +74,7 @@ public abstract class HoverBase extends MarkupWidget  implements IsWidget, HasWi
 	/**
 	 * Creates a new widget based on the provided HTML tag.
 	 */
-	public HoverBase() {
+	public AbstractHoverBase() {
 	}
 
 	/**

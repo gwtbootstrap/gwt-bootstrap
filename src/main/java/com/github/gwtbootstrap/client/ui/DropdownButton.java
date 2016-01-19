@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.DropdownBase;
+import com.github.gwtbootstrap.client.ui.base.AbstractDropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.*;
 import com.github.gwtbootstrap.client.ui.resources.ButtonSize;
@@ -49,7 +49,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * @see SplitDropdownButton
  */
 //@formatter:on
-public class DropdownButton extends DropdownBase {
+public class DropdownButton extends AbstractDropdownBase {
 
 	private Button trigger;
 

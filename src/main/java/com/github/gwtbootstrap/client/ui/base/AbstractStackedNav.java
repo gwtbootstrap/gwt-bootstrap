@@ -28,12 +28,12 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
  * @see <a href="http://getbootstrap.com/2.3.2/components.html#navs">Bootstrap documentation</a>
  */
 //@formatter:on
-public abstract class StackedNav extends UnorderedList {
+public abstract class AbstractStackedNav extends UnorderedList {
 
 	/**
 	 * Creates an empty widget whose contents will not be stacked.
 	 */
-	public StackedNav() {
+	public AbstractStackedNav() {
 		addStyleName(Bootstrap.nav);
 	}
 

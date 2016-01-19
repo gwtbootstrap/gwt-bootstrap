@@ -2,7 +2,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
 import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
-import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
+import com.github.gwtbootstrap.client.ui.base.AbstractMarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
@@ -55,7 +55,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  *
  */
-public class Collapse extends MarkupWidget implements HasVisibility, HasVisibleHandlers {
+public class Collapse extends AbstractMarkupWidget implements HasVisibility, HasVisibleHandlers {
 
     private String parent;
     

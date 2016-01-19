@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
+import com.github.gwtbootstrap.client.ui.base.AbstractMarkupWidget;
 import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.Collection;
 
-public class Typeahead extends MarkupWidget {
+public class Typeahead extends AbstractMarkupWidget {
 
     public interface UpdaterCallback {
         String onSelection(Suggestion selectedSuggestion);

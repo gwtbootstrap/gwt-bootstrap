@@ -39,7 +39,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since 2.0.4.0
  */
 //@formatter:on
-public abstract class DropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText, HasIcon {
+public abstract class AbstractDropdownBase extends ComplexWidget implements HasChangeHandlers, HasClickHandlers, HasWidgets, HasText, HasIcon {
 
     private UnorderedList menu = new UnorderedList();
 
@@ -56,7 +56,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
      *
      * @param type the HTML tag to be used for the widget
      */
-    public DropdownBase(String type) {
+    public AbstractDropdownBase(String type) {
         super(type);
         createAndAddTrigger();
         menu.setStyleName("dropdown-menu");
@@ -208,7 +208,7 @@ public abstract class DropdownBase extends ComplexWidget implements HasChangeHan
             } catch (Exception e) {
                 GWT.log(e.getMessage(), e);
             }
-            DomEvent.fireNativeEvent(Document.get().createChangeEvent(), DropdownBase.this);
+            DomEvent.fireNativeEvent(Document.get().createChangeEvent(), AbstractDropdownBase.this);
         }
 
     }

@@ -15,9 +15,9 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import com.github.gwtbootstrap.client.ui.base.AbstractDropdownBase;
+import com.github.gwtbootstrap.client.ui.base.AbstractMarkupWidget;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
-import com.github.gwtbootstrap.client.ui.base.DropdownBase;
-import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.ToggleType;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -91,8 +91,8 @@ public class ButtonGroup extends DivWidget {
     public void add(IsWidget child) {
         
         Widget widget = asWidgetOrNull(child);
-        if(child instanceof MarkupWidget && widget instanceof DropdownButton) {
-            MarkupWidget markup = (MarkupWidget) child;
+        if(child instanceof AbstractMarkupWidget && widget instanceof DropdownButton) {
+            AbstractMarkupWidget markup = (AbstractMarkupWidget) child;
             DropdownButton dropdownBase = (DropdownButton) widget;
             
             markup.setWidget(dropdownBase.getTriggerWidget());
@@ -132,7 +132,7 @@ public class ButtonGroup extends DivWidget {
      * Add dropdown widget
      * @param dropdown dropdown widget
      */
-    private void add(DropdownBase dropdown) {
+    private void add(AbstractDropdownBase dropdown) {
         
         super.add(dropdown.getTriggerWidget());
         super.add(dropdown.getMenuWiget());
@@ -144,11 +144,11 @@ public class ButtonGroup extends DivWidget {
     @Override
     public boolean remove(Widget w) {
         
-        if(!(w instanceof DropdownBase)) {
+        if(!(w instanceof AbstractDropdownBase)) {
             return super.remove(w);
         }
         
-        DropdownBase dropdown = (DropdownBase) w;
+        AbstractDropdownBase dropdown = (AbstractDropdownBase) w;
         
         super.remove(dropdown.getTriggerWidget());
         return super.remove(dropdown.getMenuWiget());
