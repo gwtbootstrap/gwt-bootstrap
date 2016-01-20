@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.DropdownBase;
+import com.github.gwtbootstrap.client.ui.base.AbstractDropdownBase;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;
@@ -50,7 +50,7 @@ import com.github.gwtbootstrap.client.ui.constants.IconType;
  * @see SplitDropdownButton
  */
 //@formatter:on
-public class Dropdown extends DropdownBase {
+public class Dropdown extends AbstractDropdownBase {
 
 	/**
 	 * Creates an empty Dropdown without a caption.

@@ -1,6 +1,6 @@
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.MarkupWidget;
+import com.github.gwtbootstrap.client.ui.base.AbstractMarkupWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
@@ -48,7 +48,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @see <a href="http://getbootstrap.com/2.3.2/javascript.html#collapse">Bootstrap document</a>
  *
  */
-public class CollapseTrigger extends MarkupWidget {
+public class CollapseTrigger extends AbstractMarkupWidget {
 
     private String target;
     

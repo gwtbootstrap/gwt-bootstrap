@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.DropdownBase;
+import com.github.gwtbootstrap.client.ui.base.AbstractDropdownBase;
 import com.github.gwtbootstrap.client.ui.base.HasType;
 import com.github.gwtbootstrap.client.ui.base.IconAnchor;
 import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
@@ -42,7 +42,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  */
 //@formatter:on
-public class SplitDropdownButton extends DropdownBase implements
+public class SplitDropdownButton extends AbstractDropdownBase implements
 		HasClickHandlers , HasType<ButtonType> {
 
 	private Button button;

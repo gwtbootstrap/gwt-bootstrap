@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui.constants;
 
-import com.github.gwtbootstrap.client.ui.base.HoverBase;
+import com.github.gwtbootstrap.client.ui.base.AbstractHoverBase;
 import com.github.gwtbootstrap.client.ui.base.Style;
 
 /**
@@ -25,7 +25,7 @@ import com.github.gwtbootstrap.client.ui.base.Style;
  * 
  * @author Dominik Mayer
  * 
- * @see HoverBase
+ * @see AbstractHoverBase
  */
 public enum VisibilityChange implements Style {
 

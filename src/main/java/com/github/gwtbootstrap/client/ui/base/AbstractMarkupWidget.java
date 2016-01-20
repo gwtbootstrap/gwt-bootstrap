@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-public abstract class MarkupWidget implements IsWidget, HasWidgets,
+public abstract class AbstractMarkupWidget implements IsWidget, HasWidgets,
         HasOneWidget , HasId{
 
     protected Widget widget;
@@ -112,7 +112,7 @@ public abstract class MarkupWidget implements IsWidget, HasWidgets,
 
             public void remove() {
                 if (returned != null) {
-                    MarkupWidget.this.remove(returned);
+                    AbstractMarkupWidget.this.remove(returned);
                 }
             }
         };

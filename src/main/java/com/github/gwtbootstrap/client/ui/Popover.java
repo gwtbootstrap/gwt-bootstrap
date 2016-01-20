@@ -15,7 +15,7 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
-import com.github.gwtbootstrap.client.ui.base.HoverBase;
+import com.github.gwtbootstrap.client.ui.base.AbstractHoverBase;
 import com.github.gwtbootstrap.client.ui.constants.Placement;
 import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
@@ -35,7 +35,7 @@ import com.google.gwt.dom.client.Element;
  * @see Tooltip
  */
 // @formatter:on
-public class Popover extends HoverBase {
+public class Popover extends AbstractHoverBase {
 
 	private String content;
 	private String heading;
