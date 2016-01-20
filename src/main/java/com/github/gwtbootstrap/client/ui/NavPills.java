@@ -29,6 +29,6 @@ import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
 public class NavPills extends AbstractStackedNav {
 
 	public NavPills() {
-		addStyleName(Bootstrap.nav_pills);
+		addStyleName(Bootstrap.NAV_PILLS);
 	}
 }

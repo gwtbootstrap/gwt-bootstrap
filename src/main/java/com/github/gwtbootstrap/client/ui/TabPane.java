@@ -43,7 +43,7 @@ public class TabPane extends DivWidget {
 	}
 	
 	public TabPane(String heading) {
-		setStyleName(Bootstrap.tab_pane);
+		setStyleName(Bootstrap.TAB_PANE);
 		this.heading = heading;
 		createHref();
 	}

@@ -34,11 +34,9 @@ public class Pager extends UnorderedList {
 
 	private NavLink rightLink = new NavLink();
 
-//	private boolean arrows;
-
 	public @UiConstructor
 	Pager(String left, String right) {
-		setStyleName(Bootstrap.pager);
+		setStyleName(Bootstrap.PAGER);
 		leftLink.setText(left);
 		rightLink.setText(right);
 		add(leftLink);
@@ -47,7 +45,7 @@ public class Pager extends UnorderedList {
 
 	public void setAligned(boolean aligned) {
         leftLink.setStyleName(Constants.PREVIOUS);
-		rightLink.setStyleName(Bootstrap.next);
+		rightLink.setStyleName(Bootstrap.NEXT);
 	}
 
 	public NavLink getLeft() {

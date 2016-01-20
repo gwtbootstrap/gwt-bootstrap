@@ -16,7 +16,11 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.Icon;
-import com.github.gwtbootstrap.client.ui.constants.*;
+import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
+import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.github.gwtbootstrap.client.ui.constants.IconPosition;
+import com.github.gwtbootstrap.client.ui.constants.IconSize;
+import com.github.gwtbootstrap.client.ui.constants.IconType;
 import com.google.gwt.dom.client.AnchorElement;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Text;
@@ -274,7 +278,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 
     @Override
     public void setAccessKey(char key) {
-        DOM.setElementProperty(getElement(), "accessKey", "" + key);
+    	DOM.setElementProperty(getElement(), "accessKey", Character.toString(key));
     }
 
     @Override

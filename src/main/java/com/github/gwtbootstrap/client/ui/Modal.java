@@ -14,14 +14,24 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.base.IsAnimated;
 import com.github.gwtbootstrap.client.ui.constants.BackdropType;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.DismissType;
-import com.github.gwtbootstrap.client.ui.event.*;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
+import com.github.gwtbootstrap.client.ui.event.HiddenEvent;
+import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
+import com.github.gwtbootstrap.client.ui.event.HideEvent;
+import com.github.gwtbootstrap.client.ui.event.HideHandler;
+import com.github.gwtbootstrap.client.ui.event.ShowEvent;
+import com.github.gwtbootstrap.client.ui.event.ShowHandler;
+import com.github.gwtbootstrap.client.ui.event.ShownEvent;
+import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
@@ -31,9 +41,6 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
-
-import java.util.HashSet;
-import java.util.Set;
 
 //@formatter:off
 

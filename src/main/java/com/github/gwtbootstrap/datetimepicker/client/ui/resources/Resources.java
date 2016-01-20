@@ -121,9 +121,6 @@ public interface Resources
 	@Source("js/locales/bootstrap-datetimepicker.rs.js")
 	TextResource rs();
 
-//	@Source("js/locales/bootstrap-datetimepicker.rs-latin.js")
-//	TextResource rs-latin();
-
 	@Source("js/locales/bootstrap-datetimepicker.ru.js")
 	TextResource ru();
 

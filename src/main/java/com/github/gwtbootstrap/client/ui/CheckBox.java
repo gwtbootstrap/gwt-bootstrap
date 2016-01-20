@@ -327,7 +327,7 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 
 	@Override
 	public void setAccessKey(char key) {
-		inputElem.setAccessKey("" + key);
+		inputElem.setAccessKey(Character.toString(key));
 	}
 
 	/**

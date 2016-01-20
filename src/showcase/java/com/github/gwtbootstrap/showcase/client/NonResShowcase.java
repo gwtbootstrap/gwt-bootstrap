@@ -42,8 +42,6 @@ public class NonResShowcase extends Composite implements EntryPoint {
 
     public void onModuleLoad() {
         initWidget(uiBinder.createAndBindUi(this));
-        // addSectionToContainer("Get Started", "setup", new Setup());
-        // addSectionToContainer("Get Support", "support", new Support());
         addSectionToContainer("Buttons", "buttons", new Buttons());
         addSectionToContainer("Grid System", "gridSystem", new GridSystem());
         addSectionToContainer("Navigation", "navigation", new Navigation());

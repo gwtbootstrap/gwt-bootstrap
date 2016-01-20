@@ -17,7 +17,16 @@ package com.github.gwtbootstrap.showcase.client.basewidget;
 
 import com.github.gwtbootstrap.client.ui.NavLink;
 import com.github.gwtbootstrap.client.ui.Section;
-import com.github.gwtbootstrap.showcase.client.*;
+import com.github.gwtbootstrap.showcase.client.BaseIcons;
+import com.github.gwtbootstrap.showcase.client.Buttons;
+import com.github.gwtbootstrap.showcase.client.ClientFactory;
+import com.github.gwtbootstrap.showcase.client.Forms;
+import com.github.gwtbootstrap.showcase.client.HeroUnit;
+import com.github.gwtbootstrap.showcase.client.Icons;
+import com.github.gwtbootstrap.showcase.client.PageHeader;
+import com.github.gwtbootstrap.showcase.client.ProgressBar;
+import com.github.gwtbootstrap.showcase.client.Subnav;
+import com.github.gwtbootstrap.showcase.client.Thumbnailses;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.uibinder.client.UiBinder;

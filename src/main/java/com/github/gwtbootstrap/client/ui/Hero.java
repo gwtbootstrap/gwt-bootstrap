@@ -51,7 +51,7 @@ public class Hero extends DivWidget {
 	 * Creates an empty widget.
 	 */
 	public Hero() {
-		addStyleName(Bootstrap.hero_unit);
+		addStyleName(Bootstrap.HERO_UNIT);
 	}
 
 }

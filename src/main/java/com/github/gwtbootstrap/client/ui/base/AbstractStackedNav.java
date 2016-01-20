@@ -34,7 +34,7 @@ public abstract class AbstractStackedNav extends UnorderedList {
 	 * Creates an empty widget whose contents will not be stacked.
 	 */
 	public AbstractStackedNav() {
-		addStyleName(Bootstrap.nav);
+		addStyleName(Bootstrap.NAV);
 	}
 
 	/**
@@ -45,8 +45,8 @@ public abstract class AbstractStackedNav extends UnorderedList {
 	 */
 	public void setStacked(boolean stacked) {
 		if (stacked)
-			addStyleName(Bootstrap.nav_stacked);
+			addStyleName(Bootstrap.NAV_STACKED);
 		else
-			removeStyleName(Bootstrap.nav_stacked);
+			removeStyleName(Bootstrap.NAV_STACKED);
 	}
 }
