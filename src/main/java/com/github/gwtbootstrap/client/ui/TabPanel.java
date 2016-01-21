@@ -192,11 +192,11 @@ public class TabPanel extends DivWidget {
         }
     }
 
-    private NavTabs tabs = new NavTabs();
+    private final NavTabs tabs = new NavTabs();
 
-    private List<TabLink> tabLinkList = new ArrayList<TabLink>();
+    private final List<TabLink> tabLinkList = new ArrayList<TabLink>();
 
-    private TabContent tabContent = new TabContent();
+    private final TabContent tabContent = new TabContent();
 
     /**
      * Create an empty {@link Bootstrap.Tabs#ABOVE} style TabPanel.

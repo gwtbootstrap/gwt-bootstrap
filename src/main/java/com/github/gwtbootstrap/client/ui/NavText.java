@@ -34,7 +34,7 @@ import com.google.gwt.user.client.ui.HasText;
 //@formatter:on
 public class NavText extends ListItem implements HasText, HasAlignment {
 
-	private Paragraph paragraph = new Paragraph();
+	private final Paragraph paragraph = new Paragraph();
 
 	public NavText() {
 		paragraph.addStyleName(NavbarConstants.NAVBAR_TEXT);

@@ -35,13 +35,13 @@ public class AccordionGroup extends DivWidget implements HasIcon, HasVisibility,
 
     private final DivWidget heading;
 
-    private DivWidget innerBody = new DivWidget(Constants.ACCORDION_INNER);
+    private final DivWidget innerBody = new DivWidget(Constants.ACCORDION_INNER);
     
-    private IconAnchor trigger = new IconAnchor();
+    private final IconAnchor trigger = new IconAnchor();
 
-    private Collapse collapse;
+    private final Collapse collapse;
 
-    private CollapseTrigger collapseTrigger;
+    private final CollapseTrigger collapseTrigger;
 
     private boolean defaultOpen;
     

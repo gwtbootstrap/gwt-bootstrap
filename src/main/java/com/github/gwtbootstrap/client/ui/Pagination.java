@@ -44,7 +44,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class Pagination extends Composite implements HasStyle, IsResponsive, HasId, InsertPanel.ForIsWidget, HasWidgets.ForIsWidget {
 
     private final DivWidget paginationDiv = new DivWidget();
-    private UnorderedList list = new UnorderedList();
+    private final UnorderedList list = new UnorderedList();
 
     public enum PaginationSize implements Style {
         MINI,

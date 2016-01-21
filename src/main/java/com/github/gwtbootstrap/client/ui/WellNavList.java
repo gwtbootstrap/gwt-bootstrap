@@ -34,7 +34,7 @@ import com.google.gwt.user.client.ui.Widget;
 // @formatter:on
 public class WellNavList extends DivWidget {
 
-	private NavList navList = new NavList();
+	private final NavList navList = new NavList();
 
 	/**
 	 * Creates an empty list.

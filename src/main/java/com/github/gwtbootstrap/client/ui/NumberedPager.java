@@ -56,8 +56,8 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
     private int visiblePages = -1;
     private String nextCustomStyleName;
     private String previousCustomStyleName;
-    private NavLink nextLink = new NavLink(">");
-    private NavLink previousLink = new NavLink("<");
+    private final NavLink nextLink = new NavLink(">");
+    private final NavLink previousLink = new NavLink("<");
 
     public NumberedPager() {
         initWidget(pagination);

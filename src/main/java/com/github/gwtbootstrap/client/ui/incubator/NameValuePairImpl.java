@@ -6,8 +6,8 @@ package com.github.gwtbootstrap.client.ui.incubator;
  * Time: 6:41 PM
  */
 public class NameValuePairImpl implements NameValuePair {
-    private String name;
-    private String value;
+    private final String name;
+    private final String value;
 
     public NameValuePairImpl(String name, String value) {
         this.name = name;

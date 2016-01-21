@@ -46,7 +46,7 @@ import com.google.gwt.user.client.ui.Widget;
 //@formatter:on
 public class Table extends ComplexWidget {
 
-	private Header header = new Header();
+	private final Header header = new Header();
 
 	public Table() {
 		super("table");

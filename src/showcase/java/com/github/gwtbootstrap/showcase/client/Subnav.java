@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Subnav extends DivWidget implements HasId {
 
-    private NavPills container = new NavPills();
+    private final NavPills container = new NavPills();
     private boolean scrollspy = true;
     private Scrollspy spy;
     private boolean isFixed;

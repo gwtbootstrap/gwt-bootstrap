@@ -45,7 +45,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class ValueBoxBase<T> extends com.google.gwt.user.client.ui.ValueBoxBase<T> implements HasPlaceholder, HasAlternateSize, IsSearchQuery, HasSize, HasId, IsResponsive , HasStyle, HasEditorErrors<T>{
 
 	/** placeholderHelper */
-	private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+	private final PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
 
 	/** Widget for control decoration on <code>EditorError</code>s */
 	private Widget controlGroup;// could be a ControlGroup widget

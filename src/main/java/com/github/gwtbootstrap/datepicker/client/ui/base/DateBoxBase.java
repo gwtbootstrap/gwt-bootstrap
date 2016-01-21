@@ -79,7 +79,7 @@ public class DateBoxBase extends Widget implements HasValue<Date>,HasEnabled, Ha
     private TakesValueEditor<Date> editor;
 
     /** placeholderHelper */
-    private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+    private final PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
     private boolean autoclose = false;
 
     public DateBoxBase() {

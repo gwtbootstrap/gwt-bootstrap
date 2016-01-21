@@ -65,7 +65,7 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
     private String text;
 
     /** icon */
-    private Icon icon = new Icon();
+    private final Icon icon = new Icon();
 
     /**
      * Creates an empty widget.
