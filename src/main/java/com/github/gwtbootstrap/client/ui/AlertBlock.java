@@ -42,7 +42,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
  */
 public class AlertBlock extends AlertBase {
 
-	private Heading heading = new Heading(4);
+	private final Heading heading = new Heading(4);
 
 	/**
 	 * Creates an empty widget with a close icon.

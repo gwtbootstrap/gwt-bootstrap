@@ -48,7 +48,7 @@ public class Heading extends ComplexWidget implements HasText {
 
 	private static final int HEADER_MAXIMUM = 6;
 
-	private Small small = new Small();
+	private final Small small = new Small();
 
 	private String text;
 

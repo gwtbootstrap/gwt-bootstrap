@@ -41,7 +41,7 @@ public class Typeahead extends AbstractMarkupWidget {
     private UpdaterCallback updaterCallback;
     private HighlighterCallback highlighterCallback;
     private MatcherCallback matcherCallback;
-    private HTML entityUnescaper = new HTML();
+    private final HTML entityUnescaper = new HTML();
 
     /**
      * Constructor for {@link Typeahead}. Creates a {@link MultiWordSuggestOracle} to use with this

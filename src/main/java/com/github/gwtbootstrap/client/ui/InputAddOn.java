@@ -75,10 +75,10 @@ import com.google.gwt.user.client.ui.IsWidget;
 public class InputAddOn extends DivWidget {
 
     /** prepend add-on */
-    private AddOn prependAddOn = new AddOn();
+    private final AddOn prependAddOn = new AddOn();
 
     /** append-add-on */
-    private AddOn appendAddOn = new AddOn();
+    private final AddOn appendAddOn = new AddOn();
 
     /** set append add-on */
     private boolean append = false;

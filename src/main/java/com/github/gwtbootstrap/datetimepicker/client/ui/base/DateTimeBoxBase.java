@@ -81,7 +81,7 @@ public class DateTimeBoxBase
     private TakesValueEditor<Date> editor;
 
     /** placeholderHelper */
-    private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+    private final PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
     private boolean autoclose;
     private int minuteStep = 5;
     private boolean todayButton;

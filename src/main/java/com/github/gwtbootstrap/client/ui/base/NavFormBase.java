@@ -33,7 +33,7 @@ import com.github.gwtbootstrap.client.ui.constants.Alignment;
 //@formatter:on
 public class NavFormBase extends Form implements HasAlignment, HasSize {
 
-	private TextBox input = new TextBox();
+	private final TextBox input = new TextBox();
 
 	/**
 	 * Creates a new, left-aligned form.

@@ -80,7 +80,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 			return TYPE;
 		}
 
-		private String resultHtml;
+		private final String resultHtml;
 
 		/**
 		 * Create a submit complete event.

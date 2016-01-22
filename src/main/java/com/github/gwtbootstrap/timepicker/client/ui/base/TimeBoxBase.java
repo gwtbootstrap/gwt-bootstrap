@@ -68,7 +68,7 @@ public class TimeBoxBase extends Widget implements HasVisibleHandlers, HasPlaceh
     /**
      * placeholderHelper
      */
-    private PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
+    private final PlaceholderHelper placeholderHelper = GWT.create(PlaceholderHelper.class);
 
     public TimeBoxBase() {
         box = new TextBox();

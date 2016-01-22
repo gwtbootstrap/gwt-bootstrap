@@ -91,13 +91,13 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
 
     private BackdropType backdropType = BackdropType.NORMAL;
 
-    private boolean show = false;
+    private final boolean show = false;
 
     private boolean hideOthers = true;
 
     private boolean configured = false;
 
-    private Close close = new Close(DismissType.MODAL);
+    private final Close close = new Close(DismissType.MODAL);
 
     private String title;
 

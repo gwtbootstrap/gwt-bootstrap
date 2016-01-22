@@ -27,7 +27,7 @@ public class ValidationErrorsViewImpl extends Composite implements ValidationErr
 	private static Binder uiBinder = GWT.create(Binder.class);
 	
 	interface Driver extends SimpleBeanEditorDriver<ValidationErrorsView.LoginDetails, ValidationErrorsViewImpl> { }	
-	private Driver driver = GWT.create(Driver.class);
+	private final Driver driver = GWT.create(Driver.class);
 
 	private final Delegate delegate;
 	

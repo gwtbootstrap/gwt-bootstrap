@@ -53,7 +53,7 @@ public class Breadcrumbs extends UnorderedList {
 
     private WidgetCollection children = new WidgetCollection(this);
     
-    private List<Divider> dividerList = new ArrayList<Divider>();
+    private final List<Divider> dividerList = new ArrayList<Divider>();
     
     private String divider = "/";
     

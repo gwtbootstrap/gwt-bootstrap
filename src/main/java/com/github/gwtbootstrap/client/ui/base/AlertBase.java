@@ -47,9 +47,9 @@ public abstract class AlertBase extends HtmlWidget implements IsAnimated,
 
     private Close close;
 
-    private HTMLPanel closeReplacement = new HTMLPanel("span", "");
+    private final HTMLPanel closeReplacement = new HTMLPanel("span", "");
 
-    private HTMLPanel headingContainer = new HTMLPanel("span", "");
+    private final HTMLPanel headingContainer = new HTMLPanel("span", "");
 
     private HTMLPanel container;
 

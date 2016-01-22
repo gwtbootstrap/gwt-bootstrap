@@ -30,9 +30,9 @@ import com.google.gwt.uibinder.client.UiConstructor;
 //@formatter:on
 public class Pager extends UnorderedList {
 
-	private NavLink leftLink = new NavLink();
+	private final NavLink leftLink = new NavLink();
 
-	private NavLink rightLink = new NavLink();
+	private final NavLink rightLink = new NavLink();
 
 	public @UiConstructor
 	Pager(String left, String right) {

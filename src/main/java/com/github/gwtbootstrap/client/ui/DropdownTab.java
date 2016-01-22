@@ -28,7 +28,7 @@ import com.google.gwt.user.client.ui.IsWidget;
  */
 public class DropdownTab extends Dropdown {
     
-    private List<Tab> tabList = new ArrayList<Tab>();
+    private final List<Tab> tabList = new ArrayList<Tab>();
     
     /**
      * Create empty dropdownTab

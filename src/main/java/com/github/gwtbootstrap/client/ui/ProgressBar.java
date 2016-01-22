@@ -28,7 +28,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 //@formatter:on
 public class ProgressBar extends ProgressBarBase {
     
-	private Bar bar = new Bar();
+	private final Bar bar = new Bar();
 
 	/**
 	 * Create a progressbar.

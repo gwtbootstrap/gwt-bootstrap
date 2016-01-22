@@ -28,13 +28,13 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public class ClientFactoryImpl implements ClientFactory {
 
-    private EventBus eventBus = new SimpleEventBus();
+    private final EventBus eventBus = new SimpleEventBus();
     
-    private PlaceController placeController = new PlaceController(eventBus);
+    private final PlaceController placeController = new PlaceController(eventBus);
     
-    private PlaceHistoryMapper placeHistoryMapper = GWT.create(AppPlaceHistoryMapper.class);
+    private final PlaceHistoryMapper placeHistoryMapper = GWT.create(AppPlaceHistoryMapper.class);
     
-    private Subnav subnav = new Subnav();
+    private final Subnav subnav = new Subnav();
     
     private IShowcaseActivity baseActivity;
     private IShowcaseActivity layoutActivity;
