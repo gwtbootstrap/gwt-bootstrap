@@ -53,11 +53,7 @@ public class SubmitButton extends FocusWidget implements HasType<ButtonType>, Ha
 		super(Document.get().createSubmitInputElement());
 		setStyleName(Constants.BTN);
 	}
-
-	private InputElement asInputElement() {
-		return getElement().cast();
-	}
-
+	
 	/**
 	 * This constructor may be used by subclasses to explicitly use an existing
 	 * element. This element must be a &lt;input type="submit"&gt; element.
@@ -116,6 +112,10 @@ public class SubmitButton extends FocusWidget implements HasType<ButtonType>, Ha
 	public SubmitButton(String text) {
 		this();
 		setValue(text);
+	}
+
+	private InputElement asInputElement() {
+		return getElement().cast();
 	}
 
 	/**

@@ -32,6 +32,26 @@ import com.google.gwt.user.client.ui.Widget;
 public class TextArea extends TextBoxBase {
 
 	/**
+	 * Creates an empty text area.
+	 */
+	public TextArea() {
+		super(Document.get().createTextAreaElement());
+		setStyleName("gwt-TextArea");
+	}
+
+	/**
+	 * This constructor may be used by subclasses to explicitly use an existing
+	 * element. This element must be a &lt;textarea&gt; element.
+	 *
+	 * @param element
+	 *            the element to be used
+	 */
+	protected TextArea(Element element) {
+		super(element.<Element> cast());
+		TextAreaElement.as(element);
+	}
+
+	/**
 	 * Creates a TextArea widget that wraps an existing &lt;textarea&gt;
 	 * element.
 	 * 
@@ -54,27 +74,7 @@ public class TextArea extends TextBoxBase {
 
 		return textArea;
 	}
-
-	/**
-	 * Creates an empty text area.
-	 */
-	public TextArea() {
-		super(Document.get().createTextAreaElement());
-		setStyleName("gwt-TextArea");
-	}
-
-	/**
-	 * This constructor may be used by subclasses to explicitly use an existing
-	 * element. This element must be a &lt;textarea&gt; element.
-	 * 
-	 * @param element
-	 *            the element to be used
-	 */
-	protected TextArea(Element element) {
-		super(element.<Element> cast());
-		TextAreaElement.as(element);
-	}
-
+	
 	/**
 	 * Gets the requested width of the text box (this is not an exact value, as
 	 * not all characters are created equal).

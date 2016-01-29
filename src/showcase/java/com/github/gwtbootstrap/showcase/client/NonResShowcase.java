@@ -40,6 +40,23 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class NonResShowcase extends Composite implements EntryPoint {
 
+    @UiField
+    FlowPanel sections;
+    @UiField
+    Nav nav;
+    @UiField
+    HTMLPanel github_buttons;
+
+    private static ShowcaseUiBinder uiBinder = GWT
+            .create(ShowcaseUiBinder.class);
+
+    public NonResShowcase() {
+
+        ResourceInjector.configureWithCssFile();
+        DatepickerResourceInjector.configureWithCssFile();
+        DatetimepickerResourceInjector.configureWithCssFile();
+    }
+
     public void onModuleLoad() {
         initWidget(uiBinder.createAndBindUi(this));
         addSectionToContainer("Buttons", "buttons", new Buttons());
@@ -88,28 +105,11 @@ public class NonResShowcase extends Composite implements EntryPoint {
             }
         });
     }
-
-    @UiField
-    FlowPanel sections;
-    @UiField
-    Nav nav;
-    @UiField
-    HTMLPanel github_buttons;
-
-    private static ShowcaseUiBinder uiBinder = GWT
-            .create(ShowcaseUiBinder.class);
-
+    
     @UiTemplate("Showcase.ui.xml")
     interface ShowcaseUiBinder extends UiBinder<Widget, NonResShowcase> {
     }
-
-    public NonResShowcase() {
-
-        ResourceInjector.configureWithCssFile();
-        DatepickerResourceInjector.configureWithCssFile();
-        DatetimepickerResourceInjector.configureWithCssFile();
-    }
-
+    
     private void addSectionToContainer(String sectionName, String target,
             Widget section) {
         nav.add(new NavLink(sectionName, "#" + target));

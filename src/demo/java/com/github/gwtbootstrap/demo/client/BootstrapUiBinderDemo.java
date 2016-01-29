@@ -31,6 +31,18 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class BootstrapUiBinderDemo extends Composite implements HasText {
 
+	@UiField
+	Button button;
+
+	@UiField
+	Modal modal;
+
+	@UiField
+	Button modalBtn;
+
+	@UiField
+	SplitDropdownButton splitDropdownButton;
+
 	private static BootstrapUiBinderDemoUiBinder uiBinder = GWT
 			.create(BootstrapUiBinderDemoUiBinder.class);
 
@@ -48,19 +60,7 @@ public class BootstrapUiBinderDemo extends Composite implements HasText {
 			}
 		});
 	}
-
-	@UiField
-	Button button;
-
-	@UiField
-	Modal modal;
-
-	@UiField
-	Button modalBtn;
-
-	@UiField
-	SplitDropdownButton splitDropdownButton;
-
+	
 	public BootstrapUiBinderDemo(String firstName) {
 
 		initWidget(uiBinder.createAndBindUi(this));

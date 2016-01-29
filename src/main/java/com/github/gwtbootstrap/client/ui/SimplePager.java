@@ -94,15 +94,8 @@ public class SimplePager extends AbstractPager {
 
     private static final int DEFAULT_FAST_FORWARD_ROWS = 100;
     private static Resources DEFAULT_RESOURCES;
-
-    private static Resources getDefaultResources() {
-        if (DEFAULT_RESOURCES == null) {
-            DEFAULT_RESOURCES = GWT.create(Resources.class);
-        }
-        return DEFAULT_RESOURCES;
-    }
-
     private final int tooltipDelay = 1000;
+    
     private final Placement tooltipPlacement = Placement.BOTTOM;
 
     private final Button fastForward;
@@ -149,12 +142,13 @@ public class SimplePager extends AbstractPager {
      * @param location
      *            the location of the text relative to the buttons
      */
+
     @UiConstructor
     // Hack for Google I/O demo
     public SimplePager(TextLocation location) {
         this(location, getDefaultResources(), true, DEFAULT_FAST_FORWARD_ROWS, false);
     }
-
+    
     /**
      * Construct a {@link SimplePager} with the default resources, fast forward
      * rows and default image button names.
@@ -357,6 +351,13 @@ public class SimplePager extends AbstractPager {
         this(location, resources, showFastForwardButton, fastForwardRows, showLastPageButton, GWT.<ImageButtonsConstants> create(ImageButtonsConstants.class));
     }
 
+    private static Resources getDefaultResources() {
+        if (DEFAULT_RESOURCES == null) {
+            DEFAULT_RESOURCES = GWT.create(Resources.class);
+        }
+        return DEFAULT_RESOURCES;
+    }
+    
     @Override
     public void firstPage() {
         super.firstPage();

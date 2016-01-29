@@ -39,6 +39,26 @@ import com.google.gwt.user.client.ui.Widget;
 public class ValueBox<T> extends ValueBoxBase<T> {
 
 	/**
+	 * This constructor may be used by subclasses to explicitly use an existing
+	 * element. This element must be an &lt;input&gt; element whose type is
+	 * 'text'.
+	 *
+	 * @param element
+	 *            the element to be used
+	 */
+	protected ValueBox(Element element,
+					   Renderer<T> renderer,
+					   Parser<T> parser) {
+		super(element, renderer, parser);
+		// BiDi input is not expected - disable direction estimation.
+		setDirectionEstimator(false);
+		if (LocaleInfo.getCurrentLocale().isRTL()) {
+			setDirection(Direction.LTR);
+		}
+		assert InputElement.as(element).getType().equalsIgnoreCase("text");
+	}
+
+	/**
 	 * Creates a ValueBox widget that wraps an existing &lt;input
 	 * type='text'&gt; element.
 	 * 
@@ -61,27 +81,7 @@ public class ValueBox<T> extends ValueBoxBase<T> {
 
 		return valueBox;
 	}
-
-	/**
-	 * This constructor may be used by subclasses to explicitly use an existing
-	 * element. This element must be an &lt;input&gt; element whose type is
-	 * 'text'.
-	 * 
-	 * @param element
-	 *            the element to be used
-	 */
-	protected ValueBox(Element element,
-		Renderer<T> renderer,
-		Parser<T> parser) {
-		super(element, renderer, parser);
-		// BiDi input is not expected - disable direction estimation.
-		setDirectionEstimator(false);
-		if (LocaleInfo.getCurrentLocale().isRTL()) {
-			setDirection(Direction.LTR);
-		}
-		assert InputElement.as(element).getType().equalsIgnoreCase("text");
-	}
-
+	
 	/**
 	 * Gets the maximum allowable length.
 	 * 

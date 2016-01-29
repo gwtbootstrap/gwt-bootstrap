@@ -72,6 +72,8 @@ public class Navigation extends Composite {
     @UiField
     Button cancelButton;
 
+    @UiField Button removeTab;
+    
     private static NavigationEntriesUiBinder uiBinder = GWT.create(NavigationEntriesUiBinder.class);
 
     interface NavigationEntriesUiBinder extends UiBinder<Widget, Navigation> {
@@ -126,7 +128,6 @@ public class Navigation extends Composite {
         tabPanel.setTabPosition(e.getValue().name().toLowerCase());
     }
     
-    @UiField Button removeTab;
     @UiHandler("removeTab")
     void onClickRemoveTab(ClickEvent e) {
         if(firstTab.asTabLink().isActive()) tabPanel.remove(firstTab);

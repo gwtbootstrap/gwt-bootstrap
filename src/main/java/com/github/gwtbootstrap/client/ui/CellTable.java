@@ -65,6 +65,42 @@ public class CellTable<T> extends
 
     private static Resources DEFAULT_RESOURCES = null;
 
+    public CellTable() {
+        this(DEFAULT_PAGESIZE);
+    }
+
+    public CellTable(int pageSize, Resources resources,
+                     ProvidesKey<T> keyProvider, Widget loadingIndicator) {
+        super(pageSize, resources, keyProvider, loadingIndicator);
+        setStyleName("table");
+    }
+
+    public CellTable(int pageSize,
+                     Resources resources,
+                     ProvidesKey<T> keyProvider) {
+        this(pageSize, resources, keyProvider, createDefaultLoadingIndicator(getDefaultResources()));
+    }
+
+    public CellTable(int pageSize, Resources resources) {
+        this(pageSize, resources , null);
+    }
+
+    public CellTable(int pageSize, ProvidesKey<T> keyProvider) {
+        this(pageSize, keyProvider, createDefaultLoadingIndicator(getDefaultResources()));
+    }
+
+    public CellTable(int pageSize, ProvidesKey<T> keyProvider, Widget loadingIndicator) {
+        this(pageSize, getDefaultResources(), keyProvider, loadingIndicator);
+    }
+
+    public CellTable(int pageSize) {
+        this(pageSize, getDefaultResources());
+    }
+
+    public CellTable(ProvidesKey<T> keyProvider) {
+        this(DEFAULT_PAGESIZE, keyProvider);
+    }
+    
     private static Resources getDefaultResources() {
         if (DEFAULT_RESOURCES == null) {
             DEFAULT_RESOURCES = GWT.create(Resources.class);
@@ -98,42 +134,6 @@ public class CellTable<T> extends
     public interface SelectableStyle extends Style {
 
         String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapCellTableSelectable.css";
-    }
-
-    public CellTable() {
-        this(DEFAULT_PAGESIZE);
-    }
-
-    public CellTable(int pageSize, Resources resources,
-            ProvidesKey<T> keyProvider, Widget loadingIndicator) {
-        super(pageSize, resources, keyProvider, loadingIndicator);
-        setStyleName("table");
-    }
-
-    public CellTable(int pageSize,
-            Resources resources,
-            ProvidesKey<T> keyProvider) {
-        this(pageSize, resources, keyProvider, createDefaultLoadingIndicator(getDefaultResources()));
-    }
-
-    public CellTable(int pageSize, Resources resources) {
-        this(pageSize, resources , null);
-    }
-
-    public CellTable(int pageSize, ProvidesKey<T> keyProvider) {
-        this(pageSize, keyProvider, createDefaultLoadingIndicator(getDefaultResources()));
-    }
-
-    public CellTable(int pageSize, ProvidesKey<T> keyProvider, Widget loadingIndicator) {
-        this(pageSize, getDefaultResources(), keyProvider, loadingIndicator);
-    }
-
-    public CellTable(int pageSize) {
-        this(pageSize, getDefaultResources());
-    }
-
-    public CellTable(ProvidesKey<T> keyProvider) {
-        this(DEFAULT_PAGESIZE, keyProvider);
     }
 
     public void setStriped(boolean striped) {

@@ -28,6 +28,8 @@ public class BigDecimalBox extends ValueBoxBase<BigDecimal> {
 
         private static BigDecimalParser INSTANCE;
 
+        protected BigDecimalParser() {}
+        
         /**
          * @return the instance of the no-op renderer
          */
@@ -37,8 +39,6 @@ public class BigDecimalBox extends ValueBoxBase<BigDecimal> {
             }
             return INSTANCE;
         }
-
-        protected BigDecimalParser() {}
 
         public BigDecimal parse(CharSequence object) throws ParseException {
             if (object == null || "".equals(object.toString())) {
@@ -56,6 +56,8 @@ public class BigDecimalBox extends ValueBoxBase<BigDecimal> {
     static class BigDecimalRenderer extends AbstractRenderer<BigDecimal> {
         private static BigDecimalRenderer INSTANCE;
 
+        protected BigDecimalRenderer() {}
+
         /**
          * @return the instance
          */
@@ -65,9 +67,7 @@ public class BigDecimalBox extends ValueBoxBase<BigDecimal> {
             }
             return INSTANCE;
         }
-
-        protected BigDecimalRenderer() {}
-
+        
         public String render(BigDecimal object) {
             if (object == null) {
                 return "";

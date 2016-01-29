@@ -45,6 +45,28 @@ public class AlertBlock extends AlertBase {
 	private final Heading heading = new Heading(4);
 
 	/**
+	 * Initializes the widget with an optional close icon.
+	 *
+	 * @param hasClose
+	 *            whether the Alert should have a close icon.
+	 */
+	public AlertBlock(boolean hasClose) {
+		super("", hasClose);
+		setUp();
+	}
+
+	/**
+	 * Creates an Alert with a close icon and the given style.
+	 *
+	 * @param type
+	 *            of the Alert
+	 */
+	public AlertBlock(AlertType type) {
+		super(type);
+		setUp();
+	}
+
+	/**
 	 * Creates an empty widget with a close icon.
 	 */
 	public AlertBlock() {
@@ -61,29 +83,7 @@ public class AlertBlock extends AlertBase {
 		heading.setStyleName(Constants.ALERT_HEADING);
 		getHeadingContainer().add(heading);
 	}
-
-	/**
-	 * Initializes the widget with an optional close icon.
-	 * 
-	 * @param hasClose
-	 *            whether the Alert should have a close icon.
-	 */
-	public AlertBlock(boolean hasClose) {
-		super("", hasClose);
-		setUp();
-	}
-
-	/**
-	 * Creates an Alert with a close icon and the given style.
-	 * 
-	 * @param type
-	 *            of the Alert
-	 */
-	public AlertBlock(AlertType type) {
-		super(type);
-		setUp();
-	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */

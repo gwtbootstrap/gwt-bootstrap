@@ -29,6 +29,18 @@ public class Person {
 	private Date birthDay;
 	
 	private Favorite favorite = Favorite.NONE;
+
+	public Person() {
+
+	}
+
+	public Person(Integer id, String userName,Integer age, Favorite choice, Date birthDay) {
+		this.id = id;
+		this.userName = userName;
+		this.age = age;
+		this.favorite = choice;
+		this.birthDay = birthDay;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -67,18 +79,6 @@ public class Person {
 	
 	public void setFavorite(Favorite favorite) {
 		this.favorite = favorite;
-	}
-
-	public Person() {
-		
-	}
-	
-	public Person(Integer id, String userName,Integer age, Favorite choice, Date birthDay) {
-		this.id = id;
-		this.userName = userName;
-		this.age = age;
-		this.favorite = choice;
-		this.birthDay = birthDay;
 	}
 
 	public Date getBirthDay() {
