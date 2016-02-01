@@ -71,7 +71,7 @@ public class TabPanel extends DivWidget {
         }
 
         @Override
-        public com.google.gwt.event.dom.client.DomEvent.Type<ShowEvent.Handler> getAssociatedType() {
+        public Type<ShowEvent.Handler> getAssociatedType() {
             return TYPE;
         }
 
@@ -142,7 +142,7 @@ public class TabPanel extends DivWidget {
         }
 
         @Override
-        public com.google.gwt.event.dom.client.DomEvent.Type<ShownEvent.Handler> getAssociatedType() {
+        public Type<ShownEvent.Handler> getAssociatedType() {
             return TYPE;
         }
 

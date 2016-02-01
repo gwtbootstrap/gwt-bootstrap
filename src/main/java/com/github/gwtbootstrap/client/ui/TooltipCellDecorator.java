@@ -107,7 +107,7 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
      * {@inheritDoc}
      */
     @Override
-    public boolean isEditing(com.google.gwt.cell.client.Cell.Context context,
+    public boolean isEditing(Context context,
             Element parent, C value) {
         return cell.isEditing(context, getCellParent(parent), value);
     }
@@ -116,7 +116,7 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
      * {@inheritDoc}
      */
     @Override
-    public void onBrowserEvent(com.google.gwt.cell.client.Cell.Context context,
+    public void onBrowserEvent(Context context,
             Element parent, C value, NativeEvent event,
             ValueUpdater<C> valueUpdater) {
         cell.onBrowserEvent(context, getCellParent(parent), value, event, valueUpdater);
@@ -126,7 +126,7 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
      * {@inheritDoc}
      */
     @Override
-    public void render(final com.google.gwt.cell.client.Cell.Context context,
+    public void render(final Context context,
             final C value, SafeHtmlBuilder sb) {
         
         SafeHtmlBuilder cellBuilder = new SafeHtmlBuilder();
@@ -156,13 +156,13 @@ public class TooltipCellDecorator<C> implements Cell<C> ,IsAnimated, HasTrigger,
         });
     }
     @Override
-    public boolean resetFocus(com.google.gwt.cell.client.Cell.Context context,
+    public boolean resetFocus(Context context,
             Element parent, C value) {
         return cell.resetFocus(context, getCellParent(parent), value);
     }
 
     @Override
-    public void setValue(com.google.gwt.cell.client.Cell.Context context,
+    public void setValue(Context context,
             Element parent, C value) {
         cell.setValue(context, getCellParent(parent), value);
     }
