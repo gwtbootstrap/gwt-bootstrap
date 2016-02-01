@@ -12,8 +12,11 @@ import com.google.gwt.resources.client.TextResource;
  * @author Joshua Godi
  * @since 2.3.2.0
  */
-public class TimepickerResourceInjector {
+public final class TimepickerResourceInjector {
 
+	private TimepickerResourceInjector(){
+
+	}
     /**
      * Injects the required CSS styles and JavaScript files into the document header.
      * <pre>

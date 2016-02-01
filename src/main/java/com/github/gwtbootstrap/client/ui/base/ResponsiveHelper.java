@@ -28,8 +28,9 @@ import com.github.gwtbootstrap.client.ui.constants.ResponsiveStyle;
  * @see Device
  * @author ohashi keisuke
  */
-public class ResponsiveHelper {
+public final class ResponsiveHelper {
 
+	private ResponsiveHelper() { }
 	/**
 	 * Sets the kind of device, this widget is shown on.
 	 * 

@@ -28,8 +28,9 @@ import com.google.gwt.user.client.ui.UIObject;
  * @author ohashi keisuke
  * @author Carlos A Becker
  */
-public class StyleHelper {
+public final class StyleHelper {
 
+	private StyleHelper(){ }
 	/**
 	 * Adds the provided style to the widget.
 	 *
