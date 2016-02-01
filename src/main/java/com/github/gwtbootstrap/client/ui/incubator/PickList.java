@@ -49,6 +49,8 @@ import java.util.List;
  * @see NameValuePairImpl
  */
 public class PickList extends Composite {
+    private static PickListUiBinder ourUiBinder = GWT.create(PickListUiBinder.class);
+
     @UiField
     VerticalPanel leftPanel;
     @UiField
@@ -68,7 +70,20 @@ public class PickList extends Composite {
     Label rightPanelLabel;
     @UiField
     Label leftPanelLabel;
+    
+    public PickList() {
+        initWidget(ourUiBinder.createAndBindUi(this));
 
+        //set padding between cells to make the component look better
+        this.getElement().setAttribute("cellpadding", "1");
+        leftPanel.getElement().setAttribute("cellpadding", "1");
+        buttonPanel.getElement().setAttribute("cellpadding", "1");
+        rightPanel.getElement().setAttribute("cellpadding", "1");
+
+        setLeftListElements(new ArrayList<NameValuePair>());
+        setRightListElements(new ArrayList<NameValuePair>());
+    }
+    
     public void clearLeftList() {
         clear(leftList);
     }
@@ -190,19 +205,5 @@ public class PickList extends Composite {
 
     interface PickListUiBinder extends UiBinder<HorizontalPanel, PickList> {
     }
-
-    private static PickListUiBinder ourUiBinder = GWT.create(PickListUiBinder.class);
-
-    public PickList() {
-        initWidget(ourUiBinder.createAndBindUi(this));
-
-        //set padding between cells to make the component look better
-        this.getElement().setAttribute("cellpadding", "1");
-        leftPanel.getElement().setAttribute("cellpadding", "1");
-        buttonPanel.getElement().setAttribute("cellpadding", "1");
-        rightPanel.getElement().setAttribute("cellpadding", "1");
-
-        setLeftListElements(new ArrayList<NameValuePair>());
-        setRightListElements(new ArrayList<NameValuePair>());
-    }
+    
 }

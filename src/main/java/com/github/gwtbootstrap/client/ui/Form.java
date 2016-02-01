@@ -67,6 +67,18 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 		 * The event type.
 		 */
 		private static Type<SubmitCompleteHandler> TYPE;
+		
+		private final String resultHtml;
+
+		/**
+		 * Create a submit complete event.
+		 *
+		 * @param resultsHtml
+		 *            the results from submitting the form
+		 */
+		protected SubmitCompleteEvent(String resultsHtml) {
+			this.resultHtml = resultsHtml;
+		}
 
 		/**
 		 * Handler hook.
@@ -79,19 +91,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 			}
 			return TYPE;
 		}
-
-		private final String resultHtml;
-
-		/**
-		 * Create a submit complete event.
-		 * 
-		 * @param resultsHtml
-		 *            the results from submitting the form
-		 */
-		protected SubmitCompleteEvent(String resultsHtml) {
-			this.resultHtml = resultsHtml;
-		}
-
+		
 		@Override
 		public final Type<SubmitCompleteHandler> getAssociatedType() {
 			return TYPE;
@@ -138,6 +138,8 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 		 * The event type.
 		 */
 		private static Type<SubmitHandler> TYPE = new Type<SubmitHandler>();
+		
+		private boolean canceled = false;
 
 		/**
 		 * Handler hook.
@@ -150,9 +152,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 			}
 			return TYPE;
 		}
-
-		private boolean canceled = false;
-
+		
 		/**
 		 * Cancel the form submit. Firing this will prevent a subsequent
 		 * {@link SubmitCompleteEvent} from being fired.
@@ -220,6 +220,41 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 	}
 
 	/**
+	 * This constructor may be used by subclasses to explicitly use an existing
+	 * element. This element must be a &lt;form&gt; element.
+	 *
+	 * <p>
+	 * If the createIFrame parameter is set to <code>true</code>, then the
+	 * wrapped form's target attribute will be set to a hidden iframe. If not,
+	 * the form's target will be left alone, and the FormSubmitComplete event
+	 * will not be fired.
+	 * </p>
+	 *
+	 * @param element
+	 *            the element to be used
+	 * @param createIFrame
+	 *            <code>true</code> to create an &lt;iframe&gt; element that
+	 *            will be targeted by this form
+	 */
+	protected Form(Element element,
+				   boolean createIFrame) {
+		super(element.getTagName());
+		FormElement.as(element);
+
+		if (createIFrame) {
+			assert ((getTarget() == null) || (getTarget().trim().length() == 0)) : "Cannot create target iframe if the form's target is already set.";
+
+			// We use the module name as part of the unique ID to ensure that
+			// ids are
+			// unique across modules.
+			frameName = "BSFormPanel_" + GWT.getModuleName() + "_" + (++formId);
+			setTarget(frameName);
+
+			sinkEvents(Event.ONLOAD);
+		}
+	}
+
+	/**
 	 * Adds a {@link SubmitCompleteEvent} handler.
 	 * 
 	 * @param handler
@@ -270,42 +305,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 	public String getMethod() {
 		return getFormElement().getMethod();
 	}
-
-	/**
-	 * This constructor may be used by subclasses to explicitly use an existing
-	 * element. This element must be a &lt;form&gt; element.
-	 * 
-	 * <p>
-	 * If the createIFrame parameter is set to <code>true</code>, then the
-	 * wrapped form's target attribute will be set to a hidden iframe. If not,
-	 * the form's target will be left alone, and the FormSubmitComplete event
-	 * will not be fired.
-	 * </p>
-	 * 
-	 * @param element
-	 *            the element to be used
-	 * @param createIFrame
-	 *            <code>true</code> to create an &lt;iframe&gt; element that
-	 *            will be targeted by this form
-	 */
-	protected Form(Element element,
-		boolean createIFrame) {
-		super(element.getTagName());
-		FormElement.as(element);
-
-		if (createIFrame) {
-			assert ((getTarget() == null) || (getTarget().trim().length() == 0)) : "Cannot create target iframe if the form's target is already set.";
-
-			// We use the module name as part of the unique ID to ensure that
-			// ids are
-			// unique across modules.
-			frameName = "BSFormPanel_" + GWT.getModuleName() + "_" + (++formId);
-			setTarget(frameName);
-
-			sinkEvents(Event.ONLOAD);
-		}
-	}
-
+	
 	public String getTarget() {
 		return getFormElement().getTarget();
 	}

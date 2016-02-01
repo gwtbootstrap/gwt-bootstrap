@@ -31,6 +31,14 @@ public class ClosedEvent<T> extends GwtEvent<ClosedHandler<T>> {
 
     private static final Type<ClosedHandler<?>> TYPE = new Type<ClosedHandler<?>>();
 
+    private final T target;
+    private final boolean autoClosed;
+
+    public ClosedEvent(T target, boolean autoClosed) {
+        this.target = target;
+        this.autoClosed = autoClosed;
+    }
+
     public static Type<ClosedHandler<?>> getType() {
         return TYPE;
     }
@@ -62,15 +70,7 @@ public class ClosedEvent<T> extends GwtEvent<ClosedHandler<T>> {
             source.fireEvent(event);
         }
     }
-
-    private final T target;
-    private final boolean autoClosed;
-
-    public ClosedEvent(T target, boolean autoClosed) {
-        this.target = target;
-        this.autoClosed = autoClosed;
-    }
-
+    
     // The instance knows its of type T, but the TYPE
     // field itself does not, so we have to do an unsafe cast here.
     @SuppressWarnings("unchecked")

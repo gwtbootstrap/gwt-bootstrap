@@ -37,7 +37,76 @@ import com.google.gwt.view.client.ProvidesKey;
  */
 public class DataGrid<T> extends
         com.google.gwt.user.cellview.client.DataGrid<T> implements HasStyle, IsResponsive {
-    
+    private static final int DEFAULT_PAGESIZE = 50;
+    private static Resources DEFAULT_RESOURCES;
+
+    /**
+     * Constructs a table with a default page size of 50.
+     */
+    public DataGrid() {
+        this(DEFAULT_PAGESIZE);
+    }
+
+    /**
+     * Constructs a table with the given page size.
+     *
+     * @param pageSize the page size
+     */
+    public DataGrid(final int pageSize) {
+        this(pageSize, getDefaultResources());
+    }
+
+    /**
+     * Constructs a table with the given page size and the given
+     * {@link ProvidesKey key provider}.
+     *
+     * @param pageSize the page size
+     * @param keyProvider an instance of ProvidesKey<T>, or null if the record
+     *          object should act as its own key
+     */
+    public DataGrid(int pageSize, ProvidesKey<T> keyProvider) {
+        this(pageSize, getDefaultResources(), keyProvider);
+    }
+
+    /**
+     * Constructs a table with the given page size with the specified
+     * {@link Resources}.
+     *
+     * @param pageSize the page size
+     * @param resources the resources to use for this widget
+     */
+    public DataGrid(int pageSize, Resources resources) {
+        this(pageSize, resources, null);
+    }
+
+    /**
+     * Constructs a table with the given page size, the specified
+     * {@link Resources}, and the given key provider.
+     *
+     * @param pageSize the page size
+     * @param resources the resources to use for this widget
+     * @param keyProvider an instance of ProvidesKey<T>, or null if the record
+     *          object should act as its own key
+     */
+    public DataGrid(int pageSize, Resources resources, ProvidesKey<T> keyProvider) {
+        this(pageSize, resources, keyProvider, createDefaultLoadingIndicator(resources));
+    }
+
+    /**
+     * Constructs a table with the given page size, the specified
+     * {@link Resources}, and the given key provider.
+     *
+     * @param pageSize the page size
+     * @param resources the resources to use for this widget
+     * @param keyProvider an instance of ProvidesKey<T>, or null if the record
+     *          object should act as its own key
+     * @param loadingIndicator the widget to use as a loading indicator, or null
+     *          to disable
+     */
+    public DataGrid(int pageSize, Resources resources, ProvidesKey<T> keyProvider,
+                    Widget loadingIndicator) {
+        super(pageSize, resources, keyProvider, loadingIndicator);
+    }
     
     /**
      * Basic GWT-Bootstrap style Table Resource.
@@ -79,9 +148,6 @@ public class DataGrid<T> extends
         String DEFAULT_CSS = "com/github/gwtbootstrap/client/ui/GwtBootstrapDataGridSelectable.css";
     }
     
-    private static final int DEFAULT_PAGESIZE = 50;
-    private static Resources DEFAULT_RESOURCES;
-
     /**
      * Create the default loading indicator using the loading image in the
      * specified {@link Resources}.
@@ -104,73 +170,6 @@ public class DataGrid<T> extends
         }
         return DEFAULT_RESOURCES;
       }
-    /**
-     * Constructs a table with a default page size of 50.
-     */
-    public DataGrid() {
-      this(DEFAULT_PAGESIZE);
-    }
-
-    /**
-     * Constructs a table with the given page size.
-     * 
-     * @param pageSize the page size
-     */
-    public DataGrid(final int pageSize) {
-      this(pageSize, getDefaultResources());
-    }
-
-    /**
-     * Constructs a table with the given page size and the given
-     * {@link ProvidesKey key provider}.
-     * 
-     * @param pageSize the page size
-     * @param keyProvider an instance of ProvidesKey<T>, or null if the record
-     *          object should act as its own key
-     */
-    public DataGrid(int pageSize, ProvidesKey<T> keyProvider) {
-      this(pageSize, getDefaultResources(), keyProvider);
-    }
-
-    /**
-     * Constructs a table with the given page size with the specified
-     * {@link Resources}.
-     * 
-     * @param pageSize the page size
-     * @param resources the resources to use for this widget
-     */
-    public DataGrid(int pageSize, Resources resources) {
-      this(pageSize, resources, null);
-    }
-
-    /**
-     * Constructs a table with the given page size, the specified
-     * {@link Resources}, and the given key provider.
-     * 
-     * @param pageSize the page size
-     * @param resources the resources to use for this widget
-     * @param keyProvider an instance of ProvidesKey<T>, or null if the record
-     *          object should act as its own key
-     */
-    public DataGrid(int pageSize, Resources resources, ProvidesKey<T> keyProvider) {
-      this(pageSize, resources, keyProvider, createDefaultLoadingIndicator(resources));
-    }
-
-    /**
-     * Constructs a table with the given page size, the specified
-     * {@link Resources}, and the given key provider.
-     * 
-     * @param pageSize the page size
-     * @param resources the resources to use for this widget
-     * @param keyProvider an instance of ProvidesKey<T>, or null if the record
-     *          object should act as its own key
-     * @param loadingIndicator the widget to use as a loading indicator, or null
-     *          to disable
-     */
-    public DataGrid(int pageSize, Resources resources, ProvidesKey<T> keyProvider,
-        Widget loadingIndicator) {
-        super(pageSize, resources, keyProvider, loadingIndicator);
-    }
     
     /**
      * set Striped style

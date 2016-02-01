@@ -62,24 +62,6 @@ public class DropdownContainer extends Dropdown {
     private boolean menuVisible;
     private HandlerManager handlerManager;
 
-    @Override
-    protected IconAnchor createTrigger() {
-        final IconAnchor trigger = super.createTrigger();
-        trigger.addDomHandler(new ClickHandler() {
-
-            @Override
-            public void onClick(ClickEvent event) {
-                if (menuVisible) {
-                    hideContainer();
-                } else {
-                    showContainer();
-                }
-            }
-        }, ClickEvent.getType());
-
-        return trigger;
-    }
-
     public DropdownContainer() {
         this("");
     }
@@ -98,6 +80,24 @@ public class DropdownContainer extends Dropdown {
         handlerManager = createHandlerManager();
     }
 
+    @Override
+    protected IconAnchor createTrigger() {
+        final IconAnchor trigger = super.createTrigger();
+        trigger.addDomHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                if (menuVisible) {
+                    hideContainer();
+                } else {
+                    showContainer();
+                }
+            }
+        }, ClickEvent.getType());
+
+        return trigger;
+    }
+    
     public void showContainer() {
         menu.getElement().getStyle().setDisplay(Style.Display.BLOCK);
         menuVisible = true;

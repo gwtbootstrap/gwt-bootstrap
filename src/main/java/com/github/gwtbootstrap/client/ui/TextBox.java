@@ -34,6 +34,33 @@ import com.google.gwt.user.client.ui.Widget;
 public class TextBox extends TextBoxBase {
 
 	/**
+	 * Creates an empty text box.
+	 */
+	public TextBox() {
+		this(Document.get().createTextInputElement(), "gwt-TextBox");
+	}
+
+	/**
+	 * This constructor may be used by subclasses to explicitly use an existing
+	 * element. This element must be an &lt;input&gt; element whose type is
+	 * 'text'.
+	 *
+	 * @param element
+	 *            the element to be used
+	 */
+	protected TextBox(Element element) {
+		super(element);
+		assert InputElement.as(element).getType().equalsIgnoreCase("text");
+	}
+
+	TextBox(Element element,
+			String styleName) {
+		super(element);
+		if (styleName != null) {
+			setStyleName(styleName);
+		}
+	}
+	/**
 	 * Creates a TextBox widget that wraps an existing &lt;input type='text'&gt;
 	 * element.
 	 * 
@@ -55,34 +82,6 @@ public class TextBox extends TextBoxBase {
 		RootPanel.detachOnWindowClose(textBox);
 
 		return textBox;
-	}
-
-	/**
-	 * Creates an empty text box.
-	 */
-	public TextBox() {
-		this(Document.get().createTextInputElement(), "gwt-TextBox");
-	}
-
-	/**
-	 * This constructor may be used by subclasses to explicitly use an existing
-	 * element. This element must be an &lt;input&gt; element whose type is
-	 * 'text'.
-	 * 
-	 * @param element
-	 *            the element to be used
-	 */
-	protected TextBox(Element element) {
-		super(element);
-		assert InputElement.as(element).getType().equalsIgnoreCase("text");
-	}
-
-	TextBox(Element element,
-		String styleName) {
-		super(element);
-		if (styleName != null) {
-			setStyleName(styleName);
-		}
 	}
 
 	/**
