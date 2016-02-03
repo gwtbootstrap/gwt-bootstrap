@@ -275,5 +275,6 @@ public class RadioButton extends CheckBox {
 	 */
 	@Override
 	protected void ensureDomEventHandlers() {
+		// Do nothing
 	}
 }

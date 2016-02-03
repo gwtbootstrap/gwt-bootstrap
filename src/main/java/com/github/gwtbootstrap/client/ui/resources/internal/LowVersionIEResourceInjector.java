@@ -5,6 +5,7 @@ public class LowVersionIEResourceInjector implements InternalResourceInjector {
 
     @Override
     public void configure() {
+        // Do nothing
     }
 
     @Override
