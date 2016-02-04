@@ -58,7 +58,7 @@ public class AsyncCodeBlock extends Composite {
 			
 			@Override
 			public void onError(Request request, Throwable exception) {
-				
+				// Do nothing
 			}
 		});
 	}
