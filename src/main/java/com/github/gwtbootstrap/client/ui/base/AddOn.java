@@ -145,8 +145,11 @@ public class AddOn extends ComplexWidget implements HasText, HasIcon {
         icon.addStyleName(customIconStyle);
     }
 
-    @Override
+    /**
+     * @deprecated
+     */
     @Deprecated
+    @Override
     public void setIconPosition(IconPosition position) {
         throw new UnsupportedOperationException("Addon does not support this methods");
     }

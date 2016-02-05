@@ -172,7 +172,7 @@ public class Pagination extends Composite implements HasStyle, IsResponsive, Has
 
     /**
      * Use setPullRight instead.
-     *
+     * @deprecated
      * @param pullRight
      *            <code>true</code> if the widget should be aligned right.
      */

@@ -607,6 +607,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
     /**
      * @deprecated modal do not support setSize method
      */
+    @Deprecated
     @Override
     public void setSize(String width, String height) {
         throw new UnsupportedOperationException("modal do not support setSize method");

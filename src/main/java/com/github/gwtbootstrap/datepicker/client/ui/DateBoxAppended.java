@@ -168,6 +168,7 @@ public class DateBoxAppended extends AppendButton implements HasValue<Date>,
      *
      * @deprecated
      */
+    @Deprecated
     @Override
     public void setIconPosition(IconPosition position) {
         icon.setIconPosition(position);
