@@ -62,6 +62,9 @@ public class DivWidget extends FlowPanel implements HasStyle, IsResponsive, HasI
 		setStyleName(styleName);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Deprecated
 	public void pullRight(boolean pullRight) {
 		setPullRight(pullRight);

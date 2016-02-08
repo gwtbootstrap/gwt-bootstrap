@@ -173,6 +173,7 @@ public class DateTimeBoxAppended
      *
      * @deprecated
      */
+    @Deprecated
     @Override
     public void setIconPosition(IconPosition position) {
         icon.setIconPosition(position);
