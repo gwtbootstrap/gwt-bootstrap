@@ -86,7 +86,7 @@ public final class LocaleUtil {
 
 	private static TextResource setupLocale() {
 		Resources r = Resources.RESOURCES;
-		TextResource tr = null;
+		TextResource tr;
 
         /*
            Script used to gen the basic if-else block:

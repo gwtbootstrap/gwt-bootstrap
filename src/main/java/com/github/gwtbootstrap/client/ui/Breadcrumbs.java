@@ -171,7 +171,7 @@ public class Breadcrumbs extends UnorderedList {
     }
 
     private ListItem getOrCreateListItem(Widget lastWidget) {
-        ListItem item = null;
+        ListItem item;
 
         Divider dividerWidget = new Divider(divider);
         if(lastWidget instanceof NavWidget) {
@@ -212,7 +212,7 @@ public class Breadcrumbs extends UnorderedList {
     }
 
     private ListItem change2TextListItem(Widget w) {
-        String text = null;
+        String text;
         
         if (w instanceof HasText) {
             text = ((HasText) w).getText();
