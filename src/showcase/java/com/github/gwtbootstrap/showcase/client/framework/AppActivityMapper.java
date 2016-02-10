@@ -47,7 +47,7 @@ public class AppActivityMapper implements ActivityMapper {
 
     private IShowcaseActivity createActivity(HasMenuPlace p) {
 
-        IShowcaseActivity activity = null;
+        IShowcaseActivity activity;
 
         switch (p.getMenu()) {
         case OVERVIEW:
