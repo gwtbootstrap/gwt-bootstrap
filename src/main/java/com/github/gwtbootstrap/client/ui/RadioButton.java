@@ -239,6 +239,8 @@ public class RadioButton extends CheckBox {
 			// ...and now maybe tell them about the change
 			ValueChangeEvent.fireIfNotEqual(RadioButton.this, oldValue, getValue());
 			return;
+			default:
+				break;
 		}
 		super.onBrowserEvent(event);
 	}

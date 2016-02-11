@@ -62,6 +62,8 @@ public final class ResponsiveHelper {
 			case DESKTOP:
 				widget.addStyle(ResponsiveStyle.VISIBLE_DESKTOP);
 				break;
+			default:
+				break;
 		}
 	}
 
@@ -96,6 +98,8 @@ public final class ResponsiveHelper {
 				break;
 			case DESKTOP:
 				widget.addStyle(ResponsiveStyle.HIDDEN_DESKTOP);
+				break;
+			default:
 				break;
 		}
 	}
