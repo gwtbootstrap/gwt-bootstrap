@@ -53,11 +53,10 @@ import java.util.Date;
  * @author Alain Penders
  * @since 2.1.1.0
  */
-public class DateTimeBoxAppended
-	extends AppendButton implements HasValue<Date>,
-	                                HasDateFormat, HasIcon, HasValueChangeHandlers<Date>, HasVisibility,
-        HasChangeHandlers, HasVisibleHandlers, HasAllDateTimePickerHandlers,
-        HasAlternateSize, IsEditor<TakesValueEditor<Date>> {
+public class DateTimeBoxAppended extends AppendButton implements
+		HasValue<Date>, HasIcon, HasValueChangeHandlers<Date>, HasVisibility,
+		HasChangeHandlers, HasVisibleHandlers, HasAllDateTimePickerHandlers,
+		HasAlternateSize, IsEditor<TakesValueEditor<Date>> {
 
     /**
      * An 'adapter' to change some aspects of the behavior of datepickerbase.

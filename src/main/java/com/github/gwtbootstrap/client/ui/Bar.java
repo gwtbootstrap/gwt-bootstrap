@@ -69,7 +69,7 @@ public class Bar extends DivWidget {
         if (width == null)
             return 0;
         else
-            return Double.valueOf(width.substring(0, width.indexOf("%")));
+            return Double.valueOf(width.substring(0, width.indexOf('%')));
     }
     
     /**
