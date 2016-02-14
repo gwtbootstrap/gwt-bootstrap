@@ -242,7 +242,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 		FormElement.as(element);
 
 		if (createIFrame) {
-			assert ((getTarget() == null) || (getTarget().trim().length() == 0)) : "Cannot create target iframe if the form's target is already set.";
+			assert (getTarget() == null || getTarget().trim().length() == 0) : "Cannot create target iframe if the form's target is already set.";
 
 			// We use the module name as part of the unique ID to ensure that
 			// ids are
