@@ -52,7 +52,7 @@ import java.util.Date;
  * @author Carlos Alexandro Becker
  */
 public class DateBoxAppended extends AppendButton implements HasValue<Date>,
-        HasDateFormat, HasIcon, HasValueChangeHandlers<Date>, HasVisibility,
+        HasIcon, HasValueChangeHandlers<Date>, HasVisibility,
         HasChangeHandlers, HasVisibleHandlers, HasAllDatePickerHandlers,
         HasAlternateSize, IsEditor<TakesValueEditor<Date>> {
 

@@ -663,7 +663,7 @@ public class DateTimeBoxBase
         char current;
         char last = dpGlobalFormat.charAt(0);
         int count = 1;
-        String out = "";
+        StringBuilder out = new StringBuilder();
 
         for(int index = 1; index < dpGlobalFormat.length(); index++)
         {
@@ -675,15 +675,15 @@ public class DateTimeBoxBase
                 continue;
             }
 
-            out += processToken(last, count);
+            out.append(processToken(last, count));
 
             last = current;
             count = 1;
         }
 
-        out += processToken(last, count);
+        out.append(processToken(last, count));
 
-        return out;
+        return out.toString();
     }
 
     private String processToken(char token, int count)
