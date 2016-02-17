@@ -241,8 +241,6 @@ public class Breadcrumbs extends UnorderedList {
             return false;
         }
         
-        boolean isLastWidget = (children.indexOf(w) == children.size() -1) || (getWidgetIndex(w) == getWidgetCount() -1);
-        
         if(getWidgetIndex(w) >= 0 && children.contains(w)) {
             children.remove(w);
             super.remove(w);
@@ -254,7 +252,8 @@ public class Breadcrumbs extends UnorderedList {
         } else {
             return false;
         }
-        
+
+        boolean isLastWidget = (children.indexOf(w) == children.size() -1) || (getWidgetIndex(w) == getWidgetCount() -1);
         if(isLastWidget && getWidgetCount() > 0) {
             Widget l = getWidget(getWidgetCount() -1);
             super.remove(l);

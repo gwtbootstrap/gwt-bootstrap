@@ -79,12 +79,11 @@ public class ButtonToolbar extends DivWidget {
 	@Override
 	public void add(Widget widget) {
 
-		Widget addingWidget = widget;
-
 		if (!canBeAdded(widget))
 			throw new IllegalArgumentException("A widget of "
 					+ widget.getClass() + " cannot be added to the toolbar.");
 
+		Widget addingWidget = widget;
 		if (widget instanceof Button)
 			addingWidget = new ButtonGroup((Button) widget);
 

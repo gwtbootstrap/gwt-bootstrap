@@ -119,14 +119,6 @@ public class Alerts extends Composite {
     @UiHandler("showButton")
     public void onClickShowButton(ClickEvent e) {
         
-        ClosedHandler handler = new ClosedHandler() {
-            
-            @Override
-            public void onClosed(ClosedEvent closedEvent) {
-                onHiddenAlert(closedEvent);
-            }
-        };
-        
         if(setupAlert.getElement().hasParentElement())
             setupAlert.removeFromParent();
         
@@ -136,7 +128,16 @@ public class Alerts extends Composite {
         AlertBase backup = setupAlert;
         
         setupAlert = new Alert();
-        
+
+        ClosedHandler handler = new ClosedHandler() {
+
+            @Override
+            public void onClosed(ClosedEvent closedEvent) {
+                onHiddenAlert(closedEvent);
+            }
+        };
+
+
         setupAlert.setText(backup.getText());
         setupAlert.setClose(backup.hasClose());
         setupAlert.setHeading(heading.getText());
