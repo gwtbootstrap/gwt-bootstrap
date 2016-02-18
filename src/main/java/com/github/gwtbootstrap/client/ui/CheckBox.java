@@ -557,14 +557,6 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	 */
 	protected void replaceInputElement(Element elem) {
 		InputElement newInputElem = InputElement.as(elem);
-		// Collect information we need to set
-		int tabIndex = getTabIndex();
-		boolean checked = getValue();
-		boolean enabled = isEnabled();
-		String formValue = getFormValue();
-		String uid = inputElem.getId();
-		String accessKey = inputElem.getAccessKey();
-		int sunkEvents = Event.getEventsSunk(inputElem);
 
 		// Clear out the old input element
 		setEventListener(asOld(inputElem), null);
@@ -575,6 +567,10 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 		Event.sinkEvents(elem, Event.getEventsSunk(inputElem));
 		Event.sinkEvents(inputElem, 0);
 		inputElem = newInputElem;
+		
+		String uid = inputElem.getId();
+		String accessKey = inputElem.getAccessKey();
+		int sunkEvents = Event.getEventsSunk(inputElem);
 
 		// Setup the new element
 		Event.sinkEvents(inputElem, sunkEvents);
@@ -582,6 +578,13 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 		if (!"".equals(accessKey)) {
 			inputElem.setAccessKey(accessKey);
 		}
+
+		// Collect information we need to set
+		int tabIndex = getTabIndex();
+		boolean checked = getValue();
+		boolean enabled = isEnabled();
+		String formValue = getFormValue();
+
 		setTabIndex(tabIndex);
 		setValue(checked);
 		setEnabled(enabled);
