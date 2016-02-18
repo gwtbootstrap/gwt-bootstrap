@@ -51,7 +51,7 @@ public class Scrollspy {
 		super();
 		this.navbar = navbar;
 		
-		if(navbar.getId() != null && navbar.getId().length() > 0) {
+		if(navbar.getId() != null && !navbar.getId().isEmpty()) {
 			setTarget("#" + navbar.getId());
 		}
 	}

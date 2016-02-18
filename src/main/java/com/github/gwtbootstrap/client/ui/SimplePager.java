@@ -94,9 +94,9 @@ public class SimplePager extends AbstractPager {
 
     private static final int DEFAULT_FAST_FORWARD_ROWS = 100;
     private static Resources DEFAULT_RESOURCES;
-    private final int tooltipDelay = 1000;
+    private static final int tooltipDelay = 1000;
     
-    private final Placement tooltipPlacement = Placement.BOTTOM;
+    private static final Placement tooltipPlacement = Placement.BOTTOM;
 
     private final Button fastForward;
     private final Tooltip fastForwardTooltip;

@@ -657,7 +657,7 @@ public class DateTimeBoxBase
 
     private String dpGlobalFormatToDateTimeFormat(String dpGlobalFormat)
     {
-        if(dpGlobalFormat == null || dpGlobalFormat.length() == 0)
+        if(dpGlobalFormat == null || dpGlobalFormat.isEmpty())
             return "";
 
         char current;
