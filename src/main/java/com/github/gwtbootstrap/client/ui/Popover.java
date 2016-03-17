@@ -82,9 +82,11 @@ public class Popover extends AbstractHoverBase {
 		setDataAttribute(getWidget().getElement(), "original-title", heading);
 
 		setDataAttribute(getWidget().getElement(), "content", content);
+		
+		setDataAttribute(getWidget().getElement(), "container", container);
 
 		configure(getWidget().getElement(), getAnimation(), getPlacement().get(), getTrigger().get(), getShowDelay(),
-				getHideDelay(), isHtml());
+				getHideDelay(), isHtml(), getContainer());
 	}
 
 	/**
@@ -96,12 +98,13 @@ public class Popover extends AbstractHoverBase {
 	}
 
 	private native void configure(Element element, boolean animated, String placement, String trigger, int showDelay,
-			int hideDelay, boolean html) /*-{
+			int hideDelay, boolean html, String container) /*-{
 		$wnd.jQuery(element).popover({
 			animation : animated,
 			placement : placement,
 			html : html,
 			trigger : trigger,
+			container: container,
 			delay : {
 				show : showDelay,
 				hide : hideDelay
