@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -46,7 +46,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class IconStack extends ComplexPanel {
 
     public IconStack() {
-        setElement(DOM.createSpan());
+        setElement(Document.get().createSpanElement());
         getElement().addClassName(Constants.ICON_STACK);
     }
 

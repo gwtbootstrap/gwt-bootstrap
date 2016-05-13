@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 
 //@formatter:off
 /**
@@ -45,7 +45,7 @@ public class Emphasis extends AbstractTypography {
 	 * Creates an empty widget.
 	 */
 	public Emphasis() {
-		setElement(DOM.createElement("em"));
+		setElement(Document.get().createElement("em"));
 	}
 
 	/**

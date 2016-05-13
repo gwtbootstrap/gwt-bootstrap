@@ -65,13 +65,13 @@ public class ListBox extends com.google.gwt.user.client.ui.ListBox implements Ha
 	}
 
 	/**
-	 * Creates an empty list box. The preferred way to enable multiple
-	 * selections is to use this constructor rather than
-	 * {@link #setMultipleSelect(boolean)}.
+	 * Creates an empty list box.
 	 * 
 	 * @param isMultipleSelect
 	 *            specifies if multiple selection is enabled
+	 * @deprecated use {@link #setMultipleSelect(boolean)} instead.
 	 */
+	@Deprecated
 	public ListBox(boolean isMultipleSelect) {
 		super(isMultipleSelect);
 	}

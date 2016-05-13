@@ -79,7 +79,7 @@ public class Affix extends AbstractMarkupWidget {
     
     
     public void reconfigure() {
-        com.google.gwt.user.client.Element element = getWidget().getElement();
+        Element element = getWidget().getElement();
         removeDataIfExists(element);
         configure(element);
     }

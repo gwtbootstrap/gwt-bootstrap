@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -45,7 +45,7 @@ public abstract class AbstractTypography extends Widget implements HasText,
 	 *            the HTML tag to be used
 	 */
 	public AbstractTypography(String tag) {
-		setElement(DOM.createElement(tag));
+		setElement(Document.get().createElement(tag));
 	}
 
 	/**

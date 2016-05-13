@@ -192,6 +192,10 @@ public class TimeBoxAppended extends AppendButton implements HasValue<Date>, Has
         icon.setCustomIconStyle(customIconStyle);
     }
 
+    /**
+     * @deprecated
+     */
+    @Deprecated
     @Override
     public void setIconPosition(IconPosition position) {
         icon.setIconPosition(position);

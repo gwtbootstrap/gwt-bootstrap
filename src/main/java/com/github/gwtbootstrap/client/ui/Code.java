@@ -18,8 +18,8 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.github.gwtbootstrap.client.ui.resources.prettify.HasProgrammingLanguage;
 import com.github.gwtbootstrap.client.ui.resources.prettify.PrettifyHelper;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasHTML;
 
 //@formatter:off
@@ -54,7 +54,7 @@ public class Code extends AbstractTypography implements HasProgrammingLanguage,
 	 * Creates an empty widget.
 	 */
 	public Code() {
-		setElement(DOM.createElement("code"));
+		setElement(Document.get().createElement("code"));
 		helper = new PrettifyHelper(this);
 	}
 

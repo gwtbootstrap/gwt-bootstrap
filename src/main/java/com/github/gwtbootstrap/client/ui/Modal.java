@@ -36,7 +36,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -619,8 +618,8 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
      * @param width Modal's new width, in px
      */
     public void setWidth(int width) {
-        DOM.setStyleAttribute(this.getElement(), "width", width + "px");
-        DOM.setStyleAttribute(this.getElement(), "marginLeft", (-width / 2) + "px");
+        this.getElement().getStyle().setProperty("width", width + "px");
+        this.getElement().getStyle().setProperty("marginLeft", (-width / 2) + "px");
     }
 
     /**
@@ -629,7 +628,7 @@ public class Modal extends DivWidget implements HasVisibility, HasVisibleHandler
      * @param maxHeight the Modal's body new maxHeight, in CSS units (e.g. "10px", "1em")
      */
     public void setMaxHeigth(String maxHeight) {
-        DOM.setStyleAttribute(body.getElement(), "maxHeight", maxHeight);
+        body.getElement().getStyle().setProperty("maxHeight", maxHeight);
     }
 
 }

@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 
 /**

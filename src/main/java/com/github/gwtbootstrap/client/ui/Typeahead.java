@@ -1,12 +1,14 @@
 package com.github.gwtbootstrap.client.ui;
 
+import java.util.Collection;
+
 import com.github.gwtbootstrap.client.ui.base.AbstractMarkupWidget;
 import com.github.gwtbootstrap.client.ui.base.TextBoxBase;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.SuggestOracle;
@@ -15,7 +17,6 @@ import com.google.gwt.user.client.ui.SuggestOracle.Request;
 import com.google.gwt.user.client.ui.SuggestOracle.Response;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.Widget;
-import java.util.Collection;
 
 public class Typeahead extends AbstractMarkupWidget {
 

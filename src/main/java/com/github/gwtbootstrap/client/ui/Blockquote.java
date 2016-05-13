@@ -17,7 +17,7 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.github.gwtbootstrap.client.ui.constants.Alignment;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 
 //@formatter:off
 /**
@@ -46,7 +46,7 @@ public class Blockquote extends AbstractTypography {
 	 * Creates an empty Blockquote.
 	 */
 	public Blockquote() {
-		setElement(DOM.createElement("blockquote"));
+		setElement(Document.get().createElement("blockquote"));
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class Blockquote extends AbstractTypography {
 		 *            the text to be set
 		 */
 		public Cite(String text) {
-			setElement(DOM.createElement("cite"));
+			setElement(Document.get().createElement("cite"));
 			setText(text);
 		}
 	}
@@ -163,7 +163,7 @@ public class Blockquote extends AbstractTypography {
 		private final Cite cite;
 
 		public SmallCite(String text) {
-			setElement(DOM.createElement("small"));
+			setElement(Document.get().createElement("small"));
 			this.cite = new Cite(text);
 			getElement().appendChild(cite.getElement());
 		}

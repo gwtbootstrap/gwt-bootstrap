@@ -15,6 +15,9 @@
  */
 package com.github.gwtbootstrap.client.ui;
 
+import static com.github.gwtbootstrap.client.ui.constants.Constants.CHECKBOX;
+import static com.github.gwtbootstrap.client.ui.constants.Constants.RADIO;
+
 import com.github.gwtbootstrap.client.ui.base.HasId;
 import com.github.gwtbootstrap.client.ui.base.HasStyle;
 import com.github.gwtbootstrap.client.ui.base.IsResponsive;
@@ -26,6 +29,7 @@ import com.github.gwtbootstrap.client.ui.base.StyleHelper;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.Device;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.LabelElement;
 import com.google.gwt.dom.client.SpanElement;
@@ -42,9 +46,7 @@ import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.DirectionalTextHelper;
 import com.google.gwt.user.client.ui.FormPanel;
@@ -55,9 +57,6 @@ import com.google.gwt.user.client.ui.HasWordWrap;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
-
-import static com.github.gwtbootstrap.client.ui.constants.Constants.CHECKBOX;
-import static com.github.gwtbootstrap.client.ui.constants.Constants.RADIO;
 
 /**
  * CheckBox widgets.
@@ -97,7 +96,7 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	 * Creates a check box with no label.
 	 */
 	public CheckBox() {
-		this(DOM.createInputCheck());
+		this(Document.get().createCheckInputElement());
 	}
 
 	/**
@@ -531,7 +530,7 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	 */
 	@Override
 	protected void onLoad() {
-		setEventListener(inputElem, this);
+		DOM.setEventListener(inputElem, this);
 	}
 
 	/**
@@ -543,7 +542,7 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 	protected void onUnload() {
 		// Clear out the inputElem's event listener (breaking the circular
 		// reference between it and the widget).
-		setEventListener(asOld(inputElem), null);
+		DOM.setEventListener(inputElem, null);
 		setValue(getValue());
 	}
 
@@ -559,7 +558,7 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 		InputElement newInputElem = InputElement.as(elem);
 
 		// Clear out the old input element
-		setEventListener(asOld(inputElem), null);
+		DOM.setEventListener(inputElem, null);
 
 		getElement().replaceChild(newInputElem, inputElem);
 
@@ -592,17 +591,8 @@ public class CheckBox extends ButtonBase implements HasName, HasValue<Boolean>, 
 
 		// Set the event listener
 		if (isAttached()) {
-			setEventListener(asOld(inputElem), this);
+			DOM.setEventListener(inputElem, this);
 		}
-	}
-
-	private Element asOld(com.google.gwt.dom.client.Element elem) {
-		Element oldSchool = elem.cast();
-		return oldSchool;
-	}
-
-	private void setEventListener(com.google.gwt.dom.client.Element e, EventListener listener) {
-		DOM.setEventListener(asOld(e), listener);
 	}
 
 	protected LabelElement asLabel() {

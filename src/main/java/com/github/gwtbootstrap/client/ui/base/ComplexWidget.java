@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui.base;
 
 import com.github.gwtbootstrap.client.ui.constants.Device;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,7 +40,7 @@ public class ComplexWidget extends ComplexPanel implements HasWidgets,
 	 *            the html tag used for this widget
 	 */
 	public ComplexWidget(String tag) {
-		setElement(DOM.createElement(tag));
+		setElement(Document.get().createElement(tag));
 	}
 
 	/**

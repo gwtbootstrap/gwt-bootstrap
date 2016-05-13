@@ -17,8 +17,8 @@ package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.uibinder.client.UiConstructor;
-import com.google.gwt.user.client.DOM;
 
 /**
  * A text element that shows more information in a tooltip.
@@ -64,7 +64,7 @@ public class Abbreviation extends AbstractTypography {
 	 */
 	public @UiConstructor
 	Abbreviation(String title) {
-		setElement(DOM.createElement("abbr"));
+		setElement(Document.get().createElement("abbr"));
 		setTitle(title);
 	}
 

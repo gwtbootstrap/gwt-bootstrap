@@ -16,7 +16,7 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.AbstractTypography;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 
 //@formatter:off
 /**
@@ -35,7 +35,7 @@ public class Strong extends AbstractTypography {
 	 * Creates a new widget.
 	 */
 	public Strong() {
-		setElement(DOM.createElement("strong"));
+		setElement(Document.get().createElement("strong"));
 	}
 
 	/**

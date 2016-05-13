@@ -18,7 +18,7 @@ package com.github.gwtbootstrap.client.ui.base;
 import com.github.gwtbootstrap.client.ui.Dropdown;
 import com.github.gwtbootstrap.client.ui.DropdownButton;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 
 /**
  * Icon used in Dropdowns to show the presence of a menu. Can point up- or
@@ -54,7 +54,7 @@ public class Caret extends AbstractTypography {
 	 *            <code>true</code>
 	 */
 	public Caret(boolean visible) {
-		setElement(DOM.createElement("span"));
+		setElement(Document.get().createSpanElement());
 		if (visible)
 			show();
 	}

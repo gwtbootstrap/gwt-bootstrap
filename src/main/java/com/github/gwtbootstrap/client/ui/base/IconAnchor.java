@@ -242,7 +242,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	@Override
 	public boolean isEnabled() {
-		return !DOM.getElementPropertyBoolean(getElement(), "disabled");
+		return !getElement().getPropertyBoolean("disabled");
 	}
 
 	/**
@@ -250,7 +250,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	@Override
 	public void setEnabled(boolean enabled) {
-		DOM.setElementPropertyBoolean(getElement(), "disabled", !enabled);
+		getElement().setPropertyBoolean("disabled", !enabled);
 	}
 
 	/**
@@ -278,7 +278,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 
     @Override
     public void setAccessKey(char key) {
-    	DOM.setElementProperty(getElement(), "accessKey", Character.toString(key));
+    	getElement().setPropertyString("accessKey", Character.toString(key));
     }
 
     @Override

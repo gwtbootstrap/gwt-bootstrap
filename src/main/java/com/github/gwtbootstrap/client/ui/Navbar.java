@@ -20,7 +20,7 @@ import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarConstants;
 import com.github.gwtbootstrap.client.ui.constants.NavbarPosition;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 

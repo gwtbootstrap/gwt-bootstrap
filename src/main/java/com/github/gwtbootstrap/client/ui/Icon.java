@@ -24,8 +24,8 @@ import com.github.gwtbootstrap.client.ui.constants.IconFlip;
 import com.github.gwtbootstrap.client.ui.constants.IconRotate;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.uibinder.client.UiConstructor;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 //@formatter:off
@@ -66,7 +66,7 @@ public class Icon extends Widget implements HasAlignment {
      * (This is probably not what you want to do most of the time.)
      */
     public Icon() {
-        setElement(DOM.createElement("i"));
+        setElement(Document.get().createElement("i"));
     }
 
     /**
