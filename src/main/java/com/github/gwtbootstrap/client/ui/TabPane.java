@@ -18,9 +18,7 @@ package com.github.gwtbootstrap.client.ui;
 import com.github.gwtbootstrap.client.ui.base.DivWidget;
 import com.github.gwtbootstrap.client.ui.constants.Constants;
 import com.github.gwtbootstrap.client.ui.resources.Bootstrap;
-import com.github.gwtbootstrap.datepicker.client.ui.base.HasEndDate;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.HasEnabled;
 
 //@formatter:off
 /**

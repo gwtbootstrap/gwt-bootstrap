@@ -15,7 +15,6 @@
  */
 package com.github.gwtbootstrap.datepicker.client.ui.base;
 
-import java.util.Date;
 
 /**
  * Define a element that have a day of week to start.

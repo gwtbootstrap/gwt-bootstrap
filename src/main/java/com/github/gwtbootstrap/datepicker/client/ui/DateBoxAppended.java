@@ -15,6 +15,8 @@
  */
 package com.github.gwtbootstrap.datepicker.client.ui;
 
+import java.util.Date;
+
 import com.github.gwtbootstrap.client.ui.AppendButton;
 import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
@@ -32,7 +34,6 @@ import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.gwtbootstrap.datepicker.client.ui.base.DateBoxBase;
 import com.github.gwtbootstrap.datepicker.client.ui.base.HasAllDatePickerHandlers;
-import com.github.gwtbootstrap.datepicker.client.ui.base.HasDateFormat;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -42,8 +43,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
-
-import java.util.Date;
 
 /**
  * DateBoxAppended component.
