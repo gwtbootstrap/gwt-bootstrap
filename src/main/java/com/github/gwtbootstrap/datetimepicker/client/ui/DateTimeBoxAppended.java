@@ -15,24 +15,25 @@
  */
 package com.github.gwtbootstrap.datetimepicker.client.ui;
 
+import java.util.Date;
+
 import com.github.gwtbootstrap.client.ui.AppendButton;
 import com.github.gwtbootstrap.client.ui.base.AddOn;
 import com.github.gwtbootstrap.client.ui.base.HasAlternateSize;
 import com.github.gwtbootstrap.client.ui.base.HasIcon;
 import com.github.gwtbootstrap.client.ui.base.HasVisibility;
-import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.constants.AlternateSize;
 import com.github.gwtbootstrap.client.ui.constants.BaseIconType;
 import com.github.gwtbootstrap.client.ui.constants.IconPosition;
 import com.github.gwtbootstrap.client.ui.constants.IconSize;
 import com.github.gwtbootstrap.client.ui.constants.IconType;
+import com.github.gwtbootstrap.client.ui.event.HasVisibleHandlers;
 import com.github.gwtbootstrap.client.ui.event.HiddenHandler;
 import com.github.gwtbootstrap.client.ui.event.HideHandler;
 import com.github.gwtbootstrap.client.ui.event.ShowHandler;
 import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.gwtbootstrap.datetimepicker.client.ui.base.DateTimeBoxBase;
 import com.github.gwtbootstrap.datetimepicker.client.ui.base.HasAllDateTimePickerHandlers;
-import com.github.gwtbootstrap.datetimepicker.client.ui.base.HasDateFormat;
 import com.github.gwtbootstrap.datetimepicker.client.ui.base.PickerPosition;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
@@ -43,8 +44,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
-
-import java.util.Date;
 
 /**
  * DateTimeBoxAppended component.

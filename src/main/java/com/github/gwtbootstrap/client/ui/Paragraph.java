@@ -16,8 +16,6 @@
 package com.github.gwtbootstrap.client.ui;
 
 import com.github.gwtbootstrap.client.ui.base.HtmlWidget;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.HasWidgets;
 
 
 //@formatter:off
