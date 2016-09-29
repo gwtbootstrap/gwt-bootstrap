@@ -293,6 +293,11 @@ public class NumberedPager extends AbstractPager implements HasStyle, IsResponsi
             for (int i = firstVisibleIndex; i < firstNotVisibleIndex; i++) {
                 pagination.getWidget(i).setVisible(true);
             }
+        } else {
+            // Just in case there were any not visible items previously
+            for (int i = 1; i < pagination.getWidgetCount() - 1; i++) {
+                pagination.getWidget(i).setVisible(true);
+            }        	
         }
 
         // Set all numbered buttons as enabled
