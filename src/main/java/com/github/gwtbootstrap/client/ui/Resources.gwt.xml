@@ -21,7 +21,7 @@
 <module>
     <stylesheet src="css/bootstrap.min.css"/>
     <stylesheet src="css/gwt-bootstrap.css"/>
-    <stylesheet src="css/font-awesome.min.css"/>
+    <stylesheet src="css/font-awesome.css"/>
     <public path="resources">
         <exclude name="**/*.java"/>
         <exclude name="**/*.class"/>

@@ -81,6 +81,7 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	private Caret caret = new Caret();
 
     private IconPosition iconPosition;
+	private HandlerRegistration handlerRegistration;
 
 	/**
 	 * Creates the widget and sets the {@code href} property to
@@ -175,6 +176,10 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 * {@inheritDoc}
 	 */
 	public void setHref(String href) {
+		if (handlerRegistration != null) {
+			handlerRegistration.removeHandler();
+			handlerRegistration = null;
+		}
 		getElement().setAttribute("href", href);
 	}
 
@@ -219,6 +224,12 @@ public class IconAnchor extends ComplexWidget implements HasText, HasIcon, HasHr
 	 */
 	public void setEmptyHref() {
 		setHref(Constants.EMPTY_HREF);
+		handlerRegistration = addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(final ClickEvent clickEvent) {
+				clickEvent.preventDefault();
+			}
+		});
 	}
 
 	/**

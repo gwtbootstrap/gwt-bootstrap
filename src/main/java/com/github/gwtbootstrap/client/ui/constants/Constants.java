@@ -27,7 +27,7 @@ public interface Constants {
 
 	// General
 
-	public static final String EMPTY_HREF = "javascript:;";
+	public static final String EMPTY_HREF = "#void";
 
 	public static final String ACTIVE = "active";
 

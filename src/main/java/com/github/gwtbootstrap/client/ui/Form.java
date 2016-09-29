@@ -436,7 +436,7 @@ public class Form extends ComplexWidget implements FormPanelImplHost {
 		// on
 		// most browsers.
 		Element dummy = Document.get().createDivElement();
-		dummy.setInnerHTML("<iframe src=\"javascript:''\" name='" + frameName + "' style='position:absolute;width:0;height:0;border:0'>");
+		dummy.setInnerHTML("<iframe name='" + frameName + "' style='position:absolute;width:0;height:0;border:0'>");
 
 		synthesizedFrame = dummy.getFirstChildElement();
 	}
