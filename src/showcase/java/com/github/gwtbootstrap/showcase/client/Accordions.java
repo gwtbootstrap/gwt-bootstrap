@@ -22,44 +22,44 @@ public class Accordions extends Composite {
     private static AccordionsUiBinder uiBinder = GWT
             .create(AccordionsUiBinder.class);
 
-    interface AccordionsUiBinder extends UiBinder<Widget, Accordions> {
+    /* default */ interface AccordionsUiBinder extends UiBinder<Widget, Accordions> {
     }
     
     @UiField
-    Collapse toggle1;
+    /* default */Collapse toggle1;
     
     @UiField
-    FlowPanel logPanel;
+    /* default */FlowPanel logPanel;
 
     public Accordions() {
         initWidget(uiBinder.createAndBindUi(this));
     }
     
     @UiHandler("toggleButton")
-    void onClickToggleButton(ClickEvent e) {
+    /* default */ void onClickToggleButton(ClickEvent e) {
         toggle1.toggle();
     }
     
     @UiHandler("toggle1")
-    void onHide(HideEvent e) {
+    /* default */ void onHide(HideEvent e) {
         addLog("hide");
     }
     @UiHandler("toggle1")
-    void onHidden(HiddenEvent e) {
+    /* default */ void onHidden(HiddenEvent e) {
         addLog("hidden");
     }
     
     @UiHandler("toggle1")
-    void onShow(ShowEvent e) {
+    /* default */ void onShow(ShowEvent e) {
         addLog("show");
     }
     @UiHandler("toggle1")
-    void onShown(ShownEvent e) {
+    /* default */ void onShown(ShownEvent e) {
         addLog("shown");
     }
     
     
-    void addLog(String msg) { 
+    /* default */ void addLog(String msg) { 
         logPanel.insert(new Label(new Date() + ":" + msg), 0); 
     }
     

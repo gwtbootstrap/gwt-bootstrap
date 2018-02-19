@@ -13,12 +13,12 @@ import com.google.gwt.user.client.ui.Widget;
 public class Typeaheads extends Composite {
 
     @UiField
-    Typeahead typeahead;
+    /* default */ Typeahead typeahead;
 
     private static TypeaheadsUiBinder uiBinder = GWT
             .create(TypeaheadsUiBinder.class);
 
-    interface TypeaheadsUiBinder extends UiBinder<Widget, Typeaheads> {
+    /* default */ interface TypeaheadsUiBinder extends UiBinder<Widget, Typeaheads> {
     }
 
     public Typeaheads() {

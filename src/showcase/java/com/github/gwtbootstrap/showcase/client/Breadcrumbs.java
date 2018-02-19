@@ -17,21 +17,21 @@ import com.google.gwt.user.client.ui.Widget;
 public class Breadcrumbs extends Composite {
     
     @UiField
-    com.github.gwtbootstrap.client.ui.Breadcrumbs bread1,bread2;
+    /* default */ com.github.gwtbootstrap.client.ui.Breadcrumbs bread1,bread2;
     
     @UiField
-    TextBox text;
+    /* default */ TextBox text;
     
     @UiField
-    ControlGroup addWidgetCG;
+    /* default */ ControlGroup addWidgetCG;
     
     @UiField
-    HelpInline addText;
+    /* default */ HelpInline addText;
 
     private static BreadcrumbsUiBinder uiBinder = GWT
             .create(BreadcrumbsUiBinder.class);
 
-    interface BreadcrumbsUiBinder extends UiBinder<Widget, Breadcrumbs> {
+    /* default */ interface BreadcrumbsUiBinder extends UiBinder<Widget, Breadcrumbs> {
     }
 
     public Breadcrumbs() {
