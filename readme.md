@@ -1,3 +1,7 @@
+This is no longer maintained. Use it at your own risk.
+
+---
+
 # [GWT-Bootstrap](http://gwtbootstrap.github.com/) [![Travis-CI Build Status](https://travis-ci.org/gwtbootstrap/gwt-bootstrap.png?branch=master)](https://travis-ci.org/gwtbootstrap/gwt-bootstrap) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gwtbootstrap/gwt-bootstrap/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.gwtbootstrap/gwt-bootstrap)
 
 Based on [Bootstrap.](http://getbootstrap.com/2.3.2/), GWT-Bootstrap
