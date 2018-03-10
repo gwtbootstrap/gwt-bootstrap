@@ -71,7 +71,7 @@
 
 		$(document).on('mousedown', function (e) {
 			// Clicked outside the datepicker, hide it
-			if ($(e.target).closest('.datepicker').length == 0) {
+			if ($(e.target).closest('.datepicker').length == 0 && e.target != that.element.get(0)) {
 				that.hide();
 			}
 		});
